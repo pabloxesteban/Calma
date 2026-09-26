@@ -1,0 +1,1638 @@
+[
+ {
+  "w": 360,
+  "page": "inicio",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Entiende c\u00f3mo te afecta la tecnolog\u00eda y decide c\u00f3m"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 12793
+ },
+ {
+  "w": 360,
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Mentor\u00eda uno a uno para ordenar tu relaci\u00f3n con la"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 12167
+ },
+ {
+  "w": 360,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 6,
+  "smallSample": [
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "pol\u00edtica de privacidad"
+  ],
+  "minGutter": 24,
+  "h1": [
+   "\u00bfC\u00f3mo podemos ayudarte?"
+  ],
+  "ctas": [
+   {
+    "t": "Enviar mi consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3480
+ },
+ {
+  "w": 360,
+  "page": "sobre_tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Hola, soy Tatiana X. Stacul, psic\u00f3loga detr\u00e1s de C"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3753
+ },
+ {
+  "w": 360,
+  "page": "blog",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 1,
+  "smallSample": [
+   "Infancias \u00abFigitales\u00bb"
+  ],
+  "minGutter": 20,
+  "h1": [
+   "Blog"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 8711
+ },
+ {
+  "w": 360,
+  "page": "ciberpsicologia",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Ciberpsicolog\u00eda y bienestar digital"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 4981
+ },
+ {
+  "w": 360,
+  "page": "testimonios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Testimonios"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 6425
+ },
+ {
+  "w": 360,
+  "page": "test",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Test de consumo digital"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 4297
+ },
+ {
+  "w": 360,
+  "page": "herramientas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Aplicaciones de productividad y calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 6824
+ },
+ {
+  "w": 360,
+  "page": "descargas-2",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Libros de descarga gratuita"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 4523
+ },
+ {
+  "w": 360,
+  "page": "bienestar-digital",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Bienestar Digital"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 5623
+ },
+ {
+  "w": 360,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 19,
+  "h1": [
+   "\u00bfPor qu\u00e9 fallamos al intentar cambiar conductas?"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 7670
+ },
+ {
+  "w": 360,
+  "page": "equipo",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "El equipo de C\u00f3digo Calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3284
+ },
+ {
+  "w": 360,
+  "page": "equipo-tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Tatiana X. Stacul"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 5335
+ },
+ {
+  "w": 360,
+  "page": "equipo-francisca",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Francisca Cort\u00e9s Santoro"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3357
+ },
+ {
+  "w": 390,
+  "page": "inicio",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Entiende c\u00f3mo te afecta la tecnolog\u00eda y decide c\u00f3m"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 12577
+ },
+ {
+  "w": 390,
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Mentor\u00eda uno a uno para ordenar tu relaci\u00f3n con la"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 11488
+ },
+ {
+  "w": 390,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 6,
+  "smallSample": [
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "pol\u00edtica de privacidad"
+  ],
+  "minGutter": 24,
+  "h1": [
+   "\u00bfC\u00f3mo podemos ayudarte?"
+  ],
+  "ctas": [
+   {
+    "t": "Enviar mi consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3331
+ },
+ {
+  "w": 390,
+  "page": "sobre_tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Hola, soy Tatiana X. Stacul, psic\u00f3loga detr\u00e1s de C"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3604
+ },
+ {
+  "w": 390,
+  "page": "blog",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 1,
+  "smallSample": [
+   "Infancias \u00abFigitales\u00bb"
+  ],
+  "minGutter": 20,
+  "h1": [
+   "Blog"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 8534
+ },
+ {
+  "w": 390,
+  "page": "ciberpsicologia",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Ciberpsicolog\u00eda y bienestar digital"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 4943
+ },
+ {
+  "w": 390,
+  "page": "testimonios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Testimonios"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 6220
+ },
+ {
+  "w": 390,
+  "page": "test",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Test de consumo digital"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 4072
+ },
+ {
+  "w": 390,
+  "page": "herramientas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Aplicaciones de productividad y calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 6683
+ },
+ {
+  "w": 390,
+  "page": "descargas-2",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Libros de descarga gratuita"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 4457
+ },
+ {
+  "w": 390,
+  "page": "bienestar-digital",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Bienestar Digital"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 5498
+ },
+ {
+  "w": 390,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 19,
+  "h1": [
+   "\u00bfPor qu\u00e9 fallamos al intentar cambiar conductas?"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 7179
+ },
+ {
+  "w": 390,
+  "page": "equipo",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "El equipo de C\u00f3digo Calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3104
+ },
+ {
+  "w": 390,
+  "page": "equipo-tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Tatiana X. Stacul"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 5135
+ },
+ {
+  "w": 390,
+  "page": "equipo-francisca",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Francisca Cort\u00e9s Santoro"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3202
+ },
+ {
+  "w": 430,
+  "page": "inicio",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 22,
+  "h1": [
+   "Entiende c\u00f3mo te afecta la tecnolog\u00eda y decide c\u00f3m"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 12587
+ },
+ {
+  "w": 430,
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 1,
+  "smallSample": [
+   "Ver rese\u00f1a de Hugo B. en Googl"
+  ],
+  "minGutter": 22,
+  "h1": [
+   "Mentor\u00eda uno a uno para ordenar tu relaci\u00f3n con la"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 10984
+ },
+ {
+  "w": 430,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 6,
+  "smallSample": [
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "pol\u00edtica de privacidad"
+  ],
+  "minGutter": 24,
+  "h1": [
+   "\u00bfC\u00f3mo podemos ayudarte?"
+  ],
+  "ctas": [
+   {
+    "t": "Enviar mi consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3260
+ },
+ {
+  "w": 430,
+  "page": "sobre_tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Hola, soy Tatiana X. Stacul, psic\u00f3loga detr\u00e1s de C"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3533
+ },
+ {
+  "w": 430,
+  "page": "blog",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 1,
+  "smallSample": [
+   "Infancias \u00abFigitales\u00bb"
+  ],
+  "minGutter": 22,
+  "h1": [
+   "Blog"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 8559
+ },
+ {
+  "w": 430,
+  "page": "ciberpsicologia",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Ciberpsicolog\u00eda y bienestar digital"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 4754
+ },
+ {
+  "w": 430,
+  "page": "testimonios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Testimonios"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 6114
+ },
+ {
+  "w": 430,
+  "page": "test",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 27,
+  "h1": [
+   "Test de consumo digital"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3876
+ },
+ {
+  "w": 430,
+  "page": "herramientas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 27,
+  "h1": [
+   "Aplicaciones de productividad y calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 6722
+ },
+ {
+  "w": 430,
+  "page": "descargas-2",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 27,
+  "h1": [
+   "Libros de descarga gratuita"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 4546
+ },
+ {
+  "w": 430,
+  "page": "bienestar-digital",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 27,
+  "h1": [
+   "Bienestar Digital"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 5369
+ },
+ {
+  "w": 430,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 21,
+  "h1": [
+   "\u00bfPor qu\u00e9 fallamos al intentar cambiar conductas?"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 6789
+ },
+ {
+  "w": 430,
+  "page": "equipo",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 22,
+  "h1": [
+   "El equipo de C\u00f3digo Calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3008
+ },
+ {
+  "w": 430,
+  "page": "equipo-tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Ver rese\u00f1a de Alicia G. en Goo",
+   "Ver rese\u00f1a de Abdi O. en Googl"
+  ],
+  "minGutter": 22,
+  "h1": [
+   "Tatiana X. Stacul"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 4908
+ },
+ {
+  "w": 430,
+  "page": "equipo-francisca",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 22,
+  "h1": [
+   "Francisca Cort\u00e9s Santoro"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3123
+ },
+ {
+  "w": 1280,
+  "page": "inicio",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 0,
+  "h1": [
+   "Entiende c\u00f3mo te afecta la tecnolog\u00eda y decide c\u00f3m"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 5574
+ },
+ {
+  "w": 1280,
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 60,
+  "h1": [
+   "Mentor\u00eda uno a uno para ordenar tu relaci\u00f3n con la"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 7247
+ },
+ {
+  "w": 1280,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 8,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT"
+  ],
+  "minGutter": 64,
+  "h1": [
+   "\u00bfC\u00f3mo podemos ayudarte?"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Enviar mi consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 2459
+ },
+ {
+  "w": 1280,
+  "page": "sobre_tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 50,
+  "h1": [
+   "Hola, soy Tatiana X. Stacul, psic\u00f3loga detr\u00e1s de C"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 2086
+ },
+ {
+  "w": 1280,
+  "page": "blog",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda",
+   "Infancias \u00abFigitales\u00bb"
+  ],
+  "minGutter": 64,
+  "h1": [
+   "Blog"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3983
+ },
+ {
+  "w": 1280,
+  "page": "ciberpsicologia",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 64,
+  "h1": [
+   "Ciberpsicolog\u00eda y bienestar digital"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 1858
+ },
+ {
+  "w": 1280,
+  "page": "testimonios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 64,
+  "h1": [
+   "Testimonios"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 7632
+ },
+ {
+  "w": 1280,
+  "page": "test",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 96,
+  "h1": [
+   "Test de consumo digital"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 2447
+ },
+ {
+  "w": 1280,
+  "page": "herramientas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 82,
+  "h1": [
+   "Aplicaciones de productividad y calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3605
+ },
+ {
+  "w": 1280,
+  "page": "descargas-2",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 86,
+  "h1": [
+   "Libros de descarga gratuita"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 1805
+ },
+ {
+  "w": 1280,
+  "page": "bienestar-digital",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 80,
+  "h1": [
+   "Bienestar Digital"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3357
+ },
+ {
+  "w": 1280,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 113,
+  "h1": [
+   "\u00bfPor qu\u00e9 fallamos al intentar cambiar conductas?"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 4884
+ },
+ {
+  "w": 1280,
+  "page": "equipo",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 60,
+  "h1": [
+   "El equipo de C\u00f3digo Calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 2011
+ },
+ {
+  "w": 1280,
+  "page": "equipo-tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 93,
+  "h1": [
+   "Tatiana X. Stacul"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3833
+ },
+ {
+  "w": 1280,
+  "page": "equipo-francisca",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
+  ],
+  "minGutter": 108,
+  "h1": [
+   "Francisca Cort\u00e9s Santoro"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 2271
+ }
+]

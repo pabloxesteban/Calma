@@ -482,3 +482,34 @@
 	font-weight: 700;
 	font-size: var(--calma-fs-xs);
 }
+
+/* --------------------------------------------------------------------------
+   4. Formulario de contacto: opciones de radio "¿Sobre qué quieres consultar?"
+   Radio de 24 px y fila completa clicable de 44 px (WCAG 2.5.8).
+   -------------------------------------------------------------------------- */
+.wp-block-kadence-advanced-form fieldset.kb-radio-field,
+.wp-block-kadence-advanced-form .wp-block-kadence-advanced-form-radio {
+	border: 0;
+	padding: 0;
+	margin: 0 0 var(--calma-space-5);
+}
+.wp-block-kadence-advanced-form .kb-radio-check-item {
+	display: flex;
+	align-items: center;
+	gap: var(--calma-space-3);
+	min-height: 44px;
+}
+.wp-block-kadence-advanced-form .kb-radio-check-item input[type="radio"] {
+	flex: 0 0 auto;
+	width: 24px;
+	height: 24px;
+	margin: 0;
+	accent-color: var(--calma-primary);
+}
+.wp-block-kadence-advanced-form .kb-radio-check-item label {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	min-height: 44px;
+	cursor: pointer;
+}
