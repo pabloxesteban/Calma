@@ -1,0 +1,10 @@
+{
+ "_comentario": "Caja de consulta por entrada. 'area' = campo personalizado calma_cta_area de la entrada (Editar entrada > Opciones > Campos personalizados). 'categorias' = categoría tras la corrección K01 de la Etapa 1.",
+ "categorias": {
+  "por-que-fallamos-al-intentar-cambiar-conductas": ["psicologia"]
+ },
+ "area": {
+  "por-que-fallamos-al-intentar-cambiar-conductas": "proyectos",
+  "como-un-te-quiero-infecto-45-millones-de-computadoras-en-todo-el-mundo": "equipo"
+ }
+}

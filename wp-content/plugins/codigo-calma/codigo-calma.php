@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Código Calma
  * Description:       Design system (tokens calma-*) y correcciones del sitio sobre el tema Kadence, sin tema hijo (así se conservan los ajustes del Personalizador).
- * Version:           1.1.0-etapa2
+ * Version:           1.2.0-etapa3
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Author:            Código Calma
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CALMA_VERSION', '1.1.0-etapa2' );
+define( 'CALMA_VERSION', '1.2.0-etapa3' );
 define( 'CALMA_URL', plugin_dir_url( __FILE__ ) );
 define( 'CALMA_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -108,3 +108,6 @@ add_filter( 'get_custom_logo_image_attributes', function ( $attr ) {
 	$attr['sizes'] = '48px';
 	return $attr;
 } );
+
+// Etapa 3 · Flujo de consulta (caja al final de artículos, newsletter, área preseleccionada).
+require_once CALMA_DIR . 'includes/conversion.php';

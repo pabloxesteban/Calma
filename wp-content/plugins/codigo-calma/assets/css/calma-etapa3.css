@@ -1,0 +1,463 @@
+/* ==========================================================================
+   Código Calma — Etapa 3: componentes de conversión
+   Usados por la caja al final de artículos (includes/conversion.php) y por
+   los bloques de contenido/etapa-3 (Servicios, Inicio, Contacto, Equipo).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Caja de consulta al final de los artículos
+   -------------------------------------------------------------------------- */
+.calma-article-cta {
+	margin: var(--calma-space-12) 0 var(--calma-space-8);
+	padding: clamp(24px, 5vw, 36px);
+	background: var(--calma-surface-soft);
+	border: 1px solid var(--calma-lavender);
+	border-radius: var(--calma-radius-lg);
+	max-width: var(--calma-measure);
+}
+.calma-article-cta__title {
+	margin: 0 0 var(--calma-space-2) !important;
+	font-size: var(--calma-fs-lg) !important;
+}
+.calma-article-cta p {
+	margin: 0 0 var(--calma-space-4);
+}
+.calma-article-cta__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--calma-space-2) var(--calma-space-6);
+}
+.entry-content .calma-article-cta .calma-btn {
+	color: #fff;
+	text-decoration: none;
+}
+.calma-article-cta__link {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	font-weight: 600;
+}
+.calma-aviso {
+	margin: var(--calma-space-4) 0 0 !important;
+	padding-top: var(--calma-space-4);
+	border-top: 1px solid var(--calma-lavender);
+	font-size: var(--calma-fs-xs);
+	color: var(--calma-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   2. Newsletter
+   -------------------------------------------------------------------------- */
+.calma-newsletter {
+	margin: var(--calma-space-8) 0;
+	padding: clamp(24px, 5vw, 36px);
+	background: var(--calma-surface);
+	border: 1px solid var(--calma-border);
+	border-radius: var(--calma-radius-lg);
+	max-width: var(--calma-measure);
+}
+.calma-newsletter__title {
+	margin: 0 0 var(--calma-space-2) !important;
+	font-size: var(--calma-fs-lg) !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. Páginas de conversión (bloques .calma-page)
+   -------------------------------------------------------------------------- */
+.calma-page {
+	color: var(--calma-text);
+}
+.calma-page *,
+.calma-page *::before,
+.calma-page *::after {
+	box-sizing: border-box;
+}
+.calma-page :where(h1, h2, h3, p, ul, ol, figure, blockquote) {
+	margin: 0;
+}
+.calma-section {
+	padding: var(--calma-section-y) var(--calma-gutter);
+}
+.calma-section--soft {
+	background: var(--calma-surface-soft);
+}
+.calma-section--white {
+	background: var(--calma-surface);
+}
+.calma-container {
+	max-width: var(--calma-container);
+	margin-inline: auto;
+}
+.calma-container--text {
+	max-width: var(--calma-container-text);
+	margin-inline: auto;
+}
+.calma-section__head {
+	max-width: var(--calma-container-text);
+	margin: 0 auto var(--calma-space-8);
+	text-align: center;
+}
+.calma-section__head p:not(.calma-eyebrow) {
+	margin-top: var(--calma-space-3);
+	color: var(--calma-text-muted);
+}
+.calma-eyebrow {
+	display: inline-block;
+	margin-bottom: var(--calma-space-2) !important;
+	font: 600 var(--calma-fs-xs)/1.4 var(--calma-font-body);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--calma-violet);
+}
+
+/* Hero */
+.calma-hero {
+	padding: clamp(40px, 8vw, 88px) var(--calma-gutter);
+	background: linear-gradient(180deg, var(--calma-surface-soft) 0%, var(--calma-bg) 100%);
+}
+.calma-hero__inner {
+	max-width: var(--calma-container);
+	margin-inline: auto;
+	display: grid;
+	gap: var(--calma-space-8);
+	align-items: center;
+}
+@media (min-width: 900px) {
+	.calma-hero__inner--media {
+		grid-template-columns: 1.3fr 1fr;
+	}
+}
+.calma-hero h1 {
+	font-size: var(--calma-fs-2xl);
+	line-height: 1.15;
+	max-width: 20ch;
+}
+.calma-hero__lead {
+	margin-top: var(--calma-space-4) !important;
+	font-size: var(--calma-fs-lg);
+	line-height: 1.5;
+	color: var(--calma-text-muted);
+	max-width: 52ch;
+}
+.calma-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--calma-space-3);
+	margin-top: var(--calma-space-6) !important;
+}
+.calma-actions .calma-btn {
+	text-decoration: none;
+}
+.calma-micro {
+	margin-top: var(--calma-space-3) !important;
+	font-size: var(--calma-fs-xs);
+	color: var(--calma-text-muted);
+}
+.calma-facts {
+	list-style: none;
+	padding: 0 !important;
+	margin-top: var(--calma-space-6) !important;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--calma-space-2) var(--calma-space-5);
+	font-size: var(--calma-fs-sm);
+	font-weight: 600;
+}
+.calma-facts li {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--calma-space-2);
+}
+.calma-facts li::before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--calma-primary);
+}
+.calma-hero__media img {
+	width: 100%;
+	height: auto;
+	max-width: 420px;
+	margin-inline: auto;
+	display: block;
+}
+
+/* Listas "para ti / no para ti" */
+.calma-fit {
+	display: grid;
+	gap: var(--calma-space-6);
+}
+@media (min-width: 768px) {
+	.calma-fit {
+		grid-template-columns: 1.4fr 1fr;
+	}
+}
+.calma-checklist {
+	list-style: none;
+	padding: 0 !important;
+	display: grid;
+	gap: var(--calma-space-3);
+	margin-top: var(--calma-space-4) !important;
+}
+.calma-checklist li {
+	position: relative;
+	padding-left: var(--calma-space-8);
+	line-height: 1.5;
+}
+.calma-checklist li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.2em;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: var(--calma-primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3 3 7-7' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat;
+}
+.calma-checklist--no li::before {
+	background: var(--calma-text-muted) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10h8' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") center / 14px no-repeat;
+}
+
+/* Pasos */
+.calma-steps {
+	list-style: none;
+	padding: 0 !important;
+	display: grid;
+	gap: var(--calma-space-5);
+	counter-reset: calma-step;
+}
+@media (min-width: 900px) {
+	.calma-steps {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+.calma-steps > li {
+	counter-increment: calma-step;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: var(--calma-space-4);
+	align-items: start;
+}
+.calma-steps > li::before {
+	content: counter(calma-step);
+	inline-size: 40px;
+	block-size: 40px;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	background: var(--calma-primary);
+	color: #fff;
+	font-weight: 700;
+}
+.calma-steps h3 {
+	font-size: var(--calma-fs-lg);
+	margin-bottom: var(--calma-space-2) !important;
+}
+.calma-steps p {
+	color: var(--calma-text-muted);
+}
+
+/* Personas */
+.calma-people {
+	display: grid;
+	gap: var(--calma-space-6);
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+.calma-person {
+	display: flex;
+	flex-direction: column;
+	gap: var(--calma-space-3);
+}
+.calma-person__head {
+	display: flex;
+	align-items: center;
+	gap: var(--calma-space-4);
+}
+.calma-avatar {
+	flex: 0 0 auto;
+	width: 72px;
+	height: 72px;
+	border-radius: 50%;
+	object-fit: cover;
+	background: var(--calma-surface-soft);
+	border: 2px solid var(--calma-lavender);
+	display: grid;
+	place-items: center;
+	font: 700 1.375rem/1 var(--calma-font-heading);
+	color: var(--calma-violet);
+}
+.calma-avatar--lg {
+	width: 144px;
+	height: 144px;
+	font-size: 2.5rem;
+}
+.calma-person h3 {
+	font-size: var(--calma-fs-lg);
+}
+.calma-person__role {
+	font-weight: 600;
+	color: var(--calma-primary);
+	font-size: var(--calma-fs-sm);
+}
+.calma-person__topics {
+	list-style: none;
+	padding: var(--calma-space-4) 0 0 !important;
+	border-top: 1px solid var(--calma-border);
+	margin-top: auto !important;
+	display: grid;
+	gap: var(--calma-space-2);
+	font-size: var(--calma-fs-sm);
+}
+.calma-person__topics li {
+	position: relative;
+	padding-left: var(--calma-space-5);
+}
+.calma-person__topics li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.6em;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--calma-primary);
+}
+.calma-person__links {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--calma-space-2) var(--calma-space-4);
+	margin-top: var(--calma-space-2) !important;
+}
+.calma-link {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	font-weight: 600;
+	color: var(--calma-primary);
+}
+
+/* Testimonios */
+.calma-quotes {
+	display: grid;
+	gap: var(--calma-space-6);
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+.calma-quote {
+	display: flex;
+	flex-direction: column;
+	gap: var(--calma-space-4);
+}
+.calma-quote blockquote {
+	font-family: var(--calma-font-heading);
+	font-size: 1.125rem;
+	line-height: 1.55;
+	border: 0;
+	padding: 0;
+	background: none;
+}
+.calma-quote figcaption {
+	margin-top: auto;
+	font-size: var(--calma-fs-sm);
+	color: var(--calma-text-muted);
+}
+
+/* Preguntas frecuentes (details/summary nativos: teclado y lector de pantalla sin JS) */
+.calma-faq {
+	display: grid;
+	gap: var(--calma-space-3);
+}
+.calma-faq details {
+	background: var(--calma-surface);
+	border: 1px solid var(--calma-border);
+	border-radius: var(--calma-radius);
+}
+.calma-faq summary {
+	list-style: none;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--calma-space-4);
+	min-height: 56px;
+	padding: var(--calma-space-4) var(--calma-space-5);
+	font-weight: 600;
+}
+.calma-faq summary::-webkit-details-marker {
+	display: none;
+}
+.calma-faq summary::after {
+	content: "+";
+	flex: 0 0 auto;
+	font-size: 1.5rem;
+	line-height: 1;
+	color: var(--calma-primary);
+}
+.calma-faq details[open] summary::after {
+	content: "−";
+}
+.calma-faq details > div {
+	padding: 0 var(--calma-space-5) var(--calma-space-5);
+	color: var(--calma-text-muted);
+}
+
+/* Aviso largo de urgencias */
+.calma-notice {
+	max-width: var(--calma-container-text);
+	margin: var(--calma-space-8) auto 0;
+	padding: var(--calma-space-5) var(--calma-space-6);
+	border-left: 4px solid var(--calma-violet);
+	background: var(--calma-surface);
+	border-radius: 0 var(--calma-radius-sm) var(--calma-radius-sm) 0;
+	font-size: var(--calma-fs-sm);
+	color: var(--calma-text-muted);
+}
+
+/* CTA final sobre navy */
+.calma-cta p {
+	margin-top: var(--calma-space-3) !important;
+	max-width: 60ch;
+	margin-inline: auto !important;
+}
+.calma-cta .calma-actions {
+	justify-content: center;
+}
+.calma-cta .calma-micro {
+	color: #c9d4ec;
+}
+.entry-content .calma-cta a.calma-btn--on-dark {
+	color: var(--calma-navy);
+	text-decoration: none;
+}
+
+/* Contacto: "qué pasa después" en línea */
+.calma-next {
+	list-style: none;
+	padding: 0 !important;
+	display: grid;
+	gap: var(--calma-space-3);
+	counter-reset: calma-next;
+}
+.calma-next li {
+	counter-increment: calma-next;
+	position: relative;
+	padding-left: var(--calma-space-10);
+	min-height: 32px;
+}
+.calma-next li::before {
+	content: counter(calma-next);
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	background: var(--calma-surface-soft);
+	color: var(--calma-violet);
+	font-weight: 700;
+	font-size: var(--calma-fs-xs);
+}
