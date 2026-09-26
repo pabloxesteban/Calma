@@ -1,0 +1,378 @@
+[
+ {
+  "w": 360,
+  "page": "inicio",
+  "overflow": 0,
+  "smallTargets": 17,
+  "firstParagraphLeft": 0,
+  "ctas": [
+   {
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(100, 178, 229)",
+    "border": "rgb(255, 255, 255)",
+    "h": 68
+   }
+  ],
+  "height": 14103,
+  "imgs": 13
+ },
+ {
+  "w": 360,
+  "page": "servicios",
+  "overflow": 0,
+  "smallTargets": 4,
+  "firstParagraphLeft": 0,
+  "ctas": [
+   {
+    "color": "rgb(51, 65, 85)",
+    "bg": "rgb(100, 178, 229)",
+    "border": "rgb(100, 178, 229)",
+    "h": 62
+   }
+  ],
+  "height": 3967,
+  "imgs": 2
+ },
+ {
+  "w": 360,
+  "page": "contacto",
+  "overflow": 0,
+  "smallTargets": 4,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 1563,
+  "imgs": 3
+ },
+ {
+  "w": 360,
+  "page": "sobre_tatiana",
+  "overflow": 0,
+  "smallTargets": 4,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 2854,
+  "imgs": 5
+ },
+ {
+  "w": 360,
+  "page": "blog",
+  "overflow": 0,
+  "smallTargets": 37,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 12230,
+  "imgs": 12
+ },
+ {
+  "w": 360,
+  "page": "ciberpsicologia",
+  "overflow": 0,
+  "smallTargets": 4,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 4127,
+  "imgs": 8
+ },
+ {
+  "w": 360,
+  "page": "testimonios",
+  "overflow": 0,
+  "smallTargets": 18,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 5318,
+  "imgs": 16
+ },
+ {
+  "w": 360,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflow": 0,
+  "smallTargets": 13,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 7492,
+  "imgs": 4
+ },
+ {
+  "w": 390,
+  "page": "inicio",
+  "overflow": 0,
+  "smallTargets": 17,
+  "firstParagraphLeft": 0,
+  "ctas": [
+   {
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(100, 178, 229)",
+    "border": "rgb(255, 255, 255)",
+    "h": 68
+   }
+  ],
+  "height": 13924,
+  "imgs": 13
+ },
+ {
+  "w": 390,
+  "page": "servicios",
+  "overflow": 0,
+  "smallTargets": 4,
+  "firstParagraphLeft": 0,
+  "ctas": [
+   {
+    "color": "rgb(51, 65, 85)",
+    "bg": "rgb(100, 178, 229)",
+    "border": "rgb(100, 178, 229)",
+    "h": 62
+   }
+  ],
+  "height": 3779,
+  "imgs": 2
+ },
+ {
+  "w": 390,
+  "page": "contacto",
+  "overflow": 0,
+  "smallTargets": 4,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 1563,
+  "imgs": 3
+ },
+ {
+  "w": 390,
+  "page": "sobre_tatiana",
+  "overflow": 0,
+  "smallTargets": 4,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 2721,
+  "imgs": 5
+ },
+ {
+  "w": 390,
+  "page": "blog",
+  "overflow": 0,
+  "smallTargets": 37,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 11424,
+  "imgs": 12
+ },
+ {
+  "w": 390,
+  "page": "ciberpsicologia",
+  "overflow": 0,
+  "smallTargets": 4,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 4161,
+  "imgs": 8
+ },
+ {
+  "w": 390,
+  "page": "testimonios",
+  "overflow": 0,
+  "smallTargets": 18,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 5211,
+  "imgs": 16
+ },
+ {
+  "w": 390,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflow": 0,
+  "smallTargets": 13,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 6918,
+  "imgs": 4
+ },
+ {
+  "w": 430,
+  "page": "inicio",
+  "overflow": 0,
+  "smallTargets": 17,
+  "firstParagraphLeft": 0,
+  "ctas": [
+   {
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(100, 178, 229)",
+    "border": "rgb(255, 255, 255)",
+    "h": 68
+   }
+  ],
+  "height": 13630,
+  "imgs": 13
+ },
+ {
+  "w": 430,
+  "page": "servicios",
+  "overflow": 0,
+  "smallTargets": 4,
+  "firstParagraphLeft": 0,
+  "ctas": [
+   {
+    "color": "rgb(51, 65, 85)",
+    "bg": "rgb(100, 178, 229)",
+    "border": "rgb(100, 178, 229)",
+    "h": 62
+   }
+  ],
+  "height": 3619,
+  "imgs": 2
+ },
+ {
+  "w": 430,
+  "page": "contacto",
+  "overflow": 0,
+  "smallTargets": 4,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 1472,
+  "imgs": 3
+ },
+ {
+  "w": 430,
+  "page": "sobre_tatiana",
+  "overflow": 0,
+  "smallTargets": 4,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 2667,
+  "imgs": 5
+ },
+ {
+  "w": 430,
+  "page": "blog",
+  "overflow": 0,
+  "smallTargets": 37,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 10762,
+  "imgs": 12
+ },
+ {
+  "w": 430,
+  "page": "ciberpsicologia",
+  "overflow": 0,
+  "smallTargets": 4,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 4020,
+  "imgs": 8
+ },
+ {
+  "w": 430,
+  "page": "testimonios",
+  "overflow": 0,
+  "smallTargets": 18,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 5124,
+  "imgs": 16
+ },
+ {
+  "w": 430,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflow": 0,
+  "smallTargets": 13,
+  "firstParagraphLeft": 0,
+  "ctas": [],
+  "height": 6374,
+  "imgs": 4
+ },
+ {
+  "w": 1280,
+  "page": "inicio",
+  "overflow": 0,
+  "smallTargets": 18,
+  "firstParagraphLeft": 163,
+  "ctas": [
+   {
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(100, 178, 229)",
+    "border": "rgb(255, 255, 255)",
+    "h": 72
+   }
+  ],
+  "height": 5602,
+  "imgs": 13
+ },
+ {
+  "w": 1280,
+  "page": "servicios",
+  "overflow": 0,
+  "smallTargets": 5,
+  "firstParagraphLeft": 163,
+  "ctas": [
+   {
+    "color": "rgb(51, 65, 85)",
+    "bg": "rgb(100, 178, 229)",
+    "border": "rgb(100, 178, 229)",
+    "h": 62
+   }
+  ],
+  "height": 2358,
+  "imgs": 2
+ },
+ {
+  "w": 1280,
+  "page": "contacto",
+  "overflow": 0,
+  "smallTargets": 5,
+  "firstParagraphLeft": 163,
+  "ctas": [],
+  "height": 1110,
+  "imgs": 3
+ },
+ {
+  "w": 1280,
+  "page": "sobre_tatiana",
+  "overflow": 0,
+  "smallTargets": 5,
+  "firstParagraphLeft": 163,
+  "ctas": [],
+  "height": 1795,
+  "imgs": 5
+ },
+ {
+  "w": 1280,
+  "page": "blog",
+  "overflow": 0,
+  "smallTargets": 38,
+  "firstParagraphLeft": 163,
+  "ctas": [],
+  "height": 5212,
+  "imgs": 12
+ },
+ {
+  "w": 1280,
+  "page": "ciberpsicologia",
+  "overflow": 0,
+  "smallTargets": 5,
+  "firstParagraphLeft": 163,
+  "ctas": [],
+  "height": 1684,
+  "imgs": 8
+ },
+ {
+  "w": 1280,
+  "page": "testimonios",
+  "overflow": 0,
+  "smallTargets": 19,
+  "firstParagraphLeft": 163,
+  "ctas": [],
+  "height": 7363,
+  "imgs": 16
+ },
+ {
+  "w": 1280,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflow": 0,
+  "smallTargets": 14,
+  "firstParagraphLeft": 163,
+  "ctas": [],
+  "height": 4463,
+  "imgs": 4
+ }
+]
