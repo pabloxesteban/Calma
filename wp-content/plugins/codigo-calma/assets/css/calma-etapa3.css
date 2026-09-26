@@ -62,6 +62,27 @@
 	font-size: var(--calma-fs-lg) !important;
 }
 
+/* Botones y enlaces de acción dentro del contenido: sin el subrayado ni el
+   color de los enlaces de texto. */
+.entry-content a.calma-btn,
+.entry-content a.calma-btn:hover {
+	text-decoration: none;
+}
+.entry-content a.calma-btn--primary,
+.entry-content a.calma-btn--primary:hover {
+	color: #fff;
+}
+.entry-content a.calma-btn--secondary {
+	color: var(--calma-primary);
+}
+.entry-content a.calma-link {
+	text-decoration: none;
+}
+.entry-content a.calma-link:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
 /* --------------------------------------------------------------------------
    3. Páginas de conversión (bloques .calma-page)
    -------------------------------------------------------------------------- */

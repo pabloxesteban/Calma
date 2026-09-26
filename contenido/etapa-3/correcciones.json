@@ -1,0 +1,30 @@
+{
+ "version": "etapa-3",
+ "correcciones": [
+  {
+   "id": "I20",
+   "tipo": "encabezado",
+   "paginas": [
+    "home"
+   ],
+   "donde": "Inicio > \"Te damos la bienvenida a Código Calma\" > Nivel H1 → H2 (el H1 pasa al hero nuevo)",
+   "antes": "H1",
+   "despues": "H2",
+   "html_buscar": "<h1 class=\"kt-adv-heading1204_e36b0d-85",
+   "html_reemplazar": "<h2 class=\"kt-adv-heading1204_e36b0d-85",
+   "origen": "Etapa 3 · hero"
+  },
+  {
+   "id": "M01",
+   "tipo": "nota",
+   "paginas": [
+    "*"
+   ],
+   "donde": "Apariencia > Menús (principal y mobile): \"Sobre Tatiana\" → \"Equipo\" (página /equipo/)",
+   "antes": "Sobre Tatiana",
+   "despues": "Equipo",
+   "origen": "Etapa 3"
+  }
+ ],
+ "excluidas": []
+}

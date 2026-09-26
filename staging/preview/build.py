@@ -7,13 +7,13 @@ codigo-calma, bloques de reemplazo, correcciones.json y ajustes que se hacen en
 el editor o el Personalizador (emulados). Escribe staging/preview/build/<slug>.html.
 Las capturas se sacan con staging/preview/capturas.js.
 
-Uso: python3 staging/preview/build.py [etapa-1|etapa-2]
+Uso: python3 staging/preview/build.py [etapa-1|etapa-2|etapa-3]
 """
 import json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 SNAP = sorted((ROOT / 'docs/auditoria').glob('snapshot-*/html'))[-1]
-HASTA = int((sys.argv[1] if len(sys.argv) > 1 else 'etapa-2').split('-')[-1])
+HASTA = int((sys.argv[1] if len(sys.argv) > 1 else 'etapa-3').split('-')[-1])
 PLUGIN = ROOT / 'wp-content/plugins/codigo-calma'
 CSS = PLUGIN / 'assets/css'
 OUT = pathlib.Path(__file__).with_name('build')
@@ -111,7 +111,8 @@ def e1_global(s):
 # ---------------------------------------------------------------- Etapa 2
 MENU_MOBILE = [('Inicio', ''), ('Ciberpsicología', 'ciberpsicologia/'), ('Bienestar digital', 'bienestar-digital/'),
                ('Blog', 'blog/'), ('Herramientas', 'herramientas/'), ('Test de consumo digital', 'test/'),
-               ('Descargas', 'descargas-2/'), ('Servicios', 'servicios/'), ('Sobre Tatiana', 'sobre_tatiana/'), ('Contacto', 'contacto/')]
+               ('Descargas', 'descargas-2/'), ('Servicios', 'servicios/'),
+               ('Equipo', 'equipo/') if HASTA >= 3 else ('Sobre Tatiana', 'sobre_tatiana/'), ('Contacto', 'contacto/')]
 
 def e2_global(slug, s):
     # Plugin: sin Google Fonts de Kadence + preload de las fuentes locales.
@@ -168,23 +169,96 @@ def e2_test(s):
     log.append('test: bloque accesible reemplazado')
     return s[:i] + f.read_text(encoding='utf-8') + s[j:]
 
+# ---------------------------------------------------------------- Etapa 3
+import subprocess
+
+def div_balanceado(s, inicio):
+    # Devuelve el índice de cierre del <div> que empieza en `inicio`.
+    prof, i = 0, inicio
+    for m in re.finditer(r'<div\b|</div>', s[inicio:]):
+        prof += 1 if m.group(0) != '</div>' else -1
+        if prof == 0:
+            return inicio + m.end()
+    raise ValueError('div sin cerrar')
+
+def e3_home(s):
+    a = s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_494dce-76')
+    b = div_balanceado(s, a)
+    log.append('home: hero nuevo')
+    return s[:a] + (cont(3) / 'bloques/inicio-hero.html').read_text(encoding='utf-8') + s[b:]
+
+def e3_servicios(s):
+    a, b = entry_bounds(s)
+    log.append('servicios: página de conversión')
+    return s[:a] + '<div class="entry-content single-content">\n' + (cont(3) / 'bloques/servicios.html').read_text(encoding='utf-8') + '\n' + s[b:]
+
+def e3_contacto(s):
+    i = s.index('<h1 class="kt-adv-heading790_ebf638-02')
+    j = s.index('<div class="wp-block-kadence-advanced-form', i)
+    s = s[:i] + (cont(3) / 'bloques/contacto-intro.html').read_text(encoding='utf-8') + s[j:]
+    form = (cont(3) / 'bloques/formulario-contacto.preview.html').read_text(encoding='utf-8')
+    s = FORM_RE.sub(lambda m: form, s, count=1)
+    log.append('contacto: intro + qué pasa después + campo de área')
+    return s
+
+CTAS = None
+def e3_articulo(slug, s):
+    global CTAS
+    if CTAS is None:
+        CTAS = json.loads(subprocess.run(['php', str(pathlib.Path(__file__).with_name('php') / 'render-cta.php')],
+                                         capture_output=True, text=True, check=True).stdout)
+    if slug not in CTAS:
+        return s
+    _, b = entry_bounds(s)
+    log.append(f'{slug}: caja de consulta')
+    return s[:b] + CTAS[slug] + s[b:]
+
+EQUIPO = {'equipo': ('El equipo', 'equipo.html'), 'equipo_tatiana-x-stacul': ('Tatiana X. Stacul', 'equipo-tatiana-x-stacul.html'),
+          'equipo_francisca-cortes-santoro': ('Francisca Cortés Santoro', 'equipo-francisca-cortes-santoro.html'),
+          'equipo_emanuel-c-franco': ('Emanuel C. Franco', 'equipo-emanuel-c-franco.html')}
+
+def e3_menus(slug, s):
+    # Menús: "Sobre Tatiana" → "Equipo" (activo en las páginas de equipo).
+    s = re.sub(r'<a href="https://codigocalma.com/sobre_tatiana/"( aria-current="page")?>Sobre Tatiana</a>',
+               lambda m: '<a href="https://codigocalma.com/equipo/"' + (' aria-current="page"' if slug.startswith('equipo') else '') + '>Equipo</a>', s)
+    return s
+
 # ---------------------------------------------------------------- CSS del plugin
 def inject_css(s):
-    files = ['calma-tokens', 'calma-etapa1'] + (['calma-fonts', 'calma-etapa2'] if HASTA >= 2 else [])
+    files = ['calma-tokens', 'calma-etapa1'] + (['calma-fonts', 'calma-etapa2'] if HASTA >= 2 else []) + (['calma-etapa3'] if HASTA >= 3 else [])
     css = ''
     for n in files:
         txt = (CSS / f'{n}.css').read_text(encoding='utf-8')
         txt = txt.replace('url(../fonts/', f'url({PLUGIN_URL}assets/fonts/')
         css += f'<style id="{n}-css">\n{txt}\n</style>\n'
-    return s.replace('</head>', css + '</head>', 1)
+    s = s.replace('</head>', css + '</head>', 1)
+    if HASTA >= 3:
+        # El plugin encola calma-conversion.js (defer, en el pie).
+        s = s.replace('</body>', f'<script src="{PLUGIN_URL}assets/js/calma-conversion.js" defer></script>\n</body>', 1)
+    return s
 
 E1 = {'home': [e1_home_timeline], 'servicios': [e1_servicios], 'contacto': [e1_form],
       'testimonios': [e1_testimonios], 'blog': [e1_blog]}
 E2 = {'herramientas': [e2_herramientas], 'test': [e2_test]}
 
-for f in sorted(SNAP.glob('*.html')):
-    slug = f.stem
-    s = f.read_text(encoding='utf-8')
+E3 = {'home': [e3_home], 'servicios': [e3_servicios], 'contacto': [e3_contacto]}
+POSTS = {p['slug'] for p in json.loads((SNAP.parent / 'api/posts.json').read_text(encoding='utf-8'))}
+
+def fuentes():
+    for f in sorted(SNAP.glob('*.html')):
+        yield f.stem, f.read_text(encoding='utf-8')
+    if HASTA >= 3:
+        base = (SNAP / 'sobre_tatiana.html').read_text(encoding='utf-8')
+        for slug, (titulo, bloque) in EQUIPO.items():
+            s = base.replace('Sobre Tatiana – Código Calma', titulo + ' – Código Calma')
+            s = s.replace('content-width-normal content-style-boxed content-vertical-padding-show',
+                          'content-width-fullwidth content-style-unboxed content-vertical-padding-hide')
+            a, b = entry_bounds(s)
+            s = s[:a] + '<div class="entry-content single-content">\n' + (cont(3) / 'bloques' / bloque).read_text(encoding='utf-8') + '\n' + s[b:]
+            log.append(f'{slug}: página nueva')
+            yield slug, s
+
+for slug, s in fuentes():
     for fn in E1.get(slug, []):
         s = fn(s)
     s = apply_correcciones(1, slug, s)
@@ -193,9 +267,17 @@ for f in sorted(SNAP.glob('*.html')):
         for fn in E2.get(slug, []):
             s = fn(s)
         s = apply_correcciones(2, slug, s)
+        if HASTA >= 3:
+            for fn in E3.get(slug, []):
+                s = fn(s)
+            if slug in POSTS:
+                s = e3_articulo(slug, s)
+            s = apply_correcciones(3, slug, s)
         s = e2_global(slug, s)
+        if HASTA >= 3:
+            s = e3_menus(slug, s)
     s = inject_css(s)
-    (OUT / f.name).write_text(s, encoding='utf-8')
+    (OUT / f'{slug}.html').write_text(s, encoding='utf-8')
 
 (OUT / 'build-log.txt').write_text('\n'.join(log) + '\n', encoding='utf-8')
 print(f'etapa ≤ {HASTA}: {len(list(OUT.glob("*.html")))} páginas → {OUT} ({len(log)} cambios)')

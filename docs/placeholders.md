@@ -37,6 +37,18 @@ Estado: ☐ pendiente · ☑ resuelto. Origen: informe de `docs/auditoria/inform
 | ☐ | Fuente y consentimiento de los testimonios de "Luis R." y "Ana M." (no figuran en /testimonios/) | Sobre Tatiana — recomendación: ocultarlos hasta confirmar | cro-copy |
 | ☐ | Consentimiento para corregir ortografía en citas de testimonios (si no, se marcan [sic]) | Testimonios | cro-copy |
 
+## Servicio y equipo (Etapa 3)
+| ☐ | Dato | Dónde | Origen |
+|---|---|---|---|
+| ☐ | Duración de cada sesión y frecuencia habitual entre sesiones | Servicios, FAQ | copy.md §1.6 |
+| ☐ | Plataforma de videollamada y otras modalidades | Servicios, FAQ | copy.md §1.6 |
+| ☐ | Política de confidencialidad / secreto profesional | Servicios (confianza y FAQ) | copy.md §1.5 D |
+| ☐ | URL de la página de líneas de ayuda (se configura en Ajustes → Lectura) | Servicios, contacto, artículos, pie | copy.md |
+| ☐ | Consentimiento para reutilizar las reseñas de Google en Servicios y Equipo | Servicios, Equipo/Tatiana | copy.md §1.5 C |
+| ☐ | Verificar los enlaces de las reseñas de Hugo B. y Caro C. (href ≠ data-id en /testimonios/) | Testimonios, Servicios | copy.md §8 |
+| ☐ | ¿Las reseñas se refieren a terapia o a mentoría? | Servicios (FAQ "¿Es psicoterapia?") | copy.md §1.5 |
+| ☐ | Revisión humana de todo el copy de la Etapa 3 (Tatiana, Francisca, Emanuel) | Servicios, Inicio, Contacto, Equipo, cajas de artículos | copy.md |
+
 ## Marca
 | ☐ | Dato | Dónde | Origen |
 |---|---|---|---|

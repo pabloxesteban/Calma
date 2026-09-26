@@ -397,13 +397,13 @@ button[type="submit"] {
 .single-post .entry-content p {
 	margin-bottom: 1.1em;
 }
-.entry-content a:not(.kb-button):not(.wp-block-button__link):not(.button) {
+.entry-content a:not(.kb-button):not(.wp-block-button__link):not(.button):not(.calma-btn):not(.calma-link) {
 	color: var(--calma-primary);
 	text-decoration: underline;
 	text-decoration-thickness: 1px;
 	text-underline-offset: 3px;
 }
-.entry-content a:not(.kb-button):not(.wp-block-button__link):not(.button):hover {
+.entry-content a:not(.kb-button):not(.wp-block-button__link):not(.button):not(.calma-btn):not(.calma-link):hover {
 	color: var(--calma-primary-hover);
 	text-decoration-thickness: 2px;
 }

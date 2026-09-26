@@ -13,7 +13,8 @@
 		habitos: 'hábitos',
 		accesibilidad: 'accesibilidad',
 		proyectos: 'proyectos',
-		nose: 'todavía'
+		'no-se': 'todavia',
+		nose: 'todavia'
 	};
 
 	function normalizar( texto ) {
@@ -31,7 +32,8 @@
 		for ( var i = 0; i < radios.length; i++ ) {
 			var label = document.querySelector( 'label[for="' + radios[ i ].id + '"]' );
 			var texto = normalizar( radios[ i ].value + ' ' + ( label ? label.textContent : '' ) );
-			if ( texto.indexOf( clave ) !== -1 ) {
+			// Coincide por valor exacto (habitos, accesibilidad, proyectos, no-se) o por el texto de la opción.
+			if ( radios[ i ].value === area || texto.indexOf( clave ) !== -1 ) {
 				radios[ i ].checked = true;
 				radios[ i ].dispatchEvent( new Event( 'change', { bubbles: true } ) );
 				break;

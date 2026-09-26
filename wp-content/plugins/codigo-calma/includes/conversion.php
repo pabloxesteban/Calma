@@ -19,30 +19,36 @@ defined( 'ABSPATH' ) || exit;
  */
 function calma_cta_textos() {
 	$contacto = home_url( '/contacto/' );
-	$textos   = array(
+	$servicios = home_url( '/servicios/#como-trabajamos' );
+	// Copy aprobado en contenido/etapa-3/copy.md §5.
+	$textos = array(
 		'habitos'       => array(
-			'titulo'     => '¿Te identificas con esto?',
-			'texto'      => 'Tatiana acompaña procesos de cambio de hábitos digitales, uno a uno y online. En unas líneas nos cuentas qué te pasa y te respondemos en 48 horas hábiles.',
-			'boton'      => 'Consultar con Tatiana',
-			'url'        => add_query_arg( 'area', 'habitos', $contacto ),
+			'titulo' => '¿Te identificas con esto?',
+			'texto'  => 'Tatiana acompaña procesos de cambio de hábitos digitales, uno a uno y online. Nos cuentas en unas líneas qué te pasa y te respondemos en 48 horas hábiles.',
+			'boton'  => 'Consultar con Tatiana',
+			'url'    => add_query_arg( 'area', 'habitos', $contacto ),
+			'link'   => array( 'Ver cómo trabajamos', $servicios ),
 		),
 		'proyectos'     => array(
-			'titulo'     => '¿Tu proyecto se desbordó?',
-			'texto'      => 'Emanuel ayuda a reconstruir alcance, plazos y procesos que no se sostienen. Cuéntanos en unas líneas dónde estás y te respondemos en 48 horas hábiles.',
-			'boton'      => 'Consultar con Emanuel',
-			'url'        => add_query_arg( 'area', 'proyectos', $contacto ),
+			'titulo' => '¿Tu proyecto se desbordó?',
+			'texto'  => 'Emanuel ayuda a reconducir proyectos y procesos que no se sostienen. Nos cuentas en unas líneas dónde estás y te respondemos en 48 horas hábiles.',
+			'boton'  => 'Consultar con Emanuel',
+			'url'    => add_query_arg( 'area', 'proyectos', $contacto ),
+			'link'   => array( 'Ver cómo trabajamos', $servicios ),
 		),
 		'accesibilidad' => array(
-			'titulo'     => '¿Tu web se entiende?',
-			'texto'      => 'Francisca revisa webs y documentos para que la información no solo se perciba, sino que se entienda. Te respondemos en 48 horas hábiles.',
-			'boton'      => 'Consultar con Francisca',
-			'url'        => add_query_arg( 'area', 'accesibilidad', $contacto ),
+			'titulo' => '¿Quieres que tu texto se entienda?',
+			'texto'  => 'Francisca trabaja la lectura fácil y el lenguaje claro en webs y documentos. Nos cuentas qué quieres revisar y te respondemos en 48 horas hábiles.',
+			'boton'  => 'Consultar con Francisca',
+			'url'    => add_query_arg( 'area', 'accesibilidad', $contacto ),
+			'link'   => array( 'Conocer a Francisca', home_url( '/equipo/francisca-cortes-santoro/' ) ),
 		),
 		'equipo'        => array(
-			'titulo'     => '¿Quieres hablarlo con alguien?',
-			'texto'      => 'Trabajamos con una persona por vez, en un recorrido de tres a seis sesiones online. Cuéntanos en unas líneas qué necesitas y te decimos quién del equipo encaja mejor.',
-			'boton'      => 'Solicitar una consulta',
-			'url'        => $contacto,
+			'titulo' => '¿Lo hablamos con calma?',
+			'texto'  => 'Acompañamos uno a uno: hábitos digitales, accesibilidad cognitiva y proyectos. Nos cuentas qué te pasa y te decimos quién del equipo encaja mejor.',
+			'boton'  => 'Solicitar una consulta',
+			'url'    => $contacto,
+			'link'   => array( 'Conocer al equipo', home_url( '/equipo/' ) ),
 		),
 	);
 	return apply_filters( 'calma_cta_textos', $textos );
@@ -105,7 +111,7 @@ add_filter( 'the_content', function ( $content ) {
 	$html .= '<h2 class="calma-article-cta__title" id="calma-article-cta-title">' . esc_html( $t['titulo'] ) . '</h2>';
 	$html .= '<p>' . esc_html( $t['texto'] ) . '</p>';
 	$html .= '<p class="calma-article-cta__actions"><a class="calma-btn calma-btn--primary" href="' . esc_url( $t['url'] ) . '">' . esc_html( $t['boton'] ) . '</a>';
-	$html .= ' <a class="calma-article-cta__link" href="' . esc_url( home_url( '/servicios/' ) ) . '">Ver cómo trabajamos</a></p>';
+	$html .= ' <a class="calma-article-cta__link" href="' . esc_url( $t['link'][1] ) . '">' . esc_html( $t['link'][0] ) . '</a></p>';
 	if ( calma_es_salud_mental( $post_id ) ) {
 		$html .= calma_aviso_urgencias_html();
 	}

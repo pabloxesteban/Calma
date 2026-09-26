@@ -8,7 +8,8 @@ const BUILD=path.join(__dirname, '../../../staging/preview/build');
 const [, , mode, outFile] = process.argv;
 const PAGES = { inicio:'', servicios:'servicios/', contacto:'contacto/', sobre_tatiana:'sobre_tatiana/', blog:'blog/',
   'por-que-fallamos':'por-que-fallamos-al-intentar-cambiar-conductas/', test:'test/', testimonios:'testimonios/',
-  herramientas:'herramientas/', 'bienestar-digital':'bienestar-digital/', 'descargas-2':'descargas-2/' };
+  herramientas:'herramientas/', 'bienestar-digital':'bienestar-digital/', 'descargas-2':'descargas-2/',
+  equipo:'equipo/', 'equipo-tatiana':'equipo/tatiana-x-stacul/', 'equipo-francisca':'equipo/francisca-cortes-santoro/' };
 const fileFor = (p) => path.join(BUILD, (p.replace(/\/$/, '').replace(/\//g, '_') || 'home') + '.html');
 async function route(ctx){ await ctx.route('**/*', async (route) => {
   const req = route.request(); const url=req.url(); if (!/^https?:/.test(url)) return route.continue();

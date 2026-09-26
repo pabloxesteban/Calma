@@ -17,6 +17,7 @@ const PAGES = {
   blog: 'blog/', ciberpsicologia: 'ciberpsicologia/', testimonios: 'testimonios/', test: 'test/',
   herramientas: 'herramientas/', 'descargas-2': 'descargas-2/', 'bienestar-digital': 'bienestar-digital/',
   'por-que-fallamos-al-intentar-cambiar-conductas': 'por-que-fallamos-al-intentar-cambiar-conductas/',
+  equipo: 'equipo/', 'equipo-tatiana': 'equipo/tatiana-x-stacul/', 'equipo-francisca': 'equipo/francisca-cortes-santoro/',
 };
 const WIDTHS = [360, 390, 430, 1280];
 const fileFor = (p) => path.join(BUILD, (p.replace(/\/$/, '').replace(/\//g, '_') || 'home') + '.html');
@@ -35,7 +36,7 @@ const fileFor = (p) => path.join(BUILD, (p.replace(/\/$/, '').replace(/\//g, '_'
       const u = new URL(url);
       if (mode === '--preview' && u.hostname === 'codigocalma.com' && u.pathname.startsWith('/wp-content/plugins/codigo-calma/')) {
         const f = path.join(__dirname, '../..', decodeURIComponent(u.pathname));
-        if (fs.existsSync(f)) return route.fulfill({ status: 200, body: fs.readFileSync(f), contentType: f.endsWith('.woff2') ? 'font/woff2' : f.endsWith('.css') ? 'text/css' : 'application/octet-stream', headers: { 'access-control-allow-origin': '*' } });
+        if (fs.existsSync(f)) return route.fulfill({ status: 200, body: fs.readFileSync(f), contentType: f.endsWith('.woff2') ? 'font/woff2' : f.endsWith('.css') ? 'text/css' : f.endsWith('.js') ? 'text/javascript' : 'application/octet-stream', headers: { 'access-control-allow-origin': '*' } });
       }
       if (mode === '--preview' && req.resourceType() === 'document' && u.hostname === 'codigocalma.com') {
         const f = fileFor(u.pathname.replace(/^\//, ''));
