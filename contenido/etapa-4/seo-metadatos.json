@@ -1,0 +1,292 @@
+{
+  "version": "etapa-4",
+  "generado": "2026-09-26",
+  "entradas": [
+    {
+      "tipo": "page",
+      "slug": "home",
+      "url": "https://codigocalma.com/",
+      "title": "Ciberpsicología y bienestar digital en calma | Código Calma",
+      "description": "Artículos, herramientas y acompañamiento uno a uno para entender cómo te afecta la tecnología y decidir cómo quieres usarla, explicados con claridad.",
+      "focus_keyword": "ciberpsicología",
+      "og_title": "Entiende cómo te afecta la tecnología y decide cómo quieres usarla",
+      "nota": "El title no repite el H1 nuevo (67 car.); se usa como og_title."
+    },
+    {
+      "tipo": "page",
+      "slug": "servicios",
+      "url": "https://codigocalma.com/servicios/",
+      "title": "Mentoría uno a uno: tecnología y trabajo | Código Calma",
+      "description": "Acompañamiento online, una persona por vez, de tres a seis sesiones: hábitos digitales, accesibilidad cognitiva y gestión de proyectos. Cuéntanos qué necesitas.",
+      "focus_keyword": "mentoría uno a uno",
+      "og_title": "Mentoría uno a uno para ordenar tu relación con la tecnología y tu trabajo"
+    },
+    {
+      "tipo": "page",
+      "slug": "contacto",
+      "url": "https://codigocalma.com/contacto/",
+      "title": "Contacto: cuéntanos cómo podemos ayudarte | Código Calma",
+      "description": "Cuéntanos en unas líneas qué está pasando. En 48 horas hábiles te respondemos quién del equipo encaja mejor y cómo sería el primer encuentro online.",
+      "focus_keyword": "contacto Código Calma"
+    },
+    {
+      "tipo": "page",
+      "slug": "equipo",
+      "url": "https://codigocalma.com/equipo/",
+      "title": "Equipo: psicología, accesibilidad y proyectos | Código Calma",
+      "description": "Conoce al equipo de Código Calma: tres personas que miran la tecnología desde la psicología, la accesibilidad cognitiva y la gestión de proyectos.",
+      "focus_keyword": "equipo Código Calma",
+      "og_title": "El equipo de Código Calma"
+    },
+    {
+      "tipo": "page",
+      "slug": "equipo/tatiana-x-stacul",
+      "url": "https://codigocalma.com/equipo/tatiana-x-stacul/",
+      "title": "Tatiana X. Stacul, psicóloga y ciberpsicóloga | Código Calma",
+      "description": "Conoce a Tatiana X. Stacul, psicóloga detrás de Código Calma, y cómo acompaña hábitos digitales, desgaste y atención en el trabajo y claridad profesional.",
+      "focus_keyword": "Tatiana X. Stacul",
+      "nota": "Sustituye a /sobre_tatiana/ (301). «Ciberpsicóloga» sale de su propio texto («ciberpsicóloga de vocación»); no se citan titulaciones hasta completar los placeholders de formación."
+    },
+    {
+      "tipo": "page",
+      "slug": "equipo/francisca-cortes-santoro",
+      "url": "https://codigocalma.com/equipo/francisca-cortes-santoro/",
+      "title": "Francisca Cortés Santoro: accesibilidad cognitiva y lenguaje",
+      "description": "Conoce a Francisca Cortés Santoro y su trabajo en accesibilidad cognitiva: lectura fácil, lenguaje claro y carga cognitiva para que la información se entienda.",
+      "focus_keyword": "Francisca Cortés Santoro",
+      "og_title": "Francisca Cortés Santoro | Código Calma",
+      "nota": "Sin la marca: nombre + rol + marca daría 75 car. Se prioriza el rol visible en la página. Solo usa datos de su página (sin formación, pendiente de completar)."
+    },
+    {
+      "tipo": "page",
+      "slug": "equipo/emanuel-c-franco",
+      "url": "https://codigocalma.com/equipo/emanuel-c-franco/",
+      "title": "Emanuel C. Franco, gestión de proyectos | Código Calma",
+      "description": "Conoce a Emanuel C. Franco y su trabajo en gestión de proyectos y procesos: alcance, plazos y prioridades realistas para un proyecto que puedas sostener.",
+      "focus_keyword": "Emanuel C. Franco",
+      "nota": "Solo usa datos de su página; el rol está pendiente de confirmar en copy.md (4.4). Si cambia, revisar el title."
+    },
+    {
+      "tipo": "page",
+      "slug": "ciberpsicologia",
+      "url": "https://codigocalma.com/ciberpsicologia/",
+      "title": "Qué es la ciberpsicología y cómo te influye | Código Calma",
+      "description": "Descubre qué estudia la ciberpsicología: por qué algunas plataformas crean hábitos difíciles de romper y cómo los entornos digitales afectan tus emociones.",
+      "focus_keyword": "qué es la ciberpsicología"
+    },
+    {
+      "tipo": "page",
+      "slug": "bienestar-digital",
+      "url": "https://codigocalma.com/bienestar-digital/",
+      "title": "Bienestar digital: primeros pasos con calma | Código Calma",
+      "description": "Aprende qué es el bienestar digital y cómo empezar a usar tus dispositivos con intención, cuidar tu privacidad y decidir qué lugar ocupa la tecnología.",
+      "focus_keyword": "bienestar digital"
+    },
+    {
+      "tipo": "page",
+      "slug": "herramientas",
+      "url": "https://codigocalma.com/herramientas/",
+      "title": "Aplicaciones de productividad y calma | Código Calma",
+      "description": "Explora apps de meditación, sueño y enfoque seleccionadas como punto de partida para tu bienestar digital. Son un apoyo y no reemplazan la atención profesional.",
+      "focus_keyword": "aplicaciones de productividad y calma"
+    },
+    {
+      "tipo": "page",
+      "slug": "test",
+      "url": "https://codigocalma.com/test/",
+      "title": "Test de consumo digital gratuito y educativo | Código Calma",
+      "description": "Responde 12 preguntas en unos cinco minutos y reflexiona sobre tu relación con la tecnología. Es un test educativo: no reemplaza una evaluación profesional.",
+      "focus_keyword": "test de consumo digital"
+    },
+    {
+      "tipo": "page",
+      "slug": "descargas",
+      "url": "https://codigocalma.com/descargas/",
+      "title": "Libros y guías gratuitas para descargar | Código Calma",
+      "description": "Descarga gratis guías de Tatiana X. Stacul sobre ansiedad y salud mental digital, ciberseguridad para psicólogos y psicología para devs, y léelas a tu ritmo.",
+      "focus_keyword": "guías gratuitas para descargar",
+      "nota": "Slug actual en WordPress: descargas-2; pasa a descargas en esta etapa (301 /descargas-2/ → /descargas/). El H1 «Libros de descarga gratuita» está pendiente de confirmar (CRO #30); si pasa a «Guías…», el title sigue siendo coherente."
+    },
+    {
+      "tipo": "page",
+      "slug": "testimonios",
+      "url": "https://codigocalma.com/testimonios/",
+      "title": "Testimonios de personas que acompañamos | Código Calma",
+      "description": "Lee reseñas de Google de personas que trabajaron con Tatiana X. Stacul y conoce cómo es el acompañamiento de Código Calma antes de escribirnos.",
+      "focus_keyword": "testimonios Código Calma"
+    },
+    {
+      "tipo": "page",
+      "slug": "blog",
+      "url": "https://codigocalma.com/blog/",
+      "title": "Blog de ciberpsicología y bienestar digital | Código Calma",
+      "description": "Lee artículos sobre ciberpsicología, bienestar digital, neurociencia y ciberseguridad explicados con claridad, para entender mejor tu vida entre pantallas.",
+      "focus_keyword": "blog de ciberpsicología"
+    },
+    {
+      "tipo": "post",
+      "slug": "por-que-tu-fuerza-de-voluntad-es-mas-lista-de-lo-que-crees",
+      "url": "https://codigocalma.com/por-que-tu-fuerza-de-voluntad-es-mas-lista-de-lo-que-crees/",
+      "title": "Fuerza de voluntad: más lista de lo que crees | Código Calma",
+      "description": "¿Tu fuerza de voluntad es un depósito que se vacía? Descubre qué dice hoy la ciencia sobre el «agotamiento del ego» y cómo influye en tus decisiones diarias.",
+      "focus_keyword": "fuerza de voluntad"
+    },
+    {
+      "tipo": "post",
+      "slug": "la-diferencia-entre-querer-y-ser-capaz-entendiendo-la-autoeficacia",
+      "url": "https://codigocalma.com/la-diferencia-entre-querer-y-ser-capaz-entendiendo-la-autoeficacia/",
+      "title": "Autoeficacia: diferencia entre querer y poder | Código Calma",
+      "description": "Entiende qué es la autoeficacia y por qué tener ganas no siempre basta para actuar. Una mirada desde la psicología a esa parálisis que a veces sentimos.",
+      "focus_keyword": "autoeficacia"
+    },
+    {
+      "tipo": "post",
+      "slug": "por-que-fallamos-al-intentar-cambiar-conductas",
+      "url": "https://codigocalma.com/por-que-fallamos-al-intentar-cambiar-conductas/",
+      "title": "Por qué fallamos al cambiar una conducta | Código Calma",
+      "description": "Descubre por qué saber qué hacer no basta para cambiar un hábito y qué aporta el «paternalismo afectivo» al entender cómo se siente cada decisión en tu equipo.",
+      "focus_keyword": "cambiar conductas"
+    },
+    {
+      "tipo": "post",
+      "slug": "ia-y-apoyo-emocional-saber-la-autoria-cambia-tu-perspectiva",
+      "url": "https://codigocalma.com/ia-y-apoyo-emocional-saber-la-autoria-cambia-tu-perspectiva/",
+      "title": "IA y apoyo emocional: importa la autoría | Código Calma",
+      "description": "Un estudio muestra que saber si un mensaje de apoyo lo escribió una IA o una persona cambia cómo lo valoramos. Descubre qué implica para tu bienestar digital.",
+      "focus_keyword": "IA y apoyo emocional"
+    },
+    {
+      "tipo": "post",
+      "slug": "el-estigma-de-la-estructura-x-entonces-y",
+      "url": "https://codigocalma.com/el-estigma-de-la-estructura-x-entonces-y/",
+      "title": "«X entonces Y»: la claridad no es cosa de IA | Código Calma",
+      "description": "¿Un texto claro y lógico es señal de IA? Descubre de dónde viene la estructura «X, entonces Y» y por qué la claridad es una herencia humana, no artificial.",
+      "focus_keyword": "estructura X entonces Y"
+    },
+    {
+      "tipo": "post",
+      "slug": "infancias-figitales",
+      "url": "https://codigocalma.com/infancias-figitales/",
+      "title": "Infancias figitales: criar sin offline | Código Calma",
+      "description": "Reflexiona sobre la crianza en un mundo donde lo físico y lo digital ya no se separan, y descubre claves para acompañar a niñas y niños en su vida figital.",
+      "focus_keyword": "infancias figitales"
+    },
+    {
+      "tipo": "post",
+      "slug": "calidad-vs-cantidad-la-hipotesis-de-ricitos-de-oro",
+      "url": "https://codigocalma.com/calidad-vs-cantidad-la-hipotesis-de-ricitos-de-oro/",
+      "title": "Ricitos de Oro y el tiempo de pantalla | Código Calma",
+      "description": "¿Importa más cuánto tiempo pasas frente a pantallas o cómo lo usas? Descubre la hipótesis de Ricitos de Oro y por qué la calidad del uso digital pesa tanto.",
+      "focus_keyword": "hipótesis de Ricitos de Oro"
+    },
+    {
+      "tipo": "post",
+      "slug": "autoevaluacion-del-consumo-digital-como-estamos-manejando-nuestro-tiempo-frente-a-las-pantallas",
+      "url": "https://codigocalma.com/autoevaluacion-del-consumo-digital-como-estamos-manejando-nuestro-tiempo-frente-a-las-pantallas/",
+      "title": "Autoevaluación de tu consumo digital | Código Calma",
+      "description": "Evalúa tu consumo digital con preguntas sencillas sobre tiempo, hábitos y emociones, y da un primer paso hacia un uso más consciente de las pantallas.",
+      "focus_keyword": "autoevaluación del consumo digital"
+    },
+    {
+      "tipo": "post",
+      "slug": "preguntas-clave-para-entender-y-cuidar-nuestro-cerebro",
+      "url": "https://codigocalma.com/preguntas-clave-para-entender-y-cuidar-nuestro-cerebro/",
+      "title": "Salud cerebral: preguntas clave para cuidarte | Código Calma",
+      "description": "Descubre qué es la salud cerebral y qué hábitos cotidianos la favorecen, en un recorrido por las preguntas clave para entender y cuidar mejor tu cerebro.",
+      "focus_keyword": "salud cerebral"
+    },
+    {
+      "tipo": "post",
+      "slug": "5-puntos-clave-que-el-caso-de-meta-nos-deja-en-salud-mental",
+      "url": "https://codigocalma.com/5-puntos-clave-que-el-caso-de-meta-nos-deja-en-salud-mental/",
+      "title": "Caso Meta y salud mental: 5 puntos clave | Código Calma",
+      "description": "Repasa cinco aprendizajes que deja el caso de Meta sobre redes sociales y salud mental, y qué preguntas conviene hacerte sobre tu propio uso de plataformas.",
+      "focus_keyword": "caso Meta salud mental"
+    },
+    {
+      "tipo": "post",
+      "slug": "reflexiones-eticas-sobre-el-desarrollo-de-la-inteligencia-artificial",
+      "url": "https://codigocalma.com/reflexiones-eticas-sobre-el-desarrollo-de-la-inteligencia-artificial/",
+      "title": "Ética de la inteligencia artificial: dilemas | Código Calma",
+      "description": "Explora los principales dilemas éticos del desarrollo de la inteligencia artificial, desde los sesgos hasta la privacidad, y cómo afectan a tu vida digital.",
+      "focus_keyword": "ética de la inteligencia artificial"
+    },
+    {
+      "tipo": "post",
+      "slug": "descubriendo-que-modela-nuestro-comportamiento",
+      "url": "https://codigocalma.com/descubriendo-que-modela-nuestro-comportamiento/",
+      "title": "Qué modela tu comportamiento según la ciencia | Código Calma",
+      "description": "Descubre qué es la ciencia del comportamiento y qué factores moldean tus decisiones diarias, dentro y fuera de las pantallas, explicado de forma clara.",
+      "focus_keyword": "qué modela nuestro comportamiento"
+    },
+    {
+      "tipo": "post",
+      "slug": "la-tecnologia-te-supera-como-identificar-y-gestionar-el-tecnoestres",
+      "url": "https://codigocalma.com/la-tecnologia-te-supera-como-identificar-y-gestionar-el-tecnoestres/",
+      "title": "Tecnoestrés: cómo identificarlo y gestionarlo | Código Calma",
+      "description": "Aprende a reconocer las señales del tecnoestrés, entiende por qué aparece y conoce estrategias prácticas para gestionar tu relación diaria con la tecnología.",
+      "focus_keyword": "tecnoestrés"
+    },
+    {
+      "tipo": "post",
+      "slug": "el-arte-de-redisenar-tu-entorno",
+      "url": "https://codigocalma.com/el-arte-de-redisenar-tu-entorno/",
+      "title": "Rediseñar tu entorno para liberar tu mente | Código Calma",
+      "description": "Descubre qué muestran los estudios de Wendy Wood sobre hábitos y entorno, y cómo pequeños cambios en tu espacio te ayudan sin depender solo de la voluntad.",
+      "focus_keyword": "rediseñar tu entorno"
+    },
+    {
+      "tipo": "post",
+      "slug": "como-un-te-quiero-infecto-45-millones-de-computadoras-en-todo-el-mundo",
+      "url": "https://codigocalma.com/como-un-te-quiero-infecto-45-millones-de-computadoras-en-todo-el-mundo/",
+      "title": "ILOVEYOU: el virus que hackeó el afecto | Código Calma",
+      "description": "Conoce la historia del virus ILOVEYOU, el «te quiero» que en 2000 se propagó por millones de equipos, y qué enseña sobre el phishing y tu seguridad digital.",
+      "focus_keyword": "virus ILOVEYOU"
+    },
+    {
+      "tipo": "category",
+      "slug": "bienestar",
+      "url": "https://codigocalma.com/category/bienestar/",
+      "title": "Bienestar digital: artículos y reflexiones | Código Calma",
+      "description": "Artículos del blog de Código Calma sobre bienestar digital: tiempo de pantalla, hábitos, crianza y tu relación diaria con la tecnología, explicados con calma.",
+      "focus_keyword": "bienestar digital",
+      "nota": "Categoría actual; la Etapa 5 reorganiza la taxonomía y estos metadatos se revisan entonces."
+    },
+    {
+      "tipo": "category",
+      "slug": "ciberpsicologia",
+      "url": "https://codigocalma.com/category/ciberpsicologia/",
+      "title": "Ciberpsicología: artículos del blog | Código Calma",
+      "description": "Artículos del blog de Código Calma sobre ciberpsicología: cómo los entornos digitales y la inteligencia artificial influyen en tu conducta y tus emociones.",
+      "focus_keyword": "ciberpsicología",
+      "nota": "Categoría actual; la Etapa 5 reorganiza la taxonomía y estos metadatos se revisan entonces."
+    },
+    {
+      "tipo": "category",
+      "slug": "ciberseguridad",
+      "url": "https://codigocalma.com/category/ciberseguridad/",
+      "title": "Ciberseguridad y comportamiento: artículos | Código Calma",
+      "description": "Artículos del blog de Código Calma sobre ciberseguridad desde el comportamiento humano: historia, phishing y hábitos que influyen en tu seguridad digital.",
+      "focus_keyword": "ciberseguridad",
+      "nota": "Categoría actual; la Etapa 5 reorganiza la taxonomía y estos metadatos se revisan entonces."
+    },
+    {
+      "tipo": "category",
+      "slug": "neurociencia",
+      "url": "https://codigocalma.com/category/neurociencia/",
+      "title": "Neurociencia y tecnología: artículos del blog | Código Calma",
+      "description": "Artículos del blog de Código Calma sobre neurociencia y tecnología: cerebro, salud mental, redes sociales e inteligencia artificial, explicados con claridad.",
+      "focus_keyword": "neurociencia y tecnología",
+      "nota": "Categoría actual; la Etapa 5 reorganiza la taxonomía y estos metadatos se revisan entonces."
+    },
+    {
+      "tipo": "category",
+      "slug": "psicologia",
+      "url": "https://codigocalma.com/category/psicologia/",
+      "title": "Psicología: artículos sobre tu conducta | Código Calma",
+      "description": "Artículos del blog de Código Calma sobre psicología: fuerza de voluntad, autoeficacia y otros conceptos que te ayudan a entender tu conducta y tus hábitos.",
+      "focus_keyword": "psicología",
+      "nota": "Categoría actual; la Etapa 5 reorganiza la taxonomía y estos metadatos se revisan entonces."
+    }
+  ]
+}

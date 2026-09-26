@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Código Calma
  * Description:       Design system (tokens calma-*) y correcciones del sitio sobre el tema Kadence, sin tema hijo (así se conservan los ajustes del Personalizador).
- * Version:           1.2.0-etapa3
+ * Version:           1.3.0-etapa4
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Author:            Código Calma
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CALMA_VERSION', '1.2.0-etapa3' );
+define( 'CALMA_VERSION', '1.3.0-etapa4' );
 define( 'CALMA_URL', plugin_dir_url( __FILE__ ) );
 define( 'CALMA_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -106,8 +106,17 @@ add_action( 'wp_head', function () {
  */
 add_filter( 'get_custom_logo_image_attributes', function ( $attr ) {
 	$attr['sizes'] = '48px';
+	// Etapa 4 · El logo (48 px) no es el elemento LCP: sin prioridad alta, para no
+	// competir con la imagen del hero ni con el primer título.
+	$attr['fetchpriority'] = 'auto';
 	return $attr;
 } );
 
 // Etapa 3 · Flujo de consulta (caja al final de artículos, newsletter, área preseleccionada).
 require_once CALMA_DIR . 'includes/conversion.php';
+
+// Etapa 4 · Datos estructurados (JSON-LD). Requiere el módulo Schema de Rank Math desactivado.
+require_once CALMA_DIR . 'includes/schema.php';
+
+// Etapa 4 · Importación de títulos y descripciones a Rank Math (Herramientas → Código Calma: SEO).
+require_once CALMA_DIR . 'includes/seo-import.php';
