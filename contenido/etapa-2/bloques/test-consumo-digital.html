@@ -1,0 +1,500 @@
+<!--
+Código Calma · Test de consumo digital · bloque "HTML personalizado" (Etapa 2)
+Reemplaza el bloque HTML del test en la página /test/ (id 1941). Ver test-consumo-digital.md.
+Resuelve: A11Y-01, A11Y-05, A11Y-11, A11Y-12, GEO-14 y las correcciones E01 a E10 (Etapa 1).
+TEXTOS CAMBIADOS (antes → después). Solo voseo → tuteo, ortografía y puntuación evidentes.
+Interfaz
+ E10  Test de Consumo Digital → Test de consumo digital (H1, color #1d5f94)
+ E01  Descubrí cómo es tu relación con la tecnología en 5 minutos → Descubre cómo es tu relación con la tecnología en 5 minutos
+ E02  Elegís tu generación → Eliges tu generación
+ E03  Respondés 12 preguntas → Respondes 12 preguntas
+ E04  Obtenés tu perfil → Obtienes tu perfil
+ E05  ¿De qué generación sos? → ¿De qué generación eres?
+ E06  Elegí la que mejor te representa → Elige la que mejor te representa
+ E07  Contactanos → (a /contacto/) → Solicitar una consulta → (a /contacto/?area=habitos)
+ E08  Volver a jugar → → Repetir el test
+      1981 — 1996 / 1965 — 1980 / 1997 — 2012 → 1981–1996 / 1965–1980 / 1997–2012 (raya → guion de intervalo)
+      Continuar → → Continuar (la flecha se conserva, oculta a lectores de pantalla)
+      Siguiente → → Siguiente / Siguiente pregunta / Ver mi resultado (último paso)
+      Escribinos a hola@codigocalma.com para acompañamiento personalizado. → Escríbenos a hola@codigocalma.com para acompañamiento personalizado.
+      / 48 pts → Tu puntaje: N de 48 puntos
+      Retroalimentación: <strong>✓ Buen manejo</strong> Tu respuesta... → ✓ Buen manejo. Tu respuesta... (punto tras la etiqueta, ícono oculto a lectores de pantalla; igual en "Patrón común" y "Comportamiento frecuente")
+      Dato por pregunta: se antepone la etiqueta "Dato:" al texto
+Preguntas y opciones
+ P1   Son las 11pm. Estás en la cama. ¿Qué hacés antes de dormir? → Son las 11 p. m. Estás en la cama. ¿Qué haces antes de dormir?
+ E09  Si de repente te quedás sin batería, ¿cómo te sentís? → Si de repente te quedas sin batería, ¿cómo te sientes?
+ P2   Un poco incómodo pero me adapto → Un poco incómodo, pero me adapto
+ P3   ¿Cuántas veces al día abrís una app sin recordar para qué? → ¿Cuántas veces al día abres una app sin recordar para qué?
+ P4   ¿Podés trabajar 1 hora con foco sin revisar el celular? → ¿Puedes trabajar 1 hora con foco sin revisar el celular?
+ P5   ¿Tuvo impacto en vos una discusión por malentendido en WhatsApp? → ¿Tuvo impacto en ti una discusión por malentendido en WhatsApp?
+ P6   Subís una foto y en 2 horas tiene pocos likes. ¿Cómo impacta? → Subes una foto y en 2 horas tiene pocos likes. ¿Cómo impacta?
+ P7   ¿Podés quedarte a solas sin pantalla ni estímulos 10 minutos? → ¿Puedes quedarte a solas sin pantalla ni estímulos 10 minutos?
+ P7   Sí pero requiere práctica → Sí, pero requiere práctica
+ P7   Sí lo disfruto → Sí, lo disfruto
+ P8   ¿Sabés cuánto tiempo pasás en pantalla por día? → ¿Sabes cuánto tiempo pasas en pantalla por día?
+ P12  ¿Checkeás el teléfono dentro de los primeros 5 min de despertarte? → ¿Chequeas el teléfono dentro de los primeros 5 min de despertarte?
+Datos por pregunta
+ D8   La brecha entre lo que pasás en pantalla y lo que elegiría conscientemente... → La brecha entre lo que pasas en pantalla y lo que elegirías conscientemente...
+ D10  ...donde decidís ser interrumpido. → ...donde decides ser interrumpido.
+Perfiles (títulos en minúscula tras la primera palabra, como en E10)
+      Arquitecto Digital → Arquitecto digital; Consumo Consciente → Consumo consciente; Navegante con Marea → Navegante con marea;
+      En Modo Automático → En modo automático; Corriente Abajo → Corriente abajo; Atrapado en el Sistema → Atrapado en el sistema
+      elegís la tecnología como herramienta → eliges la tecnología como herramienta
+      Sabés lo que pasa. Tomás decisiones activas. → Sabes lo que pasa. Tomas decisiones activas.
+      No siempre hacés lo que querrías, pero sabés cuándo... → No siempre haces lo que querrías, pero sabes cuándo...
+      Avanzás, pero la corriente también te lleva. → Avanzas, pero la corriente también te lleva.
+      una parte de vos ya sabe → una parte de ti ya sabe
+Textos nuevos (no existían)
+      Opción de generación "Otra / prefiero no decirlo" (el cálculo no usa la generación: contexto neutro, ver .md)
+      Sección "Qué mide" con placeholder de las 4 dimensiones y cómo se calcula el perfil (dato tomado del script original)
+      Aviso sin JavaScript; aviso de resultado orientativo; aviso de urgencias con placeholder
+Eliminado: botón "↺" del encabezado (lo reemplaza "Repetir el test"), pie "Código Calma" de la intro (contraste 2,27:1), estilos globales (:root, *, Roboto).
+-->
+<div class="calma-test" id="calma-test">
+<style>
+.calma-test{box-sizing:border-box;max-width:var(--calma-container-text,720px);margin:0 auto;padding:0;color:var(--calma-text,#0f172a);background:var(--calma-surface,#fff);font-family:var(--calma-font-body,inherit);font-size:var(--calma-fs-base,1.0625rem);line-height:var(--calma-lh-body,1.65);text-align:left}
+.calma-test *,.calma-test *::before,.calma-test *::after{box-sizing:border-box}
+.calma-test [hidden]{display:none !important}
+.calma-test h1,.calma-test h2,.calma-test h3{font-family:var(--calma-font-heading,inherit);line-height:var(--calma-lh-heading,1.2);color:var(--calma-text,#0f172a);margin:0 0 var(--calma-space-3,12px);scroll-margin-top:120px;overflow-wrap:break-word}
+.calma-test h1{font-size:var(--calma-fs-2xl,clamp(1.875rem,1.4rem + 2.4vw,3rem));color:var(--calma-primary,#1d5f94);text-align:center}
+.calma-test h2{font-size:var(--calma-fs-xl,clamp(1.5rem,1.2rem + 1.4vw,2.25rem))}
+.calma-test h3{font-size:var(--calma-fs-lg,clamp(1.25rem,1.1rem + .6vw,1.5rem))}
+.calma-test p{margin:0 0 var(--calma-space-3,12px)}
+.calma-test p:last-child{margin-bottom:0}
+.calma-test a{color:var(--calma-primary,#1d5f94);text-decoration:underline;text-underline-offset:2px}
+.calma-test a:hover{color:var(--calma-primary-hover,#174d78)}
+.calma-test [tabindex="-1"]:focus{outline:none}
+.calma-test [tabindex="-1"]:focus-visible,.calma-test a:focus-visible,.calma-test button:focus-visible,.calma-test input:focus-visible{outline:2px solid var(--calma-focus,#1d5f94);outline-offset:2px}
+.calma-test__lead{text-align:center;color:var(--calma-text-muted,#475569);margin-bottom:var(--calma-space-8,32px) !important}
+.calma-test__sr{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+.calma-test__card{background:var(--calma-surface,#fff);border:1px solid var(--calma-border,#e2e8f0);border-radius:var(--calma-radius,16px);padding:clamp(20px,4vw,32px);box-shadow:var(--calma-shadow-sm,0 1px 2px rgb(15 23 42 / .06));margin:0 0 var(--calma-space-5,20px)}
+.calma-test__card h2{font-size:var(--calma-fs-lg,clamp(1.25rem,1.1rem + .6vw,1.5rem))}
+.calma-test__howto{list-style:none;margin:0;padding:0;display:grid;gap:var(--calma-space-3,12px)}
+.calma-test__howto li{display:grid;grid-template-columns:auto 1fr;gap:var(--calma-space-3,12px);align-items:start;margin:0;padding:0}
+.calma-test__num{inline-size:32px;block-size:32px;border-radius:50%;display:grid;place-items:center;background:var(--calma-primary,#1d5f94);color:#fff;font-weight:700;font-size:var(--calma-fs-sm,1rem)}
+.calma-test__placeholder{background:#fff7e0;border:1px dashed #8a5a00;border-radius:var(--calma-radius-sm,8px);padding:var(--calma-space-2,8px) var(--calma-space-3,12px);color:var(--calma-text,#0f172a);font-weight:600}
+.calma-test__nojs{background:var(--calma-surface-soft,#f1eefc);border-radius:var(--calma-radius-sm,8px);padding:var(--calma-space-3,12px) var(--calma-space-4,16px)}
+.calma-test__btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--calma-space-2,8px);min-height:48px;padding:12px 24px;border:0;border-radius:var(--calma-radius-pill,999px);font:600 var(--calma-fs-sm,1rem)/1.2 var(--calma-font-body,inherit);text-decoration:none;text-align:center;cursor:pointer;margin:0}
+.calma-test__btn--primary,.calma-test a.calma-test__btn--primary{background:var(--calma-primary,#1d5f94);color:#fff;text-decoration:none}
+.calma-test__btn--primary:hover,.calma-test a.calma-test__btn--primary:hover{background:var(--calma-primary-hover,#174d78);color:#fff}
+.calma-test__btn--secondary{background:var(--calma-surface,#fff);color:var(--calma-primary,#1d5f94);box-shadow:inset 0 0 0 2px currentColor}
+.calma-test__btn--secondary:hover{color:var(--calma-primary-hover,#174d78);background:#eef4fa}
+.calma-test__btn--block{width:100%}
+.calma-test__form{margin:0;padding:0}
+.calma-test__progress{margin:0 0 var(--calma-space-4,16px)}
+.calma-test__progress-text{font-weight:600;color:var(--calma-violet,#5b3fb8);font-size:var(--calma-fs-sm,1rem);margin-bottom:var(--calma-space-2,8px) !important}
+.calma-test__bar{height:8px;border-radius:var(--calma-radius-pill,999px);background:var(--calma-border,#e2e8f0);overflow:hidden}
+.calma-test__bar span{display:block;height:100%;width:0;background:var(--calma-primary,#1d5f94);border-radius:inherit}
+.calma-test__step{border:1px solid var(--calma-border,#e2e8f0);border-radius:var(--calma-radius,16px);background:var(--calma-surface,#fff);padding:clamp(20px,4vw,32px);margin:0 0 var(--calma-space-5,20px);min-width:0}
+.calma-test__step legend{padding:0;margin:0 0 var(--calma-space-2,8px);float:left;width:100%}
+.calma-test__step legend+*{clear:both}
+.calma-test__step legend h2{font-size:var(--calma-fs-lg,clamp(1.25rem,1.1rem + .6vw,1.5rem));margin:0}
+.calma-test__qnum{display:block;font:600 var(--calma-fs-xs,.875rem)/1.4 var(--calma-font-body,inherit);color:var(--calma-violet,#5b3fb8);text-transform:uppercase;letter-spacing:.04em;margin-bottom:var(--calma-space-1,4px)}
+.calma-test--js .calma-test__qnum{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.calma-test__help{color:var(--calma-text-muted,#475569);margin:0 0 var(--calma-space-3,12px) !important}
+.calma-test__error{color:var(--calma-error,#b42318);font-weight:600;margin:0 0 var(--calma-space-3,12px) !important}
+.calma-test__options{display:grid;gap:var(--calma-space-3,12px);margin-top:var(--calma-space-3,12px)}
+.calma-test__option{display:flex;align-items:center;gap:var(--calma-space-3,12px);min-height:48px;margin:0;padding:var(--calma-space-3,12px) var(--calma-space-4,16px);border:1px solid #cbd5e1;border-radius:var(--calma-radius-sm,8px);background:var(--calma-surface,#fff);color:var(--calma-text,#0f172a);cursor:pointer;font-weight:400;line-height:1.4}
+.calma-test__option:hover{border-color:var(--calma-primary,#1d5f94)}
+.calma-test__option:has(input:checked){border-color:var(--calma-primary,#1d5f94);box-shadow:inset 0 0 0 1px var(--calma-primary,#1d5f94);background:#eef4fa}
+.calma-test__option:has(input:focus-visible){outline:2px solid var(--calma-focus,#1d5f94);outline-offset:2px}
+.calma-test__option input{flex:0 0 auto;inline-size:20px;block-size:20px;margin:0;accent-color:var(--calma-primary,#1d5f94);cursor:pointer}
+.calma-test__option input:focus-visible{outline-offset:3px}
+.calma-test__gen{display:flex;flex-direction:column}
+.calma-test__gen strong{font-weight:600}
+.calma-test__gen span{color:var(--calma-text-muted,#475569);font-size:var(--calma-fs-xs,.875rem)}
+.calma-test__emoji{font-size:1.75rem;line-height:1}
+.calma-test__feedback-box{margin:0 0 var(--calma-space-5,20px);padding:var(--calma-space-4,16px);border-radius:var(--calma-radius-sm,8px);border-left:4px solid var(--calma-primary,#1d5f94);background:#eef4fa;color:var(--calma-text,#0f172a)}
+.calma-test__feedback-box--good{border-left-color:var(--calma-success,#1f7a4d);background:#ecf7f0}
+.calma-test__feedback-box--mid{border-left-color:#8a5a00;background:#fdf6e3}
+.calma-test__fact{margin-top:var(--calma-space-3,12px) !important;padding-top:var(--calma-space-3,12px);border-top:1px solid rgb(15 23 42 / .12)}
+.calma-test__nav{display:flex;flex-wrap:wrap;gap:var(--calma-space-3,12px)}
+.calma-test__nav .calma-test__btn{flex:1 1 140px}
+.calma-test__result{margin:0}
+.calma-test__result-head{text-align:center;margin-bottom:var(--calma-space-6,24px)}
+.calma-test__eyebrow{display:inline-block;padding:4px 12px;border-radius:var(--calma-radius-pill,999px);background:var(--calma-surface-soft,#f1eefc);color:var(--calma-violet,#5b3fb8);font:600 var(--calma-fs-xs,.875rem)/1.4 var(--calma-font-body,inherit);letter-spacing:.04em;text-transform:uppercase}
+.calma-test__result-emoji{font-size:3rem;line-height:1;margin:var(--calma-space-3,12px) 0 !important}
+.calma-test__subtitle{color:var(--calma-text-muted,#475569)}
+.calma-test__score{font-size:var(--calma-fs-sm,1rem);color:var(--calma-text-muted,#475569)}
+.calma-test__score strong{font-size:2rem;color:var(--calma-text,#0f172a);font-family:var(--calma-font-heading,inherit)}
+.calma-test__meter{margin-bottom:var(--calma-space-4,16px)}
+.calma-test__note{font-size:var(--calma-fs-sm,1rem);color:var(--calma-text-muted,#475569)}
+.calma-test__urgent{font-size:var(--calma-fs-sm,1rem);background:var(--calma-surface-soft,#f1eefc);border-radius:var(--calma-radius-sm,8px);padding:var(--calma-space-3,12px) var(--calma-space-4,16px);margin-bottom:var(--calma-space-5,20px) !important}
+.calma-test__actions{display:grid;gap:var(--calma-space-3,12px)}
+@media (prefers-reduced-motion:no-preference){.calma-test__bar span{transition:width var(--calma-dur,180ms) var(--calma-ease,ease)}.calma-test__btn,.calma-test__option{transition:background-color var(--calma-dur,180ms) var(--calma-ease,ease),border-color var(--calma-dur,180ms) var(--calma-ease,ease)}}
+</style>
+<!-- H1: hoy el único H1 de /test/ vive dentro de este bloque (el título de página de Kadence está oculto). Si se activa el título de Kadence como H1, cambiar este H1 por <p class="calma-test__lead"> para no duplicarlo. -->
+<h1 class="calma-test__title">Test de consumo digital</h1>
+<p class="calma-test__lead">Descubre cómo es tu relación con la tecnología en 5 minutos</p>
+<p class="calma-test__sr" role="status" aria-live="polite" data-calma-live></p>
+<section class="calma-test__intro" data-calma-intro aria-labelledby="calma-test-antes">
+<div class="calma-test__card">
+<h2 id="calma-test-antes" tabindex="-1">Antes de empezar</h2>
+<p>Este test es <strong>educativo y orientativo</strong>. No reemplaza una evaluación profesional. Se basa en investigación sobre comportamiento digital y está diseñado para invitarte a reflexionar.</p>
+</div>
+<div class="calma-test__card">
+<h2>Cómo funciona</h2>
+<ol class="calma-test__howto">
+<li><span class="calma-test__num" aria-hidden="true">1</span><span><strong>Eliges tu generación</strong> para personalizar el contexto</span></li>
+<li><span class="calma-test__num" aria-hidden="true">2</span><span><strong>Respondes 12 preguntas</strong> sobre 4 dimensiones de tu vida digital</span></li>
+<li><span class="calma-test__num" aria-hidden="true">3</span><span><strong>Obtienes tu perfil</strong> con análisis y recomendaciones concretas</span></li>
+</ol>
+</div>
+<div class="calma-test__card">
+<h2>Qué mide</h2>
+<p>Las 12 preguntas recorren 4 dimensiones de tu vida digital:</p>
+<p class="calma-test__placeholder">[COMPLETAR: nombres de las 4 dimensiones que mide el test; el test original no las define]</p>
+<p>Cada respuesta suma de 1 a 4 puntos, con un máximo de 48. Tu perfil se calcula a partir del puntaje total.</p>
+</div>
+<p class="calma-test__nojs" data-calma-nojs>Para calcular tu resultado necesitas tener JavaScript activado. Igualmente puedes leer todas las preguntas a continuación.</p>
+<button type="button" class="calma-test__btn calma-test__btn--primary calma-test__btn--block" data-calma-start hidden>Empezar <span aria-hidden="true">→</span></button>
+</section>
+<form class="calma-test__form" data-calma-form aria-label="Preguntas del test de consumo digital" novalidate>
+<div class="calma-test__progress" data-calma-progress hidden>
+<p class="calma-test__progress-text" data-calma-progress-text>Paso 1 de 2</p>
+<div class="calma-test__bar" aria-hidden="true"><span data-calma-bar></span></div>
+</div>
+<fieldset class="calma-test__step" data-calma-step="gen" aria-describedby="calma-test-gen-help">
+<legend><h2 tabindex="-1">¿De qué generación eres?</h2></legend>
+<p class="calma-test__help" id="calma-test-gen-help">Elige la que mejor te representa</p>
+<p class="calma-test__error" id="calma-test-gen-error" data-calma-error hidden>Elige una opción para continuar.</p>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="generacion" value="millennial"><span class="calma-test__emoji" aria-hidden="true">💾</span><span class="calma-test__gen"><strong>Millennials</strong><span>1981–1996 · Creciste con el cambio</span></span></label>
+<label class="calma-test__option"><input type="radio" name="generacion" value="x"><span class="calma-test__emoji" aria-hidden="true">📼</span><span class="calma-test__gen"><strong>Generación X</strong><span>1965–1980 · Adoptaste la tecnología</span></span></label>
+<label class="calma-test__option"><input type="radio" name="generacion" value="z"><span class="calma-test__emoji" aria-hidden="true">☁️</span><span class="calma-test__gen"><strong>Generación Z</strong><span>1997–2012 · Nativa digital</span></span></label>
+<label class="calma-test__option"><input type="radio" name="generacion" value="otra"><span class="calma-test__emoji" aria-hidden="true">•</span><span class="calma-test__gen"><strong>Otra / prefiero no decirlo</strong></span></label>
+</div>
+</fieldset>
+<fieldset class="calma-test__step" data-calma-step="q">
+<legend><span class="calma-test__qnum">Pregunta 1 de 12</span><h2 tabindex="-1">Son las 11 p. m. Estás en la cama. ¿Qué haces antes de dormir?</h2></legend>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="q1" value="1">Scrolleo redes hasta quedarme dormido</label>
+<label class="calma-test__option"><input type="radio" name="q1" value="4">Pongo el celular en modo avión y me duermo</label>
+<label class="calma-test__option"><input type="radio" name="q1" value="2">Scrolleo un rato, lo dejo lejos y me duermo</label>
+<label class="calma-test__option"><input type="radio" name="q1" value="3">Contesto últimos mensajes y apago</label>
+</div>
+<p data-calma-fact hidden>La luz azul de las pantallas interfiere con la producción de melatonina. Esto es consistente en investigación sobre sueño.</p>
+</fieldset>
+<fieldset class="calma-test__step" data-calma-step="q">
+<legend><span class="calma-test__qnum">Pregunta 2 de 12</span><h2 tabindex="-1">Si de repente te quedas sin batería, ¿cómo te sientes?</h2></legend>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="q2" value="1">Angustia real</label>
+<label class="calma-test__option"><input type="radio" name="q2" value="3">Un poco incómodo, pero me adapto</label>
+<label class="calma-test__option"><input type="radio" name="q2" value="2">Me importa más de lo que debería</label>
+<label class="calma-test__option"><input type="radio" name="q2" value="4">Una liberación</label>
+</div>
+<p data-calma-fact hidden>El malestar sin teléfono es respuesta a la pérdida de conectividad, no al objeto en sí.</p>
+</fieldset>
+<fieldset class="calma-test__step" data-calma-step="q">
+<legend><span class="calma-test__qnum">Pregunta 3 de 12</span><h2 tabindex="-1">¿Cuántas veces al día abres una app sin recordar para qué?</h2></legend>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="q3" value="1">Constantemente, sin intención clara</label>
+<label class="calma-test__option"><input type="radio" name="q3" value="2">Varias veces, lo noto después</label>
+<label class="calma-test__option"><input type="radio" name="q3" value="3">Alguna vez, pero me doy cuenta rápido</label>
+<label class="calma-test__option"><input type="radio" name="q3" value="4">Casi nunca</label>
+</div>
+<p data-calma-fact hidden>Las interfaces están diseñadas para reducir fricción. El uso automático es resultado del diseño, no de debilidad personal.</p>
+</fieldset>
+<fieldset class="calma-test__step" data-calma-step="q">
+<legend><span class="calma-test__qnum">Pregunta 4 de 12</span><h2 tabindex="-1">¿Puedes trabajar 1 hora con foco sin revisar el celular?</h2></legend>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="q4" value="1">No lo intento porque sé que no puedo</label>
+<label class="calma-test__option"><input type="radio" name="q4" value="2">Me interrumpo varias veces sin darme cuenta</label>
+<label class="calma-test__option"><input type="radio" name="q4" value="3">Sí, requiere esfuerzo consciente</label>
+<label class="calma-test__option"><input type="radio" name="q4" value="4">Sí, tengo rituales que funcionan</label>
+</div>
+<p data-calma-fact hidden>Las interrupciones frecuentes aumentan el tiempo total para completar tareas complejas. La capacidad de foco es una habilidad que se entrena.</p>
+</fieldset>
+<fieldset class="calma-test__step" data-calma-step="q">
+<legend><span class="calma-test__qnum">Pregunta 5 de 12</span><h2 tabindex="-1">¿Tuvo impacto en ti una discusión por malentendido en WhatsApp?</h2></legend>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="q5" value="1">Sí, varias veces y sigo cometiendo el error</label>
+<label class="calma-test__option"><input type="radio" name="q5" value="2">Sí, el texto pierde tono más de lo que pienso</label>
+<label class="calma-test__option"><input type="radio" name="q5" value="3">Aprendí a llamar si algo puede malinterpretarse</label>
+<label class="calma-test__option"><input type="radio" name="q5" value="4">No, tengo claro cuándo el texto alcanza y cuándo no</label>
+</div>
+<p data-calma-fact hidden>El texto elimina el tono de voz, expresión facial y lenguaje corporal. Tendemos a sobrestimar nuestra capacidad de transmitir matices en texto.</p>
+</fieldset>
+<fieldset class="calma-test__step" data-calma-step="q">
+<legend><span class="calma-test__qnum">Pregunta 6 de 12</span><h2 tabindex="-1">Subes una foto y en 2 horas tiene pocos likes. ¿Cómo impacta?</h2></legend>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="q6" value="1">Me genera malestar real y la termino borrando</label>
+<label class="calma-test__option"><input type="radio" name="q6" value="2">Me afecta más de lo que admito</label>
+<label class="calma-test__option"><input type="radio" name="q6" value="3">Lo noto pero no influye en mi día</label>
+<label class="calma-test__option"><input type="radio" name="q6" value="4">No me impacta, las métricas no son mi termómetro</label>
+</div>
+<p data-calma-fact hidden>La validación social a través de métricas digitales activa respuestas emocionales reales. La brecha entre lo que hacemos y lo que elegimos es el indicador central del bienestar digital.</p>
+</fieldset>
+<fieldset class="calma-test__step" data-calma-step="q">
+<legend><span class="calma-test__qnum">Pregunta 7 de 12</span><h2 tabindex="-1">¿Puedes quedarte a solas sin pantalla ni estímulos 10 minutos?</h2></legend>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="q7" value="1">No, busco algo rápido</label>
+<label class="calma-test__option"><input type="radio" name="q7" value="3">Sí, pero requiere práctica</label>
+<label class="calma-test__option"><input type="radio" name="q7" value="4">Sí, lo disfruto</label>
+<label class="calma-test__option"><input type="radio" name="q7" value="2">Lo intento pero raramente llego</label>
+</div>
+<p data-calma-fact hidden>La ausencia de estímulo sin pantalla genera incomodidad en poblaciones de alta conectividad. El 'aburrimiento' tiene función: es donde emerge reflexión.</p>
+</fieldset>
+<fieldset class="calma-test__step" data-calma-step="q">
+<legend><span class="calma-test__qnum">Pregunta 8 de 12</span><h2 tabindex="-1">¿Sabes cuánto tiempo pasas en pantalla por día?</h2></legend>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="q8" value="1">No lo sé y prefiero no saberlo</label>
+<label class="calma-test__option"><input type="radio" name="q8" value="2">Lo sé y me incomoda</label>
+<label class="calma-test__option"><input type="radio" name="q8" value="3">Lo sé y lo acepto</label>
+<label class="calma-test__option"><input type="radio" name="q8" value="4">Lo reviso regularmente</label>
+</div>
+<p data-calma-fact hidden>La brecha entre lo que pasas en pantalla y lo que elegirías conscientemente es el indicador más significativo.</p>
+</fieldset>
+<fieldset class="calma-test__step" data-calma-step="q">
+<legend><span class="calma-test__qnum">Pregunta 9 de 12</span><h2 tabindex="-1">¿Cuál es tu mayor preocupación con la tecnología?</h2></legend>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="q9" value="1">Paso demasiado tiempo</label>
+<label class="calma-test__option"><input type="radio" name="q9" value="1">Me distrae demasiado</label>
+<label class="calma-test__option"><input type="radio" name="q9" value="2">Me preocupa el impacto en salud mental</label>
+<label class="calma-test__option"><input type="radio" name="q9" value="2">Afecta mis relaciones</label>
+</div>
+<p data-calma-fact hidden>Nombrarlo es el primer paso. El reconocimiento ya es conciencia.</p>
+</fieldset>
+<fieldset class="calma-test__step" data-calma-step="q">
+<legend><span class="calma-test__qnum">Pregunta 10 de 12</span><h2 tabindex="-1">¿Cómo es tu relación con notificaciones?</h2></legend>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="q10" value="1">Todas activas, me interrumpen constantemente</label>
+<label class="calma-test__option"><input type="radio" name="q10" value="2">Tengo muchas activas</label>
+<label class="calma-test__option"><input type="radio" name="q10" value="3">Apagué algunas pero hay muchas aún</label>
+<label class="calma-test__option"><input type="radio" name="q10" value="4">Apagué la mayoría, controlo cuándo las reviso</label>
+</div>
+<p data-calma-fact hidden>Cada notificación es un punto de decisión donde decides ser interrumpido. Eso es control.</p>
+</fieldset>
+<fieldset class="calma-test__step" data-calma-step="q">
+<legend><span class="calma-test__qnum">Pregunta 11 de 12</span><h2 tabindex="-1">¿Usaste IA (ChatGPT) en tu trabajo esta semana?</h2></legend>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="q11" value="2">No, no la uso</label>
+<label class="calma-test__option"><input type="radio" name="q11" value="2">La probé pero no veo aplicación real</label>
+<label class="calma-test__option"><input type="radio" name="q11" value="3">La uso ocasionalmente con criterio</label>
+<label class="calma-test__option"><input type="radio" name="q11" value="4">La integré como herramienta regular</label>
+</div>
+<p data-calma-fact hidden>La capacidad de usar IA con criterio será diferencial. No es entre quién la usa y quién no, sino entre quién la usa con juicio.</p>
+</fieldset>
+<fieldset class="calma-test__step" data-calma-step="q">
+<legend><span class="calma-test__qnum">Pregunta 12 de 12</span><h2 tabindex="-1">¿Chequeas el teléfono dentro de los primeros 5 min de despertarte?</h2></legend>
+<div class="calma-test__options">
+<label class="calma-test__option"><input type="radio" name="q12" value="1">Automático, sin pensarlo</label>
+<label class="calma-test__option"><input type="radio" name="q12" value="2">Casi siempre</label>
+<label class="calma-test__option"><input type="radio" name="q12" value="3">A menudo</label>
+<label class="calma-test__option"><input type="radio" name="q12" value="4">Raramente, es una decisión consciente</label>
+</div>
+<p data-calma-fact hidden>Los primeros minutos del día establecen el tono cognitivo. La intención inicial importa.</p>
+</fieldset>
+<div role="status" aria-live="polite" data-calma-feedback></div>
+<div class="calma-test__nav" data-calma-nav hidden>
+<button type="button" class="calma-test__btn calma-test__btn--secondary" data-calma-prev>Anterior</button>
+<button type="submit" class="calma-test__btn calma-test__btn--primary" data-calma-next>Siguiente</button>
+</div>
+</form>
+<section class="calma-test__result" data-calma-result aria-labelledby="calma-test-result-title" hidden>
+<div class="calma-test__result-head">
+<p class="calma-test__eyebrow">Tu resultado</p>
+<p class="calma-test__result-emoji" aria-hidden="true" data-calma-r-emoji></p>
+<h2 id="calma-test-result-title" tabindex="-1" data-calma-r-title>Tu perfil</h2>
+<p class="calma-test__subtitle" data-calma-r-subtitle></p>
+</div>
+<div class="calma-test__card">
+<p class="calma-test__score" data-calma-r-score></p>
+<div class="calma-test__bar calma-test__meter" aria-hidden="true"><span data-calma-r-bar></span></div>
+<p data-calma-r-analysis></p>
+</div>
+<div class="calma-test__card">
+<h3>Un paso concreto</h3>
+<p>Escríbenos a <a href="mailto:hola@codigocalma.com">hola@codigocalma.com</a> para acompañamiento personalizado.</p>
+</div>
+<p class="calma-test__note">Este resultado es orientativo: no es un diagnóstico ni reemplaza una evaluación profesional.</p>
+<p class="calma-test__urgent">Si estás pasando por un momento difícil o necesitas ayuda urgente, este test no es el canal adecuado: comunícate con los servicios de emergencia de tu país o con una línea de ayuda. <strong>[COMPLETAR: enlace a líneas de ayuda]</strong></p>
+<div class="calma-test__actions">
+<a class="calma-test__btn calma-test__btn--primary" href="/contacto/?area=habitos">Solicitar una consulta <span aria-hidden="true">→</span></a>
+<button type="button" class="calma-test__btn calma-test__btn--secondary" data-calma-restart>Repetir el test</button>
+</div>
+</section>
+<script>
+(function () {
+  'use strict';
+  var root = document.getElementById('calma-test');
+  if (!root || root.getAttribute('data-calma-ready') === '1') { return; }
+  root.setAttribute('data-calma-ready', '1');
+  // Perfiles: mismos umbrales y cálculo que el test original (porcentaje del puntaje sobre el máximo).
+  var PROFILES = [
+    { min: 38, emoji: '🌿', title: 'Arquitecto digital', subtitle: 'Construiste una relación con la tecnología que tiene criterio.', analysis: 'Tu relación refleja algo poco común: eliges la tecnología como herramienta. En un ecosistema diseñado para capturar atención, ese nivel de intencionalidad es genuino.' },
+    { min: 32, emoji: '⚖️', title: 'Consumo consciente', subtitle: 'Sabes lo que pasa. Tomas decisiones activas.', analysis: 'Conciencia es tu fortaleza. No siempre haces lo que querrías, pero sabes cuándo estás en piloto automático — eso ya es la mitad del trabajo.' },
+    { min: 24, emoji: '🧭', title: 'Navegante con marea', subtitle: 'Avanzas, pero la corriente también te lleva.', analysis: 'Momentos de manejo claro y momentos donde la tecnología toma decisiones. El entorno está diseñado con más recursos que cualquier resistencia individual.' },
+    { min: 16, emoji: '🌊', title: 'En modo automático', subtitle: 'La tecnología opera por inercia más seguido.', analysis: 'Patrón claro: la tecnología opera sin decisión activa. Eso no es tu falla — es consecuencia del diseño orientado a maximizar uso.' },
+    { min: 8, emoji: '📡', title: 'Corriente abajo', subtitle: 'El ecosistema digital te tiene.', analysis: 'La tecnología ocupa un lugar central sin haberlo elegido activamente. Reconocerlo sin juzgarte es el primer paso real.' },
+    { min: 0, emoji: '🆘', title: 'Atrapado en el sistema', subtitle: 'El consumo digital organiza varias áreas.', analysis: 'El hecho de que estés leyendo esto indica que una parte de ti ya sabe que algo puede cambiar. Eso es suficiente para empezar.' }
+  ];
+  var FEEDBACK = {
+    good: { icon: '✓', label: 'Buen manejo', text: 'Tu respuesta refleja intencionalidad.' },
+    mid: { icon: '⚠', label: 'Patrón común', text: 'Esta respuesta describe algo que muchos experimentan.' },
+    low: { icon: '🔵', label: 'Comportamiento frecuente', text: 'En un ecosistema diseñado para capturar atención, esta es la respuesta esperable.' }
+  };
+  function q(sel) { return root.querySelector(sel); }
+  var form = q('[data-calma-form]');
+  var intro = q('[data-calma-intro]');
+  var result = q('[data-calma-result]');
+  var live = q('[data-calma-live]');
+  var feedback = q('[data-calma-feedback]');
+  var nav = q('[data-calma-nav]');
+  var prevBtn = q('[data-calma-prev]');
+  var nextBtn = q('[data-calma-next]');
+  var progress = q('[data-calma-progress]');
+  var progressText = q('[data-calma-progress-text]');
+  var bar = q('[data-calma-bar]');
+  var errorMsg = q('[data-calma-error]');
+  var steps = Array.prototype.slice.call(root.querySelectorAll('[data-calma-step]'));
+  var totalQuestions = steps.length - 1;
+  var current = 0;
+  var feedbackShown = false;
+  var reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
+  function announce(text) {
+    live.textContent = '';
+    window.setTimeout(function () { live.textContent = text; }, 60);
+  }
+  function focusHeading(el) {
+    if (!el) { return; }
+    try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
+    if (el.scrollIntoView) { el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' }); }
+  }
+  function checkedIn(step) { return step.querySelector('input[type="radio"]:checked'); }
+  function clearFeedback() {
+    feedbackShown = false;
+    feedback.textContent = '';
+  }
+  function setNextLabel() {
+    if (current === 0) { nextBtn.innerHTML = 'Continuar <span aria-hidden="true">→</span>'; return; }
+    if (!feedbackShown) { nextBtn.textContent = 'Siguiente'; return; }
+    nextBtn.textContent = current === totalQuestions ? 'Ver mi resultado' : 'Siguiente pregunta';
+  }
+  function hideError() {
+    errorMsg.hidden = true;
+    steps[0].setAttribute('aria-describedby', 'calma-test-gen-help');
+  }
+  function showStep(index) {
+    current = index;
+    intro.hidden = true;
+    result.hidden = true;
+    form.hidden = false;
+    steps.forEach(function (s, i) { s.hidden = i !== index; });
+    clearFeedback();
+    hideError();
+    var label = index === 0 ? 'Paso 1 de 2' : 'Pregunta ' + index + ' de ' + totalQuestions;
+    progressText.textContent = label;
+    bar.style.width = Math.round((index / totalQuestions) * 100) + '%';
+    setNextLabel();
+    focusHeading(steps[index].querySelector('h2'));
+    announce(label);
+  }
+  function showIntro() {
+    form.hidden = true;
+    result.hidden = true;
+    intro.hidden = false;
+    focusHeading(q('#calma-test-antes'));
+    announce('Inicio del test');
+  }
+  function renderFeedback(score) {
+    var kind = score >= 3 ? 'good' : (score === 2 ? 'mid' : 'low');
+    var f = FEEDBACK[kind];
+    var box = document.createElement('div');
+    box.className = 'calma-test__feedback-box calma-test__feedback-box--' + kind;
+    var p = document.createElement('p');
+    var icon = document.createElement('span');
+    icon.setAttribute('aria-hidden', 'true');
+    icon.textContent = f.icon + ' ';
+    var strong = document.createElement('strong');
+    strong.textContent = f.label + '.';
+    p.appendChild(icon);
+    p.appendChild(strong);
+    p.appendChild(document.createTextNode(' ' + f.text));
+    box.appendChild(p);
+    var factSrc = steps[current].querySelector('[data-calma-fact]');
+    if (factSrc) {
+      var fact = document.createElement('p');
+      fact.className = 'calma-test__fact';
+      var fs = document.createElement('strong');
+      fs.textContent = 'Dato: ';
+      fact.appendChild(fs);
+      fact.appendChild(document.createTextNode(factSrc.textContent));
+      box.appendChild(fact);
+    }
+    feedback.textContent = '';
+    feedback.appendChild(box);
+    feedbackShown = true;
+    setNextLabel();
+  }
+  function calculate() {
+    var score = 0;
+    for (var i = 1; i <= totalQuestions; i++) {
+      var c = checkedIn(steps[i]);
+      if (c) { score += parseInt(c.value, 10); }
+    }
+    var max = totalQuestions * 4;
+    var pct = Math.round((score / max) * 100);
+    var profile = PROFILES[PROFILES.length - 1];
+    for (var j = 0; j < PROFILES.length; j++) {
+      if (pct >= PROFILES[j].min) { profile = PROFILES[j]; break; }
+    }
+    return { score: score, max: max, pct: pct, profile: profile };
+  }
+  function showResult() {
+    var r = calculate();
+    q('[data-calma-r-emoji]').textContent = r.profile.emoji;
+    q('[data-calma-r-title]').textContent = r.profile.title;
+    q('[data-calma-r-subtitle]').textContent = r.profile.subtitle;
+    q('[data-calma-r-analysis]').textContent = r.profile.analysis;
+    var sc = q('[data-calma-r-score]');
+    sc.textContent = '';
+    var strong = document.createElement('strong');
+    strong.textContent = String(r.score);
+    sc.appendChild(document.createTextNode('Tu puntaje: '));
+    sc.appendChild(strong);
+    sc.appendChild(document.createTextNode(' de ' + r.max + ' puntos'));
+    q('[data-calma-r-bar]').style.width = r.pct + '%';
+    root.setAttribute('data-calma-profile', r.profile.title);
+    root.setAttribute('data-calma-score', String(r.score));
+    form.hidden = true;
+    intro.hidden = true;
+    result.hidden = false;
+    focusHeading(q('[data-calma-r-title]'));
+    announce('Tu resultado está listo');
+  }
+  function next() {
+    var step = steps[current];
+    var chosen = checkedIn(step);
+    if (!chosen) {
+      if (current === 0) {
+        errorMsg.hidden = false;
+        step.setAttribute('aria-describedby', 'calma-test-gen-help calma-test-gen-error');
+      }
+      announce('Elige una opción para continuar.');
+      var first = step.querySelector('input[type="radio"]');
+      if (first) { first.focus(); }
+      return;
+    }
+    if (current === 0) { showStep(1); return; }
+    if (!feedbackShown) { renderFeedback(parseInt(chosen.value, 10)); return; }
+    if (current === totalQuestions) { showResult(); } else { showStep(current + 1); }
+  }
+  form.addEventListener('submit', function (ev) { ev.preventDefault(); next(); });
+  prevBtn.addEventListener('click', function () { if (current === 0) { showIntro(); } else { showStep(current - 1); } });
+  form.addEventListener('change', function (ev) {
+    if (!ev.target || ev.target.type !== 'radio') { return; }
+    if (current === 0) { hideError(); }
+    if (feedbackShown) { clearFeedback(); setNextLabel(); }
+  });
+  q('[data-calma-start]').addEventListener('click', function () { showStep(0); });
+  q('[data-calma-restart]').addEventListener('click', function () { form.reset(); showStep(0); });
+  root.classList.add('calma-test--js');
+  q('[data-calma-nojs]').hidden = true;
+  q('[data-calma-start]').hidden = false;
+  progress.hidden = false;
+  nav.hidden = false;
+  form.hidden = true;
+})();
+</script>
+</div>

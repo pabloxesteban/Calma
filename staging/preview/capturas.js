@@ -33,6 +33,10 @@ const fileFor = (p) => path.join(BUILD, (p.replace(/\/$/, '').replace(/\//g, '_'
       const url = req.url();
       if (!/^https?:/.test(url)) return route.continue();
       const u = new URL(url);
+      if (mode === '--preview' && u.hostname === 'codigocalma.com' && u.pathname.startsWith('/wp-content/plugins/codigo-calma/')) {
+        const f = path.join(__dirname, '../..', decodeURIComponent(u.pathname));
+        if (fs.existsSync(f)) return route.fulfill({ status: 200, body: fs.readFileSync(f), contentType: f.endsWith('.woff2') ? 'font/woff2' : f.endsWith('.css') ? 'text/css' : 'application/octet-stream', headers: { 'access-control-allow-origin': '*' } });
+      }
       if (mode === '--preview' && req.resourceType() === 'document' && u.hostname === 'codigocalma.com') {
         const f = fileFor(u.pathname.replace(/^\//, ''));
         if (fs.existsSync(f)) return route.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: fs.readFileSync(f) });

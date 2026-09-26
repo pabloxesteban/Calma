@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Código Calma
  * Description:       Design system (tokens calma-*) y correcciones del sitio sobre el tema Kadence, sin tema hijo (así se conservan los ajustes del Personalizador).
- * Version:           1.0.0-etapa1
+ * Version:           1.1.0-etapa2
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Author:            Código Calma
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CALMA_VERSION', '1.0.0-etapa1' );
+define( 'CALMA_VERSION', '1.1.0-etapa2' );
 define( 'CALMA_URL', plugin_dir_url( __FILE__ ) );
 define( 'CALMA_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -33,12 +33,9 @@ add_action( 'wp_enqueue_scripts', function () {
 		$dep,
 		filemtime( $dir . 'calma-tokens.css' )
 	);
-	wp_enqueue_style(
-		'calma-etapa1',
-		$uri . 'calma-etapa1.css',
-		array( 'calma-tokens' ),
-		filemtime( $dir . 'calma-etapa1.css' )
-	);
+	wp_enqueue_style( 'calma-fonts', $uri . 'calma-fonts.css', array(), filemtime( $dir . 'calma-fonts.css' ) );
+	wp_enqueue_style( 'calma-etapa1', $uri . 'calma-etapa1.css', array( 'calma-tokens' ), filemtime( $dir . 'calma-etapa1.css' ) );
+	wp_enqueue_style( 'calma-etapa2', $uri . 'calma-etapa2.css', array( 'calma-etapa1', 'calma-fonts' ), filemtime( $dir . 'calma-etapa2.css' ) );
 }, 20 );
 
 /**
@@ -81,4 +78,33 @@ add_action( 'kadence_before_main_content', function () {
 		'<header class="calma-archive-header"><h1 class="calma-archive-title">%s</h1></header>',
 		esc_html( $page_id ? get_the_title( $page_id ) : __( 'Blog', 'codigo-calma' ) )
 	);
+} );
+
+/**
+ * Etapa 2 · Fuentes locales: se deja de pedir Google Fonts (Kadence carga Lora,
+ * Inter y Jost desde fonts.googleapis.com) y se precargan las dos que usa el
+ * primer render. Equivale a elegir "Inherit"/fuentes del sistema en el
+ * Personalizador y a activar "Cargar fuentes localmente".
+ */
+// Kadence (tema) entrega sus fuentes a Kadence Blocks, que imprime un único
+// <link id="kadence-fonts-gfonts-css"> en wp_head (prioridad 90) y wp_footer.
+add_filter( 'kadence_blocks_print_google_fonts', '__return_false' );
+add_filter( 'kadence_blocks_print_footer_google_fonts', '__return_false' );
+
+add_action( 'wp_head', function () {
+	foreach ( array( 'inter-latin-wght-normal.woff2', 'lora-latin-wght-normal.woff2' ) as $font ) {
+		printf(
+			'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n",
+			esc_url( CALMA_URL . 'assets/fonts/' . $font )
+		);
+	}
+}, 1 );
+
+/**
+ * Etapa 2 · Logo: se muestra a 48 px pero WordPress declara sizes="100vw" y el
+ * navegador descarga la versión de 512 px. Con sizes="48px" baja la de 150 px.
+ */
+add_filter( 'get_custom_logo_image_attributes', function ( $attr ) {
+	$attr['sizes'] = '48px';
+	return $attr;
 } );

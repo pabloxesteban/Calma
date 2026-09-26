@@ -1,0 +1,621 @@
+/* ==========================================================================
+   Código Calma — Etapa 2: design system aplicado a todo el sitio
+   Componentes sobre el marcado de Kadence (sin tocar cada página).
+   Referencia: .claude/skills/design-system/SKILL.md
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tipografía global: Lora para títulos, Inter para texto e interfaz (UX-15)
+   Kadence lee estas variables; el ajuste equivalente en el Personalizador
+   está en docs/implementacion/etapa-2.md.
+   -------------------------------------------------------------------------- */
+html:root {
+	--global-body-font-family: var(--calma-font-body);
+	--global-heading-font-family: var(--calma-font-heading);
+	--global-primary-nav-font-family: var(--calma-font-body);
+	/* Lavanda más suave en fondos de sección y botones secundarios. */
+	--global-palette7: #ece8fb;
+}
+
+body {
+	font-family: var(--calma-font-body);
+	font-size: var(--calma-fs-base);
+	line-height: var(--calma-lh-body);
+	color: var(--calma-text);
+	-webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+.site-title,
+.entry-title {
+	font-family: var(--calma-font-heading);
+	font-weight: 700;
+	line-height: var(--calma-lh-heading);
+	letter-spacing: -0.01em;
+	color: var(--calma-text);
+	overflow-wrap: normal;
+	word-break: normal;
+	hyphens: manual;
+}
+h1 { font-size: var(--calma-fs-2xl); }
+h2 { font-size: var(--calma-fs-xl); }
+h3 { font-size: var(--calma-fs-lg); }
+h4 { font-size: 1.125rem; }
+h5, h6 { font-size: 1rem; }
+
+/* Bloques con clases de otras familias heredadas (Jost, Sora, Playfair). */
+.wp-block-kadence-advancedheading:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+	font-family: var(--calma-font-body);
+}
+
+/* --------------------------------------------------------------------------
+   2. Header unificado (UX-06, UX-26)
+   -------------------------------------------------------------------------- */
+.site-header .site-main-header-wrap .site-header-row-container-inner {
+	background: var(--calma-surface);
+	border-bottom: 1px solid var(--calma-border);
+}
+.site-main-header-inner-wrap {
+	min-height: 72px;
+}
+.site-branding a.brand img.custom-logo,
+.site-branding a.brand img {
+	width: 48px;
+	max-width: 48px;
+	height: auto;
+}
+.site-branding .site-title {
+	font-family: var(--calma-font-heading);
+	font-size: 1.25rem;
+	font-weight: 700;
+	margin: 0;
+	white-space: nowrap;
+}
+.site-branding.branding-layout-standard .brand {
+	gap: var(--calma-space-3);
+}
+
+/* Navegación de escritorio */
+.header-navigation .header-menu-container > ul > li > a {
+	font-family: var(--calma-font-body);
+	font-size: 0.9375rem;
+	font-weight: 500;
+	color: var(--calma-text);
+	min-height: 44px;
+	padding-inline: 0.75em;
+}
+.header-navigation .header-menu-container > ul > li.current-menu-item > a,
+.header-navigation .header-menu-container > ul > li.current-menu-ancestor > a,
+.header-navigation .header-menu-container > ul > li > a:hover {
+	color: var(--calma-primary);
+}
+.header-navigation .header-menu-container > ul > li.current-menu-item > a {
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 6px;
+}
+.header-navigation .sub-menu {
+	background: var(--calma-surface);
+	border: 1px solid var(--calma-border);
+	border-radius: var(--calma-radius-sm);
+	box-shadow: var(--calma-shadow);
+	padding: var(--calma-space-2) 0;
+}
+.header-navigation .sub-menu li a {
+	color: var(--calma-text);
+	font-size: 0.9375rem;
+	min-height: 44px;
+	display: flex;
+	align-items: center;
+}
+.header-navigation .sub-menu li a:hover {
+	background: var(--calma-surface-soft);
+	color: var(--calma-primary);
+}
+
+/* Botón del header (Personalizar > Encabezado > Botón) */
+.site-header .header-button,
+.site-header .mobile-header-button,
+#mobile-drawer .mobile-header-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
+	padding: 10px 20px;
+	border-radius: var(--calma-radius-pill);
+	background: var(--calma-primary);
+	color: #fff;
+	font: 600 0.9375rem/1.2 var(--calma-font-body);
+	text-decoration: none;
+	border: 0;
+}
+.site-header .header-button:hover,
+#mobile-drawer .mobile-header-button:hover {
+	background: var(--calma-primary-hover);
+	color: #fff;
+}
+#mobile-drawer .mobile-header-button-wrap {
+	padding: var(--calma-space-6) 0 0;
+}
+#mobile-drawer .mobile-header-button {
+	width: 100%;
+	min-height: 48px;
+}
+#mobile-drawer .drawer-content {
+	padding-inline: var(--calma-gutter);
+}
+#mobile-drawer .mobile-navigation ul li > a {
+	font-family: var(--calma-font-body);
+	font-size: 1.0625rem;
+	font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   3. Botones (componente .calma-btn y botones de Kadence/WordPress)
+   -------------------------------------------------------------------------- */
+.calma-btn,
+.kb-button,
+.wp-block-button__link,
+.button,
+input[type="submit"],
+button[type="submit"] {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--calma-space-2);
+	min-height: 48px;
+	padding: 12px 24px;
+	border-radius: var(--calma-radius-pill);
+	font-family: var(--calma-font-body);
+	font-size: var(--calma-fs-sm);
+	font-weight: 600;
+	line-height: 1.2;
+	text-decoration: none;
+	transition: background var(--calma-dur) var(--calma-ease), color var(--calma-dur) var(--calma-ease);
+}
+.calma-btn--primary {
+	background: var(--calma-primary);
+	color: #fff;
+}
+.calma-btn--primary:hover {
+	background: var(--calma-primary-hover);
+	color: #fff;
+}
+.calma-btn--secondary {
+	background: transparent;
+	color: var(--calma-primary);
+	box-shadow: inset 0 0 0 2px currentColor;
+}
+.calma-btn--secondary:hover {
+	background: var(--calma-surface-soft);
+}
+.calma-btn--on-dark {
+	background: #fff;
+	color: var(--calma-navy);
+}
+/* Botones "contorno" de Kadence */
+.kb-button.kb-btn-global-outline {
+	background: transparent;
+	color: var(--calma-primary);
+	box-shadow: inset 0 0 0 2px var(--calma-primary);
+}
+
+/* --------------------------------------------------------------------------
+   4. Tarjetas de artículos: blog, archivos, inicio y relacionadas (UX-23)
+   -------------------------------------------------------------------------- */
+.loop-entry.entry,
+.kb-posts .loop-entry {
+	background: var(--calma-surface);
+	border: 1px solid var(--calma-border);
+	border-radius: var(--calma-radius);
+	box-shadow: var(--calma-shadow-sm);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+.loop-entry .post-thumbnail {
+	margin: 0;
+}
+.loop-entry .post-thumbnail-inner img,
+.loop-entry .post-thumbnail img {
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	width: 100%;
+	height: auto;
+}
+.loop-entry .entry-content-wrap {
+	padding: clamp(20px, 4vw, 24px) !important;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+.loop-entry .entry-header {
+	margin-bottom: var(--calma-space-3);
+}
+.loop-entry .entry-title {
+	font-size: var(--calma-fs-lg) !important;
+	line-height: 1.25 !important;
+	margin: var(--calma-space-2) 0;
+}
+.loop-entry .entry-title a {
+	color: var(--calma-text);
+	text-decoration: none;
+}
+.loop-entry .entry-title a:hover {
+	color: var(--calma-primary);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+.loop-entry .entry-summary {
+	color: var(--calma-text-muted);
+	font-size: var(--calma-fs-sm);
+	line-height: 1.6;
+}
+.loop-entry .entry-summary p {
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	margin: 0;
+}
+.loop-entry .entry-footer {
+	margin-top: auto;
+	padding-top: var(--calma-space-4);
+}
+/* "Leer más" como enlace de 44 px (A11Y-18: el nombre del artículo va en texto oculto) */
+.loop-entry .post-more-link {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--calma-space-2);
+	min-height: 44px;
+	color: var(--calma-primary);
+	font-weight: 600;
+	font-size: var(--calma-fs-sm);
+	letter-spacing: 0;
+	text-transform: none;
+}
+
+/* Badges de categoría (una categoría = un color, UX-14) */
+.entry-taxonomies,
+.loop-entry .entry-taxonomies {
+	margin-bottom: var(--calma-space-2);
+}
+.entry-taxonomies .category-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--calma-space-2);
+}
+.entry-taxonomies .category-links a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 32px;
+	padding: 4px 12px;
+	border-radius: var(--calma-radius-pill);
+	background: var(--calma-surface-soft);
+	color: var(--calma-violet) !important;
+	font: 600 var(--calma-fs-xs)/1.2 var(--calma-font-body);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+.entry-taxonomies .category-links a:hover {
+	background: var(--calma-lavender);
+}
+.entry-taxonomies .category-links a[href*="/bienestar/"] { background: #e7f5ee; color: #1f6b47 !important; }
+.entry-taxonomies .category-links a[href*="/ciberseguridad/"] { background: #fdeee7; color: #9a3412 !important; }
+.entry-taxonomies .category-links a[href*="/neurociencia/"] { background: #e8f1fa; color: #1d5f94 !important; }
+.entry-taxonomies .category-links a[href*="/psicologia/"] { background: #fdf3dc; color: #7a4d00 !important; }
+/* El separador " | " entre categorías es un nodo de texto: se oculta con
+   font-size 0 en el contenedor (los badges definen su propio tamaño). */
+.entry-taxonomies .category-links {
+	font-size: 0;
+}
+
+/* Metadatos (autora y fecha): objetivos de 44 px sin cambiar el aspecto (UX-24) */
+.entry-meta {
+	font-size: var(--calma-fs-xs);
+	color: var(--calma-text-muted);
+	gap: 0 var(--calma-space-2);
+}
+.entry-meta a {
+	color: var(--calma-text-muted);
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+}
+.entry-meta a:hover {
+	color: var(--calma-primary);
+}
+
+/* Grilla del blog y del bloque Posts */
+.kb-posts.grid-cols,
+#archive-container.grid-cols {
+	gap: var(--calma-space-6);
+}
+
+/* --------------------------------------------------------------------------
+   5. Tarjetas de información (Info Box de Kadence) y tarjetas giratorias
+   -------------------------------------------------------------------------- */
+.kt-blocks-info-box-link-wrap {
+	border-radius: var(--calma-radius) !important;
+}
+.kt-blocks-info-box-title {
+	font-family: var(--calma-font-heading);
+	font-weight: 700;
+	overflow-wrap: normal;
+	word-break: normal;
+}
+.kt-blocks-info-box-text {
+	color: var(--calma-text-muted);
+	line-height: 1.55;
+}
+/* Cifras del inicio (Info Box alineadas a la derecha): lectura a la izquierda */
+.home .kt-blocks-info-box-link-wrap.kt-info-halign-right {
+	text-align: left;
+}
+.home .kt-blocks-info-box-link-wrap.kt-info-halign-right .kt-blocks-info-box-title {
+	font-size: var(--calma-fs-lg) !important;
+	white-space: nowrap;
+	color: var(--calma-primary);
+	margin-bottom: 0;
+}
+
+/* Tarjetas giratorias del inicio (ZoloBlocks): títulos sin cortes a mitad de palabra */
+.zolo-flip-box_title {
+	font-family: var(--calma-font-heading) !important;
+	font-weight: 700 !important;
+	font-size: clamp(1.25rem, 1rem + 1vw, 1.625rem) !important;
+	line-height: 1.25 !important;
+	overflow-wrap: normal !important;
+	word-break: normal !important;
+	hyphens: manual !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. Lectura de artículos (entradas individuales)
+   -------------------------------------------------------------------------- */
+.single-post .entry-content {
+	font-size: var(--calma-fs-base);
+	line-height: var(--calma-lh-body);
+}
+.single-post .entry-content > :where(p, ul, ol, blockquote, h2, h3, h4) {
+	max-width: var(--calma-measure);
+}
+.single-post .entry-content h2 {
+	margin-top: 2em;
+	margin-bottom: 0.5em;
+}
+.single-post .entry-content h3 {
+	margin-top: 1.6em;
+	margin-bottom: 0.4em;
+}
+.single-post .entry-content p {
+	margin-bottom: 1.1em;
+}
+.entry-content a:not(.kb-button):not(.wp-block-button__link):not(.button) {
+	color: var(--calma-primary);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+}
+.entry-content a:not(.kb-button):not(.wp-block-button__link):not(.button):hover {
+	color: var(--calma-primary-hover);
+	text-decoration-thickness: 2px;
+}
+.single-post .entry-content blockquote {
+	border-left: 4px solid var(--calma-lavender);
+	background: var(--calma-surface-soft);
+	padding: var(--calma-space-4) var(--calma-space-6);
+	border-radius: 0 var(--calma-radius-sm) var(--calma-radius-sm) 0;
+	font-style: normal;
+}
+.single-post .entry-header .entry-title {
+	margin-bottom: var(--calma-space-3);
+}
+/* Fechas con etiqueta visible (GEO-13): "Publicado" / "Actualizado" */
+.entry-meta .posted-on time.entry-date.published::before {
+	content: "Publicado: ";
+}
+.entry-meta .posted-on time.updated:not(.published)::before {
+	content: " · Actualizado: ";
+}
+.entry-meta .posted-on time.updated:not(.published) {
+	display: inline;
+}
+/* En las tarjetas basta la fecha de publicación. */
+.loop-entry .entry-meta .posted-on time.updated:not(.published) {
+	display: none;
+}
+.loop-entry .entry-meta .posted-on time.entry-date.published::before {
+	content: none;
+}
+
+/* Compartir (AddToAny) y navegación entre entradas */
+.addtoany_list a {
+	min-width: 44px;
+	min-height: 44px;
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+}
+.post-navigation .nav-links a {
+	display: block;
+	padding: var(--calma-space-4);
+	border: 1px solid var(--calma-border);
+	border-radius: var(--calma-radius);
+	background: var(--calma-surface);
+	text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   7. Secciones: un solo lenguaje de fondos (claro / lavanda suave / navy)
+   -------------------------------------------------------------------------- */
+.has-theme-palette7-background-color,
+.kt-row-has-bg.has-theme-palette7-background-color {
+	background-color: var(--calma-surface-soft) !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. Footer en cuatro columnas (UX-17). El contenido vive en los widgets
+   del pie (ver contenido/etapa-2/footer/).
+   -------------------------------------------------------------------------- */
+.site-footer {
+	background: var(--calma-navy);
+	color: #dbe3f4;
+	font-size: var(--calma-fs-sm);
+}
+.site-footer .site-footer-row-container-inner {
+	background: transparent !important;
+}
+.site-footer a {
+	color: #fff;
+}
+.site-footer a:hover {
+	color: var(--calma-lavender);
+}
+.calma-footer {
+	display: grid;
+	gap: var(--calma-space-8);
+	padding: var(--calma-space-12) 0 var(--calma-space-8);
+	grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+	.calma-footer {
+		grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+		gap: var(--calma-space-10);
+	}
+}
+.calma-footer__brand {
+	font-family: var(--calma-font-heading);
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: #fff;
+	margin: 0 0 var(--calma-space-3);
+}
+.calma-footer__title {
+	font-family: var(--calma-font-body);
+	font-size: var(--calma-fs-xs);
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #b9c6e4;
+	margin: 0 0 var(--calma-space-3);
+}
+.calma-footer p {
+	margin: 0 0 var(--calma-space-3);
+	line-height: 1.6;
+}
+.calma-footer ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.calma-footer li a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	text-decoration: none;
+}
+.calma-footer li a:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+.site-footer .calma-footer .calma-btn--on-dark {
+	margin-top: var(--calma-space-2);
+	color: var(--calma-navy);
+	background: #fff;
+}
+.site-footer .calma-footer .calma-btn--on-dark:hover {
+	background: var(--calma-lavender);
+	color: var(--calma-navy);
+}
+.calma-footer-legal {
+	border-top: 1px solid rgb(255 255 255 / 0.15);
+	padding: var(--calma-space-6) 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--calma-space-2) var(--calma-space-6);
+	justify-content: space-between;
+	font-size: var(--calma-fs-xs);
+	color: #b9c6e4;
+}
+.calma-footer-legal p {
+	margin: 0;
+	max-width: 70ch;
+}
+.calma-footer-legal a {
+	color: #fff;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+.site-footer .calma-placeholder {
+	background: #fff4d6;
+	color: #6b4a00;
+}
+
+/* --------------------------------------------------------------------------
+   9. Componentes reutilizables para bloques HTML (tarjeta, paso, badge, CTA)
+   -------------------------------------------------------------------------- */
+.calma-card {
+	background: var(--calma-surface);
+	border: 1px solid var(--calma-border);
+	border-radius: var(--calma-radius);
+	padding: clamp(20px, 4vw, 32px);
+	box-shadow: var(--calma-shadow-sm);
+}
+.calma-step {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: var(--calma-space-4);
+	align-items: start;
+}
+.calma-step__num {
+	inline-size: 40px;
+	block-size: 40px;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	background: var(--calma-primary);
+	color: #fff;
+	font-weight: 700;
+}
+.calma-badge {
+	display: inline-block;
+	padding: 4px 12px;
+	border-radius: var(--calma-radius-pill);
+	background: var(--calma-surface-soft);
+	color: var(--calma-violet);
+	font: 600 var(--calma-fs-xs)/1.4 var(--calma-font-body);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+.calma-cta {
+	background: var(--calma-navy);
+	color: #dbe3f4;
+	border-radius: var(--calma-radius-lg);
+	padding: clamp(32px, 6vw, 64px) clamp(20px, 5vw, 48px);
+	text-align: center;
+}
+.calma-cta :is(h2, h3) {
+	color: #fff;
+}
+.calma-grid {
+	display: grid;
+	gap: var(--calma-space-6);
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+/* --------------------------------------------------------------------------
+   10. Formularios (Kadence Advanced Form y buscador)
+   -------------------------------------------------------------------------- */
+.wp-block-kadence-advanced-form .kb-field,
+.search-form .search-field {
+	border: 1px solid #94a3b8;
+	border-radius: var(--calma-radius-sm);
+	background: var(--calma-surface);
+	color: var(--calma-text);
+	font-family: var(--calma-font-body);
+}
+.wp-block-kadence-advanced-form .kb-adv-form-field {
+	margin-bottom: var(--calma-space-5);
+}

@@ -1,0 +1,84 @@
+{
+ "version": "etapa-2",
+ "correcciones": [
+  {
+   "id": "H10",
+   "tipo": "encabezado",
+   "paginas": [
+    "herramientas"
+   ],
+   "donde": "Herramientas > \"Aquí encontrarás recomendaciones…\" > Nivel H6 → Párrafo (es una bajada)",
+   "antes": "H6",
+   "despues": "Párrafo",
+   "html_buscar": "<h6 class=\"wp-block-heading has--font-size has-medium-font-size\">Aquí",
+   "html_reemplazar": "<p class=\"has-medium-font-size\">Aquí",
+   "origen": "QA a11y etapa 1 (heading-order)"
+  },
+  {
+   "id": "H11-196c",
+   "tipo": "encabezado",
+   "paginas": [
+    "herramientas"
+   ],
+   "donde": "Herramientas > nombre de la app «Headspace» > Nivel H6 → H3",
+   "antes": "H6",
+   "despues": "H3",
+   "html_buscar": "<h6 class=\"kt-adv-heading1618_196c3e-73",
+   "html_reemplazar": "<h3 class=\"kt-adv-heading1618_196c3e-73",
+   "origen": "QA a11y etapa 1 (heading-order)"
+  },
+  {
+   "id": "H11-54dd",
+   "tipo": "encabezado",
+   "paginas": [
+    "herramientas"
+   ],
+   "donde": "Herramientas > nombre de la app «Finch» > Nivel H6 → H3",
+   "antes": "H6",
+   "despues": "H3",
+   "html_buscar": "<h6 class=\"kt-adv-heading1618_54dd54-e0",
+   "html_reemplazar": "<h3 class=\"kt-adv-heading1618_54dd54-e0",
+   "origen": "QA a11y etapa 1 (heading-order)"
+  },
+  {
+   "id": "H11-0cf8",
+   "tipo": "encabezado",
+   "paginas": [
+    "herramientas"
+   ],
+   "donde": "Herramientas > nombre de la app «Calm» > Nivel H6 → H3",
+   "antes": "H6",
+   "despues": "H3",
+   "html_buscar": "<h6 class=\"kt-adv-heading1618_0cf81c-b9",
+   "html_reemplazar": "<h3 class=\"kt-adv-heading1618_0cf81c-b9",
+   "origen": "QA a11y etapa 1 (heading-order)"
+  },
+  {
+   "id": "H11-0e7c",
+   "tipo": "encabezado",
+   "paginas": [
+    "herramientas"
+   ],
+   "donde": "Herramientas > nombre de la app «Daylio» > Nivel H6 → H3",
+   "antes": "H6",
+   "despues": "H3",
+   "html_buscar": "<h6 class=\"kt-adv-heading1618_0e7c38-7b",
+   "html_reemplazar": "<h3 class=\"kt-adv-heading1618_0e7c38-7b",
+   "origen": "QA a11y etapa 1 (heading-order)"
+  },
+  {
+   "id": "H11-db9f",
+   "tipo": "encabezado",
+   "paginas": [
+    "herramientas"
+   ],
+   "donde": "Herramientas > nombre de la app «PTSD Coach y Mindfulness Coach» > Nivel H6 → H3",
+   "antes": "H6",
+   "despues": "H3",
+   "html_buscar": "<h6 class=\"kt-adv-heading1618_db9f2d-e0",
+   "html_reemplazar": "<h3 class=\"kt-adv-heading1618_db9f2d-e0",
+   "origen": "QA a11y etapa 1 (heading-order)"
+  }
+ ],
+ "excluidas": []
+}

@@ -1,0 +1,99 @@
+<!-- Código Calma · Herramientas · "Pequeños hábitos, gran diferencia" (Etapa 2)
+     Reemplaza el bloque HTML personalizado "Herramientas de calma v3" (desde el
+     comentario ═══ hasta el </script>). Cambios: grilla de 3 tarjetas en vez de
+     carrusel horizontal (sin scroll lateral ni puntos de navegación, A11Y y
+     UX-21), sin Google Fonts (Playfair/Inter 300), texto legible (≥ 16 px, peso
+     400), tuteo ("sientes", "procesas"), ilustraciones decorativas con
+     aria-hidden. El texto es el original. Sin JavaScript. -->
+<section class="calma-tools" aria-labelledby="calma-tools-title">
+  <style>
+    .calma-tools { max-width: var(--calma-container, 1160px); margin: var(--calma-section-y, 64px) auto; padding: 0 var(--calma-gutter, 20px); box-sizing: border-box; }
+    .calma-tools *, .calma-tools *::before, .calma-tools *::after { box-sizing: border-box; }
+    .calma-tools__eyebrow { display: inline-block; margin: 0 0 var(--calma-space-2, 8px); font: 600 var(--calma-fs-xs, .875rem)/1.4 var(--calma-font-body, sans-serif); letter-spacing: .06em; text-transform: uppercase; color: #0f766e; }
+    .calma-tools__heading { margin: 0; font-size: var(--calma-fs-xl, 2rem); line-height: var(--calma-lh-heading, 1.2); }
+    .calma-tools__heading em { font-style: italic; color: var(--calma-primary, #1d5f94); }
+    .calma-tools__intro { margin: var(--calma-space-3, 12px) 0 var(--calma-space-8, 32px); max-width: 60ch; color: var(--calma-text-muted, #475569); }
+    .calma-tools__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--calma-space-6, 24px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+    .calma-tools__card { display: flex; flex-direction: column; align-items: flex-start; gap: var(--calma-space-3, 12px); margin: 0; padding: clamp(20px, 4vw, 28px); background: var(--calma-surface, #fff); border: 1px solid var(--calma-border, #e2e8f0); border-radius: var(--calma-radius, 16px); box-shadow: var(--calma-shadow-sm, 0 1px 2px rgb(15 23 42 / .06)); }
+    .calma-tools__illo { width: 72px; height: 72px; }
+    .calma-tools__badge { display: inline-block; padding: 4px 12px; border-radius: 999px; background: #e6f4f1; color: #0f5e57; font: 600 var(--calma-fs-xs, .875rem)/1.4 var(--calma-font-body, sans-serif); }
+    .calma-tools__title { margin: 0; font-size: var(--calma-fs-lg, 1.375rem); line-height: 1.25; }
+    .calma-tools__body { margin: 0; font-size: var(--calma-fs-sm, 1rem); line-height: 1.6; color: var(--calma-text-muted, #475569); }
+    .calma-tools__note { margin: var(--calma-space-6, 24px) 0 0; font-size: var(--calma-fs-xs, .875rem); color: var(--calma-text-muted, #475569); }
+  </style>
+  <p class="calma-tools__eyebrow">Recursos sugeridos</p>
+  <h2 class="calma-tools__heading" id="calma-tools-title">Pequeños hábitos, <em>gran diferencia</em>.</h2>
+  <p class="calma-tools__intro">Estas herramientas no reemplazan el acompañamiento profesional. Son puntos de partida que muchas personas encuentran útiles.</p>
+  <ul class="calma-tools__list">
+    <li class="calma-tools__card">
+      <svg class="calma-tools__illo" aria-hidden="true" focusable="false" width="72" height="72" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="52" width="5" height="22" rx="2" fill="#D1D5DB" stroke="#1B2A4A" stroke-width="1.2"/>
+        <rect x="6" y="46" width="20" height="8" rx="2" fill="#D1D5DB" stroke="#1B2A4A" stroke-width="1.2"/>
+        <path d="M26 70 Q32 56 40 54 Q48 56 54 70" fill="#4ECDC4" stroke="#1B2A4A" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M26 70 Q40 76 54 70" fill="#3BBDB4" opacity="0.3"/>
+        <path d="M32 62 Q28 67 38 71" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <path d="M48 62 Q52 67 42 71" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle cx="40" cy="40" r="13" fill="#4ECDC4" stroke="#1B2A4A" stroke-width="1.8"/>
+        <path d="M30 44 Q36 51 40 52 Q44 51 50 44" fill="#3BBDB4" opacity="0.3"/>
+        <rect x="57" y="16" width="20" height="26" rx="2" fill="white" stroke="#1B2A4A" stroke-width="1.4"/>
+        <rect x="55" y="18" width="4" height="22" rx="1" fill="#4ECDC4" opacity="0.6"/>
+        <line x1="61" y1="24" x2="75" y2="24" stroke="#1B2A4A" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        <line x1="61" y1="30" x2="75" y2="30" stroke="#1B2A4A" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        <line x1="61" y1="36" x2="70" y2="36" stroke="#1B2A4A" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        <line x1="73" y1="38" x2="83" y2="16" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round"/>
+        <polygon points="83,16 79,20 81,24" fill="#4ECDC4"/>
+        <line x1="16" y1="22" x2="16" y2="28" stroke="#4ECDC4" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+        <line x1="13" y1="25" x2="19" y2="25" stroke="#4ECDC4" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+        <line x1="21" y1="15" x2="23" y2="17" stroke="#4ECDC4" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+        <line x1="23" y1="15" x2="21" y2="17" stroke="#4ECDC4" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+      <span class="calma-tools__badge">Regulación emocional</span>
+      <h3 class="calma-tools__title">Llevar un diario</h3>
+      <p class="calma-tools__body">Escribir lo que sientes activa el pensamiento reflexivo. Cinco minutos al día pueden cambiar cómo procesas el estrés.</p>
+    </li>
+    <li class="calma-tools__card">
+      <svg class="calma-tools__illo" aria-hidden="true" focusable="false" width="72" height="72" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="45" cy="72" rx="22" ry="5" fill="#B39DDB" opacity="0.15"/>
+        <path d="M23 68 Q34 58 45 65 Q56 58 67 68" fill="#B39DDB" stroke="#1B2A4A" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M34 56 Q38 46 45 44 Q52 46 56 56 L56 66 L34 66 Z" fill="#B39DDB" stroke="#1B2A4A" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M34 58 Q26 60 22 68" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <path d="M56 58 Q64 60 68 68" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle cx="21" cy="69" r="3" fill="#B39DDB" stroke="#1B2A4A" stroke-width="1.2"/>
+        <circle cx="69" cy="69" r="3" fill="#B39DDB" stroke="#1B2A4A" stroke-width="1.2"/>
+        <circle cx="45" cy="32" r="13" fill="#B39DDB" stroke="#1B2A4A" stroke-width="1.8"/>
+        <path d="M36 38 Q40 44 45 44 Q50 44 54 38" fill="#9B7FCC" opacity="0.25"/>
+        <path d="M38 20 Q45 15 52 20" stroke="#B39DDB" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.8"/>
+        <path d="M34 15 Q45 8 56 15" stroke="#B39DDB" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.5"/>
+        <path d="M31 10 Q45 3 59 10" stroke="#B39DDB" stroke-width="0.9" stroke-linecap="round" fill="none" opacity="0.3"/>
+      </svg>
+      <span class="calma-tools__badge">Atención plena</span>
+      <h3 class="calma-tools__title">Meditar</h3>
+      <p class="calma-tools__body">La práctica regular entrena la atención y reduce la reactividad automática. No hace falta una hora: diez minutos hacen diferencia.</p>
+    </li>
+    <li class="calma-tools__card">
+      <svg class="calma-tools__illo" aria-hidden="true" focusable="false" width="72" height="72" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="52" width="5" height="22" rx="2" fill="#D1D5DB" stroke="#1B2A4A" stroke-width="1.2"/>
+        <rect x="6" y="46" width="20" height="8" rx="2" fill="#D1D5DB" stroke="#1B2A4A" stroke-width="1.2"/>
+        <path d="M26 70 Q32 56 40 54 Q48 56 54 70" fill="#87A878" stroke="#1B2A4A" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M26 70 Q40 76 54 70" fill="#6B9060" opacity="0.25"/>
+        <path d="M32 62 Q28 67 38 71" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <path d="M48 62 Q52 67 42 71" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle cx="40" cy="40" r="13" fill="#87A878" stroke="#1B2A4A" stroke-width="1.8"/>
+        <path d="M30 44 Q36 51 40 52 Q44 51 50 44" fill="#6B9060" opacity="0.25"/>
+        <rect x="57" y="15" width="17" height="29" rx="3" fill="white" stroke="#1B2A4A" stroke-width="1.4"/>
+        <circle cx="65" cy="40" r="2" stroke="#1B2A4A" stroke-width="1.1" fill="none"/>
+        <path d="M61 26 Q65 22 69 26" stroke="#87A878" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path d="M59 30 Q65 23 71 30" stroke="#87A878" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.6"/>
+        <circle cx="65" cy="33" r="2" fill="#87A878" opacity="0.8"/>
+        <path d="M12 22 Q12 16 18 16 L30 16 Q36 16 36 22 Q36 28 30 28 L18 28 Q15 28 14 31 L13 28 Q12 28 12 22 Z" fill="white" stroke="#1B2A4A" stroke-width="1.2"/>
+        <circle cx="19" cy="22" r="1.5" fill="#87A878"/>
+        <circle cx="24" cy="22" r="1.5" fill="#87A878"/>
+        <circle cx="29" cy="22" r="1.5" fill="#87A878"/>
+      </svg>
+      <span class="calma-tools__badge">Punto de entrada</span>
+      <h3 class="calma-tools__title">Calm y similares</h3>
+      <p class="calma-tools__body">Apps como Calm, Headspace o Insight Timer ofrecen guías accesibles. Útiles como complemento para crear el hábito inicial.</p>
+    </li>
+  </ul>
+  <p class="calma-tools__note">Estas sugerencias son orientativas y no constituyen prescripción terapéutica.</p>
+</section>
