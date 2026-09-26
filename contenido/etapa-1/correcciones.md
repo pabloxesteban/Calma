@@ -30,6 +30,9 @@ Regla: solo se corrigen errores y niveles de encabezado; el texto de las autoras
 | ☐ | I05 | texto | Inicio > Info Box de estadística 2 > título y texto | 6M+ / Más de 6 mil millones de personas acceden a Internet | +6 mil millones / de personas acceden a Internet | CRO #1, SEO-22, GEO-12 — "6M" significa 6 millones, no 6 mil millones. |
 | ☐ | I06 | encabezado | Inicio > Advanced Heading "¿Cómo son tus momentos con la tecnología?" > Nivel H1 → H2 | H1 | H2 | SEO-10, A11Y-07 — El cierre del bloque pasa a </h2>. |
 | ☐ | I07 | encabezado | Inicio > encabezado "6 escenarios en los que…" > Nivel H6 → Párrafo | H6 «6 escenarios…» | Párrafo | A11Y-07 |
+| ☐ | I08 | encabezado | Inicio > Info Box "+74 %" > Etiqueta HTML del título: H3 → P (es una cifra, no un encabezado) | H3 «+74 %» | Párrafo | QA a11y etapa 1 |
+| ☐ | I09 | encabezado | Inicio > Info Box "+6 mil millones" > Etiqueta HTML del título: H3 → P | H3 «+6 mil millones» | Párrafo | QA a11y etapa 1 |
+| ☐ | I10 | nota | Inicio > bloque "PORTAL DE CIBERPSICOLOGÍA / Comprendiendo el comportamiento…" > animación de escritura: desactivar el bucle o dejar la frase fija | Texto que se escribe y se borra en bucle | Frase fija | QA a11y Q-02 (2.2.2 Pausar, detener, ocultar) — Si se desactiva el plugin Blocks Animation (paso 3 de la guía) la frase queda fija. El color ya lo corrige el plugin del sitio. |
 
 ## Contacto
 
@@ -60,6 +63,10 @@ Regla: solo se corrigen errores y niveles de encabezado; el texto de las autoras
 | ☐ | H02 | texto | Herramientas > texto de la app de diario (Daylio) | elegís cómo te sentiste | eliges cómo te sentiste | CRO #18 |
 | ☐ | H03 | texto | Herramientas > encabezado de sección | Diario, hábitos &amp; rastreo | Diario, hábitos y seguimiento | CRO #20 |
 | ☐ | H04 | texto | Herramientas > descripción de Mindfulness Coach | Ejercicio de respiración, relajación y rastreo de síntomas. | Ejercicios de respiración, relajación y seguimiento de síntomas. | CRO #21 |
+| ☐ | H05-1 | texto | Herramientas > bloque HTML personalizado > punto del carrusel sin nombre accesible: agregar aria-label | <button class="cc-dot cc-active" data-cc="0"></button> | <button class="cc-dot cc-active" data-cc="0" aria-label="Ver tarjeta: Llevar un diario"></button> | QA a11y etapa 1 (4.1.2) |
+| ☐ | H05-2 | texto | Herramientas > bloque HTML personalizado > punto del carrusel sin nombre accesible: agregar aria-label | <button class="cc-dot" data-cc="1"></button> | <button class="cc-dot" data-cc="1" aria-label="Ver tarjeta: Meditar"></button> | QA a11y etapa 1 (4.1.2) |
+| ☐ | H05-3 | texto | Herramientas > bloque HTML personalizado > punto del carrusel sin nombre accesible: agregar aria-label | <button class="cc-dot" data-cc="2"></button> | <button class="cc-dot" data-cc="2" aria-label="Ver tarjeta: Apps"></button> | QA a11y etapa 1 (4.1.2) |
+| ☐ | H06 | texto | Herramientas > bloque HTML personalizado > contenedor del carrusel: que se pueda enfocar y desplazar con teclado | <div class="cc-slider" id="ccSlider"> | <div class="cc-slider" id="ccSlider" tabindex="0" role="region" aria-label="Herramientas de calma"> | QA a11y etapa 1 (2.1.1) |
 
 ## Ciberpsicología
 
@@ -75,6 +82,8 @@ Regla: solo se corrigen errores y niveles de encabezado; el texto de las autoras
 | ☐ | B01 | texto | Bienestar digital > Info Box "Bienestar Humano" | El objetivo final, quizas, una vida donde | El objetivo final: quizás, una vida donde | CRO #25 |
 | ☐ | B02 | encabezado | Bienestar digital > Advanced Heading "La intersección" > Nivel H1 → H2 | H1 | H2 | SEO-10 |
 | ☐ | B03 | encabezado | Bienestar digital > Advanced Heading "Primeros pasos hacia la calma" > Nivel H1 → H2 | H1 | H2 | SEO-10 |
+| ☐ | B04 | encabezado | Bienestar digital > subtítulo "Cómo comenzar a construir…" > Nivel H5 → Párrafo (es una bajada, no un encabezado) | H5 | Párrafo | QA a11y etapa 1 |
+| ☐ | B05 | encabezado | Bienestar digital > las 4 Info Box de "Primeros pasos hacia la calma" > Etiqueta HTML del título: H2 → H3 | H2 (×4) | H3 (×4) | QA a11y etapa 1 — todas |
 
 ## Descargas
 
@@ -85,11 +94,18 @@ Regla: solo se corrigen errores y niveles de encabezado; el texto de las autoras
 | ☐ | D03 | texto | Descargas > título de la guía 3 | Psicología para devs&gt;</h3> | Psicología para devs</h3> | CRO #28 |
 | ☐ | D04 | texto | Descargas > título de la guía 4 | The Psychology of Trust</h3> | The Psychology of Trust (en inglés)</h3> | CRO #29 |
 | ☐ | D05 | encabezado | Descargas > Advanced Heading "Libros de descarga gratuita" > Nivel H2 → H1 | H2 | H1 | SEO-10 — El texto ("Libros" vs. "Guías") queda para confirmar con la autora (CRO #30). |
+| ☐ | D06-29dc | encabezado | Descargas > título de la guía «Ansiedad-Funcional-vs-Ansiedad-Desbordada» > Nivel H3 → H2 (no hay H2 entre el H1 y las guías) | H3 | H2 | QA a11y etapa 1 |
+| ☐ | D06-5d07 | encabezado | Descargas > título de la guía «Guia de Ciberseguridad para Psicologos» > Nivel H3 → H2 (no hay H2 entre el H1 y las guías) | H3 | H2 | QA a11y etapa 1 |
+| ☐ | D06-0610 | encabezado | Descargas > título de la guía «Psicología para devs» > Nivel H3 → H2 (no hay H2 entre el H1 y las guías) | H3 | H2 | QA a11y etapa 1 |
+| ☐ | D06-c11f | encabezado | Descargas > título de la guía «The Psychology of Trust» > Nivel H3 → H2 (no hay H2 entre el H1 y las guías) | H3 | H2 | QA a11y etapa 1 |
+| ☐ | D07 | texto | Descargas > título de la guía 1 (hoy es el nombre del archivo) | Ansiedad-Funcional-vs-Ansiedad-Desbordada | Ansiedad funcional vs. ansiedad desbordada | CRO #26 |
+| ☐ | D08 | texto | Descargas > título de la guía 2 | Guia de Ciberseguridad para Psicologos | Guía de ciberseguridad para psicólogos | CRO #27 |
 
 ## Sobre Tatiana
 
 | ✓ | ID | Tipo | Dónde | Antes | Después | Nota |
 |---|---|---|---|---|---|---|
+| ☐ | S02 | texto | Sobre Tatiana > botón de LinkedIn (solo ícono) > Ajustes avanzados > Aria label: «Perfil de Tatiana X. Stacul en LinkedIn» | Botón con ícono sin nombre accesible | aria-label «Perfil de Tatiana X. Stacul en LinkedIn» | A11Y-08 |
 | ☐ | S01 | texto | Sobre Tatiana > párrafo de presentación | <strong>Psicóloga de formación y ciberpsicóloga de vocación</strong>, me fascina | <strong>Psicóloga de formación y ciberpsicóloga de vocación.</strong> Me fascina | CRO #31 |
 
 ## ia-y-apoyo-emocional-saber-la-autoria-cambia-tu-perspectiva

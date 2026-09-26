@@ -28,7 +28,7 @@ def entry_bounds(s):
 def apply_correcciones(slug, s):
     data = json.loads((CONT / 'correcciones.json').read_text(encoding='utf-8'))
     for c in data['correcciones']:
-        if c['tipo'] == 'categoria':
+        if c['tipo'] in ('categoria', 'nota'):
             continue
         if c['paginas'] != ['*'] and slug not in c['paginas']:
             continue
@@ -40,14 +40,15 @@ def apply_correcciones(slug, s):
         if 'encabezado' in c['tipo']:
             m_old = re.match(r'<(h[1-6]|p)\b', find)
             m_new = re.match(r'<(h[1-6]|p)\b', repl)
-            i = s.index(find)
-            s = s[:i] + repl + s[i + len(find):]
             old_tag, new_tag = m_old.group(1), m_new.group(1)
-            if old_tag != new_tag and f'</{old_tag}>' not in find:
-                # El editor cambia también la etiqueta de cierre del bloque.
-                j = s.find(f'</{old_tag}>', i + len(repl))
-                if j >= 0:
-                    s = s[:j] + f'</{new_tag}>' + s[j + len(old_tag) + 3:]
+            for _ in range(n if c.get('nota') == 'todas' else 1):
+                i = s.index(find)
+                s = s[:i] + repl + s[i + len(find):]
+                if old_tag != new_tag and f'</{old_tag}>' not in find:
+                    # El editor cambia también la etiqueta de cierre del bloque.
+                    j = s.find(f'</{old_tag}>', i + len(repl))
+                    if j >= 0:
+                        s = s[:j] + f'</{new_tag}>' + s[j + len(old_tag) + 3:]
         else:
             s = s.replace(find, repl)
         log.append(f'{slug}: {c["id"]} ×{n}')

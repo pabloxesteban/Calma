@@ -60,6 +60,14 @@ add('I07', 'encabezado', ['home'], 'Inicio > encabezado "6 escenarios en los que
     'H6 «6 escenarios…»', 'Párrafo', '<h6 class="wp-block-heading has-text-align-center">6 escenarios', '<p class="has-text-align-center calma-sub">6 escenarios',
     origen='A11Y-07')
 
+add('I08', 'encabezado', ['home'], 'Inicio > Info Box "+74 %" > Etiqueta HTML del título: H3 → P (es una cifra, no un encabezado)',
+    'H3 «+74 %»', 'Párrafo', '<h3 class="kt-blocks-info-box-title"><strong>+74 %</strong>', '<p class="kt-blocks-info-box-title"><strong>+74 %</strong>', origen='QA a11y etapa 1')
+add('I09', 'encabezado', ['home'], 'Inicio > Info Box "+6 mil millones" > Etiqueta HTML del título: H3 → P',
+    'H3 «+6 mil millones»', 'Párrafo', '<h3 class="kt-blocks-info-box-title">+6 mil millones', '<p class="kt-blocks-info-box-title">+6 mil millones', origen='QA a11y etapa 1')
+add('I10', 'nota', ['home'], 'Inicio > bloque "PORTAL DE CIBERPSICOLOGÍA / Comprendiendo el comportamiento…" > animación de escritura: desactivar el bucle o dejar la frase fija',
+    'Texto que se escribe y se borra en bucle', 'Frase fija', origen='QA a11y Q-02 (2.2.2 Pausar, detener, ocultar)',
+    nota='Si se desactiva el plugin Blocks Animation (paso 3 de la guía) la frase queda fija. El color ya lo corrige el plugin del sitio.')
+
 # ---------------------------------------------------------------- Contacto
 add('C01', 'encabezado+texto', ['contacto'], 'Contacto > Advanced Heading "¿Cómo podemos ayudarte?" > Nivel H2 → H1; borrar el texto y escribirlo de nuevo (hay negritas que parten la palabra "ayudarte")',
     'H2 «¿Cómo podemos ayudart|e|?» (con <strong> que corta la palabra)', 'H1 «¿Cómo podemos ayudarte?»',
@@ -90,6 +98,13 @@ add('H01', 'texto', ['herramientas'], 'Herramientas > bloque HTML personalizado 
 add('H02', 'texto', ['herramientas'], 'Herramientas > texto de la app de diario (Daylio)', 'elegís cómo te sentiste', 'eliges cómo te sentiste', origen='CRO #18')
 add('H03', 'texto', ['herramientas'], 'Herramientas > encabezado de sección', 'Diario, hábitos &amp; rastreo', 'Diario, hábitos y seguimiento', origen='CRO #20')
 add('H04', 'texto', ['herramientas'], 'Herramientas > descripción de Mindfulness Coach', 'Ejercicio de respiración, relajación y rastreo de síntomas.', 'Ejercicios de respiración, relajación y seguimiento de síntomas.', origen='CRO #21')
+for i, (clase, nombre) in enumerate([('cc-dot cc-active', 'Llevar un diario'), ('cc-dot', 'Meditar'), ('cc-dot', 'Apps')]):
+    add(f'H05-{i + 1}', 'texto', ['herramientas'], 'Herramientas > bloque HTML personalizado > punto del carrusel sin nombre accesible: agregar aria-label',
+        f'<button class="{clase}" data-cc="{i}"></button>', f'<button class="{clase}" data-cc="{i}" aria-label="Ver tarjeta: {nombre}"></button>',
+        origen='QA a11y etapa 1 (4.1.2)')
+add('H06', 'texto', ['herramientas'], 'Herramientas > bloque HTML personalizado > contenedor del carrusel: que se pueda enfocar y desplazar con teclado',
+    '<div class="cc-slider" id="ccSlider">', '<div class="cc-slider" id="ccSlider" tabindex="0" role="region" aria-label="Herramientas de calma">',
+    origen='QA a11y etapa 1 (2.1.1)')
 add('P01', 'texto', ['ciberpsicologia'], 'Ciberpsicología > Info Box "Test de consumo digital"', 'Descubrí tu relación con la tecnología.', 'Descubre tu relación con la tecnología.', origen='CRO #24')
 add('P02', 'texto', ['ciberpsicologia'], 'Ciberpsicología > párrafo introductorio (dobles espacios)', 'cómo  nos relacionamos y qué decisiones tomamos cada día.  Una parte', 'cómo nos relacionamos y qué decisiones tomamos cada día. Una parte', origen='CRO #22')
 add('B01', 'texto', ['bienestar-digital'], 'Bienestar digital > Info Box "Bienestar Humano"', 'El objetivo final, quizas, una vida donde', 'El objetivo final: quizás, una vida donde', origen='CRO #25')
@@ -101,6 +116,24 @@ add('D03', 'texto', ['descargas-2'], 'Descargas > título de la guía 3', 'Psico
 add('D04', 'texto', ['descargas-2'], 'Descargas > título de la guía 4', 'The Psychology of Trust</h3>', 'The Psychology of Trust (en inglés)</h3>', origen='CRO #29')
 add('D05', 'encabezado', ['descargas-2'], 'Descargas > Advanced Heading "Libros de descarga gratuita" > Nivel H2 → H1', 'H2', 'H1', '<h2 class="kt-adv-heading1666_f0c6ba-66', '<h1 class="kt-adv-heading1666_f0c6ba-66', origen='SEO-10',
     nota='El texto ("Libros" vs. "Guías") queda para confirmar con la autora (CRO #30).')
+for hid, txt in [('29dc57-d9', 'Ansiedad-Funcional-vs-Ansiedad-Desbordada'), ('5d0704-bd', 'Guia de Ciberseguridad para Psicologos'),
+                 ('061003-96', 'Psicología para devs'), ('c11f86-2e', 'The Psychology of Trust')]:
+    add(f'D06-{hid[:4]}', 'encabezado', ['descargas-2'], f'Descargas > título de la guía «{txt}» > Nivel H3 → H2 (no hay H2 entre el H1 y las guías)',
+        'H3', 'H2', f'<h3 class="kt-adv-heading1666_{hid}', f'<h2 class="kt-adv-heading1666_{hid}', origen='QA a11y etapa 1')
+add('D07', 'texto', ['descargas-2'], 'Descargas > título de la guía 1 (hoy es el nombre del archivo)',
+    'Ansiedad-Funcional-vs-Ansiedad-Desbordada', 'Ansiedad funcional vs. ansiedad desbordada',
+    'data-kb-block="kb-adv-heading1666_29dc57-d9">Ansiedad-Funcional-vs-Ansiedad-Desbordada', 'data-kb-block="kb-adv-heading1666_29dc57-d9">Ansiedad funcional vs. ansiedad desbordada', origen='CRO #26')
+add('D08', 'texto', ['descargas-2'], 'Descargas > título de la guía 2',
+    'Guia de Ciberseguridad para Psicologos', 'Guía de ciberseguridad para psicólogos',
+    'data-kb-block="kb-adv-heading1666_5d0704-bd">Guia de Ciberseguridad para Psicologos', 'data-kb-block="kb-adv-heading1666_5d0704-bd">Guía de ciberseguridad para psicólogos', origen='CRO #27')
+add('B04', 'encabezado', ['bienestar-digital'], 'Bienestar digital > subtítulo "Cómo comenzar a construir…" > Nivel H5 → Párrafo (es una bajada, no un encabezado)',
+    'H5', 'Párrafo', '<h5 class="kt-adv-heading1604_f125c9-d0', '<p class="kt-adv-heading1604_f125c9-d0', origen='QA a11y etapa 1')
+add('B05', 'encabezado', ['bienestar-digital'], 'Bienestar digital > las 4 Info Box de "Primeros pasos hacia la calma" > Etiqueta HTML del título: H2 → H3',
+    'H2 (×4)', 'H3 (×4)', '<h2 class="kt-blocks-info-box-title">', '<h3 class="kt-blocks-info-box-title">', origen='QA a11y etapa 1', nota='todas')
+add('S02', 'texto', ['sobre_tatiana'], 'Sobre Tatiana > botón de LinkedIn (solo ícono) > Ajustes avanzados > Aria label: «Perfil de Tatiana X. Stacul en LinkedIn»',
+    'Botón con ícono sin nombre accesible', 'aria-label «Perfil de Tatiana X. Stacul en LinkedIn»',
+    '<a class="kb-button kt-button button kb-btn946_6e94ff-bf', '<a aria-label="Perfil de Tatiana X. Stacul en LinkedIn" class="kb-button kt-button button kb-btn946_6e94ff-bf',
+    origen='A11Y-08')
 add('S01', 'texto', ['sobre_tatiana'], 'Sobre Tatiana > párrafo de presentación', '<strong>Psicóloga de formación y ciberpsicóloga de vocación</strong>, me fascina', '<strong>Psicóloga de formación y ciberpsicóloga de vocación.</strong> Me fascina', origen='CRO #31')
 
 # ---------------------------------------------------------------- Artículos (solo ortografía y puntuación; el texto de la autora no cambia)

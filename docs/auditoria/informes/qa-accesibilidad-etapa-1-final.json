@@ -1,0 +1,1422 @@
+{
+ "inicio@1280": {
+  "axe": [],
+  "man": {
+   "title": "Código Calma – Ciberpsicología y bienestar digital.",
+   "h1": [
+    "Te damos la bienvenida a Código Calma"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Te damos la bienvenida a Código Calma",
+   "jumps": [],
+   "headings": [
+    "H1:Te damos la bienvenida a Código Calma",
+    "H2:Por qué tu fuerza de voluntad es más lis",
+    "H2:La diferencia entre «querer» y «ser capa",
+    "H2:¿Por qué fallamos al intentar cambiar co",
+    "H2:IA y apoyo emocional: saber la autoría c",
+    "H2:El estigma de la estructura: «X entonces",
+    "H2:Infancias «Figitales»",
+    "H2:Línea de tiempo: tecnología y adopción",
+    "H2:¿Cómo son tus momentos con la tecnología",
+    "H3:Disponibilidad permanente",
+    "H3:Revisar el correo laboral fuera del hora",
+    "H3:Validación métrica",
+    "H3:El feedback positivo en redes activa reg",
+    "H3:Presencia fragmentada",
+    "H3:En promedio, las personas usan el móvil ",
+    "H3:Scroll sin horizonte",
+    "H3:Aza Raskin, inventor del scroll infinito",
+    "H3:Ruido constante",
+    "H3:La simple presencia de un teléfono sobre",
+    "H3:Pantalla hasta dormir",
+    "H3:Un estudio con 122.058 participantes vin"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Ver el formulario de b|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Psicología|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Por qué tu fuerza de v|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Leer más Por qué tu fu|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Psicología|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:La diferencia entre «q|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Leer más La diferencia|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Ciberseguridad|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:¿Por qué fallamos al i|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Leer más ¿Por qué fall|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Ciberpsicología|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:IA y apoyo emocional: |o=solid 0px rgb(15, 23, 42)|sh=0|vis=true"
+  ]
+ },
+ "servicios@1280": {
+  "axe": [],
+  "man": {
+   "title": "Servicios – Código Calma",
+   "h1": [
+    "Mentorías y acompañamiento uno a uno"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Mentorías y acompañamiento uno a uno",
+   "jumps": [],
+   "headings": [
+    "H1:Mentorías y acompañamiento uno a uno",
+    "H2:Qué ocurre en cada etapa",
+    "H3:Nos escribes y cuentas qué ocurre",
+    "H3:Primer encuentro",
+    "H3:De tres a seis sesiones",
+    "H2:Quién te acompaña, según lo que traigas",
+    "H3:Tatiana X. Stacul",
+    "H3:Francisca Cortés Santoro",
+    "H3:Emanuel C. Franco",
+    "H2:¿Empezamos con calma?"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Ver el formulario de b|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Solicitar una consulta|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true"
+  ]
+ },
+ "contacto@1280": {
+  "axe": [],
+  "man": {
+   "title": "Contacto – Código Calma",
+   "h1": [
+    "¿Cómo podemos ayudarte?"
+   ],
+   "h1All": 1,
+   "firstH": "H1:¿Cómo podemos ayudarte?",
+   "jumps": [],
+   "headings": [
+    "H1:¿Cómo podemos ayudarte?"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": [
+    [
+     {
+      "type": "text",
+      "label": "¿Cómo te llamas?*",
+      "labelVisible": true,
+      "ac": "name",
+      "req": true,
+      "desc": null,
+      "h": 48
+     },
+     {
+      "type": "email",
+      "label": "¿A qué correo te respondemos?*",
+      "labelVisible": true,
+      "ac": "email",
+      "req": true,
+      "desc": "calma-help-email",
+      "h": 48
+     },
+     {
+      "type": "textarea",
+      "label": "Cuéntanos qué te trae*",
+      "labelVisible": true,
+      "ac": null,
+      "req": true,
+      "desc": "calma-help-msg",
+      "h": 117
+     },
+     {
+      "type": "checkbox",
+      "label": "He leído la política de privacidad [COMPLETAR: URL de la pol",
+      "labelVisible": true,
+      "ac": null,
+      "req": true,
+      "desc": null,
+      "h": 24
+     }
+    ]
+   ]
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Ver el formulario de b|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "INPUT:|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
+   "INPUT:|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
+   "TEXTAREA:|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
+   "INPUT:|o=auto 1px rgb(16, 16, 16)|sh=0|vis=true",
+   "A:política de privacidad|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Enviar mi consulta|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true"
+  ]
+ },
+ "sobre_tatiana@1280": {
+  "axe": [],
+  "man": {
+   "title": "Sobre Tatiana – Código Calma",
+   "h1": [
+    "Hola, soy Tatiana X. Stacul, psicóloga detrás de Código Calm"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Hola, soy Tatiana X. Stacul, psicóloga d",
+   "jumps": [],
+   "headings": [
+    "H1:Hola, soy Tatiana X. Stacul, psicóloga d"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Ver el formulario de b|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Perfil de Tatiana X. S|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "DIV:Ver perfil en LinkedIn|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Más testimonios|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true"
+  ]
+ },
+ "blog@1280": {
+  "axe": [],
+  "man": {
+   "title": "Blog – Código Calma",
+   "h1": [
+    "Blog"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Blog",
+   "jumps": [],
+   "headings": [
+    "H1:Blog",
+    "H2:Por qué tu fuerza de voluntad es más lis",
+    "H2:La diferencia entre «querer» y «ser capa",
+    "H2:¿Por qué fallamos al intentar cambiar co",
+    "H2:IA y apoyo emocional: saber la autoría c",
+    "H2:El estigma de la estructura: «X entonces",
+    "H2:Infancias «Figitales»",
+    "H2:Calidad vs. cantidad: la hipótesis de Ri",
+    "H2:Autoevaluación del consumo digital: ¿cóm",
+    "H2:Preguntas clave para entender y cuidar n",
+    "H2:5 puntos clave que el caso de Meta nos d",
+    "H2:Navegación de página"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 1px rgb(30, 98, 149)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Ver el formulario de b|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Psicología|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Por qué tu fuerza de v|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Tatiana X. Stacul|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Leer más Por qué tu fu|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Psicología|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:La diferencia entre «q|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Tatiana X. Stacul|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Leer más La diferencia|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Ciberseguridad|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:¿Por qué fallamos al i|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Tatiana X. Stacul|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true"
+  ]
+ },
+ "por-que-fallamos@1280": {
+  "axe": [],
+  "man": {
+   "title": "¿Por qué fallamos al intentar cambiar conductas? – Código Calma",
+   "h1": [
+    "¿Por qué fallamos al intentar cambiar conductas?"
+   ],
+   "h1All": 1,
+   "firstH": "H1:¿Por qué fallamos al intentar cambiar co",
+   "jumps": [],
+   "headings": [
+    "H1:¿Por qué fallamos al intentar cambiar co",
+    "H2:Diseñar ignorando el sentir",
+    "H3:El nudge simplifica el camino; el Cudge ",
+    "H3:La saturación ante las grandes cifras",
+    "H2:Navegación de entradas",
+    "H2:Publicaciones Similares",
+    "H3:Cómo un «te quiero» infectó 45 millones "
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 1px rgb(30, 98, 149)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Ver el formulario de b|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Ciberseguridad|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Tatiana X. Stacul|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Facebook|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:X|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Threads|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:WhatsApp|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Copy Link|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Compartir|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Anterior AnteriorIA y |o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:SiguienteContinuar La |o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Cómo un «te quiero» in|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true"
+  ]
+ },
+ "test@1280": {
+  "axe": [
+   {
+    "id": "heading-order",
+    "impact": "moderate",
+    "n": 3,
+    "nodes": [
+     {
+      "t": "#screen-0 > .card:nth-child(2) > h3",
+      "s": "Fix any of the following:\n  Heading order invalid",
+      "html": "<h3 style=\"margin-bottom:12px;\">Antes de empezar</h3>"
+     },
+     {
+      "t": "h6",
+      "s": "Fix any of the following:\n  Heading order invalid",
+      "html": "<h6 class=\"kt-adv-heading1941_513169-0a wp-block-kadence-advancedheading\" data-kb-block=\"kb-adv-heading1941_513169-0a\">Dato que vale la pena"
+     },
+     {
+      "t": ".kt-info-box1941_2de82f-54 > .kt-blocks-info-box-link-wrap.info-box-link.kt-blocks-info-box-media-align-left > .kt-infob",
+      "s": "Fix any of the following:\n  Heading order invalid",
+      "html": "<h5 class=\"kt-blocks-info-box-title\">Contexto colapsado</h5>"
+     }
+    ]
+   }
+  ],
+  "man": {
+   "title": "Test de consumo digital – Código Calma",
+   "h1": [
+    "Test de consumo digital"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Test de consumo digital",
+   "jumps": [
+    "H1>H3:Antes de empezar",
+    "H3>H6:Dato que vale la pena saber",
+    "H2>H5:Contexto colapsado"
+   ],
+   "headings": [
+    "H1:Test de consumo digital",
+    "H3:Antes de empezar",
+    "H3:Cómo funciona",
+    "H6:Dato que vale la pena saber",
+    "H2:Tus resultadosson tuyos.",
+    "H5:Contexto colapsado",
+    "H5:Datos de comportamiento",
+    "H5:El valor está en la reflexión"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 1px rgb(30, 98, 149)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Ver el formulario de b|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "BUTTON:Empezar →|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true"
+  ]
+ },
+ "testimonios@1280": {
+  "axe": [],
+  "man": {
+   "title": "Testimonios – Código Calma",
+   "h1": [
+    "Testimonios"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Testimonios",
+   "jumps": [],
+   "headings": [
+    "H1:Testimonios"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Ver el formulario de b|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true"
+  ]
+ },
+ "herramientas@1280": {
+  "axe": [
+   {
+    "id": "heading-order",
+    "impact": "moderate",
+    "n": 3,
+    "nodes": [
+     {
+      "t": ".wp-block-heading",
+      "s": "Fix any of the following:\n  Heading order invalid",
+      "html": "<h6 class=\"wp-block-heading has--font-size has-medium-font-size\">Aquí encontrarás recomendaciones de apps para salud mental y productividad."
+     },
+     {
+      "t": ".kt-adv-heading1618_196c3e-73",
+      "s": "Fix any of the following:\n  Heading order invalid",
+      "html": "<h6 class=\"kt-adv-heading1618_196c3e-73 wp-block-kadence-advancedheading\" data-kb-block=\"kb-adv-heading1618_196c3e-73\">Headspace</h6>"
+     },
+     {
+      "t": ".kt-adv-heading1618_0e7c38-7b",
+      "s": "Fix any of the following:\n  Heading order invalid",
+      "html": "<h6 class=\"kt-adv-heading1618_0e7c38-7b wp-block-kadence-advancedheading\" data-kb-block=\"kb-adv-heading1618_0e7c38-7b\">Daylio</h6>"
+     }
+    ]
+   },
+   {
+    "id": "target-size",
+    "impact": "serious",
+    "n": 3,
+    "nodes": [
+     {
+      "t": ".cc-active",
+      "s": "Fix any of the following:\n  Target has insufficient size (22px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors",
+      "html": "<button class=\"cc-dot cc-active\" data-cc=\"0\" aria-label=\"Ver tarjeta: Llevar un diario\"></button>"
+     },
+     {
+      "t": "button[data-cc=\"1\"]",
+      "s": "Fix any of the following:\n  Target has insufficient size (7px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors.",
+      "html": "<button class=\"cc-dot\" data-cc=\"1\" aria-label=\"Ver tarjeta: Meditar\"></button>"
+     },
+     {
+      "t": "button[data-cc=\"2\"]",
+      "s": "Fix any of the following:\n  Target has insufficient size (7px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors.",
+      "html": "<button class=\"cc-dot\" data-cc=\"2\" aria-label=\"Ver tarjeta: Apps\"></button>"
+     }
+    ]
+   }
+  ],
+  "man": {
+   "title": "Herramientas – Código Calma",
+   "h1": [
+    "Aplicaciones de productividad y calma"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Aplicaciones de productividad y calma",
+   "jumps": [
+    "H1>H6:Aquí encontrarás recomendacion",
+    "H2>H6:Headspace",
+    "H2>H6:Daylio"
+   ],
+   "headings": [
+    "H1:Aplicaciones de productividad y calma",
+    "H6:Aquí encontrarás recomendaciones de apps",
+    "H2:Pequeños hábitos,gran diferencia.",
+    "H3:Llevar un diario",
+    "H3:Meditar",
+    "H3:Calm y similares",
+    "H2:Mindfulness, relajación y hábitos de bie",
+    "H6:Headspace",
+    "H6:Finch",
+    "H6:Calm",
+    "H2:Diario, hábitos y seguimiento",
+    "H6:Daylio",
+    "H6:PTSD Coach y Mindfulness Coach"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 1px rgb(30, 98, 149)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Ver el formulario de b|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "DIV:Herramientas de calma|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Ver tarjeta: Llevar un|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "BUTTON:Ver tarjeta: Meditar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "BUTTON:Ver tarjeta: Apps|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true"
+  ]
+ },
+ "bienestar-digital@1280": {
+  "axe": [],
+  "man": {
+   "title": "Bienestar digital – Código Calma",
+   "h1": [
+    "Bienestar Digital"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Bienestar Digital",
+   "jumps": [],
+   "headings": [
+    "H1:Bienestar Digital",
+    "H2:La intersección",
+    "H3:Ciberpsicología",
+    "H3:Ciberseguridad",
+    "H3:Bienestar Humano",
+    "H2:Primeros pasos hacia la calma",
+    "H3:Tiempo de pantalla consciente",
+    "H3:Seguridad y privacidad",
+    "H3:Bienestar digital",
+    "H3:Conexiones significativas"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Ver el formulario de b|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true"
+  ]
+ },
+ "descargas-2@1280": {
+  "axe": [],
+  "man": {
+   "title": "Descargas – Código Calma",
+   "h1": [
+    "Libros de descarga gratuita"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Libros de descarga gratuita",
+   "jumps": [],
+   "headings": [
+    "H1:Libros de descarga gratuita",
+    "H2:Ansiedad funcional vs. ansiedad desborda",
+    "H2:Guía de ciberseguridad para psicólogos",
+    "H2:Psicología para devs",
+    "H2:The Psychology of Trust (en inglés)"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Menú hijo de Ciberpsic|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Sobre Tatiana|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Contacto|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "BUTTON:Ver el formulario de b|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Descargar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:Descargar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:Descargar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:Descargar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Inicio|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:CiberpsicologíaAmpliar|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true"
+  ]
+ },
+ "inicio@390": {
+  "axe": [],
+  "man": {
+   "title": "Código Calma – Ciberpsicología y bienestar digital.",
+   "h1": [
+    "Te damos la bienvenida a Código Calma"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Te damos la bienvenida a Código Calma",
+   "jumps": [],
+   "headings": [
+    "H1:Te damos la bienvenida a Código Calma",
+    "H2:Por qué tu fuerza de voluntad es más lis",
+    "H2:La diferencia entre «querer» y «ser capa",
+    "H2:¿Por qué fallamos al intentar cambiar co",
+    "H2:IA y apoyo emocional: saber la autoría c",
+    "H2:El estigma de la estructura: «X entonces",
+    "H2:Infancias «Figitales»",
+    "H2:Línea de tiempo: tecnología y adopción",
+    "H2:¿Cómo son tus momentos con la tecnología",
+    "H3:Disponibilidad permanente",
+    "H3:Revisar el correo laboral fuera del hora",
+    "H3:Validación métrica",
+    "H3:El feedback positivo en redes activa reg",
+    "H3:Presencia fragmentada",
+    "H3:En promedio, las personas usan el móvil ",
+    "H3:Scroll sin horizonte",
+    "H3:Aza Raskin, inventor del scroll infinito",
+    "H3:Ruido constante",
+    "H3:La simple presencia de un teléfono sobre",
+    "H3:Pantalla hasta dormir",
+    "H3:Un estudio con 122.058 participantes vin"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Psicología|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Por qué tu fuerza de v|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Leer más Por qué tu fu|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Psicología|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:La diferencia entre «q|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Leer más La diferencia|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Ciberseguridad|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:¿Por qué fallamos al i|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Leer más ¿Por qué fall|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Ciberpsicología|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:IA y apoyo emocional: |o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Leer más IA y apoyo em|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Neurociencia y tecnolo|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:El estigma de la estru|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Leer más El estigma de|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Bienestar digital|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ciberpsicología|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true"
+  ]
+ },
+ "servicios@390": {
+  "axe": [],
+  "man": {
+   "title": "Servicios – Código Calma",
+   "h1": [
+    "Mentorías y acompañamiento uno a uno"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Mentorías y acompañamiento uno a uno",
+   "jumps": [],
+   "headings": [
+    "H1:Mentorías y acompañamiento uno a uno",
+    "H2:Qué ocurre en cada etapa",
+    "H3:Nos escribes y cuentas qué ocurre",
+    "H3:Primer encuentro",
+    "H3:De tres a seis sesiones",
+    "H2:Quién te acompaña, según lo que traigas",
+    "H3:Tatiana X. Stacul",
+    "H3:Francisca Cortés Santoro",
+    "H3:Emanuel C. Franco",
+    "H2:¿Empezamos con calma?"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 1px rgb(30, 98, 149)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Solicitar una consulta|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(30, 98, 149)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Solicitar una consulta|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(30, 98, 149)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Solicitar una consulta|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true"
+  ]
+ },
+ "contacto@390": {
+  "axe": [],
+  "man": {
+   "title": "Contacto – Código Calma",
+   "h1": [
+    "¿Cómo podemos ayudarte?"
+   ],
+   "h1All": 1,
+   "firstH": "H1:¿Cómo podemos ayudarte?",
+   "jumps": [],
+   "headings": [
+    "H1:¿Cómo podemos ayudarte?"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": [
+    [
+     {
+      "type": "text",
+      "label": "¿Cómo te llamas?*",
+      "labelVisible": true,
+      "ac": "name",
+      "req": true,
+      "desc": null,
+      "h": 48
+     },
+     {
+      "type": "email",
+      "label": "¿A qué correo te respondemos?*",
+      "labelVisible": true,
+      "ac": "email",
+      "req": true,
+      "desc": "calma-help-email",
+      "h": 48
+     },
+     {
+      "type": "textarea",
+      "label": "Cuéntanos qué te trae*",
+      "labelVisible": true,
+      "ac": null,
+      "req": true,
+      "desc": "calma-help-msg",
+      "h": 117
+     },
+     {
+      "type": "checkbox",
+      "label": "He leído la política de privacidad [COMPLETAR: URL de la pol",
+      "labelVisible": true,
+      "ac": null,
+      "req": true,
+      "desc": null,
+      "h": 24
+     }
+    ]
+   ]
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "INPUT:|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
+   "INPUT:|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
+   "TEXTAREA:|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
+   "INPUT:|o=auto 1px rgb(229, 151, 0)|sh=0|vis=true",
+   "A:política de privacidad|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Enviar mi consulta|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "INPUT:|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
+   "INPUT:|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
+   "TEXTAREA:|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
+   "INPUT:|o=auto 1px rgb(229, 151, 0)|sh=0|vis=true",
+   "A:política de privacidad|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true"
+  ]
+ },
+ "sobre_tatiana@390": {
+  "axe": [],
+  "man": {
+   "title": "Sobre Tatiana – Código Calma",
+   "h1": [
+    "Hola, soy Tatiana X. Stacul, psicóloga detrás de Código Calm"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Hola, soy Tatiana X. Stacul, psicóloga d",
+   "jumps": [],
+   "headings": [
+    "H1:Hola, soy Tatiana X. Stacul, psicóloga d"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Perfil de Tatiana X. S|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "DIV:Ver perfil en LinkedIn|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Más testimonios|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Perfil de Tatiana X. S|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "DIV:Ver perfil en LinkedIn|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Más testimonios|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true"
+  ]
+ },
+ "blog@390": {
+  "axe": [],
+  "man": {
+   "title": "Blog – Código Calma",
+   "h1": [
+    "Blog"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Blog",
+   "jumps": [],
+   "headings": [
+    "H1:Blog",
+    "H2:Por qué tu fuerza de voluntad es más lis",
+    "H2:La diferencia entre «querer» y «ser capa",
+    "H2:¿Por qué fallamos al intentar cambiar co",
+    "H2:IA y apoyo emocional: saber la autoría c",
+    "H2:El estigma de la estructura: «X entonces",
+    "H2:Infancias «Figitales»",
+    "H2:Calidad vs. cantidad: la hipótesis de Ri",
+    "H2:Autoevaluación del consumo digital: ¿cóm",
+    "H2:Preguntas clave para entender y cuidar n",
+    "H2:5 puntos clave que el caso de Meta nos d",
+    "H2:Navegación de página"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Psicología|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Por qué tu fuerza de v|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Tatiana X. Stacul|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Leer más Por qué tu fu|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Psicología|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:La diferencia entre «q|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Tatiana X. Stacul|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Leer más La diferencia|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Ciberseguridad|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:¿Por qué fallamos al i|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Tatiana X. Stacul|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Leer más ¿Por qué fall|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Ciberpsicología|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:IA y apoyo emocional: |o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Tatiana X. Stacul|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Leer más IA y apoyo em|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Neurociencia y tecnolo|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true"
+  ]
+ },
+ "por-que-fallamos@390": {
+  "axe": [],
+  "man": {
+   "title": "¿Por qué fallamos al intentar cambiar conductas? – Código Calma",
+   "h1": [
+    "¿Por qué fallamos al intentar cambiar conductas?"
+   ],
+   "h1All": 1,
+   "firstH": "H1:¿Por qué fallamos al intentar cambiar co",
+   "jumps": [],
+   "headings": [
+    "H1:¿Por qué fallamos al intentar cambiar co",
+    "H2:Diseñar ignorando el sentir",
+    "H3:El nudge simplifica el camino; el Cudge ",
+    "H3:La saturación ante las grandes cifras",
+    "H2:Navegación de entradas",
+    "H2:Publicaciones Similares",
+    "H3:Cómo un «te quiero» infectó 45 millones "
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Ciberseguridad|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Tatiana X. Stacul|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Facebook|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:X|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Threads|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:WhatsApp|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Copy Link|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Compartir|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Anterior AnteriorIA y |o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:SiguienteContinuar La |o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "A:Cómo un «te quiero» in|o=solid 0px rgb(15, 23, 42)|sh=0|vis=true",
+   "A:Tatiana X. Stacul|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true"
+  ]
+ },
+ "test@390": {
+  "axe": [
+   {
+    "id": "heading-order",
+    "impact": "moderate",
+    "n": 3,
+    "nodes": [
+     {
+      "t": "#screen-0 > .card:nth-child(2) > h3",
+      "s": "Fix any of the following:\n  Heading order invalid",
+      "html": "<h3 style=\"margin-bottom:12px;\">Antes de empezar</h3>"
+     },
+     {
+      "t": "h6",
+      "s": "Fix any of the following:\n  Heading order invalid",
+      "html": "<h6 class=\"kt-adv-heading1941_513169-0a wp-block-kadence-advancedheading\" data-kb-block=\"kb-adv-heading1941_513169-0a\">Dato que vale la pena"
+     },
+     {
+      "t": ".kt-info-box1941_2de82f-54 > .kt-blocks-info-box-link-wrap.info-box-link.kt-blocks-info-box-media-align-left > .kt-infob",
+      "s": "Fix any of the following:\n  Heading order invalid",
+      "html": "<h5 class=\"kt-blocks-info-box-title\">Contexto colapsado</h5>"
+     }
+    ]
+   }
+  ],
+  "man": {
+   "title": "Test de consumo digital – Código Calma",
+   "h1": [
+    "Test de consumo digital"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Test de consumo digital",
+   "jumps": [
+    "H1>H3:Antes de empezar",
+    "H3>H6:Dato que vale la pena saber",
+    "H2>H5:Contexto colapsado"
+   ],
+   "headings": [
+    "H1:Test de consumo digital",
+    "H3:Antes de empezar",
+    "H3:Cómo funciona",
+    "H6:Dato que vale la pena saber",
+    "H2:Tus resultadosson tuyos.",
+    "H5:Contexto colapsado",
+    "H5:Datos de comportamiento",
+    "H5:El valor está en la reflexión"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "BUTTON:Empezar →|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "BUTTON:Empezar →|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "BUTTON:Empezar →|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY"
+  ]
+ },
+ "testimonios@390": {
+  "axe": [],
+  "man": {
+   "title": "Testimonios – Código Calma",
+   "h1": [
+    "Testimonios"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Testimonios",
+   "jumps": [],
+   "headings": [
+    "H1:Testimonios"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver testimonio complet|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY"
+  ]
+ },
+ "herramientas@390": {
+  "axe": [
+   {
+    "id": "heading-order",
+    "impact": "moderate",
+    "n": 3,
+    "nodes": [
+     {
+      "t": ".wp-block-heading",
+      "s": "Fix any of the following:\n  Heading order invalid",
+      "html": "<h6 class=\"wp-block-heading has--font-size has-medium-font-size\">Aquí encontrarás recomendaciones de apps para salud mental y productividad."
+     },
+     {
+      "t": ".kt-adv-heading1618_196c3e-73",
+      "s": "Fix any of the following:\n  Heading order invalid",
+      "html": "<h6 class=\"kt-adv-heading1618_196c3e-73 wp-block-kadence-advancedheading\" data-kb-block=\"kb-adv-heading1618_196c3e-73\">Headspace</h6>"
+     },
+     {
+      "t": ".kt-adv-heading1618_0e7c38-7b",
+      "s": "Fix any of the following:\n  Heading order invalid",
+      "html": "<h6 class=\"kt-adv-heading1618_0e7c38-7b wp-block-kadence-advancedheading\" data-kb-block=\"kb-adv-heading1618_0e7c38-7b\">Daylio</h6>"
+     }
+    ]
+   },
+   {
+    "id": "target-size",
+    "impact": "serious",
+    "n": 3,
+    "nodes": [
+     {
+      "t": ".cc-active",
+      "s": "Fix any of the following:\n  Target has insufficient size (22px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors",
+      "html": "<button class=\"cc-dot cc-active\" data-cc=\"0\" aria-label=\"Ver tarjeta: Llevar un diario\"></button>"
+     },
+     {
+      "t": "button[data-cc=\"1\"]",
+      "s": "Fix any of the following:\n  Target has insufficient size (7px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors.",
+      "html": "<button class=\"cc-dot\" data-cc=\"1\" aria-label=\"Ver tarjeta: Meditar\"></button>"
+     },
+     {
+      "t": "button[data-cc=\"2\"]",
+      "s": "Fix any of the following:\n  Target has insufficient size (7px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors.",
+      "html": "<button class=\"cc-dot\" data-cc=\"2\" aria-label=\"Ver tarjeta: Apps\"></button>"
+     }
+    ]
+   }
+  ],
+  "man": {
+   "title": "Herramientas – Código Calma",
+   "h1": [
+    "Aplicaciones de productividad y calma"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Aplicaciones de productividad y calma",
+   "jumps": [
+    "H1>H6:Aquí encontrarás recomendacion",
+    "H2>H6:Headspace",
+    "H2>H6:Daylio"
+   ],
+   "headings": [
+    "H1:Aplicaciones de productividad y calma",
+    "H6:Aquí encontrarás recomendaciones de apps",
+    "H2:Pequeños hábitos,gran diferencia.",
+    "H3:Llevar un diario",
+    "H3:Meditar",
+    "H3:Calm y similares",
+    "H2:Mindfulness, relajación y hábitos de bie",
+    "H6:Headspace",
+    "H6:Finch",
+    "H6:Calm",
+    "H2:Diario, hábitos y seguimiento",
+    "H6:Daylio",
+    "H6:PTSD Coach y Mindfulness Coach"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 1px rgb(30, 98, 149)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "DIV:Herramientas de calma|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Ver tarjeta: Llevar un|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "BUTTON:Ver tarjeta: Meditar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "BUTTON:Ver tarjeta: Apps|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:|o=solid 0px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "DIV:Herramientas de calma|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Ver tarjeta: Llevar un|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true"
+  ]
+ },
+ "bienestar-digital@390": {
+  "axe": [],
+  "man": {
+   "title": "Bienestar digital – Código Calma",
+   "h1": [
+    "Bienestar Digital"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Bienestar Digital",
+   "jumps": [],
+   "headings": [
+    "H1:Bienestar Digital",
+    "H2:La intersección",
+    "H3:Ciberpsicología",
+    "H3:Ciberseguridad",
+    "H3:Bienestar Humano",
+    "H2:Primeros pasos hacia la calma",
+    "H3:Tiempo de pantalla consciente",
+    "H3:Seguridad y privacidad",
+    "H3:Bienestar digital",
+    "H3:Conexiones significativas"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Saltar al contenido|o=solid 0px rgb(30, 98, 149)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(30, 98, 149)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(30, 98, 149)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true"
+  ]
+ },
+ "descargas-2@390": {
+  "axe": [],
+  "man": {
+   "title": "Descargas – Código Calma",
+   "h1": [
+    "Libros de descarga gratuita"
+   ],
+   "h1All": 1,
+   "firstH": "H1:Libros de descarga gratuita",
+   "jumps": [],
+   "headings": [
+    "H1:Libros de descarga gratuita",
+    "H2:Ansiedad funcional vs. ansiedad desborda",
+    "H2:Guía de ciberseguridad para psicólogos",
+    "H2:Psicología para devs",
+    "H2:The Psychology of Trust (en inglés)"
+   ],
+   "hidden": [],
+   "offscreen": [],
+   "overflow": 0,
+   "forms": []
+  },
+  "focus": [
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Descargar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:Descargar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:Descargar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:Descargar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "BODY",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Código Calma|o=solid 0px rgb(31, 41, 55)|sh=0|vis=true",
+   "BUTTON:Abrir menú|o=solid 0px rgb(51, 65, 85)|sh=0|vis=true",
+   "A:Descargar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:Descargar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:Descargar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:Descargar|o=solid 0px rgb(255, 255, 255)|sh=1|vis=true",
+   "A:LinkedIn|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:hola@codigocalma.com|o=solid 0px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Saltar al contenido|o=solid 0px rgb(29, 95, 148)|sh=1|vis=true"
+  ]
+ },
+ "reflow320": {
+  "inicio": {
+   "overflow": 0,
+   "off": []
+  },
+  "servicios": {
+   "overflow": 0,
+   "off": []
+  },
+  "contacto": {
+   "overflow": 0,
+   "off": []
+  },
+  "sobre_tatiana": {
+   "overflow": 0,
+   "off": []
+  },
+  "blog": {
+   "overflow": 0,
+   "off": []
+  },
+  "por-que-fallamos": {
+   "overflow": 0,
+   "off": []
+  },
+  "test": {
+   "overflow": 0,
+   "off": []
+  },
+  "testimonios": {
+   "overflow": 0,
+   "off": []
+  },
+  "herramientas": {
+   "overflow": 0,
+   "off": []
+  },
+  "bienestar-digital": {
+   "overflow": 0,
+   "off": []
+  },
+  "descargas-2": {
+   "overflow": 0,
+   "off": []
+  }
+ },
+ "menu": {
+  "toggle": {
+   "label": "Abrir menú",
+   "exp": "false",
+   "w": 48,
+   "h": 48
+  },
+  "open": {
+   "bg": "rgb(255, 255, 255)",
+   "exp": "true",
+   "active": "menu-toggle-close drawer-toggle:Cerrar menú",
+   "links": [
+    "Cerrar menú c=rgb(15, 23, 42) h=53 w=31",
+    "Inicio c=rgb(15, 23, 42) h=51 w=294",
+    "Ciberpsicología c=rgb(15, 23, 42) h=50 w=250",
+    "Alternar menú hijoAmpliar c=rgb(15, 23, 42) h=50 w=44",
+    "Servicios c=rgb(29, 95, 148) h=51 w=294",
+    "Sobre Tatiana c=rgb(15, 23, 42) h=51 w=294",
+    "Contacto c=rgb(15, 23, 42) h=51 w=294"
+   ]
+  },
+  "axeDrawer": [],
+  "tabSeq": [
+   "Inicio o=solid rgb(15, 23, 42) inDrawer=true",
+   "Ciberpsicología o=solid rgb(15, 23, 42) inDrawer=true",
+   "Alternar menú hijoAmpl o=solid rgb(15, 23, 42) inDrawer=true",
+   "Servicios o=solid rgb(29, 95, 148) inDrawer=true",
+   "Sobre Tatiana o=solid rgb(15, 23, 42) inDrawer=true",
+   "Contacto o=solid rgb(15, 23, 42) inDrawer=true",
+   "Cerrar menú o=solid rgb(26, 79, 125) inDrawer=true",
+   "Inicio o=solid rgb(17, 35, 60) inDrawer=true",
+   "Ciberpsicología o=solid rgb(15, 23, 42) inDrawer=true",
+   "Alternar menú hijoAmpl o=solid rgb(15, 23, 42) inDrawer=true",
+   "Servicios o=solid rgb(29, 95, 148) inDrawer=true",
+   "Sobre Tatiana o=solid rgb(15, 23, 42) inDrawer=true"
+  ],
+  "afterEsc": {
+   "exp": "false",
+   "active": "mobile-toggle"
+  }
+ },
+ "test": {
+  "seq": [
+   "BUTTON#btn-continue-gen:Continuar →",
+   "A#:LinkedIn",
+   "A#:Correo electrónico",
+   "BODY#:Saltar al contenido\n\t\t\n\t\n",
+   "A#:Saltar al contenido",
+   "A#:Código Calma"
+  ],
+  "cards": [
+   "DIV tab=-1 role=null",
+   "DIV tab=-1 role=null",
+   "DIV tab=-1 role=null"
+  ],
+  "h": [
+   "H1:Test de consumo digital",
+   "H3:Antes de empezar",
+   "H3:Cómo funciona",
+   "H2:¿De qué generación eres?",
+   "H3:Millennials",
+   "H3:Generación X",
+   "H3:Generación Z",
+   "H3:Pregunta…",
+   "H2:Tu Perfil",
+   "H3:Un paso concreto",
+   "H6:Dato que vale la pena saber",
+   "H2:Tus resultadosson tuyos.",
+   "H5:Contexto colapsado",
+   "H5:Datos de comportamiento",
+   "H5:El valor está en la reflexión"
+  ],
+  "S1": [
+   "color-contrast(1) <button class=\"btn-primary\" id=\"btn-continue-gen\" onclick=\"c contrast of 1.67 (foreground color: #e6edf3, background color: #a0bcd2"
+  ],
+  "S1sel": [
+   "color-contrast(1) <button class=\"btn-primary\" id=\"btn-continue-gen\" onclick=\"c contrast of 1.67 (foreground color: #e6edf3, background color: #a0bcd2"
+  ],
+  "S2": [
+   "color-contrast(1) <button class=\"answer-btn\">Pongo el celular en modo avión y  contrast of 1.82 (foreground color: #8b8f9e, background color: #aec6d9"
+  ],
+  "S2fb": [],
+  "final": "screen-3",
+  "S3": []
+ },
+ "reduced": []
+}

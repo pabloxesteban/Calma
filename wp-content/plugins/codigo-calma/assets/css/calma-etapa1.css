@@ -181,11 +181,20 @@ input[type="submit"] {
 /* --------------------------------------------------------------------------
    7. Foco visible y áreas táctiles (A11Y-13, A11Y-20, UX-24)
    -------------------------------------------------------------------------- */
-:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+/* Kadence agrega .hide-focus-outline al body tras un clic y quita el anillo con
+   `.hide-focus-outline *:focus` (0,2,0), que a veces queda activo al pasar al
+   teclado. :focus-visible ya evita el anillo con mouse, así que se fuerza con
+   :not(#calma-focus) (suma especificidad de ID) sin usar !important. */
+html:not(#calma-focus) body :is(a, button, summary, [tabindex]):focus-visible {
 	outline: 2px solid var(--calma-focus);
 	outline-offset: 3px;
 }
-.header-navigation .dropdown-nav-toggle {
+/* Sobre fondos oscuros (pie, CTA navy) el anillo va en blanco. */
+html:not(#calma-focus) body :is(.site-footer, .cc-final) :is(a, button):focus-visible {
+	outline-color: #fff;
+}
+.header-navigation .dropdown-nav-toggle,
+.header-navigation .dropdown-nav-special-toggle {
 	min-width: 24px;
 }
 #mobile-toggle.menu-toggle-open {
@@ -269,4 +278,57 @@ input[type="submit"] {
 		scroll-behavior: auto !important;
 		transition-duration: 0.01ms !important;
 	}
+}
+
+/* --------------------------------------------------------------------------
+   11. Correcciones de la QA de accesibilidad de la Etapa 1
+   (docs/auditoria/informes/qa-accesibilidad-etapa-1.md)
+   -------------------------------------------------------------------------- */
+
+/* Q-01 · Foco visible en campos: Kadence quita el outline con
+   input[type=text]:focus (0,3,1); esto gana sin !important. */
+html:not(#calma-focus) body :is(input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea, select):focus-visible {
+	outline: 2px solid var(--calma-focus);
+	outline-offset: 2px;
+	border-color: var(--calma-focus);
+}
+
+/* Q-02 · Texto del hero del inicio casi blanco sobre lavanda (1,5–1,9:1).
+   Provisional hasta el nuevo hero de la Etapa 3. */
+.kt-adv-heading1204_179e11-cf.has-text-color,
+.kt-adv-heading1204_179e11-cf .has-theme-palette-8-color {
+	color: var(--calma-text) !important; /* 8,9–11,7:1 */
+}
+.kt-adv-heading1204_179e11-cf .has-theme-palette-2-color {
+	color: var(--calma-navy) !important;
+}
+
+/* Q-03/Q-04 · Test de consumo digital (page-id-1941): grises y botones
+   del CSS propio del test. El test accesible por teclado llega aparte. */
+body.page-id-1941 {
+	--gray-3: #4a5068;  /* 7,96:1 sobre blanco */
+	--blue-dk: #1d5f94; /* 5,43:1 sobre la tarjeta activa */
+}
+body.page-id-1941 .btn-primary {
+	background: var(--calma-primary);
+}
+body.page-id-1941 .footer-brand {
+	opacity: 1;
+}
+body.page-id-1941 .answer-btn:focus-visible,
+body.page-id-1941 .btn-primary:focus-visible {
+	outline: 2px solid var(--calma-focus);
+	outline-offset: 3px;
+}
+
+/* Q-05 · Herramientas (page-id-1618): acentos aqua y notas grises. */
+.page-id-1618 .cc-eyebrow,
+.page-id-1618 .cc-titulo em {
+	color: #0f766e; /* 5,47:1 */
+}
+.page-id-1618 .cc-eyebrow {
+	font-size: var(--calma-fs-xs);
+}
+.page-id-1618 .cc-nota {
+	color: var(--calma-text-muted); /* 7,58:1 */
 }
