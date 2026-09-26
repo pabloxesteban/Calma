@@ -118,3 +118,27 @@ La Etapa 1 resuelve A11Y-02, 03, 04, 06, 07 (casi entero), 19 y el menú mobile.
 3. Completar la URL de privacidad antes de publicar el formulario (Q-07).
 
 **Sin estas condiciones no aprueba**, por Q-01 y Q-02, que son altos. A nivel de sitio, **A11Y-01 sigue siendo bloqueante**: se recomienda adelantarlo desde la Etapa 5 a la 2.
+
+---
+
+## Re-verificación tras aplicar las correcciones (26-09-2026)
+Resultado completo: `qa-accesibilidad-etapa-1-final.json` (11 páginas × 1280/390 px, reflow 320 px, menú mobile, test, movimiento reducido).
+
+| Criterio | Primera pasada | Re-verificación |
+|---|---|---|
+| Contraste (axe `color-contrast`) | 5 nodos (test 2, Herramientas 3) | **0** |
+| Q-01 Foco visible en campos | Invisible | 2 px `#1d5f94` ✅ |
+| Foco visible en enlaces/botones (20 Tab por página) | — | 0 elementos sin indicador ✅ (el script ahora espera la transición de 0,2 s del tema) |
+| Q-02 Hero del inicio | 1,5–1,9:1 y bucle de escritura | 8,9–11,7:1 ✅; el bucle se elimina al desactivar Blocks Animation (paso 3) o en el bloque (corrección I10) |
+| Nombres accesibles (LinkedIn, puntos del carrusel) | Faltaban | ✅ (S02, H05) |
+| Un H1 por página | ✅ | ✅ |
+| Reflow 320 px | ✅ | ✅ 0 desbordes |
+| Menú mobile | ✅ | ✅ blanco, 48×48, Esc |
+
+Pendiente (no bloqueante, con etapa asignada):
+- `heading-order` (moderado): 3 nodos en el test y 3 en Herramientas, páginas que se rehacen (test accesible y Herramientas).
+- `target-size`: 3 puntos del carrusel de Herramientas (Etapa 2).
+- **A11Y-01, test operable con teclado: sigue siendo bloqueante a nivel de sitio.** Recomendación: adelantarlo a la Etapa 2.
+- Condición externa: URL de la política de privacidad para el formulario ([COMPLETAR]).
+
+**Veredicto final de la Etapa 1: aprueba**, con A11Y-01 registrado como bloqueante del sitio a resolver en la próxima etapa.
