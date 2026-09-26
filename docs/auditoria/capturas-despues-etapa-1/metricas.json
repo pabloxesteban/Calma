@@ -9,7 +9,7 @@
   "smallSample": [],
   "minGutter": 20,
   "h1": [
-   "Te damos la bienvenida a Código Calma"
+   "Te damos la bienvenida a C\u00f3digo Calma"
   ],
   "ctas": [
    {
@@ -19,7 +19,7 @@
     "h": 68
    }
   ],
-  "height": 13314
+  "height": 13377
  },
  {
   "w": 360,
@@ -31,7 +31,7 @@
   "smallSample": [],
   "minGutter": 20,
   "h1": [
-   "Mentorías y acompañamiento uno a uno"
+   "Mentor\u00edas y acompa\u00f1amiento uno a uno"
   ],
   "ctas": [
    {
@@ -52,11 +52,11 @@
   "smallTargets": 2,
   "smallSample": [
    "INPUT",
-   "política de privacidad"
+   "pol\u00edtica de privacidad"
   ],
   "minGutter": 24,
   "h1": [
-   "¿Cómo podemos ayudarte?"
+   "\u00bfC\u00f3mo podemos ayudarte?"
   ],
   "ctas": [
    {
@@ -78,7 +78,7 @@
   "smallSample": [],
   "minGutter": 20,
   "h1": [
-   "Hola, soy Tatiana X. Stacul, psicóloga detrás de C"
+   "Hola, soy Tatiana X. Stacul, psic\u00f3loga detr\u00e1s de C"
   ],
   "ctas": [],
   "height": 2831
@@ -91,9 +91,9 @@
   "hiddenText": 0,
   "smallTargets": 24,
   "smallSample": [
-   "Psicología",
+   "Psicolog\u00eda",
    "Tatiana X. Stacul",
-   "Psicología",
+   "Psicolog\u00eda",
    "Tatiana X. Stacul",
    "Ciberseguridad",
    "Tatiana X. Stacul"
@@ -115,7 +115,7 @@
   "smallSample": [],
   "minGutter": 24,
   "h1": [
-   "Ciberpsicología y bienestar digital"
+   "Ciberpsicolog\u00eda y bienestar digital"
   ],
   "ctas": [],
   "height": 3902
@@ -158,16 +158,16 @@
   "hiddenText": 0,
   "smallTargets": 3,
   "smallSample": [
-   "BUTTON",
-   "BUTTON",
-   "BUTTON"
+   "Ver tarjeta: Llevar un diario",
+   "Ver tarjeta: Meditar",
+   "Ver tarjeta: Apps"
   ],
   "minGutter": -565,
   "h1": [
    "Aplicaciones de productividad y calma"
   ],
   "ctas": [],
-  "height": 5196
+  "height": 5202
  },
  {
   "w": 360,
@@ -182,7 +182,7 @@
    "Libros de descarga gratuita"
   ],
   "ctas": [],
-  "height": 3511
+  "height": 3541
  },
  {
   "w": 360,
@@ -197,7 +197,7 @@
    "Bienestar Digital"
   ],
   "ctas": [],
-  "height": 4771
+  "height": 4705
  },
  {
   "w": 360,
@@ -216,7 +216,7 @@
   ],
   "minGutter": 19,
   "h1": [
-   "¿Por qué fallamos al intentar cambiar conductas?"
+   "\u00bfPor qu\u00e9 fallamos al intentar cambiar conductas?"
   ],
   "ctas": [],
   "height": 6826
@@ -231,7 +231,7 @@
   "smallSample": [],
   "minGutter": 20,
   "h1": [
-   "Te damos la bienvenida a Código Calma"
+   "Te damos la bienvenida a C\u00f3digo Calma"
   ],
   "ctas": [
    {
@@ -241,7 +241,7 @@
     "h": 68
    }
   ],
-  "height": 12937
+  "height": 13000
  },
  {
   "w": 390,
@@ -253,7 +253,7 @@
   "smallSample": [],
   "minGutter": 20,
   "h1": [
-   "Mentorías y acompañamiento uno a uno"
+   "Mentor\u00edas y acompa\u00f1amiento uno a uno"
   ],
   "ctas": [
    {
@@ -274,11 +274,11 @@
   "smallTargets": 2,
   "smallSample": [
    "INPUT",
-   "política de privacidad"
+   "pol\u00edtica de privacidad"
   ],
   "minGutter": 24,
   "h1": [
-   "¿Cómo podemos ayudarte?"
+   "\u00bfC\u00f3mo podemos ayudarte?"
   ],
   "ctas": [
    {
@@ -300,7 +300,7 @@
   "smallSample": [],
   "minGutter": 20,
   "h1": [
-   "Hola, soy Tatiana X. Stacul, psicóloga detrás de C"
+   "Hola, soy Tatiana X. Stacul, psic\u00f3loga detr\u00e1s de C"
   ],
   "ctas": [],
   "height": 2702
@@ -313,9 +313,9 @@
   "hiddenText": 0,
   "smallTargets": 24,
   "smallSample": [
-   "Psicología",
+   "Psicolog\u00eda",
    "Tatiana X. Stacul",
-   "Psicología",
+   "Psicolog\u00eda",
    "Tatiana X. Stacul",
    "Ciberseguridad",
    "Tatiana X. Stacul"
@@ -337,7 +337,7 @@
   "smallSample": [],
   "minGutter": 24,
   "h1": [
-   "Ciberpsicología y bienestar digital"
+   "Ciberpsicolog\u00eda y bienestar digital"
   ],
   "ctas": [],
   "height": 3938
@@ -380,16 +380,16 @@
   "hiddenText": 0,
   "smallTargets": 3,
   "smallSample": [
-   "BUTTON",
-   "BUTTON",
-   "BUTTON"
+   "Ver tarjeta: Llevar un diario",
+   "Ver tarjeta: Meditar",
+   "Ver tarjeta: Apps"
   ],
   "minGutter": -535,
   "h1": [
    "Aplicaciones de productividad y calma"
   ],
   "ctas": [],
-  "height": 5305
+  "height": 5311
  },
  {
   "w": 390,
@@ -404,7 +404,7 @@
    "Libros de descarga gratuita"
   ],
   "ctas": [],
-  "height": 3513
+  "height": 3547
  },
  {
   "w": 390,
@@ -419,7 +419,7 @@
    "Bienestar Digital"
   ],
   "ctas": [],
-  "height": 4599
+  "height": 4557
  },
  {
   "w": 390,
@@ -438,7 +438,7 @@
   ],
   "minGutter": 19,
   "h1": [
-   "¿Por qué fallamos al intentar cambiar conductas?"
+   "\u00bfPor qu\u00e9 fallamos al intentar cambiar conductas?"
   ],
   "ctas": [],
   "height": 6330
@@ -453,7 +453,7 @@
   "smallSample": [],
   "minGutter": 22,
   "h1": [
-   "Te damos la bienvenida a Código Calma"
+   "Te damos la bienvenida a C\u00f3digo Calma"
   ],
   "ctas": [
    {
@@ -463,7 +463,7 @@
     "h": 68
    }
   ],
-  "height": 12775
+  "height": 12837
  },
  {
   "w": 430,
@@ -475,7 +475,7 @@
   "smallSample": [],
   "minGutter": 20,
   "h1": [
-   "Mentorías y acompañamiento uno a uno"
+   "Mentor\u00edas y acompa\u00f1amiento uno a uno"
   ],
   "ctas": [
    {
@@ -496,11 +496,11 @@
   "smallTargets": 2,
   "smallSample": [
    "INPUT",
-   "política de privacidad"
+   "pol\u00edtica de privacidad"
   ],
   "minGutter": 24,
   "h1": [
-   "¿Cómo podemos ayudarte?"
+   "\u00bfC\u00f3mo podemos ayudarte?"
   ],
   "ctas": [
    {
@@ -522,7 +522,7 @@
   "smallSample": [],
   "minGutter": 20,
   "h1": [
-   "Hola, soy Tatiana X. Stacul, psicóloga detrás de C"
+   "Hola, soy Tatiana X. Stacul, psic\u00f3loga detr\u00e1s de C"
   ],
   "ctas": [],
   "height": 2613
@@ -535,9 +535,9 @@
   "hiddenText": 0,
   "smallTargets": 24,
   "smallSample": [
-   "Psicología",
+   "Psicolog\u00eda",
    "Tatiana X. Stacul",
-   "Psicología",
+   "Psicolog\u00eda",
    "Tatiana X. Stacul",
    "Ciberseguridad",
    "Tatiana X. Stacul"
@@ -559,7 +559,7 @@
   "smallSample": [],
   "minGutter": 24,
   "h1": [
-   "Ciberpsicología y bienestar digital"
+   "Ciberpsicolog\u00eda y bienestar digital"
   ],
   "ctas": [],
   "height": 3857
@@ -602,16 +602,16 @@
   "hiddenText": 0,
   "smallTargets": 3,
   "smallSample": [
-   "BUTTON",
-   "BUTTON",
-   "BUTTON"
+   "Ver tarjeta: Llevar un diario",
+   "Ver tarjeta: Meditar",
+   "Ver tarjeta: Apps"
   ],
   "minGutter": -498,
   "h1": [
    "Aplicaciones de productividad y calma"
   ],
   "ctas": [],
-  "height": 5305
+  "height": 5311
  },
  {
   "w": 430,
@@ -626,7 +626,7 @@
    "Libros de descarga gratuita"
   ],
   "ctas": [],
-  "height": 3567
+  "height": 3631
  },
  {
   "w": 430,
@@ -641,7 +641,7 @@
    "Bienestar Digital"
   ],
   "ctas": [],
-  "height": 4464
+  "height": 4473
  },
  {
   "w": 430,
@@ -660,7 +660,7 @@
   ],
   "minGutter": 21,
   "h1": [
-   "¿Por qué fallamos al intentar cambiar conductas?"
+   "\u00bfPor qu\u00e9 fallamos al intentar cambiar conductas?"
   ],
   "ctas": [],
   "height": 5943
@@ -673,12 +673,12 @@
   "hiddenText": 0,
   "smallTargets": 2,
   "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda"
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
   ],
   "minGutter": 0,
   "h1": [
-   "Te damos la bienvenida a Código Calma"
+   "Te damos la bienvenida a C\u00f3digo Calma"
   ],
   "ctas": [
    {
@@ -688,7 +688,7 @@
     "h": 72
    }
   ],
-  "height": 5760
+  "height": 5687
  },
  {
   "w": 1280,
@@ -698,12 +698,12 @@
   "hiddenText": 0,
   "smallTargets": 2,
   "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda"
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
   ],
   "minGutter": 40,
   "h1": [
-   "Mentorías y acompañamiento uno a uno"
+   "Mentor\u00edas y acompa\u00f1amiento uno a uno"
   ],
   "ctas": [
    {
@@ -723,14 +723,14 @@
   "hiddenText": 0,
   "smallTargets": 4,
   "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda",
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda",
    "INPUT",
-   "política de privacidad"
+   "pol\u00edtica de privacidad"
   ],
   "minGutter": 64,
   "h1": [
-   "¿Cómo podemos ayudarte?"
+   "\u00bfC\u00f3mo podemos ayudarte?"
   ],
   "ctas": [
    {
@@ -750,12 +750,12 @@
   "hiddenText": 0,
   "smallTargets": 2,
   "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda"
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
   ],
   "minGutter": 50,
   "h1": [
-   "Hola, soy Tatiana X. Stacul, psicóloga detrás de C"
+   "Hola, soy Tatiana X. Stacul, psic\u00f3loga detr\u00e1s de C"
   ],
   "ctas": [],
   "height": 1804
@@ -768,11 +768,11 @@
   "hiddenText": 0,
   "smallTargets": 25,
   "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda",
-   "Psicología",
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda",
+   "Psicolog\u00eda",
    "Tatiana X. Stacul",
-   "Psicología",
+   "Psicolog\u00eda",
    "Tatiana X. Stacul"
   ],
   "minGutter": 64,
@@ -790,12 +790,12 @@
   "hiddenText": 0,
   "smallTargets": 2,
   "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda"
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
   ],
   "minGutter": 64,
   "h1": [
-   "Ciberpsicología y bienestar digital"
+   "Ciberpsicolog\u00eda y bienestar digital"
   ],
   "ctas": [],
   "height": 1551
@@ -808,8 +808,8 @@
   "hiddenText": 0,
   "smallTargets": 2,
   "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda"
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
   ],
   "minGutter": 64,
   "h1": [
@@ -826,8 +826,8 @@
   "hiddenText": 0,
   "smallTargets": 2,
   "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda"
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
   ],
   "minGutter": 96,
   "h1": [
@@ -844,18 +844,18 @@
   "hiddenText": 0,
   "smallTargets": 5,
   "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda",
-   "BUTTON",
-   "BUTTON",
-   "BUTTON"
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda",
+   "Ver tarjeta: Llevar un diario",
+   "Ver tarjeta: Meditar",
+   "Ver tarjeta: Apps"
   ],
   "minGutter": 82,
   "h1": [
    "Aplicaciones de productividad y calma"
   ],
   "ctas": [],
-  "height": 3487
+  "height": 3494
  },
  {
   "w": 1280,
@@ -865,15 +865,15 @@
   "hiddenText": 0,
   "smallTargets": 2,
   "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda"
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
   ],
   "minGutter": 116,
   "h1": [
    "Libros de descarga gratuita"
   ],
   "ctas": [],
-  "height": 1519
+  "height": 1613
  },
  {
   "w": 1280,
@@ -883,15 +883,15 @@
   "hiddenText": 0,
   "smallTargets": 2,
   "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda"
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda"
   ],
   "minGutter": 80,
   "h1": [
    "Bienestar Digital"
   ],
   "ctas": [],
-  "height": 3057
+  "height": 3047
  },
  {
   "w": 1280,
@@ -901,8 +901,8 @@
   "hiddenText": 0,
   "smallTargets": 11,
   "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda",
+   "Men\u00fa hijo de Ciberpsicolog\u00eda",
+   "Ver el formulario de b\u00fasqueda",
    "Ciberseguridad",
    "Tatiana X. Stacul",
    "Facebook",
@@ -910,7 +910,7 @@
   ],
   "minGutter": 113,
   "h1": [
-   "¿Por qué fallamos al intentar cambiar conductas?"
+   "\u00bfPor qu\u00e9 fallamos al intentar cambiar conductas?"
   ],
   "ctas": [],
   "height": 4367
