@@ -6,8 +6,8 @@ description: Pruebas mobile reproducibles para codigocalma.com en 360, 390 y 430
 # Mobile QA — Código Calma
 
 ## Herramienta
-Playwright + Chromium preinstalados (`/opt/node22/lib/node_modules/playwright`, `/opt/pw-browsers/chromium`). Scripts en `docs/auditoria/capturas.js` (capturas + métricas) y `docs/auditoria/traza-recorte.js` (cadena de ancestros de un elemento recortado).
-En este entorno el navegador no confía en el CA del proxy: los scripts enrutan las peticiones por `fetch` de Node (que sí valida TLS). Ejecutar con `NODE_USE_ENV_PROXY=1 node docs/auditoria/capturas.js <carpeta-salida>`.
+Playwright + Chromium preinstalados (`/opt/node22/lib/node_modules/playwright`, `/opt/pw-browsers/chromium`). Scripts en `docs/auditoria/scripts/capturas.js` (capturas + métricas) y `docs/auditoria/scripts/traza-recorte.js` (cadena de ancestros de un elemento recortado).
+En este entorno el navegador no confía en el CA del proxy: los scripts enrutan las peticiones por `fetch` de Node (que sí valida TLS). Ejecutar con `NODE_USE_ENV_PROXY=1 node docs/auditoria/scripts/capturas.js <carpeta-salida>`.
 Para probar la rama local (no producción) servir el HTML/tema en un WordPress local o staging y cambiar la URL base.
 
 ## Páginas mínimas
