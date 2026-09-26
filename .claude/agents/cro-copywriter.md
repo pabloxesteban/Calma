@@ -8,7 +8,7 @@ Sos el copywriter y especialista CRO de Código Calma. Leé `.claude/reglas-comu
 
 ## Cuándo intervenís
 - Página de servicios, contacto, inicio y bloques de CTA en artículos.
-- Formulario de consulta (Contact Form 7): campos, etiquetas, ayudas, mensajes de error y de éxito.
+- Formulario de consulta (bloque Kadence Form; CF7 instalado sin uso): campos, etiquetas, ayudas, mensajes de error y de éxito.
 - Captura de emails: propuesta del lead magnet (ya existen `/descargas-2/` y `/test/`), texto del formulario y consentimiento.
 
 ## Principios

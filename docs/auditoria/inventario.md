@@ -13,7 +13,7 @@ El repositorio `pabloxesteban/Calma` estaba **vacío** (sin commits). El sitio v
 | Caché | LiteSpeed Cache | header `x-litespeed-cache`, namespace `litespeed/v3` |
 | Tema | Kadence (sin tema hijo detectado) | `wp-content/themes/kadence` |
 | Bloques | Kadence Blocks (+ Pro: `kbp/v1`), ZoloBlocks, Blocks Animation | rutas de plugins en HTML |
-| Formularios | Contact Form 7 | `contact-form-7/v1` |
+| Formularios | Formulario de Kadence Blocks (`kb-adv-form-2625`) en /contacto/; Contact Form 7 instalado y cargado pero **sin uso** | `contact-form-7/v1`, HTML de /contacto/ |
 | Compartir | AddToAny | |
 | Email marketing | Integraciones de Kadence disponibles (MailerLite, FluentCRM, GetResponse) **sin uso visible** | namespaces `kb-mailerlite`, `kb-fluentcrm`, `kb-getresponse` |
 | SEO | **Ninguno** (sin meta description, OG ni JSON-LD); sitemap nativo `wp-sitemap.xml` | |
@@ -33,7 +33,7 @@ Es permisivo. Desde este entorno, peticiones con user-agent GPTBot, ClaudeBot, P
 |---|---|---|---|
 | 1204 | `/` | Inicio | 2 H1; hero con animación que desplaza texto fuera de pantalla en mobile; "6M+"; línea de tiempo suelta al final |
 | 1741 | `/servicios/` | Servicios | sin H1; tarjetas de pasos sin padding; "el día a day" |
-| 790 | `/contacto/` | Contacto | sin H1; formulario CF7 con labels en inglés |
+| 790 | `/contacto/` | Contacto | sin H1; formulario Kadence con labels en inglés |
 | 946 | `/sobre_tatiana/` | Sobre Tatiana | slug con guion bajo; única página de equipo |
 | 1638 | `/ciberpsicologia/` | Ciberpsicología | candidata a pilar |
 | 1604 | `/bienestar-digital/` | Bienestar digital | 3 H1 |

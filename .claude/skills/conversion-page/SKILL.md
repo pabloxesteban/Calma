@@ -1,6 +1,6 @@
 ---
 name: conversion-page
-description: Estructura y checklist para páginas que generan solicitudes de consulta en codigocalma.com (servicios, contacto, inicio, landing de cada profesional) y para captura de emails. Úsala al diseñar o reescribir esas páginas, el formulario de Contact Form 7, los CTA dentro de artículos o el bloque de newsletter. Ética de salud mental incluida: sin urgencia falsa ni promesas de resultados.
+description: Estructura y checklist para páginas que generan solicitudes de consulta en codigocalma.com (servicios, contacto, inicio, landing de cada profesional) y para captura de emails. Úsala al diseñar o reescribir esas páginas, el formulario de consulta (Kadence Form), los CTA dentro de artículos o el bloque de newsletter. Ética de salud mental incluida: sin urgencia falsa ni promesas de resultados.
 ---
 
 # Conversion page — Código Calma

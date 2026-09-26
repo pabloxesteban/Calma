@@ -119,7 +119,7 @@ Fondo `--cc-navy`, 3–4 columnas (mobile: apiladas): marca + descripción de 1 
 ```
 Nunca secciones vacías: una sección sin contenido se elimina, no se "rellena" con padding.
 
-### Formularios (Contact Form 7)
+### Formularios (Kadence Form)
 Label visible encima, input `min-height:48px`, borde `--cc-border` 1px → 2px `--cc-primary` en foco, error bajo el campo en `--cc-error` con ícono + texto.
 
 ## 3. Modo oscuro

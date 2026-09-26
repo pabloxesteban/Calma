@@ -4,7 +4,7 @@ Lo leen todos los subagentes (`.claude/agents/`) antes de trabajar.
 
 ## Contexto del proyecto
 - Sitio: https://codigocalma.com — portal de ciberpsicología en español con mentoría y acompañamiento uno a uno.
-- Stack: WordPress 7.x en Hostinger (LiteSpeed Cache + CDN hcdn), tema **Kadence**, bloques **Kadence Blocks**, **ZoloBlocks**, **Blocks Animation**, **Contact Form 7**, **AddToAny**. Sin plugin SEO.
+- Stack: WordPress 7.x en Hostinger (LiteSpeed Cache + CDN hcdn), tema **Kadence**, bloques **Kadence Blocks**, **ZoloBlocks**, **Blocks Animation**, **Kadence Form** (contacto; Contact Form 7 instalado sin uso), **AddToAny**. Sin plugin SEO.
 - Equipo: Tatiana X. Stacul (psicóloga, ciberpsicología y comportamiento), Francisca Cortés Santoro (accesibilidad cognitiva y lenguaje), Emanuel C. Franco (gestión de proyectos y procesos).
 - Voz de marca: **tuteo** en español neutro ("nos escribes", "te respondemos"), tono sereno, claro, sin urgencia artificial.
 - Inventario y diagnóstico: `docs/auditoria/`.
