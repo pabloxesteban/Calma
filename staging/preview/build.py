@@ -162,8 +162,9 @@ def e2_test(s):
         return s
     a, _ = entry_bounds(s)
     i = s.index('<style data-wp-block-html="css">', a)
-    j = s.index('</script>', s.index('<script data-wp-block-html="js">', i)) + len('</script>')
-    # El bloque original va dentro de una fila/columna de Kadence: se conserva el contenedor.
+    # El bloque HTML personalizado original = <style> + <script> + marcado de las
+    # pantallas (#screen-0…), hasta el cierre de la columna/fila de Kadence que lo contiene.
+    j = s.index('</div></div>\n\n</div></div>', s.index('id="screen-0"'))
     log.append('test: bloque accesible reemplazado')
     return s[:i] + f.read_text(encoding='utf-8') + s[j:]
 

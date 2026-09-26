@@ -288,8 +288,13 @@ button[type="submit"] {
 .entry-taxonomies .category-links a {
 	display: inline-flex;
 	align-items: center;
-	min-height: 32px;
+	/* Pastilla visual de 32 px con área táctil de 44 px: el borde transparente
+	   suma a la zona clicable pero no se pinta (background-clip). */
+	min-height: 44px;
 	padding: 4px 12px;
+	border: 6px solid transparent;
+	border-inline-width: 0;
+	background-clip: padding-box;
 	border-radius: var(--calma-radius-pill);
 	background: var(--calma-surface-soft);
 	color: var(--calma-violet) !important;
@@ -514,6 +519,7 @@ button[type="submit"] {
 	display: inline-flex;
 	align-items: center;
 	min-height: 44px;
+	min-width: 44px;
 	text-decoration: none;
 }
 .calma-footer li a:hover {
