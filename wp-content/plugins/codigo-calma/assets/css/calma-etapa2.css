@@ -625,3 +625,19 @@ button[type="submit"] {
 .wp-block-kadence-advanced-form .kb-adv-form-field {
 	margin-bottom: var(--calma-space-5);
 }
+
+/* Paginación del blog: números y "Siguiente" de 44 px */
+.pagination .page-numbers,
+.navigation.pagination .nav-links a,
+.navigation.pagination .nav-links span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	min-height: 44px;
+	border-radius: var(--calma-radius-sm);
+}
+.pagination .page-numbers.current {
+	background: var(--calma-primary);
+	color: #fff;
+}
