@@ -1,0 +1,56 @@
+# Código Calma
+
+> Portal de ciberpsicología en español: comprendiendo el comportamiento humano en entornos digitales. Artículos, herramientas y recursos explicados de forma clara y simple para vivir entre dispositivos en una relación más consciente, y mentorías y acompañamiento uno a uno en formato online.
+
+Código Calma está dirigido por Tatiana X. Stacul, psicóloga (ciberpsicología y comportamiento). Los artículos son de carácter educativo y no sustituyen una evaluación ni una atención profesional. Contacto: hola@codigocalma.com.
+
+## Equipo
+
+- [Tatiana X. Stacul](https://codigocalma.com/sobre_tatiana/): psicóloga · ciberpsicología y comportamiento. Autora de los artículos del sitio. Formación declarada en el sitio: Grado en Psicología, Máster en Neurociencias, Coaching Empresarial. [COMPLETAR: matrícula/colegiación profesional, si corresponde] Perfil: https://www.linkedin.com/in/tatiana-staculpsi/
+- [Francisca Cortés Santoro](https://codigocalma.com/servicios/): accesibilidad cognitiva y lenguaje (lectura fácil y lenguaje claro, carga cognitiva, apoyos a la comunicación). [COMPLETAR: URL de su página de persona cuando exista]
+- [Emanuel C. Franco](https://codigocalma.com/servicios/): gestión de proyectos y procesos (alcance, plazos y prioridades; normativa y procesos; reconducir proyectos en marcha). [COMPLETAR: URL de su página de persona cuando exista]
+
+## Servicios
+
+- [Mentorías y acompañamiento uno a uno](https://codigocalma.com/servicios/): una persona por vez, formato online. Primer encuentro de una hora para entender el contexto y salir con un objetivo escrito; después, un recorrido de tres a seis sesiones que termina con un plan por escrito. Áreas: psicología (ciberpsicología y comportamiento), accesibilidad cognitiva y gestión de proyectos.
+- [Contacto](https://codigocalma.com/contacto/): formulario y correo hola@codigocalma.com; respuesta en 48 horas hábiles.
+
+## Guías principales
+
+- [Ciberpsicología y bienestar digital](https://codigocalma.com/ciberpsicologia/): cómo la tecnología cambia lo que hacemos, cómo nos relacionamos y qué decisiones tomamos; por qué algunas plataformas generan hábitos difíciles de romper.
+- [Bienestar digital](https://codigocalma.com/bienestar-digital/): la intersección entre ciberpsicología, ciberseguridad y bienestar humano; primeros pasos (tiempo de pantalla consciente, seguridad y privacidad, conexiones significativas).
+- [Herramientas](https://codigocalma.com/herramientas/): recomendaciones orientativas de apps de mindfulness, diario y hábitos; no reemplazan el acompañamiento profesional.
+
+## Artículos
+
+### Psicología y comportamiento
+- [Por qué tu fuerza de voluntad es más lista de lo que crees](https://codigocalma.com/por-que-tu-fuerza-de-voluntad-es-mas-lista-de-lo-que-crees/): cuestiona la metáfora del «músculo» y del «agotamiento del ego»; la fuerza de voluntad como sistema dinámico que responde a lo que crees de ti y a cómo estructuras tu entorno (2026).
+- [La diferencia entre «querer» y «ser capaz»: Entendiendo la autoeficacia](https://codigocalma.com/la-diferencia-entre-querer-y-ser-capaz-entendiendo-la-autoeficacia/): qué es la autoeficacia (Albert Bandura), en qué se diferencia de la autoestima y sus cuatro fuentes: experiencias de dominio, experiencias vicarias, persuasión social y estados fisiológicos (2026).
+- [¿Qué modela nuestro comportamiento?](https://codigocalma.com/descubriendo-que-modela-nuestro-comportamiento/): introducción a la ciencia del comportamiento a través de B. F. Skinner (refuerzo), Daniel Kahneman (pensar rápido y lento) y Albert Bandura (aprendizaje social) (2026).
+- [El arte de rediseñar tu entorno](https://codigocalma.com/el-arte-de-redisenar-tu-entorno/): a partir del trabajo de la psicóloga Wendy Wood con estudiantes que cambiaban de universidad, por qué cambiar el entorno rompe hábitos mejor que la fuerza de voluntad (2025).
+
+### Bienestar digital
+- [La tecnología te supera: Cómo identificar y gestionar el tecnoestrés](https://codigocalma.com/la-tecnologia-te-supera-como-identificar-y-gestionar-el-tecnoestres/): qué es el tecnoestrés, sus síntomas (ansiedad, agotamiento, irritabilidad, insomnio), sus consecuencias y estrategias para gestionarlo (2026).
+- [Calidad vs. Cantidad: La Hipótesis de Ricitos de Oro](https://codigocalma.com/calidad-vs-cantidad-la-hipotesis-de-ricitos-de-oro/): la hipótesis de Andrew Przybylski (Oxford Internet Institute): importa más la calidad y el tipo de uso de las pantallas que el número de horas (2026).
+- [Autoevaluación del Consumo Digital: ¿Cómo estamos manejando nuestro tiempo frente a las pantallas?](https://codigocalma.com/autoevaluacion-del-consumo-digital-como-estamos-manejando-nuestro-tiempo-frente-a-las-pantallas/): qué es el consumo digital, por qué evaluarlo y cómo hacer una autoevaluación con tres variables: tiempo total, distribución entre actividades e impacto emocional o cognitivo (2026).
+- [Infancias «Figitales»](https://codigocalma.com/infancias-figitales/): crianza en un mundo donde lo digital y lo físico no tienen frontera; aprendizajes de Cibervoluntarios y el paso de la vigilancia al acompañamiento (2026).
+
+### Ciberpsicología e inteligencia artificial
+- [IA y apoyo emocional: saber la autoria, cambia tu perspectiva](https://codigocalma.com/ia-y-apoyo-emocional-saber-la-autoria-cambia-tu-perspectiva/): a partir de un estudio de Brandtzaeg, Skjuve y Følstad (2026), cómo cambia la valoración que hacen las personas jóvenes de respuestas de apoyo emocional según sepan si las escribió una profesional o una IA (2026).
+- [El estigma de la estructura: «X entonces Y»](https://codigocalma.com/el-estigma-de-la-estructura-x-entonces-y/): por qué un texto con estructura lógica no es señal de que lo escribió una IA; el condicional lógico como herencia del pensamiento humano (2026).
+- [Reflexiones Éticas sobre el Desarrollo de la Inteligencia Artificial](https://codigocalma.com/reflexiones-eticas-sobre-el-desarrollo-de-la-inteligencia-artificial/): privacidad y seguridad de los datos, responsabilidad jurídica y desigualdad social en el desarrollo de la IA (2026).
+
+### Neurociencia y salud mental
+- [Preguntas Clave para Entender y Cuidar Nuestro Cerebro](https://codigocalma.com/preguntas-clave-para-entender-y-cuidar-nuestro-cerebro/): qué es la salud cerebral, cómo cuidarla a diario y qué señales indican que algo no va bien (2026).
+- [5 Puntos Clave que el Caso de Meta Nos Deja en Salud Mental](https://codigocalma.com/5-puntos-clave-que-el-caso-de-meta-nos-deja-en-salud-mental/): el proyecto interno Mercury de Meta, su cancelación, el estudio con Nielsen de 2020 y la responsabilidad de las plataformas en la salud mental (2026).
+
+### Ciberseguridad y comportamiento
+- [¿Por qué fallamos al intentar cambiar conductas?](https://codigocalma.com/por-que-fallamos-al-intentar-cambiar-conductas/): por qué dar más información o simplificar procesos no basta para cambiar conductas; el papel de la emoción en las decisiones (paternalismo afectivo, *nudge* y *cudge*) (2026).
+- [Cómo un «Te quiero» infectó 45 millones de computadoras en todo el mundo](https://codigocalma.com/como-un-te-quiero-infecto-45-millones-de-computadoras-en-todo-el-mundo/): el virus ILOVEYOU (mayo de 2000) leído desde la ciberpsicología: la palanca emocional detrás del clic (2024).
+
+## Opcional
+
+- [Test de consumo digital](https://codigocalma.com/test/): test educativo y orientativo de 12 preguntas sobre 4 dimensiones de la vida digital; no reemplaza una evaluación profesional.
+- [Descargas](https://codigocalma.com/descargas-2/): guías gratuitas de Tatiana X. Stacul (ansiedad funcional vs. ansiedad desbordada; ciberseguridad para psicólogos; psicología para devs; *The Psychology of Trust*).
+- [Testimonios](https://codigocalma.com/testimonios/)
+- [Blog](https://codigocalma.com/blog/)
