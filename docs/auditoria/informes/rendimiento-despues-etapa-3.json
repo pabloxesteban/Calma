@@ -1,0 +1,52 @@
+{
+ "inicio": {
+  "lcp": 840,
+  "cls": 0,
+  "kb": 835,
+  "reqs": 34,
+  "fonts": 2,
+  "gfonts": 0,
+  "lcpEl": "H1.",
+  "title": "Código Calma – Ciberpsicología y bienestar digital."
+ },
+ "servicios": {
+  "lcp": 456,
+  "cls": 0,
+  "kb": 581,
+  "reqs": 24,
+  "fonts": 2,
+  "gfonts": 0,
+  "lcpEl": "H1.",
+  "title": "Servicios – Código Calma"
+ },
+ "blog": {
+  "lcp": 412,
+  "cls": 0,
+  "kb": 736,
+  "reqs": 27,
+  "fonts": 2,
+  "gfonts": 0,
+  "lcpEl": "IMG.attachment-medium_large size-medium_larg",
+  "title": "Blog – Código Calma"
+ },
+ "articulo": {
+  "lcp": 424,
+  "cls": 0,
+  "kb": 697,
+  "reqs": 36,
+  "fonts": 3,
+  "gfonts": 0,
+  "lcpEl": "IMG.post-top-featured wp-post-image",
+  "title": "¿Por qué fallamos al intentar cambiar conductas? – Código Calma"
+ },
+ "contacto": {
+  "lcp": 368,
+  "cls": 0,
+  "kb": 662,
+  "reqs": 30,
+  "fonts": 2,
+  "gfonts": 0,
+  "lcpEl": "P.",
+  "title": "Contacto – Código Calma"
+ }
+}
