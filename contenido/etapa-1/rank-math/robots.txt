@@ -1,0 +1,41 @@
+# Código Calma — robots.txt (Etapa 1)
+# Se carga en Rank Math > Ajustes generales > Editar robots.txt.
+# Rank Math solo puede editarlo si NO existe un archivo físico public_html/robots.txt.
+# robots.txt expresa permisos; no desbloquea nada si el firewall de Hostinger
+# responde 403/429 (ver docs/implementacion/etapa-1.md, paso 1).
+
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /?s=
+Disallow: /search/
+
+# Buscadores y asistentes de IA: acceso permitido para indexar y citar.
+# Un grupo User-agent específico reemplaza al grupo "*" para ese bot,
+# por eso se repiten las exclusiones del admin y de la búsqueda interna.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+Allow: /
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /?s=
+Disallow: /search/
+
+# Rastreadores de entrenamiento sin función de búsqueda ni cita (CCBot, Bytespider):
+# hoy quedan permitidos por el grupo "*". [COMPLETAR: decisión del cliente]
+# Para excluirlos, quitar el "#" de las 4 líneas siguientes.
+# User-agent: CCBot
+# Disallow: /
+# User-agent: Bytespider
+# Disallow: /
+
+Sitemap: https://codigocalma.com/wp-sitemap.xml

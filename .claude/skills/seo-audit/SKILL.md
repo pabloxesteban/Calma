@@ -44,7 +44,7 @@ description: Checklist reproducible de auditoría SEO técnica y on-page para co
 ## Formato de hallazgo
 | URL | Problema | Evidencia | Impacto | Esfuerzo | Solución |
 |---|---|---|---|---|---|
-| /blog/ | Sin canonical | no hay `<link rel="canonical">` | Medio | Bajo | Plugin SEO o `wp_head` en tema hijo |
+| /blog/ | Sin canonical | no hay `<link rel="canonical">` | Medio | Bajo | Rank Math o `wp_head` en el plugin codigo-calma |
 
 ## 4. Script de extracción (Python, sin dependencias)
 ```python

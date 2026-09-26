@@ -45,7 +45,7 @@ Es permisivo. Desde este entorno, peticiones con user-agent GPTBot, ClaudeBot, P
 | 2337 | `/entradas/` | Entradas | posible duplicado de `/blog/` |
 
 ## Plantillas en uso (Kadence)
-Portada estática (página), página, entrada individual, archivo de categoría/etiqueta, archivo de autor (`/author/admin/`), búsqueda, 404. Ninguna página usa plantilla personalizada (`template: ""`); los diseños están armados con bloques dentro del contenido de cada página, con estilos inline por bloque (`kt-adv-heading1204_…`, `kadence-column1204_…`). **Consecuencia:** unificar el estilo exige una capa global de CSS (tema hijo) que normalice los bloques, más ajustes puntuales en el editor.
+Portada estática (página), página, entrada individual, archivo de categoría/etiqueta, archivo de autor (`/author/admin/`), búsqueda, 404. Ninguna página usa plantilla personalizada (`template: ""`); los diseños están armados con bloques dentro del contenido de cada página, con estilos inline por bloque (`kt-adv-heading1204_…`, `kadence-column1204_…`). **Consecuencia:** unificar el estilo exige una capa global de CSS (plugin del sitio `codigo-calma`) que normalice los bloques, más ajustes puntuales en el editor.
 
 ## Estilos
 - Paleta global Kadence: `#64b2e5` (1), `#4f86c6` (2), `#0f172a` (3), `#1f2937` (4), `#334155` (5), `#64748b` (6), `#dad4f6` lavanda (7), `#f8fafc` (8), `#ffffff` (9) + acentos 11–15.

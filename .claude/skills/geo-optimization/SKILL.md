@@ -7,7 +7,7 @@ description: Optimización para motores generativos (GEO) en codigocalma.com —
 
 ## 1. Acceso de crawlers
 ### robots.txt objetivo
-WordPress genera robots.txt virtual; para controlarlo, subir un archivo físico `robots.txt` a la raíz o filtrar `robots_txt` en el tema hijo.
+WordPress genera robots.txt virtual; para controlarlo, editarlo en Rank Math (Ajustes generales → Editar robots.txt; archivo listo en `contenido/etapa-1/rank-math/robots.txt`) o subir un archivo físico `robots.txt` a la raíz.
 ```
 # Código Calma — robots.txt
 User-agent: *
@@ -78,7 +78,7 @@ Archivo Markdown en `https://codigocalma.com/llms.txt` (físico en la raíz). Es
 ## Opcional
 - [Test de consumo digital](https://codigocalma.com/test/)
 ```
-Mantenerlo sincronizado al publicar (o generarlo desde el tema hijo).
+Mantenerlo sincronizado al publicar (o generarlo desde el plugin codigo-calma).
 
 ## 3. Estructura citable de cada artículo
 Sin cambiar la voz ni el contenido de la autora, **agregar** estructura:

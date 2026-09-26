@@ -35,7 +35,7 @@ El repositorio estaba vacío: el sitio es un WordPress administrado en Hostinger
 
 | Pieza en la rama | Qué contiene | Cómo se aplica |
 |---|---|---|
-| `wp-content/themes/kadence-child/` | Tema hijo: tokens `--calma-*` mapeados a la paleta de Kadence, componentes, correcciones mobile, CSS de impresión, `prefers-reduced-motion` | Subir por FTP o como .zip y activar |
+| `wp-content/plugins/codigo-calma/` | Plugin del sitio (reemplaza al tema hijo previsto: un tema hijo no hereda los ajustes del Personalizador de Kadence): tokens `--calma-*` mapeados a la paleta de Kadence, componentes, correcciones mobile, `prefers-reduced-motion` | Subir como .zip y activar |
 | `wp-content/mu-plugins/codigo-calma-seo-geo.php` | Filtro de robots.txt, `/llms.txt` dinámico, JSON-LD (`@graph`), caja de autora, bloque «En resumen» | Subir a `mu-plugins` (se activa solo) |
 | `contenido/` | Versión corregida de cada página y artículo en HTML de bloques (Gutenberg), lista para pegar en el editor de código, más un diff contra el original | Pegar en el editor, página por página |
 | `docs/implementacion/ajustes-wp-admin.md` | Ajustes del Customizer de Kadence, redirecciones 301, usuarios, medios, hPanel (firewall), con capturas de dónde tocar | Checklist manual |
@@ -51,7 +51,7 @@ El repositorio estaba vacío: el sitio es un WordPress administrado en Hostinger
 
 | | **Esfuerzo bajo (S)** | **Esfuerzo medio/alto (M–L)** |
 |---|---|---|
-| **Impacto alto** | **Quick wins → Etapa 1**: firewall de Hostinger, robots.txt, errores de texto, enlace de autora 404, quitar el HTML pegado del inicio, CSS inline de Servicios, animaciones, contraste del botón global, H1 únicos, formulario en español | **Estratégicos → Etapas 2–5**: design system en tema hijo, página de servicios y flujo de consulta, schema + metas de 27 URLs, páginas de equipo, taxonomía y clusters, «En resumen» + fuentes en 15 artículos, pilar "¿Qué es la ciberpsicología?" |
+| **Impacto alto** | **Quick wins → Etapa 1**: firewall de Hostinger, robots.txt, errores de texto, enlace de autora 404, quitar el HTML pegado del inicio, CSS inline de Servicios, animaciones, contraste del botón global, H1 únicos, formulario en español | **Estratégicos → Etapas 2–5**: design system en el plugin del sitio, página de servicios y flujo de consulta, schema + metas de 27 URLs, páginas de equipo, taxonomía y clusters, «En resumen» + fuentes en 15 artículos, pilar "¿Qué es la ciberpsicología?" |
 | **Impacto medio/bajo** | Relleno: imágenes rotas en testimonios, `/descargas/`, cadena de redirección www, etiquetas vacías, `alt` en inglés | Después: newsletter con lead magnet, rehacer el test accesible, rendimiento fino (fuentes locales, recorte de plugins), 12 artículos nuevos |
 
 ---
@@ -82,7 +82,7 @@ QA: capturas antes/después a 360/390/430/1280, `mobile-qa` y `accessibility-qa`
 ### Etapa 2 — Design system unificado (≈ 3–4 días)
 | # | Tarea | Hallazgos | Impacto | Esfuerzo |
 |---|---|---|---|---|
-| 2.1 | Tema hijo de Kadence con tokens `--calma-*` → `--global-palette*`: color, tipografía, espaciado, radios | UX-07/13/15 | Alto | M |
+| 2.1 | Plugin del sitio (`codigo-calma`) con tokens `--calma-*` → `--global-palette*`: color, tipografía, espaciado, radios | UX-07/13/15 | Alto | M |
 | 2.2 | Tipografía: de 6 familias a 2 (Lora para títulos, Inter para el cuerpo), alojadas localmente en woff2 con preload | UX-15, SEO-18 | Alto (también LCP) | S |
 | 2.3 | Header único: logo más chico, CTA "Solicitar una consulta" visible; drawer mobile claro con logo, CTA y el menú plano (sin esconder Blog/Test/Descargas) | UX-06/25/26 | Alto | M |
 | 2.4 | Footer en 4 columnas: marca, navegación, recursos, contacto + newsletter; fila legal con privacidad y aviso de urgencias | UX-17, CRO-08 | Alto | M |
@@ -138,7 +138,7 @@ Objetivo medible: LCP < 2,5 s, CLS < 0,1 e INP < 200 ms en mobile (percentil 75)
 
 ## 6. Qué necesito de vos para arrancar
 1. **Aprobar el plan** (o ajustar prioridades y etapas).
-2. **Confirmar el método de implementación** de la sección 2 (tema hijo + mu-plugin + contenido listo para pegar + staging local) y, si podés, pasarme un backup o una exportación WXR.
+2. **Confirmar el método de implementación** de la sección 2 (plugin del sitio + contenido listo para pegar + vista previa local) y, si podés, pasarme un backup o una exportación WXR.
 3. **Tareas que solo podés hacer vos, sin esperar a la Etapa 1:** revisar el firewall/antibots en hPanel (1.1) y borrar el campo "Sitio web" del usuario admin (1.4).
 4. **Decisiones:** plugin SEO (Rank Math o The SEO Framework), proveedor de newsletter, modo oscuro sí/no, qué hacer con CCBot/Bytespider y con los testimonios de Luis R./Ana M.
 5. **Datos:** los 47 placeholders de `docs/placeholders.md`. Los más urgentes son las fotos del equipo, la matrícula (si corresponde), honorarios o cómo mostrarlos, las líneas de ayuda y la URL de la política de privacidad.

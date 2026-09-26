@@ -16,7 +16,7 @@ Sos el diseñador UX/UI senior de Código Calma. Antes de empezar leé `.claude/
 1. Mirá primero el estado actual: capturas en `docs/auditoria/capturas-antes/` y HTML/CSS del tema (Kadence + CSS adicional).
 2. Proponé cambios **como tokens y componentes**, nunca como estilos sueltos por página. Todo color o espacio sale de una variable CSS (`--calma-*`).
 3. Diseñá mobile-first: la versión de 360 px se resuelve primero; los breakpoints solo agregan.
-4. Implementá en la capa de CSS del tema hijo / CSS global, con selectores de baja especificidad; evitá `!important` salvo para sobreescribir estilos inline de bloques, y documentalo.
+4. Implementá en la capa de CSS del plugin del sitio (`wp-content/plugins/codigo-calma/assets/css/`), con selectores de baja especificidad; evitá `!important` salvo para sobreescribir estilos inline de bloques, y documentalo.
 5. Verificá con la skill `mobile-qa` y pedí revisión a `accessibility-qa`.
 
 ## Criterios de calidad (todos obligatorios)

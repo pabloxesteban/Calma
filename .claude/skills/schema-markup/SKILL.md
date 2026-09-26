@@ -1,12 +1,12 @@
 ---
 name: schema-markup
-description: Plantillas JSON-LD para codigocalma.com — Organization, Person (cada profesional), ProfessionalService, WebSite, Article/BlogPosting, FAQPage y BreadcrumbList, con reglas para no inventar datos. Úsala al agregar o revisar datos estructurados en plantillas del tema hijo o en páginas concretas.
+description: Plantillas JSON-LD para codigocalma.com — Organization, Person (cada profesional), ProfessionalService, WebSite, Article/BlogPosting, FAQPage y BreadcrumbList, con reglas para no inventar datos. Úsala al agregar o revisar datos estructurados desde el plugin codigo-calma, Rank Math o páginas concretas.
 ---
 
 # Schema markup — Código Calma
 
 ## Reglas
-- JSON-LD en `<head>` (vía `wp_head` en el tema hijo o plugin SEO), un `@graph` por página, entidades enlazadas por `@id`.
+- JSON-LD en `<head>` (vía `wp_head` en el plugin codigo-calma o Rank Math, nunca ambos a la vez), un `@graph` por página, entidades enlazadas por `@id`.
 - **Solo datos visibles en la página y verificados.** Títulos, matrículas, universidades, precios, horarios, dirección: si no están confirmados, no van en el schema (y en la página va `[COMPLETAR: …]`).
 - No usar `Review`/`AggregateRating` sobre la propia organización (Google no lo muestra y los testimonios deben ser reales y verificables).
 - Validar en https://validator.schema.org y en la prueba de resultados enriquecidos de Google.

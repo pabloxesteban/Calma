@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Código Calma — Tokens del design system (ver .claude/skills/design-system)
+   Prefijo calma- para no chocar con las clases .cc-* del CSS heredado.
+   ========================================================================== */
+
+:root {
+	/* Color */
+	--calma-bg: #f8fafc;
+	--calma-surface: #ffffff;
+	--calma-surface-soft: #f1eefc;
+	--calma-lavender: #dad4f6;
+	--calma-text: #0f172a;
+	--calma-text-muted: #475569;
+	--calma-primary: #1d5f94;       /* 6,7:1 con texto blanco */
+	--calma-primary-hover: #174d78; /* 8,9:1 con texto blanco */
+	--calma-accent: #64b2e5;        /* solo decorativo: 2,3:1 con blanco */
+	--calma-violet: #5b3fb8;
+	--calma-navy: #16214d;
+	--calma-on-navy: #ffffff;
+	--calma-border: #e2e8f0;
+	--calma-focus: #1d5f94;
+	--calma-success: #1f7a4d;
+	--calma-error: #b42318;
+
+	/* Tipografía */
+	--calma-font-heading: "Lora", Georgia, serif;
+	--calma-font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+	--calma-fs-xs: 0.875rem;
+	--calma-fs-sm: 1rem;
+	--calma-fs-base: clamp(1.0625rem, 1rem + 0.25vw, 1.125rem);
+	--calma-fs-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+	--calma-fs-xl: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+	--calma-fs-2xl: clamp(1.875rem, 1.4rem + 2.4vw, 3rem);
+	--calma-lh-body: 1.65;
+	--calma-lh-heading: 1.2;
+	--calma-measure: 68ch;
+
+	/* Espaciado */
+	--calma-space-1: 4px;
+	--calma-space-2: 8px;
+	--calma-space-3: 12px;
+	--calma-space-4: 16px;
+	--calma-space-5: 20px;
+	--calma-space-6: 24px;
+	--calma-space-8: 32px;
+	--calma-space-10: 40px;
+	--calma-space-12: 48px;
+	--calma-space-16: 64px;
+	--calma-space-20: 80px;
+	--calma-gutter: clamp(20px, 5vw, 32px);
+	--calma-section-y: clamp(48px, 8vw, 96px);
+	--calma-container: 1160px;
+	--calma-container-text: 720px;
+
+	/* Forma y movimiento */
+	--calma-radius-sm: 8px;
+	--calma-radius: 16px;
+	--calma-radius-lg: 24px;
+	--calma-radius-pill: 999px;
+	--calma-shadow-sm: 0 1px 2px rgb(15 23 42 / 0.06);
+	--calma-shadow: 0 4px 16px rgb(15 23 42 / 0.08);
+	--calma-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+	--calma-dur: 180ms;
+}
+
+/* Paleta global de Kadence → tokens. Mismo cambio que en
+   Apariencia > Personalizar > Colores (ver docs/implementacion/etapa-1.md). */
+html:root {
+	--global-palette1: var(--calma-primary);   /* antes #64b2e5 (2,3:1) */
+	--global-palette2: var(--calma-primary-hover); /* antes #4f86c6 (3,9:1) */
+	--global-palette12: var(--calma-accent);   /* azul claro, solo decorativo */
+	--global-palette-btn-bg: var(--calma-primary);
+	--global-palette-btn-bg-hover: var(--calma-primary-hover);
+	--global-palette-btn: #ffffff;
+	--global-palette-btn-hover: #ffffff;
+}

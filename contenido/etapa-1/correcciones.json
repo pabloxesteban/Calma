@@ -1,0 +1,795 @@
+{
+ "version": "etapa-1",
+ "correcciones": [
+  {
+   "id": "T01",
+   "tipo": "titulo",
+   "paginas": [
+    "*"
+   ],
+   "donde": "Entradas > editar la entrada > campo Título (no cambiar el enlace permanente)",
+   "antes": "IA y apoyo emocional: saber la autoria, cambia tu perspectiva",
+   "despues": "IA y apoyo emocional: saber la autoría cambia tu perspectiva",
+   "origen": "CRO #6",
+   "nota": "Aparece también en el inicio, el blog, las relacionadas y el <title>."
+  },
+  {
+   "id": "T02",
+   "tipo": "titulo",
+   "paginas": [
+    "*"
+   ],
+   "donde": "Entradas > editar la entrada > campo Título (no cambiar el enlace permanente)",
+   "antes": "La diferencia entre «querer» y «ser capaz»: Entendiendo la autoeficacia",
+   "despues": "La diferencia entre «querer» y «ser capaz»: entendiendo la autoeficacia",
+   "origen": "CRO #63",
+   "nota": "Aparece también en el inicio, el blog, las relacionadas y el <title>."
+  },
+  {
+   "id": "T03",
+   "tipo": "titulo",
+   "paginas": [
+    "*"
+   ],
+   "donde": "Entradas > editar la entrada > campo Título (no cambiar el enlace permanente)",
+   "antes": "Calidad vs. Cantidad: La Hipótesis de Ricitos de Oro",
+   "despues": "Calidad vs. cantidad: la hipótesis de Ricitos de Oro",
+   "origen": "CRO #63",
+   "nota": "Aparece también en el inicio, el blog, las relacionadas y el <title>."
+  },
+  {
+   "id": "T04",
+   "tipo": "titulo",
+   "paginas": [
+    "*"
+   ],
+   "donde": "Entradas > editar la entrada > campo Título (no cambiar el enlace permanente)",
+   "antes": "Autoevaluación del Consumo Digital: ¿Cómo estamos manejando nuestro tiempo frente a las pantallas?",
+   "despues": "Autoevaluación del consumo digital: ¿cómo estamos manejando nuestro tiempo frente a las pantallas?",
+   "origen": "CRO #63",
+   "nota": "Aparece también en el inicio, el blog, las relacionadas y el <title>."
+  },
+  {
+   "id": "T05",
+   "tipo": "titulo",
+   "paginas": [
+    "*"
+   ],
+   "donde": "Entradas > editar la entrada > campo Título (no cambiar el enlace permanente)",
+   "antes": "Preguntas Clave para Entender y Cuidar Nuestro Cerebro",
+   "despues": "Preguntas clave para entender y cuidar nuestro cerebro",
+   "origen": "CRO #63",
+   "nota": "Aparece también en el inicio, el blog, las relacionadas y el <title>."
+  },
+  {
+   "id": "T06",
+   "tipo": "titulo",
+   "paginas": [
+    "*"
+   ],
+   "donde": "Entradas > editar la entrada > campo Título (no cambiar el enlace permanente)",
+   "antes": "5 Puntos Clave que el Caso de Meta Nos Deja en Salud Mental",
+   "despues": "5 puntos clave que el caso de Meta nos deja en salud mental",
+   "origen": "CRO #63",
+   "nota": "Aparece también en el inicio, el blog, las relacionadas y el <title>."
+  },
+  {
+   "id": "T07",
+   "tipo": "titulo",
+   "paginas": [
+    "*"
+   ],
+   "donde": "Entradas > editar la entrada > campo Título (no cambiar el enlace permanente)",
+   "antes": "Reflexiones Éticas sobre el Desarrollo de la Inteligencia Artificial",
+   "despues": "Reflexiones éticas sobre el desarrollo de la inteligencia artificial",
+   "origen": "CRO #63",
+   "nota": "Aparece también en el inicio, el blog, las relacionadas y el <title>."
+  },
+  {
+   "id": "T08",
+   "tipo": "titulo",
+   "paginas": [
+    "*"
+   ],
+   "donde": "Entradas > editar la entrada > campo Título (no cambiar el enlace permanente)",
+   "antes": "La tecnología te supera: Cómo identificar y gestionar el tecnoestrés",
+   "despues": "La tecnología te supera: cómo identificar y gestionar el tecnoestrés",
+   "origen": "CRO #63",
+   "nota": "Aparece también en el inicio, el blog, las relacionadas y el <title>."
+  },
+  {
+   "id": "T09",
+   "tipo": "titulo",
+   "paginas": [
+    "*"
+   ],
+   "donde": "Entradas > editar la entrada > campo Título (no cambiar el enlace permanente)",
+   "antes": "Cómo un «Te quiero» Infectó 45 millones de computadoras en todo el mundo",
+   "despues": "Cómo un «te quiero» infectó 45 millones de computadoras en todo el mundo",
+   "origen": "CRO #55",
+   "nota": "Aparece también en el inicio, el blog, las relacionadas y el <title>."
+  },
+  {
+   "id": "I01",
+   "tipo": "encabezado",
+   "paginas": [
+    "home"
+   ],
+   "donde": "Inicio > bloque Advanced Heading \"PORTAL DE CIBERPSICOLOGÍA…\" > Nivel: de H4 a P (párrafo)",
+   "antes": "H4 «PORTAL DE CIBERPSICOLOGÍA…»",
+   "despues": "Párrafo (eyebrow, sin cambiar estilo)",
+   "html_buscar": "<h4 class=\"kt-adv-heading1204_179e11-cf",
+   "html_reemplazar": "<p class=\"kt-adv-heading1204_179e11-cf",
+   "origen": "A11Y-07",
+   "nota": "El cierre </h4> de ese bloque pasa a </p> (lo hace el editor al cambiar el nivel)."
+  },
+  {
+   "id": "I02",
+   "tipo": "encabezado+texto",
+   "paginas": [
+    "home"
+   ],
+   "donde": "Inicio > Advanced Heading \"Bienvenidos a Código Calma\" > Nivel H2 → H1 y texto",
+   "antes": "H2 «Bienvenidos a Código Calma»",
+   "despues": "H1 «Te damos la bienvenida a Código Calma»",
+   "html_buscar": "<h2 class=\"kt-adv-heading1204_e36b0d-85 wp-block-kadence-advancedheading\" data-kb-block=\"kb-adv-heading1204_e36b0d-85\">Bienvenidos a <mark style=\"background-color:rgba(0, 0, 0, 0)\" class=\"has-inline-color has-theme-palette-2-color\">Código Calma</mark></h2>",
+   "html_reemplazar": "<h1 class=\"kt-adv-heading1204_e36b0d-85 wp-block-kadence-advancedheading\" data-kb-block=\"kb-adv-heading1204_e36b0d-85\">Te damos la bienvenida a <mark style=\"background-color:rgba(0, 0, 0, 0)\" class=\"has-inline-color has-theme-palette-2-color\">Código Calma</mark></h1>",
+   "origen": "SEO-10, CRO #3",
+   "nota": "Única H1 de la página. El hero con propuesta de valor llega en la Etapa 3."
+  },
+  {
+   "id": "I03",
+   "tipo": "texto",
+   "paginas": [
+    "home"
+   ],
+   "donde": "Inicio > párrafo bajo la bienvenida",
+   "antes": "Nuestras decisiones digitales, importan. Desde la ciberpsicología a través de investigaciones, artículos y herramientas explicadas de forma clara y simple para ayudarte a vivir entre dispositivos en una relación más consciente.",
+   "despues": "Nuestras decisiones digitales importan. Desde la ciberpsicología, te acercamos investigaciones, artículos y herramientas explicadas de forma clara y simple para ayudarte a vivir entre dispositivos en una relación más consciente.",
+   "html_buscar": "Nuestras decisiones digitales, importan. Desde la <strong>ciberpsicología</strong> a través de investigaciones",
+   "html_reemplazar": "Nuestras decisiones digitales importan. Desde la <strong>ciberpsicología</strong>, te acercamos investigaciones",
+   "origen": "CRO #4, #5",
+   "nota": "Sin coma entre sujeto y verbo; la frase tenía el verbo principal ausente."
+  },
+  {
+   "id": "I04",
+   "tipo": "texto",
+   "paginas": [
+    "home"
+   ],
+   "donde": "Inicio > Info Box de estadística 1 > título",
+   "antes": "74%+",
+   "despues": "+74 %",
+   "html_buscar": "<h3 class=\"kt-blocks-info-box-title\"><strong>74%+</strong></h3>",
+   "html_reemplazar": "<h3 class=\"kt-blocks-info-box-title\"><strong>+74 %</strong></h3>",
+   "origen": "CRO #2",
+   "nota": "Falta la fuente: ver placeholders (Etapa 5 agrega la cita)."
+  },
+  {
+   "id": "I05",
+   "tipo": "texto",
+   "paginas": [
+    "home"
+   ],
+   "donde": "Inicio > Info Box de estadística 2 > título y texto",
+   "antes": "6M+ / Más de 6 mil millones de personas acceden a Internet",
+   "despues": "+6 mil millones / de personas acceden a Internet",
+   "html_buscar": "<h3 class=\"kt-blocks-info-box-title\">6M+</h3><p class=\"kt-blocks-info-box-text\">Más de 6 mil millones de personas acceden a Internet</p>",
+   "html_reemplazar": "<h3 class=\"kt-blocks-info-box-title\">+6 mil millones</h3><p class=\"kt-blocks-info-box-text\">de personas acceden a Internet</p>",
+   "origen": "CRO #1, SEO-22, GEO-12",
+   "nota": "\"6M\" significa 6 millones, no 6 mil millones."
+  },
+  {
+   "id": "I06",
+   "tipo": "encabezado",
+   "paginas": [
+    "home"
+   ],
+   "donde": "Inicio > Advanced Heading \"¿Cómo son tus momentos con la tecnología?\" > Nivel H1 → H2",
+   "antes": "H1",
+   "despues": "H2",
+   "html_buscar": "<h1 class=\"kt-adv-heading1580_3776ad-7d",
+   "html_reemplazar": "<h2 class=\"kt-adv-heading1580_3776ad-7d",
+   "origen": "SEO-10, A11Y-07",
+   "nota": "El cierre del bloque pasa a </h2>."
+  },
+  {
+   "id": "I07",
+   "tipo": "encabezado",
+   "paginas": [
+    "home"
+   ],
+   "donde": "Inicio > encabezado \"6 escenarios en los que…\" > Nivel H6 → Párrafo",
+   "antes": "H6 «6 escenarios…»",
+   "despues": "Párrafo",
+   "html_buscar": "<h6 class=\"wp-block-heading has-text-align-center\">6 escenarios",
+   "html_reemplazar": "<p class=\"has-text-align-center calma-sub\">6 escenarios",
+   "origen": "A11Y-07"
+  },
+  {
+   "id": "C01",
+   "tipo": "encabezado+texto",
+   "paginas": [
+    "contacto"
+   ],
+   "donde": "Contacto > Advanced Heading \"¿Cómo podemos ayudarte?\" > Nivel H2 → H1; borrar el texto y escribirlo de nuevo (hay negritas que parten la palabra \"ayudarte\")",
+   "antes": "H2 «¿Cómo podemos ayudart|e|?» (con <strong> que corta la palabra)",
+   "despues": "H1 «¿Cómo podemos ayudarte?»",
+   "html_buscar": "<h2 class=\"kt-adv-heading790_ebf638-02 wp-block-kadence-advancedheading\" data-kb-block=\"kb-adv-heading790_ebf638-02\"><strong>¿Cómo podemos ayudart</strong>e<strong>?</strong> </h2>",
+   "html_reemplazar": "<h1 class=\"kt-adv-heading790_ebf638-02 wp-block-kadence-advancedheading\" data-kb-block=\"kb-adv-heading790_ebf638-02\">¿Cómo podemos ayudarte?</h1>",
+   "origen": "SEO-10, CRO #10"
+  },
+  {
+   "id": "E01",
+   "tipo": "texto",
+   "paginas": [
+    "test"
+   ],
+   "donde": "Test > bloque HTML personalizado del test (buscar el texto con Ctrl+F en el editor de código)",
+   "antes": "Descubrí cómo es tu relación con la tecnología en 5 minutos",
+   "despues": "Descubre cómo es tu relación con la tecnología en 5 minutos",
+   "origen": "CRO #11"
+  },
+  {
+   "id": "E02",
+   "tipo": "texto",
+   "paginas": [
+    "test"
+   ],
+   "donde": "Test > bloque HTML personalizado del test (buscar el texto con Ctrl+F en el editor de código)",
+   "antes": "<strong>Elegís tu generación</strong>",
+   "despues": "<strong>Eliges tu generación</strong>",
+   "origen": "CRO #12"
+  },
+  {
+   "id": "E03",
+   "tipo": "texto",
+   "paginas": [
+    "test"
+   ],
+   "donde": "Test > bloque HTML personalizado del test (buscar el texto con Ctrl+F en el editor de código)",
+   "antes": "<strong>Respondés 12 preguntas</strong>",
+   "despues": "<strong>Respondes 12 preguntas</strong>",
+   "origen": "CRO #12"
+  },
+  {
+   "id": "E04",
+   "tipo": "texto",
+   "paginas": [
+    "test"
+   ],
+   "donde": "Test > bloque HTML personalizado del test (buscar el texto con Ctrl+F en el editor de código)",
+   "antes": "<strong>Obtenés tu perfil</strong>",
+   "despues": "<strong>Obtienes tu perfil</strong>",
+   "origen": "CRO #12"
+  },
+  {
+   "id": "E05",
+   "tipo": "texto",
+   "paginas": [
+    "test"
+   ],
+   "donde": "Test > bloque HTML personalizado del test (buscar el texto con Ctrl+F en el editor de código)",
+   "antes": "¿De qué generación sos?",
+   "despues": "¿De qué generación eres?",
+   "origen": "CRO #13"
+  },
+  {
+   "id": "E06",
+   "tipo": "texto",
+   "paginas": [
+    "test"
+   ],
+   "donde": "Test > bloque HTML personalizado del test (buscar el texto con Ctrl+F en el editor de código)",
+   "antes": "Elegí la que mejor te representa",
+   "despues": "Elige la que mejor te representa",
+   "origen": "CRO #13"
+  },
+  {
+   "id": "E07",
+   "tipo": "texto",
+   "paginas": [
+    "test"
+   ],
+   "donde": "Test > bloque HTML personalizado del test (buscar el texto con Ctrl+F en el editor de código)",
+   "antes": "Contactanos →",
+   "despues": "Solicitar una consulta →",
+   "origen": "CRO #14"
+  },
+  {
+   "id": "E08",
+   "tipo": "texto",
+   "paginas": [
+    "test"
+   ],
+   "donde": "Test > bloque HTML personalizado del test (buscar el texto con Ctrl+F en el editor de código)",
+   "antes": "Volver a jugar →",
+   "despues": "Repetir el test",
+   "origen": "CRO #15"
+  },
+  {
+   "id": "E09",
+   "tipo": "texto",
+   "paginas": [
+    "test"
+   ],
+   "donde": "Test > bloque HTML personalizado del test (buscar el texto con Ctrl+F en el editor de código)",
+   "antes": "te quedás sin batería, ¿cómo te sentís?",
+   "despues": "te quedas sin batería, ¿cómo te sientes?",
+   "origen": "CRO §5 (voseo en preguntas del test)"
+  },
+  {
+   "id": "E10",
+   "tipo": "texto",
+   "paginas": [
+    "test"
+   ],
+   "donde": "Test > bloque HTML personalizado del test (buscar el texto con Ctrl+F en el editor de código)",
+   "antes": "<h1 style=\"color:#4F86C6\">Test de Consumo Digital</h1>",
+   "despues": "<h1 style=\"color:#1d5f94\">Test de consumo digital</h1>",
+   "origen": "CRO #63, A11Y-05"
+  },
+  {
+   "id": "H01",
+   "tipo": "texto",
+   "paginas": [
+    "herramientas"
+   ],
+   "donde": "Herramientas > bloque HTML personalizado > tarjeta \"Llevar un diario\"",
+   "antes": "Escribir lo que sentís activa el pensamiento reflexivo.\n        Cinco minutos al día pueden cambiar cómo procesás el estrés.",
+   "despues": "Escribir lo que sientes activa el pensamiento reflexivo.\n        Cinco minutos al día pueden cambiar cómo procesas el estrés.",
+   "origen": "CRO #17"
+  },
+  {
+   "id": "H02",
+   "tipo": "texto",
+   "paginas": [
+    "herramientas"
+   ],
+   "donde": "Herramientas > texto de la app de diario (Daylio)",
+   "antes": "elegís cómo te sentiste",
+   "despues": "eliges cómo te sentiste",
+   "origen": "CRO #18"
+  },
+  {
+   "id": "H03",
+   "tipo": "texto",
+   "paginas": [
+    "herramientas"
+   ],
+   "donde": "Herramientas > encabezado de sección",
+   "antes": "Diario, hábitos &amp; rastreo",
+   "despues": "Diario, hábitos y seguimiento",
+   "origen": "CRO #20"
+  },
+  {
+   "id": "H04",
+   "tipo": "texto",
+   "paginas": [
+    "herramientas"
+   ],
+   "donde": "Herramientas > descripción de Mindfulness Coach",
+   "antes": "Ejercicio de respiración, relajación y rastreo de síntomas.",
+   "despues": "Ejercicios de respiración, relajación y seguimiento de síntomas.",
+   "origen": "CRO #21"
+  },
+  {
+   "id": "P01",
+   "tipo": "texto",
+   "paginas": [
+    "ciberpsicologia"
+   ],
+   "donde": "Ciberpsicología > Info Box \"Test de consumo digital\"",
+   "antes": "Descubrí tu relación con la tecnología.",
+   "despues": "Descubre tu relación con la tecnología.",
+   "origen": "CRO #24"
+  },
+  {
+   "id": "P02",
+   "tipo": "texto",
+   "paginas": [
+    "ciberpsicologia"
+   ],
+   "donde": "Ciberpsicología > párrafo introductorio (dobles espacios)",
+   "antes": "cómo  nos relacionamos y qué decisiones tomamos cada día.  Una parte",
+   "despues": "cómo nos relacionamos y qué decisiones tomamos cada día. Una parte",
+   "origen": "CRO #22"
+  },
+  {
+   "id": "B01",
+   "tipo": "texto",
+   "paginas": [
+    "bienestar-digital"
+   ],
+   "donde": "Bienestar digital > Info Box \"Bienestar Humano\"",
+   "antes": "El objetivo final, quizas, una vida donde",
+   "despues": "El objetivo final: quizás, una vida donde",
+   "origen": "CRO #25"
+  },
+  {
+   "id": "B02",
+   "tipo": "encabezado",
+   "paginas": [
+    "bienestar-digital"
+   ],
+   "donde": "Bienestar digital > Advanced Heading \"La intersección\" > Nivel H1 → H2",
+   "antes": "H1",
+   "despues": "H2",
+   "html_buscar": "<h1 class=\"kt-adv-heading1604_8f6d6d-41",
+   "html_reemplazar": "<h2 class=\"kt-adv-heading1604_8f6d6d-41",
+   "origen": "SEO-10"
+  },
+  {
+   "id": "B03",
+   "tipo": "encabezado",
+   "paginas": [
+    "bienestar-digital"
+   ],
+   "donde": "Bienestar digital > Advanced Heading \"Primeros pasos hacia la calma\" > Nivel H1 → H2",
+   "antes": "H1",
+   "despues": "H2",
+   "html_buscar": "<h1 class=\"kt-adv-heading1604_247975-2f",
+   "html_reemplazar": "<h2 class=\"kt-adv-heading1604_247975-2f",
+   "origen": "SEO-10"
+  },
+  {
+   "id": "D01",
+   "tipo": "texto",
+   "paginas": [
+    "descargas-2"
+   ],
+   "donde": "Descargas > imagen de la guía 1 > Texto alternativo",
+   "antes": "alt=\"Ansiedad-Funcional-vs-Ansiedad-Desbordada\"",
+   "despues": "alt=\"Portada de la guía Ansiedad funcional vs. ansiedad desbordada\"",
+   "origen": "CRO #26"
+  },
+  {
+   "id": "D02",
+   "tipo": "texto",
+   "paginas": [
+    "descargas-2"
+   ],
+   "donde": "Descargas > imagen de la guía 2 > Texto alternativo",
+   "antes": "alt=\"Guia de Ciberseguridad para Psicologos\"",
+   "despues": "alt=\"Portada de la Guía de ciberseguridad para psicólogos\"",
+   "origen": "CRO #27"
+  },
+  {
+   "id": "D03",
+   "tipo": "texto",
+   "paginas": [
+    "descargas-2"
+   ],
+   "donde": "Descargas > título de la guía 3",
+   "antes": "Psicología para devs&gt;</h3>",
+   "despues": "Psicología para devs</h3>",
+   "origen": "CRO #28"
+  },
+  {
+   "id": "D04",
+   "tipo": "texto",
+   "paginas": [
+    "descargas-2"
+   ],
+   "donde": "Descargas > título de la guía 4",
+   "antes": "The Psychology of Trust</h3>",
+   "despues": "The Psychology of Trust (en inglés)</h3>",
+   "origen": "CRO #29"
+  },
+  {
+   "id": "D05",
+   "tipo": "encabezado",
+   "paginas": [
+    "descargas-2"
+   ],
+   "donde": "Descargas > Advanced Heading \"Libros de descarga gratuita\" > Nivel H2 → H1",
+   "antes": "H2",
+   "despues": "H1",
+   "html_buscar": "<h2 class=\"kt-adv-heading1666_f0c6ba-66",
+   "html_reemplazar": "<h1 class=\"kt-adv-heading1666_f0c6ba-66",
+   "origen": "SEO-10",
+   "nota": "El texto (\"Libros\" vs. \"Guías\") queda para confirmar con la autora (CRO #30)."
+  },
+  {
+   "id": "S01",
+   "tipo": "texto",
+   "paginas": [
+    "sobre_tatiana"
+   ],
+   "donde": "Sobre Tatiana > párrafo de presentación",
+   "antes": "<strong>Psicóloga de formación y ciberpsicóloga de vocación</strong>, me fascina",
+   "despues": "<strong>Psicóloga de formación y ciberpsicóloga de vocación.</strong> Me fascina",
+   "origen": "CRO #31"
+  },
+  {
+   "id": "A01",
+   "tipo": "texto",
+   "paginas": [
+    "ia-y-apoyo-emocional-saber-la-autoria-cambia-tu-perspectiva"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "Bibliografia",
+   "despues": "Bibliografía",
+   "origen": "CRO #41"
+  },
+  {
+   "id": "A02",
+   "tipo": "texto",
+   "paginas": [
+    "ia-y-apoyo-emocional-saber-la-autoria-cambia-tu-perspectiva"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "deja el plano técnico para pasar al plano emocional, La pregunta deja de ser “¿puede la IA responder bien?”. Sino más bien “¿Cómo interpreta una persona que la respuesta provenga de algo que no siente?”.",
+   "despues": "deja el plano técnico para pasar al plano emocional. La pregunta deja de ser «¿puede la IA responder bien?» y pasa a ser «¿cómo interpreta una persona que la respuesta provenga de algo que no siente?».",
+   "origen": "CRO #39"
+  },
+  {
+   "id": "A03",
+   "tipo": "texto",
+   "paginas": [
+    "ia-y-apoyo-emocional-saber-la-autoria-cambia-tu-perspectiva"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "muchas críticas hacia la IA, frialdad, distancia, falta de personalización, aparecían",
+   "despues": "muchas críticas hacia la IA (frialdad, distancia, falta de personalización) aparecían",
+   "origen": "CRO #40"
+  },
+  {
+   "id": "A04",
+   "tipo": "texto",
+   "paginas": [
+    "por-que-tu-fuerza-de-voluntad-es-mas-lista-de-lo-que-crees"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "Si, la creencia importa",
+   "despues": "Sí, la creencia importa",
+   "origen": "CRO #43"
+  },
+  {
+   "id": "A05",
+   "tipo": "texto",
+   "paginas": [
+    "la-diferencia-entre-querer-y-ser-capaz-entendiendo-la-autoeficacia"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "(La fuente reina)",
+   "despues": "(la fuente reina)",
+   "origen": "CRO #46"
+  },
+  {
+   "id": "A06",
+   "tipo": "texto",
+   "paginas": [
+    "la-diferencia-entre-querer-y-ser-capaz-entendiendo-la-autoeficacia"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "tu pulso acelerado o tus manos sudorosas. ¿Es miedo",
+   "despues": "tu pulso acelerado o tus manos sudorosas? ¿Es miedo",
+   "origen": "CRO #47"
+  },
+  {
+   "id": "A07",
+   "tipo": "texto",
+   "paginas": [
+    "la-diferencia-entre-querer-y-ser-capaz-entendiendo-la-autoeficacia"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "microurlogros",
+   "despues": "micrologros",
+   "origen": "CRO #48"
+  },
+  {
+   "id": "A08",
+   "tipo": "texto",
+   "paginas": [
+    "la-diferencia-entre-querer-y-ser-capaz-entendiendo-la-autoeficacia"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "[Por qué tu fuerza de voluntad es más lista de lo que crees]",
+   "despues": "Por qué tu fuerza de voluntad es más lista de lo que crees (sin corchetes)",
+   "html_buscar": "[<strong>Por qué tu fuerza de voluntad es más lista de lo que crees</strong>]",
+   "html_reemplazar": "<strong>Por qué tu fuerza de voluntad es más lista de lo que crees</strong>",
+   "origen": "CRO #49"
+  },
+  {
+   "id": "A09",
+   "tipo": "texto",
+   "paginas": [
+    "infancias-figitales"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "Viven en un mundo integrado (sin punto final)",
+   "despues": "Viven en un mundo integrado.",
+   "html_buscar": "Viven en un mundo <strong>integrado</strong></p>",
+   "html_reemplazar": "Viven en un mundo <strong>integrado</strong>.</p>",
+   "origen": "CRO #51"
+  },
+  {
+   "id": "A10",
+   "tipo": "texto",
+   "paginas": [
+    "infancias-figitales"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "Sé el modelo de «Desconexión Consciente«:",
+   "despues": "Sé el modelo de «desconexión consciente»:",
+   "html_buscar": "«Desconexión <mark style=\"background-color:rgba(0, 0, 0, 0)\" class=\"has-inline-color has-theme-palette-2-color\">Consciente</mark>«:",
+   "html_reemplazar": "«desconexión <mark style=\"background-color:rgba(0, 0, 0, 0)\" class=\"has-inline-color has-theme-palette-2-color\">consciente</mark>»:",
+   "origen": "CRO #52"
+  },
+  {
+   "id": "A11",
+   "tipo": "texto",
+   "paginas": [
+    "infancias-figitales"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "«Silencio Digital»",
+   "despues": "«silencio digital»",
+   "origen": "CRO #54"
+  },
+  {
+   "id": "A12",
+   "tipo": "texto",
+   "paginas": [
+    "infancias-figitales"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "Te dejamos el link hacia sus proyectos: https://www.cibervoluntarios.org/…",
+   "despues": "Te dejamos el enlace a sus proyectos: Proyectos de Cibervoluntarios",
+   "html_buscar": "Te dejamos el link hacia sus proyectos: <a href=\"https://www.cibervoluntarios.org/es/que-hacemos/proyectos\">https://www.cibervoluntarios.org/es/que-hacemos/proyectos</a>",
+   "html_reemplazar": "Te dejamos el enlace a sus proyectos: <a href=\"https://www.cibervoluntarios.org/es/que-hacemos/proyectos\">Proyectos de Cibervoluntarios</a>",
+   "origen": "CRO #53"
+  },
+  {
+   "id": "A13",
+   "tipo": "texto",
+   "paginas": [
+    "como-un-te-quiero-infecto-45-millones-de-computadoras-en-todo-el-mundo"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "LOVE-LETTER-FOR-YOU.TXT.Vbs",
+   "despues": "LOVE-LETTER-FOR-YOU.TXT.vbs",
+   "origen": "CRO #56"
+  },
+  {
+   "id": "A14",
+   "tipo": "texto",
+   "paginas": [
+    "como-un-te-quiero-infecto-45-millones-de-computadoras-en-todo-el-mundo"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "ciberpsicología,  fue",
+   "despues": "ciberpsicología, fue",
+   "origen": "CRO #56"
+  },
+  {
+   "id": "A15",
+   "tipo": "texto",
+   "paginas": [
+    "el-estigma-de-la-estructura-x-entonces-y"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "“Esto lo escribió una IA”.¿La prueba",
+   "despues": "«Esto lo escribió una IA». ¿La prueba",
+   "html_buscar": "<em>“Esto lo escribió una IA”</em>.¿La prueba",
+   "html_reemplazar": "<em>«Esto lo escribió una IA»</em>. ¿La prueba",
+   "origen": "CRO #57"
+  },
+  {
+   "id": "A16",
+   "tipo": "texto",
+   "paginas": [
+    "el-estigma-de-la-estructura-x-entonces-y"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "autenticidad.Hoy",
+   "despues": "autenticidad. Hoy",
+   "origen": "CRO #58"
+  },
+  {
+   "id": "A17",
+   "tipo": "texto",
+   "paginas": [
+    "autoevaluacion-del-consumo-digital-como-estamos-manejando-nuestro-tiempo-frente-a-las-pantallas"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "eliminar la tecnología , lo cual",
+   "despues": "eliminar la tecnología, lo cual",
+   "origen": "CRO #60"
+  },
+  {
+   "id": "A18",
+   "tipo": "texto",
+   "paginas": [
+    "por-que-fallamos-al-intentar-cambiar-conductas"
+   ],
+   "donde": "Entrada > editor de bloques (buscar el texto)",
+   "antes": "El Nudge simplifica",
+   "despues": "El <em>nudge</em> simplifica",
+   "origen": "CRO #62"
+  },
+  {
+   "id": "X01",
+   "tipo": "texto",
+   "paginas": [
+    "*"
+   ],
+   "donde": "Automático: extracto del artículo en listados (se corrige al editar la entrada)",
+   "antes": "dos respuestas posibles….",
+   "despues": "dos respuestas posibles…",
+   "html_buscar": "dos respuestas posibles&#8230;.</p>",
+   "html_reemplazar": "dos respuestas posibles&#8230;</p>",
+   "origen": "CRO #7",
+   "nota": "El extracto sale del primer párrafo de la entrada \"IA y apoyo emocional…\": quitar el punto extra después de los puntos suspensivos."
+  },
+  {
+   "id": "X02",
+   "tipo": "texto",
+   "paginas": [
+    "*"
+   ],
+   "donde": "Automático: extracto de \"Infancias «Figitales»\" en listados (se corrige con A09)",
+   "antes": "Viven en un mundo integrado Sus amistades",
+   "despues": "Viven en un mundo integrado. Sus amistades",
+   "origen": "CRO #51"
+  },
+  {
+   "id": "K01",
+   "tipo": "categoria",
+   "paginas": [
+    "por-que-fallamos-al-intentar-cambiar-conductas",
+    "blog",
+    "entradas",
+    "home"
+   ],
+   "donde": "Entradas > \"¿Por qué fallamos al intentar cambiar conductas?\" > Categorías: quitar Ciberseguridad, marcar Psicología",
+   "antes": "Ciberseguridad",
+   "despues": "Psicología",
+   "origen": "CRO-20, SEO-24",
+   "nota": "Interino: la taxonomía completa se rehace en la Etapa 5."
+  }
+ ],
+ "excluidas": [
+  {
+   "origen": "CRO #44",
+   "que": "por-que-tu-fuerza…: \"no buscamos entendernos\" parece decir lo contrario de lo que se quiere",
+   "motivo": "Preguntar a la autora"
+  },
+  {
+   "origen": "CRO #45, #50",
+   "que": "Masculino genérico (\"como director\", \"Estoy cansado\")",
+   "motivo": "Decisión de estilo de la autora"
+  },
+  {
+   "origen": "CRO #30",
+   "que": "\"Libros de descarga gratuita\" → ¿\"Guías\"?",
+   "motivo": "Confirmar con la autora"
+  },
+  {
+   "origen": "CRO #32",
+   "que": "\"talleres\" en Sobre Tatiana",
+   "motivo": "[COMPLETAR: ¿existen talleres?]"
+  },
+  {
+   "origen": "CRO #33–38",
+   "que": "Ortografía en testimonios",
+   "motivo": "Son citas de terceros: corregir solo con permiso o marcar [sic]"
+  },
+  {
+   "origen": "CRO #42",
+   "que": "Formato de la bibliografía de Brandtzaeg et al.",
+   "motivo": "Etapa 5 (fuentes), falta la revista"
+  },
+  {
+   "origen": "CRO #64",
+   "que": "Unificar comillas “ ” → « »",
+   "motivo": "Etapa 5, al reestructurar cada artículo"
+  },
+  {
+   "origen": "CRO #10, #19, #23",
+   "que": "\"ayudart/e\", \"═══ -->\", \"S / elección\"",
+   "motivo": "Falsos positivos de la extracción de texto, salvo \"ayudart/e\" (corregido en C01): el comentario HTML y la letra capital no se ven en pantalla"
+  }
+ ]
+}

@@ -6,9 +6,11 @@ description: Pruebas mobile reproducibles para codigocalma.com en 360, 390 y 430
 # Mobile QA — Código Calma
 
 ## Herramienta
-Playwright + Chromium preinstalados (`/opt/node22/lib/node_modules/playwright`, `/opt/pw-browsers/chromium`). Scripts en `docs/auditoria/scripts/capturas.js` (capturas + métricas) y `docs/auditoria/scripts/traza-recorte.js` (cadena de ancestros de un elemento recortado).
-En este entorno el navegador no confía en el CA del proxy: los scripts enrutan las peticiones por `fetch` de Node (que sí valida TLS). Ejecutar con `NODE_USE_ENV_PROXY=1 node docs/auditoria/scripts/capturas.js <carpeta-salida>`.
-Para probar la rama local (no producción) servir el HTML/tema en un WordPress local o staging y cambiar la URL base.
+Playwright + Chromium preinstalados (`/opt/node22/lib/node_modules/playwright`, `/opt/pw-browsers/chromium`).
+- `staging/preview/capturas.js --preview|--live <salida>`: capturas full-page en 360/390/430/1280 + `metricas.json` (desborde, contenido recortado u oculto, margen lateral mínimo, objetivos táctiles < 44 px, H1, color y alto de los CTA).
+- `staging/preview/build.py <etapa>`: arma la vista previa de una etapa sobre el HTML real (ver `staging/preview/README.md`).
+- `docs/auditoria/scripts/traza-recorte.js`: cadena de ancestros de un elemento recortado.
+En este entorno Chromium no confía en el CA del proxy: los scripts rehacen cada petición con `fetch` de Node (que sí valida TLS). Ejecutar con `NODE_USE_ENV_PROXY=1`. Nunca desactivar la verificación TLS.
 
 ## Páginas mínimas
 Inicio, Servicios, Contacto, Sobre (equipo), Blog, un artículo largo, una categoría, Test, Descargas, 404.

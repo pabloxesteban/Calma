@@ -5,7 +5,7 @@ description: Design system de Código Calma — tokens de color, tipografía, es
 
 # Design system — Código Calma
 
-Fuente única de verdad visual. Todo valor sale de un token `--calma-*`. Se implementa como CSS global del tema hijo de Kadence (`wp-content/themes/kadence-child/assets/css/calma-design-system.css`) y se mapea a la paleta global de Kadence (`--global-palette1…15`) para que los bloques existentes hereden sin tocar cada página.
+Fuente única de verdad visual. Todo valor sale de un token `--calma-*`. Se implementa como CSS global del plugin del sitio (`wp-content/plugins/codigo-calma/assets/css/`: `calma-tokens.css` + un archivo por etapa), no como tema hijo, para no perder los ajustes del Personalizador de Kadence, y se mapea a la paleta global de Kadence (`--global-palette1…15`) para que los bloques existentes hereden sin tocar cada página.
 
 ## 1. Tokens
 

@@ -1,0 +1,111 @@
+<!-- Código Calma · Inicio · Línea de tiempo (Etapa 1)
+     Reemplaza por completo el bloque "HTML personalizado" que contenía un
+     documento HTML entero (<!DOCTYPE>, <html>, <head>, <body>). Aquel CSS
+     (body{padding:40px}) encogía y recortaba todo el sitio en esta página.
+     Todo el CSS está acotado a .calma-timeline. El texto es el original. -->
+<section class="calma-timeline" aria-labelledby="calma-timeline-title">
+  <style>
+    .calma-timeline {
+      --tl-dot: var(--calma-primary, #1d5f94);
+      max-width: var(--calma-container, 1160px);
+      margin: var(--calma-section-y, 64px) auto;
+      padding: 0 var(--calma-gutter, 20px);
+      box-sizing: border-box;
+      color: var(--calma-text, #0f172a);
+    }
+    .calma-timeline *, .calma-timeline *::before, .calma-timeline *::after { box-sizing: border-box; }
+    .calma-timeline__title {
+      margin: 0 0 var(--calma-space-2, 8px);
+      font-size: var(--calma-fs-xl, 1.75rem);
+      line-height: var(--calma-lh-heading, 1.2);
+    }
+    .calma-timeline__sub {
+      margin: 0 0 var(--calma-space-8, 32px);
+      max-width: 60ch;
+      color: var(--calma-text-muted, #475569);
+    }
+    .calma-timeline__list {
+      list-style: none;
+      margin: 0;
+      padding: clamp(20px, 4vw, 32px);
+      display: grid;
+      gap: var(--calma-space-6, 24px);
+      background: var(--calma-surface, #fff);
+      border: 1px solid var(--calma-border, #e2e8f0);
+      border-radius: var(--calma-radius-lg, 24px);
+      box-shadow: var(--calma-shadow, 0 4px 16px rgb(15 23 42 / .08));
+    }
+    .calma-timeline__event {
+      position: relative;
+      margin: 0;
+      padding: 0 0 0 var(--calma-space-8, 32px);
+    }
+    .calma-timeline__event::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.35em;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--tl-dot);
+      box-shadow: 0 0 0 4px rgb(29 95 148 / 0.15);
+    }
+    .calma-timeline__event:nth-child(even) { --tl-dot: var(--calma-violet, #5b3fb8); }
+    .calma-timeline__year {
+      display: block;
+      font-size: var(--calma-fs-xs, 0.875rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--calma-text-muted, #475569);
+    }
+    .calma-timeline__name {
+      display: block;
+      margin-top: var(--calma-space-1, 4px);
+      font-weight: 700;
+    }
+    .calma-timeline__desc {
+      margin: var(--calma-space-1, 4px) 0 0;
+      font-size: var(--calma-fs-sm, 1rem);
+      line-height: 1.5;
+      color: var(--calma-text-muted, #475569);
+    }
+    @media (min-width: 960px) {
+      .calma-timeline__list { grid-template-columns: repeat(5, 1fr); gap: var(--calma-space-8, 32px); }
+      .calma-timeline__event { padding: var(--calma-space-8, 32px) 0 0; }
+      .calma-timeline__event::before { top: 0; }
+    }
+  </style>
+
+  <h2 class="calma-timeline__title" id="calma-timeline-title">Línea de tiempo: tecnología y adopción</h2>
+  <p class="calma-timeline__sub">Una mirada clara y organizada a cómo la tecnología se integró en la vida humana.</p>
+
+  <ol class="calma-timeline__list">
+    <li class="calma-timeline__event">
+      <span class="calma-timeline__year">1975–1985</span>
+      <span class="calma-timeline__name">Computadora personal</span>
+      <p class="calma-timeline__desc">La computadora personal (PC) entra en hogares y oficinas. Nace la informática doméstica.</p>
+    </li>
+    <li class="calma-timeline__event">
+      <span class="calma-timeline__year">1990–2000</span>
+      <span class="calma-timeline__name">Internet y Web</span>
+      <p class="calma-timeline__desc">La Web conecta al mundo. Aparecen buscadores, correo y navegación.</p>
+    </li>
+    <li class="calma-timeline__event">
+      <span class="calma-timeline__year">2000–2010</span>
+      <span class="calma-timeline__name">Móvil y smartphones</span>
+      <p class="calma-timeline__desc">La conexión se vuelve portátil, constante y personal.</p>
+    </li>
+    <li class="calma-timeline__event">
+      <span class="calma-timeline__year">2010–2020</span>
+      <span class="calma-timeline__name">Redes sociales y nube</span>
+      <p class="calma-timeline__desc">Identidad, vínculos y trabajo migran a plataformas digitales.</p>
+    </li>
+    <li class="calma-timeline__event">
+      <span class="calma-timeline__year">2020–hoy</span>
+      <span class="calma-timeline__name">IA y hiperconexión</span>
+      <p class="calma-timeline__desc">La inteligencia artificial transforma mente, emoción y bienestar.</p>
+    </li>
+  </ol>
+</section>
