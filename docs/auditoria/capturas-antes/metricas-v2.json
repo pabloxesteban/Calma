@@ -1,0 +1,1019 @@
+[
+ {
+  "w": 360,
+  "page": "inicio",
+  "overflowX": 0,
+  "clipped": [
+   "IMG:Test digital.",
+   "IMG:Descargas.",
+   "A:Recursos gratuitos"
+  ],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 0,
+  "h1": [
+   "Línea de tiempo: tecnología y adopción",
+   "¿Cómo son tus momentos con la tecnología?"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(100, 178, 229)",
+    "h": 68
+   }
+  ],
+  "height": 14145
+ },
+ {
+  "w": 360,
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 20,
+  "h1": [],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(51, 65, 85)",
+    "bg": "rgb(100, 178, 229)",
+    "h": 62
+   }
+  ],
+  "height": 3967
+ },
+ {
+  "w": 360,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 24,
+  "h1": [],
+  "ctas": [
+   {
+    "t": "Enviar",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(100, 178, 229)",
+    "h": 69
+   }
+  ],
+  "height": 1563
+ },
+ {
+  "w": 360,
+  "page": "sobre_tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 4,
+  "smallSample": [
+   "Abrir menú",
+   "Más testimonios",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 20,
+  "h1": [
+   "Hola, soy Tatiana X. Stacul, psicóloga detrás de C"
+  ],
+  "ctas": [],
+  "height": 2854
+ },
+ {
+  "w": 360,
+  "page": "blog",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 38,
+  "h1": [],
+  "ctas": [],
+  "height": 889
+ },
+ {
+  "w": 360,
+  "page": "ciberpsicologia",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 24,
+  "h1": [
+   "Ciberpsicología y bienestar digital"
+  ],
+  "ctas": [],
+  "height": 4127
+ },
+ {
+  "w": 360,
+  "page": "testimonios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 17,
+  "smallSample": [
+   "Abrir menú",
+   "Ver testimonio completo",
+   "Ver testimonio completo",
+   "Ver testimonio completo",
+   "Ver testimonio completo",
+   "Ver testimonio completo"
+  ],
+  "minGutter": 24,
+  "h1": [],
+  "ctas": [],
+  "height": 5318
+ },
+ {
+  "w": 360,
+  "page": "test",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 32,
+  "h1": [
+   "Test de Consumo Digital"
+  ],
+  "ctas": [],
+  "height": 3142
+ },
+ {
+  "w": 360,
+  "page": "herramientas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 6,
+  "smallSample": [
+   "Abrir menú",
+   "BUTTON",
+   "BUTTON",
+   "BUTTON",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": -573,
+  "h1": [
+   "Aplicaciones de productividad y calma"
+  ],
+  "ctas": [],
+  "height": 5280
+ },
+ {
+  "w": 360,
+  "page": "descargas-2",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 30,
+  "h1": [],
+  "ctas": [],
+  "height": 3833
+ },
+ {
+  "w": 360,
+  "page": "bienestar-digital",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 32,
+  "h1": [
+   "Bienestar Digital",
+   "La intersección",
+   "Primeros pasos hacia la calma"
+  ],
+  "ctas": [],
+  "height": 4968
+ },
+ {
+  "w": 360,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 12,
+  "smallSample": [
+   "Abrir menú",
+   "Ciberseguridad",
+   "Tatiana X. Stacul",
+   "Facebook",
+   "X",
+   "Threads"
+  ],
+  "minGutter": 23,
+  "h1": [
+   "¿Por qué fallamos al intentar cambiar conductas?"
+  ],
+  "ctas": [],
+  "height": 7492
+ },
+ {
+  "w": 390,
+  "page": "inicio",
+  "overflowX": 0,
+  "clipped": [
+   "IMG:Test digital.",
+   "IMG:Descargas.",
+   "A:Recursos gratuitos"
+  ],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 0,
+  "h1": [
+   "Línea de tiempo: tecnología y adopción",
+   "¿Cómo son tus momentos con la tecnología?"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(100, 178, 229)",
+    "h": 68
+   }
+  ],
+  "height": 13966
+ },
+ {
+  "w": 390,
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 20,
+  "h1": [],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(51, 65, 85)",
+    "bg": "rgb(100, 178, 229)",
+    "h": 62
+   }
+  ],
+  "height": 3779
+ },
+ {
+  "w": 390,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 24,
+  "h1": [],
+  "ctas": [
+   {
+    "t": "Enviar",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(100, 178, 229)",
+    "h": 69
+   }
+  ],
+  "height": 1563
+ },
+ {
+  "w": 390,
+  "page": "sobre_tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 4,
+  "smallSample": [
+   "Abrir menú",
+   "Más testimonios",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 20,
+  "h1": [
+   "Hola, soy Tatiana X. Stacul, psicóloga detrás de C"
+  ],
+  "ctas": [],
+  "height": 2721
+ },
+ {
+  "w": 390,
+  "page": "blog",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 38,
+  "h1": [],
+  "ctas": [],
+  "height": 844
+ },
+ {
+  "w": 390,
+  "page": "ciberpsicologia",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 24,
+  "h1": [
+   "Ciberpsicología y bienestar digital"
+  ],
+  "ctas": [],
+  "height": 4161
+ },
+ {
+  "w": 390,
+  "page": "testimonios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 17,
+  "smallSample": [
+   "Abrir menú",
+   "Ver testimonio completo",
+   "Ver testimonio completo",
+   "Ver testimonio completo",
+   "Ver testimonio completo",
+   "Ver testimonio completo"
+  ],
+  "minGutter": 24,
+  "h1": [],
+  "ctas": [],
+  "height": 5211
+ },
+ {
+  "w": 390,
+  "page": "test",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 32,
+  "h1": [
+   "Test de Consumo Digital"
+  ],
+  "ctas": [],
+  "height": 2987
+ },
+ {
+  "w": 390,
+  "page": "herramientas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 6,
+  "smallSample": [
+   "Abrir menú",
+   "BUTTON",
+   "BUTTON",
+   "BUTTON",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": -543,
+  "h1": [
+   "Aplicaciones de productividad y calma"
+  ],
+  "ctas": [],
+  "height": 5257
+ },
+ {
+  "w": 390,
+  "page": "descargas-2",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 30,
+  "h1": [],
+  "ctas": [],
+  "height": 3749
+ },
+ {
+  "w": 390,
+  "page": "bienestar-digital",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 32,
+  "h1": [
+   "Bienestar Digital",
+   "La intersección",
+   "Primeros pasos hacia la calma"
+  ],
+  "ctas": [],
+  "height": 4757
+ },
+ {
+  "w": 390,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 12,
+  "smallSample": [
+   "Abrir menú",
+   "Ciberseguridad",
+   "Tatiana X. Stacul",
+   "Facebook",
+   "X",
+   "Threads"
+  ],
+  "minGutter": 23,
+  "h1": [
+   "¿Por qué fallamos al intentar cambiar conductas?"
+  ],
+  "ctas": [],
+  "height": 6918
+ },
+ {
+  "w": 430,
+  "page": "inicio",
+  "overflowX": 0,
+  "clipped": [
+   "IMG:Test digital.",
+   "IMG:Descargas.",
+   "A:Recursos gratuitos"
+  ],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 0,
+  "h1": [
+   "Línea de tiempo: tecnología y adopción",
+   "¿Cómo son tus momentos con la tecnología?"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(100, 178, 229)",
+    "h": 68
+   }
+  ],
+  "height": 13651
+ },
+ {
+  "w": 430,
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 20,
+  "h1": [],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(51, 65, 85)",
+    "bg": "rgb(100, 178, 229)",
+    "h": 62
+   }
+  ],
+  "height": 3619
+ },
+ {
+  "w": 430,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 24,
+  "h1": [],
+  "ctas": [
+   {
+    "t": "Enviar",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(100, 178, 229)",
+    "h": 69
+   }
+  ],
+  "height": 1472
+ },
+ {
+  "w": 430,
+  "page": "sobre_tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 4,
+  "smallSample": [
+   "Abrir menú",
+   "Más testimonios",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 20,
+  "h1": [
+   "Hola, soy Tatiana X. Stacul, psicóloga detrás de C"
+  ],
+  "ctas": [],
+  "height": 2667
+ },
+ {
+  "w": 430,
+  "page": "blog",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 38,
+  "h1": [],
+  "ctas": [],
+  "height": 844
+ },
+ {
+  "w": 430,
+  "page": "ciberpsicologia",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 24,
+  "h1": [
+   "Ciberpsicología y bienestar digital"
+  ],
+  "ctas": [],
+  "height": 4020
+ },
+ {
+  "w": 430,
+  "page": "testimonios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 17,
+  "smallSample": [
+   "Abrir menú",
+   "Ver testimonio completo",
+   "Ver testimonio completo",
+   "Ver testimonio completo",
+   "Ver testimonio completo",
+   "Ver testimonio completo"
+  ],
+  "minGutter": 24,
+  "h1": [],
+  "ctas": [],
+  "height": 5124
+ },
+ {
+  "w": 430,
+  "page": "test",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 32,
+  "h1": [
+   "Test de Consumo Digital"
+  ],
+  "ctas": [],
+  "height": 2823
+ },
+ {
+  "w": 430,
+  "page": "herramientas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 6,
+  "smallSample": [
+   "Abrir menú",
+   "BUTTON",
+   "BUTTON",
+   "BUTTON",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": -503,
+  "h1": [
+   "Aplicaciones de productividad y calma"
+  ],
+  "ctas": [],
+  "height": 5319
+ },
+ {
+  "w": 430,
+  "page": "descargas-2",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 30,
+  "h1": [],
+  "ctas": [],
+  "height": 3729
+ },
+ {
+  "w": 430,
+  "page": "bienestar-digital",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "Abrir menú",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 32,
+  "h1": [
+   "Bienestar Digital",
+   "La intersección",
+   "Primeros pasos hacia la calma"
+  ],
+  "ctas": [],
+  "height": 4598
+ },
+ {
+  "w": 430,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 12,
+  "smallSample": [
+   "Abrir menú",
+   "Ciberseguridad",
+   "Tatiana X. Stacul",
+   "Facebook",
+   "X",
+   "Threads"
+  ],
+  "minGutter": 23,
+  "h1": [
+   "¿Por qué fallamos al intentar cambiar conductas?"
+  ],
+  "ctas": [],
+  "height": 6374
+ },
+ {
+  "w": 1280,
+  "page": "inicio",
+  "overflowX": 0,
+  "clipped": [
+   "IMG:Test digital.",
+   "IMG:Descargas."
+  ],
+  "hiddenText": 0,
+  "smallTargets": 4,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 0,
+  "h1": [
+   "Línea de tiempo: tecnología y adopción",
+   "¿Cómo son tus momentos con la tecnología?"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(100, 178, 229)",
+    "h": 72
+   }
+  ],
+  "height": 5602
+ },
+ {
+  "w": 1280,
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 4,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 40,
+  "h1": [],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(51, 65, 85)",
+    "bg": "rgb(100, 178, 229)",
+    "h": 62
+   }
+  ],
+  "height": 2358
+ },
+ {
+  "w": 1280,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 4,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 64,
+  "h1": [],
+  "ctas": [
+   {
+    "t": "Enviar",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(100, 178, 229)",
+    "h": 69
+   }
+  ],
+  "height": 1110
+ },
+ {
+  "w": 1280,
+  "page": "sobre_tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 5,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "Más testimonios",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 50,
+  "h1": [
+   "Hola, soy Tatiana X. Stacul, psicóloga detrás de C"
+  ],
+  "ctas": [],
+  "height": 1795
+ },
+ {
+  "w": 1280,
+  "page": "blog",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 240,
+  "h1": [
+   "403"
+  ],
+  "ctas": [],
+  "height": 844
+ },
+ {
+  "w": 1280,
+  "page": "ciberpsicologia",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 4,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 64,
+  "h1": [
+   "Ciberpsicología y bienestar digital"
+  ],
+  "ctas": [],
+  "height": 1684
+ },
+ {
+  "w": 1280,
+  "page": "testimonios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 18,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "Ver testimonio completo",
+   "Ver testimonio completo",
+   "Ver testimonio completo",
+   "Ver testimonio completo"
+  ],
+  "minGutter": 64,
+  "h1": [],
+  "ctas": [],
+  "height": 7363
+ },
+ {
+  "w": 1280,
+  "page": "test",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 4,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 96,
+  "h1": [
+   "Test de Consumo Digital"
+  ],
+  "ctas": [],
+  "height": 2098
+ },
+ {
+  "w": 1280,
+  "page": "herramientas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 7,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "BUTTON",
+   "BUTTON",
+   "BUTTON",
+   "LinkedIn"
+  ],
+  "minGutter": 82,
+  "h1": [
+   "Aplicaciones de productividad y calma"
+  ],
+  "ctas": [],
+  "height": 3509
+ },
+ {
+  "w": 1280,
+  "page": "descargas-2",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 4,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 116,
+  "h1": [],
+  "ctas": [],
+  "height": 1622
+ },
+ {
+  "w": 1280,
+  "page": "bienestar-digital",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 4,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "LinkedIn",
+   "hola@codigocalma.com"
+  ],
+  "minGutter": 80,
+  "h1": [
+   "Bienestar Digital",
+   "La intersección",
+   "Primeros pasos hacia la calma"
+  ],
+  "ctas": [],
+  "height": 3235
+ },
+ {
+  "w": 1280,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 13,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "Ciberseguridad",
+   "Tatiana X. Stacul",
+   "Facebook",
+   "X"
+  ],
+  "minGutter": 113,
+  "h1": [
+   "¿Por qué fallamos al intentar cambiar conductas?"
+  ],
+  "ctas": [],
+  "height": 4463
+ }
+]

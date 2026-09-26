@@ -1,0 +1,918 @@
+[
+ {
+  "w": 360,
+  "page": "inicio",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Te damos la bienvenida a Código Calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 68
+   }
+  ],
+  "height": 13314
+ },
+ {
+  "w": 360,
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Mentorías y acompañamiento uno a uno"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(51, 65, 85)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 62
+   }
+  ],
+  "height": 4687
+ },
+ {
+  "w": 360,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "INPUT",
+   "política de privacidad"
+  ],
+  "minGutter": 24,
+  "h1": [
+   "¿Cómo podemos ayudarte?"
+  ],
+  "ctas": [
+   {
+    "t": "Enviar mi consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 69
+   }
+  ],
+  "height": 2042
+ },
+ {
+  "w": 360,
+  "page": "sobre_tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Hola, soy Tatiana X. Stacul, psicóloga detrás de C"
+  ],
+  "ctas": [],
+  "height": 2831
+ },
+ {
+  "w": 360,
+  "page": "blog",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 24,
+  "smallSample": [
+   "Psicología",
+   "Tatiana X. Stacul",
+   "Psicología",
+   "Tatiana X. Stacul",
+   "Ciberseguridad",
+   "Tatiana X. Stacul"
+  ],
+  "minGutter": 20,
+  "h1": [
+   "Blog"
+  ],
+  "ctas": [],
+  "height": 10261
+ },
+ {
+  "w": 360,
+  "page": "ciberpsicologia",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Ciberpsicología y bienestar digital"
+  ],
+  "ctas": [],
+  "height": 3902
+ },
+ {
+  "w": 360,
+  "page": "testimonios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Testimonios"
+  ],
+  "ctas": [],
+  "height": 5439
+ },
+ {
+  "w": 360,
+  "page": "test",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Test de consumo digital"
+  ],
+  "ctas": [],
+  "height": 2765
+ },
+ {
+  "w": 360,
+  "page": "herramientas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "BUTTON",
+   "BUTTON",
+   "BUTTON"
+  ],
+  "minGutter": -565,
+  "h1": [
+   "Aplicaciones de productividad y calma"
+  ],
+  "ctas": [],
+  "height": 5196
+ },
+ {
+  "w": 360,
+  "page": "descargas-2",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Libros de descarga gratuita"
+  ],
+  "ctas": [],
+  "height": 3511
+ },
+ {
+  "w": 360,
+  "page": "bienestar-digital",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Bienestar Digital"
+  ],
+  "ctas": [],
+  "height": 4771
+ },
+ {
+  "w": 360,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 9,
+  "smallSample": [
+   "Ciberseguridad",
+   "Tatiana X. Stacul",
+   "Facebook",
+   "X",
+   "Threads",
+   "WhatsApp"
+  ],
+  "minGutter": 19,
+  "h1": [
+   "¿Por qué fallamos al intentar cambiar conductas?"
+  ],
+  "ctas": [],
+  "height": 6826
+ },
+ {
+  "w": 390,
+  "page": "inicio",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Te damos la bienvenida a Código Calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 68
+   }
+  ],
+  "height": 12937
+ },
+ {
+  "w": 390,
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Mentorías y acompañamiento uno a uno"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(51, 65, 85)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 62
+   }
+  ],
+  "height": 4499
+ },
+ {
+  "w": 390,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "INPUT",
+   "política de privacidad"
+  ],
+  "minGutter": 24,
+  "h1": [
+   "¿Cómo podemos ayudarte?"
+  ],
+  "ctas": [
+   {
+    "t": "Enviar mi consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 69
+   }
+  ],
+  "height": 2044
+ },
+ {
+  "w": 390,
+  "page": "sobre_tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Hola, soy Tatiana X. Stacul, psicóloga detrás de C"
+  ],
+  "ctas": [],
+  "height": 2702
+ },
+ {
+  "w": 390,
+  "page": "blog",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 24,
+  "smallSample": [
+   "Psicología",
+   "Tatiana X. Stacul",
+   "Psicología",
+   "Tatiana X. Stacul",
+   "Ciberseguridad",
+   "Tatiana X. Stacul"
+  ],
+  "minGutter": 20,
+  "h1": [
+   "Blog"
+  ],
+  "ctas": [],
+  "height": 9679
+ },
+ {
+  "w": 390,
+  "page": "ciberpsicologia",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Ciberpsicología y bienestar digital"
+  ],
+  "ctas": [],
+  "height": 3938
+ },
+ {
+  "w": 390,
+  "page": "testimonios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Testimonios"
+  ],
+  "ctas": [],
+  "height": 5305
+ },
+ {
+  "w": 390,
+  "page": "test",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Test de consumo digital"
+  ],
+  "ctas": [],
+  "height": 2664
+ },
+ {
+  "w": 390,
+  "page": "herramientas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "BUTTON",
+   "BUTTON",
+   "BUTTON"
+  ],
+  "minGutter": -535,
+  "h1": [
+   "Aplicaciones de productividad y calma"
+  ],
+  "ctas": [],
+  "height": 5305
+ },
+ {
+  "w": 390,
+  "page": "descargas-2",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Libros de descarga gratuita"
+  ],
+  "ctas": [],
+  "height": 3513
+ },
+ {
+  "w": 390,
+  "page": "bienestar-digital",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Bienestar Digital"
+  ],
+  "ctas": [],
+  "height": 4599
+ },
+ {
+  "w": 390,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 9,
+  "smallSample": [
+   "Ciberseguridad",
+   "Tatiana X. Stacul",
+   "Facebook",
+   "X",
+   "Threads",
+   "WhatsApp"
+  ],
+  "minGutter": 19,
+  "h1": [
+   "¿Por qué fallamos al intentar cambiar conductas?"
+  ],
+  "ctas": [],
+  "height": 6330
+ },
+ {
+  "w": 430,
+  "page": "inicio",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 22,
+  "h1": [
+   "Te damos la bienvenida a Código Calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 68
+   }
+  ],
+  "height": 12775
+ },
+ {
+  "w": 430,
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Mentorías y acompañamiento uno a uno"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(51, 65, 85)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 62
+   }
+  ],
+  "height": 4275
+ },
+ {
+  "w": 430,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "INPUT",
+   "política de privacidad"
+  ],
+  "minGutter": 24,
+  "h1": [
+   "¿Cómo podemos ayudarte?"
+  ],
+  "ctas": [
+   {
+    "t": "Enviar mi consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 69
+   }
+  ],
+  "height": 1929
+ },
+ {
+  "w": 430,
+  "page": "sobre_tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Hola, soy Tatiana X. Stacul, psicóloga detrás de C"
+  ],
+  "ctas": [],
+  "height": 2613
+ },
+ {
+  "w": 430,
+  "page": "blog",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 24,
+  "smallSample": [
+   "Psicología",
+   "Tatiana X. Stacul",
+   "Psicología",
+   "Tatiana X. Stacul",
+   "Ciberseguridad",
+   "Tatiana X. Stacul"
+  ],
+  "minGutter": 22,
+  "h1": [
+   "Blog"
+  ],
+  "ctas": [],
+  "height": 9498
+ },
+ {
+  "w": 430,
+  "page": "ciberpsicologia",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Ciberpsicología y bienestar digital"
+  ],
+  "ctas": [],
+  "height": 3857
+ },
+ {
+  "w": 430,
+  "page": "testimonios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 24,
+  "h1": [
+   "Testimonios"
+  ],
+  "ctas": [],
+  "height": 5179
+ },
+ {
+  "w": 430,
+  "page": "test",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 27,
+  "h1": [
+   "Test de consumo digital"
+  ],
+  "ctas": [],
+  "height": 2564
+ },
+ {
+  "w": 430,
+  "page": "herramientas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 3,
+  "smallSample": [
+   "BUTTON",
+   "BUTTON",
+   "BUTTON"
+  ],
+  "minGutter": -498,
+  "h1": [
+   "Aplicaciones de productividad y calma"
+  ],
+  "ctas": [],
+  "height": 5305
+ },
+ {
+  "w": 430,
+  "page": "descargas-2",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 27,
+  "h1": [
+   "Libros de descarga gratuita"
+  ],
+  "ctas": [],
+  "height": 3567
+ },
+ {
+  "w": 430,
+  "page": "bienestar-digital",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 27,
+  "h1": [
+   "Bienestar Digital"
+  ],
+  "ctas": [],
+  "height": 4464
+ },
+ {
+  "w": 430,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 9,
+  "smallSample": [
+   "Ciberseguridad",
+   "Tatiana X. Stacul",
+   "Facebook",
+   "X",
+   "Threads",
+   "WhatsApp"
+  ],
+  "minGutter": 21,
+  "h1": [
+   "¿Por qué fallamos al intentar cambiar conductas?"
+  ],
+  "ctas": [],
+  "height": 5943
+ },
+ {
+  "w": 1280,
+  "page": "inicio",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda"
+  ],
+  "minGutter": 0,
+  "h1": [
+   "Te damos la bienvenida a Código Calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 72
+   }
+  ],
+  "height": 5760
+ },
+ {
+  "w": 1280,
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda"
+  ],
+  "minGutter": 40,
+  "h1": [
+   "Mentorías y acompañamiento uno a uno"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(51, 65, 85)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 62
+   }
+  ],
+  "height": 2523
+ },
+ {
+  "w": 1280,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 4,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "INPUT",
+   "política de privacidad"
+  ],
+  "minGutter": 64,
+  "h1": [
+   "¿Cómo podemos ayudarte?"
+  ],
+  "ctas": [
+   {
+    "t": "Enviar mi consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 69
+   }
+  ],
+  "height": 1681
+ },
+ {
+  "w": 1280,
+  "page": "sobre_tatiana",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda"
+  ],
+  "minGutter": 50,
+  "h1": [
+   "Hola, soy Tatiana X. Stacul, psicóloga detrás de C"
+  ],
+  "ctas": [],
+  "height": 1804
+ },
+ {
+  "w": 1280,
+  "page": "blog",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 25,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "Psicología",
+   "Tatiana X. Stacul",
+   "Psicología",
+   "Tatiana X. Stacul"
+  ],
+  "minGutter": 64,
+  "h1": [
+   "Blog"
+  ],
+  "ctas": [],
+  "height": 5323
+ },
+ {
+  "w": 1280,
+  "page": "ciberpsicologia",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda"
+  ],
+  "minGutter": 64,
+  "h1": [
+   "Ciberpsicología y bienestar digital"
+  ],
+  "ctas": [],
+  "height": 1551
+ },
+ {
+  "w": 1280,
+  "page": "testimonios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda"
+  ],
+  "minGutter": 64,
+  "h1": [
+   "Testimonios"
+  ],
+  "ctas": [],
+  "height": 7285
+ },
+ {
+  "w": 1280,
+  "page": "test",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda"
+  ],
+  "minGutter": 96,
+  "h1": [
+   "Test de consumo digital"
+  ],
+  "ctas": [],
+  "height": 1938
+ },
+ {
+  "w": 1280,
+  "page": "herramientas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 5,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "BUTTON",
+   "BUTTON",
+   "BUTTON"
+  ],
+  "minGutter": 82,
+  "h1": [
+   "Aplicaciones de productividad y calma"
+  ],
+  "ctas": [],
+  "height": 3487
+ },
+ {
+  "w": 1280,
+  "page": "descargas-2",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda"
+  ],
+  "minGutter": 116,
+  "h1": [
+   "Libros de descarga gratuita"
+  ],
+  "ctas": [],
+  "height": 1519
+ },
+ {
+  "w": 1280,
+  "page": "bienestar-digital",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 2,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda"
+  ],
+  "minGutter": 80,
+  "h1": [
+   "Bienestar Digital"
+  ],
+  "ctas": [],
+  "height": 3057
+ },
+ {
+  "w": 1280,
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 11,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda",
+   "Ciberseguridad",
+   "Tatiana X. Stacul",
+   "Facebook",
+   "X"
+  ],
+  "minGutter": 113,
+  "h1": [
+   "¿Por qué fallamos al intentar cambiar conductas?"
+  ],
+  "ctas": [],
+  "height": 4367
+ }
+]
