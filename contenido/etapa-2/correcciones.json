@@ -78,6 +78,33 @@
    "html_buscar": "<h6 class=\"kt-adv-heading1618_db9f2d-e0",
    "html_reemplazar": "<h3 class=\"kt-adv-heading1618_db9f2d-e0",
    "origen": "QA a11y etapa 1 (heading-order)"
+  },
+  {
+   "id": "T20",
+   "tipo": "encabezado",
+   "paginas": [
+    "test"
+   ],
+   "donde": "Test > bloque \"Dato que vale la pena saber\" > Nivel H6 → H2 (sección de la página)",
+   "antes": "H6",
+   "despues": "H2",
+   "html_buscar": "<h6 class=\"kt-adv-heading1941_513169-0a",
+   "html_reemplazar": "<h2 class=\"kt-adv-heading1941_513169-0a",
+   "origen": "QA a11y etapa 1 (heading-order)"
+  },
+  {
+   "id": "T21",
+   "tipo": "encabezado",
+   "paginas": [
+    "test"
+   ],
+   "donde": "Test > las 3 Info Box de \"Tus resultados son tuyos\" > Etiqueta HTML del título: H5 → H3",
+   "antes": "H5 (×3)",
+   "despues": "H3 (×3)",
+   "html_buscar": "<h5 class=\"kt-blocks-info-box-title\">",
+   "html_reemplazar": "<h3 class=\"kt-blocks-info-box-title\">",
+   "origen": "QA a11y etapa 1 (heading-order)",
+   "nota": "todas"
   }
  ],
  "excluidas": []

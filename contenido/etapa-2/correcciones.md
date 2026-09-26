@@ -10,3 +10,5 @@ Generado desde `correcciones.json`. Se aplican después de las de la Etapa 1.
 | ☐ | H11-0cf8 | Herramientas > nombre de la app «Calm» > Nivel H6 → H3 | H6 | H3 | QA a11y etapa 1 (heading-order) |
 | ☐ | H11-0e7c | Herramientas > nombre de la app «Daylio» > Nivel H6 → H3 | H6 | H3 | QA a11y etapa 1 (heading-order) |
 | ☐ | H11-db9f | Herramientas > nombre de la app «PTSD Coach y Mindfulness Coach» > Nivel H6 → H3 | H6 | H3 | QA a11y etapa 1 (heading-order) |
+| ☐ | T20 | Test > bloque "Dato que vale la pena saber" > Nivel H6 → H2 (sección de la página) | H6 | H2 | QA a11y etapa 1 (heading-order) |
+| ☐ | T21 | Test > las 3 Info Box de "Tus resultados son tuyos" > Etiqueta HTML del título: H5 → H3 | H5 (×3) | H3 (×3) | QA a11y etapa 1 (heading-order) |

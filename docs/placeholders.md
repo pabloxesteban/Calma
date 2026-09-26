@@ -58,6 +58,13 @@ Estado: ☐ pendiente · ☑ resuelto. Origen: informe de `docs/auditoria/inform
 | ☐ | Fechas reales de publicación de ILOVEYOU y Rediseñar tu entorno | esos artículos | contenidos |
 | ☐ | Confirmación de la autora sobre "no buscamos entendernos" (¿dice lo contrario de lo que quiere?) | Fuerza de voluntad, línea 45 | cro-copy |
 
+## Test de consumo digital (Etapa 2)
+| ☐ | Dato | Dónde | Origen |
+|---|---|---|---|
+| ☐ | Nombres de las 4 dimensiones que mide el test (hay una agrupación propuesta para validar) | Test, sección "Qué mide" | test-consumo-digital.md |
+| ☐ | **Decisión:** el cálculo original compara los umbrales con el porcentaje; 3 perfiles nunca salen y todo puntaje ≥ 18 da "Arquitecto digital". Se conservó igual; ¿se corrige? | Test (script) | test-consumo-digital.md |
+| ☐ | Enlace a líneas de ayuda en el resultado del test | Test, resultado | test-consumo-digital.md |
+
 ## Estrategia
 | ☐ | Dato | Dónde | Origen |
 |---|---|---|---|
