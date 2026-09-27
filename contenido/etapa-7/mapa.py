@@ -58,74 +58,53 @@ TEMAS = [
 ]
 
 
-def datos():
+def exportar():
+    """Escribe wp-content/plugins/codigo-calma/data/mapa-temas.json, que usa
+    includes/mapa.php para el mapa de temas ([calma_mapa]) y para el mapa
+    "Sigue explorando" al final de cada artículo."""
     tax = json.loads((RAIZ / 'contenido/etapa-5/taxonomia.json').read_text(encoding='utf-8'))
     etiquetas = {e['slug']: e['nombre'] for e in tax['etiquetas']}
-    for t in TEMAS:
-        t['articulos'] = [a['slug_entrada'] for a in tax['asignacion'] if a['categoria'] in t['categorias']]
-        t['etiquetas'] = set(e for a in tax['asignacion'] if a['categoria'] in t['categorias'] for e in a['etiquetas'])
-    # Posiciones: la ciberpsicología en el centro, el resto en un pentágono.
-    TEMAS[0]['x'], TEMAS[0]['y'] = 50, 50
-    for i, t in enumerate(TEMAS[1:]):
-        ang = math.radians(-90 + i * 72)
-        t['x'], t['y'] = round(50 + 37 * math.cos(ang), 1), round(50 + 37 * math.sin(ang), 1)
-    aristas = []
-    for t in TEMAS[1:]:
-        aristas.append((TEMAS[0], t, []))
-    for a, b in itertools.combinations(TEMAS[1:], 2):
-        comun = sorted(etiquetas[e] for e in a['etiquetas'] & b['etiquetas'])
-        if comun:
-            aristas.append((a, b, comun))
-    return aristas
-
-
-def curva(a, b):
-    # Las uniones entre temas del borde se curvan hacia el centro.
-    if a['k'] == 'ciberpsicologia':
-        return f'M{a["x"]} {a["y"]} L{b["x"]} {b["y"]}'
-    mx, my = (a['x'] + b['x']) / 2, (a['y'] + b['y']) / 2
-    cx, cy = mx + (50 - mx) * 0.35, my + (50 - my) * 0.35
-    return f'M{a["x"]} {a["y"]} Q{cx:.1f} {cy:.1f} {b["x"]} {b["y"]}'
+    tema_de = {c: t['k'] for t in TEMAS for c in t['categorias']}
+    nombres_cat = {c['slug']: c['nombre'] for c in tax['categorias']}
+    articulos = {}
+    for a in tax['asignacion']:
+        articulos[a['slug_entrada']] = {
+            'titulo': TITULOS[a['slug_entrada']],
+            'categoria': a['categoria'],
+            'categoria_nombre': nombres_cat.get(a['categoria'], a['categoria']),
+            'tema': tema_de.get(a['categoria'], 'ciberpsicologia'),
+            'etiquetas': a['etiquetas'],
+        }
+    temas = []
+    for i, t in enumerate(TEMAS):
+        if i == 0:
+            x, y = 50, 50
+        else:
+            ang = math.radians(-90 + (i - 1) * 72)
+            x, y = round(50 + 37 * math.cos(ang), 1), round(50 + 37 * math.sin(ang), 1)
+        temas.append({
+            'k': t['k'], 'nombre': t['nombre'], 'sub': t['sub'], 'texto': t['texto'], 'x': x, 'y': y,
+            'categorias': t['categorias'],
+            'enlaces': [[txt, h.replace(C, '')] for txt, h in t['enlaces']],
+            'articulos': [s for s, v in articulos.items() if v['tema'] == t['k']],
+        })
+    datos = {
+        '_meta': {
+            'generado_por': 'contenido/etapa-7/generar-bloques.py (mapa.py)',
+            'fuente': 'contenido/etapa-5/taxonomia.json (categorías, etiquetas y asignación de las 15 entradas)',
+        },
+        'etiquetas': etiquetas,
+        'temas': temas,
+        'articulos': articulos,
+    }
+    destino = RAIZ / 'wp-content/plugins/codigo-calma/data/mapa-temas.json'
+    destino.write_text(json.dumps(datos, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+    return destino
 
 
 def mapa(cabecera):
-    aristas = datos()
-    # Cada unión tiene dos trazos: la línea y, encima, la señal que la recorre.
-    lineas = ''.join(
-        f'<path class="calma-mapa__arista" data-a="{a["k"]}" data-b="{b["k"]}" style="--i:{n};--peso:{max(1, len(c))}" pathLength="1" d="{curva(a, b)}"/>'
-        f'<path class="calma-mapa__senal" data-a="{a["k"]}" data-b="{b["k"]}" pathLength="1" d="{curva(a, b)}"/>'
-        for n, (a, b, c) in enumerate(aristas))
-    nodos = ''.join(
-        f'<button type="button" class="calma-mapa__nodo{" calma-mapa__nodo--centro" if t["k"] == "ciberpsicologia" else ""}" '
-        f'style="--x:{t["x"]};--y:{t["y"]}" data-tema="{t["k"]}" aria-controls="tema-{t["k"]}" aria-pressed="false">'
-        f'<span class="calma-mapa__punto" aria-hidden="true"></span><span class="calma-mapa__nombre">{t["nombre"]}</span></button>'
-        for t in TEMAS)
-    paneles = ''
-    for t in TEMAS:
-        conecta = []
-        for a, b, comun in aristas:
-            if not comun or t['k'] not in (a['k'], b['k']):
-                continue
-            otro = b if a['k'] == t['k'] else a
-            conecta.append((len(comun), f'<li><strong>{otro["nombre"]}</strong>: {", ".join(comun[:3]).lower().capitalize()}</li>'))
-        conecta = [c for _, c in sorted(conecta, key=lambda x: -x[0])][:3]
-        arts = ''.join(f'<li><a href="{C}/{s}/">{TITULOS[s]}</a></li>' for s in t['articulos'])
-        enlaces = ''.join(f'<a class="calma-link" href="{h}">{txt}</a>' for txt, h in t['enlaces'])
-        paneles += (
-            f'<article class="calma-mapa__panel" id="tema-{t["k"]}" data-tema="{t["k"]}" aria-labelledby="tema-{t["k"]}-titulo">\n'
-            f'<h3 id="tema-{t["k"]}-titulo">{t["nombre"]}'
-            + (f' <span class="calma-mapa__sub">· {t["sub"]}</span>' if t['sub'] != t['nombre'] and t['k'] != 'ciberpsicologia' else '')
-            + f'</h3>\n<p class="calma-mapa__texto">{t["texto"]}</p>\n'
-            + (f'<p class="calma-mapa__rotulo">Artículos</p><ul class="calma-mapa__articulos">{arts}</ul>\n' if arts else '')
-            + (f'<p class="calma-mapa__rotulo">Se conecta con</p><ul class="calma-mapa__conexiones">{"".join(conecta)}</ul>\n' if conecta else '')
-            + f'<p class="calma-mapa__enlaces">{enlaces}</p>\n</article>\n')
+    exportar()
     return (cabecera('Inicio · mapa de temas',
-                     'Va entre "¿Cómo son tus momentos con la tecnología?" y los accesos. Bloque "HTML personalizado" a ancho completo.\n'
-                     '     Artículos y conexiones salen de contenido/etapa-5/taxonomia.json. Los enlaces a categorías nuevas funcionan después de la Etapa 5 (Paso 2).')
-            + '<section class="calma-mapa" aria-labelledby="mapa-titulo">\n<div class="calma-mapa__head">\n'
-            '<h2 id="mapa-titulo">Explora por <em>temas</em></h2>\n'
-            '<p class="calma-sub">La ciberpsicología está en el centro: cruza la psicología con la tecnología. Elige un tema para ver sus artículos y con qué se conecta.</p>\n'
-            '</div>\n<div class="calma-mapa__cuerpo">\n'
-            f'<div class="calma-mapa__grafo" hidden>\n<svg class="calma-mapa__svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">{lineas}</svg>\n'
-            f'<div class="calma-mapa__nodos" role="group" aria-label="Temas del mapa">{nodos}</div>\n</div>\n'
-            f'<div class="calma-mapa__paneles" aria-live="polite">\n{paneles}</div>\n</div>\n</section>\n')
+                     'Va entre "¿Cómo son tus momentos con la tecnología?" y los accesos: un bloque "Código corto" con [calma_mapa].\n'
+                     '     Lo dibuja el plugin (includes/mapa.php) con data/mapa-temas.json, generado desde contenido/etapa-5/taxonomia.json.')
+            + '[calma_mapa]\n')

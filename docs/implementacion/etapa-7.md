@@ -98,29 +98,26 @@ Todo esto va en los mismos archivos (plugin y bloques regenerados); los pasos de
     - "Recursos gratuitos" → Descargas ("Libros y guías de Tatiana X. Stacul para descargar sin costo", según la página de Descargas).
   - Se reemplaza el mismo bloque: `inicio-accesos.html`, regenerado.
 
-## Paso 3c · Inicio: mapa de temas (5 min)
-Entre "¿Cómo son tus momentos con la tecnología?" y los accesos, agregar un bloque **HTML personalizado** a ancho completo con `contenido/etapa-7/bloques/inicio-mapa.html`.
+## Paso 3c · Mapa de temas y "Sigue explorando" (10 min)
+El plugin 1.7.0 dibuja el mapa con `includes/mapa.php` a partir de `data/mapa-temas.json`.
 
-**Qué hace.** La ciberpsicología va en el centro y cinco temas alrededor: Psicología, Neurociencia, IA, Tecnología y Bienestar digital.
-- **Las uniones son reales.** Dos temas se unen por las etiquetas que comparten sus artículos, según `contenido/etapa-5/taxonomia.json`; el grosor de la línea es la cantidad de etiquetas compartidas.
-- **Al elegir un tema** se encienden sus uniones, una señal sale hacia los temas vecinos y el panel muestra:
-  - una descripción corta;
-  - sus artículos;
-  - con qué temas se conecta y por qué;
-  - el enlace a su categoría.
-- **En celular**, los temas son fichas y el panel va debajo.
-- **Sin JavaScript** se ve la lista completa de temas con sus artículos.
+1. **Inicio:** entre "¿Cómo son tus momentos con la tecnología?" y los accesos, agregar un bloque **Código corto** con `[calma_mapa]` (es lo que contiene `contenido/etapa-7/bloques/inicio-mapa.html`).
+2. **Página pilar (Ciberpsicología):** al final de la sección «Los temas de la ciberpsicología en Código Calma», otro bloque **Código corto** con `[calma_mapa]`.
+3. **Blog:** en la página del Blog, encima del listado de entradas, un bloque **Código corto** con `[calma_mapa]`. Si el Blog es el archivo de entradas de Kadence y no una página editable, usar la opción de Kadence para agregar contenido antes del archivo.
+4. **Artículos:** no hay nada que hacer. Al final de cada entrada, después de las fuentes y antes de la caja de consulta, aparece solo **"Sigue explorando"**: el artículo en el centro y los 4 más conectados alrededor, con el motivo de cada conexión ("Comparten: hábitos, autoeficacia").
 
-**Cada tema corresponde a estas categorías del blog (Etapa 5):**
+### De dónde sale la información
+Todo sale de datos que ya estaban en el proyecto; no se agregó información nueva.
 
-| Tema | Categoría |
+| Parte | Fuente |
 |---|---|
-| Psicología | Hábitos y conducta |
-| Neurociencia | Neurociencia y atención |
-| IA | IA y mente |
-| Tecnología | Redes sociales y plataformas + Ciberseguridad y factor humano |
-| Bienestar digital | Bienestar digital |
+| Qué artículos hay en cada tema | La categoría asignada a cada una de las 15 entradas en la reorganización del blog de la Etapa 5 (`contenido/etapa-5/taxonomia.json`, "asignacion"). |
+| Por qué dos temas (o dos artículos) están conectados | Las etiquetas que comparten sus artículos, en ese mismo archivo. Por ejemplo, IA y Tecnología se unen porque tienen artículos etiquetados con "Ética digital", "Sesgos cognitivos", "Salud mental" e "Infancia y adolescencia". El grosor de la línea es la cantidad de etiquetas en común. |
+| Artículos relacionados de "Sigue explorando" | Misma fórmula: 1 punto por etiqueta compartida + 2 si son de la misma categoría; se muestran los 4 con más puntos. |
+| Descripción corta de cada tema | Resumen de la descripción de cada categoría escrita en la Etapa 5 (pendiente de revisión de Tatiana). La del centro es la definición de la página pilar (también pendiente). |
+| Títulos de los artículos | Los títulos publicados, con las correcciones ortográficas de las etapas 1 a 5. |
+| Los seis temas | Los que pediste en la dirección de arte (Psicología, Ciberpsicología, IA, Neurociencia, Bienestar digital, Tecnología), vinculados a las categorías del blog así: Psicología → Hábitos y conducta · Neurociencia → Neurociencia y atención · IA → IA y mente · Tecnología → Redes sociales y plataformas + Ciberseguridad y factor humano · Bienestar digital → Bienestar digital. |
 
-- Los enlaces a las categorías nuevas funcionan después de aplicar la taxonomía (Etapa 5, Paso 2). Hasta entonces, las de categorías que todavía no existen dan 404.
-- Las descripciones cortas resumen las descripciones de categoría de la Etapa 5, así que quedan **pendientes de la misma revisión de la autora**. La del centro usa la definición de la página pilar, también pendiente.
-- Si cambia la taxonomía, regenerar con `python3 contenido/etapa-7/generar-bloques.py`: los artículos y las uniones se recalculan solos.
+**Importante:**
+- Las etiquetas y categorías se asignaron en la Etapa 5 leyendo cada artículo, y también las tiene que revisar la autora. Si cambia alguna, se regenera todo con `python3 contenido/etapa-7/generar-bloques.py` (reescribe `data/mapa-temas.json`) y se sube el plugin.
+- Los enlaces a las categorías nuevas funcionan después de aplicar la taxonomía (Etapa 5, Paso 2).

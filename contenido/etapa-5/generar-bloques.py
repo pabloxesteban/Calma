@@ -26,6 +26,9 @@ def md_a_html(texto):
     html = re.sub(r'\[COMPLETAR:([^\]]*)\]', r'<span class="calma-placeholder">[COMPLETAR:\1]</span>', html)
     html = re.sub(r'\[verificar:([^\]]*)\]', r'<!-- verificar:\1 -->', html)
     html = re.sub(r'href="/(?!/)', f'href="{SITE}/', html)
+    # Las tablas se desplazan en horizontal en pantallas angostas: que se puedan
+    # recorrer con el teclado (WCAG 2.1.1, axe scrollable-region-focusable).
+    html = html.replace('<table>', '<table tabindex="0">')
     return html
 
 def cabecera(titulo, instrucciones):

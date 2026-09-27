@@ -260,6 +260,35 @@ def e3_menus(slug, s):
                lambda m: '<a href="https://codigocalma.com/equipo/"' + (' aria-current="page"' if slug.startswith('equipo') else '') + '>Equipo</a>', s)
     return s
 
+MAPA = None
+def mapa_php():
+    # El mapa lo dibuja el plugin (includes/mapa.php); acá se usa su salida real.
+    global MAPA
+    if MAPA is None:
+        args = ['php', str(pathlib.Path(__file__).with_name('php') / 'render-mapa.php')]
+        MAPA = json.loads(subprocess.run(args, capture_output=True, text=True, check=True).stdout)
+    return MAPA
+
+def e7_articulo(slug, s):
+    html = mapa_php()['articulos'].get(slug)
+    if not html:
+        return s
+    i = s.find('<aside class="calma-article-cta')
+    if i < 0:
+        a, i = entry_bounds(s)
+    log.append(f'{slug}: sigue explorando')
+    return s[:i] + html + s[i:]
+
+def e7_mapa_en(s, donde):
+    # [calma_mapa] en la página pilar (antes de las preguntas frecuentes) y en el Blog (antes de las entradas).
+    if donde == 'ciberpsicologia':
+        # Al cierre de la sección "Los temas de la ciberpsicología en Código Calma".
+        i = s.index('<h2>¿Cómo se ve la ciberpsicología en tu día a día?')
+    else:
+        i = s.index('<ul id="archive-container"')
+    log.append(f'{donde}: mapa de temas')
+    return s[:i] + '<div class="calma-mapa-envoltura">' + mapa_php()['mapa'] + '</div>' + s[i:]
+
 def e7_home(s):
     # Seis estados mentales en lugar de las 6 tarjetas giratorias (fila completa con su título).
     a = s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_7ce0f7-d0')
@@ -275,7 +304,7 @@ def e7_home(s):
     # Mapa de temas + accesos con personajes animados (reemplazan la fila de 3 tarjetas y la fila vacía).
     a = s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_6c7f8b-e0')
     b = div_balanceado(s, s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_addcaa-c1'))
-    s = s[:a] + (cont(7) / 'bloques/inicio-mapa.html').read_text(encoding='utf-8') + (cont(7) / 'bloques/inicio-accesos.html').read_text(encoding='utf-8') + s[b:]
+    s = s[:a] + mapa_php()['mapa'] + (cont(7) / 'bloques/inicio-accesos.html').read_text(encoding='utf-8') + s[b:]
     # Línea de tiempo que crece con el scroll (reemplaza la de la Etapa 1).
     a = s.index('<!-- Código Calma · Inicio · Línea de tiempo (Etapa 1)')
     b = s.index('</section>', s.index('<section class="calma-timeline"', a)) + len('</section>')
@@ -344,6 +373,10 @@ for slug, s in fuentes():
                 s = e5_bienestar(s)
         if HASTA >= 7 and slug == 'home':
             s = e7_home(s)
+        if HASTA >= 7 and slug in POSTS:
+            s = e7_articulo(slug, s)
+        if HASTA >= 7 and slug in ('ciberpsicologia', 'blog'):
+            s = e7_mapa_en(s, slug)
         s = e2_global(slug, s)
         if HASTA >= 3:
             s = e3_menus(slug, s)

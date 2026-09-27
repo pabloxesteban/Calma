@@ -1191,6 +1191,48 @@
 	}
 
 	/* ------------------------------------------------------------------------
+	   5d. "Sigue explorando": al pasar por un artículo de la lista se enciende
+	   su unión en el mapa (y al revés); al llegar, una señal sale del centro.
+	   ------------------------------------------------------------------------ */
+	function prepararExplora() {
+		var caja = document.querySelector( '.calma-explora' );
+		if ( ! caja ) {
+			return;
+		}
+		function marcar( i ) {
+			caja.querySelectorAll( '[data-i]' ).forEach( function ( el ) {
+				el.classList.toggle( 'is-on', i !== null && el.getAttribute( 'data-i' ) === String( i ) );
+			} );
+		}
+		caja.querySelectorAll( '.calma-explora__lista li' ).forEach( function ( li ) {
+			var i = li.getAttribute( 'data-i' );
+			li.addEventListener( 'pointerenter', function () {
+				marcar( i );
+			} );
+			li.addEventListener( 'pointerleave', function () {
+				marcar( null );
+			} );
+			li.addEventListener( 'focusin', function () {
+				marcar( i );
+			} );
+			li.addEventListener( 'focusout', function () {
+				marcar( null );
+			} );
+		} );
+		if ( ! quieto() && 'IntersectionObserver' in window ) {
+			var io = new IntersectionObserver( function ( e ) {
+				if ( e[ 0 ].isIntersecting ) {
+					io.disconnect();
+					caja.querySelectorAll( '.calma-explora__senal' ).forEach( function ( s ) {
+						s.classList.add( 'is-senal' );
+					} );
+				}
+			}, { threshold: 0.4 } );
+			io.observe( caja );
+		}
+	}
+
+	/* ------------------------------------------------------------------------
 	   6. Header, barra de lectura y "Reducir movimiento"
 	   ------------------------------------------------------------------------ */
 	var progreso = null;
@@ -1253,6 +1295,7 @@
 		prepararAccesos();
 		prepararFlor();
 		prepararMapa();
+		prepararExplora();
 
 		var hero = document.querySelector( '.calma-hero' );
 		var red = null;

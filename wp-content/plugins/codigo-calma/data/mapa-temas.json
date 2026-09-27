@@ -1,0 +1,327 @@
+{
+ "_meta": {
+  "generado_por": "contenido/etapa-7/generar-bloques.py (mapa.py)",
+  "fuente": "contenido/etapa-5/taxonomia.json (categorías, etiquetas y asignación de las 15 entradas)"
+ },
+ "etiquetas": {
+  "salud-mental": "Salud mental",
+  "tecnoestres": "Tecnoestrés",
+  "tiempo-de-pantalla": "Tiempo de pantalla",
+  "consumo-digital": "Consumo digital",
+  "habitos": "Hábitos",
+  "autoeficacia": "Autoeficacia",
+  "diseno-del-comportamiento": "Diseño del comportamiento",
+  "sesgos-cognitivos": "Sesgos cognitivos",
+  "atencion": "Atención",
+  "infancia-y-adolescencia": "Infancia y adolescencia",
+  "trabajo-digital": "Trabajo digital",
+  "etica-digital": "Ética digital",
+  "ingenieria-social": "Ingeniería social",
+  "apoyo-emocional": "Apoyo emocional",
+  "lenguaje-claro": "Lenguaje claro"
+ },
+ "temas": [
+  {
+   "k": "ciberpsicologia",
+   "nombre": "Ciberpsicología",
+   "sub": "El centro",
+   "texto": "El campo de la psicología que estudia la mente y el comportamiento humanos en su interacción con la tecnología. Cruza todos los temas del mapa.",
+   "x": 50,
+   "y": 50,
+   "categorias": [],
+   "enlaces": [
+    [
+     "¿Qué es la ciberpsicología?",
+     "/ciberpsicologia/"
+    ],
+    [
+     "Todos los artículos",
+     "/blog/"
+    ]
+   ],
+   "articulos": []
+  },
+  {
+   "k": "psicologia",
+   "nombre": "Psicología",
+   "sub": "Hábitos y conducta",
+   "texto": "Por qué repetimos ciertos gestos con la tecnología, qué papel tiene el entorno y por qué la fuerza de voluntad no lo explica todo.",
+   "x": 50.0,
+   "y": 13.0,
+   "categorias": [
+    "habitos-y-conducta"
+   ],
+   "enlaces": [
+    [
+     "Ver Hábitos y conducta",
+     "/category/habitos-y-conducta/"
+    ]
+   ],
+   "articulos": [
+    "por-que-tu-fuerza-de-voluntad-es-mas-lista-de-lo-que-crees",
+    "la-diferencia-entre-querer-y-ser-capaz-entendiendo-la-autoeficacia",
+    "por-que-fallamos-al-intentar-cambiar-conductas",
+    "descubriendo-que-modela-nuestro-comportamiento",
+    "el-arte-de-redisenar-tu-entorno"
+   ]
+  },
+  {
+   "k": "neurociencia",
+   "nombre": "Neurociencia",
+   "sub": "Neurociencia y atención",
+   "texto": "El cerebro en la vida digital: cómo funciona la atención, qué la fragmenta y cómo se relacionan el descanso y la carga cognitiva con las pantallas.",
+   "x": 85.2,
+   "y": 38.6,
+   "categorias": [
+    "neurociencia"
+   ],
+   "enlaces": [
+    [
+     "Ver Neurociencia y atención",
+     "/category/neurociencia/"
+    ]
+   ],
+   "articulos": [
+    "preguntas-clave-para-entender-y-cuidar-nuestro-cerebro"
+   ]
+  },
+  {
+   "k": "ia",
+   "nombre": "IA",
+   "sub": "IA y mente",
+   "texto": "Cómo pensamos, sentimos y confiamos cuando la inteligencia artificial entra en la conversación, y las preguntas éticas que abre.",
+   "x": 71.7,
+   "y": 79.9,
+   "categorias": [
+    "ia-y-mente"
+   ],
+   "enlaces": [
+    [
+     "Ver IA y mente",
+     "/category/ia-y-mente/"
+    ]
+   ],
+   "articulos": [
+    "ia-y-apoyo-emocional-saber-la-autoria-cambia-tu-perspectiva",
+    "el-estigma-de-la-estructura-x-entonces-y",
+    "reflexiones-eticas-sobre-el-desarrollo-de-la-inteligencia-artificial"
+   ]
+  },
+  {
+   "k": "tecnologia",
+   "nombre": "Tecnología",
+   "sub": "Plataformas y ciberseguridad",
+   "texto": "Cómo influyen las plataformas y sus algoritmos en lo que ves y sientes, y por qué confiamos en un mensaje que no deberíamos abrir.",
+   "x": 28.3,
+   "y": 79.9,
+   "categorias": [
+    "redes-sociales",
+    "ciberseguridad"
+   ],
+   "enlaces": [
+    [
+     "Ver Redes sociales y plataformas",
+     "/category/redes-sociales/"
+    ],
+    [
+     "Ver Ciberseguridad y factor humano",
+     "/category/ciberseguridad/"
+    ]
+   ],
+   "articulos": [
+    "5-puntos-clave-que-el-caso-de-meta-nos-deja-en-salud-mental",
+    "como-un-te-quiero-infecto-45-millones-de-computadoras-en-todo-el-mundo"
+   ]
+  },
+  {
+   "k": "bienestar",
+   "nombre": "Bienestar digital",
+   "sub": "Bienestar digital",
+   "texto": "Convivir con las pantallas sin que te desborden: el tiempo y la calidad de uso, el tecnoestrés y la vida digital de niñas, niños y adolescentes.",
+   "x": 14.8,
+   "y": 38.6,
+   "categorias": [
+    "bienestar"
+   ],
+   "enlaces": [
+    [
+     "Ver Bienestar digital",
+     "/bienestar-digital/"
+    ]
+   ],
+   "articulos": [
+    "infancias-figitales",
+    "calidad-vs-cantidad-la-hipotesis-de-ricitos-de-oro",
+    "autoevaluacion-del-consumo-digital-como-estamos-manejando-nuestro-tiempo-frente-a-las-pantallas",
+    "la-tecnologia-te-supera-como-identificar-y-gestionar-el-tecnoestres"
+   ]
+  }
+ ],
+ "articulos": {
+  "por-que-tu-fuerza-de-voluntad-es-mas-lista-de-lo-que-crees": {
+   "titulo": "Por qué tu fuerza de voluntad es más lista de lo que crees",
+   "categoria": "habitos-y-conducta",
+   "categoria_nombre": "Hábitos y conducta",
+   "tema": "psicologia",
+   "etiquetas": [
+    "habitos",
+    "autoeficacia",
+    "trabajo-digital"
+   ]
+  },
+  "la-diferencia-entre-querer-y-ser-capaz-entendiendo-la-autoeficacia": {
+   "titulo": "La diferencia entre «querer» y «ser capaz»: entendiendo la autoeficacia",
+   "categoria": "habitos-y-conducta",
+   "categoria_nombre": "Hábitos y conducta",
+   "tema": "psicologia",
+   "etiquetas": [
+    "autoeficacia",
+    "habitos"
+   ]
+  },
+  "por-que-fallamos-al-intentar-cambiar-conductas": {
+   "titulo": "¿Por qué fallamos al intentar cambiar conductas?",
+   "categoria": "habitos-y-conducta",
+   "categoria_nombre": "Hábitos y conducta",
+   "tema": "psicologia",
+   "etiquetas": [
+    "diseno-del-comportamiento",
+    "sesgos-cognitivos",
+    "trabajo-digital"
+   ]
+  },
+  "ia-y-apoyo-emocional-saber-la-autoria-cambia-tu-perspectiva": {
+   "titulo": "IA y apoyo emocional: saber la autoría cambia tu perspectiva",
+   "categoria": "ia-y-mente",
+   "categoria_nombre": "IA y mente",
+   "tema": "ia",
+   "etiquetas": [
+    "apoyo-emocional",
+    "sesgos-cognitivos",
+    "infancia-y-adolescencia",
+    "salud-mental"
+   ]
+  },
+  "el-estigma-de-la-estructura-x-entonces-y": {
+   "titulo": "El estigma de la estructura: «X entonces Y»",
+   "categoria": "ia-y-mente",
+   "categoria_nombre": "IA y mente",
+   "tema": "ia",
+   "etiquetas": [
+    "sesgos-cognitivos",
+    "lenguaje-claro"
+   ]
+  },
+  "infancias-figitales": {
+   "titulo": "Infancias «Figitales»",
+   "categoria": "bienestar",
+   "categoria_nombre": "Bienestar digital",
+   "tema": "bienestar",
+   "etiquetas": [
+    "infancia-y-adolescencia",
+    "tiempo-de-pantalla",
+    "salud-mental"
+   ]
+  },
+  "calidad-vs-cantidad-la-hipotesis-de-ricitos-de-oro": {
+   "titulo": "Calidad vs. cantidad: la hipótesis de Ricitos de Oro",
+   "categoria": "bienestar",
+   "categoria_nombre": "Bienestar digital",
+   "tema": "bienestar",
+   "etiquetas": [
+    "tiempo-de-pantalla",
+    "consumo-digital",
+    "salud-mental"
+   ]
+  },
+  "autoevaluacion-del-consumo-digital-como-estamos-manejando-nuestro-tiempo-frente-a-las-pantallas": {
+   "titulo": "Autoevaluación del consumo digital: ¿cómo estamos manejando nuestro tiempo frente a las pantallas?",
+   "categoria": "bienestar",
+   "categoria_nombre": "Bienestar digital",
+   "tema": "bienestar",
+   "etiquetas": [
+    "consumo-digital",
+    "tiempo-de-pantalla",
+    "atencion",
+    "habitos"
+   ]
+  },
+  "preguntas-clave-para-entender-y-cuidar-nuestro-cerebro": {
+   "titulo": "Preguntas clave para entender y cuidar nuestro cerebro",
+   "categoria": "neurociencia",
+   "categoria_nombre": "Neurociencia y atención",
+   "tema": "neurociencia",
+   "etiquetas": [
+    "salud-mental",
+    "atencion",
+    "habitos"
+   ]
+  },
+  "5-puntos-clave-que-el-caso-de-meta-nos-deja-en-salud-mental": {
+   "titulo": "5 puntos clave que el caso de Meta nos deja en salud mental",
+   "categoria": "redes-sociales",
+   "categoria_nombre": "Redes sociales y plataformas",
+   "tema": "tecnologia",
+   "etiquetas": [
+    "salud-mental",
+    "etica-digital",
+    "infancia-y-adolescencia"
+   ]
+  },
+  "reflexiones-eticas-sobre-el-desarrollo-de-la-inteligencia-artificial": {
+   "titulo": "Reflexiones éticas sobre el desarrollo de la inteligencia artificial",
+   "categoria": "ia-y-mente",
+   "categoria_nombre": "IA y mente",
+   "tema": "ia",
+   "etiquetas": [
+    "etica-digital",
+    "trabajo-digital"
+   ]
+  },
+  "descubriendo-que-modela-nuestro-comportamiento": {
+   "titulo": "¿Qué modela nuestro comportamiento?",
+   "categoria": "habitos-y-conducta",
+   "categoria_nombre": "Hábitos y conducta",
+   "tema": "psicologia",
+   "etiquetas": [
+    "habitos",
+    "diseno-del-comportamiento",
+    "sesgos-cognitivos"
+   ]
+  },
+  "la-tecnologia-te-supera-como-identificar-y-gestionar-el-tecnoestres": {
+   "titulo": "La tecnología te supera: cómo identificar y gestionar el tecnoestrés",
+   "categoria": "bienestar",
+   "categoria_nombre": "Bienestar digital",
+   "tema": "bienestar",
+   "etiquetas": [
+    "tecnoestres",
+    "trabajo-digital",
+    "salud-mental",
+    "atencion"
+   ]
+  },
+  "el-arte-de-redisenar-tu-entorno": {
+   "titulo": "El arte de rediseñar tu entorno",
+   "categoria": "habitos-y-conducta",
+   "categoria_nombre": "Hábitos y conducta",
+   "tema": "psicologia",
+   "etiquetas": [
+    "habitos",
+    "diseno-del-comportamiento",
+    "atencion"
+   ]
+  },
+  "como-un-te-quiero-infecto-45-millones-de-computadoras-en-todo-el-mundo": {
+   "titulo": "Cómo un «te quiero» infectó 45 millones de computadoras en todo el mundo",
+   "categoria": "ciberseguridad",
+   "categoria_nombre": "Ciberseguridad y factor humano",
+   "tema": "tecnologia",
+   "etiquetas": [
+    "ingenieria-social",
+    "sesgos-cognitivos",
+    "diseno-del-comportamiento"
+   ]
+  }
+ }
+}

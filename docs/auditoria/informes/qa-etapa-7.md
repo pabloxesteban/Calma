@@ -97,3 +97,15 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
 - **Estructura**: el grafo (líneas y señales) es decorativo (`aria-hidden`); el contenido está en los paneles, cada uno con H3. Sin JS se ven todos los paneles.
 - **Móvil**: los temas pasan a fichas de 44 px de alto; sin desborde a 360/390/430.
 - **Datos**: los artículos y las uniones salen de la taxonomía de la Etapa 5; no se agregan temas ni artículos inventados.
+
+## Mapa en más páginas y "Sigue explorando"
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos, y 0 en la página pilar a 1280 y 390.
+  - En la pilar apareció un hallazgo previo: la tabla que se desplaza en celular no era accesible con teclado. Ahora tiene `tabindex="0"`, también en el generador de la Etapa 5.
+- **Panel del mapa**: cabecera en tinta (título blanco 15:1, texto #e6ebf2 13:1, subtítulo en el color del tema ≥ 5:1); artículos en tinta con peso 600; conexiones en fichas #0b4f4f sobre #d8ebe8 (8:1); enlaces como botones.
+- **"Sigue explorando"**:
+  - lista ordenada de enlaces, cada uno con tema, título y motivo de la conexión;
+  - el grafo es decorativo (`aria-hidden`) y se oculta en columnas angostas;
+  - el foco y el paso del puntero por la lista encienden la unión correspondiente;
+  - con movimiento reducido no hay señal.
+- **Contenedores**: el mapa usa consultas por contenedor, así que dentro de la columna de texto de la pilar se ve en una columna (grafo arriba, panel abajo) y a lo ancho en Inicio y Blog.
+- **Móvil**: sin desborde en Inicio, Blog, pilar y un artículo a 360/390/430.

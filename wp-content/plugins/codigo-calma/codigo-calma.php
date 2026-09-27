@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Código Calma
  * Description:       Design system (tokens calma-*) y correcciones del sitio sobre el tema Kadence, sin tema hijo (así se conservan los ajustes del Personalizador).
- * Version:           1.6.0-etapa7
+ * Version:           1.7.0-etapa7
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Author:            Código Calma
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CALMA_VERSION', '1.6.0-etapa7' );
+define( 'CALMA_VERSION', '1.7.0-etapa7' );
 define( 'CALMA_URL', plugin_dir_url( __FILE__ ) );
 define( 'CALMA_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -123,6 +123,9 @@ require_once CALMA_DIR . 'includes/seo-import.php';
 
 // Etapa 5 · GEO: llms.txt, "En resumen", fuentes, importadores de artículos y taxonomía.
 require_once CALMA_DIR . 'includes/geo.php';
+
+// Etapa 7 · Mapa de temas ([calma_mapa]) y "Sigue explorando" al final de cada entrada.
+require_once CALMA_DIR . 'includes/mapa.php';
 
 // Etapa 7 · Dirección de arte "organismo digital" (reemplaza la capa de movimiento de la Etapa 6).
 // Red viva del hero, estados mentales, cifras y microinteracciones. Respeta prefers-reduced-motion

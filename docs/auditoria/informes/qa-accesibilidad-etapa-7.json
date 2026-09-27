@@ -293,6 +293,8 @@
    "jumps": [],
    "headings": [
     "H1:Blog",
+    "H2:Explora por temas",
+    "H3:Ciberpsicología",
     "H2:Por qué tu fuerza de voluntad es más lis",
     "H2:La diferencia entre «querer» y «ser capa",
     "H2:¿Por qué fallamos al intentar cambiar co",
@@ -321,16 +323,16 @@
    "A:Contacto|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "BUTTON:Ver el formulario de b|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Solicitar una consulta|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
+   "BUTTON:Ciberpsicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Psicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Neurociencia|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:IA|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Tecnología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Bienestar digital|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:¿Qué es la ciberpsicol|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Todos los artículos|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Psicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Por qué tu fuerza de v|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Tatiana X. Stacul|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Leer más Por qué tu fu|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Psicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:La diferencia entre «q|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Tatiana X. Stacul|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Leer más La diferencia|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Ciberseguridad|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:¿Por qué fallamos al i|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
+   "A:Por qué tu fuerza de v|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
   ]
  },
  "por-que-fallamos@1280": {
@@ -348,6 +350,7 @@
     "H2:Diseñar ignorando el sentir",
     "H3:El nudge simplifica el camino; el Cudge ",
     "H3:La saturación ante las grandes cifras",
+    "H2:Sigue explorando",
     "H2:¿Tu proyecto se desbordó?",
     "H2:Fuentes",
     "H2:Navegación de entradas",
@@ -378,8 +381,8 @@
    "A:WhatsApp|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Copy Link|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Compartir|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Consultar con Emanuel|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Ver cómo trabajamos|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
+   "A:Psicología¿Qué modela |o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:PsicologíaEl arte de r|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
   ]
  },
  "test@1280": {
@@ -1519,6 +1522,8 @@
    "jumps": [],
    "headings": [
     "H1:Blog",
+    "H2:Explora por temas",
+    "H3:Ciberpsicología",
     "H2:Por qué tu fuerza de voluntad es más lis",
     "H2:La diferencia entre «querer» y «ser capa",
     "H2:¿Por qué fallamos al intentar cambiar co",
@@ -1540,6 +1545,14 @@
    "A:Saltar al contenido|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
    "A:Código Calma|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "BUTTON:Abrir menú|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Ciberpsicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Psicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Neurociencia|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:IA|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Tecnología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:Bienestar digital|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:¿Qué es la ciberpsicol|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Todos los artículos|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Psicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Por qué tu fuerza de v|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Tatiana X. Stacul|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
@@ -1548,15 +1561,7 @@
    "A:La diferencia entre «q|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Tatiana X. Stacul|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Leer más La diferencia|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Ciberseguridad|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:¿Por qué fallamos al i|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Tatiana X. Stacul|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Leer más ¿Por qué fall|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Ciberpsicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:IA y apoyo emocional: |o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Tatiana X. Stacul|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Leer más IA y apoyo em|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Neurociencia y tecnolo|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
+   "A:Ciberseguridad|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
   ]
  },
  "por-que-fallamos@390": {
@@ -1574,6 +1579,7 @@
     "H2:Diseñar ignorando el sentir",
     "H3:El nudge simplifica el camino; el Cudge ",
     "H3:La saturación ante las grandes cifras",
+    "H2:Sigue explorando",
     "H2:¿Tu proyecto se desbordó?",
     "H2:Fuentes",
     "H2:Navegación de entradas",
@@ -1597,15 +1603,15 @@
    "A:WhatsApp|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Copy Link|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Compartir|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Psicología¿Qué modela |o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:PsicologíaEl arte de r|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:PsicologíaPor qué tu f|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:TecnologíaCómo un «te |o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Más de Hábitos y condu|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ver el mapa de temas|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Consultar con Emanuel|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ver cómo trabajamos|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:doi.org/10.3389/frbhe.|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Anterior AnteriorIA y |o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:SiguienteContinuar La |o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Cómo un «te quiero» in|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Tatiana X. Stacul|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Solicitar una consulta|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
-   "A:Ciberpsicología|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true"
+   "A:doi.org/10.3389/frbhe.|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
   ]
  },
  "test@390": {
@@ -2548,7 +2554,7 @@
    "Equipo o=solid rgb(27, 34, 51) inDrawer=true",
    "Contacto o=solid rgb(27, 34, 51) inDrawer=true",
    "Solicitar una consulta o=solid rgb(29, 95, 148) inDrawer=true",
-   "Cerrar menú o=solid rgb(29, 82, 127) inDrawer=true"
+   "Cerrar menú o=solid rgb(28, 60, 92) inDrawer=true"
   ],
   "afterEsc": {
    "exp": "false",

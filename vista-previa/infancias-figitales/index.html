@@ -2728,9 +2728,13 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
    temas; con JS: mapa con un tema por vez (calma-organismo.js).
    -------------------------------------------------------------------------- */
 .calma-mapa {
+	container-type: inline-size;
 	max-width: var(--calma-container);
 	margin: 0 auto;
 	padding: var(--calma-section-y) var(--calma-gutter) 0;
+}
+.calma-mapa-envoltura .calma-mapa {
+	padding: var(--calma-space-10) 0;
 }
 .calma-mapa__head {
 	max-width: 60ch;
@@ -2756,41 +2760,62 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 	gap: var(--calma-space-8);
 	align-items: start;
 }
-@media (min-width: 900px) {
+@container (min-width: 860px) {
 	.calma-mapa__cuerpo {
 		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
 		gap: var(--calma-space-12);
 	}
 }
-/* Paneles: sin JS se ven todos, en grilla */
+/* Paneles: sin JS se ven todos, en grilla. Cabecera en tinta (alto
+   contraste) con el acento de color del tema; cuerpo blanco con jerarquía clara. */
 .calma-mapa__paneles {
 	display: grid;
 	gap: var(--calma-space-4);
 }
 .calma-mapa__panel {
-	padding: var(--calma-space-6);
+	--acento: var(--calma-primary);
 	background: #fff;
-	border: 1px solid var(--calma-hairline-strong);
+	border: 1px solid var(--calma-ink);
+	overflow: hidden;
+}
+.calma-mapa__panel[data-tema="psicologia"] { --acento: #d9a441; }
+.calma-mapa__panel[data-tema="neurociencia"] { --acento: #6aa6dd; }
+.calma-mapa__panel[data-tema="ia"] { --acento: #9b86e8; }
+.calma-mapa__panel[data-tema="tecnologia"] { --acento: #e08a5e; }
+.calma-mapa__panel[data-tema="bienestar"] { --acento: #4fb3a5; }
+.calma-mapa__panel[data-tema="ciberpsicologia"] { --acento: #6aa6dd; }
+.calma-mapa__panel-cabeza {
+	padding: var(--calma-space-6);
+	background: var(--calma-ink);
+	border-top: 5px solid var(--acento);
 }
 .calma-mapa__panel h3 {
 	margin: 0 0 var(--calma-space-2) !important;
-	font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+	font-size: clamp(1.625rem, 1.25rem + 1.1vw, 2.125rem);
 	line-height: 1.1;
+	color: #fff !important;
 }
 .calma-mapa__sub {
 	font-family: var(--calma-font-body);
 	font-size: var(--calma-fs-sm);
-	font-weight: 500;
-	color: var(--calma-ink-soft);
+	font-weight: 600;
+	color: var(--acento);
 }
 .calma-mapa__texto {
-	margin: 0 0 var(--calma-space-5) !important;
-	color: var(--calma-ink-soft);
+	margin: 0 !important;
+	color: #e6ebf2;
+	font-size: var(--calma-fs-base);
+	line-height: 1.55;
+}
+.calma-mapa__panel-cuerpo {
+	padding: var(--calma-space-2) var(--calma-space-6) var(--calma-space-6);
 }
 .calma-mapa__rotulo {
-	margin: var(--calma-space-4) 0 var(--calma-space-2) !important;
-	font-size: var(--calma-fs-xs);
+	margin: var(--calma-space-5) 0 var(--calma-space-2) !important;
+	font-size: 0.8125rem;
 	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
 	color: var(--calma-ink);
 }
 .calma-mapa__articulos,
@@ -2801,54 +2826,85 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 }
 .calma-mapa__articulos li {
 	margin: 0 !important;
-	border-top: 1px solid var(--calma-hairline);
+	border-top: 1px solid var(--calma-hairline-strong);
+}
+.calma-mapa__articulos li:last-child {
+	border-bottom: 1px solid var(--calma-hairline-strong);
 }
 .calma-mapa__articulos a {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: var(--calma-space-3);
-	min-height: 44px;
-	padding: var(--calma-space-2) 0;
+	gap: var(--calma-space-4);
+	min-height: 52px;
+	padding: var(--calma-space-3) var(--calma-space-2);
 	color: var(--calma-ink) !important;
 	font-family: var(--calma-font-heading);
 	font-size: 1.0625rem;
+	font-weight: 600;
 	line-height: 1.3;
 	text-decoration: none !important;
-	transition: color var(--calma-dur) var(--calma-ease), padding var(--calma-dur-medio) var(--calma-ease-mente);
+	transition: background-color var(--calma-dur) var(--calma-ease), color var(--calma-dur) var(--calma-ease);
 }
 .calma-mapa__articulos a::after {
-	content: "→";
+	content: "";
 	flex: none;
-	color: var(--calma-primary);
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: var(--calma-primary) center / 14px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
 	transition: transform var(--calma-dur-medio) var(--calma-ease-mente);
 }
-.calma-mapa__articulos a:hover {
-	color: var(--calma-primary) !important;
-	padding-left: 6px;
+.calma-mapa__articulos a:hover,
+.calma-mapa__articulos a:focus-visible {
+	background: var(--calma-paper-deep);
+	color: var(--calma-primary-hover) !important;
 }
 .calma-mapa__articulos a:hover::after {
-	transform: translateX(4px);
+	transform: translateX(3px);
 }
 .calma-mapa__conexiones li {
-	margin: 0 0 4px !important;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 4px 10px;
+	margin: 0 0 var(--calma-space-2) !important;
 	font-size: var(--calma-fs-sm);
-	color: var(--calma-ink-soft);
+	color: var(--calma-ink);
 }
 .calma-mapa__conexiones strong {
-	color: var(--calma-teal);
+	padding: 2px 10px;
+	border-radius: var(--calma-radius-pill);
+	background: var(--calma-teal-soft);
+	color: #0b4f4f;
+	font-weight: 700;
 }
 .calma-mapa__enlaces {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--calma-space-2) var(--calma-space-6);
-	margin: var(--calma-space-5) 0 0 !important;
+	gap: var(--calma-space-3);
+	margin: var(--calma-space-6) 0 0 !important;
 }
 .calma-mapa__enlaces a {
 	display: inline-flex;
 	align-items: center;
 	min-height: 44px;
+	padding: 0 18px;
+	border: 1.5px solid var(--calma-primary);
+	border-radius: var(--calma-radius-pill);
+	color: var(--calma-primary) !important;
 	font-weight: 600;
+	text-decoration: none !important;
+	transition: background-color var(--calma-dur) var(--calma-ease), color var(--calma-dur) var(--calma-ease);
+}
+.calma-mapa__enlaces a:first-child {
+	background: var(--calma-primary);
+	color: #fff !important;
+}
+.calma-mapa__enlaces a:hover {
+	background: var(--calma-primary-hover);
+	border-color: var(--calma-primary-hover);
+	color: #fff !important;
 }
 /* Con JS: un panel por vez, con una entrada suave */
 .calma-mapa--vivo .calma-mapa__panel[hidden] {
@@ -2995,8 +3051,8 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 	from { stroke-dashoffset: 1; }
 	to { stroke-dashoffset: 0; }
 }
-/* Celular: los temas como fichas y el panel debajo */
-@media (max-width: 699px) {
+/* Celular (o columna angosta): los temas como fichas y el panel debajo */
+@container (max-width: 559px) {
 	.calma-mapa__grafo {
 		aspect-ratio: auto;
 	}
@@ -3042,6 +3098,161 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 		box-shadow: none;
 		border-color: #fff;
 	}
+}
+
+/* --------------------------------------------------------------------------
+   8f. "Sigue explorando" (al final de cada artículo): el artículo en el
+   centro y sus conexiones alrededor, con el mismo lenguaje que el mapa.
+   -------------------------------------------------------------------------- */
+.calma-explora {
+	container-type: inline-size;
+	margin: var(--calma-space-12) 0 var(--calma-space-8);
+	padding: var(--calma-space-6);
+	background: #fff;
+	border: 1px solid var(--calma-ink);
+	border-top: 5px solid var(--calma-teal);
+}
+.calma-explora h2 {
+	margin: 0 0 var(--calma-space-1) !important;
+	font-size: var(--calma-fs-xl);
+	line-height: 1.1;
+}
+.calma-explora h2 em {
+	font-style: italic;
+	font-weight: 500;
+	color: var(--calma-primary);
+}
+.calma-explora__intro {
+	margin: 0 0 var(--calma-space-5) !important;
+	color: var(--calma-ink-soft);
+	font-size: var(--calma-fs-sm);
+}
+.calma-explora__cuerpo {
+	display: grid;
+	gap: var(--calma-space-5);
+	align-items: center;
+}
+@container (min-width: 620px) {
+	.calma-explora__cuerpo {
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+		gap: var(--calma-space-6);
+	}
+}
+@container (max-width: 619px) {
+	.calma-explora__svg {
+		display: none;
+	}
+}
+.calma-explora__svg {
+	width: 100%;
+	height: auto;
+	overflow: visible;
+	background: radial-gradient(circle, rgb(29 95 148 / 0.14) 0.6px, transparent 1px) 0 0 / 6px 6px;
+}
+.calma-explora__arista {
+	fill: none;
+	stroke: var(--calma-primary);
+	stroke-opacity: 0.35;
+	stroke-width: calc(0.25px + var(--peso) * 0.12px);
+	stroke-linecap: round;
+	transition: stroke var(--calma-dur-medio) var(--calma-ease-mente), stroke-opacity var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-explora__senal {
+	fill: none;
+	stroke: var(--calma-teal);
+	stroke-width: 1px;
+	stroke-linecap: round;
+	stroke-dasharray: 0.08 0.92;
+	stroke-dashoffset: 1;
+	opacity: 0;
+}
+.calma-explora__nodo {
+	fill: #fff;
+	stroke: var(--calma-primary);
+	stroke-width: 0.9px;
+	transition: fill var(--calma-dur-medio) var(--calma-ease-mente), r var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-explora__centro {
+	fill: var(--calma-ink);
+}
+.calma-explora__halo {
+	fill: none;
+	stroke: var(--calma-ink);
+	stroke-opacity: 0.2;
+	stroke-width: 0.6px;
+}
+.calma-explora__arista.is-on {
+	stroke: var(--calma-teal);
+	stroke-opacity: 1;
+}
+.calma-explora__nodo.is-on {
+	fill: var(--calma-teal);
+	stroke: var(--calma-teal);
+	r: 3.4;
+}
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-explora__senal.is-senal {
+		opacity: 1;
+		animation: calma-mapa-senal 1.1s linear 2;
+	}
+}
+.calma-explora__lista {
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none;
+}
+.calma-explora__lista li {
+	margin: 0 !important;
+	border-top: 1px solid var(--calma-hairline-strong);
+}
+.calma-explora__lista li:last-child {
+	border-bottom: 1px solid var(--calma-hairline-strong);
+}
+.calma-explora__lista a {
+	display: grid;
+	gap: 2px;
+	padding: var(--calma-space-3) var(--calma-space-2);
+	color: var(--calma-ink) !important;
+	text-decoration: none !important;
+	background-image: none !important;
+	transition: background-color var(--calma-dur) var(--calma-ease);
+}
+.calma-explora__lista a:hover,
+.calma-explora__lista a:focus-visible,
+.calma-explora__lista li.is-on a {
+	background: var(--calma-paper-deep);
+}
+.calma-explora__tema {
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #0b4f4f;
+}
+.calma-explora__titulo {
+	font-family: var(--calma-font-heading);
+	font-size: 1.0625rem;
+	font-weight: 600;
+	line-height: 1.3;
+}
+.calma-explora__lista a:hover .calma-explora__titulo {
+	color: var(--calma-primary-hover);
+}
+.calma-explora__porque {
+	font-size: 0.875rem;
+	color: var(--calma-ink-soft);
+}
+.calma-explora__enlaces {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--calma-space-2) var(--calma-space-6);
+	margin: var(--calma-space-5) 0 0 !important;
+}
+.calma-explora__enlaces a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	font-weight: 600;
 }
 
 /* --------------------------------------------------------------------------
@@ -4013,7 +4224,7 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 
 
 <p class="wp-block-paragraph"></p>
-<div class="addtoany_share_save_container addtoany_content addtoany_content_bottom"><div class="addtoany_header">Compartir el contenido de este artículo:</div><div class="a2a_kit a2a_kit_size_26 addtoany_list" data-a2a-url="https://codigocalma.com/infancias-figitales/" data-a2a-title="Infancias «Figitales»"><a class="a2a_button_facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fcodigocalma.com%2Finfancias-figitales%2F&amp;linkname=Infancias%20%C2%ABFigitales%C2%BB" title="Facebook" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_x" href="https://www.addtoany.com/add_to/x?linkurl=https%3A%2F%2Fcodigocalma.com%2Finfancias-figitales%2F&amp;linkname=Infancias%20%C2%ABFigitales%C2%BB" title="X" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_threads" href="https://www.addtoany.com/add_to/threads?linkurl=https%3A%2F%2Fcodigocalma.com%2Finfancias-figitales%2F&amp;linkname=Infancias%20%C2%ABFigitales%C2%BB" title="Threads" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_whatsapp" href="https://www.addtoany.com/add_to/whatsapp?linkurl=https%3A%2F%2Fcodigocalma.com%2Finfancias-figitales%2F&amp;linkname=Infancias%20%C2%ABFigitales%C2%BB" title="WhatsApp" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_copy_link" href="https://www.addtoany.com/add_to/copy_link?linkurl=https%3A%2F%2Fcodigocalma.com%2Finfancias-figitales%2F&amp;linkname=Infancias%20%C2%ABFigitales%C2%BB" title="Copy Link" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share"></a></div></div><aside class="calma-article-cta" aria-labelledby="calma-article-cta-title"><h2 class="calma-article-cta__title" id="calma-article-cta-title">¿Te identificas con esto?</h2><p>Tatiana acompaña procesos de cambio de hábitos digitales, uno a uno y online. Nos cuentas en unas líneas qué te pasa y te respondemos en 48 horas hábiles.</p><p class="calma-article-cta__actions"><a class="calma-btn calma-btn--primary" href="/Calma/vista-previa/contacto/?area=habitos">Consultar con Tatiana</a> <a class="calma-article-cta__link" href="/Calma/vista-previa/servicios/#como-trabajamos">Ver cómo trabajamos</a></p><p class="calma-aviso">Este espacio no es un servicio de urgencias. Si estás en crisis o en riesgo, contacta ahora con los servicios de emergencia de tu país. <span class="calma-placeholder">[COMPLETAR: enlace a líneas de ayuda]</span></p></aside><section class="calma-fuentes" aria-labelledby="calma-fuentes-titulo"><h2 id="calma-fuentes-titulo">Fuentes</h2><ol><li>Fundación Cibervoluntarios. (s. f.). Proyectos. <a href="https://www.cibervoluntarios.org/es/que-hacemos/proyectos" rel="noopener">www.cibervoluntarios.org/es/que-hacemos/proyectos</a></li></ol></section></div><!-- .entry-content -->
+<div class="addtoany_share_save_container addtoany_content addtoany_content_bottom"><div class="addtoany_header">Compartir el contenido de este artículo:</div><div class="a2a_kit a2a_kit_size_26 addtoany_list" data-a2a-url="https://codigocalma.com/infancias-figitales/" data-a2a-title="Infancias «Figitales»"><a class="a2a_button_facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fcodigocalma.com%2Finfancias-figitales%2F&amp;linkname=Infancias%20%C2%ABFigitales%C2%BB" title="Facebook" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_x" href="https://www.addtoany.com/add_to/x?linkurl=https%3A%2F%2Fcodigocalma.com%2Finfancias-figitales%2F&amp;linkname=Infancias%20%C2%ABFigitales%C2%BB" title="X" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_threads" href="https://www.addtoany.com/add_to/threads?linkurl=https%3A%2F%2Fcodigocalma.com%2Finfancias-figitales%2F&amp;linkname=Infancias%20%C2%ABFigitales%C2%BB" title="Threads" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_whatsapp" href="https://www.addtoany.com/add_to/whatsapp?linkurl=https%3A%2F%2Fcodigocalma.com%2Finfancias-figitales%2F&amp;linkname=Infancias%20%C2%ABFigitales%C2%BB" title="WhatsApp" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_copy_link" href="https://www.addtoany.com/add_to/copy_link?linkurl=https%3A%2F%2Fcodigocalma.com%2Finfancias-figitales%2F&amp;linkname=Infancias%20%C2%ABFigitales%C2%BB" title="Copy Link" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share"></a></div></div><section class="calma-explora" aria-labelledby="explora-titulo"><h2 id="explora-titulo">Sigue <em>explorando</em></h2><p class="calma-explora__intro">Artículos conectados con este por los temas que comparten.</p><div class="calma-explora__cuerpo"><svg class="calma-explora__svg" viewBox="0 0 100 64" aria-hidden="true" focusable="false"><path class="calma-explora__arista" data-i="0" style="--peso:4" pathLength="1" d="M50 32 Q33.0 29.0 16 14"/><path class="calma-explora__senal" data-i="0" pathLength="1" d="M50 32 Q33.0 29.0 16 14"/><path class="calma-explora__arista" data-i="1" style="--peso:3" pathLength="1" d="M50 32 Q67.0 29.0 84 14"/><path class="calma-explora__senal" data-i="1" pathLength="1" d="M50 32 Q67.0 29.0 84 14"/><path class="calma-explora__arista" data-i="2" style="--peso:3" pathLength="1" d="M50 32 Q33.0 35.0 16 50"/><path class="calma-explora__senal" data-i="2" pathLength="1" d="M50 32 Q33.0 35.0 16 50"/><path class="calma-explora__arista" data-i="3" style="--peso:2" pathLength="1" d="M50 32 Q67.0 35.0 84 50"/><path class="calma-explora__senal" data-i="3" pathLength="1" d="M50 32 Q67.0 35.0 84 50"/><circle class="calma-explora__nodo" data-i="0" cx="16" cy="14" r="2.6"/><circle class="calma-explora__nodo" data-i="1" cx="84" cy="14" r="2.6"/><circle class="calma-explora__nodo" data-i="2" cx="16" cy="50" r="2.6"/><circle class="calma-explora__nodo" data-i="3" cx="84" cy="50" r="2.6"/><circle class="calma-explora__centro" cx="50" cy="32" r="5"/><circle class="calma-explora__halo" cx="50" cy="32" r="8.5"/></svg><ol class="calma-explora__lista"><li data-i="0"><a href="/Calma/vista-previa/calidad-vs-cantidad-la-hipotesis-de-ricitos-de-oro/"><span class="calma-explora__tema">Bienestar digital</span><span class="calma-explora__titulo">Calidad vs. cantidad: la hipótesis de Ricitos de Oro</span><span class="calma-explora__porque">Comparten: Salud mental, tiempo de pantalla</span></a></li><li data-i="1"><a href="/Calma/vista-previa/autoevaluacion-del-consumo-digital-como-estamos-manejando-nuestro-tiempo-frente-a-las-pantallas/"><span class="calma-explora__tema">Bienestar digital</span><span class="calma-explora__titulo">Autoevaluación del consumo digital: ¿cómo estamos manejando nuestro tiempo frente a las pantallas?</span><span class="calma-explora__porque">Comparten: Tiempo de pantalla</span></a></li><li data-i="2"><a href="/Calma/vista-previa/la-tecnologia-te-supera-como-identificar-y-gestionar-el-tecnoestres/"><span class="calma-explora__tema">Bienestar digital</span><span class="calma-explora__titulo">La tecnología te supera: cómo identificar y gestionar el tecnoestrés</span><span class="calma-explora__porque">Comparten: Salud mental</span></a></li><li data-i="3"><a href="/Calma/vista-previa/5-puntos-clave-que-el-caso-de-meta-nos-deja-en-salud-mental/"><span class="calma-explora__tema">Tecnología</span><span class="calma-explora__titulo">5 puntos clave que el caso de Meta nos deja en salud mental</span><span class="calma-explora__porque">Comparten: Infancia y adolescencia, salud mental</span></a></li></ol></div><p class="calma-explora__enlaces"><a class="calma-link" href="https://codigocalma.com/category/bienestar/">Más de Bienestar digital</a> <a class="calma-link" href="/Calma/vista-previa/#mapa-temas">Ver el mapa de temas</a></p></section><aside class="calma-article-cta" aria-labelledby="calma-article-cta-title"><h2 class="calma-article-cta__title" id="calma-article-cta-title">¿Te identificas con esto?</h2><p>Tatiana acompaña procesos de cambio de hábitos digitales, uno a uno y online. Nos cuentas en unas líneas qué te pasa y te respondemos en 48 horas hábiles.</p><p class="calma-article-cta__actions"><a class="calma-btn calma-btn--primary" href="/Calma/vista-previa/contacto/?area=habitos">Consultar con Tatiana</a> <a class="calma-article-cta__link" href="/Calma/vista-previa/servicios/#como-trabajamos">Ver cómo trabajamos</a></p><p class="calma-aviso">Este espacio no es un servicio de urgencias. Si estás en crisis o en riesgo, contacta ahora con los servicios de emergencia de tu país. <span class="calma-placeholder">[COMPLETAR: enlace a líneas de ayuda]</span></p></aside><section class="calma-fuentes" aria-labelledby="calma-fuentes-titulo"><h2 id="calma-fuentes-titulo">Fuentes</h2><ol><li>Fundación Cibervoluntarios. (s. f.). Proyectos. <a href="https://www.cibervoluntarios.org/es/que-hacemos/proyectos" rel="noopener">www.cibervoluntarios.org/es/que-hacemos/proyectos</a></li></ol></section></div><!-- .entry-content -->
 <footer class="entry-footer">
 	<div class="entry-tags">
 	<span class="tags-links">
