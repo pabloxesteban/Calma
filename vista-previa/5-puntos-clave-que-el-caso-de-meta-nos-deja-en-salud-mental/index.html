@@ -1867,45 +1867,91 @@ button[type="submit"] {
 .entry-taxonomies .category-links a[href*="/redes-sociales/"] { background: #fce8f3; color: #9d174d !important; }
 
 </style>
-<style id="calma-etapa6-css">
+<style id="calma-etapa7-css">
 /* ==========================================================================
-   Código Calma — Etapa 6: modernización (movimiento y microinteracciones)
-   Principios:
-   - Nada queda oculto sin JavaScript: las clases de animación las agrega
-     calma-motion.js y solo a elementos que están fuera de la primera pantalla.
-   - Sin animaciones en bucle infinito (WCAG 2.2.2): entradas cortas (≤ 0,8 s),
-     efectos que siguen al scroll o al puntero.
-   - Todo se desactiva con prefers-reduced-motion.
+   Código Calma — Etapa 7: "tecnología que se comporta como una mente"
+   Dirección de arte: docs/direccion-arte-organismo.md
+   Reemplaza a calma-etapa6.css (se retiran las entradas desde abajo, el brillo
+   de botones, el texto en degradado, el header de vidrio y el conteo de cifras).
+
+   Gramática de movimiento: perturbar → asentar, conectar, transformar, atenuar.
+   - Nada se mueve más de 5 s sin que la persona lo pida (WCAG 2.2.2).
+   - Sin JavaScript, con prefers-reduced-motion o con "Reducir movimiento"
+     (html.calma-quieto) todo se ve en su estado final.
+   - El scroll siempre es nativo.
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   1. Tokens: papel cálido, tinta, verde azulado, acento arcilla
+   Contraste sobre --calma-paper: tinta 15,6:1 · tinta suave 7,6:1 ·
+   primario 6,4:1 · verde azulado 6,2:1 · arcilla 4,9:1 (solo datos).
+   -------------------------------------------------------------------------- */
 :root {
-	--calma-grad: linear-gradient(120deg, #1d5f94 0%, #5b3fb8 55%, #0f766e 100%);
-	--calma-grad-soft: linear-gradient(135deg, #f1eefc 0%, #e8f1fa 50%, #eaf6f3 100%);
-	--calma-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-	--calma-shadow-lg: 0 18px 48px -18px rgb(22 33 77 / 0.28);
+	--calma-paper: #faf8f4;
+	--calma-paper-deep: #f2eee6;
+	--calma-ink: #1b2233;
+	--calma-ink-soft: #4a5263;
+	--calma-teal: #0f6b6b;
+	--calma-teal-soft: #d8ebe8;
+	--calma-clay: #b4532a;
+	--calma-hairline: #e3ded3;
+	--calma-hairline-strong: #cfc8ba;
+	--calma-font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
+
+	--calma-bg: var(--calma-paper);
+	--calma-text: var(--calma-ink);
+	--calma-text-muted: var(--calma-ink-soft);
+	--calma-surface-soft: var(--calma-paper-deep);
+	--calma-border: var(--calma-hairline);
+	--calma-shadow: 0 1px 2px rgb(27 34 51 / 0.05), 0 8px 24px -16px rgb(27 34 51 / 0.18);
+	--calma-shadow-deep: 0 2px 4px rgb(27 34 51 / 0.05), 0 22px 44px -22px rgb(27 34 51 / 0.32);
+
+	/* Movimiento: largo y suave, sin rebote */
+	--calma-ease-mente: cubic-bezier(0.2, 0.7, 0.2, 1);
+	--calma-dur-lento: 900ms;
+	--calma-dur-medio: 520ms;
+
+	/* Grano (ruido procedural, 1 KB) */
+	--calma-grano: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .12 0 0 0 0 .18 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+html:root {
+	/* Gris de Kadence: #64748b da 4,48:1 sobre papel; #566173 da 6,0:1. */
+	--global-palette6: #566173;
+	--global-palette7: var(--calma-paper-deep);
+	--global-palette8: var(--calma-paper);
+}
+body,
+.content-bg.body,
+.site {
+	background-color: var(--calma-paper);
+	color: var(--calma-ink);
+}
+::selection {
+	background: var(--calma-teal-soft);
+	color: var(--calma-ink);
 }
 
 /* --------------------------------------------------------------------------
-   1. Tipografía de impacto: titulares más grandes y ajustados, acento en degradado
+   2. Tipografía editorial: itálica de Lora como acento, rótulos científicos
    -------------------------------------------------------------------------- */
-.calma-hero h1 {
-	font-size: clamp(2.25rem, 1.4rem + 3.6vw, 4rem);
-	line-height: 1.05;
-	letter-spacing: -0.025em;
+.calma-grad-text,
+.calma-hero h1 em,
+.calma-momentos h2 em,
+.wp-block-kadence-advancedheading mark {
+	font-style: italic;
+	font-weight: 500;
+	color: var(--calma-primary) !important;
+	background: none !important;
+	-webkit-text-fill-color: currentColor;
 }
-.calma-grad-text {
-	background: var(--calma-grad);
-	-webkit-background-clip: text;
-	background-clip: text;
-	color: transparent;
-	-webkit-text-fill-color: transparent;
-}
-@media (forced-colors: active) {
-	.calma-grad-text {
-		-webkit-text-fill-color: currentColor;
-		color: CanvasText;
-		background: none;
-	}
+.calma-eyebrow,
+.calma-label {
+	font-family: var(--calma-font-mono) !important;
+	font-size: 0.75rem !important;
+	font-weight: 500 !important;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--calma-ink-soft) !important;
 }
 .calma-eyebrow {
 	display: inline-flex !important;
@@ -1914,139 +1960,68 @@ button[type="submit"] {
 }
 .calma-eyebrow::before {
 	content: "";
-	width: 28px;
-	height: 2px;
-	border-radius: 2px;
-	background: var(--calma-grad);
+	width: 24px;
+	height: 1px;
+	background: currentColor;
+}
+.calma-hero h1 {
+	font-size: clamp(2.25rem, 1.3rem + 3.4vw, 3.75rem);
+	line-height: 1.06;
+	letter-spacing: -0.022em;
+	font-weight: 600;
 }
 
 /* --------------------------------------------------------------------------
-   2. Hero con fondo de degradados de marca (se mueven con el puntero/scroll)
-   -------------------------------------------------------------------------- */
-.calma-hero {
-	position: relative;
-	overflow: hidden;
-	isolation: isolate;
-	background: var(--calma-grad-soft);
-}
-.calma-hero::before,
-.calma-hero::after {
-	content: "";
-	position: absolute;
-	z-index: -1;
-	border-radius: 50%;
-	filter: blur(60px);
-	opacity: 0.55;
-	pointer-events: none;
-	transform: translate3d(calc(var(--calma-px, 0) * 30px), calc(var(--calma-py, 0) * 30px + var(--calma-scroll, 0) * 0.15px), 0);
-	transition: transform 0.6s var(--calma-ease-out);
-}
-.calma-hero::before {
-	width: min(60vw, 620px);
-	height: min(60vw, 620px);
-	top: -18%;
-	right: -10%;
-	background: radial-gradient(circle at 30% 30%, #b9d9f2 0%, rgb(185 217 242 / 0) 70%);
-}
-.calma-hero::after {
-	width: min(55vw, 560px);
-	height: min(55vw, 560px);
-	bottom: -30%;
-	left: -12%;
-	background: radial-gradient(circle at 60% 40%, #d8cffa 0%, rgb(216 207 250 / 0) 70%);
-	transform: translate3d(calc(var(--calma-px, 0) * -24px), calc(var(--calma-py, 0) * -24px - var(--calma-scroll, 0) * 0.1px), 0);
-}
-.calma-hero__media img {
-	filter: drop-shadow(0 24px 40px rgb(29 95 148 / 0.28));
-	transform: rotate(calc(var(--calma-scroll, 0) * 0.04deg)) translate3d(calc(var(--calma-px, 0) * -10px), calc(var(--calma-py, 0) * -10px), 0);
-	transition: transform 0.6s var(--calma-ease-out);
-}
-
-/* --------------------------------------------------------------------------
-   3. Header translúcido que se compacta al hacer scroll
+   3. Header sólido con línea fina (sin vidrio); se compacta al bajar
    -------------------------------------------------------------------------- */
 .site-header .site-main-header-wrap .site-header-row-container-inner {
-	background: rgb(255 255 255 / 0.82);
-	-webkit-backdrop-filter: saturate(160%) blur(14px);
-	backdrop-filter: saturate(160%) blur(14px);
-	transition: box-shadow 0.3s ease, background 0.3s ease;
+	background: var(--calma-paper);
+	border-bottom: 1px solid var(--calma-hairline);
+	transition: box-shadow var(--calma-dur-medio) var(--calma-ease-mente);
 }
 .calma-scrolled .site-header .site-main-header-wrap .site-header-row-container-inner {
-	background: rgb(255 255 255 / 0.92);
-	box-shadow: 0 6px 24px -12px rgb(22 33 77 / 0.25);
+	box-shadow: 0 10px 24px -22px rgb(27 34 51 / 0.5);
 }
 .site-main-header-inner-wrap {
-	transition: min-height 0.3s var(--calma-ease-out);
+	transition: min-height var(--calma-dur-medio) var(--calma-ease-mente);
 }
 .calma-scrolled .site-main-header-inner-wrap {
 	min-height: 60px;
 }
+#mobile-drawer .drawer-inner {
+	background: var(--calma-paper) !important;
+}
+
 /* Barra de progreso de lectura (entradas) */
 .calma-progress {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
-	height: 3px;
+	height: 2px;
 	z-index: 100000;
-	background: var(--calma-grad);
+	background: var(--calma-teal);
 	transform-origin: 0 50%;
 	transform: scaleX(var(--calma-read, 0));
 	pointer-events: none;
 }
 
 /* --------------------------------------------------------------------------
-   4. Botones con microinteracciones
+   4. Botones: planos, sin brillo ni salto. La flecha se desplaza apenas.
    -------------------------------------------------------------------------- */
 .calma-btn,
 .kb-button,
-.wp-block-button__link,
 .header-button {
-	position: relative;
-	overflow: hidden;
-	transition: transform 0.25s var(--calma-ease-out), box-shadow 0.25s var(--calma-ease-out), background 0.2s ease, color 0.2s ease;
-}
-.calma-btn--primary,
-.header-button,
-.kb-button.kb-btn-global-inherit {
-	background-image: linear-gradient(120deg, #1d5f94 0%, #22508f 50%, #3b3f9e 100%);
-	background-size: 200% 100%;
-	background-position: 0% 0;
+	transition: background-color var(--calma-dur) var(--calma-ease), color var(--calma-dur) var(--calma-ease), box-shadow var(--calma-dur-medio) var(--calma-ease-mente);
 }
 .calma-btn--primary:hover,
-.header-button:hover,
-.kb-button.kb-btn-global-inherit:hover {
-	background-position: 100% 0;
-	transform: translateY(-2px);
-	box-shadow: 0 12px 28px -12px rgb(29 95 148 / 0.6);
+.header-button:hover {
+	box-shadow: 0 10px 22px -16px rgb(29 95 148 / 0.9);
 }
-/* Brillo que cruza el botón al pasar el cursor */
-.calma-btn--primary::after,
-.header-button::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.35) 50%, transparent 70%);
-	transform: translateX(-120%);
-	pointer-events: none;
-}
-.calma-btn--primary:hover::after,
-.header-button:hover::after {
-	transform: translateX(120%);
-	transition: transform 0.7s var(--calma-ease-out);
-}
-.calma-btn--secondary:hover,
-.calma-btn--on-dark:hover {
-	transform: translateY(-2px);
-}
-.calma-btn:active,
-.header-button:active {
-	transform: translateY(0) scale(0.98);
-}
-/* Flechas de "Leer más" y enlaces de acción */
 .post-more-link .kadence-svg-iconset,
 .calma-link::after {
-	transition: transform 0.25s var(--calma-ease-out);
+	display: inline-block;
+	transition: transform var(--calma-dur-medio) var(--calma-ease-mente);
 }
 .calma-link::after {
 	content: "→";
@@ -2058,204 +2033,643 @@ button[type="submit"] {
 }
 
 /* --------------------------------------------------------------------------
-   5. Tarjetas: elevación y brillo que sigue al cursor
+   5. Hero: la flor dentro de una red viva (canvas de calma-organismo.js)
    -------------------------------------------------------------------------- */
-.calma-card,
-.loop-entry.entry,
-.kb-posts .loop-entry,
-.calma-tools__card,
-.calma-timeline__list,
-.calma-faq details {
-	transition: transform 0.35s var(--calma-ease-out), box-shadow 0.35s var(--calma-ease-out), border-color 0.35s ease;
-}
-.calma-card,
-.loop-entry.entry,
-.kb-posts .loop-entry,
-.calma-tools__card {
+.calma-hero {
 	position: relative;
 	isolation: isolate;
+	overflow: hidden;
+	background: var(--calma-paper);
+	border-bottom: 1px solid var(--calma-hairline);
 }
-.calma-card::before,
-.loop-entry.entry::before,
-.kb-posts .loop-entry::before,
-.calma-tools__card::before {
+.calma-hero::after {
+	/* Grano muy sutil: textura de papel */
 	content: "";
 	position: absolute;
 	inset: 0;
 	z-index: -1;
-	border-radius: inherit;
-	background: radial-gradient(420px circle at var(--calma-mx, 50%) var(--calma-my, 0%), rgb(91 63 184 / 0.09), transparent 60%);
-	opacity: 0;
-	transition: opacity 0.35s ease;
+	background-image: var(--calma-grano);
+	opacity: 0.05;
 	pointer-events: none;
 }
-@media (hover: hover) {
-	.calma-card:hover,
-	.loop-entry.entry:hover,
-	.kb-posts .loop-entry:hover,
-	.calma-tools__card:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--calma-shadow-lg);
-		border-color: #cfc6f3;
-	}
-	.calma-card:hover::before,
-	.loop-entry.entry:hover::before,
-	.kb-posts .loop-entry:hover::before,
-	.calma-tools__card:hover::before {
-		opacity: 1;
-	}
-	.loop-entry .post-thumbnail img {
-		transition: transform 0.6s var(--calma-ease-out);
-	}
-	.loop-entry:hover .post-thumbnail img {
-		transform: scale(1.04);
-	}
-}
-.loop-entry .post-thumbnail {
-	overflow: hidden;
-}
-.calma-faq details[open] {
-	border-color: #cfc6f3;
-	box-shadow: var(--calma-shadow);
-}
-.calma-faq summary::after {
-	transition: transform 0.3s var(--calma-ease-out);
-}
-.calma-faq details[open] summary::after {
-	transform: rotate(180deg);
-}
-
-/* Avatares con aro en degradado */
-.calma-avatar {
-	background: var(--calma-grad-soft);
-	border: 0;
-	box-shadow: 0 0 0 3px #fff, 0 0 0 5px #cfc6f3;
-}
-
-/* Números de los pasos con degradado */
-.calma-steps > li::before,
-.calma-step__num,
-.cc-step-n {
-	background: var(--calma-grad) !important;
-	box-shadow: 0 8px 18px -8px rgb(91 63 184 / 0.6);
-}
-
-/* CTA navy con halo de color */
-.calma-cta,
-.cc-final {
+.calma-hero__inner {
 	position: relative;
-	overflow: hidden;
-	isolation: isolate;
-	background: radial-gradient(120% 140% at 0% 0%, #2a3a86 0%, var(--calma-navy) 45%, #0e1638 100%);
+	z-index: 1;
 }
-.calma-cta::before {
-	content: "";
-	position: absolute;
-	z-index: -1;
-	width: 420px;
-	height: 420px;
-	right: -120px;
-	top: -160px;
-	border-radius: 50%;
-	background: radial-gradient(circle, rgb(155 128 255 / 0.35), transparent 65%);
-	transform: translate3d(0, calc(var(--calma-scroll, 0) * -0.05px), 0);
-}
-
-/* Enlaces de texto con subrayado animado */
-.calma-prosa a,
-.single-post .entry-content p a {
-	text-decoration: none !important;
-	background-image: linear-gradient(currentColor, currentColor);
-	background-size: 100% 1px;
-	background-repeat: no-repeat;
-	background-position: 0 100%;
-	transition: background-size 0.3s var(--calma-ease-out);
-}
-.calma-prosa a:hover,
-.single-post .entry-content p a:hover {
-	background-size: 100% 2px;
-}
-
-/* Pie: separador en degradado */
-.site-footer {
+.calma-hero__media {
 	position: relative;
-	background: radial-gradient(90% 120% at 100% 0%, #24317a 0%, var(--calma-navy) 50%, #0e1638 100%);
 }
-.site-footer::before {
-	content: "";
+.calma-hero__media img {
+	position: relative;
+	z-index: 1;
+	max-width: 340px;
+	filter: drop-shadow(0 18px 30px rgb(29 95 148 / 0.18));
+}
+.calma-red {
 	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 3px;
-	background: var(--calma-grad);
+	inset: 0;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 1.2s var(--calma-ease-mente);
+}
+.calma-red.is-lista {
+	opacity: 1;
+}
+/* El texto siempre sobre papel limpio: la red se desvanece hacia la izquierda */
+@media (min-width: 900px) {
+	.calma-red {
+		-webkit-mask-image: linear-gradient(90deg, transparent 0%, rgb(0 0 0 / 0.25) 32%, #000 58%);
+		mask-image: linear-gradient(90deg, transparent 0%, rgb(0 0 0 / 0.25) 32%, #000 58%);
+	}
+}
+@media (max-width: 899px) {
+	.calma-red {
+		-webkit-mask-image: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / 0.2) 45%, #000 70%);
+		mask-image: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / 0.2) 45%, #000 70%);
+	}
+	.calma-hero__media img {
+		max-width: 220px;
+	}
 }
 
 /* --------------------------------------------------------------------------
-   6. Entradas al hacer scroll (las marca calma-motion.js)
+   6. Cifras de la bienvenida: rejilla de 100 y red de conexiones
    -------------------------------------------------------------------------- */
-@media (prefers-reduced-motion: no-preference) {
-	.calma-motion .calma-reveal {
-		opacity: 0;
-		transform: translate3d(0, 28px, 0);
-		transition: opacity 0.8s var(--calma-ease-out), transform 0.8s var(--calma-ease-out);
-		transition-delay: var(--calma-delay, 0s);
+.calma-cifras {
+	display: grid;
+	gap: var(--calma-space-5);
+	padding: var(--calma-space-6);
+	background: #fff;
+	border: 1px solid var(--calma-hairline);
+	border-radius: var(--calma-radius);
+}
+.calma-cifras {
+	container-type: inline-size;
+}
+.calma-cifra {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--calma-space-3);
+	align-items: center;
+	margin: 0;
+}
+@container (min-width: 320px) {
+	.calma-cifra {
+		grid-template-columns: 96px 1fr;
+		gap: var(--calma-space-4);
 	}
-	.calma-motion .calma-reveal--left {
-		transform: translate3d(-32px, 0, 0);
+}
+.calma-cifra + .calma-cifra {
+	padding-top: var(--calma-space-5);
+	border-top: 1px solid var(--calma-hairline);
+}
+.calma-cifra__viz {
+	width: 96px;
+	height: auto;
+	overflow: visible;
+}
+.calma-cifra figcaption {
+	font-size: var(--calma-fs-xs);
+	line-height: 1.45;
+	color: var(--calma-ink-soft);
+}
+.calma-cifra__num {
+	display: block;
+	margin-bottom: 2px;
+	font-family: var(--calma-font-heading);
+	font-size: clamp(1.625rem, 1.3rem + 1vw, 2.125rem);
+	font-weight: 600;
+	line-height: 1.1;
+	letter-spacing: -0.02em;
+	color: var(--calma-ink);
+}
+.calma-cifras__fuente {
+	margin: 0 !important;
+	font-size: 0.8125rem;
+	color: var(--calma-ink-soft);
+}
+.calma-cifra .o-on {
+	fill: var(--calma-teal);
+}
+.calma-cifra .o-off {
+	fill: none;
+	stroke: var(--calma-hairline-strong);
+	stroke-width: 1;
+}
+.calma-cifra .o-arista {
+	stroke: var(--calma-primary);
+	stroke-opacity: 0.45;
+	stroke-width: 0.9;
+}
+.calma-cifra .o-nodo {
+	fill: var(--calma-primary);
+}
+/* La columna de las cifras (reemplaza las cajas de Kadence) */
+.kadence-column1204_745fe2-dc > .kt-inside-inner-col {
+	display: block !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. "¿Cómo son tus momentos con la tecnología?": seis estados mentales
+   -------------------------------------------------------------------------- */
+.calma-momentos {
+	position: relative;
+	isolation: isolate;
+	padding: var(--calma-section-y) var(--calma-gutter);
+	background: var(--calma-paper-deep);
+	border-block: 1px solid var(--calma-hairline);
+}
+.calma-momentos::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background-image: var(--calma-grano);
+	opacity: 0.045;
+	pointer-events: none;
+}
+.calma-momentos__head {
+	max-width: var(--calma-container);
+	margin: 0 auto var(--calma-space-10);
+}
+.calma-momentos__head h2 {
+	max-width: 22ch;
+	margin: var(--calma-space-3) 0 var(--calma-space-3);
+	font-size: var(--calma-fs-2xl);
+	line-height: 1.1;
+	letter-spacing: -0.02em;
+}
+.calma-momentos__head .calma-sub {
+	margin: 0;
+	font-size: var(--calma-fs-lg);
+	color: var(--calma-ink);
+	max-width: 52ch;
+}
+.calma-momentos__ayuda {
+	margin: var(--calma-space-2) 0 0;
+	font-size: var(--calma-fs-sm);
+	color: var(--calma-ink-soft);
+}
+.calma-estados {
+	max-width: var(--calma-container);
+	margin: 0 auto !important;
+	padding: 0 !important;
+	list-style: none;
+	display: grid;
+	gap: 1px;
+	grid-template-columns: 1fr;
+	background: var(--calma-hairline);
+	border: 1px solid var(--calma-hairline);
+	border-radius: var(--calma-radius);
+	overflow: hidden;
+}
+@media (max-width: 699px) {
+	.calma-estado {
+		padding: var(--calma-space-5);
 	}
-	.calma-motion .calma-reveal--scale {
-		transform: scale(0.96);
+	.calma-estado__fig {
+		margin-bottom: 0;
 	}
-	.calma-motion .calma-reveal.is-visible {
+	.calma-org {
+		max-width: 150px;
+	}
+}
+@media (min-width: 700px) {
+	.calma-estados {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (min-width: 1024px) {
+	.calma-estados {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+.calma-estado {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: var(--calma-space-2);
+	margin: 0;
+	padding: var(--calma-space-6);
+	background: var(--calma-paper);
+	transition: background-color var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-estado:hover,
+.calma-estado:focus-within,
+.calma-estado.is-abierto {
+	background: #fff;
+}
+.calma-estado__fig {
+	margin: 0 0 var(--calma-space-3);
+	color: var(--calma-primary);
+}
+.calma-estado__fig figcaption {
+	margin-top: var(--calma-space-2);
+}
+.calma-org {
+	display: block;
+	width: 100%;
+	max-width: 200px;
+	height: auto;
+	overflow: visible;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1;
+	stroke-linecap: round;
+}
+.calma-org * {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-estado__titulo {
+	margin: 0 !important;
+	font-size: var(--calma-fs-lg);
+	line-height: 1.2;
+}
+.calma-estado__pregunta {
+	margin: 0 !important;
+	color: var(--calma-ink-soft);
+	font-size: var(--calma-fs-sm);
+	line-height: 1.5;
+}
+.calma-estado__abrir {
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 44px;
+	margin-top: auto;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--calma-primary);
+	font: 600 var(--calma-fs-sm)/1.2 var(--calma-font-body);
+	cursor: pointer;
+}
+.calma-estado__abrir::before {
+	content: "";
+	width: 18px;
+	height: 18px;
+	flex: none;
+	border: 1px solid currentColor;
+	border-radius: 50%;
+	background:
+		linear-gradient(currentColor, currentColor) center / 8px 1px no-repeat,
+		linear-gradient(currentColor, currentColor) center / 1px 8px no-repeat;
+	transition: transform var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-estado__abrir[aria-expanded="true"]::before {
+	transform: rotate(45deg);
+}
+.calma-estado__abrir:hover,
+.calma-estado__abrir:focus,
+.calma-estado__abrir:active {
+	background: none !important;
+	color: var(--calma-primary-hover) !important;
+	box-shadow: none !important;
+	text-decoration: underline;
+	text-underline-offset: 4px;
+}
+.calma-estado__hallazgo {
+	display: grid;
+	grid-template-rows: 1fr;
+	transition: grid-template-rows var(--calma-dur-medio) var(--calma-ease-mente), visibility 0s;
+}
+.calma-estado__hallazgo > div {
+	min-height: 0;
+	overflow: hidden;
+}
+.calma-estado__hallazgo p {
+	margin: var(--calma-space-3) 0 0 !important;
+	font-size: var(--calma-fs-sm);
+	line-height: 1.55;
+	color: var(--calma-ink);
+}
+.calma-estado__hallazgo p:first-child {
+	padding-top: var(--calma-space-3);
+	border-top: 1px solid var(--calma-hairline);
+}
+p.calma-estado__fuente {
+	font-size: 0.8125rem !important;
+	color: var(--calma-ink-soft) !important;
+}
+.calma-estado__fuente a {
+	color: var(--calma-primary);
+	font-weight: 600;
+}
+.calma-estado__obra {
+	font-style: italic;
+}
+/* Con JS: el hallazgo empieza cerrado */
+@media (prefers-reduced-motion: reduce) {
+	.calma-estado__hallazgo,
+	.calma-estado.is-cerrado .calma-estado__hallazgo {
+		transition: none !important;
+	}
+}
+.calma-estado.is-cerrado .calma-estado__hallazgo {
+	grid-template-rows: 0fr;
+	visibility: hidden;
+	transition: grid-template-rows var(--calma-dur-medio) var(--calma-ease-mente), visibility 0s var(--calma-dur-medio);
+}
+
+/* ---- Estados finales de cada organismo (lo que se ve sin movimiento) ---- */
+.calma-org .o-anillo { stroke-opacity: calc(0.7 - var(--i) * 0.16); }
+.calma-org .o-nucleo { fill: currentColor; stroke: none; }
+.calma-org .o-halo { stroke-dasharray: 2 4; stroke-opacity: 0.5; }
+.calma-org .o-part { fill: currentColor; stroke: none; }
+.calma-org .o-corte { stroke-dasharray: 3 4; stroke-opacity: 0.6; }
+.calma-org .o-mitad { fill: currentColor; stroke: none; }
+.calma-org .o-mitad--izq { transform: translateX(-9px); }
+.calma-org .o-mitad--der { transform: translateX(9px); opacity: 0.45; }
+.calma-org .o-flujo { stroke-width: 1.2; stroke-dasharray: 5 7; }
+.calma-org .o-onda { stroke-width: 1.4; }
+.calma-org .o-tick { stroke: var(--calma-clay); stroke-opacity: 0.55; }
+.calma-org .o-noche { fill: var(--calma-ink); stroke: none; opacity: 0.9; }
+.calma-org .o-rapida { stroke: #fff; opacity: 0; }
+.calma-org .o-lenta { stroke: #9cc3e3; stroke-width: 1.4; }
+.calma-org .o-luna { fill: #e9e4d6; stroke: none; }
+[data-estado="validacion"] .calma-estado__fig,
+[data-estado="ruido"] .calma-estado__fig {
+	color: var(--calma-teal);
+}
+
+/* --------------------------------------------------------------------------
+   8. Tarjetas de artículos y "cuadros" de acceso: profundidad, no salto
+   -------------------------------------------------------------------------- */
+.loop-entry.entry,
+.kb-posts .loop-entry {
+	border: 1px solid var(--calma-hairline);
+	box-shadow: none;
+	transform: perspective(900px) rotateX(calc(var(--calma-ty, 0) * 1deg)) rotateY(calc(var(--calma-tx, 0) * 1deg));
+	transition: box-shadow var(--calma-dur-lento) var(--calma-ease-mente), border-color var(--calma-dur-lento) var(--calma-ease-mente), transform 0.7s var(--calma-ease-mente);
+}
+.loop-entry .post-thumbnail {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+}
+.loop-entry .post-thumbnail img {
+	transform: scale(1.02);
+	transition: transform 1.1s var(--calma-ease-mente), filter 1.1s var(--calma-ease-mente);
+}
+/* Textura que se desplaza apenas sobre la imagen */
+.loop-entry .post-thumbnail::after {
+	content: "";
+	position: absolute;
+	inset: -20px;
+	z-index: 1;
+	background-image: var(--calma-grano);
+	opacity: 0;
+	transition: opacity var(--calma-dur-lento) var(--calma-ease-mente), transform 1.4s var(--calma-ease-mente);
+	pointer-events: none;
+}
+/* Línea que conecta el título con la lectura */
+.loop-entry .entry-title {
+	position: relative;
+	padding-bottom: 10px;
+}
+.loop-entry .entry-title::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 1px;
+	background: var(--calma-primary);
+	transform: scaleX(0.12);
+	transform-origin: 0 50%;
+	opacity: 0.5;
+	transition: transform var(--calma-dur-lento) var(--calma-ease-mente), opacity var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.loop-entry .entry-meta {
+	transition: color var(--calma-dur-lento) var(--calma-ease-mente);
+}
+@media (hover: hover) and (pointer: fine) {
+	.loop-entry.entry:hover,
+	.kb-posts .loop-entry:hover,
+	.loop-entry.entry:focus-within {
+		border-color: var(--calma-hairline-strong);
+		box-shadow: var(--calma-shadow-deep);
+	}
+	.loop-entry:hover .post-thumbnail img {
+		transform: scale(1.06) translate3d(calc(var(--calma-tx, 0) * -2px), calc(var(--calma-ty, 0) * 2px - 4px), 0);
+	}
+	.loop-entry:hover .post-thumbnail::after {
+		opacity: 0.08;
+		transform: translate3d(8px, -6px, 0);
+	}
+	.loop-entry:hover .entry-title::after,
+	.loop-entry:focus-within .entry-title::after {
+		transform: scaleX(1);
 		opacity: 1;
-		transform: none;
 	}
-	/* Línea de tiempo: la línea se dibuja al entrar */
-	.calma-motion .calma-timeline__list.calma-reveal .calma-timeline__event::before {
-		transform: scale(0);
-		transition: transform 0.5s var(--calma-ease-out);
-		transition-delay: calc(var(--calma-i, 0) * 0.12s + 0.3s);
+	.loop-entry:hover .entry-meta {
+		color: var(--calma-ink);
 	}
-	.calma-motion .calma-timeline__list.is-visible .calma-timeline__event::before {
-		transform: scale(1);
-	}
-	/* Entrada del hero en la primera carga (solo decorativo: el texto no se oculta) */
-	.calma-hero__media img {
-		animation: calma-hero-in 1s var(--calma-ease-out) backwards;
-	}
-	@keyframes calma-hero-in {
-		from {
-			opacity: 0;
-			transform: translate3d(0, 24px, 0) scale(0.94) rotate(-8deg);
-		}
+}
+@media (hover: none) {
+	.loop-entry .entry-title::after {
+		transform: scaleX(0.3);
 	}
 }
 
+/* Cuadros de acceso del Inicio (Aprender más / Consulta / Recursos) */
+.kb-row-layout-id1204_6c7f8b-e0 .wp-block-kadence-column > .kt-inside-inner-col {
+	position: relative;
+	overflow: hidden;
+	background: #fff;
+	border: 1px solid var(--calma-hairline) !important;
+	box-shadow: none !important;
+	transition: box-shadow var(--calma-dur-lento) var(--calma-ease-mente), border-color var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.kb-row-layout-id1204_6c7f8b-e0 .kb-img {
+	transition: transform 1.1s var(--calma-ease-mente);
+}
+@media (hover: hover) and (pointer: fine) {
+	.kb-row-layout-id1204_6c7f8b-e0 .wp-block-kadence-column > .kt-inside-inner-col:hover,
+	.kb-row-layout-id1204_6c7f8b-e0 .wp-block-kadence-column > .kt-inside-inner-col:focus-within {
+		border-color: var(--calma-hairline-strong) !important;
+		box-shadow: var(--calma-shadow-deep) !important;
+	}
+	.kb-row-layout-id1204_6c7f8b-e0 .wp-block-kadence-column > .kt-inside-inner-col:hover .kb-img {
+		transform: translate3d(0, -6px, 0) rotate(-1.2deg);
+	}
+}
+/* La fila vacía de debajo se borra en WordPress; en la vista previa se oculta. */
+.kb-row-layout-id1204_addcaa-c1 {
+	display: none;
+}
+
+/* --------------------------------------------------------------------------
+   9. Aparición editorial (solo elementos fuera de la primera pantalla,
+   la marca calma-organismo.js). Nunca se oculta texto: se revela la imagen
+   como una lámina que se descubre, y las figuras "se encienden".
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-lamina:not(.is-visto) img {
+		clip-path: inset(0 0 0 100%);
+		transform: scale(1.08);
+	}
+	html:not(.calma-quieto) .calma-lamina img {
+		transition: clip-path 1.1s var(--calma-ease-mente) var(--calma-delay, 0s), transform 1.6s var(--calma-ease-mente) var(--calma-delay, 0s), filter 1.1s var(--calma-ease-mente);
+	}
+
+	/* Cifras: los 74 puntos se encienden en onda; la red se dibuja */
+	html:not(.calma-quieto) .calma-cifra.is-vivo .o-on {
+		animation: calma-encender 0.5s var(--calma-ease-mente) calc(var(--i) * 14ms) backwards;
+	}
+	html:not(.calma-quieto) .calma-cifra.is-vivo .o-arista {
+		stroke-dasharray: 1;
+		animation: calma-conectar 0.9s var(--calma-ease-mente) calc(var(--i) * 40ms) backwards;
+	}
+	html:not(.calma-quieto) .calma-cifra.is-vivo .o-nodo {
+		animation: calma-encender 0.6s var(--calma-ease-mente) calc(var(--i) * 30ms) backwards;
+	}
+
+	/* Organismos: cada uno parte de un "antes" y llega a su estado final */
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-anillo {
+		animation: calma-pulso 1.6s var(--calma-ease-mente) calc(var(--i) * 0.22s) 2 backwards;
+	}
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-nucleo {
+		animation: calma-latido 0.8s var(--calma-ease-mente) 4;
+	}
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-part {
+		animation: calma-agrupar 2.2s var(--calma-ease-mente) calc(var(--i) * 25ms) backwards;
+	}
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-halo {
+		animation: calma-encender 1.2s var(--calma-ease-mente) 1s backwards;
+	}
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-mitad--izq {
+		animation: calma-dividir-izq 2s var(--calma-ease-mente) 0.2s backwards;
+	}
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-mitad--der {
+		animation: calma-dividir-der 2s var(--calma-ease-mente) 0.2s backwards;
+	}
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-corte {
+		animation: calma-encender 1s var(--calma-ease-mente) 1.1s backwards;
+	}
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-flujo {
+		animation: calma-fluir 3.4s linear calc(var(--i) * -0.4s);
+	}
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-tick {
+		animation: calma-interferir 0.18s steps(2, jump-none) calc(var(--i) * 37ms) 14;
+	}
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-rapida {
+		animation: calma-apagar-rapida 3s var(--calma-ease-mente);
+	}
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-lenta {
+		animation: calma-encender 1.6s var(--calma-ease-mente) 1.6s backwards;
+	}
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-noche {
+		animation: calma-anochecer 3s var(--calma-ease-mente);
+	}
+	html:not(.calma-quieto) .calma-estado.is-vivo .o-luna {
+		animation: calma-encender 1.4s var(--calma-ease-mente) 1.8s backwards;
+	}
+}
+
+@keyframes calma-encender {
+	from { opacity: 0; }
+}
+@keyframes calma-conectar {
+	from { stroke-dashoffset: 1; }
+	to { stroke-dashoffset: 0; }
+}
+@keyframes calma-pulso {
+	from { transform: scale(0.35); stroke-opacity: 1; }
+	70% { stroke-opacity: 0.2; }
+}
+@keyframes calma-latido {
+	50% { transform: scale(1.5); }
+}
+@keyframes calma-agrupar {
+	from { transform: translate(var(--dx), var(--dy)); opacity: 0.35; }
+}
+@keyframes calma-dividir-izq {
+	from { transform: translateX(0); }
+}
+@keyframes calma-dividir-der {
+	from { transform: translateX(0); opacity: 1; }
+}
+@keyframes calma-fluir {
+	to { stroke-dashoffset: -120; }
+}
+@keyframes calma-interferir {
+	from { transform: translateY(-3px) scaleY(1.25); }
+	to { transform: translateY(3px) scaleY(0.8); }
+}
+@keyframes calma-apagar-rapida {
+	from { opacity: 1; }
+	60% { opacity: 0.3; }
+	to { opacity: 0; }
+}
+@keyframes calma-anochecer {
+	from { opacity: 0.25; }
+}
+
+/* --------------------------------------------------------------------------
+   10. Pie sin degradados y control "Reducir movimiento"
+   -------------------------------------------------------------------------- */
+.site-footer {
+	background: var(--calma-navy);
+}
+.calma-quieto-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 44px;
+	margin: 0;
+	padding: 0 14px;
+	border: 1px solid rgb(255 255 255 / 0.35);
+	border-radius: var(--calma-radius-pill);
+	background: transparent;
+	color: #fff;
+	font: 500 0.875rem/1.2 var(--calma-font-body);
+	cursor: pointer;
+}
+.calma-quieto-toggle::before {
+	content: "";
+	width: 28px;
+	height: 16px;
+	flex: none;
+	border-radius: 999px;
+	background: rgb(255 255 255 / 0.25) radial-gradient(circle at 8px 50%, #fff 5px, transparent 5.5px);
+	transition: background-position var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-quieto-toggle[aria-pressed="true"]::before {
+	background: #9cc3e3 radial-gradient(circle at 20px 50%, #fff 5px, transparent 5.5px);
+}
+.calma-quieto-wrap {
+	max-width: var(--calma-container);
+	margin: 0 auto;
+	padding: 0 var(--calma-gutter) var(--calma-space-6);
+}
+
+/* --------------------------------------------------------------------------
+   11. Movimiento reducido o pausado: todo en su estado final
+   -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-	.calma-hero::before,
-	.calma-hero::after,
-	.calma-hero__media img,
-	.calma-cta::before {
-		transform: none !important;
-		transition: none !important;
-	}
-	.calma-btn,
-	.kb-button,
-	.header-button,
-	.calma-card,
-	.loop-entry,
-	.calma-tools__card {
-		transition: none !important;
-		transform: none !important;
-	}
-	.calma-btn--primary::after,
-	.header-button::after {
-		display: none;
-	}
 	.calma-progress {
 		display: none;
 	}
+	.loop-entry,
+	.loop-entry *,
+	.calma-hero__media img,
+	.kb-row-layout-id1204_6c7f8b-e0 .kb-img {
+		transition: none !important;
+		transform: none !important;
+	}
+}
+html.calma-quieto .loop-entry,
+html.calma-quieto .loop-entry *,
+html.calma-quieto .calma-hero__media img,
+html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
+	transition: none !important;
+	transform: none !important;
 }
 
 </style>
@@ -2792,7 +3206,7 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 		</div>
 	</div>
 	<script src="/Calma/vista-previa/codigo-calma/assets/js/calma-conversion.js" defer></script>
-<script src="/Calma/vista-previa/codigo-calma/assets/js/calma-motion.js" defer></script>
+<script src="/Calma/vista-previa/codigo-calma/assets/js/calma-organismo.js" defer></script>
 
 <div class="calma-preview-bar" role="note">Vista previa del rediseño · no es el sitio publicado</div>
 <script>

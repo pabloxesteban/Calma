@@ -1,6 +1,15 @@
 # Dirección de arte · "Tecnología que se comporta como una mente"
 
-Propuesta para evolucionar Código Calma hacia una experiencia editorial e interactiva. **Es un análisis y un plan: todavía no hay código nuevo.** La implementación arranca cuando se apruebe.
+## Estado (2026-09-27)
+Decisiones aprobadas: paleta cálida, la flor dentro de la red animada, arrancar por la F1 y sumar movimiento en blog, cuadros y la sección de momentos.
+**Implementado en la Etapa 7:**
+- F1: base visual + hero con la red viva;
+- de la F2: seis estados mentales y cifras;
+- F5: tarjetas del blog y cuadros de acceso.
+
+Guía: `docs/implementacion/etapa-7.md` · QA: `docs/auditoria/informes/qa-etapa-7.md`. Quedan la F3 (línea de tiempo que se transforma) y la F4 (mapa de conocimiento).
+
+Propuesta para evolucionar Código Calma hacia una experiencia editorial e interactiva (análisis y plan original).
 
 Orden de prioridades (del brief): contenido → legibilidad → accesibilidad → rendimiento → interacción → espectáculo. Si un efecto choca con algo que está más arriba en la lista, se descarta.
 

@@ -93,12 +93,15 @@ const AXRUN = async () => { const r = await axe.run(document, { runOnly: { type:
     await p.addScriptTag({ path: AXE });
     const ax = async()=> p.evaluate(async()=> (await axe.run('#main',{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag22aa']}})).violations.map(v=>v.id+'('+v.nodes.length+') '+v.nodes.slice(0,5).map(n=>n.html.slice(0,60)+' '+(n.failureSummary.match(/contrast of [\d.]+ \(foreground color: #\w+, background color: #\w+/)||[''])[0]).join(' | ')));
     R.S1 = await ax();
+    // El test de la Etapa 2 tiene otros ids: si no está la pantalla vieja, el recorrido completo
+    // lo cubre docs/auditoria/scripts/test-consumo-digital-qa.js.
+    if (!(await p.$('#gen-millennial'))) { out.test = { ...R, nota: 'recorrido en test-consumo-digital-qa.js' }; await ctx.close(); } else {
     await p.click('#gen-millennial'); R.S1sel = await ax(); await p.click('#btn-continue-gen'); await p.waitForTimeout(500); R.S2 = await ax();
     const n = await p.evaluate(()=>state.questions.length);
     for(let i=0;i<n;i++){ await p.click('.answer-btn',{timeout:3000}).catch(()=>{}); await p.waitForTimeout(150); if(i==0) R.S2fb = await ax(); await p.click('#btn-next',{timeout:3000}).catch(()=>{}); await p.waitForTimeout(150); await p.click('#btn-next',{timeout:1500}).catch(()=>{}); await p.waitForTimeout(150); }
     R.final = await p.evaluate(()=>document.querySelector('.screen.active')?.id);
     await p.waitForTimeout(600); R.S3 = await ax();
-    out.test=R; fs.writeFileSync(outFile, JSON.stringify(out,null,1)); await ctx.close(); }
+    out.test=R; fs.writeFileSync(outFile, JSON.stringify(out,null,1)); await ctx.close(); } }
   // Reduced motion
   { const ctx = await b.newContext({ viewport:{width:1280,height:800}, reducedMotion:'reduce' }); await route(ctx); const p=await ctx.newPage(); await p.goto('https://codigocalma.com/',{waitUntil:'load',timeout:90000}); await p.waitForTimeout(400);
     out.reduced = await p.evaluate(()=>[...document.querySelectorAll('*')].filter(e=>{const s=getComputedStyle(e); return (s.animationName!=='none' && parseFloat(s.animationDuration)>0.02) || (parseFloat(s.transitionDuration)>0.3)}).slice(0,10).map(e=>e.tagName+'.'+String(e.className).slice(0,60)+' anim='+getComputedStyle(e).animationName+' trans='+getComputedStyle(e).transitionDuration));

@@ -12,7 +12,7 @@ CSS, JS e imágenes de Kadence) se siguen cargando desde codigocalma.com.
 Cada página lleva noindex, un aviso de "vista previa" y los formularios
 desactivados (no envían nada al sitio real).
 
-Uso: python3 staging/preview/exportar-pages.py   (construye antes la etapa 6)
+Uso: python3 staging/preview/exportar-pages.py   (construye antes la etapa 7)
 """
 import pathlib, re, shutil, subprocess, sys
 
@@ -23,7 +23,7 @@ BASE = '/Calma/vista-previa/'
 PROD = 'https://codigocalma.com/'
 PLUGIN_PROD = PROD + 'wp-content/plugins/codigo-calma/'
 
-subprocess.run([sys.executable, str(pathlib.Path(__file__).with_name('build.py')), 'etapa-6'], check=True)
+subprocess.run([sys.executable, str(pathlib.Path(__file__).with_name('build.py')), 'etapa-7'], check=True)
 
 if OUT.exists():
     shutil.rmtree(OUT)

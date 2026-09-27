@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Código Calma
  * Description:       Design system (tokens calma-*) y correcciones del sitio sobre el tema Kadence, sin tema hijo (así se conservan los ajustes del Personalizador).
- * Version:           1.5.0-etapa6
+ * Version:           1.6.0-etapa7
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Author:            Código Calma
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CALMA_VERSION', '1.5.0-etapa6' );
+define( 'CALMA_VERSION', '1.6.0-etapa7' );
 define( 'CALMA_URL', plugin_dir_url( __FILE__ ) );
 define( 'CALMA_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -124,8 +124,10 @@ require_once CALMA_DIR . 'includes/seo-import.php';
 // Etapa 5 · GEO: llms.txt, "En resumen", fuentes, importadores de artículos y taxonomía.
 require_once CALMA_DIR . 'includes/geo.php';
 
-// Etapa 6 · Modernización: movimiento y microinteracciones (respeta prefers-reduced-motion).
+// Etapa 7 · Dirección de arte "organismo digital" (reemplaza la capa de movimiento de la Etapa 6).
+// Red viva del hero, estados mentales, cifras y microinteracciones. Respeta prefers-reduced-motion
+// y agrega el control "Reducir movimiento" en el pie. Ver docs/direccion-arte-organismo.md.
 add_action( 'wp_enqueue_scripts', function () {
-	wp_enqueue_style( 'calma-etapa6', CALMA_URL . 'assets/css/calma-etapa6.css', array( 'calma-etapa3' ), filemtime( CALMA_DIR . 'assets/css/calma-etapa6.css' ) );
-	wp_enqueue_script( 'calma-motion', CALMA_URL . 'assets/js/calma-motion.js', array(), filemtime( CALMA_DIR . 'assets/js/calma-motion.js' ), array( 'strategy' => 'defer', 'in_footer' => true ) );
+	wp_enqueue_style( 'calma-etapa7', CALMA_URL . 'assets/css/calma-etapa7.css', array( 'calma-etapa3' ), filemtime( CALMA_DIR . 'assets/css/calma-etapa7.css' ) );
+	wp_enqueue_script( 'calma-organismo', CALMA_URL . 'assets/js/calma-organismo.js', array(), filemtime( CALMA_DIR . 'assets/js/calma-organismo.js' ), array( 'strategy' => 'defer', 'in_footer' => true ) );
 }, 22 );

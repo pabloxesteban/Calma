@@ -7,13 +7,14 @@ codigo-calma, bloques de reemplazo, correcciones.json y ajustes que se hacen en
 el editor o el Personalizador (emulados). Escribe staging/preview/build/<slug>.html.
 Las capturas se sacan con staging/preview/capturas.js.
 
-Uso: python3 staging/preview/build.py [etapa-1|etapa-2|etapa-3|etapa-5|etapa-6]  (la Etapa 4 no cambia el HTML visible)
+Uso: python3 staging/preview/build.py [etapa-1|etapa-2|etapa-3|etapa-5|etapa-6|etapa-7]  (la Etapa 4 no cambia el HTML visible;
+la capa de movimiento de la Etapa 6 fue reemplazada por la Etapa 7 y queda en el historial de git)
 """
 import json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 SNAP = sorted((ROOT / 'docs/auditoria').glob('snapshot-*/html'))[-1]
-HASTA = int((sys.argv[1] if len(sys.argv) > 1 else 'etapa-6').split('-')[-1])
+HASTA = int((sys.argv[1] if len(sys.argv) > 1 else 'etapa-7').split('-')[-1])
 PLUGIN = ROOT / 'wp-content/plugins/codigo-calma'
 CSS = PLUGIN / 'assets/css'
 OUT = pathlib.Path(__file__).with_name('build')
@@ -259,9 +260,23 @@ def e3_menus(slug, s):
                lambda m: '<a href="https://codigocalma.com/equipo/"' + (' aria-current="page"' if slug.startswith('equipo') else '') + '>Equipo</a>', s)
     return s
 
+def e7_home(s):
+    # Seis estados mentales en lugar de las 6 tarjetas giratorias (fila completa con su título).
+    a = s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_7ce0f7-d0')
+    b = div_balanceado(s, a)
+    s = s[:a] + (cont(7) / 'bloques/inicio-momentos.html').read_text(encoding='utf-8') + s[b:]
+    # Cifras con visualización en lugar de las dos cajas de información.
+    a = s.index('<div class="wp-block-kadence-column kadence-column1204_745fe2-dc')
+    b = div_balanceado(s, a)
+    col = s[a:b]
+    i = col.index('<div class="kt-inside-inner-col">') + len('<div class="kt-inside-inner-col">')
+    s = s[:a] + col[:i] + '\n' + (cont(7) / 'bloques/inicio-cifras.html').read_text(encoding='utf-8') + '</div></div>' + s[b:]
+    log.append('home: estados mentales y cifras (Etapa 7)')
+    return s
+
 # ---------------------------------------------------------------- CSS del plugin
 def inject_css(s):
-    files = ['calma-tokens', 'calma-etapa1'] + (['calma-fonts', 'calma-etapa2'] if HASTA >= 2 else []) + (['calma-etapa3'] if HASTA >= 3 else []) + (['calma-etapa6'] if HASTA >= 6 else [])
+    files = ['calma-tokens', 'calma-etapa1'] + (['calma-fonts', 'calma-etapa2'] if HASTA >= 2 else []) + (['calma-etapa3'] if HASTA >= 3 else []) + (['calma-etapa7'] if HASTA >= 7 else [])
     css = ''
     for n in files:
         txt = (CSS / f'{n}.css').read_text(encoding='utf-8')
@@ -271,8 +286,8 @@ def inject_css(s):
     if HASTA >= 3:
         # El plugin encola calma-conversion.js (defer, en el pie).
         s = s.replace('</body>', f'<script src="{PLUGIN_URL}assets/js/calma-conversion.js" defer></script>\n</body>', 1)
-    if HASTA >= 6:
-        s = s.replace('</body>', f'<script src="{PLUGIN_URL}assets/js/calma-motion.js" defer></script>\n</body>', 1)
+    if HASTA >= 7:
+        s = s.replace('</body>', f'<script src="{PLUGIN_URL}assets/js/calma-organismo.js" defer></script>\n</body>', 1)
     return s
 
 E1 = {'home': [e1_home_timeline], 'servicios': [e1_servicios], 'contacto': [e1_form],
@@ -318,6 +333,8 @@ for slug, s in fuentes():
                 s = e5_pilar(s)
             if slug == 'bienestar-digital':
                 s = e5_bienestar(s)
+        if HASTA >= 7 and slug == 'home':
+            s = e7_home(s)
         s = e2_global(slug, s)
         if HASTA >= 3:
             s = e3_menus(slug, s)
