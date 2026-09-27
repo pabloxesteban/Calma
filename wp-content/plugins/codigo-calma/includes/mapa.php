@@ -2,11 +2,11 @@
 /**
  * Código Calma — Mapa de temas (Etapa 7).
  *
- * Los datos salen de data/mapa-temas.json, que genera
- * contenido/etapa-7/generar-bloques.py a partir de la taxonomía de la Etapa 5
- * (contenido/etapa-5/taxonomia.json): seis temas, las 15 entradas con su
- * categoría y sus etiquetas. Dos temas (o dos artículos) se unen por las
- * etiquetas que comparten. No se inventan temas ni artículos.
+ * Los seis temas salen de data/mapa-temas.json (generado por
+ * contenido/etapa-7/generar-bloques.py a partir de la taxonomía de la Etapa 5).
+ * Los artículos se leen de WordPress: cada entrada publicada con su categoría
+ * y sus etiquetas, así lo nuevo aparece solo. Dos temas (o dos artículos) se
+ * unen por las etiquetas que comparten. No se inventan temas ni artículos.
  *
  * - [calma_mapa]: mapa completo (Inicio, Blog, página pilar).
  * - "Sigue explorando": al final de cada entrada, el artículo en el centro y
@@ -19,15 +19,91 @@
 
 defined( 'ABSPATH' ) || exit;
 
-/** Datos del mapa (se leen una vez por petición). */
+/**
+ * Datos del mapa (una vez por petición).
+ *
+ * data/mapa-temas.json define los seis temas (textos, posición y qué
+ * categorías del blog abarca cada uno). Los artículos, en cambio, se leen de
+ * WordPress: cada entrada publicada con su categoría y sus etiquetas. Así, lo
+ * que Tatiana publique aparece solo en el mapa y en "Sigue explorando".
+ * Sin WordPress (vista previa), se usan los artículos del JSON.
+ */
 function calma_mapa_datos() {
 	static $datos = null;
-	if ( null === $datos ) {
-		$archivo = CALMA_DIR . 'data/mapa-temas.json';
-		$datos   = is_readable( $archivo ) ? json_decode( (string) file_get_contents( $archivo ), true ) : array();
-		$datos   = apply_filters( 'calma_mapa_datos', is_array( $datos ) ? $datos : array() );
+	if ( null !== $datos ) {
+		return $datos;
+	}
+	$archivo = CALMA_DIR . 'data/mapa-temas.json';
+	$datos   = is_readable( $archivo ) ? json_decode( (string) file_get_contents( $archivo ), true ) : array();
+	$datos   = is_array( $datos ) ? $datos : array();
+	if ( function_exists( 'get_posts' ) && function_exists( 'get_transient' ) ) {
+		$vivos = get_transient( 'calma_mapa_articulos' );
+		if ( false === $vivos ) {
+			$vivos = calma_mapa_articulos_de_wordpress( $datos );
+			set_transient( 'calma_mapa_articulos', $vivos, DAY_IN_SECONDS );
+		}
+		if ( $vivos ) {
+			$datos = calma_mapa_con_articulos( $datos, $vivos );
+		}
+	}
+	$datos = apply_filters( 'calma_mapa_datos', $datos );
+	return $datos;
+}
+
+/** Entradas publicadas con su categoría principal y sus etiquetas. */
+function calma_mapa_articulos_de_wordpress( $datos ) {
+	$tema_de = array();
+	foreach ( (array) ( $datos['temas'] ?? array() ) as $t ) {
+		foreach ( (array) $t['categorias'] as $c ) {
+			$tema_de[ $c ] = $t['k'];
+		}
+	}
+	$out     = array();
+	$entradas = get_posts( array( 'post_type' => 'post', 'post_status' => 'publish', 'numberposts' => 200, 'orderby' => 'date', 'order' => 'DESC' ) );
+	foreach ( $entradas as $p ) {
+		$cats = get_the_category( $p->ID );
+		$cat  = null;
+		foreach ( $cats as $c ) {
+			if ( isset( $tema_de[ $c->slug ] ) ) {
+				$cat = $c;
+				break;
+			}
+		}
+		$cat  = $cat ?: ( $cats[0] ?? null );
+		$tags = wp_get_post_tags( $p->ID );
+		$out[ $p->post_name ] = array(
+			'titulo'           => get_the_title( $p ),
+			'categoria'        => $cat ? $cat->slug : '',
+			'categoria_nombre' => $cat ? $cat->name : '',
+			'tema'             => ( $cat && isset( $tema_de[ $cat->slug ] ) ) ? $tema_de[ $cat->slug ] : 'ciberpsicologia',
+			'etiquetas'        => wp_list_pluck( $tags, 'slug' ),
+			'etiquetas_nombres' => wp_list_pluck( $tags, 'name', 'slug' ),
+		);
+	}
+	return $out;
+}
+
+/** Reemplaza los artículos del JSON por los de WordPress y rearma cada tema. */
+function calma_mapa_con_articulos( $datos, $articulos ) {
+	foreach ( $articulos as $a ) {
+		foreach ( (array) ( $a['etiquetas_nombres'] ?? array() ) as $slug => $nombre ) {
+			$datos['etiquetas'][ $slug ] = $nombre;
+		}
+	}
+	$datos['articulos'] = $articulos;
+	foreach ( $datos['temas'] as $i => $t ) {
+		$datos['temas'][ $i ]['articulos'] = array_keys( array_filter( $articulos, function ( $a ) use ( $t ) {
+			return $a['tema'] === $t['k'];
+		} ) );
 	}
 	return $datos;
+}
+
+/** Al publicar, editar o borrar una entrada, el mapa se vuelve a calcular. */
+foreach ( array( 'save_post_post', 'deleted_post', 'edited_category', 'edited_post_tag' ) as $calma_evento ) {
+	add_action( $calma_evento, function () {
+		delete_transient( 'calma_mapa_articulos' );
+	} );
 }
 
 /** Etiquetas (nombres) que comparten dos listas de slugs. */

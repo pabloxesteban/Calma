@@ -9,6 +9,7 @@ $root = dirname( __DIR__, 3 );
 define( 'CALMA_DIR', $root . '/wp-content/plugins/codigo-calma/' );
 function apply_filters( $n, $v ) { return $v; }
 function add_filter() {}
+function add_action() {}
 function add_shortcode() {}
 function home_url( $p = '' ) { return 'https://codigocalma.com' . $p; }
 function esc_url( $u ) { return htmlspecialchars( $u, ENT_QUOTES ); }

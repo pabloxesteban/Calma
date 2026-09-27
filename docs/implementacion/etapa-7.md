@@ -119,7 +119,9 @@ Todo sale de datos que ya estaban en el proyecto; no se agregó información nue
 | Los seis temas | Los que pediste en la dirección de arte (Psicología, Ciberpsicología, IA, Neurociencia, Bienestar digital, Tecnología), vinculados a las categorías del blog así: Psicología → Hábitos y conducta · Neurociencia → Neurociencia y atención · IA → IA y mente · Tecnología → Redes sociales y plataformas + Ciberseguridad y factor humano · Bienestar digital → Bienestar digital. |
 
 **Importante:**
-- Las etiquetas y categorías se asignaron en la Etapa 5 leyendo cada artículo, y también las tiene que revisar la autora. Si cambia alguna, se regenera todo con `python3 contenido/etapa-7/generar-bloques.py` (reescribe `data/mapa-temas.json`) y se sube el plugin.
+- **Se actualiza solo.** En el sitio real, el mapa y "Sigue explorando" leen los artículos publicados directamente de WordPress (título, categoría y etiquetas). Cuando Tatiana publica, edita o borra una entrada, o cambia una categoría o etiqueta, el mapa se recalcula en la siguiente visita (la caché interna se borra sola; como mucho dura 24 h). No hay que tocar código ni regenerar nada. Condición: que cada entrada nueva tenga una de las categorías del blog y 2–4 etiquetas; sin etiquetas aparece en su tema pero sin conexiones.
+- `data/mapa-temas.json` queda solo para las descripciones de los temas y como respaldo si WordPress no devuelve entradas (por ejemplo, en la vista previa estática). Si se agrega una categoría nueva que no está entre las seis vinculadas, hay que sumarla en `contenido/etapa-7/mapa.py` y regenerar con `python3 contenido/etapa-7/generar-bloques.py`.
+- Las etiquetas y categorías se asignaron en la Etapa 5 leyendo cada artículo, y también las tiene que revisar la autora.
 - Los enlaces a las categorías nuevas funcionan después de aplicar la taxonomía (Etapa 5, Paso 2).
 
 ## Paso 3d · Servicios y Contacto (15 min)
