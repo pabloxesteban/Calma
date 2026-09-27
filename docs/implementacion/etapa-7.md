@@ -229,3 +229,10 @@ Qué trae:
 - "Tus resultados son tuyos." pasa de H2 a una frase destacada, para no repetir dos títulos seguidos.
 - **Ajustes del Test (ronda siguiente):** sin emojis. Las cuatro generaciones tienen íconos de línea sobre el tono de cada tema (computadora y teléfono, computadora de escritorio, teléfono conectado, círculo abierto); la retroalimentación de cada respuesta usa un punto de color (verde, arena o azul) en lugar de ✓ ⚠ 🔵; el resultado muestra el perfil dibujado en lugar del emoji. El título de cada pregunta ya no muestra un recuadro al recibir el foco (el foco sigue ahí para los lectores de pantalla). La foto de "Dato que vale la pena saber" pasa a lámina en duotono azul-lavanda con los doce puntos del test alrededor y un candado que se cierra al llegar ("tus resultados son tuyos").
 
+## Paso 3i · Bienestar digital (10 min)
+Reemplazar TODO el contenido de la página por un bloque **HTML personalizado** con `contenido/etapa-7/bloques/bienestar-digital.html` (ancho completo, sin caja ni título de Kadence). Reemplaza también el bloque de apertura de la Etapa 5, que ya viene incluido.
+- **La infografía en imagen pasa a una figura dibujada:** tres círculos en el tono de cada área (ciberpsicología en lavanda, ciberseguridad en celeste, bienestar humano en verde) que se separan desde el centro al cargar y dejan "Bienestar digital" en la intersección. Es `role="img"` con título y descripción. Lo que la imagen decía dentro de cada círculo (comportamiento, patrones digitales, relaciones, etc.) pasa a texto real, como etiquetas en la tarjeta de cada área.
+- **Las tres áreas:** tarjetas con ícono de línea; al pasar el puntero por una, la figura destaca su círculo y atenúa los otros.
+- **"Primeros pasos hacia la calma":** cuatro tarjetas numeradas (01–04) con su figura (un teléfono en pausa con el tiempo que se completa, un candado que se cierra entre datos dispersos, anillos que respiran, dos personas unidas por un vínculo que se dibuja), en lugar de los bloques lavanda.
+- La imagen de la infografía queda sin uso en la biblioteca de medios (no hace falta borrarla).
+

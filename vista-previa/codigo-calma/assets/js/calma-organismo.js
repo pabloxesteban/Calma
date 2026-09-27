@@ -535,7 +535,7 @@
 	}
 
 	function prepararFiguras() {
-		var figuras = document.querySelectorAll( '.calma-cifra, .calma-estado, .calma-person, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta' );
+		var figuras = document.querySelectorAll( '.calma-cifra, .calma-estado, .calma-person, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta, .calma-dato__imagen, .calma-paso-calma' );
 		if ( ! figuras.length ) {
 			return;
 		}
@@ -1317,7 +1317,7 @@
 	   (una vez), la línea de cada título se dibuja y la cuadrícula del fondo
 	   se desplaza apenas con el scroll. Nada de esto oculta texto sin JS.
 	   ------------------------------------------------------------------------ */
-	var LUZ = '.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .calma-test__paso, .calma-dato__tarjeta';
+	var LUZ = '.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .calma-test__paso, .calma-dato__tarjeta, .calma-area, .calma-paso-calma';
 	var SUBE = LUZ + ', .calma-app, .calma-perfil__articulos li';
 	var LINEAS = '.calma-recursos .calma-section__head, .calma-apps__titulo, .calma-perfil .calma-section__head';
 
@@ -1398,6 +1398,22 @@
 	   test, sin tocar su lógica: se encienden las preguntas ya respondidas y
 	   late la actual; al ver el resultado, se encienden todas.
 	   ------------------------------------------------------------------------ */
+	/* Bienestar digital: al pasar por la tarjeta de un área, la figura destaca su círculo. */
+	function prepararVenn() {
+		var venn = document.querySelector( '[data-calma-venn]' );
+		if ( ! venn ) {
+			return;
+		}
+		document.querySelectorAll( '.calma-area[data-area]' ).forEach( function ( t ) {
+			t.addEventListener( 'mouseenter', function () {
+				venn.setAttribute( 'data-activa', t.getAttribute( 'data-area' ) );
+			} );
+			t.addEventListener( 'mouseleave', function () {
+				venn.removeAttribute( 'data-activa' );
+			} );
+		} );
+	}
+
 	function prepararTestFig() {
 		var fig = document.querySelector( '[data-calma-test-fig]' );
 		var test = document.getElementById( 'calma-test' );
@@ -1632,6 +1648,7 @@
 		prepararLuz();
 		prepararSube();
 		prepararTestFig();
+		prepararVenn();
 
 		var hero = document.querySelector( '.calma-hero' );
 		var red = null;

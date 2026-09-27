@@ -2807,7 +2807,9 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-test .calma-test__card,
 .calma-test .calma-test__step,
 .calma-test__paso,
-.calma-dato__tarjeta {
+.calma-dato__tarjeta,
+.calma-area,
+.calma-paso-calma {
 	--luz-acento: var(--acento, #9cc3e3);
 	--luz-borde: color-mix(in srgb, var(--acento-texto, #1d5f94) 35%, var(--luz-acento));
 	position: relative;
@@ -2827,7 +2829,9 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-test .calma-test__card::before,
 .calma-test .calma-test__step::before,
 .calma-test__paso::before,
-.calma-dato__tarjeta::before {
+.calma-dato__tarjeta::before,
+.calma-area::before,
+.calma-paso-calma::before {
 	content: "" !important;
 	position: absolute;
 	inset: 0;
@@ -2845,7 +2849,9 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-test .calma-test__card::after,
 .calma-test .calma-test__step::after,
 .calma-test__paso::after,
-.calma-dato__tarjeta::after {
+.calma-dato__tarjeta::after,
+.calma-area::after,
+.calma-paso-calma::after {
 	content: "";
 	position: absolute;
 	inset: 0;
@@ -2859,8 +2865,8 @@ html.calma-quieto .calma-tiempo__anio {
 	transition: opacity 0.5s var(--calma-ease-mente);
 	pointer-events: none;
 }
-:is(.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .calma-test__paso, .calma-dato__tarjeta):is(:hover, :focus-within)::before,
-:is(.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .calma-test__paso, .calma-dato__tarjeta):is(:hover, :focus-within)::after {
+:is(.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .calma-test__paso, .calma-dato__tarjeta, .calma-area, .calma-paso-calma):is(:hover, :focus-within)::before,
+:is(.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .calma-test__paso, .calma-dato__tarjeta, .calma-area, .calma-paso-calma):is(:hover, :focus-within)::after {
 	opacity: 1;
 }
 
@@ -3839,6 +3845,186 @@ html.calma-quieto .calma-tiempo__anio {
 	color: var(--calma-ink-soft);
 }
 
+/* ---- Bienestar digital ---- */
+.calma-bienestar .calma-hero__inner--media {
+	align-items: center;
+}
+.calma-venn {
+	margin: 0;
+	display: flex;
+	justify-content: center;
+}
+.calma-venn svg {
+	width: 100%;
+	max-width: 460px;
+	height: auto;
+	overflow: visible;
+}
+.calma-venn svg * {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-venn__circulo {
+	fill: var(--tono);
+	fill-opacity: 0.85;
+	stroke: var(--acento);
+	stroke-width: 1.5;
+	mix-blend-mode: multiply;
+	transition: fill-opacity 0.4s var(--calma-ease-mente), opacity 0.4s var(--calma-ease-mente), stroke-width 0.4s;
+}
+.calma-venn__nombre {
+	fill: var(--texto);
+	font: 600 17px/1 var(--calma-font-body);
+	transition: opacity 0.4s var(--calma-ease-mente);
+}
+.calma-venn__centro rect {
+	fill: #fff;
+	stroke: var(--calma-teal);
+	stroke-width: 1.5;
+}
+.calma-venn__centro text {
+	fill: var(--calma-teal);
+	font: 600 15px/1 var(--calma-font-body);
+}
+.calma-venn[data-activa] .calma-venn__circulo,
+.calma-venn[data-activa] .calma-venn__nombre {
+	opacity: 0.35;
+}
+.calma-venn[data-activa="ciberpsicologia"] :is(.calma-venn__circulo--ciberpsicologia, .calma-venn__nombre--ciberpsicologia),
+.calma-venn[data-activa="ciberseguridad"] :is(.calma-venn__circulo--ciberseguridad, .calma-venn__nombre--ciberseguridad),
+.calma-venn[data-activa="humano"] :is(.calma-venn__circulo--humano, .calma-venn__nombre--humano) {
+	opacity: 1;
+	stroke-width: 2.5;
+}
+.calma-bienestar__interseccion {
+	max-width: 760px;
+	margin: 0 auto var(--calma-space-10);
+}
+.calma-bienestar__interseccion h2 {
+	margin-bottom: var(--calma-space-4) !important;
+	font-size: var(--calma-fs-xl);
+}
+.calma-bienestar__interseccion h2::before {
+	content: "";
+	display: block;
+	width: 72px;
+	height: 2px;
+	margin-bottom: var(--calma-space-5);
+	background: linear-gradient(90deg, var(--calma-teal), rgb(15 107 107 / 0));
+}
+.calma-bienestar .calma-definicion {
+	font-family: var(--calma-font-heading);
+	font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.625rem);
+	line-height: 1.35;
+}
+.calma-bienestar .calma-definicion strong {
+	font-weight: 500;
+}
+.calma-bienestar .calma-resumen {
+	max-width: none;
+	margin: var(--calma-space-6) 0 0 !important;
+	background: #fff !important;
+	border: 1px solid rgb(27 34 51 / 0.09) !important;
+	border-left: 3px solid #9cc3e3 !important;
+	border-radius: 12px !important;
+}
+.calma-areas,
+.calma-pasos-calma {
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: grid;
+	gap: var(--calma-space-4);
+}
+.calma-areas {
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+.calma-area,
+.calma-paso-calma {
+	display: flex;
+	flex-direction: column;
+	gap: var(--calma-space-3);
+	margin: 0 !important;
+	padding: var(--calma-space-6) !important;
+}
+.calma-area h3,
+.calma-paso-calma h3 {
+	margin: var(--calma-space-2) 0 0 !important;
+	font-size: var(--calma-fs-lg);
+}
+.calma-area > p,
+.calma-paso-calma > p {
+	margin: 0 !important;
+	color: var(--calma-ink-soft);
+}
+.calma-area__temas {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin: auto 0 0 !important;
+	padding: var(--calma-space-3) 0 0 !important;
+	list-style: none !important;
+}
+.calma-area__temas li {
+	margin: 0 !important;
+	padding: 2px 10px !important;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--acento) 26%, #fff);
+	color: var(--acento-texto);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	line-height: 1.6;
+}
+.calma-area__temas li::before {
+	content: none !important;
+}
+.calma-pasos-calma {
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+	counter-reset: none;
+}
+.calma-paso-calma {
+	display: grid !important;
+	grid-template-columns: 1fr auto;
+	grid-template-areas: "num fig" "titulo fig" "texto texto";
+	align-items: start;
+}
+.calma-paso-calma__num {
+	grid-area: num;
+	font: 500 0.875rem/1 var(--calma-font-body);
+	letter-spacing: 0.08em;
+	color: var(--acento-texto);
+}
+.calma-paso-calma .calma-org {
+	grid-area: fig;
+	width: 140px;
+	color: var(--acento-texto);
+}
+.calma-paso-calma h3 {
+	grid-area: titulo;
+}
+.calma-paso-calma > p {
+	grid-area: texto;
+}
+.calma-org .o-arco {
+	transform-origin: 50% 100%;
+}
+@media (max-width: 599px) {
+	.calma-paso-calma {
+		grid-template-columns: 1fr;
+		grid-template-areas: "fig" "num" "titulo" "texto";
+	}
+	.calma-paso-calma .calma-org {
+		width: 120px;
+	}
+	/* La figura se achica en el celular: textos más grandes dentro del SVG para que se sigan leyendo */
+	.calma-venn__nombre {
+		font-size: 21px;
+	}
+	.calma-venn__centro text {
+		font-size: 17px;
+	}
+}
+
 /* ---- Movimiento ---- */
 @media (prefers-reduced-motion: no-preference) {
 	/* Scroll: las tarjetas suben al entrar (solo las que empiezan fuera de pantalla; las marca el JS) */
@@ -3954,6 +4140,39 @@ html.calma-quieto .calma-tiempo__anio {
 }
 @keyframes calma-cerrar {
 	from { transform: translateY(-12px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+	/* Bienestar: los tres círculos se separan desde el centro y aparece la intersección */
+	html:not(.calma-quieto) .calma-venn__circulo {
+		animation: calma-separar 1.6s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.12s) backwards;
+	}
+	html:not(.calma-quieto) .calma-venn__nombre {
+		animation: calma-encender 0.8s var(--calma-ease-mente) 1.4s backwards;
+	}
+	html:not(.calma-quieto) .calma-venn__centro {
+		animation: calma-encender 0.8s var(--calma-ease-mente) 1.1s backwards;
+	}
+	html:not(.calma-quieto) .calma-paso-calma.is-vivo .o-trazo {
+		animation: calma-conectar 1.6s var(--calma-ease-mente) 0.3s backwards;
+	}
+	html:not(.calma-quieto) .calma-paso-calma.is-vivo .o-punto {
+		animation: calma-agrupar-suave 1.4s var(--calma-ease-mente) calc(var(--i) * 0.06s) backwards;
+	}
+	html:not(.calma-quieto) .calma-paso-calma.is-vivo .o-arco {
+		animation: calma-cerrar 0.7s var(--calma-ease-mente) 0.9s backwards;
+	}
+	html:not(.calma-quieto) .calma-paso-calma.is-vivo .o-anillo {
+		animation: calma-pulso 1.8s var(--calma-ease-mente) calc(var(--i) * 0.25s) 2 backwards;
+	}
+	html:not(.calma-quieto) .calma-paso-calma.is-vivo .o-nucleo {
+		animation: calma-latido 1s var(--calma-ease-mente) 2;
+	}
+}
+@keyframes calma-separar {
+	from { transform: translate(var(--dx), var(--dy)) scale(0.7); fill-opacity: 0.3; }
+}
+@keyframes calma-agrupar-suave {
+	from { opacity: 0; transform: scale(2.2); }
 }
 @keyframes calma-test-entra {
 	from { opacity: 0; transform: translateY(10px); }

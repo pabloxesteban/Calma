@@ -415,6 +415,8 @@ for slug, s in fuentes():
             s = e7_test_dato(s)
         if HASTA >= 7 and slug == 'herramientas':
             s = e7_pagina_entera(s, 'herramientas.html', slug)
+        if HASTA >= 7 and slug == 'bienestar-digital':
+            s = e7_pagina_entera(s, 'bienestar-digital.html', slug)
         if HASTA >= 7 and slug == 'descargas-2':
             s = e7_pagina_entera(s, 'descargas.html', slug)
         if HASTA >= 7 and slug in ('ciberpsicologia', 'blog'):

@@ -25,6 +25,7 @@ from paginas import servicios, contacto_intro, contacto_proceso  # noqa: E402
 from equipo import equipo, perfil, PERSONAS  # noqa: E402
 from recursos import herramientas, descargas  # noqa: E402
 from test import test, dato  # noqa: E402
+from bienestar import bienestar  # noqa: E402
 
 OUT = pathlib.Path(__file__).with_name('bloques')
 OUT.mkdir(exist_ok=True)
@@ -335,6 +336,7 @@ def lecturas_cabecera():
 (OUT / 'contacto-proceso.html').write_text(contacto_proceso(cabecera), encoding='utf-8')
 (OUT / 'test-consumo-digital.html').write_text(test(cabecera), encoding='utf-8')
 (OUT / 'test-dato.html').write_text(dato(cabecera), encoding='utf-8')
+(OUT / 'bienestar-digital.html').write_text(bienestar(cabecera), encoding='utf-8')
 (OUT / 'herramientas.html').write_text(herramientas(cabecera), encoding='utf-8')
 (OUT / 'descargas.html').write_text(descargas(cabecera), encoding='utf-8')
 (OUT / 'equipo.html').write_text(equipo(cabecera), encoding='utf-8')

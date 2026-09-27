@@ -165,3 +165,9 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
 - **Movimiento**: todo ocurre una vez por acción (entrar en pantalla, cambiar de pregunta, ver el resultado). Con movimiento reducido o "Reducir movimiento" no hay animaciones, pero la figura igual muestra el progreso.
 - Se corrigió el botón "Solicitar una consulta" del resultado: el texto quedaba del mismo azul que el fondo (ahora blanco sobre #1d5f94).
 
+## Test (íconos y lámina) y Bienestar digital
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos; reflow a 320 px sin desborde.
+- **Test**: sin emojis (generaciones, retroalimentación y resultado usan íconos de línea o puntos de color, todos `aria-hidden`; el texto no cambió). El título de cada pregunta recibe el foco sin recuadro visible, porque no es un control; los controles mantienen su foco visible.
+- **Lámina del "Dato"**: la foto conserva su texto alternativo; la capa con los puntos y el candado es decorativa.
+- **Bienestar digital**: la figura de Venn es `role="img"` con `<title>` y `<desc>` que dicen lo mismo que la infografía anterior, y ese contenido además está como texto en las tarjetas. Títulos en orden (H1 → H2 → H3). En el celular, los textos de la figura se agrandan para seguir siendo legibles.
+
