@@ -7,13 +7,13 @@ codigo-calma, bloques de reemplazo, correcciones.json y ajustes que se hacen en
 el editor o el Personalizador (emulados). Escribe staging/preview/build/<slug>.html.
 Las capturas se sacan con staging/preview/capturas.js.
 
-Uso: python3 staging/preview/build.py [etapa-1|etapa-2|etapa-3|etapa-5]  (la Etapa 4 no cambia el HTML visible)
+Uso: python3 staging/preview/build.py [etapa-1|etapa-2|etapa-3|etapa-5|etapa-6]  (la Etapa 4 no cambia el HTML visible)
 """
 import json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 SNAP = sorted((ROOT / 'docs/auditoria').glob('snapshot-*/html'))[-1]
-HASTA = int((sys.argv[1] if len(sys.argv) > 1 else 'etapa-5').split('-')[-1])
+HASTA = int((sys.argv[1] if len(sys.argv) > 1 else 'etapa-6').split('-')[-1])
 PLUGIN = ROOT / 'wp-content/plugins/codigo-calma'
 CSS = PLUGIN / 'assets/css'
 OUT = pathlib.Path(__file__).with_name('build')
@@ -261,7 +261,7 @@ def e3_menus(slug, s):
 
 # ---------------------------------------------------------------- CSS del plugin
 def inject_css(s):
-    files = ['calma-tokens', 'calma-etapa1'] + (['calma-fonts', 'calma-etapa2'] if HASTA >= 2 else []) + (['calma-etapa3'] if HASTA >= 3 else [])
+    files = ['calma-tokens', 'calma-etapa1'] + (['calma-fonts', 'calma-etapa2'] if HASTA >= 2 else []) + (['calma-etapa3'] if HASTA >= 3 else []) + (['calma-etapa6'] if HASTA >= 6 else [])
     css = ''
     for n in files:
         txt = (CSS / f'{n}.css').read_text(encoding='utf-8')
@@ -271,6 +271,8 @@ def inject_css(s):
     if HASTA >= 3:
         # El plugin encola calma-conversion.js (defer, en el pie).
         s = s.replace('</body>', f'<script src="{PLUGIN_URL}assets/js/calma-conversion.js" defer></script>\n</body>', 1)
+    if HASTA >= 6:
+        s = s.replace('</body>', f'<script src="{PLUGIN_URL}assets/js/calma-motion.js" defer></script>\n</body>', 1)
     return s
 
 E1 = {'home': [e1_home_timeline], 'servicios': [e1_servicios], 'contacto': [e1_form],

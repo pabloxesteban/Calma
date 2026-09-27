@@ -79,7 +79,7 @@ servicios = cabecera('Servicios', 'Reemplaza TODO el contenido de la página Ser
 <div class="calma-hero__inner">
 <div>
 <p class="calma-eyebrow">Acompañamiento individual</p>
-<h1 id="servicios-titulo">Mentoría uno a uno para ordenar tu relación con la tecnología y tu trabajo</h1>
+<h1 id="servicios-titulo">Mentoría uno a uno para ordenar tu relación con <span class="calma-grad-text">la tecnología</span> y tu trabajo</h1>
 <p class="calma-hero__lead">Una persona por vez, de tres a seis sesiones online, con un plan por escrito para que puedas sostenerlo sin nosotros.</p>
 <p class="calma-actions"><a class="calma-btn calma-btn--primary" href="{C}/contacto/">Solicitar una consulta</a><a class="calma-btn calma-btn--secondary" href="#como-trabajamos">Ver cómo trabajamos</a></p>
 <p class="calma-micro">Te respondemos en 48 horas hábiles. Honorarios: {ph("honorarios o «te los contamos en la respuesta»")}</p>
@@ -164,7 +164,7 @@ hero = cabecera('Inicio · hero', 'Reemplaza la primera fila del Inicio (fila co
 <div class="calma-hero__inner calma-hero__inner--media">
 <div>
 <p class="calma-eyebrow">Portal de ciberpsicología</p>
-<h1 id="inicio-titulo">Entiende cómo te afecta la tecnología y decide cómo quieres usarla</h1>
+<h1 id="inicio-titulo">Entiende cómo te afecta <span class="calma-grad-text">la tecnología</span> y decide cómo quieres usarla</h1>
 <p class="calma-hero__lead">Artículos, herramientas y acompañamiento uno a uno, basados en investigación y explicados con claridad.</p>
 <p class="calma-actions"><a class="calma-btn calma-btn--primary" href="{C}/contacto/">Solicitar una consulta</a><a class="calma-btn calma-btn--secondary" href="{C}/ciberpsicologia/">Explorar recursos gratuitos</a></p>
 <p class="calma-micro">Te respondemos en 48 horas hábiles.</p>
@@ -196,7 +196,7 @@ indice_cards = ''.join(
     f'<p class="calma-person__links"><a class="calma-link" href="{C}/equipo/{p["slug"]}/">Conocer a {p["corto"]}</a></p></article>' for p in PERSONAS)
 equipo = cabecera('Equipo', 'Página nueva "Equipo" (slug equipo). Un bloque "HTML personalizado". Ancho completo, sin caja, sin título de Kadence.') + f'''<div class="calma-page">
 <section class="calma-hero" aria-labelledby="equipo-h1"><div class="calma-hero__inner"><div>
-<h1 id="equipo-h1">El equipo de Código Calma</h1>
+<h1 id="equipo-h1">El equipo de <span class="calma-grad-text">Código Calma</span></h1>
 <p class="calma-hero__lead">Somos tres personas que miran la tecnología desde lugares distintos: la psicología, la accesibilidad cognitiva y la gestión de proyectos. Trabajamos con el mismo recorrido; cambia el terreno según lo que traigas.</p>
 </div></div></section>
 <section class="calma-section calma-section--white"><div class="calma-container"><div class="calma-people">{indice_cards}</div></div></section>

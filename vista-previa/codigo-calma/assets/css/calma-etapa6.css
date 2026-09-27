@@ -1,0 +1,389 @@
+/* ==========================================================================
+   Código Calma — Etapa 6: modernización (movimiento y microinteracciones)
+   Principios:
+   - Nada queda oculto sin JavaScript: las clases de animación las agrega
+     calma-motion.js y solo a elementos que están fuera de la primera pantalla.
+   - Sin animaciones en bucle infinito (WCAG 2.2.2): entradas cortas (≤ 0,8 s),
+     efectos que siguen al scroll o al puntero.
+   - Todo se desactiva con prefers-reduced-motion.
+   ========================================================================== */
+
+:root {
+	--calma-grad: linear-gradient(120deg, #1d5f94 0%, #5b3fb8 55%, #0f766e 100%);
+	--calma-grad-soft: linear-gradient(135deg, #f1eefc 0%, #e8f1fa 50%, #eaf6f3 100%);
+	--calma-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+	--calma-shadow-lg: 0 18px 48px -18px rgb(22 33 77 / 0.28);
+}
+
+/* --------------------------------------------------------------------------
+   1. Tipografía de impacto: titulares más grandes y ajustados, acento en degradado
+   -------------------------------------------------------------------------- */
+.calma-hero h1 {
+	font-size: clamp(2.25rem, 1.4rem + 3.6vw, 4rem);
+	line-height: 1.05;
+	letter-spacing: -0.025em;
+}
+.calma-grad-text {
+	background: var(--calma-grad);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	-webkit-text-fill-color: transparent;
+}
+@media (forced-colors: active) {
+	.calma-grad-text {
+		-webkit-text-fill-color: currentColor;
+		color: CanvasText;
+		background: none;
+	}
+}
+.calma-eyebrow {
+	display: inline-flex !important;
+	align-items: center;
+	gap: 10px;
+}
+.calma-eyebrow::before {
+	content: "";
+	width: 28px;
+	height: 2px;
+	border-radius: 2px;
+	background: var(--calma-grad);
+}
+
+/* --------------------------------------------------------------------------
+   2. Hero con fondo de degradados de marca (se mueven con el puntero/scroll)
+   -------------------------------------------------------------------------- */
+.calma-hero {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+	background: var(--calma-grad-soft);
+}
+.calma-hero::before,
+.calma-hero::after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	border-radius: 50%;
+	filter: blur(60px);
+	opacity: 0.55;
+	pointer-events: none;
+	transform: translate3d(calc(var(--calma-px, 0) * 30px), calc(var(--calma-py, 0) * 30px + var(--calma-scroll, 0) * 0.15px), 0);
+	transition: transform 0.6s var(--calma-ease-out);
+}
+.calma-hero::before {
+	width: min(60vw, 620px);
+	height: min(60vw, 620px);
+	top: -18%;
+	right: -10%;
+	background: radial-gradient(circle at 30% 30%, #b9d9f2 0%, rgb(185 217 242 / 0) 70%);
+}
+.calma-hero::after {
+	width: min(55vw, 560px);
+	height: min(55vw, 560px);
+	bottom: -30%;
+	left: -12%;
+	background: radial-gradient(circle at 60% 40%, #d8cffa 0%, rgb(216 207 250 / 0) 70%);
+	transform: translate3d(calc(var(--calma-px, 0) * -24px), calc(var(--calma-py, 0) * -24px - var(--calma-scroll, 0) * 0.1px), 0);
+}
+.calma-hero__media img {
+	filter: drop-shadow(0 24px 40px rgb(29 95 148 / 0.28));
+	transform: rotate(calc(var(--calma-scroll, 0) * 0.04deg)) translate3d(calc(var(--calma-px, 0) * -10px), calc(var(--calma-py, 0) * -10px), 0);
+	transition: transform 0.6s var(--calma-ease-out);
+}
+
+/* --------------------------------------------------------------------------
+   3. Header translúcido que se compacta al hacer scroll
+   -------------------------------------------------------------------------- */
+.site-header .site-main-header-wrap .site-header-row-container-inner {
+	background: rgb(255 255 255 / 0.82);
+	-webkit-backdrop-filter: saturate(160%) blur(14px);
+	backdrop-filter: saturate(160%) blur(14px);
+	transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+.calma-scrolled .site-header .site-main-header-wrap .site-header-row-container-inner {
+	background: rgb(255 255 255 / 0.92);
+	box-shadow: 0 6px 24px -12px rgb(22 33 77 / 0.25);
+}
+.site-main-header-inner-wrap {
+	transition: min-height 0.3s var(--calma-ease-out);
+}
+.calma-scrolled .site-main-header-inner-wrap {
+	min-height: 60px;
+}
+/* Barra de progreso de lectura (entradas) */
+.calma-progress {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	z-index: 100000;
+	background: var(--calma-grad);
+	transform-origin: 0 50%;
+	transform: scaleX(var(--calma-read, 0));
+	pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. Botones con microinteracciones
+   -------------------------------------------------------------------------- */
+.calma-btn,
+.kb-button,
+.wp-block-button__link,
+.header-button {
+	position: relative;
+	overflow: hidden;
+	transition: transform 0.25s var(--calma-ease-out), box-shadow 0.25s var(--calma-ease-out), background 0.2s ease, color 0.2s ease;
+}
+.calma-btn--primary,
+.header-button,
+.kb-button.kb-btn-global-inherit {
+	background-image: linear-gradient(120deg, #1d5f94 0%, #22508f 50%, #3b3f9e 100%);
+	background-size: 200% 100%;
+	background-position: 0% 0;
+}
+.calma-btn--primary:hover,
+.header-button:hover,
+.kb-button.kb-btn-global-inherit:hover {
+	background-position: 100% 0;
+	transform: translateY(-2px);
+	box-shadow: 0 12px 28px -12px rgb(29 95 148 / 0.6);
+}
+/* Brillo que cruza el botón al pasar el cursor */
+.calma-btn--primary::after,
+.header-button::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.35) 50%, transparent 70%);
+	transform: translateX(-120%);
+	pointer-events: none;
+}
+.calma-btn--primary:hover::after,
+.header-button:hover::after {
+	transform: translateX(120%);
+	transition: transform 0.7s var(--calma-ease-out);
+}
+.calma-btn--secondary:hover,
+.calma-btn--on-dark:hover {
+	transform: translateY(-2px);
+}
+.calma-btn:active,
+.header-button:active {
+	transform: translateY(0) scale(0.98);
+}
+/* Flechas de "Leer más" y enlaces de acción */
+.post-more-link .kadence-svg-iconset,
+.calma-link::after {
+	transition: transform 0.25s var(--calma-ease-out);
+}
+.calma-link::after {
+	content: "→";
+	margin-left: 6px;
+}
+.post-more-link:hover .kadence-svg-iconset,
+.calma-link:hover::after {
+	transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   5. Tarjetas: elevación y brillo que sigue al cursor
+   -------------------------------------------------------------------------- */
+.calma-card,
+.loop-entry.entry,
+.kb-posts .loop-entry,
+.calma-tools__card,
+.calma-timeline__list,
+.calma-faq details {
+	transition: transform 0.35s var(--calma-ease-out), box-shadow 0.35s var(--calma-ease-out), border-color 0.35s ease;
+}
+.calma-card,
+.loop-entry.entry,
+.kb-posts .loop-entry,
+.calma-tools__card {
+	position: relative;
+	isolation: isolate;
+}
+.calma-card::before,
+.loop-entry.entry::before,
+.kb-posts .loop-entry::before,
+.calma-tools__card::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	border-radius: inherit;
+	background: radial-gradient(420px circle at var(--calma-mx, 50%) var(--calma-my, 0%), rgb(91 63 184 / 0.09), transparent 60%);
+	opacity: 0;
+	transition: opacity 0.35s ease;
+	pointer-events: none;
+}
+@media (hover: hover) {
+	.calma-card:hover,
+	.loop-entry.entry:hover,
+	.kb-posts .loop-entry:hover,
+	.calma-tools__card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--calma-shadow-lg);
+		border-color: #cfc6f3;
+	}
+	.calma-card:hover::before,
+	.loop-entry.entry:hover::before,
+	.kb-posts .loop-entry:hover::before,
+	.calma-tools__card:hover::before {
+		opacity: 1;
+	}
+	.loop-entry .post-thumbnail img {
+		transition: transform 0.6s var(--calma-ease-out);
+	}
+	.loop-entry:hover .post-thumbnail img {
+		transform: scale(1.04);
+	}
+}
+.loop-entry .post-thumbnail {
+	overflow: hidden;
+}
+.calma-faq details[open] {
+	border-color: #cfc6f3;
+	box-shadow: var(--calma-shadow);
+}
+.calma-faq summary::after {
+	transition: transform 0.3s var(--calma-ease-out);
+}
+.calma-faq details[open] summary::after {
+	transform: rotate(180deg);
+}
+
+/* Avatares con aro en degradado */
+.calma-avatar {
+	background: var(--calma-grad-soft);
+	border: 0;
+	box-shadow: 0 0 0 3px #fff, 0 0 0 5px #cfc6f3;
+}
+
+/* Números de los pasos con degradado */
+.calma-steps > li::before,
+.calma-step__num,
+.cc-step-n {
+	background: var(--calma-grad) !important;
+	box-shadow: 0 8px 18px -8px rgb(91 63 184 / 0.6);
+}
+
+/* CTA navy con halo de color */
+.calma-cta,
+.cc-final {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+	background: radial-gradient(120% 140% at 0% 0%, #2a3a86 0%, var(--calma-navy) 45%, #0e1638 100%);
+}
+.calma-cta::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	width: 420px;
+	height: 420px;
+	right: -120px;
+	top: -160px;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgb(155 128 255 / 0.35), transparent 65%);
+	transform: translate3d(0, calc(var(--calma-scroll, 0) * -0.05px), 0);
+}
+
+/* Enlaces de texto con subrayado animado */
+.calma-prosa a,
+.single-post .entry-content p a {
+	text-decoration: none !important;
+	background-image: linear-gradient(currentColor, currentColor);
+	background-size: 100% 1px;
+	background-repeat: no-repeat;
+	background-position: 0 100%;
+	transition: background-size 0.3s var(--calma-ease-out);
+}
+.calma-prosa a:hover,
+.single-post .entry-content p a:hover {
+	background-size: 100% 2px;
+}
+
+/* Pie: separador en degradado */
+.site-footer {
+	position: relative;
+	background: radial-gradient(90% 120% at 100% 0%, #24317a 0%, var(--calma-navy) 50%, #0e1638 100%);
+}
+.site-footer::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	background: var(--calma-grad);
+}
+
+/* --------------------------------------------------------------------------
+   6. Entradas al hacer scroll (las marca calma-motion.js)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+	.calma-motion .calma-reveal {
+		opacity: 0;
+		transform: translate3d(0, 28px, 0);
+		transition: opacity 0.8s var(--calma-ease-out), transform 0.8s var(--calma-ease-out);
+		transition-delay: var(--calma-delay, 0s);
+	}
+	.calma-motion .calma-reveal--left {
+		transform: translate3d(-32px, 0, 0);
+	}
+	.calma-motion .calma-reveal--scale {
+		transform: scale(0.96);
+	}
+	.calma-motion .calma-reveal.is-visible {
+		opacity: 1;
+		transform: none;
+	}
+	/* Línea de tiempo: la línea se dibuja al entrar */
+	.calma-motion .calma-timeline__list.calma-reveal .calma-timeline__event::before {
+		transform: scale(0);
+		transition: transform 0.5s var(--calma-ease-out);
+		transition-delay: calc(var(--calma-i, 0) * 0.12s + 0.3s);
+	}
+	.calma-motion .calma-timeline__list.is-visible .calma-timeline__event::before {
+		transform: scale(1);
+	}
+	/* Entrada del hero en la primera carga (solo decorativo: el texto no se oculta) */
+	.calma-hero__media img {
+		animation: calma-hero-in 1s var(--calma-ease-out) backwards;
+	}
+	@keyframes calma-hero-in {
+		from {
+			opacity: 0;
+			transform: translate3d(0, 24px, 0) scale(0.94) rotate(-8deg);
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.calma-hero::before,
+	.calma-hero::after,
+	.calma-hero__media img,
+	.calma-cta::before {
+		transform: none !important;
+		transition: none !important;
+	}
+	.calma-btn,
+	.kb-button,
+	.header-button,
+	.calma-card,
+	.loop-entry,
+	.calma-tools__card {
+		transition: none !important;
+		transform: none !important;
+	}
+	.calma-btn--primary::after,
+	.header-button::after {
+		display: none;
+	}
+	.calma-progress {
+		display: none;
+	}
+}
