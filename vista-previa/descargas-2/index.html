@@ -4600,24 +4600,75 @@ html.calma-quieto .calma-tiempo__anio {
 }
 
 /* --------------------------------------------------------------------------
-   8i. Equipo y perfiles: cada persona con el tono de su área (el mismo de
-   las tarjetas de Equipo). "Tres miradas" en el hero de Equipo: las tres
-   áreas se conectan con lo que trae cada persona.
+   8i. Páginas interiores (Equipo, perfiles, Herramientas, Test, Descargas):
+   la misma paleta, tipografía y gramática de movimiento que el Inicio, con
+   tarjetas de esquinas suaves. Cada persona y cada tema tiene su tono.
+   Movimiento: las figuras "se encienden" al entrar en pantalla (una vez) y
+   reaccionan al pasar el puntero (perturbar → asentarse). El texto nunca
+   se oculta ni se mueve.
    -------------------------------------------------------------------------- */
 .calma-person--tatiana,
 .calma-perfil--tatiana,
-.calma-miradas__nodo--tatiana { --tono: #f6efe1; --acento: #e2c17e; --acento-texto: #7a4d00; }
+.calma-miradas__nodo--tatiana,
+.calma-tono--psicologia { --tono: #f6efe1; --acento: #e2c17e; --acento-texto: #7a4d00; }
 .calma-person--francisca,
 .calma-perfil--francisca,
-.calma-miradas__nodo--francisca { --tono: #efedf9; --acento: #bdb0ee; --acento-texto: #5b3fb8; }
+.calma-miradas__nodo--francisca,
+.calma-tono--ia { --tono: #efedf9; --acento: #bdb0ee; --acento-texto: #5b3fb8; }
 .calma-person--emanuel,
 .calma-perfil--emanuel,
-.calma-miradas__nodo--emanuel { --tono: #e9f1f8; --acento: #9cc3e3; --acento-texto: #1d5f94; }
+.calma-miradas__nodo--emanuel,
+.calma-tono--neurociencia { --tono: #e9f1f8; --acento: #9cc3e3; --acento-texto: #1d5f94; }
+.calma-tono--bienestar { --tono: #e8f3ee; --acento: #9fd0c0; --acento-texto: #1f6b47; }
+.calma-tono--tecnologia { --tono: #f8ece6; --acento: #ebb79c; --acento-texto: #9a3412; }
 
-/* Equipo: tarjetas con el enlace siempre abajo, sin hueco debajo de la grilla */
+.calma-page {
+	--calma-radio: 20px;
+}
+
+/* Tarjeta suave: fondo del tono, esquinas redondeadas, sin sombra ni borde duro */
+.calma-equipo .calma-person,
+.calma-perfil__datos > .calma-card,
+.calma-page .calma-quote,
+.calma-habito,
+.calma-app,
+.calma-descarga,
+.calma-test .calma-test__card,
+.calma-test .calma-test__step,
+.calma-test .calma-test__result {
+	position: relative;
+	border: 1px solid var(--calma-hairline) !important;
+	border-radius: var(--calma-radio, 20px) !important;
+	box-shadow: none !important;
+	transition: border-color var(--calma-dur-lento) var(--calma-ease-mente), transform var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-page .calma-cta {
+	border-top: 0;
+	border-radius: var(--calma-radio, 20px) !important;
+	overflow: hidden;
+}
+
+/* ---- Equipo ---- */
 .calma-equipo .calma-person {
 	padding: var(--calma-space-6) !important;
-	background: linear-gradient(180deg, var(--tono) 0, #fff 140px) !important;
+	background: var(--tono) !important;
+	border-color: transparent !important;
+	overflow: hidden;
+}
+.calma-equipo .calma-person::before {
+	content: "";
+	position: absolute;
+	left: 24px;
+	right: 24px;
+	top: 0;
+	height: 4px;
+	border-radius: 0 0 4px 4px;
+	background: var(--acento);
+	transform-origin: 0 50%;
+}
+.calma-equipo .calma-person:hover,
+.calma-equipo .calma-person:focus-within {
+	border-color: var(--acento) !important;
 }
 .calma-equipo .calma-person h2 {
 	line-height: 1.15;
@@ -4625,6 +4676,27 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-equipo .calma-person__links {
 	margin-top: auto !important;
 	padding-top: var(--calma-space-4);
+}
+/* El enlace cubre toda la tarjeta (el texto sigue siendo "Conocer a …") */
+.calma-equipo .calma-person__links a::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+}
+.calma-equipo .calma-person__links a:focus-visible {
+	outline: none;
+}
+.calma-equipo .calma-person:has(a:focus-visible) {
+	outline: 3px solid var(--calma-primary);
+	outline-offset: 3px;
+}
+.calma-person .calma-avatar,
+.calma-perfil .calma-avatar {
+	transition: transform var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-equipo .calma-person:hover .calma-avatar {
+	transform: scale(1.06);
 }
 
 /* Figura "tres miradas" */
@@ -4649,14 +4721,29 @@ html.calma-quieto .calma-tiempo__anio {
 	stroke-linejoin: round;
 	stroke-dasharray: 1;
 	stroke-dashoffset: 0;
+	transition: stroke-width 0.3s var(--calma-ease-mente), opacity 0.3s var(--calma-ease-mente);
 }
-.calma-miradas__linea--tatiana { stroke: #e2c17e; }
-.calma-miradas__linea--francisca { stroke: #bdb0ee; }
-.calma-miradas__linea--emanuel { stroke: #9cc3e3; }
+.calma-miradas__linea--tatiana,
+.calma-miradas__senal--tatiana { stroke: #e2c17e; }
+.calma-miradas__linea--francisca,
+.calma-miradas__senal--francisca { stroke: #bdb0ee; }
+.calma-miradas__linea--emanuel,
+.calma-miradas__senal--emanuel { stroke: #9cc3e3; }
+.calma-miradas__senal {
+	stroke-width: 5;
+	stroke-linecap: round;
+	stroke-dasharray: 0.06 0.94;
+	stroke-dashoffset: 1;
+	opacity: 0;
+}
+.calma-miradas__nodo {
+	transition: opacity 0.3s var(--calma-ease-mente);
+}
 .calma-miradas__nodo circle {
 	fill: var(--tono);
 	stroke: var(--acento);
 	stroke-width: 2;
+	transition: transform 0.5s var(--calma-ease-mente);
 }
 .calma-miradas text {
 	fill: var(--calma-ink);
@@ -4675,6 +4762,25 @@ html.calma-quieto .calma-tiempo__anio {
 	stroke: var(--calma-teal);
 	stroke-opacity: 0.2;
 }
+/* Conectar: la persona que se mira se destaca; las otras dos se atenúan */
+.calma-miradas[data-activa] .calma-miradas__nodo,
+.calma-miradas[data-activa] .calma-miradas__linea {
+	opacity: 0.35;
+}
+.calma-miradas[data-activa="tatiana"] .calma-miradas__nodo--tatiana,
+.calma-miradas[data-activa="francisca"] .calma-miradas__nodo--francisca,
+.calma-miradas[data-activa="emanuel"] .calma-miradas__nodo--emanuel,
+.calma-miradas[data-activa="tatiana"] .calma-miradas__linea--tatiana,
+.calma-miradas[data-activa="francisca"] .calma-miradas__linea--francisca,
+.calma-miradas[data-activa="emanuel"] .calma-miradas__linea--emanuel {
+	opacity: 1;
+	stroke-width: 3;
+}
+.calma-miradas[data-activa="tatiana"] .calma-miradas__nodo--tatiana circle,
+.calma-miradas[data-activa="francisca"] .calma-miradas__nodo--francisca circle,
+.calma-miradas[data-activa="emanuel"] .calma-miradas__nodo--emanuel circle {
+	transform: scale(1.12);
+}
 @media (prefers-reduced-motion: no-preference) {
 	html:not(.calma-quieto) .calma-miradas__nodo {
 		animation: calma-encender 0.8s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.3s) backwards;
@@ -4685,6 +4791,31 @@ html.calma-quieto .calma-tiempo__anio {
 	html:not(.calma-quieto) .calma-miradas__centro {
 		animation: calma-encender 0.8s var(--calma-ease-mente) 1.2s backwards;
 	}
+	html:not(.calma-quieto) .calma-miradas.is-senal-tatiana .calma-miradas__senal--tatiana,
+	html:not(.calma-quieto) .calma-miradas.is-senal-francisca .calma-miradas__senal--francisca,
+	html:not(.calma-quieto) .calma-miradas.is-senal-emanuel .calma-miradas__senal--emanuel {
+		animation: calma-recorrido-senal 1.1s var(--calma-ease-mente);
+	}
+	html:not(.calma-quieto) .calma-miradas.is-senal-tatiana .calma-miradas__halo,
+	html:not(.calma-quieto) .calma-miradas.is-senal-francisca .calma-miradas__halo,
+	html:not(.calma-quieto) .calma-miradas.is-senal-emanuel .calma-miradas__halo {
+		animation: calma-pulso 1.2s var(--calma-ease-mente) 0.9s;
+	}
+	/* Tarjetas al entrar: la línea de tono crece y el avatar late una vez */
+	html:not(.calma-quieto) .calma-person.is-vivo::before {
+		animation: calma-crecer 1s var(--calma-ease-mente) backwards;
+	}
+	html:not(.calma-quieto) .calma-person.is-vivo .calma-avatar,
+	html:not(.calma-quieto) .calma-perfil .calma-hero .calma-avatar {
+		animation: calma-halo 1.6s var(--calma-ease-mente) 0.3s;
+	}
+}
+@keyframes calma-crecer {
+	from { transform: scaleX(0); }
+}
+@keyframes calma-halo {
+	from { box-shadow: 0 0 0 2px var(--acento), 0 0 0 0 var(--acento); }
+	to { box-shadow: 0 0 0 2px var(--acento), 0 0 0 18px transparent; }
 }
 @media (max-width: 899px) {
 	.calma-miradas svg {
@@ -4696,9 +4827,12 @@ html.calma-quieto .calma-tiempo__anio {
 	padding-top: 0 !important;
 }
 
-/* Perfil: el hero toma el tono de la persona */
+/* ---- Perfil: el hero toma el tono de la persona ---- */
 .calma-perfil .calma-hero {
 	background: linear-gradient(180deg, var(--tono) 0%, var(--calma-bg) 100%) !important;
+}
+.calma-perfil .calma-hero__inner {
+	gap: var(--calma-space-2);
 }
 .calma-perfil .calma-avatar {
 	background: #fff !important;
@@ -4708,9 +4842,6 @@ html.calma-quieto .calma-tiempo__anio {
 }
 .calma-perfil .calma-person__role {
 	color: var(--acento-texto) !important;
-}
-.calma-perfil .calma-hero__inner {
-	gap: var(--calma-space-2);
 }
 .calma-volver {
 	margin: 0 !important;
@@ -4736,7 +4867,7 @@ html.calma-quieto .calma-tiempo__anio {
 	transform: translateX(-3px);
 }
 
-/* "En qué acompaña" y "Formación declarada": dos paneles planos */
+/* "En qué acompaña" y "Formación declarada" */
 .calma-perfil__datos {
 	display: grid;
 	gap: var(--calma-space-6);
@@ -4750,11 +4881,11 @@ html.calma-quieto .calma-tiempo__anio {
 }
 .calma-perfil__datos > .calma-card {
 	padding: var(--calma-space-6) !important;
-	border: 0 !important;
-	border-top: 4px solid var(--acento) !important;
+	background: #fff !important;
 }
 .calma-perfil__datos > .calma-card:first-child {
 	background: var(--tono) !important;
+	border-color: transparent !important;
 }
 .calma-perfil__datos h2 {
 	margin-bottom: var(--calma-space-4) !important;
@@ -4764,23 +4895,31 @@ html.calma-quieto .calma-tiempo__anio {
 	line-height: 1.5;
 }
 .calma-perfil .calma-person__topics li::before {
-	background: var(--acento) !important;
+	background: var(--acento-texto) !important;
 }
-/* Formación como un recorrido: puntos unidos por una línea */
+/* Formación como un recorrido: la línea se llena con el scroll y cada punto se enciende */
 .calma-formacion {
+	--calma-pasos-p: 1;
 	position: relative;
 	list-style: none !important;
 	margin: 0 !important;
 	padding: 0 !important;
 }
-.calma-formacion::before {
+.calma-formacion::before,
+.calma-formacion::after {
 	content: "";
 	position: absolute;
 	left: 5px;
 	top: 10px;
 	bottom: 10px;
 	width: 2px;
+	border-radius: 2px;
 	background: var(--calma-hairline);
+}
+.calma-formacion::after {
+	background: var(--acento);
+	transform-origin: 50% 0;
+	transform: scaleY(var(--calma-pasos-p));
 }
 .calma-formacion li {
 	position: relative;
@@ -4792,21 +4931,28 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-formacion li::before {
 	content: "";
 	position: absolute;
+	z-index: 1;
 	left: 0;
 	top: 6px;
 	width: 12px;
 	height: 12px;
 	border-radius: 50%;
+	background: var(--acento);
+	box-shadow: 0 0 0 3px #fff;
+}
+.calma-formacion.is-vivo li::before {
 	background: #fff;
-	box-shadow: inset 0 0 0 2px var(--acento);
+	box-shadow: 0 0 0 3px #fff, inset 0 0 0 2px var(--calma-hairline-strong);
+	transition: background-color 0.4s var(--calma-ease-mente), box-shadow 0.4s var(--calma-ease-mente);
+}
+.calma-formacion.is-vivo li.is-encendido::before {
+	background: var(--acento);
+	box-shadow: 0 0 0 3px #fff, inset 0 0 0 2px var(--acento);
 }
 
 /* Reseñas: sin el ícono de comillas (el texto ya las trae) */
-.calma-perfil .calma-quote,
 .calma-page .calma-quote {
-	padding-top: var(--calma-space-6) !important;
-	border: 0 !important;
-	border-left: 3px solid var(--acento, #9cc3e3) !important;
+	padding: var(--calma-space-6) !important;
 	background: #fff !important;
 }
 .calma-quote::before {
@@ -4823,12 +4969,12 @@ html.calma-quieto .calma-tiempo__anio {
 	list-style: none !important;
 	margin: var(--calma-space-4) 0 0 !important;
 	padding: 0 !important;
-	border-top: 1px solid var(--calma-hairline-strong);
+	display: grid;
+	gap: var(--calma-space-3);
 }
 .calma-perfil__articulos li {
 	margin: 0 !important;
 	padding: 0 !important;
-	border-bottom: 1px solid var(--calma-hairline-strong);
 }
 .calma-perfil__articulos li::before {
 	content: none !important;
@@ -4837,10 +4983,14 @@ html.calma-quieto .calma-tiempo__anio {
 	display: grid;
 	grid-template-columns: 1fr auto;
 	align-items: center;
-	gap: 4px var(--calma-space-4);
-	padding: var(--calma-space-4) 0;
+	gap: 6px var(--calma-space-4);
+	padding: var(--calma-space-4) var(--calma-space-5);
+	border: 1px solid var(--calma-hairline);
+	border-radius: 16px;
+	background: #fff;
 	color: var(--calma-ink) !important;
 	text-decoration: none !important;
+	transition: border-color 0.3s var(--calma-ease-mente), background-color 0.3s var(--calma-ease-mente);
 }
 .calma-perfil__articulos a::after {
 	content: "→";
@@ -4849,10 +4999,12 @@ html.calma-quieto .calma-tiempo__anio {
 	color: var(--calma-primary);
 	transition: transform 0.2s var(--calma-ease-mente);
 }
+.calma-perfil__articulos a:hover {
+	border-color: var(--calma-hairline-strong);
+	background: var(--calma-paper);
+}
 .calma-perfil__articulos a:hover .calma-perfil__titulo {
 	color: var(--calma-primary);
-	text-decoration: underline;
-	text-underline-offset: 3px;
 }
 .calma-perfil__articulos a:hover::after {
 	transform: translateX(4px);
@@ -4863,26 +5015,386 @@ html.calma-quieto .calma-tiempo__anio {
 	font-weight: 600;
 	line-height: 1.35;
 }
-.calma-perfil__tema {
+.calma-perfil__tema,
+.calma-habito__chip {
 	justify-self: start;
+	align-self: flex-start;
 	padding: 2px 10px;
 	border-radius: 999px;
 	font-size: 0.8125rem;
 	font-weight: 600;
 	line-height: 1.6;
-	background: #e9f1f8;
-	color: #1d5f94;
+	background: var(--tono, #e9f1f8);
+	color: var(--acento-texto, #1d5f94);
 }
 .calma-perfil__tema[data-tema="psicologia"] { background: #f6efe1; color: #7a4d00; }
 .calma-perfil__tema[data-tema="neurociencia"] { background: #e9f1f8; color: #1d5f94; }
 .calma-perfil__tema[data-tema="ia"] { background: #efedf9; color: #5b3fb8; }
 .calma-perfil__tema[data-tema="tecnologia"] { background: #f8ece6; color: #9a3412; }
 .calma-perfil__tema[data-tema="bienestar"] { background: #e8f3ee; color: #1f6b47; }
+
+/* ---- Herramientas y Descargas ---- */
+.calma-recursos .calma-hero h1 em,
+.calma-recursos .calma-section__head h2 em {
+	font-style: italic;
+	color: var(--calma-primary);
+}
+.calma-recursos .calma-hero__inner > div > p:not(.calma-hero__lead) {
+	max-width: 68ch;
+	margin-top: var(--calma-space-4) !important;
+	color: var(--calma-ink-soft);
+}
+.calma-recursos .calma-hero__lead {
+	max-width: 60ch;
+}
+.calma-habitos,
+.calma-apps__lista,
+.calma-descargas {
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: grid;
+	gap: var(--calma-space-6);
+}
+.calma-habitos {
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+.calma-habito {
+	display: flex;
+	flex-direction: column;
+	gap: var(--calma-space-3);
+	margin: 0 !important;
+	padding: var(--calma-space-6) !important;
+	background: var(--tono) !important;
+	border-color: transparent !important;
+}
+.calma-habito::before,
+.calma-app::before,
+.calma-descarga::before {
+	content: none !important;
+}
+.calma-habito .calma-org {
+	max-width: 160px;
+	color: var(--acento-texto);
+	margin-bottom: var(--calma-space-2);
+}
+.calma-habito .calma-habito__chip {
+	background: #fff;
+}
+.calma-habito h3 {
+	margin: 0 !important;
+	font-size: var(--calma-fs-lg);
+}
+.calma-habito p {
+	margin: 0 !important;
+	color: var(--calma-ink-soft);
+}
+.calma-org .o-trazo {
+	stroke-width: 1.4;
+	stroke-dasharray: 1;
+}
+.calma-recursos__nota {
+	margin-top: var(--calma-space-4) !important;
+	font-size: var(--calma-fs-sm);
+	color: var(--calma-ink-soft);
+}
+.calma-recursos .calma-section--white {
+	padding-top: var(--calma-space-6) !important;
+}
+.calma-apps + .calma-apps {
+	margin-top: var(--calma-space-12, 64px);
+}
+.calma-apps > h2 {
+	display: flex;
+	align-items: center;
+	gap: var(--calma-space-3);
+	margin: 0 0 var(--calma-space-6) !important;
+	font-size: var(--calma-fs-xl);
+}
+.calma-apps > h2::before {
+	content: "";
+	flex: none;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: var(--acento);
+	box-shadow: 0 0 0 6px var(--tono);
+}
+.calma-apps__lista {
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+}
+.calma-app {
+	display: flex;
+	flex-direction: column;
+	gap: var(--calma-space-3);
+	margin: 0 !important;
+	padding: var(--calma-space-6) !important;
+	background: #fff !important;
+}
+.calma-app:hover,
+.calma-app:focus-within {
+	border-color: var(--acento) !important;
+}
+.calma-app__logo {
+	width: 72px !important;
+	height: 72px !important;
+	border-radius: 18px;
+	object-fit: cover;
+	box-shadow: 0 0 0 4px var(--tono);
+	transition: transform var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-app:hover .calma-app__logo {
+	transform: rotate(-4deg) scale(1.05);
+}
+.calma-app h3 {
+	margin: var(--calma-space-2) 0 0 !important;
+	font-size: var(--calma-fs-lg);
+}
+.calma-app p {
+	margin: 0 !important;
+	color: var(--calma-ink-soft);
+}
+.calma-app .calma-app__enlace {
+	margin-top: auto !important;
+	padding-top: var(--calma-space-2);
+	font-weight: 600;
+}
+.calma-app__enlace a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	gap: 6px;
+	color: var(--calma-primary) !important;
+}
+.calma-app__enlace a::after {
+	content: "↗";
+	transition: transform 0.2s var(--calma-ease-mente);
+}
+.calma-app__enlace a:hover::after {
+	transform: translate(2px, -2px);
+}
+.calma-recursos__aviso {
+	margin-top: var(--calma-space-10) !important;
+	border-radius: 16px !important;
+}
+
+/* Descargas: portada, autora, título, descripción y botón abajo */
+.calma-descargas {
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+}
+.calma-descarga {
+	display: grid;
+	grid-template-columns: minmax(120px, 38%) 1fr;
+	gap: var(--calma-space-6);
+	margin: 0 !important;
+	padding: var(--calma-space-5) !important;
+	background: #fff !important;
+}
+.calma-descarga:hover,
+.calma-descarga:focus-within {
+	border-color: var(--calma-hairline-strong) !important;
+}
+.calma-descarga__portada {
+	overflow: hidden;
+	border-radius: 14px;
+	box-shadow: 0 0 0 1px var(--calma-hairline);
+	align-self: start;
+}
+.calma-descarga__portada img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1;
+	object-fit: cover;
+	transition: transform 1.2s var(--calma-ease-mente);
+}
+.calma-descarga:hover .calma-descarga__portada img {
+	transform: scale(1.04);
+}
+.calma-descarga__texto {
+	display: flex;
+	flex-direction: column;
+	gap: var(--calma-space-2);
+	min-width: 0;
+}
+.calma-descarga__autora {
+	margin: 0 !important;
+	font-size: var(--calma-fs-sm);
+	color: var(--calma-ink-soft);
+}
+.calma-descarga h2 {
+	margin: 0 !important;
+	font-size: 1.375rem;
+	line-height: 1.2;
+}
+.calma-descarga__texto > p:not([class]) {
+	margin: 0 !important;
+	color: var(--calma-ink-soft);
+}
+.calma-descarga__accion {
+	margin: auto 0 0 !important;
+	padding-top: var(--calma-space-3);
+}
+.calma-descarga__formato {
+	font-weight: 400;
+	opacity: 0.85;
+}
+@media (max-width: 519px) {
+	.calma-descarga {
+		grid-template-columns: 1fr;
+	}
+	.calma-descarga__portada {
+		max-width: 220px;
+	}
+}
+
+/* ---- Test de consumo digital ---- */
+.calma-test {
+	background: transparent !important;
+}
+.calma-test .calma-test__title {
+	color: var(--calma-ink) !important;
+	letter-spacing: -0.02em;
+}
+.calma-test .calma-test__card,
+.calma-test .calma-test__step {
+	background: #fff !important;
+}
+.calma-test .calma-test__card:first-of-type {
+	background: #e9f1f8 !important;
+	border-color: transparent !important;
+}
+.calma-test .calma-test__num {
+	background: #fff !important;
+	color: var(--calma-primary) !important;
+	box-shadow: inset 0 0 0 2px #9cc3e3;
+}
+.calma-test .calma-test__howto {
+	position: relative;
+}
+.calma-test .calma-test__howto::before {
+	content: "";
+	position: absolute;
+	left: 15px;
+	top: 16px;
+	bottom: 16px;
+	width: 2px;
+	background: #d6e4f0;
+}
+.calma-test .calma-test__howto li {
+	position: relative;
+}
+.calma-test .calma-test__option {
+	border-radius: 14px !important;
+	border-color: var(--calma-hairline-strong) !important;
+	transition: border-color 0.2s var(--calma-ease-mente), background-color 0.2s var(--calma-ease-mente);
+}
+.calma-test .calma-test__option:hover {
+	border-color: var(--calma-primary) !important;
+	background: var(--calma-paper);
+}
+.calma-test .calma-test__option:has(input:checked) {
+	background: #e9f1f8 !important;
+	border-color: var(--calma-primary) !important;
+}
+.calma-test .calma-test__bar span {
+	background: linear-gradient(90deg, var(--calma-primary), var(--calma-teal)) !important;
+	transition: width 0.6s var(--calma-ease-mente);
+}
+.calma-test .calma-test__btn--block {
+	width: auto !important;
+	min-width: 240px;
+	margin: var(--calma-space-2) auto 0 !important;
+	display: flex !important;
+}
+.calma-test .calma-test__qnum,
+.calma-test .calma-test__progress-text {
+	color: var(--calma-primary) !important;
+}
+/* "Dato que vale la pena saber" (filas de Kadence debajo del test; página 1941) */
+.page-id-1941 .kb-image1941_94a53c-56 img {
+	border-radius: 20px;
+}
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-column:nth-child(1) { --tono: #f6efe1; --acento: #e2c17e; --acento-texto: #7a4d00; }
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-column:nth-child(2) { --tono: #efedf9; --acento: #bdb0ee; --acento-texto: #5b3fb8; }
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-column:nth-child(3) { --tono: #e9f1f8; --acento: #9cc3e3; --acento-texto: #1d5f94; }
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-infobox,
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap {
+	height: 100%;
+}
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap {
+	display: flex !important;
+	flex-direction: column !important;
+	align-items: flex-start !important;
+	gap: var(--calma-space-3);
+	padding: var(--calma-space-6) !important;
+	background: var(--tono) !important;
+	border: 0 !important;
+	border-radius: 20px !important;
+	box-shadow: none !important;
+}
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-media {
+	display: grid !important;
+	place-items: center;
+	width: 48px;
+	height: 48px;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+	border-radius: 50% !important;
+	background: #fff !important;
+	color: var(--acento-texto) !important;
+	box-shadow: 0 0 0 1px var(--acento);
+}
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-info-svg-icon {
+	color: var(--acento-texto) !important;
+	font-size: 22px !important;
+}
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-title {
+	margin: 0 0 var(--calma-space-2) !important;
+	font-size: var(--calma-fs-lg) !important;
+	line-height: 1.2 !important;
+}
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-text {
+	color: var(--calma-ink-soft) !important;
+	font-size: 1rem !important;
+	line-height: 1.6 !important;
+}
 @media (prefers-reduced-motion: reduce) {
 	.calma-volver a::before,
-	.calma-perfil__articulos a::after {
-		transition: none;
+	.calma-perfil__articulos a,
+	.calma-perfil__articulos a::after,
+	.calma-app__logo,
+	.calma-app__enlace a::after,
+	.calma-descarga__portada img,
+	.calma-person .calma-avatar,
+	.calma-test .calma-test__bar span {
+		transition: none !important;
 	}
+}
+html.calma-quieto .calma-app__logo,
+html.calma-quieto .calma-descarga__portada img,
+html.calma-quieto .calma-person .calma-avatar {
+	transform: none !important;
+}
+
+/* Hábitos: los micro-organismos se encienden al entrar en pantalla */
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-habito.is-vivo .o-trazo {
+		animation: calma-conectar 1.6s var(--calma-ease-mente) calc(var(--i, 0) * 0.3s) backwards;
+	}
+	html:not(.calma-quieto) .calma-habito.is-vivo .o-anillo {
+		animation: calma-pulso 1.8s var(--calma-ease-mente) calc(var(--i) * 0.25s) 2 backwards;
+	}
+	html:not(.calma-quieto) .calma-habito.is-vivo .o-nucleo {
+		animation: calma-latido 1s var(--calma-ease-mente) 3;
+	}
+	html:not(.calma-quieto) .calma-habito.is-vivo .o-onda {
+		animation: calma-calmar 2.4s var(--calma-ease-mente);
+	}
+}
+@keyframes calma-calmar {
+	from { transform: scaleY(2.2); }
 }
 
 /* --------------------------------------------------------------------------
@@ -5073,7 +5585,7 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 </style>
 </head>
 
-<body class="wp-singular page-template-default page page-id-1666 wp-custom-logo wp-embed-responsive wp-theme-kadence zolo-frontend classic-theme kadence footer-on-bottom hide-focus-outline link-style-standard content-title-style-hide content-width-normal content-style-boxed content-vertical-padding-show non-transparent-header mobile-non-transparent-header">
+<body class="wp-singular page-template-default page page-id-1666 wp-custom-logo wp-embed-responsive wp-theme-kadence zolo-frontend classic-theme kadence footer-on-bottom hide-focus-outline link-style-standard content-title-style-hide content-width-fullwidth content-style-unboxed content-vertical-padding-hide non-transparent-header mobile-non-transparent-header">
 <div id="wrapper" class="site wp-site-blocks">
 			<a class="skip-link screen-reader-text scroll-ignore" href="#main">Saltar al contenido</a>
 		<header id="masthead" class="site-header" role="banner" itemtype="https://schema.org/WPHeader" itemscope>
@@ -5171,154 +5683,19 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 	<div class="entry-content-wrap">
 		
 <div class="entry-content single-content">
-	<div class="kb-row-layout-wrap kb-row-layout-id1666_0842ed-1a alignfull has-theme-palette9-background-color kt-row-has-bg wp-block-kadence-rowlayout"><div class="kt-row-column-wrap kt-has-1-columns kt-row-layout-equal kt-tab-layout-inherit kt-mobile-layout-row kt-row-valign-top kb-theme-content-width">
+<!-- Código Calma · Descargas (Etapa 7)
+     Reemplaza TODO el contenido de Descargas (título y las dos filas de guías). Un solo bloque "HTML personalizado".
+     Mismo texto que hoy; cambia la forma. Estilos: plugin (calma-etapa7.css). Ancho completo, sin caja, sin título de Kadence.
+     Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
+<div class="calma-page calma-recursos">
+<section class="calma-hero" aria-labelledby="descargas-h1"><div class="calma-hero__inner"><div>
+<h1 id="descargas-h1">Libros de <em>descarga gratuita</em></h1>
+</div></div></section>
+<section class="calma-section" aria-label="Guías para descargar"><div class="calma-container">
+<ul class="calma-descargas"><li class="calma-descarga" style="--i:0"><div class="calma-descarga__portada"><img src="https://codigocalma.com/wp-content/uploads/2026/05/ansiedad-1.jpg" width="400" height="400" alt="Portada de la guía Ansiedad funcional vs. ansiedad desbordada" decoding="async"></div><div class="calma-descarga__texto"><p class="calma-descarga__autora">Por Tatiana X. Stacul</p><h2><span>Ansiedad funcional vs. ansiedad desbordada</span></h2><p>Nuestra interacción digital y su impacto en la salud mental</p><p class="calma-descarga__accion"><a class="calma-btn calma-btn--primary" href="https://codigocalma.com/wp-content/uploads/2026/06/Ansiedad-Funcional-vs-Ansiedad-Desbordada.pdf" download>Descargar<span class="screen-reader-text"> Ansiedad funcional vs. ansiedad desbordada</span> <span class="calma-descarga__formato">(PDF)</span></a></p></div></li><li class="calma-descarga" style="--i:1"><div class="calma-descarga__portada"><img src="https://codigocalma.com/wp-content/uploads/2026/05/guia-1.jpg" width="400" height="400" alt="Portada de la Guía de ciberseguridad para psicólogos" decoding="async"></div><div class="calma-descarga__texto"><p class="calma-descarga__autora">Por Tatiana X. Stacul</p><h2><span>Guía de ciberseguridad para psicólogos</span></h2><p>Conceptos, herramientas y recomendaciones.</p><p class="calma-descarga__accion"><a class="calma-btn calma-btn--primary" href="https://codigocalma.com/wp-content/uploads/2026/06/Guia-de-Ciberseguridad-para-Psicologos.pdf" download>Descargar<span class="screen-reader-text"> Guía de ciberseguridad para psicólogos</span> <span class="calma-descarga__formato">(PDF)</span></a></p></div></li><li class="calma-descarga" style="--i:2"><div class="calma-descarga__portada"><img src="https://codigocalma.com/wp-content/uploads/2026/05/para_devs-1.jpg" width="400" height="400" alt="Portada de la guía Psicología para devs" loading="lazy" decoding="async"></div><div class="calma-descarga__texto"><p class="calma-descarga__autora">Por Tatiana X. Stacul</p><h2><span>Psicología para devs</span></h2><p>Conceptos para integrar psicología a tu desarrollo.</p><p class="calma-descarga__accion"><a class="calma-btn calma-btn--primary" href="https://codigocalma.com/wp-content/uploads/2026/06/psicologia-para-devs.pdf" download>Descargar<span class="screen-reader-text"> Psicología para devs</span> <span class="calma-descarga__formato">(PDF)</span></a></p></div></li><li class="calma-descarga" style="--i:3"><div class="calma-descarga__portada"><img src="https://codigocalma.com/wp-content/uploads/2026/05/trust-1.jpg" width="400" height="400" alt="Portada de la guía The Psychology of Trust" loading="lazy" decoding="async"></div><div class="calma-descarga__texto"><p class="calma-descarga__autora">Por Tatiana X. Stacul</p><h2><span lang="en">The Psychology of Trust</span> (en inglés)</h2><p lang="en">Behavioral Science and Cybersecurity Awareness. A 3-phase Learning Journey with AI</p><p class="calma-descarga__accion"><a class="calma-btn calma-btn--primary" href="https://codigocalma.com/wp-content/uploads/2026/06/The-psychology-of-trust-Tatiana-Stacul.pdf" download>Descargar<span class="screen-reader-text"> The Psychology of Trust</span> <span class="calma-descarga__formato">(PDF)</span></a></p></div></li></ul>
+</div></section>
+</div>
 
-<div class="wp-block-kadence-column kadence-column1666_6d41c6-26 inner-column-1"><div class="kt-inside-inner-col">
-<h1 class="kt-adv-heading1666_f0c6ba-66 wp-block-kadence-advancedheading has-theme-palette-3-color has-text-color" data-kb-block="kb-adv-heading1666_f0c6ba-66">Libros de <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-theme-palette-2-color">descarga gratuita</mark></h1>
-</div></div>
-
-</div></div>
-
-<div class="kb-row-layout-wrap kb-row-layout-id1666_bbe565-6a alignnone animated fadeIn slower wp-block-kadence-rowlayout"><div class="kt-row-column-wrap kt-has-2-columns kt-row-layout-equal kt-tab-layout-equal kt-mobile-layout-row kt-row-valign-top">
-
-<div class="wp-block-kadence-column kadence-column1666_c1e332-6b inner-column-1"><div class="kt-inside-inner-col"><div class="kb-row-layout-wrap kb-row-layout-id1666_ee9467-96 alignnone wp-block-kadence-rowlayout"><div class="kt-row-column-wrap kt-has-2-columns kt-row-layout-equal kt-tab-layout-inherit kt-mobile-layout-row kt-row-valign-top">
-
-<div class="wp-block-kadence-column kadence-column1666_5f33ec-f9 inner-column-1"><div class="kt-inside-inner-col">
-<figure class="wp-block-kadence-image kb-image1666_efce38-cc kb-image-is-ratio-size"><div class="kb-is-ratio-image kb-image-ratio-square"><img decoding="async" width="400" height="400" src="https://codigocalma.com/wp-content/uploads/2026/05/ansiedad-1.jpg" alt="Portada de la guía Ansiedad funcional vs. ansiedad desbordada" class="kb-img wp-image-1671" srcset="https://codigocalma.com/wp-content/uploads/2026/05/ansiedad-1.jpg 400w, https://codigocalma.com/wp-content/uploads/2026/05/ansiedad-1-300x300.jpg 300w, https://codigocalma.com/wp-content/uploads/2026/05/ansiedad-1-150x150.jpg 150w" sizes="(max-width: 400px) 100vw, 400px" /></div></figure>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_e7042d-a4 kb-section-dir-vertical inner-column-2"><div class="kt-inside-inner-col">
-<div class="kt-adv-heading1666_0207ed-05 wp-block-kadence-advancedheading has-theme-palette-6-color has-text-color" data-kb-block="kb-adv-heading1666_0207ed-05">Tatiana X. Stacul</div>
-
-
-
-<h2 class="kt-adv-heading1666_29dc57-d9 wp-block-kadence-advancedheading has-theme-palette-3-color has-text-color" data-kb-block="kb-adv-heading1666_29dc57-d9">Ansiedad funcional vs. ansiedad desbordada</h2>
-
-
-
-<p class="kt-adv-heading1666_944929-7c wp-block-kadence-advancedheading has-theme-palette-5-color has-text-color" data-kb-block="kb-adv-heading1666_944929-7c">Nuestra interacción digital y su impacto en la salud mental</p>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_528760-ec"><div class="kt-inside-inner-col"></div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_c22000-ba"><div class="kt-inside-inner-col">
-<div class="wp-block-kadence-advancedbtn kb-buttons-wrap kb-btns1666_c428d7-ad"><a class="kb-button kt-button button kb-btn1666_290454-f5 kt-btn-size-standard kt-btn-width-type-auto kb-btn-global-inherit kt-btn-has-text-true kt-btn-has-svg-false wp-block-button__link wp-block-kadence-singlebtn" href="/wp-content/uploads/2026/06/Ansiedad-Funcional-vs-Ansiedad-Desbordada.pdf"><span class="kt-btn-inner-text">Descargar</span></a></div>
-</div></div>
-
-</div></div></div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_99b1d4-11 inner-column-1"><div class="kt-inside-inner-col"><div class="kb-row-layout-wrap kb-row-layout-id1666_a388ab-86 alignnone wp-block-kadence-rowlayout"><div class="kt-row-column-wrap kt-has-2-columns kt-row-layout-equal kt-tab-layout-row kt-mobile-layout-row kt-row-valign-top">
-
-<div class="wp-block-kadence-column kadence-column1666_aeb335-79 inner-column-1"><div class="kt-inside-inner-col">
-<figure class="wp-block-kadence-image kb-image1666_56b199-1d kb-image-is-ratio-size"><div class="kb-is-ratio-image kb-image-ratio-square"><img loading="lazy" decoding="async" width="400" height="400" src="https://codigocalma.com/wp-content/uploads/2026/05/guia-1.jpg" alt="Portada de la Guía de ciberseguridad para psicólogos" class="kb-img wp-image-1672" srcset="https://codigocalma.com/wp-content/uploads/2026/05/guia-1.jpg 400w, https://codigocalma.com/wp-content/uploads/2026/05/guia-1-300x300.jpg 300w, https://codigocalma.com/wp-content/uploads/2026/05/guia-1-150x150.jpg 150w" sizes="auto, (max-width: 400px) 100vw, 400px" /></div></figure>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_93bc63-b9 inner-column-2"><div class="kt-inside-inner-col">
-<div class="kt-adv-heading1666_04fea9-18 wp-block-kadence-advancedheading has-theme-palette-6-color has-text-color" data-kb-block="kb-adv-heading1666_04fea9-18">Tatiana X. Stacul</div>
-
-
-
-<h2 class="kt-adv-heading1666_5d0704-bd wp-block-kadence-advancedheading has-theme-palette-3-color has-text-color" data-kb-block="kb-adv-heading1666_5d0704-bd">Guía de ciberseguridad para psicólogos</h2>
-
-
-
-<p class="kt-adv-heading1666_58e91b-54 wp-block-kadence-advancedheading has-theme-palette-5-color has-text-color" data-kb-block="kb-adv-heading1666_58e91b-54">Conceptos, herramientas y recomendaciones.</p>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_212e0c-7d"><div class="kt-inside-inner-col"></div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_a50fb1-d5"><div class="kt-inside-inner-col">
-<div class="wp-block-kadence-advancedbtn kb-buttons-wrap kb-btns1666_35f617-7d"><a class="kb-button kt-button button kb-btn1666_da0eb5-90 kt-btn-size-standard kt-btn-width-type-auto kb-btn-global-inherit kt-btn-has-text-true kt-btn-has-svg-false wp-block-button__link wp-block-kadence-singlebtn" href="/wp-content/uploads/2026/06/Guia-de-Ciberseguridad-para-Psicologos.pdf"><span class="kt-btn-inner-text">Descargar</span></a></div>
-</div></div>
-
-</div></div></div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_b334cc-51 inner-column-1"><div class="kt-inside-inner-col"><div class="kb-row-layout-wrap kb-row-layout-id1666_731e16-3b alignnone wp-block-kadence-rowlayout"><div class="kt-row-column-wrap kt-has-2-columns kt-row-layout-equal kt-tab-layout-row kt-mobile-layout-row kt-row-valign-top">
-
-<div class="wp-block-kadence-column kadence-column1666_a6c2dd-e1 inner-column-1"><div class="kt-inside-inner-col">
-<figure class="wp-block-kadence-image kb-image1666_d85900-ec kb-image-is-ratio-size"><div class="kb-is-ratio-image kb-image-ratio-square"><img loading="lazy" decoding="async" width="400" height="400" src="https://codigocalma.com/wp-content/uploads/2026/05/para_devs-1.jpg" alt="Psicologia para devs" class="kb-img wp-image-1673" srcset="https://codigocalma.com/wp-content/uploads/2026/05/para_devs-1.jpg 400w, https://codigocalma.com/wp-content/uploads/2026/05/para_devs-1-300x300.jpg 300w, https://codigocalma.com/wp-content/uploads/2026/05/para_devs-1-150x150.jpg 150w" sizes="auto, (max-width: 400px) 100vw, 400px" /></div></figure>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_70e76c-35 inner-column-2"><div class="kt-inside-inner-col">
-<div class="kt-adv-heading1666_3c47e8-5b wp-block-kadence-advancedheading has-theme-palette-6-color has-text-color" data-kb-block="kb-adv-heading1666_3c47e8-5b">Tatiana X. Stacul</div>
-
-
-
-<h2 class="kt-adv-heading1666_061003-96 wp-block-kadence-advancedheading has-theme-palette-3-color has-text-color" data-kb-block="kb-adv-heading1666_061003-96">Psicología para devs</h2>
-
-
-
-<p class="kt-adv-heading1666_8fdac2-0b wp-block-kadence-advancedheading has-theme-palette-5-color has-text-color" data-kb-block="kb-adv-heading1666_8fdac2-0b">Conceptos para integrar psicología a tu desarrollo.</p>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_d3ca71-85 inner-column-2"><div class="kt-inside-inner-col"></div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_3b16ed-85 inner-column-2"><div class="kt-inside-inner-col">
-<div class="wp-block-kadence-advancedbtn kb-buttons-wrap kb-btns1666_ce8788-52"><a class="kb-button kt-button button kb-btn1666_1d62d9-a5 kt-btn-size-standard kt-btn-width-type-auto kb-btn-global-inherit kt-btn-has-text-true kt-btn-has-svg-false wp-block-button__link wp-block-kadence-singlebtn" href="/wp-content/uploads/2026/06/psicologia-para-devs.pdf"><span class="kt-btn-inner-text">Descargar</span></a></div>
-</div></div>
-
-</div></div></div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_570fd8-cd inner-column-1"><div class="kt-inside-inner-col"><div class="kb-row-layout-wrap kb-row-layout-id1666_b1f5b6-44 alignnone wp-block-kadence-rowlayout"><div class="kt-row-column-wrap kt-has-2-columns kt-row-layout-equal kt-tab-layout-row kt-mobile-layout-row kt-row-valign-top">
-
-<div class="wp-block-kadence-column kadence-column1666_050036-e5 inner-column-1"><div class="kt-inside-inner-col">
-<figure class="wp-block-kadence-image kb-image1666_8c3f41-f0 size-full kb-image-is-ratio-size"><div class="kb-is-ratio-image kb-image-ratio-square"><img loading="lazy" decoding="async" width="400" height="400" src="https://codigocalma.com/wp-content/uploads/2026/05/trust-1.jpg" alt="The psychology of trust" class="kb-img wp-image-1674" srcset="https://codigocalma.com/wp-content/uploads/2026/05/trust-1.jpg 400w, https://codigocalma.com/wp-content/uploads/2026/05/trust-1-300x300.jpg 300w, https://codigocalma.com/wp-content/uploads/2026/05/trust-1-150x150.jpg 150w" sizes="auto, (max-width: 400px) 100vw, 400px" /></div></figure>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_50591f-d0 inner-column-2"><div class="kt-inside-inner-col">
-<div class="kt-adv-heading1666_7e8de1-cf wp-block-kadence-advancedheading has-theme-palette-6-color has-text-color" data-kb-block="kb-adv-heading1666_7e8de1-cf">Tatiana X. Stacul</div>
-
-
-
-<h2 class="kt-adv-heading1666_c11f86-2e wp-block-kadence-advancedheading has-theme-palette-3-color has-text-color" data-kb-block="kb-adv-heading1666_c11f86-2e">The Psychology of Trust (en inglés)</h2>
-
-
-
-<p class="kt-adv-heading1666_32721f-fa wp-block-kadence-advancedheading has-theme-palette-5-color has-text-color" data-kb-block="kb-adv-heading1666_32721f-fa">Behavioral Science and<br>Cybersecurity Awareness.<br>A 3-phase Learning Journey with AI</p>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_0d5c69-6c inner-column-2"><div class="kt-inside-inner-col"></div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1666_b4106a-c9 inner-column-2"><div class="kt-inside-inner-col">
-<div class="wp-block-kadence-advancedbtn kb-buttons-wrap kb-btns1666_d21215-1c"><a class="kb-button kt-button button kb-btn1666_204744-08 kt-btn-size-standard kt-btn-width-type-auto kb-btn-global-inherit kt-btn-has-text-true kt-btn-has-svg-false wp-block-button__link wp-block-kadence-singlebtn" href="/wp-content/uploads/2026/06/The-psychology-of-trust-Tatiana-Stacul.pdf"><span class="kt-btn-inner-text">Descargar</span></a></div>
-</div></div>
-
-</div></div></div></div>
-
-</div></div>
-
-
-<p class="wp-block-paragraph"></p>
 </div><!-- .entry-content -->
 	</div>
 </article><!-- #post-1666 -->

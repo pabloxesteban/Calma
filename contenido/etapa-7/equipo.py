@@ -48,7 +48,8 @@ def figura_miradas():
             dx = abs(cx - x)
             d = f'M{x} {y} L{x} {cy - dx} L{cx} {cy}'
         lineas += (f'<path class="calma-miradas__base" d="{d}"/>'
-                   f'<path class="calma-miradas__linea calma-miradas__linea--{persona}" pathLength="1" style="--i:{i}" d="{d}"/>')
+                   f'<path class="calma-miradas__linea calma-miradas__linea--{persona}" pathLength="1" style="--i:{i}" d="{d}"/>'
+                   f'<path class="calma-miradas__senal calma-miradas__senal--{persona}" pathLength="1" d="{d}"/>')
         ty = y - 42 if y < cy else y + 52
         nodos += (f'<g class="calma-miradas__nodo calma-miradas__nodo--{persona}" style="--i:{i}">'
                   f'<circle cx="{x}" cy="{y}" r="28"/><text class="calma-miradas__ini" x="{x}" y="{y + 7}" text-anchor="middle">{ini}</text>'

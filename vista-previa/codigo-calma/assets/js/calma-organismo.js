@@ -535,7 +535,7 @@
 	}
 
 	function prepararFiguras() {
-		var figuras = document.querySelectorAll( '.calma-cifra, .calma-estado' );
+		var figuras = document.querySelectorAll( '.calma-cifra, .calma-estado, .calma-person, .calma-habito' );
 		if ( ! figuras.length ) {
 			return;
 		}
@@ -673,7 +673,7 @@
 				}
 			} );
 		}, { threshold: 0.25 } );
-		document.querySelectorAll( '.loop-entry .post-thumbnail, .kb-row-layout-id1204_6c7f8b-e0 .kb-is-ratio-image' ).forEach( function ( el ) {
+		document.querySelectorAll( '.loop-entry .post-thumbnail, .kb-row-layout-id1204_6c7f8b-e0 .kb-is-ratio-image, .calma-descarga__portada' ).forEach( function ( el ) {
 			if ( el.getBoundingClientRect().top < limite ) {
 				return;
 			}
@@ -1237,7 +1237,7 @@
 	   cada paso se enciende cuando la línea lo alcanza (como la línea de tiempo).
 	   ------------------------------------------------------------------------ */
 	function prepararPasos() {
-		document.querySelectorAll( '.calma-steps' ).forEach( function ( lista ) {
+		document.querySelectorAll( '.calma-steps, .calma-formacion' ).forEach( function ( lista ) {
 			var pasos = Array.prototype.slice.call( lista.children );
 			if ( pasos.length < 2 ) {
 				return;
@@ -1266,6 +1266,48 @@
 			window.addEventListener( 'scroll', pedir, { passive: true } );
 			window.addEventListener( 'resize', pedir );
 			raiz.addEventListener( 'calma-quieto', pedir );
+		} );
+	}
+
+	/* ------------------------------------------------------------------------
+	   5g. Equipo: al pasar por la tarjeta de una persona (puntero o teclado),
+	   la figura "tres miradas" destaca su área, atenúa las otras y manda una
+	   señal por su línea hacia "lo que traigas" (conectar).
+	   ------------------------------------------------------------------------ */
+	function prepararMiradas() {
+		var figura = document.querySelector( '.calma-miradas' );
+		if ( ! figura ) {
+			return;
+		}
+		document.querySelectorAll( '.calma-equipo .calma-person' ).forEach( function ( tarjeta ) {
+			var m = tarjeta.className.match( /calma-person--([a-z]+)/ );
+			if ( ! m ) {
+				return;
+			}
+			var persona = m[ 1 ];
+			function activar() {
+				figura.setAttribute( 'data-activa', persona );
+				if ( quieto() ) {
+					return;
+				}
+				var clase = 'is-senal-' + persona;
+				figura.classList.remove( clase );
+				void figura.getBoundingClientRect();
+				figura.classList.add( clase );
+				clearTimeout( figura[ '_calma' + persona ] );
+				figura[ '_calma' + persona ] = setTimeout( function () {
+					figura.classList.remove( clase );
+				}, 2200 );
+			}
+			function soltar() {
+				if ( figura.getAttribute( 'data-activa' ) === persona ) {
+					figura.removeAttribute( 'data-activa' );
+				}
+			}
+			tarjeta.addEventListener( 'mouseenter', activar );
+			tarjeta.addEventListener( 'focusin', activar );
+			tarjeta.addEventListener( 'mouseleave', soltar );
+			tarjeta.addEventListener( 'focusout', soltar );
 		} );
 	}
 
@@ -1464,6 +1506,7 @@
 		prepararExplora();
 		prepararPasos();
 		prepararLectura();
+		prepararMiradas();
 
 		var hero = document.querySelector( '.calma-hero' );
 		var red = null;

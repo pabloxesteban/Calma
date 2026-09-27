@@ -181,3 +181,26 @@ Cambios que traen:
 
 Se regeneran con `python3 contenido/etapa-7/generar-bloques.py`.
 
+**Ronda de ajustes (Equipo y perfiles):** tarjetas con esquinas suaves y fondo del tono de cada persona. Las animaciones son de la misma familia que las del Inicio:
+- al entrar en pantalla, la línea de color de cada tarjeta crece y el avatar late una vez;
+- al pasar el puntero (o el foco del teclado) por una tarjeta, la figura "tres miradas" destaca a esa persona, atenúa a las otras dos y manda una señal por su línea hacia "lo que traigas";
+- en el perfil, la línea de "Formación declarada" se llena con el scroll y enciende cada punto;
+- toda la tarjeta de Equipo es clicable (el enlace sigue diciendo "Conocer a …").
+
+## Paso 3g · Herramientas, Test y Descargas (20 min)
+Mismo texto que hoy; cambia la forma, con el mismo lenguaje que el Inicio (tonos suaves, esquinas redondeadas, micro-organismos).
+
+**Herramientas:** reemplazar TODO el contenido de la página por un bloque **HTML personalizado** con `contenido/etapa-7/bloques/herramientas.html`. La página tiene que estar a ancho completo, sin caja y sin título de Kadence.
+- "Pequeños hábitos": cada hábito con un micro-organismo de la misma familia que los seis estados del Inicio (un trazo que se ordena, anillos que respiran, un teléfono con una onda que se calma). Se animan una vez al entrar en pantalla.
+- Apps: tarjetas con logo chico (72 px), nombre, descripción y un enlace visible "Ver …" (antes el único enlace era el logo). Los dos grupos llevan el tono de su tema.
+- Las imágenes son las mismas de la biblioteca de medios.
+
+**Descargas:** reemplazar TODO el contenido por `contenido/etapa-7/bloques/descargas.html` (también a ancho completo, sin caja ni título).
+- Cada guía es una tarjeta: portada, "Por Tatiana X. Stacul", título, descripción y el botón "Descargar (PDF)" abajo. Para lectores de pantalla, el botón dice qué guía descarga.
+- "The Psychology of Trust" lleva `lang="en"` para que se lea con pronunciación en inglés.
+- Las portadas se descubren como láminas al bajar, igual que las imágenes del Inicio.
+
+**Test:** no hay que cambiar nada. El plugin ajusta el test (Etapa 2) y la sección "Dato que vale la pena saber": tarjetas con esquinas suaves, "Antes de empezar" en celeste, pasos unidos por una línea, opciones redondeadas, barra de progreso en degradé, botón "Empezar" centrado y los tres avisos en arena, lavanda y celeste. Los estilos apuntan a la página con id 1941; si en el sitio real el id es otro, hay que cambiarlo en `calma-etapa7.css` (buscar `page-id-1941`).
+
+Se regeneran con `python3 contenido/etapa-7/generar-bloques.py`.
+

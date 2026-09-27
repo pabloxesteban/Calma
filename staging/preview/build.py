@@ -306,6 +306,14 @@ def e7_contacto(s):
     log.append('contacto: versión Etapa 7 (proceso a la derecha)')
     return s[:a] + col + s[b:]
 
+def e7_pagina_entera(s, bloque, slug):
+    # Herramientas y Descargas: un solo bloque reemplaza todo el contenido (página a lo ancho, sin caja).
+    a, b = entry_bounds(s)
+    s = s[:a] + '<div class="entry-content single-content">\n' + (cont(7) / 'bloques' / bloque).read_text(encoding='utf-8') + '\n' + s[b:]
+    s = s.replace('content-width-normal content-style-boxed content-vertical-padding-show', 'content-width-fullwidth content-style-unboxed content-vertical-padding-hide', 1)
+    log.append(f'{slug}: versión Etapa 7')
+    return s
+
 def e7_home(s):
     # Seis estados mentales en lugar de las 6 tarjetas giratorias (fila completa con su título).
     a = s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_7ce0f7-d0')
@@ -396,6 +404,10 @@ for slug, s in fuentes():
             s = e7_contacto(s)
         if HASTA >= 7 and slug in POSTS:
             s = e7_articulo(slug, s)
+        if HASTA >= 7 and slug == 'herramientas':
+            s = e7_pagina_entera(s, 'herramientas.html', slug)
+        if HASTA >= 7 and slug == 'descargas-2':
+            s = e7_pagina_entera(s, 'descargas.html', slug)
         if HASTA >= 7 and slug in ('ciberpsicologia', 'blog'):
             s = e7_mapa_en(s, slug)
         s = e2_global(slug, s)

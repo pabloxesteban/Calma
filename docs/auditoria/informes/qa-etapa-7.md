@@ -142,3 +142,12 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
 - **Temas de los artículos**: fichas con texto oscuro sobre tono suave (las mismas combinaciones del mapa, todas ≥ 4,5:1).
 - **Móvil**: sin desborde ni texto recortado en Equipo y los tres perfiles a 360/390/430. En Tatiana a 430 px, `capturas.js` marca los enlaces "Ver reseña… en Google" porque miden menos de 44 px; son enlaces dentro de texto, exceptuados por WCAG 2.5.8.
 
+## Herramientas, Test y Descargas (y ajustes de Equipo)
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos. Reflow a 320 px sin desborde. Un H1 por página.
+- **Movimiento**: todo es "encender una vez" o reaccionar al puntero/foco; nada se repite solo ni dura más de 5 s. Con movimiento reducido o "Reducir movimiento", las figuras aparecen en su estado final, la línea de formación queda llena y no hay transformaciones al pasar el puntero.
+- **Equipo**: la tarjeta entera es clicable mediante el enlace "Conocer a …" (un solo enlace por tarjeta, sin duplicados para lectores de pantalla); el foco del teclado se ve en el contorno de la tarjeta.
+- **Herramientas**: enlaces externos con aviso "(se abre en una pestaña nueva)" solo para lectores de pantalla; logos con texto alternativo y medidas declaradas.
+- **Descargas**: botón con nombre accesible completo ("Descargar Ansiedad funcional vs. ansiedad desbordada (PDF)"); título y descripción en inglés marcados con `lang="en"`.
+- **Test**: se comprobó que sigue funcionando (Empezar → paso 1 de 2 → elegir opción) sin errores de JavaScript.
+- **Móvil**: sin desborde ni texto recortado a 360/390/430 en Equipo, Tatiana, Herramientas, Test y Descargas.
+
