@@ -124,3 +124,13 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
   - campos de 48 px, foco visible (borde azul + halo), opciones de área en filas de 48 px clicables enteras (radio de 24 px, cumple WCAG 2.5.8).
   - La métrica de objetivos táctiles de `capturas.js` marca los radios porque exige 44 px por elemento; el objetivo real es la fila completa.
 - **Móvil**: sin desborde en Servicios, Contacto, Equipo y Tatiana a 360/390/430.
+
+## Lectura de artículos
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos. Reflow a 320 px sin desborde. Con movimiento reducido no hay transiciones en el índice.
+  - En la primera pasada, la flecha "Siguiente" de la navegación entre entradas desbordaba 9 px a 320 px. Se corrigió con la navegación en una columna en pantallas angostas.
+- **Índice**:
+  - es un `<nav aria-label="En este artículo">` con enlaces a los subtítulos (se les agrega un id si no tienen);
+  - la sección actual lleva `aria-current="true"`;
+  - en pantallas angostas se abre con un botón con `aria-expanded` y `aria-controls`;
+  - los subtítulos tienen `scroll-margin-top` para no quedar debajo del header fijo.
+- **Tiempo de lectura**: se cuenta sobre el texto del artículo (párrafos, listas, subtítulos y citas), sin las cajas agregadas.

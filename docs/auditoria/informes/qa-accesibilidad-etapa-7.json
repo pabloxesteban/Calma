@@ -353,9 +353,7 @@
     "H2:Sigue explorando",
     "H2:¿Tu proyecto se desbordó?",
     "H2:Fuentes",
-    "H2:Navegación de entradas",
-    "H2:Publicaciones Similares",
-    "H3:Cómo un «te quiero» infectó 45 millones "
+    "H2:Navegación de entradas"
    ],
    "hidden": [],
    "offscreen": [],
@@ -375,14 +373,14 @@
    "A:Solicitar una consulta|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
    "A:Ciberseguridad|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Tatiana X. Stacul|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Diseñar ignorando el s|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:El nudge simplifica el|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:La saturación ante las|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Facebook|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:X|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Threads|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:WhatsApp|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Copy Link|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Compartir|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Psicología¿Qué modela |o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:PsicologíaEl arte de r|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
+   "A:Copy Link|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
   ]
  },
  "test@1280": {
@@ -1582,9 +1580,7 @@
     "H2:Sigue explorando",
     "H2:¿Tu proyecto se desbordó?",
     "H2:Fuentes",
-    "H2:Navegación de entradas",
-    "H2:Publicaciones Similares",
-    "H3:Cómo un «te quiero» infectó 45 millones "
+    "H2:Navegación de entradas"
    ],
    "hidden": [],
    "offscreen": [],
@@ -1597,6 +1593,7 @@
    "BUTTON:Abrir menú|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ciberseguridad|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Tatiana X. Stacul|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "BUTTON:En este artículo|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Facebook|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:X|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Threads|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
@@ -1610,8 +1607,7 @@
    "A:Más de Hábitos y condu|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ver el mapa de temas|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Consultar con Emanuel|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Ver cómo trabajamos|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:doi.org/10.3389/frbhe.|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
+   "A:Ver cómo trabajamos|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
   ]
  },
  "test@390": {
@@ -2554,7 +2550,7 @@
    "Equipo o=solid rgb(27, 34, 51) inDrawer=true",
    "Contacto o=solid rgb(27, 34, 51) inDrawer=true",
    "Solicitar una consulta o=solid rgb(29, 95, 148) inDrawer=true",
-   "Cerrar menú o=solid rgb(28, 60, 92) inDrawer=true"
+   "Cerrar menú o=solid rgb(29, 82, 127) inDrawer=true"
   ],
   "afterEsc": {
    "exp": "false",

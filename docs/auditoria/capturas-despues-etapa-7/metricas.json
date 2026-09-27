@@ -104,23 +104,17 @@
  },
  {
   "w": 360,
-  "page": "equipo",
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
   "smallTargets": 0,
   "smallSample": [],
-  "minGutter": 20,
+  "minGutter": 19,
   "h1": [
-   "El equipo de Código Calma"
+   "¿Por qué fallamos al intentar cambiar conductas?"
   ],
   "ctas": [
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 48
-   },
    {
     "t": "Solicitar una consulta",
     "color": "rgb(22, 33, 77)",
@@ -128,19 +122,19 @@
     "h": 48
    }
   ],
-  "height": 3366
+  "height": 9402
  },
  {
   "w": 360,
-  "page": "equipo-tatiana",
+  "page": "bienestar-digital",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
   "smallTargets": 0,
   "smallSample": [],
-  "minGutter": 20,
+  "minGutter": 24,
   "h1": [
-   "Tatiana X. Stacul"
+   "Bienestar Digital"
   ],
   "ctas": [
    {
@@ -150,7 +144,7 @@
     "h": 48
    }
   ],
-  "height": 5435
+  "height": 6136
  },
  {
   "w": 390,
@@ -257,23 +251,17 @@
  },
  {
   "w": 390,
-  "page": "equipo",
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
   "smallTargets": 0,
   "smallSample": [],
-  "minGutter": 20,
+  "minGutter": 19,
   "h1": [
-   "El equipo de Código Calma"
+   "¿Por qué fallamos al intentar cambiar conductas?"
   ],
   "ctas": [
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 48
-   },
    {
     "t": "Solicitar una consulta",
     "color": "rgb(22, 33, 77)",
@@ -281,19 +269,19 @@
     "h": 48
    }
   ],
-  "height": 3186
+  "height": 8709
  },
  {
   "w": 390,
-  "page": "equipo-tatiana",
+  "page": "bienestar-digital",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
   "smallTargets": 0,
   "smallSample": [],
-  "minGutter": 20,
+  "minGutter": 24,
   "h1": [
-   "Tatiana X. Stacul"
+   "Bienestar Digital"
   ],
   "ctas": [
    {
@@ -303,7 +291,7 @@
     "h": 48
    }
   ],
-  "height": 5235
+  "height": 5894
  },
  {
   "w": 430,
@@ -412,23 +400,17 @@
  },
  {
   "w": 430,
-  "page": "equipo",
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
   "smallTargets": 0,
   "smallSample": [],
-  "minGutter": 22,
+  "minGutter": 21,
   "h1": [
-   "El equipo de Código Calma"
+   "¿Por qué fallamos al intentar cambiar conductas?"
   ],
   "ctas": [
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 48
-   },
    {
     "t": "Solicitar una consulta",
     "color": "rgb(22, 33, 77)",
@@ -436,22 +418,19 @@
     "h": 48
    }
   ],
-  "height": 3090
+  "height": 8130
  },
  {
   "w": 430,
-  "page": "equipo-tatiana",
+  "page": "bienestar-digital",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
-  "smallTargets": 2,
-  "smallSample": [
-   "Ver reseña de Alicia G. en Goo",
-   "Ver reseña de Abdi O. en Googl"
-  ],
-  "minGutter": 22,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 27,
   "h1": [
-   "Tatiana X. Stacul"
+   "Bienestar Digital"
   ],
   "ctas": [
    {
@@ -461,7 +440,7 @@
     "h": 48
    }
   ],
-  "height": 5008
+  "height": 5767
  },
  {
   "w": 1280,
@@ -592,7 +571,7 @@
  },
  {
   "w": 1280,
-  "page": "equipo",
+  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
@@ -601,9 +580,9 @@
    "Menú hijo de Ciberpsicología",
    "Ver el formulario de búsqueda"
   ],
-  "minGutter": 60,
+  "minGutter": 48,
   "h1": [
-   "El equipo de Código Calma"
+   "¿Por qué fallamos al intentar cambiar conductas?"
   ],
   "ctas": [
    {
@@ -614,22 +593,16 @@
    },
    {
     "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 48
-   },
-   {
-    "t": "Solicitar una consulta",
     "color": "rgb(22, 33, 77)",
     "bg": "rgb(255, 255, 255)",
     "h": 48
    }
   ],
-  "height": 2102
+  "height": 5816
  },
  {
   "w": 1280,
-  "page": "equipo-tatiana",
+  "page": "bienestar-digital",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
@@ -638,9 +611,9 @@
    "Menú hijo de Ciberpsicología",
    "Ver el formulario de búsqueda"
   ],
-  "minGutter": 93,
+  "minGutter": 80,
   "h1": [
-   "Tatiana X. Stacul"
+   "Bienestar Digital"
   ],
   "ctas": [
    {
@@ -656,6 +629,6 @@
     "h": 48
    }
   ],
-  "height": 3937
+  "height": 3601
  }
 ]

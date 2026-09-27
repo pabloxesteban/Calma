@@ -1270,6 +1270,135 @@
 	}
 
 	/* ------------------------------------------------------------------------
+	   5f. Lectura de artículos: tiempo de lectura (contado del texto real) e
+	   índice del artículo con las secciones H2. En pantallas anchas va al
+	   costado y marca la sección que se está leyendo; en el resto, desplegable.
+	   ------------------------------------------------------------------------ */
+	function slug( texto, usados ) {
+		var base = texto.toLowerCase().normalize( 'NFD' ).replace( /[\u0300-\u036f]/g, '' )
+			.replace( /[^a-z0-9]+/g, '-' ).replace( /^-+|-+$/g, '' ).slice( 0, 60 ) || 'seccion';
+		var s = base, n = 2;
+		while ( usados[ s ] || document.getElementById( s ) ) {
+			s = base + '-' + n++;
+		}
+		usados[ s ] = 1;
+		return s;
+	}
+
+	function prepararLectura() {
+		if ( ! document.body.classList.contains( 'single-post' ) ) {
+			return;
+		}
+		var cuerpo = document.querySelector( '.single-post .entry-content.single-content' );
+		if ( ! cuerpo ) {
+			return;
+		}
+		// Tiempo de lectura: solo el texto del artículo (sin cajas agregadas).
+		var palabras = 0;
+		Array.prototype.forEach.call( cuerpo.children, function ( el ) {
+			if ( el.matches( 'p, ul, ol, h2, h3, h4, blockquote, figure, .wp-block-quote' ) ) {
+				palabras += ( el.textContent.trim().match( /\S+/g ) || [] ).length;
+			}
+		} );
+		var meta = document.querySelector( '.single-post .entry-header .entry-meta' );
+		if ( meta && palabras > 80 ) {
+			var min = Math.max( 1, Math.round( palabras / 200 ) );
+			var chip = document.createElement( 'span' );
+			chip.className = 'calma-lectura';
+			chip.textContent = min + ' min de lectura';
+			meta.appendChild( chip );
+		}
+		// Índice: secciones H2 del texto de la autora.
+		var titulos = Array.prototype.filter.call( cuerpo.children, function ( el ) {
+			return el.tagName === 'H2';
+		} );
+		if ( titulos.length < 3 ) {
+			// Artículos con pocas secciones H2: el índice usa también los subtítulos H3.
+			titulos = Array.prototype.filter.call( cuerpo.children, function ( el ) {
+				return el.tagName === 'H2' || el.tagName === 'H3';
+			} );
+		}
+		if ( titulos.length < 3 ) {
+			return;
+		}
+		var usados = {};
+		// <nav> con un título (pantallas anchas) o un botón que despliega la lista (el resto).
+		var indice = document.createElement( 'nav' );
+		indice.className = 'calma-indice';
+		indice.setAttribute( 'aria-label', 'En este artículo' );
+		var envoltura = document.createElement( 'div' );
+		var titulo = document.createElement( 'p' );
+		titulo.className = 'calma-indice__titulo';
+		titulo.textContent = 'En este artículo';
+		var boton = document.createElement( 'button' );
+		boton.type = 'button';
+		boton.className = 'calma-indice__boton';
+		boton.textContent = 'En este artículo';
+		boton.setAttribute( 'aria-expanded', 'false' );
+		boton.setAttribute( 'aria-controls', 'calma-indice-lista' );
+		var lista = document.createElement( 'ol' );
+		lista.id = 'calma-indice-lista';
+		var enlaces = titulos.map( function ( h ) {
+			if ( ! h.id ) {
+				h.id = slug( h.textContent, usados );
+			}
+			var li = document.createElement( 'li' );
+			if ( h.tagName === 'H3' ) {
+				li.className = 'calma-indice__sub';
+			}
+			var a = document.createElement( 'a' );
+			a.href = '#' + h.id;
+			a.textContent = h.textContent.trim();
+			li.appendChild( a );
+			lista.appendChild( li );
+			return a;
+		} );
+		envoltura.appendChild( titulo );
+		envoltura.appendChild( boton );
+		envoltura.appendChild( lista );
+		indice.appendChild( envoltura );
+		boton.addEventListener( 'click', function () {
+			var abrir = boton.getAttribute( 'aria-expanded' ) !== 'true';
+			boton.setAttribute( 'aria-expanded', abrir ? 'true' : 'false' );
+			indice.classList.toggle( 'is-abierto', abrir );
+		} );
+		var caja = cuerpo.querySelector( '.calma-resumen' );
+		if ( caja && caja.parentNode === cuerpo ) {
+			cuerpo.insertBefore( indice, caja.nextSibling );
+		} else {
+			cuerpo.insertBefore( indice, cuerpo.firstChild );
+		}
+		// Sección actual y secciones ya leídas.
+		var pendiente = false;
+		function marcar() {
+			pendiente = false;
+			var actual = -1;
+			titulos.forEach( function ( h, i ) {
+				if ( h.getBoundingClientRect().top < window.innerHeight * 0.35 ) {
+					actual = i;
+				}
+			} );
+			enlaces.forEach( function ( a, i ) {
+				if ( i === actual ) {
+					a.setAttribute( 'aria-current', 'true' );
+				} else {
+					a.removeAttribute( 'aria-current' );
+				}
+				a.classList.toggle( 'is-leido', i < actual );
+			} );
+			var alto = raiz.scrollHeight - window.innerHeight;
+			indice.style.setProperty( '--calma-read', alto > 0 ? Math.min( 1, ( window.scrollY || window.pageYOffset ) / alto ).toFixed( 4 ) : 0 );
+		}
+		window.addEventListener( 'scroll', function () {
+			if ( ! pendiente ) {
+				pendiente = true;
+				raf( marcar );
+			}
+		}, { passive: true } );
+		marcar();
+	}
+
+	/* ------------------------------------------------------------------------
 	   6. Header, barra de lectura y "Reducir movimiento"
 	   ------------------------------------------------------------------------ */
 	var progreso = null;
@@ -1334,6 +1463,7 @@
 		prepararMapa();
 		prepararExplora();
 		prepararPasos();
+		prepararLectura();
 
 		var hero = document.querySelector( '.calma-hero' );
 		var red = null;

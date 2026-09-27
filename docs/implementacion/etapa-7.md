@@ -141,3 +141,17 @@ Mismo texto que la Etapa 3; cambian la forma y el orden.
 2. En la columna derecha, borrar la ilustración y agregar un bloque **HTML personalizado** con `contenido/etapa-7/bloques/contacto-proceso.html`: "Qué pasa después de enviar" con los tres pasos conectados.
 3. En la columna derecha, en **Visibilidad**, activar que se vea también en tablet y celular (hoy está oculta). En celular queda debajo del formulario.
 4. El formulario no se toca: los estilos del plugin hacen los campos más grandes y claros, y convierten las áreas de consulta en opciones que se eligen tocando toda la fila.
+
+## Paso 3e · Lectura de artículos (5 min)
+Casi todo lo hace el plugin, sin editar los artículos:
+- **Tiempo de lectura:** junto a la fecha ("4 min de lectura"). Se calcula con el texto real del artículo a 200 palabras por minuto.
+- **"En resumen"** destacado arriba, en celeste suave, con la definición en itálica.
+- **Índice del artículo** ("En este artículo"), armado con los subtítulos que ya tiene cada artículo (H2; si hay menos de 3, también los H3):
+  - en pantallas anchas va al costado y acompaña la lectura: marca la sección actual y las ya leídas, y una línea se llena mientras se lee;
+  - en celular y tablet es un botón que despliega la lista.
+- **Tipografía de lectura:** texto más grande, interlineado cómodo, subtítulos separados con una línea fina, viñetas en verde azulado y citas en itálica.
+- **Cierre ordenado:** compartir, "Sigue explorando", la caja de consulta en tono arena, las fuentes y la navegación anterior/siguiente sin sombras.
+
+**Una sola cosa en WordPress:** Apariencia → Personalizar → Diseño de entradas → desactivar **"Publicaciones relacionadas"**. Las reemplaza "Sigue explorando" (el CSS ya las oculta, pero conviene apagarlas para no cargarlas).
+
+Todo esto se aplica solo a los artículos nuevos que publique Tatiana.

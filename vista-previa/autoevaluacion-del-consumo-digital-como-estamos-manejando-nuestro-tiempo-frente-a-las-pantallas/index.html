@@ -4291,6 +4291,309 @@ html.calma-quieto .calma-tiempo__anio {
 }
 
 /* --------------------------------------------------------------------------
+   8h. Lectura de artículos: tipografía cómoda, "En resumen" destacado, índice
+   del artículo (al costado en pantallas anchas, desplegable en el resto),
+   tiempo de lectura y cierre ordenado. El texto de la autora no cambia.
+   -------------------------------------------------------------------------- */
+.single-post .content-bg.single-entry {
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	border: 1px solid var(--calma-hairline);
+}
+.single-post .article-post-thumbnail,
+.single-post .article-post-thumbnail img {
+	border-radius: 0 !important;
+}
+.single-post .entry-header .entry-title {
+	font-size: clamp(2rem, 1.35rem + 2.4vw, 3.25rem) !important;
+	font-weight: 600;
+	line-height: 1.08;
+	letter-spacing: -0.02em;
+}
+.single-post .entry-header .entry-taxonomies .category-links a {
+	background: none !important;
+	padding-inline: 0 !important;
+	font-size: 0.8125rem !important;
+	font-weight: 700 !important;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	text-decoration: none !important;
+}
+.single-post .entry-header .entry-meta {
+	font-size: var(--calma-fs-xs);
+	color: var(--calma-ink-soft);
+}
+.calma-lectura {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin-left: 10px;
+	padding: 2px 10px;
+	border-radius: var(--calma-radius-pill);
+	background: #e9f1f8;
+	color: #1d5f94;
+	font-weight: 600;
+}
+/* Cuerpo del texto */
+.single-post .entry-content > p,
+.single-post .entry-content > ul,
+.single-post .entry-content > ol,
+.single-post .entry-content > blockquote {
+	font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+	line-height: 1.75;
+	color: var(--calma-ink);
+}
+.single-post .entry-content > h2 {
+	margin-top: var(--calma-space-12) !important;
+	padding-top: var(--calma-space-6);
+	border-top: 1px solid var(--calma-hairline-strong);
+	font-size: clamp(1.625rem, 1.3rem + 1.1vw, 2.125rem);
+	line-height: 1.15;
+	scroll-margin-top: 110px;
+}
+.single-post .entry-content > h3 {
+	margin-top: var(--calma-space-8) !important;
+	font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+	scroll-margin-top: 110px;
+}
+.single-post .entry-content > ul li::marker,
+.single-post .entry-content > ol li::marker {
+	color: var(--calma-teal);
+	font-weight: 700;
+}
+.single-post .entry-content > blockquote,
+.single-post .entry-content .wp-block-quote {
+	margin: var(--calma-space-8) 0 !important;
+	padding: var(--calma-space-2) 0 var(--calma-space-2) var(--calma-space-6) !important;
+	border-left: 3px solid #9fd0c0 !important;
+	font-family: var(--calma-font-heading);
+	font-style: italic;
+	font-size: 1.25rem;
+}
+/* "En resumen": la respuesta corta, arriba y a la vista */
+.calma-resumen {
+	margin: 0 0 var(--calma-space-10) !important;
+	padding: var(--calma-space-6) !important;
+	background: #e9f1f8 !important;
+	border: 0 !important;
+	border-top: 4px solid #9cc3e3 !important;
+	border-radius: 0 !important;
+}
+.calma-resumen p {
+	margin: 0 !important;
+	font-size: 1.0625rem;
+	line-height: 1.7;
+	color: var(--calma-ink);
+}
+.calma-resumen p > strong:first-child {
+	display: block;
+	margin-bottom: 6px;
+	font-size: 0.8125rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #1d5f94;
+}
+.calma-resumen .calma-resumen__def {
+	margin-top: var(--calma-space-4) !important;
+	padding-top: var(--calma-space-4);
+	border-top: 1px solid #c7dcef;
+	font-family: var(--calma-font-heading);
+	font-style: italic;
+}
+/* Índice del artículo */
+.calma-indice {
+	margin: 0 0 var(--calma-space-8);
+	border: 1px solid var(--calma-hairline-strong);
+	background: #fff;
+}
+.calma-indice__titulo {
+	display: none;
+}
+.calma-indice__boton {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	min-height: 48px;
+	padding: 0 var(--calma-space-5);
+	border: 0;
+	background: none !important;
+	color: var(--calma-ink) !important;
+	font: 700 var(--calma-fs-sm)/1.2 var(--calma-font-body);
+	cursor: pointer;
+	box-shadow: none !important;
+}
+.calma-indice__boton::after {
+	content: "+";
+	font-size: 1.25rem;
+	color: var(--calma-primary);
+	transition: transform var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-indice__boton[aria-expanded="true"]::after {
+	transform: rotate(45deg);
+}
+.calma-indice ol {
+	display: none;
+	position: relative;
+	margin: 0 !important;
+	padding: 0 var(--calma-space-5) var(--calma-space-4) !important;
+	list-style: none;
+}
+.calma-indice.is-abierto ol {
+	display: block;
+}
+.calma-indice li {
+	margin: 0 !important;
+}
+.calma-indice__sub a {
+	margin-left: 14px;
+	font-size: 0.875rem;
+}
+.calma-indice a {
+	position: relative;
+	display: block;
+	padding: 8px 0 8px 18px;
+	color: var(--calma-ink-soft) !important;
+	font-size: 0.9375rem;
+	line-height: 1.35;
+	text-decoration: none !important;
+	background-image: none !important;
+	transition: color var(--calma-dur) var(--calma-ease);
+}
+.calma-indice a::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 15px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	border: 1.5px solid var(--calma-hairline-strong);
+	background: #fff;
+	transition: background-color var(--calma-dur-medio) var(--calma-ease-mente), border-color var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-indice a:hover {
+	color: var(--calma-primary) !important;
+}
+.calma-indice a.is-leido::before {
+	background: #9fd0c0;
+	border-color: #9fd0c0;
+}
+.calma-indice a[aria-current="true"] {
+	color: var(--calma-ink) !important;
+	font-weight: 600;
+}
+.calma-indice a[aria-current="true"]::before {
+	background: var(--calma-teal);
+	border-color: var(--calma-teal);
+}
+/* Pantallas anchas: el índice acompaña al costado del texto, siempre abierto */
+@media (min-width: 1260px) {
+	.single-post .entry-content.single-content {
+		position: relative;
+	}
+	.calma-indice {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: calc(100% + 56px);
+		width: 190px;
+		margin: 0;
+		border: 0;
+		background: none;
+	}
+	.calma-indice > div {
+		position: sticky;
+		top: 110px;
+		padding-left: var(--calma-space-4);
+		border-left: 2px solid var(--calma-hairline);
+	}
+	.calma-indice > div::before {
+		/* La línea se llena con la lectura */
+		content: "";
+		position: absolute;
+		left: -2px;
+		top: 0;
+		width: 2px;
+		height: 100%;
+		background: linear-gradient(180deg, var(--calma-primary), var(--calma-teal));
+		transform-origin: 50% 0;
+		transform: scaleY(var(--calma-read, 0));
+	}
+	.calma-indice__boton {
+		display: none;
+	}
+	.calma-indice__titulo {
+		display: block;
+		margin: 0 0 var(--calma-space-3) !important;
+		font-size: 0.8125rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--calma-ink);
+	}
+	.calma-indice ol {
+		display: block;
+		padding: 0 !important;
+	}
+}
+/* Compartir, caja de consulta, fuentes y navegación: ordenados y planos */
+.single-post .addtoany_header {
+	margin-bottom: var(--calma-space-2);
+	font-size: var(--calma-fs-xs);
+	font-weight: 700;
+	color: var(--calma-ink);
+}
+.calma-article-cta {
+	background: #f6efe1 !important;
+	border: 0 !important;
+	border-top: 4px solid #e2c17e !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+}
+.calma-fuentes {
+	padding-top: var(--calma-space-6);
+	border-top: 1px solid var(--calma-hairline-strong);
+}
+.calma-fuentes li {
+	font-size: var(--calma-fs-xs);
+	line-height: 1.6;
+}
+.single-post .post-navigation .nav-links {
+	display: grid !important;
+	gap: var(--calma-space-3);
+	grid-template-columns: 1fr !important;
+}
+@media (min-width: 700px) {
+	.single-post .post-navigation .nav-links {
+		grid-template-columns: 1fr 1fr !important;
+	}
+}
+.single-post .post-navigation .nav-links > div {
+	box-sizing: border-box;
+	width: auto !important;
+	min-width: 0;
+	max-width: 100%;
+	float: none !important;
+	padding: var(--calma-space-4) var(--calma-space-5);
+	border: 1px solid var(--calma-hairline-strong);
+	background: #fff;
+	transition: border-color var(--calma-dur) var(--calma-ease);
+}
+.single-post .post-navigation .nav-links > div:hover {
+	border-color: var(--calma-ink);
+}
+/* "Publicaciones similares" de Kadence se reemplaza por "Sigue explorando" */
+.single-post .entry-related {
+	display: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+	.calma-indice * {
+		transition: none !important;
+	}
+}
+
+/* --------------------------------------------------------------------------
    9. Aparición editorial (solo elementos fuera de la primera pantalla,
    la marca calma-organismo.js). Nunca se oculta texto: se revela la imagen
    como una lámina que se descubre, y las figuras "se encienden".
