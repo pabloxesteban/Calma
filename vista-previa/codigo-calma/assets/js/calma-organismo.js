@@ -2,8 +2,9 @@
  * Código Calma — Etapa 7: "tecnología que se comporta como una mente".
  * Dirección de arte: docs/direccion-arte-organismo.md
  *
- * 1. Hero: la flor dentro de una red viva (Canvas 2D). La red crece desde la
- *    flor, se asienta y queda quieta. El puntero (o el dedo) la perturba y
+ * 1. Hero: la flor dentro de una red viva y suelta (Canvas 2D). Los nodos
+ *    aparecen y se conectan, la red respira unos segundos y queda quieta.
+ *    Pasar sobre la flor emite una onda que recorre la red. El puntero (o el dedo) la perturba y
  *    vuelve sola al equilibrio: presencia → perturbación → regulación. Los
  *    nodos tocados se "activan", contagian a sus vecinos y se apagan despacio.
  *    No hay bucle permanente: el dibujo se detiene cuando la red está en calma.
@@ -12,7 +13,9 @@
  * 3. Hallazgos de los seis estados como disclosure accesible (botón + región).
  * 4. Láminas: las imágenes de tarjetas fuera de la primera pantalla se
  *    descubren al llegar. El texto nunca se oculta.
- * 5. Tarjetas de artículos con una inclinación mínima que sigue al puntero.
+ * 5. Línea de tiempo: la línea crece con el scroll, las épocas se encienden
+ *    y una figura se transforma (objeto → red → dispositivo → plataforma →
+ *    inteligencia). El scroll siempre es nativo.
  * 6. Header compacto, barra de lectura y control "Reducir movimiento".
  *
  * Sin JavaScript, con prefers-reduced-motion, en equipos de pocos recursos o
@@ -55,6 +58,11 @@
 
 	/* ------------------------------------------------------------------------
 	   1. Red viva del hero
+	   Una red suelta que ocupa todo el sector de la flor: nodos de tamaños y
+	   brillos distintos, uniones curvas e irregulares y algunos nodos sin
+	   conexión. Al cargar, los nodos aparecen uno a uno y las uniones se
+	   dibujan entre ellos (conexión, no zoom). Respira unos segundos y se queda
+	   quieta. Pasar sobre la flor emite una onda que recorre la red.
 	   ------------------------------------------------------------------------ */
 	function RedViva( seccion ) {
 		var flor = seccion.querySelector( '.calma-hero__media img' );
@@ -70,12 +78,14 @@
 			return;
 		}
 
-		var W = 0, H = 0, DPR = 1, cx = 0, cy = 0, R = 0;
+		var W = 0, H = 0, DPR = 1, cx = 0, cy = 0, R = 0, movil = false;
 		var nodos = [], aristas = [];
 		var puntero = { x: -9999, y: -9999, activo: false };
-		var corriendo = false, visible = true, t0 = 0, ultimo = 0;
+		var onda = null; // { t0, max }
+		var corriendo = false, visible = true, t0 = 0, ultimo = 0, vigilia = 0;
 		var lentos = 0, avisos = 0; // regulador de rendimiento
-		var DESPERTAR = 2600; // ms de crecimiento inicial
+		var DESPERTAR = 4200; // ms: aparición + respiración que se apaga (< 5 s)
+		var RESPIRO = 2600; // ms de respiración después de cada interacción
 
 		function azar( semilla ) {
 			// Pseudoaleatorio estable: la red tiene siempre la misma forma.
@@ -85,6 +95,13 @@
 				return ( s - 1 ) / 2147483646;
 			};
 		}
+		function suave( x ) {
+			x = Math.max( 0, Math.min( 1, x ) );
+			return x * x * ( 3 - 2 * x );
+		}
+		function ahoraMs() {
+			return window.performance ? performance.now() : Date.now();
+		}
 
 		function medir() {
 			var r = seccion.getBoundingClientRect();
@@ -92,6 +109,7 @@
 			DPR = Math.min( window.devicePixelRatio || 1, 1.5 );
 			W = r.width;
 			H = r.height;
+			movil = W < 900;
 			canvas.width = Math.round( W * DPR );
 			canvas.height = Math.round( H * DPR );
 			ctx.setTransform( DPR, 0, 0, DPR, 0, 0 );
@@ -102,127 +120,168 @@
 
 		function construir() {
 			var rnd = azar( 20260927 );
-			var movil = W < 700;
-			var n = movil ? 46 : 110;
+			var objetivo = movil ? 64 : 150;
 			if ( equipoModesto ) {
-				n = Math.round( n * 0.7 );
+				objetivo = Math.round( objetivo * 0.7 );
 			}
+			var minDist = movil ? 24 : 30;
+			// Sector de la flor: la mitad derecha en escritorio, la parte baja en celular.
+			var x0 = movil ? 0 : W * 0.4, y0 = movil ? H * 0.42 : 0;
 			nodos = [];
 			var intentos = 0;
-			while ( nodos.length < n && intentos < n * 30 ) {
+			while ( nodos.length < objetivo && intentos < objetivo * 60 ) {
 				intentos++;
-				var lejos = rnd() < 0.18;
-				var ang = rnd() * Math.PI * 2;
-				// Densidad orgánica: más nodos cerca de la flor, algunos sueltos lejos.
-				var d = lejos ? R * ( 1.9 + rnd() * 2.6 ) : R * ( 1.08 + Math.pow( rnd(), 0.8 ) * 1.25 );
-				var x = cx + Math.cos( ang ) * d * ( movil ? 1.15 : 1.35 );
-				var y = cy + Math.sin( ang ) * d;
-				if ( x < 4 || x > W - 4 || y < 4 || y > H - 4 ) {
+				var x = x0 + rnd() * ( W - x0 ), y = y0 + rnd() * ( H - y0 );
+				var dx = x - cx, dy = y - cy;
+				var d = Math.sqrt( dx * dx + dy * dy );
+				if ( d < R * 0.8 ) {
+					continue; // detrás de la flor no se ve
+				}
+				// Más densa cerca de la flor, suelta hacia los bordes.
+				var densidad = 0.28 + 0.72 * Math.exp( -Math.pow( d / ( R * 2.6 ), 2 ) );
+				if ( rnd() > densidad ) {
 					continue;
 				}
-				var ok = true;
+				var libre = true;
 				for ( var k = 0; k < nodos.length; k++ ) {
-					var dx = nodos[ k ].rx - x, dy = nodos[ k ].ry - y;
-					if ( dx * dx + dy * dy < 22 * 22 ) {
-						ok = false;
+					var ex = nodos[ k ].rx - x, ey = nodos[ k ].ry - y;
+					if ( ex * ex + ey * ey < minDist * minDist ) {
+						libre = false;
 						break;
 					}
 				}
-				if ( ! ok ) {
+				if ( ! libre ) {
 					continue;
 				}
+				var t = rnd();
 				nodos.push( {
 					rx: x, ry: y, x: x, y: y, vx: 0, vy: 0,
-					r: 1 + rnd() * 1.5, act: 0, fase: rnd() * Math.PI * 2,
-					dendrita: d < R * 1.5, vec: []
+					r: 0.7 + t * t * 2.2, // la mayoría chicos, algunos más grandes
+					brillo: 0.35 + rnd() * 0.5,
+					act: 0,
+					fase: rnd() * Math.PI * 2,
+					amp: 2 + rnd() * 6,
+					vel: 0.6 + rnd() * 0.8,
+					aparece: 200 + rnd() * 1500 + Math.min( 1, d / ( R * 4 ) ) * 500,
+					dist: d,
+					dendrita: d < R * 1.9 && rnd() < 0.55,
+					curva: ( rnd() - 0.5 ) * 0.5,
+					vec: []
 				} );
 			}
-			// Cada nodo se une a sus 2–3 vecinos más cercanos: una red, no una nube.
+			// Uniones irregulares: cada nodo busca entre 0 y 4 vecinos cercanos.
 			aristas = [];
+			var alcance = movil ? 78 : 96;
 			var vistas = {};
 			nodos.forEach( function ( a, i ) {
-				var orden = nodos.map( function ( b, j ) {
-					return { j: j, d: ( b.rx - a.rx ) * ( b.rx - a.rx ) + ( b.ry - a.ry ) * ( b.ry - a.ry ) };
-				} ).sort( function ( p, q ) { return p.d - q.d; } );
-				var m = 2 + ( i % 3 === 0 ? 1 : 0 );
-				for ( var k = 1; k <= m && k < orden.length; k++ ) {
-					var j = orden[ k ].j;
+				var grado = Math.floor( rnd() * rnd() * 5 ); // muchos con 0–1, pocos con 3–4
+				var cerca = [];
+				nodos.forEach( function ( b, j ) {
+					if ( j === i ) {
+						return;
+					}
+					var d2 = ( b.rx - a.rx ) * ( b.rx - a.rx ) + ( b.ry - a.ry ) * ( b.ry - a.ry );
+					if ( d2 < alcance * alcance ) {
+						cerca.push( { j: j, d: d2 } );
+					}
+				} );
+				cerca.sort( function ( p, q ) { return p.d - q.d; } );
+				for ( var k = 0; k < cerca.length && grado > 0; k++ ) {
+					if ( rnd() < 0.3 ) {
+						continue; // saltea algunos: menos estructura
+					}
+					var j = cerca[ k ].j;
 					var clave = i < j ? i + '-' + j : j + '-' + i;
-					if ( ! vistas[ clave ] && orden[ k ].d < R * R * 1.8 ) {
+					if ( ! vistas[ clave ] ) {
 						vistas[ clave ] = 1;
-						aristas.push( [ i, j ] );
+						aristas.push( { a: i, b: j, curva: ( rnd() - 0.5 ) * 0.7, alfa: 0.45 + rnd() * 0.55 } );
 						a.vec.push( j );
 						nodos[ j ].vec.push( i );
+						grado--;
 					}
 				}
 			} );
 		}
 
-		function colocarEnReposo() {
+		function enReposo() {
 			nodos.forEach( function ( p ) {
 				p.x = p.rx;
 				p.y = p.ry;
 				p.vx = p.vy = 0;
 				p.act = 0;
 			} );
+			onda = null;
 		}
 
-		function colocarEnSemilla() {
-			// La red nace de la flor: todos los nodos parten cerca del centro.
-			nodos.forEach( function ( p ) {
-				p.x = cx + ( p.rx - cx ) * 0.35;
-				p.y = cy + ( p.ry - cy ) * 0.35;
-				p.vx = p.vy = 0;
-			} );
+		// Curva cuadrática desde a hacia b, dibujada hasta la fracción g.
+		function curva( ax, ay, bx, by, k, g ) {
+			var mx = ( ax + bx ) / 2 - ( by - ay ) * k;
+			var my = ( ay + by ) / 2 + ( bx - ax ) * k;
+			ctx.beginPath();
+			ctx.moveTo( ax, ay );
+			if ( g >= 1 ) {
+				ctx.quadraticCurveTo( mx, my, bx, by );
+			} else {
+				var q1x = ax + ( mx - ax ) * g, q1y = ay + ( my - ay ) * g;
+				var q2x = q1x + ( ( mx + ( bx - mx ) * g ) - q1x ) * g;
+				var q2y = q1y + ( ( my + ( by - my ) * g ) - q1y ) * g;
+				ctx.quadraticCurveTo( q1x, q1y, q2x, q2y );
+			}
+			ctx.stroke();
 		}
 
-		function dibujar( crecimiento ) {
+		function dibujar( edad ) {
 			ctx.clearRect( 0, 0, W, H );
-			var alfa = Math.min( 1, crecimiento );
-			// Dendritas: de los nodos cercanos al borde de la flor.
-			ctx.lineWidth = 0.7;
-			for ( var i = 0; i < nodos.length; i++ ) {
-				var p = nodos[ i ];
+			var i, p, vis;
+			// Dendritas: del borde de la flor a algunos nodos cercanos.
+			for ( i = 0; i < nodos.length; i++ ) {
+				p = nodos[ i ];
 				if ( ! p.dendrita ) {
+					continue;
+				}
+				vis = suave( ( edad - p.aparece ) / 800 );
+				if ( vis <= 0 ) {
 					continue;
 				}
 				var dx = p.x - cx, dy = p.y - cy;
 				var dist = Math.sqrt( dx * dx + dy * dy ) || 1;
-				var bx = cx + dx / dist * R * 0.82, by = cy + dy / dist * R * 0.82;
-				ctx.strokeStyle = 'rgba(29,95,148,' + ( ( 0.12 + p.act * 0.45 ) * alfa ).toFixed( 3 ) + ')';
-				ctx.beginPath();
-				ctx.moveTo( bx, by );
-				ctx.lineTo( p.x, p.y );
-				ctx.stroke();
+				ctx.strokeStyle = 'rgba(29,95,148,' + ( ( 0.1 + p.act * 0.5 ) * vis ).toFixed( 3 ) + ')';
+				ctx.lineWidth = 0.6 + p.act * 0.6;
+				curva( cx + dx / dist * R * 0.82, cy + dy / dist * R * 0.82, p.x, p.y, p.curva, vis );
 			}
-			// Aristas: más visibles donde hay actividad (atención).
-			for ( var k = 0; k < aristas.length; k++ ) {
-				var a = nodos[ aristas[ k ][ 0 ] ], b = nodos[ aristas[ k ][ 1 ] ];
-				var act = ( a.act + b.act ) / 2;
-				ctx.strokeStyle = act > 0.02 ?
-					'rgba(15,107,107,' + ( ( 0.18 + act * 0.7 ) * alfa ).toFixed( 3 ) + ')' :
-					'rgba(29,95,148,' + ( 0.16 * alfa ).toFixed( 3 ) + ')';
-				ctx.lineWidth = 0.6 + act * 0.8;
-				ctx.beginPath();
-				ctx.moveTo( a.x, a.y );
-				ctx.lineTo( b.x, b.y );
-				ctx.stroke();
+			// Uniones: se dibujan de un nodo al otro cuando ambos aparecieron.
+			for ( i = 0; i < aristas.length; i++ ) {
+				var e = aristas[ i ], a = nodos[ e.a ], b = nodos[ e.b ];
+				var g = suave( ( edad - Math.max( a.aparece, b.aparece ) ) / 700 );
+				if ( g <= 0 ) {
+					continue;
+				}
+				var act = Math.max( a.act, b.act ) * 0.8 + Math.min( a.act, b.act ) * 0.2;
+				ctx.strokeStyle = act > 0.03 ?
+					'rgba(15,107,107,' + ( 0.14 + act * 0.6 ).toFixed( 3 ) + ')' :
+					'rgba(29,95,148,' + ( 0.22 * e.alfa ).toFixed( 3 ) + ')';
+				ctx.lineWidth = 0.55 + act * 0.8;
+				curva( a.x, a.y, b.x, b.y, e.curva, g );
 			}
 			// Nodos.
-			for ( var n = 0; n < nodos.length; n++ ) {
-				var q = nodos[ n ];
-				ctx.fillStyle = q.act > 0.02 ?
-					'rgba(15,107,107,' + ( ( 0.55 + q.act * 0.45 ) * alfa ).toFixed( 3 ) + ')' :
-					'rgba(29,95,148,' + ( 0.5 * alfa ).toFixed( 3 ) + ')';
+			for ( i = 0; i < nodos.length; i++ ) {
+				p = nodos[ i ];
+				vis = suave( ( edad - p.aparece ) / 600 );
+				if ( vis <= 0 ) {
+					continue;
+				}
+				ctx.fillStyle = p.act > 0.03 ?
+					'rgba(15,107,107,' + ( ( 0.55 + p.act * 0.45 ) * vis ).toFixed( 3 ) + ')' :
+					'rgba(29,95,148,' + ( p.brillo * vis ).toFixed( 3 ) + ')';
 				ctx.beginPath();
-				ctx.arc( q.x, q.y, q.r + q.act * 1.6, 0, Math.PI * 2 );
+				ctx.arc( p.x, p.y, p.r + p.act * 1.8, 0, Math.PI * 2 );
 				ctx.fill();
-				if ( q.act > 0.12 ) {
+				if ( p.act > 0.12 ) {
 					// Halo de activación: la "atención" que deja el contacto.
-					ctx.strokeStyle = 'rgba(15,107,107,' + ( q.act * 0.35 * alfa ).toFixed( 3 ) + ')';
+					ctx.strokeStyle = 'rgba(15,107,107,' + ( p.act * 0.35 ).toFixed( 3 ) + ')';
 					ctx.lineWidth = 0.8;
 					ctx.beginPath();
-					ctx.arc( q.x, q.y, q.r + 3 + q.act * 7, 0, Math.PI * 2 );
+					ctx.arc( p.x, p.y, p.r + 3 + p.act * 7, 0, Math.PI * 2 );
 					ctx.stroke();
 				}
 			}
@@ -235,40 +294,34 @@
 			var dt = ultimo ? Math.min( 48, ahora - ultimo ) : 16;
 			ultimo = ahora;
 			var edad = ahora - t0;
-			// Regulador: si los cuadros son lentos de forma sostenida (no durante
-			// la carga), la red se detiene en reposo; a la segunda vez, queda quieta.
+			// Regulador: cuadros lentos sostenidos (no durante la carga) → reposo;
+			// a la segunda vez, la red queda quieta.
 			if ( edad > 1200 && dt > 34 ) {
-				lentos++;
-				if ( lentos > 45 ) {
+				if ( ++lentos > 45 ) {
 					lentos = 0;
-					avisos++;
-					colocarEnReposo();
-					dibujar( 1 );
-					corriendo = false;
-					if ( avisos > 1 ) {
+					if ( ++avisos > 1 ) {
 						pocosRecursos = true;
 					}
+					detener();
 					return;
 				}
 			} else {
 				lentos = Math.max( 0, lentos - 2 );
 			}
-			var despertando = edad < DESPERTAR;
-			var k = despertando ? 0.012 : 0.02; // resorte hacia el reposo
-			var amort = 0.86;
-			var radio = W < 700 ? 90 : 130;
-			var energia = 0;
-			var i, p;
-
+			// Respiración: amplitud que se apaga sola (al cargar y tras cada interacción).
+			var respira = Math.max( 1 - edad / DESPERTAR, 1 - ( ahora - vigilia ) / RESPIRO, 0 );
+			respira = respira * respira;
+			var radio = movil ? 90 : 140;
+			var radioOnda = onda ? ( ahora - onda.t0 ) / 1500 * onda.max : -1;
+			if ( onda && radioOnda > onda.max + 40 ) {
+				onda = null;
+			}
+			var energia = 0, i, p;
 			for ( i = 0; i < nodos.length; i++ ) {
 				p = nodos[ i ];
-				var fx = ( p.rx - p.x ) * k, fy = ( p.ry - p.y ) * k;
-				// Respiración que se apaga sola durante el despertar.
-				if ( despertando ) {
-					var aten = 1 - edad / DESPERTAR;
-					fx += Math.cos( ahora / 900 + p.fase ) * 0.05 * aten;
-					fy += Math.sin( ahora / 1100 + p.fase ) * 0.05 * aten;
-				}
+				var ox = Math.cos( ahora / 1000 * p.vel + p.fase ) * p.amp * respira;
+				var oy = Math.sin( ahora / 1300 * p.vel + p.fase * 1.3 ) * p.amp * respira;
+				var fx = ( p.rx + ox - p.x ) * 0.02, fy = ( p.ry + oy - p.y ) * 0.02;
 				if ( puntero.activo ) {
 					var dx = p.x - puntero.x, dy = p.y - puntero.y;
 					var d2 = dx * dx + dy * dy;
@@ -280,31 +333,35 @@
 						p.act = Math.min( 1, p.act + fuerza * 0.2 );
 					}
 				}
-				p.vx = ( p.vx + fx ) * amort;
-				p.vy = ( p.vy + fy ) * amort;
+				if ( radioOnda > 0 && Math.abs( p.dist - radioOnda ) < 26 ) {
+					// La onda de la flor: empuja apenas hacia afuera y enciende.
+					var ux = ( p.x - cx ) / ( p.dist || 1 ), uy = ( p.y - cy ) / ( p.dist || 1 );
+					fx += ux * 0.5;
+					fy += uy * 0.5;
+					p.act = Math.max( p.act, 0.85 * ( 1 - radioOnda / ( onda.max + 40 ) ) + 0.15 );
+				}
+				p.vx = ( p.vx + fx ) * 0.86;
+				p.vy = ( p.vy + fy ) * 0.86;
 				p.x += p.vx;
 				p.y += p.vy;
-				energia += Math.abs( p.vx ) + Math.abs( p.vy ) + Math.abs( p.rx - p.x ) * 0.02 + Math.abs( p.ry - p.y ) * 0.02;
+				energia += Math.abs( p.vx ) + Math.abs( p.vy );
 			}
-			// Conexión: la activación se contagia a los vecinos y se apaga despacio (memoria).
+			// Conexión: la activación se contagia (0,45 por salto) y se olvida despacio.
 			for ( i = 0; i < nodos.length; i++ ) {
 				p = nodos[ i ];
 				var vecina = 0;
 				for ( var v = 0; v < p.vec.length; v++ ) {
 					vecina = Math.max( vecina, nodos[ p.vec[ v ] ].act );
 				}
-				// Contagio atenuado (0,45 por salto) y olvido gradual: siempre converge a 0.
 				p.act = Math.max( p.act * 0.965, vecina * 0.45 );
 				if ( p.act < 0.004 ) {
 					p.act = 0;
 				}
 				energia += p.act;
 			}
-			dibujar( despertando ? edad / 900 : 1 );
-			if ( ! despertando && ! puntero.activo && energia < 0.4 ) {
-				colocarEnReposo();
-				dibujar( 1 );
-				corriendo = false;
+			dibujar( edad );
+			if ( respira === 0 && ! puntero.activo && ! onda && energia < 0.4 ) {
+				detener();
 				return;
 			}
 			raf( paso );
@@ -319,25 +376,44 @@
 			raf( paso );
 		}
 
-		function estatico() {
+		function detener() {
 			corriendo = false;
-			colocarEnReposo();
-			dibujar( 1 );
+			enReposo();
+			dibujar( 1e9 );
+		}
+
+		function tocar( x, y ) {
+			puntero.x = x;
+			puntero.y = y;
+			puntero.activo = true;
+			vigilia = ahoraMs();
+			despertar();
+		}
+
+		function emitirOnda() {
+			if ( quieto() || pocosRecursos ) {
+				return;
+			}
+			var t = ahoraMs();
+			if ( onda && t - onda.t0 < 1200 ) {
+				return;
+			}
+			onda = { t0: t, max: Math.max( W - cx, cx, H ) };
+			vigilia = t;
+			despertar();
 		}
 
 		function posicion( ev ) {
 			var r = seccion.getBoundingClientRect();
-			puntero.x = ev.clientX - r.left;
-			puntero.y = ev.clientY - r.top;
+			return { x: ev.clientX - r.left, y: ev.clientY - r.top };
 		}
 
 		medir();
 		construir();
 		if ( quieto() || pocosRecursos ) {
-			estatico();
+			detener();
 		} else {
-			colocarEnSemilla();
-			t0 = window.performance ? performance.now() : Date.now();
+			t0 = ahoraMs();
 			despertar();
 		}
 		raf( function () {
@@ -345,16 +421,14 @@
 		} );
 
 		seccion.addEventListener( 'pointermove', function ( ev ) {
-			posicion( ev );
-			puntero.activo = true;
-			despertar();
+			var q = posicion( ev );
+			tocar( q.x, q.y );
 		}, { passive: true } );
 		seccion.addEventListener( 'pointerdown', function ( ev ) {
-			// En pantallas táctiles, un toque es una onda breve.
-			posicion( ev );
-			puntero.activo = true;
-			despertar();
+			var q = posicion( ev );
+			tocar( q.x, q.y );
 			if ( ev.pointerType !== 'mouse' ) {
+				// En pantallas táctiles, un toque es una perturbación breve.
 				setTimeout( function () {
 					puntero.activo = false;
 				}, 260 );
@@ -363,14 +437,20 @@
 		seccion.addEventListener( 'pointerleave', function () {
 			puntero.activo = false;
 		} );
+		// La flor: al pasar (o tocarla) gira despacio y emite una onda por la red.
+		flor.addEventListener( 'pointerenter', emitirOnda );
+		flor.addEventListener( 'pointerdown', function () {
+			emitirOnda();
+			seccion.classList.add( 'is-flor-activa' );
+			setTimeout( function () {
+				seccion.classList.remove( 'is-flor-activa' );
+			}, 1800 );
+		}, { passive: true } );
 		// El foco del teclado también "toca" la red, cerca del elemento enfocado.
 		seccion.addEventListener( 'focusin', function ( ev ) {
 			var r = seccion.getBoundingClientRect();
 			var e = ev.target.getBoundingClientRect();
-			puntero.x = Math.min( W - 10, e.right - r.left + 40 );
-			puntero.y = e.top - r.top + e.height / 2;
-			puntero.activo = true;
-			despertar();
+			tocar( Math.min( W - 10, e.right - r.left + 40 ), e.top - r.top + e.height / 2 );
 			setTimeout( function () {
 				puntero.activo = false;
 			}, 400 );
@@ -379,14 +459,14 @@
 		if ( 'IntersectionObserver' in window ) {
 			new IntersectionObserver( function ( e ) {
 				visible = e[ 0 ].isIntersecting;
-				if ( ! visible ) {
-					corriendo = false;
+				if ( ! visible && corriendo ) {
+					detener();
 				}
 			} ).observe( seccion );
 		}
 		document.addEventListener( 'visibilitychange', function () {
-			if ( document.hidden ) {
-				corriendo = false;
+			if ( document.hidden && corriendo ) {
+				detener();
 			}
 		} );
 		var ancho = W;
@@ -401,10 +481,10 @@
 				ancho = r.width;
 				medir();
 				construir();
-				estatico();
+				detener();
 			}, 200 );
 		} );
-		this.pausar = estatico;
+		this.pausar = detener;
 	}
 
 	/* ------------------------------------------------------------------------
@@ -518,32 +598,225 @@
 	}
 
 	/* ------------------------------------------------------------------------
-	   5. Tarjetas de artículos: inclinación mínima (máx. 1,5°)
+	   5. Línea de tiempo: la línea crece con el scroll (nativo), cada época se
+	   enciende cuando la línea la alcanza y, en escritorio, una figura hecha
+	   de los mismos 40 nodos se transforma: objeto → red → dispositivo →
+	   plataforma → inteligencia. Solo se redibuja cuando cambia el scroll.
 	   ------------------------------------------------------------------------ */
-	function prepararTarjetas() {
-		if ( ! finoHover ) {
+	var N_FORMA = 40;
+
+	function formas() {
+		var F = {}, i, t;
+		function perimetro( pts, n ) {
+			// Reparte n puntos a lo largo de un polígono cerrado.
+			var largos = [], total = 0, out = [];
+			for ( i = 0; i < pts.length; i++ ) {
+				var a = pts[ i ], b = pts[ ( i + 1 ) % pts.length ];
+				var l = Math.hypot( b[ 0 ] - a[ 0 ], b[ 1 ] - a[ 1 ] );
+				largos.push( l );
+				total += l;
+			}
+			for ( var k = 0; k < n; k++ ) {
+				var d = total * k / n, s = 0;
+				for ( i = 0; i < pts.length; i++ ) {
+					if ( d <= s + largos[ i ] ) {
+						var f = ( d - s ) / largos[ i ], p = pts[ i ], q = pts[ ( i + 1 ) % pts.length ];
+						out.push( [ p[ 0 ] + ( q[ 0 ] - p[ 0 ] ) * f, p[ 1 ] + ( q[ 1 ] - p[ 1 ] ) * f ] );
+						break;
+					}
+					s += largos[ i ];
+				}
+			}
+			return out;
+		}
+		function linea( a, b, n ) {
+			var out = [];
+			for ( var k = 0; k < n; k++ ) {
+				t = n === 1 ? 0.5 : k / ( n - 1 );
+				out.push( [ a[ 0 ] + ( b[ 0 ] - a[ 0 ] ) * t, a[ 1 ] + ( b[ 1 ] - a[ 1 ] ) * t ] );
+			}
+			return out;
+		}
+		var rnd = ( function () {
+			var s = 1975;
+			return function () {
+				s = ( s * 16807 ) % 2147483647;
+				return ( s - 1 ) / 2147483646;
+			};
+		}() );
+
+		// Objeto: la computadora personal (pantalla, pie y base).
+		F.objeto = { u: 0.25, p: perimetro( [ [ -0.8, -0.7 ], [ 0.8, -0.7 ], [ 0.8, 0.25 ], [ -0.8, 0.25 ] ], 26 )
+			.concat( linea( [ 0, 0.32 ], [ 0, 0.5 ], 3 ) ).concat( linea( [ -0.5, 0.6 ], [ 0.5, 0.6 ], 11 ) ) };
+		// Red: un globo de nodos conectados.
+		var red = perimetro( [ [ 0, -0.85 ], [ 0.6, -0.6 ], [ 0.85, 0 ], [ 0.6, 0.6 ], [ 0, 0.85 ], [ -0.6, 0.6 ], [ -0.85, 0 ], [ -0.6, -0.6 ] ], 16 );
+		for ( i = 0; i < 24; i++ ) {
+			var ang = rnd() * Math.PI * 2, rr = Math.sqrt( rnd() ) * 0.72;
+			red.push( [ Math.cos( ang ) * rr, Math.sin( ang ) * rr ] );
+		}
+		F.red = { u: 0.42, p: red };
+		// Dispositivo: el teléfono (contorno, parlante y botón).
+		F.dispositivo = { u: 0.2, p: perimetro( [ [ -0.42, -0.88 ], [ 0.42, -0.88 ], [ 0.42, 0.88 ], [ -0.42, 0.88 ] ], 34 )
+			.concat( linea( [ -0.1, -0.74 ], [ 0.1, -0.74 ], 3 ) ).concat( [ [ -0.05, 0.72 ], [ 0.05, 0.72 ], [ 0, 0.66 ] ] ) };
+		// Plataforma: capas apiladas y nodos que flotan encima.
+		var capas = [];
+		[ -0.2, 0.2, 0.6 ].forEach( function ( y ) {
+			capas = capas.concat( perimetro( [ [ -0.8, y ], [ 0, y - 0.3 ], [ 0.8, y ], [ 0, y + 0.3 ] ], 12 ) );
+		} );
+		F.plataforma = { u: 0.33, p: capas.concat( [ [ -0.45, -0.8 ], [ 0.45, -0.8 ], [ 0, -0.95 ], [ 0.12, -0.68 ] ] ) };
+		// Inteligencia: un tejido orgánico (filotaxis con irregularidad).
+		var ia = [];
+		for ( i = 0; i < N_FORMA; i++ ) {
+			var r = 0.88 * Math.sqrt( ( i + 0.5 ) / N_FORMA ), a2 = i * 2.39996;
+			ia.push( [ Math.cos( a2 ) * r * 1.05 + ( rnd() - 0.5 ) * 0.08, Math.sin( a2 ) * r * 0.9 + ( rnd() - 0.5 ) * 0.08 ] );
+		}
+		F.inteligencia = { u: 0.36, p: ia };
+
+		// Mismo orden angular en todas: la transformación gira, no se desarma.
+		Object.keys( F ).forEach( function ( k ) {
+			F[ k ].p.sort( function ( a, b ) { return Math.atan2( a[ 1 ], a[ 0 ] ) - Math.atan2( b[ 1 ], b[ 0 ] ); } );
+		} );
+		return F;
+	}
+
+	function prepararTiempo() {
+		var seccion = document.querySelector( '.calma-tiempo' );
+		if ( ! seccion ) {
 			return;
 		}
-		document.querySelectorAll( '.loop-entry' ).forEach( function ( t ) {
-			var pendiente = null;
-			t.addEventListener( 'pointermove', function ( ev ) {
-				if ( quieto() || pendiente ) {
-					return;
+		var lista = seccion.querySelector( '.calma-tiempo__lista' );
+		var epocas = Array.prototype.slice.call( seccion.querySelectorAll( '.calma-tiempo__epoca' ) );
+		var figura = seccion.querySelector( '.calma-tiempo__figura' );
+		var rotulo = seccion.querySelector( '.calma-tiempo__rotulo' );
+		if ( ! lista || ! epocas.length ) {
+			return;
+		}
+		var F = formas();
+		var claves = epocas.map( function ( e ) { return e.getAttribute( 'data-forma' ); } );
+		var canvas = null, ctx = null, lado = 0, DPR = 1, ultimoF = -1, pendiente = false;
+
+		if ( figura && window.HTMLCanvasElement ) {
+			figura.hidden = false;
+			canvas = document.createElement( 'canvas' );
+			figura.querySelector( '.calma-tiempo__lienzo' ).appendChild( canvas );
+			ctx = canvas.getContext( '2d' );
+		}
+
+		function medirLienzo() {
+			if ( ! canvas ) {
+				return;
+			}
+			lado = canvas.parentNode.getBoundingClientRect().width;
+			DPR = Math.min( window.devicePixelRatio || 1, 1.5 );
+			canvas.width = Math.round( lado * DPR );
+			canvas.height = Math.round( lado * DPR );
+			ctx.setTransform( DPR, 0, 0, DPR, 0, 0 );
+			ultimoF = -1;
+		}
+
+		function dibujarForma( f ) {
+			if ( ! ctx || ! lado ) {
+				return;
+			}
+			var i0 = Math.max( 0, Math.min( claves.length - 1, Math.floor( f ) ) );
+			var i1 = Math.min( claves.length - 1, i0 + 1 );
+			var t = f - i0;
+			t = t * t * ( 3 - 2 * t );
+			var A = F[ claves[ i0 ] ], B = F[ claves[ i1 ] ];
+			var umbral = A.u + ( B.u - A.u ) * t;
+			var escala = lado * 0.4, c = lado / 2;
+			var pts = [];
+			for ( var k = 0; k < N_FORMA; k++ ) {
+				var a = A.p[ k ], b = B.p[ k ];
+				// Un leve desvío durante el cambio: la forma "piensa" antes de llegar.
+				var desvio = Math.sin( t * Math.PI ) * 0.12 * Math.sin( k * 1.7 );
+				pts.push( [ ( a[ 0 ] + ( b[ 0 ] - a[ 0 ] ) * t + desvio ), ( a[ 1 ] + ( b[ 1 ] - a[ 1 ] ) * t - desvio * 0.6 ) ] );
+			}
+			// Cerca de una época la figura se "enciende" (verde azulado).
+			var llegada = 1 - Math.sin( t * Math.PI );
+			ctx.clearRect( 0, 0, lado, lado );
+			ctx.lineWidth = 1;
+			for ( var i = 0; i < N_FORMA; i++ ) {
+				for ( var j = i + 1; j < N_FORMA; j++ ) {
+					var dx = pts[ i ][ 0 ] - pts[ j ][ 0 ], dy = pts[ i ][ 1 ] - pts[ j ][ 1 ];
+					var d = Math.sqrt( dx * dx + dy * dy );
+					if ( d < umbral ) {
+						var al = ( 1 - d / umbral ) * 0.8 + 0.12;
+						ctx.strokeStyle = 'rgba(' + ( llegada > 0.6 ? '15,107,107,' : '29,95,148,' ) + al.toFixed( 3 ) + ')';
+						ctx.beginPath();
+						ctx.moveTo( c + pts[ i ][ 0 ] * escala, c + pts[ i ][ 1 ] * escala );
+						ctx.lineTo( c + pts[ j ][ 0 ] * escala, c + pts[ j ][ 1 ] * escala );
+						ctx.stroke();
+					}
 				}
-				pendiente = raf( function () {
-					pendiente = null;
-					var r = t.getBoundingClientRect();
-					var x = ( ev.clientX - r.left ) / r.width - 0.5;
-					var y = ( ev.clientY - r.top ) / r.height - 0.5;
-					t.style.setProperty( '--calma-tx', ( x * 3 ).toFixed( 2 ) );
-					t.style.setProperty( '--calma-ty', ( y * -3 ).toFixed( 2 ) );
-				} );
+			}
+			ctx.fillStyle = llegada > 0.6 ? '#0f6b6b' : '#1d5f94';
+			for ( var n = 0; n < N_FORMA; n++ ) {
+				ctx.beginPath();
+				ctx.arc( c + pts[ n ][ 0 ] * escala, c + pts[ n ][ 1 ] * escala, 2.4, 0, Math.PI * 2 );
+				ctx.fill();
+			}
+			if ( rotulo ) {
+				rotulo.textContent = 'Fig. ' + ( '0' + ( Math.round( f ) + 1 ) ).slice( -2 ) + ' — ' + epocas[ Math.round( f ) ].getAttribute( 'data-concepto' );
+			}
+		}
+
+		function actualizar() {
+			pendiente = false;
+			var r = lista.getBoundingClientRect();
+			var alto = Math.max( 1, r.height - 40 );
+			var ref = window.innerHeight * 0.62;
+			var p = Math.max( 0, Math.min( 1, ( ref - r.top - 20 ) / alto ) );
+			var yLinea = p * alto;
+			var vivo = ! quieto();
+			seccion.classList.toggle( 'is-vivo', vivo );
+			seccion.style.setProperty( '--calma-tiempo-p', vivo ? p.toFixed( 4 ) : 1 );
+			var ys = epocas.map( function ( e ) { return e.offsetTop; } );
+			var actual = -1;
+			epocas.forEach( function ( e, i ) {
+				var encendida = ys[ i ] <= yLinea + 1;
+				e.classList.toggle( 'is-encendida', encendida );
+				if ( encendida ) {
+					actual = i;
+				}
 			} );
-			t.addEventListener( 'pointerleave', function () {
-				t.style.setProperty( '--calma-tx', 0 );
-				t.style.setProperty( '--calma-ty', 0 );
+			epocas.forEach( function ( e, i ) {
+				e.classList.toggle( 'is-actual', vivo && i === actual );
 			} );
+			// Posición continua de la figura entre épocas.
+			var f = 0;
+			for ( var i = 0; i < ys.length - 1; i++ ) {
+				if ( yLinea >= ys[ i ] ) {
+					f = i + Math.min( 1, ( yLinea - ys[ i ] ) / ( ys[ i + 1 ] - ys[ i ] ) );
+				}
+			}
+			if ( yLinea >= ys[ ys.length - 1 ] ) {
+				f = ys.length - 1;
+			}
+			if ( ! vivo ) {
+				f = Math.max( 0, actual ); // sin movimiento: cambios de estado, sin transición
+			}
+			if ( Math.abs( f - ultimoF ) > 0.002 ) {
+				ultimoF = f;
+				dibujarForma( f );
+			}
+		}
+
+		function pedir() {
+			if ( ! pendiente ) {
+				pendiente = true;
+				raf( actualizar );
+			}
+		}
+
+		medirLienzo();
+		actualizar();
+		window.addEventListener( 'scroll', pedir, { passive: true } );
+		window.addEventListener( 'resize', function () {
+			medirLienzo();
+			pedir();
 		} );
+		raiz.addEventListener( 'calma-quieto', pedir );
 	}
 
 	/* ------------------------------------------------------------------------
@@ -584,6 +857,7 @@
 			raiz.classList.toggle( 'calma-quieto', activo );
 			b.setAttribute( 'aria-pressed', activo ? 'true' : 'false' );
 			guardarQuieto( activo );
+			raiz.dispatchEvent( new Event( 'calma-quieto' ) );
 			if ( activo && red && red.pausar ) {
 				red.pausar();
 			}
@@ -604,7 +878,7 @@
 		prepararHallazgos();
 		prepararLaminas();
 		prepararFiguras();
-		prepararTarjetas();
+		prepararTiempo();
 
 		var hero = document.querySelector( '.calma-hero' );
 		var red = null;

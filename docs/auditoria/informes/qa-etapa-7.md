@@ -1,4 +1,10 @@
-# QA · Etapa 7 (organismo digital: fase 1 + tarjetas)
+# QA · Etapa 7 (organismo digital: fase 1, tarjetas y línea de tiempo)
+
+Incluye la segunda ronda de ajustes:
+- la red del hero, más suelta y en todo el sector de la flor, con la onda al pasar sobre ella;
+- la bienvenida reorganizada;
+- las tarjetas planas y más chicas;
+- la línea de tiempo que crece con el scroll.
 
 Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producción. Fecha: 2026-09-27.
 
@@ -17,20 +23,27 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
   - ningún elemento anima ni tiene transiciones de más de 0,3 s;
   - la red se dibuja quieta en su equilibrio y cada organismo muestra su estado final.
 - **"Reducir movimiento"**: `aria-pressed`, se aplica al instante (pausa la red) y se recuerda al recargar.
-- **WCAG 2.2.2**: la red se detiene sola (unos 3 s de crecimiento y respiración, después quieta) y cada organismo dura menos de 5 s. No hay bucles.
+- **WCAG 2.2.2**: la red se detiene sola (≈ 4,2 s de aparición y respiración, después quieta) y cada organismo dura menos de 5 s. La onda de la flor dura 1,5 s y solo sale al pasar sobre ella. No hay bucles.
+- **Línea de tiempo**:
+  - el movimiento sigue al scroll nativo (no lo controla) y solo se redibuja cuando el scroll cambia;
+  - las épocas "en reposo" usan tinta suave (7,6:1), así que se leen igual antes de encenderse;
+  - la figura es decorativa (`aria-hidden`) y el texto de cada época es el original, con H3 por época;
+  - con movimiento reducido o "Reducir movimiento", todo queda encendido, la línea completa y la figura sin transiciones.
 - **Test de consumo digital**: el recorrido de la vieja versión en `a11y-qa-etapa.js` ya no aplica (la Etapa 2 cambió sus ids). Ahora se salta y queda anotado; el recorrido vigente es `test-consumo-digital-qa.js`. El test no cambió en esta etapa.
 
 ## Móvil (mobile-qa)
 - 360, 390 y 430 px en Inicio y Blog:
   - sin desborde ni texto recortado;
   - objetivos táctiles ≥ 44 px (el único aviso, «Infancias «Figitales»», es un enlace dentro del texto y ya aparecía desde la Etapa 2).
-- La red usa 46 nodos en celular (110 en escritorio) y responde al toque sin bloquear el scroll: los eventos son pasivos y no hay `preventDefault`.
+- La red usa hasta 64 nodos en celular (150 en escritorio) y responde al toque sin bloquear el scroll: los eventos son pasivos y no hay `preventDefault`.
 - Los seis estados van en una columna compacta y se animan al entrar en pantalla o al tocarlos.
+- Línea de tiempo en celular: sin la figura grande; la línea crece y cada época se enciende con su ícono. Reflow a 320 px sin desborde.
+- Los títulos de las tarjetas que se marcan como objetivos chicos a 430 px son enlaces dentro del texto (excepción de WCAG 2.5.8).
 
 ## Rendimiento
 - **CLS 0** en Inicio y Blog: el canvas es absoluto, las figuras tienen tamaño declarado y el lugar ya está reservado.
 - **LCP**: sigue siendo el titular o la imagen. La red arranca en `requestIdleCallback`, después del contenido principal. La medición de laboratorio (`rendimiento-etapa-7.json`) sirve solo como comparación cualitativa (ver la nota del script).
-- **Peso nuevo**: `calma-organismo.js` 6,4 KB gzip + `calma-etapa7.css` 5,9 KB gzip. Reemplazan a los archivos de la Etapa 6.
+- **Peso nuevo**: `calma-organismo.js` 9,5 KB gzip + `calma-etapa7.css` 7,5 KB gzip (dentro del presupuesto de 25 KB de la dirección de arte). Reemplazan a los archivos de la Etapa 6.
 - **Regulador**: con cuadros lentos sostenidos, la red se detiene en reposo; a la segunda vez queda quieta. Con ahorro de datos o memoria mínima, empieza quieta. El canvas se pausa fuera de pantalla y con la pestaña oculta. DPR máximo 1,5.
 
 ## Capturas

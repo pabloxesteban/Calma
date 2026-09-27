@@ -31,7 +31,7 @@
     "h": 48
    }
   ],
-  "height": 12300
+  "height": 12042
  },
  {
   "w": 360,
@@ -55,7 +55,7 @@
     "h": 48
    }
   ],
-  "height": 8879
+  "height": 7747
  },
  {
   "w": 390,
@@ -89,7 +89,7 @@
     "h": 48
    }
   ],
-  "height": 11954
+  "height": 11926
  },
  {
   "w": 390,
@@ -113,7 +113,7 @@
     "h": 48
    }
   ],
-  "height": 8702
+  "height": 7838
  },
  {
   "w": 430,
@@ -147,7 +147,7 @@
     "h": 48
    }
   ],
-  "height": 11963
+  "height": 12008
  },
  {
   "w": 430,
@@ -155,8 +155,9 @@
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
-  "smallTargets": 1,
+  "smallTargets": 2,
   "smallSample": [
+   "El estigma de la estructura: «",
    "Infancias «Figitales»"
   ],
   "minGutter": 22,
@@ -171,25 +172,20 @@
     "h": 48
    }
   ],
-  "height": 8727
+  "height": 8023
  },
  {
   "w": 1280,
   "page": "inicio",
   "overflowX": 0,
-  "clipped": [
-   "IMG:Woman performing an athletic pose on a l",
-   "IMG:Colorful choice between candy and vegeta",
-   "IMG:Autoría oculta.",
-   "IMG:Infancias Figitales."
-  ],
+  "clipped": [],
   "hiddenText": 12,
   "smallTargets": 2,
   "smallSample": [
    "Menú hijo de Ciberpsicología",
    "Ver el formulario de búsqueda"
   ],
-  "minGutter": 0,
+  "minGutter": 60,
   "h1": [
    "Entiende cómo te afecta la tecnología y decide cóm"
   ],
@@ -219,7 +215,7 @@
     "h": 48
    }
   ],
-  "height": 6067
+  "height": 6529
  },
  {
   "w": 1280,
@@ -251,6 +247,6 @@
     "h": 48
    }
   ],
-  "height": 4091
+  "height": 3604
  }
 ]

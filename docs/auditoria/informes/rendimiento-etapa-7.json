@@ -1,19 +1,19 @@
 {
  "inicio": {
-  "lcp": 460,
+  "lcp": 452,
   "cls": 0,
-  "kb": 882,
-  "reqs": 35,
+  "kb": 965,
+  "reqs": 37,
   "fonts": 3,
   "gfonts": 0,
   "lcpEl": "IMG.",
   "title": "Código Calma – Ciberpsicología y bienestar digital."
  },
  "blog": {
-  "lcp": 404,
+  "lcp": 480,
   "cls": 0,
-  "kb": 783,
-  "reqs": 28,
+  "kb": 818,
+  "reqs": 29,
   "fonts": 2,
   "gfonts": 0,
   "lcpEl": "IMG.attachment-medium_large size-medium_larg",

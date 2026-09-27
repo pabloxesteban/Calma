@@ -4,8 +4,9 @@
 
   bloques/inicio-momentos.html  → reemplaza la fila "¿Cómo son tus momentos con
                                   la tecnología?" y sus 6 tarjetas giratorias.
-  bloques/inicio-cifras.html    → reemplaza las dos cajas de cifras (+74 %,
-                                  +6 mil millones) de la fila de bienvenida.
+  bloques/inicio-bienvenida.html → reemplaza la fila "Te damos la bienvenida"
+                                  (texto, ilustración y cifras con visualización).
+  bloques/inicio-linea-de-tiempo.html → reemplaza la línea de tiempo de la Etapa 1.
 
 Texto: el mismo que hoy está publicado en el Inicio (no se cambian hallazgos,
 fuentes ni cifras). Estilos: plugin codigo-calma, calma-etapa7.css. El
@@ -221,10 +222,7 @@ def red_conexiones():
 
 
 def cifras():
-    return (cabecera('Inicio · cifras de la bienvenida',
-                     'Reemplaza las dos cajas de información (+74 % y +6 mil millones) de la columna derecha de la fila "Te damos la bienvenida".\n'
-                     '     Bloque "HTML personalizado". Falta la fuente de ambas cifras (docs/placeholders.md).')
-            + f'''<div class="calma-cifras">
+    return f'''<div class="calma-cifras">
 <figure class="calma-cifra">
 {rejilla_74()}
 <figcaption><strong class="calma-cifra__num">+74 %</strong> de la población global está interactuando con las TIC (Tecnologías de la Información y la Comunicación)</figcaption>
@@ -234,10 +232,79 @@ def cifras():
 <figcaption><strong class="calma-cifra__num">+6 mil millones</strong> de personas acceden a Internet</figcaption>
 </figure>
 <p class="calma-cifras__fuente"><span class="calma-label">Fuente</span> {ph('fuente del 74 % y de los 6 mil millones (p. ej. UIT)')}</p>
+</div>'''
+
+
+ILUSTRACION = 'https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr'
+
+
+def bienvenida():
+    # Texto y cifras en una columna, ilustración al lado: sin huecos.
+    return (cabecera('Inicio · bienvenida y cifras',
+                     'Reemplaza la fila completa "Te damos la bienvenida a Código Calma" (título, texto, ilustración y las dos cajas de cifras).\n'
+                     '     Bloque "HTML personalizado" a ancho completo. Texto e ilustración: los mismos que hoy. Falta la fuente de las cifras (docs/placeholders.md).')
+            + f'''<section class="calma-bienvenida" aria-labelledby="bienvenida-titulo">
+<div class="calma-bienvenida__texto">
+<p class="calma-eyebrow">Ciberpsicología · para todos los días</p>
+<h2 id="bienvenida-titulo">Te damos la bienvenida a <em>Código Calma</em></h2>
+<p class="calma-bienvenida__lead">Nuestras decisiones digitales importan. Desde la <strong>ciberpsicología</strong>, te acercamos investigaciones, artículos y herramientas explicadas de forma clara y simple para ayudarte a vivir entre dispositivos en una relación más consciente.</p>
+{cifras()}
 </div>
+<figure class="calma-bienvenida__ilustracion"><img loading="lazy" decoding="async" width="864" height="1219" src="{ILUSTRACION}-726x1024.png" srcset="{ILUSTRACION}-213x300.png 213w, {ILUSTRACION}-726x1024.png 726w, {ILUSTRACION}.png 864w" sizes="(min-width: 900px) 380px, 70vw" alt=""></figure>
+</section>
+''')
+
+
+# --------------------------------------------------------------------------
+# Línea de tiempo: una línea que crece con el scroll, épocas que se encienden
+# y una figura que se transforma (objeto → red → dispositivo → plataforma →
+# inteligencia). Texto original de la Etapa 1.
+# --------------------------------------------------------------------------
+GLIFOS = {
+    'objeto': '<rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M9 20h6M12 16v4"/>',
+    'red': '<circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.5 2.5 2.5 13.5 0 16M12 4c-2.5 2.5-2.5 13.5 0 16"/>',
+    'dispositivo': '<rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/>',
+    'plataforma': '<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>',
+    'inteligencia': '<circle cx="12" cy="12" r="2.2"/><circle cx="5" cy="7" r="1.6"/><circle cx="19" cy="7" r="1.6"/><circle cx="6" cy="18" r="1.6"/><circle cx="18" cy="17" r="1.6"/><path d="M6.4 7.8l3.8 2.9M17.6 7.8l-3.8 2.9M7.2 17l3.2-3.4M16.6 16.1l-3-2.6"/>',
+}
+
+EPOCAS = [
+    ('objeto', 'Objeto', '1975–1985', 'Computadora personal', 'La computadora personal (PC) entra en hogares y oficinas. Nace la informática doméstica.'),
+    ('red', 'Red', '1990–2000', 'Internet y Web', 'La Web conecta al mundo. Aparecen buscadores, correo y navegación.'),
+    ('dispositivo', 'Dispositivo', '2000–2010', 'Móvil y smartphones', 'La conexión se vuelve portátil, constante y personal.'),
+    ('plataforma', 'Plataforma', '2010–2020', 'Redes sociales y nube', 'Identidad, vínculos y trabajo migran a plataformas digitales.'),
+    ('inteligencia', 'Inteligencia', '2020–hoy', 'IA y hiperconexión', 'La inteligencia artificial transforma mente, emoción y bienestar.'),
+]
+
+
+def linea_tiempo():
+    items = ''
+    for n, (forma, concepto, anios, nombre, desc) in enumerate(EPOCAS, 1):
+        items += f'''<li class="calma-tiempo__epoca" data-forma="{forma}" data-concepto="{concepto}">
+<span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false">{GLIFOS[forma]}</svg></span>
+<p class="calma-tiempo__anios">{anios}<span class="calma-label"> · Fig. {n:02d} — {concepto}</span></p>
+<h3 class="calma-tiempo__nombre">{nombre}</h3>
+<p class="calma-tiempo__desc">{desc}</p>
+</li>
+'''
+    return (cabecera('Inicio · línea de tiempo',
+                     'Reemplaza el bloque "HTML personalizado" de la línea de tiempo de la Etapa 1 (sección calma-timeline). Mismo texto.')
+            + '''<section class="calma-tiempo" aria-labelledby="tiempo-titulo">
+<div class="calma-tiempo__head">
+<p class="calma-eyebrow">Cinco épocas · 1975–hoy</p>
+<h2 id="tiempo-titulo">Línea de tiempo: tecnología y adopción</h2>
+<p class="calma-sub">Una mirada clara y organizada a cómo la tecnología se integró en la vida humana.</p>
+</div>
+<div class="calma-tiempo__cuerpo">
+<div class="calma-tiempo__figura" aria-hidden="true" hidden><div class="calma-tiempo__lienzo"></div><p class="calma-label calma-tiempo__rotulo">Objeto</p></div>
+<ol class="calma-tiempo__lista">
+''' + items + '''</ol>
+</div>
+</section>
 ''')
 
 
 (OUT / 'inicio-momentos.html').write_text(momentos(), encoding='utf-8')
-(OUT / 'inicio-cifras.html').write_text(cifras(), encoding='utf-8')
+(OUT / 'inicio-bienvenida.html').write_text(bienvenida(), encoding='utf-8')
+(OUT / 'inicio-linea-de-tiempo.html').write_text(linea_tiempo(), encoding='utf-8')
 print('bloques:', ', '.join(p.name for p in sorted(OUT.glob('*.html'))))

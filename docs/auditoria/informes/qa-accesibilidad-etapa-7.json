@@ -19,6 +19,11 @@
     "H2:El estigma de la estructura: «X entonces",
     "H2:Infancias «Figitales»",
     "H2:Línea de tiempo: tecnología y adopción",
+    "H3:Computadora personal",
+    "H3:Internet y Web",
+    "H3:Móvil y smartphones",
+    "H3:Redes sociales y nube",
+    "H3:IA y hiperconexión",
     "H2:¿Cómo son tus momentos con la tecnología",
     "H3:Disponibilidad permanente",
     "H3:Validación métrica",
@@ -1245,6 +1250,11 @@
     "H2:El estigma de la estructura: «X entonces",
     "H2:Infancias «Figitales»",
     "H2:Línea de tiempo: tecnología y adopción",
+    "H3:Computadora personal",
+    "H3:Internet y Web",
+    "H3:Móvil y smartphones",
+    "H3:Redes sociales y nube",
+    "H3:IA y hiperconexión",
     "H2:¿Cómo son tus momentos con la tecnología",
     "H3:Disponibilidad permanente",
     "H3:Validación métrica",
@@ -2537,7 +2547,7 @@
   },
   "axeDrawer": [],
   "tabSeq": [
-   "Inicio o=solid rgb(27, 34, 51) inDrawer=true",
+   "Inicio o=solid rgb(27, 44, 67) inDrawer=true",
    "Ciberpsicología o=solid rgb(27, 34, 51) inDrawer=true",
    "Bienestar digital o=solid rgb(27, 34, 51) inDrawer=true",
    "Blog o=solid rgb(27, 34, 51) inDrawer=true",
@@ -2548,7 +2558,7 @@
    "Equipo o=solid rgb(27, 34, 51) inDrawer=true",
    "Contacto o=solid rgb(27, 34, 51) inDrawer=true",
    "Solicitar una consulta o=solid rgb(29, 95, 148) inDrawer=true",
-   "Cerrar menú o=solid rgb(29, 82, 127) inDrawer=true"
+   "Cerrar menú o=solid rgb(28, 70, 108) inDrawer=true"
   ],
   "afterEsc": {
    "exp": "false",

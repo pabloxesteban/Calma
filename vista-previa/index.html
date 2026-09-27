@@ -2117,6 +2117,15 @@ body,
 	z-index: 1;
 	max-width: 340px;
 	filter: drop-shadow(0 18px 30px rgb(29 95 148 / 0.18));
+	transition: transform 1.8s var(--calma-ease-mente), filter 1.8s var(--calma-ease-mente);
+}
+/* Al pasar sobre la flor: gira despacio, respira y emite una onda en la red (JS) */
+@media (hover: hover) and (pointer: fine) {
+	.calma-hero__media img:hover,
+	.calma-hero.is-flor-activa .calma-hero__media img {
+		transform: rotate(14deg) scale(1.045);
+		filter: drop-shadow(0 22px 44px rgb(15 107 107 / 0.32)) saturate(1.08);
+	}
 }
 .calma-red {
 	position: absolute;
@@ -2149,38 +2158,104 @@ body,
 }
 
 /* --------------------------------------------------------------------------
-   6. Cifras de la bienvenida: rejilla de 100 y red de conexiones
+   6. Bienvenida: texto y cifras juntos, ilustración al lado
    -------------------------------------------------------------------------- */
-.calma-cifras {
+.calma-bienvenida {
+	max-width: var(--calma-container);
+	margin: 0 auto;
+	padding: var(--calma-section-y) var(--calma-gutter);
 	display: grid;
-	gap: var(--calma-space-5);
-	padding: var(--calma-space-6);
+	gap: var(--calma-space-10);
+	align-items: center;
+}
+@media (min-width: 900px) {
+	.calma-bienvenida {
+		grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+		gap: var(--calma-space-16);
+	}
+}
+.calma-bienvenida h2 {
+	margin: var(--calma-space-3) 0 var(--calma-space-4) !important;
+	font-size: var(--calma-fs-2xl);
+	line-height: 1.08;
+	letter-spacing: -0.02em;
+	max-width: 16ch;
+}
+.calma-bienvenida h2 em {
+	font-style: italic;
+	font-weight: 500;
+	color: var(--calma-primary);
+}
+.calma-bienvenida__lead {
+	margin: 0 !important;
+	max-width: 56ch;
+	font-size: var(--calma-fs-base);
+	color: var(--calma-ink-soft);
+}
+.calma-bienvenida__ilustracion {
+	margin: 0;
+	justify-self: center;
+	width: min(100%, 380px);
+	aspect-ratio: 1;
+	overflow: hidden;
+	border-radius: 50%;
 	background: #fff;
 	border: 1px solid var(--calma-hairline);
-	border-radius: var(--calma-radius);
+}
+.calma-bienvenida__ilustracion img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: 50% 50%;
+	transition: transform 1.4s var(--calma-ease-mente);
+}
+@media (hover: hover) and (pointer: fine) {
+	.calma-bienvenida__ilustracion:hover img {
+		transform: scale(1.03) translate3d(0, -4px, 0);
+	}
+}
+@media (max-width: 899px) {
+	.calma-bienvenida__ilustracion {
+		order: -1;
+		width: min(64vw, 260px);
+	}
+}
+/* Cifras: dos columnas con una línea fina, sin caja */
+.calma-bienvenida__texto {
+	container-type: inline-size;
 }
 .calma-cifras {
-	container-type: inline-size;
+	display: grid;
+	grid-template-columns: 1fr;
+	margin-top: var(--calma-space-8);
+	border-top: 1px solid var(--calma-hairline-strong);
 }
 .calma-cifra {
 	display: grid;
-	grid-template-columns: 1fr;
-	gap: var(--calma-space-3);
-	align-items: center;
+	grid-template-columns: 64px 1fr;
+	gap: var(--calma-space-4);
+	align-items: start;
 	margin: 0;
+	padding: var(--calma-space-5) 0;
+	border-bottom: 1px solid var(--calma-hairline);
 }
-@container (min-width: 320px) {
-	.calma-cifra {
-		grid-template-columns: 96px 1fr;
-		gap: var(--calma-space-4);
+@container (min-width: 540px) {
+	.calma-cifras {
+		grid-template-columns: 1fr 1fr;
+	}
+	.calma-cifra + .calma-cifra {
+		padding-left: var(--calma-space-6);
+		border-left: 1px solid var(--calma-hairline);
+	}
+	.calma-cifra:first-child {
+		padding-right: var(--calma-space-6);
+	}
+	.calma-cifras__fuente {
+		grid-column: 1 / -1;
 	}
 }
-.calma-cifra + .calma-cifra {
-	padding-top: var(--calma-space-5);
-	border-top: 1px solid var(--calma-hairline);
-}
 .calma-cifra__viz {
-	width: 96px;
+	width: 64px;
 	height: auto;
 	overflow: visible;
 }
@@ -2191,16 +2266,16 @@ body,
 }
 .calma-cifra__num {
 	display: block;
-	margin-bottom: 2px;
+	margin-bottom: 4px;
 	font-family: var(--calma-font-heading);
-	font-size: clamp(1.625rem, 1.3rem + 1vw, 2.125rem);
+	font-size: clamp(1.625rem, 1.3rem + 1vw, 2rem);
 	font-weight: 600;
-	line-height: 1.1;
+	line-height: 1.05;
 	letter-spacing: -0.02em;
 	color: var(--calma-ink);
 }
 .calma-cifras__fuente {
-	margin: 0 !important;
+	margin: var(--calma-space-3) 0 0 !important;
 	font-size: 0.8125rem;
 	color: var(--calma-ink-soft);
 }
@@ -2219,10 +2294,6 @@ body,
 }
 .calma-cifra .o-nodo {
 	fill: var(--calma-primary);
-}
-/* La columna de las cifras (reemplaza las cajas de Kadence) */
-.kadence-column1204_745fe2-dc > .kt-inside-inner-col {
-	display: block !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -2276,7 +2347,7 @@ body,
 	grid-template-columns: 1fr;
 	background: var(--calma-hairline);
 	border: 1px solid var(--calma-hairline);
-	border-radius: var(--calma-radius);
+	border-radius: 0;
 	overflow: hidden;
 }
 @media (max-width: 699px) {
@@ -2451,19 +2522,44 @@ p.calma-estado__fuente {
 }
 
 /* --------------------------------------------------------------------------
-   8. Tarjetas de artículos y "cuadros" de acceso: profundidad, no salto
+   8. Tarjetas de artículos y "cuadros" de acceso: editoriales, planas,
+   sin sombra ni bordes redondeados. El movimiento está en la imagen y la línea.
    -------------------------------------------------------------------------- */
+.kb-posts.kadence-posts-list {
+	max-width: var(--calma-container);
+	margin-inline: auto !important;
+	padding-inline: var(--calma-gutter) !important;
+	column-gap: var(--calma-space-8) !important;
+	row-gap: var(--calma-space-12) !important;
+}
+@media (min-width: 1100px) {
+	.kb-posts.kadence-posts-list.grid-lg-col-3 {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+.loop-entry.entry,
+.kb-posts .loop-entry,
+.loop-entry .post-thumbnail,
+.loop-entry .post-thumbnail img,
+.loop-entry .entry-content-wrap {
+	border-radius: 0 !important;
+}
 .loop-entry.entry,
 .kb-posts .loop-entry {
-	border: 1px solid var(--calma-hairline);
-	box-shadow: none;
-	transform: perspective(900px) rotateX(calc(var(--calma-ty, 0) * 1deg)) rotateY(calc(var(--calma-tx, 0) * 1deg));
-	transition: box-shadow var(--calma-dur-lento) var(--calma-ease-mente), border-color var(--calma-dur-lento) var(--calma-ease-mente), transform 0.7s var(--calma-ease-mente);
+	background: transparent !important;
+	border: 0 !important;
+	box-shadow: none !important;
+}
+.loop-entry .entry-content-wrap {
+	padding: var(--calma-space-5) 0 0 !important;
+	border-top: 1px solid var(--calma-ink);
 }
 .loop-entry .post-thumbnail {
 	position: relative;
 	overflow: hidden;
 	isolation: isolate;
+	margin-bottom: var(--calma-space-4) !important;
+	padding-bottom: 62% !important; /* 16:10, más bajo que el 3:2 de Kadence */
 }
 .loop-entry .post-thumbnail img {
 	transform: scale(1.02);
@@ -2480,11 +2576,29 @@ p.calma-estado__fuente {
 	transition: opacity var(--calma-dur-lento) var(--calma-ease-mente), transform 1.4s var(--calma-ease-mente);
 	pointer-events: none;
 }
-/* Línea que conecta el título con la lectura */
+/* Categoría como rótulo, no como píldora (conserva el área táctil) */
+.loop-entry .entry-taxonomies .category-links a {
+	background: none !important;
+	padding-inline: 0 !important;
+	margin-right: var(--calma-space-4);
+	font-family: var(--calma-font-mono);
+	font-size: 0.75rem !important;
+	font-weight: 500 !important;
+	letter-spacing: 0.08em;
+	text-decoration: none !important;
+}
 .loop-entry .entry-title {
 	position: relative;
+	margin-top: var(--calma-space-2) !important;
 	padding-bottom: 10px;
+	font-size: clamp(1.1875rem, 1.05rem + 0.4vw, 1.375rem) !important;
+	line-height: 1.25;
 }
+.loop-entry .entry-title a {
+	color: var(--calma-ink) !important;
+	text-decoration: none !important;
+}
+/* Línea que conecta el título con la lectura */
 .loop-entry .entry-title::after {
 	content: "";
 	position: absolute;
@@ -2495,21 +2609,25 @@ p.calma-estado__fuente {
 	background: var(--calma-primary);
 	transform: scaleX(0.12);
 	transform-origin: 0 50%;
-	opacity: 0.5;
-	transition: transform var(--calma-dur-lento) var(--calma-ease-mente), opacity var(--calma-dur-lento) var(--calma-ease-mente);
+	transition: transform var(--calma-dur-lento) var(--calma-ease-mente);
 }
 .loop-entry .entry-meta {
-	transition: color var(--calma-dur-lento) var(--calma-ease-mente);
+	font-size: 0.8125rem;
+	color: var(--calma-ink-soft);
+}
+.loop-entry .entry-summary p {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	font-size: var(--calma-fs-xs);
+	line-height: 1.55;
+	color: var(--calma-ink-soft);
 }
 @media (hover: hover) and (pointer: fine) {
-	.loop-entry.entry:hover,
-	.kb-posts .loop-entry:hover,
-	.loop-entry.entry:focus-within {
-		border-color: var(--calma-hairline-strong);
-		box-shadow: var(--calma-shadow-deep);
-	}
-	.loop-entry:hover .post-thumbnail img {
-		transform: scale(1.06) translate3d(calc(var(--calma-tx, 0) * -2px), calc(var(--calma-ty, 0) * 2px - 4px), 0);
+	.loop-entry:hover .post-thumbnail img,
+	.loop-entry:focus-within .post-thumbnail img {
+		transform: scale(1.07) translate3d(0, -3%, 0);
 	}
 	.loop-entry:hover .post-thumbnail::after {
 		opacity: 0.08;
@@ -2518,10 +2636,9 @@ p.calma-estado__fuente {
 	.loop-entry:hover .entry-title::after,
 	.loop-entry:focus-within .entry-title::after {
 		transform: scaleX(1);
-		opacity: 1;
 	}
-	.loop-entry:hover .entry-meta {
-		color: var(--calma-ink);
+	.loop-entry:hover .entry-title a {
+		color: var(--calma-primary) !important;
 	}
 }
 @media (hover: none) {
@@ -2531,22 +2648,27 @@ p.calma-estado__fuente {
 }
 
 /* Cuadros de acceso del Inicio (Aprender más / Consulta / Recursos) */
+.kb-row-layout-id1204_6c7f8b-e0 > .kt-row-column-wrap {
+	max-width: var(--calma-container) !important;
+	column-gap: var(--calma-space-8) !important;
+}
 .kb-row-layout-id1204_6c7f8b-e0 .wp-block-kadence-column > .kt-inside-inner-col {
 	position: relative;
 	overflow: hidden;
 	background: #fff;
 	border: 1px solid var(--calma-hairline) !important;
+	border-radius: 0 !important;
 	box-shadow: none !important;
-	transition: box-shadow var(--calma-dur-lento) var(--calma-ease-mente), border-color var(--calma-dur-lento) var(--calma-ease-mente);
+	transition: border-color var(--calma-dur-lento) var(--calma-ease-mente);
 }
 .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
+	border-radius: 0 !important;
 	transition: transform 1.1s var(--calma-ease-mente);
 }
 @media (hover: hover) and (pointer: fine) {
 	.kb-row-layout-id1204_6c7f8b-e0 .wp-block-kadence-column > .kt-inside-inner-col:hover,
 	.kb-row-layout-id1204_6c7f8b-e0 .wp-block-kadence-column > .kt-inside-inner-col:focus-within {
-		border-color: var(--calma-hairline-strong) !important;
-		box-shadow: var(--calma-shadow-deep) !important;
+		border-color: var(--calma-ink) !important;
 	}
 	.kb-row-layout-id1204_6c7f8b-e0 .wp-block-kadence-column > .kt-inside-inner-col:hover .kb-img {
 		transform: translate3d(0, -6px, 0) rotate(-1.2deg);
@@ -2555,6 +2677,170 @@ p.calma-estado__fuente {
 /* La fila vacía de debajo se borra en WordPress; en la vista previa se oculta. */
 .kb-row-layout-id1204_addcaa-c1 {
 	display: none;
+}
+
+/* --------------------------------------------------------------------------
+   8b. Línea de tiempo: la línea crece con el scroll, las épocas se encienden
+   y una figura se transforma (objeto → red → dispositivo → plataforma →
+   inteligencia). Sin JS: todo encendido y la línea completa.
+   -------------------------------------------------------------------------- */
+.calma-tiempo {
+	--calma-tiempo-p: 1;
+	max-width: var(--calma-container);
+	margin: 0 auto;
+	padding: var(--calma-section-y) var(--calma-gutter);
+}
+.calma-tiempo__head {
+	max-width: 60ch;
+	margin-bottom: var(--calma-space-10);
+}
+.calma-tiempo__head h2 {
+	margin: var(--calma-space-3) 0 var(--calma-space-3) !important;
+	font-size: var(--calma-fs-2xl);
+	line-height: 1.08;
+	letter-spacing: -0.02em;
+}
+.calma-tiempo__head .calma-sub {
+	margin: 0 !important;
+	color: var(--calma-ink-soft);
+}
+.calma-tiempo__cuerpo {
+	display: grid;
+	gap: var(--calma-space-10);
+}
+@media (min-width: 900px) {
+	.calma-tiempo__cuerpo {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: var(--calma-space-16);
+		align-items: start;
+	}
+	.calma-tiempo__figura:not([hidden]) {
+		position: sticky;
+		top: 18vh;
+		display: grid;
+		gap: var(--calma-space-3);
+		justify-items: center;
+		padding: var(--calma-space-6);
+		border: 1px solid var(--calma-hairline);
+		background: #fff;
+	}
+}
+@media (max-width: 899px) {
+	.calma-tiempo__figura {
+		display: none !important;
+	}
+}
+.calma-tiempo__lienzo {
+	width: min(100%, 380px);
+	aspect-ratio: 1;
+}
+.calma-tiempo__lienzo canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.calma-tiempo__lista {
+	position: relative;
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none;
+}
+/* Riel y línea que crece */
+.calma-tiempo__lista::before,
+.calma-tiempo__lista::after {
+	content: "";
+	position: absolute;
+	left: 19px;
+	top: 20px;
+	bottom: 20px;
+	width: 2px;
+	background: var(--calma-hairline);
+}
+.calma-tiempo__lista::after {
+	background: linear-gradient(180deg, var(--calma-primary), var(--calma-teal));
+	transform-origin: 50% 0;
+	transform: scaleY(var(--calma-tiempo-p));
+}
+.calma-tiempo__epoca {
+	position: relative;
+	margin: 0 !important;
+	padding: 0 0 var(--calma-space-12) 64px;
+	min-height: 120px;
+}
+.calma-tiempo__epoca:last-child {
+	padding-bottom: 0;
+}
+.calma-tiempo__punto {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: var(--calma-teal);
+	color: #fff;
+	border: 1px solid var(--calma-teal);
+	transition: background-color var(--calma-dur-lento) var(--calma-ease-mente), color var(--calma-dur-lento) var(--calma-ease-mente), border-color var(--calma-dur-lento) var(--calma-ease-mente), box-shadow var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-tiempo__punto svg {
+	width: 22px;
+	height: 22px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.4;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.calma-tiempo__anios {
+	margin: 0 !important;
+	padding-top: 8px;
+	font-family: var(--calma-font-heading);
+	font-size: var(--calma-fs-lg);
+	font-weight: 600;
+	color: var(--calma-primary);
+	transition: color var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-tiempo__anios .calma-label {
+	margin-left: 6px;
+	vertical-align: 2px;
+}
+.calma-tiempo__nombre {
+	margin: var(--calma-space-1) 0 var(--calma-space-2) !important;
+	font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
+	line-height: 1.15;
+	transition: color var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-tiempo__desc {
+	margin: 0 !important;
+	max-width: 44ch;
+	color: var(--calma-ink-soft);
+}
+.calma-tiempo__rotulo {
+	margin: 0 !important;
+}
+/* Con JS: las épocas que la línea todavía no alcanzó quedan en reposo
+   (tinta suave, 7,6:1: se leen igual) y se encienden al llegar. */
+.calma-tiempo.is-vivo .calma-tiempo__epoca:not(.is-encendida) .calma-tiempo__punto {
+	background: var(--calma-paper);
+	color: var(--calma-ink-soft);
+	border-color: var(--calma-hairline-strong);
+}
+.calma-tiempo.is-vivo .calma-tiempo__epoca:not(.is-encendida) .calma-tiempo__anios,
+.calma-tiempo.is-vivo .calma-tiempo__epoca:not(.is-encendida) .calma-tiempo__nombre {
+	color: var(--calma-ink-soft);
+}
+.calma-tiempo__epoca.is-actual .calma-tiempo__punto {
+	box-shadow: 0 0 0 6px rgb(15 107 107 / 0.14);
+}
+@media (prefers-reduced-motion: reduce) {
+	.calma-tiempo__punto,
+	.calma-tiempo__anios,
+	.calma-tiempo__nombre {
+		transition: none;
+	}
 }
 
 /* --------------------------------------------------------------------------
@@ -2725,6 +3011,23 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 	transform: none !important;
 }
 
+/* Tarjetas: menos aire entre metadatos, resumen y "Leer más" */
+.loop-entry .entry-header {
+	margin-bottom: var(--calma-space-3) !important;
+}
+.loop-entry .entry-summary {
+	margin: 0 !important;
+}
+.loop-entry .entry-footer {
+	margin-top: var(--calma-space-3) !important;
+}
+@media (max-width: 599px) {
+	.calma-tiempo__anios .calma-label {
+		display: block;
+		margin: 2px 0 0;
+	}
+}
+
 </style>
 </head>
 
@@ -2849,31 +3152,15 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 </div>
 
 
-<div class="kb-row-layout-wrap kb-row-layout-id1204_239f87-24 alignfull has-theme-palette8-background-color kt-row-has-bg wp-block-kadence-rowlayout"><div class="kt-row-column-wrap kt-has-2-columns kt-row-layout-equal kt-tab-layout-row kt-mobile-layout-row kt-row-valign-top kb-theme-content-width">
-
-<div class="wp-block-kadence-column kadence-column1204_f96f1a-78 inner-column-1 animated fadeInLeft slow"><div class="kt-inside-inner-col">
-<h2 class="kt-adv-heading1204_e36b0d-85 wp-block-kadence-advancedheading" data-kb-block="kb-adv-heading1204_e36b0d-85">Te damos la bienvenida a <mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-theme-palette-2-color">Código Calma</mark></h2>
-
-
-
-<p class="wp-block-paragraph">Nuestras decisiones digitales importan. Desde la <strong>ciberpsicología</strong>, te acercamos investigaciones, artículos y herramientas explicadas de forma clara y simple para ayudarte a vivir entre dispositivos en una relación más consciente.</p>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1204_0f10a8-9f inner-column-2 animated fadeIn slow"><div class="kt-inside-inner-col"><div class="kb-row-layout-wrap kb-row-layout-id1204_f6afe6-e9 alignnone wp-block-kadence-rowlayout"><div class="kt-row-column-wrap kt-has-2-columns kt-row-layout-equal kt-tab-layout-inherit kt-mobile-layout-row kt-row-valign-top">
-
-<div class="wp-block-kadence-column kadence-column1204_a532b2-d9 kvs-sm-false inner-column-1"><div class="kt-inside-inner-col">
-<figure class="wp-block-kadence-image kb-image1204_2b9af3-16 size-full kb-image-is-ratio-size is-style-rounded change"><div class="kb-is-ratio-image kb-image-ratio-square"><img loading="lazy" decoding="async" width="864" height="1219" src="https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr.png" alt="" class="kb-img wp-image-2545" srcset="https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr.png 864w, https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr-213x300.png 213w, https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr-726x1024.png 726w, https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr-768x1084.png 768w" sizes="auto, (max-width: 864px) 100vw, 864px" /></div></figure>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1204_745fe2-dc kb-section-dir-horizontal inner-column-2 animated fadeInRight slow delay-100ms"><div class="kt-inside-inner-col">
-<!-- Código Calma · Inicio · cifras de la bienvenida (Etapa 7)
-     Reemplaza las dos cajas de información (+74 % y +6 mil millones) de la columna derecha de la fila "Te damos la bienvenida".
-     Bloque "HTML personalizado". Falta la fuente de ambas cifras (docs/placeholders.md).
+<!-- Código Calma · Inicio · bienvenida y cifras (Etapa 7)
+     Reemplaza la fila completa "Te damos la bienvenida a Código Calma" (título, texto, ilustración y las dos cajas de cifras).
+     Bloque "HTML personalizado" a ancho completo. Texto e ilustración: los mismos que hoy. Falta la fuente de las cifras (docs/placeholders.md).
      Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
+<section class="calma-bienvenida" aria-labelledby="bienvenida-titulo">
+<div class="calma-bienvenida__texto">
+<p class="calma-eyebrow">Ciberpsicología · para todos los días</p>
+<h2 id="bienvenida-titulo">Te damos la bienvenida a <em>Código Calma</em></h2>
+<p class="calma-bienvenida__lead">Nuestras decisiones digitales importan. Desde la <strong>ciberpsicología</strong>, te acercamos investigaciones, artículos y herramientas explicadas de forma clara y simple para ayudarte a vivir entre dispositivos en una relación más consciente.</p>
 <div class="calma-cifras">
 <figure class="calma-cifra">
 <svg class="calma-cifra__viz" viewBox="0 0 124 124" width="124" height="124" aria-hidden="true" focusable="false"><circle class="o-off" cx="8" cy="8" r="3.4" /><circle class="o-off" cx="20" cy="8" r="3.4" /><circle class="o-on" style="--i:61" cx="32" cy="8" r="3.4" /><circle class="o-on" style="--i:66" cx="44" cy="8" r="3.4" /><circle class="o-off" cx="56" cy="8" r="3.4" /><circle class="o-off" cx="68" cy="8" r="3.4" /><circle class="o-off" cx="80" cy="8" r="3.4" /><circle class="o-off" cx="92" cy="8" r="3.4" /><circle class="o-off" cx="104" cy="8" r="3.4" /><circle class="o-off" cx="116" cy="8" r="3.4" /><circle class="o-on" style="--i:72" cx="8" cy="20" r="3.4" /><circle class="o-on" style="--i:57" cx="20" cy="20" r="3.4" /><circle class="o-on" style="--i:55" cx="32" cy="20" r="3.4" /><circle class="o-on" style="--i:65" cx="44" cy="20" r="3.4" /><circle class="o-on" style="--i:56" cx="56" cy="20" r="3.4" /><circle class="o-off" cx="68" cy="20" r="3.4" /><circle class="o-off" cx="80" cy="20" r="3.4" /><circle class="o-off" cx="92" cy="20" r="3.4" /><circle class="o-off" cx="104" cy="20" r="3.4" /><circle class="o-off" cx="116" cy="20" r="3.4" /><circle class="o-on" style="--i:44" cx="8" cy="32" r="3.4" /><circle class="o-on" style="--i:41" cx="20" cy="32" r="3.4" /><circle class="o-on" style="--i:60" cx="32" cy="32" r="3.4" /><circle class="o-on" style="--i:63" cx="44" cy="32" r="3.4" /><circle class="o-on" style="--i:47" cx="56" cy="32" r="3.4" /><circle class="o-off" cx="68" cy="32" r="3.4" /><circle class="o-off" cx="80" cy="32" r="3.4" /><circle class="o-off" cx="92" cy="32" r="3.4" /><circle class="o-off" cx="104" cy="32" r="3.4" /><circle class="o-off" cx="116" cy="32" r="3.4" /><circle class="o-on" style="--i:39" cx="8" cy="44" r="3.4" /><circle class="o-on" style="--i:31" cx="20" cy="44" r="3.4" /><circle class="o-on" style="--i:27" cx="32" cy="44" r="3.4" /><circle class="o-on" style="--i:49" cx="44" cy="44" r="3.4" /><circle class="o-on" style="--i:59" cx="56" cy="44" r="3.4" /><circle class="o-on" style="--i:46" cx="68" cy="44" r="3.4" /><circle class="o-on" style="--i:71" cx="80" cy="44" r="3.4" /><circle class="o-off" cx="92" cy="44" r="3.4" /><circle class="o-off" cx="104" cy="44" r="3.4" /><circle class="o-off" cx="116" cy="44" r="3.4" /><circle class="o-on" style="--i:23" cx="8" cy="56" r="3.4" /><circle class="o-on" style="--i:30" cx="20" cy="56" r="3.4" /><circle class="o-on" style="--i:25" cx="32" cy="56" r="3.4" /><circle class="o-on" style="--i:32" cx="44" cy="56" r="3.4" /><circle class="o-on" style="--i:42" cx="56" cy="56" r="3.4" /><circle class="o-on" style="--i:38" cx="68" cy="56" r="3.4" /><circle class="o-on" style="--i:69" cx="80" cy="56" r="3.4" /><circle class="o-on" style="--i:52" cx="92" cy="56" r="3.4" /><circle class="o-off" cx="104" cy="56" r="3.4" /><circle class="o-off" cx="116" cy="56" r="3.4" /><circle class="o-on" style="--i:11" cx="8" cy="68" r="3.4" /><circle class="o-on" style="--i:24" cx="20" cy="68" r="3.4" /><circle class="o-on" style="--i:21" cx="32" cy="68" r="3.4" /><circle class="o-on" style="--i:20" cx="44" cy="68" r="3.4" /><circle class="o-on" style="--i:35" cx="56" cy="68" r="3.4" /><circle class="o-on" style="--i:34" cx="68" cy="68" r="3.4" /><circle class="o-on" style="--i:54" cx="80" cy="68" r="3.4" /><circle class="o-on" style="--i:53" cx="92" cy="68" r="3.4" /><circle class="o-on" style="--i:68" cx="104" cy="68" r="3.4" /><circle class="o-on" style="--i:73" cx="116" cy="68" r="3.4" /><circle class="o-on" style="--i:10" cx="8" cy="80" r="3.4" /><circle class="o-on" style="--i:8" cx="20" cy="80" r="3.4" /><circle class="o-on" style="--i:13" cx="32" cy="80" r="3.4" /><circle class="o-on" style="--i:16" cx="44" cy="80" r="3.4" /><circle class="o-on" style="--i:28" cx="56" cy="80" r="3.4" /><circle class="o-on" style="--i:26" cx="68" cy="80" r="3.4" /><circle class="o-on" style="--i:50" cx="80" cy="80" r="3.4" /><circle class="o-on" style="--i:43" cx="92" cy="80" r="3.4" /><circle class="o-off" cx="104" cy="80" r="3.4" /><circle class="o-on" style="--i:67" cx="116" cy="80" r="3.4" /><circle class="o-on" style="--i:6" cx="8" cy="92" r="3.4" /><circle class="o-on" style="--i:4" cx="20" cy="92" r="3.4" /><circle class="o-on" style="--i:12" cx="32" cy="92" r="3.4" /><circle class="o-on" style="--i:9" cx="44" cy="92" r="3.4" /><circle class="o-on" style="--i:14" cx="56" cy="92" r="3.4" /><circle class="o-on" style="--i:33" cx="68" cy="92" r="3.4" /><circle class="o-on" style="--i:48" cx="80" cy="92" r="3.4" /><circle class="o-on" style="--i:51" cx="92" cy="92" r="3.4" /><circle class="o-on" style="--i:64" cx="104" cy="92" r="3.4" /><circle class="o-off" cx="116" cy="92" r="3.4" /><circle class="o-on" style="--i:5" cx="8" cy="104" r="3.4" /><circle class="o-on" style="--i:0" cx="20" cy="104" r="3.4" /><circle class="o-on" style="--i:2" cx="32" cy="104" r="3.4" /><circle class="o-on" style="--i:17" cx="44" cy="104" r="3.4" /><circle class="o-on" style="--i:19" cx="56" cy="104" r="3.4" /><circle class="o-on" style="--i:29" cx="68" cy="104" r="3.4" /><circle class="o-on" style="--i:45" cx="80" cy="104" r="3.4" /><circle class="o-on" style="--i:36" cx="92" cy="104" r="3.4" /><circle class="o-on" style="--i:62" cx="104" cy="104" r="3.4" /><circle class="o-off" cx="116" cy="104" r="3.4" /><circle class="o-on" style="--i:1" cx="8" cy="116" r="3.4" /><circle class="o-on" style="--i:3" cx="20" cy="116" r="3.4" /><circle class="o-on" style="--i:7" cx="32" cy="116" r="3.4" /><circle class="o-on" style="--i:15" cx="44" cy="116" r="3.4" /><circle class="o-on" style="--i:18" cx="56" cy="116" r="3.4" /><circle class="o-on" style="--i:22" cx="68" cy="116" r="3.4" /><circle class="o-on" style="--i:40" cx="80" cy="116" r="3.4" /><circle class="o-on" style="--i:37" cx="92" cy="116" r="3.4" /><circle class="o-on" style="--i:58" cx="104" cy="116" r="3.4" /><circle class="o-on" style="--i:70" cx="116" cy="116" r="3.4" /></svg>
@@ -2885,11 +3172,10 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 </figure>
 <p class="calma-cifras__fuente"><span class="calma-label">Fuente</span> <span class="calma-placeholder">[COMPLETAR: fuente del 74 % y de los 6 mil millones (p. ej. UIT)]</span></p>
 </div>
-</div></div>
+</div>
+<figure class="calma-bienvenida__ilustracion"><img loading="lazy" decoding="async" width="864" height="1219" src="https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr-726x1024.png" srcset="https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr-213x300.png 213w, https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr-726x1024.png 726w, https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr.png 864w" sizes="(min-width: 900px) 380px, 70vw" alt=""></figure>
+</section>
 
-</div></div></div></div>
-
-</div></div>
 
 
 <div class="wp-block-zolo-flexbox zolo-flexbox flexbox-74fde1 alignfull zolo-block parent-flexbox-74fde1">
@@ -3084,117 +3370,52 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 
 
 
-<!-- Código Calma · Inicio · Línea de tiempo (Etapa 1)
-     Reemplaza por completo el bloque "HTML personalizado" que contenía un
-     documento HTML entero (<!DOCTYPE>, <html>, <head>, <body>). Aquel CSS
-     (body{padding:40px}) encogía y recortaba todo el sitio en esta página.
-     Todo el CSS está acotado a .calma-timeline. El texto es el original. -->
-<section class="calma-timeline" aria-labelledby="calma-timeline-title">
-  <style>
-    .calma-timeline {
-      --tl-dot: var(--calma-primary, #1d5f94);
-      max-width: var(--calma-container, 1160px);
-      margin: var(--calma-section-y, 64px) auto;
-      padding: 0 var(--calma-gutter, 20px);
-      box-sizing: border-box;
-      color: var(--calma-text, #0f172a);
-    }
-    .calma-timeline *, .calma-timeline *::before, .calma-timeline *::after { box-sizing: border-box; }
-    .calma-timeline__title {
-      margin: 0 0 var(--calma-space-2, 8px);
-      font-size: var(--calma-fs-xl, 1.75rem);
-      line-height: var(--calma-lh-heading, 1.2);
-    }
-    .calma-timeline__sub {
-      margin: 0 0 var(--calma-space-8, 32px);
-      max-width: 60ch;
-      color: var(--calma-text-muted, #475569);
-    }
-    .calma-timeline__list {
-      list-style: none;
-      margin: 0;
-      padding: clamp(20px, 4vw, 32px);
-      display: grid;
-      gap: var(--calma-space-6, 24px);
-      background: var(--calma-surface, #fff);
-      border: 1px solid var(--calma-border, #e2e8f0);
-      border-radius: var(--calma-radius-lg, 24px);
-      box-shadow: var(--calma-shadow, 0 4px 16px rgb(15 23 42 / .08));
-    }
-    .calma-timeline__event {
-      position: relative;
-      margin: 0;
-      padding: 0 0 0 var(--calma-space-8, 32px);
-    }
-    .calma-timeline__event::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.35em;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--tl-dot);
-      box-shadow: 0 0 0 4px rgb(29 95 148 / 0.15);
-    }
-    .calma-timeline__event:nth-child(even) { --tl-dot: var(--calma-violet, #5b3fb8); }
-    .calma-timeline__year {
-      display: block;
-      font-size: var(--calma-fs-xs, 0.875rem);
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--calma-text-muted, #475569);
-    }
-    .calma-timeline__name {
-      display: block;
-      margin-top: var(--calma-space-1, 4px);
-      font-weight: 700;
-    }
-    .calma-timeline__desc {
-      margin: var(--calma-space-1, 4px) 0 0;
-      font-size: var(--calma-fs-sm, 1rem);
-      line-height: 1.5;
-      color: var(--calma-text-muted, #475569);
-    }
-    @media (min-width: 960px) {
-      .calma-timeline__list { grid-template-columns: repeat(5, 1fr); gap: var(--calma-space-8, 32px); }
-      .calma-timeline__event { padding: var(--calma-space-8, 32px) 0 0; }
-      .calma-timeline__event::before { top: 0; }
-    }
-  </style>
-
-  <h2 class="calma-timeline__title" id="calma-timeline-title">Línea de tiempo: tecnología y adopción</h2>
-  <p class="calma-timeline__sub">Una mirada clara y organizada a cómo la tecnología se integró en la vida humana.</p>
-
-  <ol class="calma-timeline__list">
-    <li class="calma-timeline__event">
-      <span class="calma-timeline__year">1975–1985</span>
-      <span class="calma-timeline__name">Computadora personal</span>
-      <p class="calma-timeline__desc">La computadora personal (PC) entra en hogares y oficinas. Nace la informática doméstica.</p>
-    </li>
-    <li class="calma-timeline__event">
-      <span class="calma-timeline__year">1990–2000</span>
-      <span class="calma-timeline__name">Internet y Web</span>
-      <p class="calma-timeline__desc">La Web conecta al mundo. Aparecen buscadores, correo y navegación.</p>
-    </li>
-    <li class="calma-timeline__event">
-      <span class="calma-timeline__year">2000–2010</span>
-      <span class="calma-timeline__name">Móvil y smartphones</span>
-      <p class="calma-timeline__desc">La conexión se vuelve portátil, constante y personal.</p>
-    </li>
-    <li class="calma-timeline__event">
-      <span class="calma-timeline__year">2010–2020</span>
-      <span class="calma-timeline__name">Redes sociales y nube</span>
-      <p class="calma-timeline__desc">Identidad, vínculos y trabajo migran a plataformas digitales.</p>
-    </li>
-    <li class="calma-timeline__event">
-      <span class="calma-timeline__year">2020–hoy</span>
-      <span class="calma-timeline__name">IA y hiperconexión</span>
-      <p class="calma-timeline__desc">La inteligencia artificial transforma mente, emoción y bienestar.</p>
-    </li>
-  </ol>
+<!-- Código Calma · Inicio · línea de tiempo (Etapa 7)
+     Reemplaza el bloque "HTML personalizado" de la línea de tiempo de la Etapa 1 (sección calma-timeline). Mismo texto.
+     Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
+<section class="calma-tiempo" aria-labelledby="tiempo-titulo">
+<div class="calma-tiempo__head">
+<p class="calma-eyebrow">Cinco épocas · 1975–hoy</p>
+<h2 id="tiempo-titulo">Línea de tiempo: tecnología y adopción</h2>
+<p class="calma-sub">Una mirada clara y organizada a cómo la tecnología se integró en la vida humana.</p>
+</div>
+<div class="calma-tiempo__cuerpo">
+<div class="calma-tiempo__figura" aria-hidden="true" hidden><div class="calma-tiempo__lienzo"></div><p class="calma-label calma-tiempo__rotulo">Objeto</p></div>
+<ol class="calma-tiempo__lista">
+<li class="calma-tiempo__epoca" data-forma="objeto" data-concepto="Objeto">
+<span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M9 20h6M12 16v4"/></svg></span>
+<p class="calma-tiempo__anios">1975–1985<span class="calma-label"> · Fig. 01 — Objeto</span></p>
+<h3 class="calma-tiempo__nombre">Computadora personal</h3>
+<p class="calma-tiempo__desc">La computadora personal (PC) entra en hogares y oficinas. Nace la informática doméstica.</p>
+</li>
+<li class="calma-tiempo__epoca" data-forma="red" data-concepto="Red">
+<span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.5 2.5 2.5 13.5 0 16M12 4c-2.5 2.5-2.5 13.5 0 16"/></svg></span>
+<p class="calma-tiempo__anios">1990–2000<span class="calma-label"> · Fig. 02 — Red</span></p>
+<h3 class="calma-tiempo__nombre">Internet y Web</h3>
+<p class="calma-tiempo__desc">La Web conecta al mundo. Aparecen buscadores, correo y navegación.</p>
+</li>
+<li class="calma-tiempo__epoca" data-forma="dispositivo" data-concepto="Dispositivo">
+<span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/></svg></span>
+<p class="calma-tiempo__anios">2000–2010<span class="calma-label"> · Fig. 03 — Dispositivo</span></p>
+<h3 class="calma-tiempo__nombre">Móvil y smartphones</h3>
+<p class="calma-tiempo__desc">La conexión se vuelve portátil, constante y personal.</p>
+</li>
+<li class="calma-tiempo__epoca" data-forma="plataforma" data-concepto="Plataforma">
+<span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></span>
+<p class="calma-tiempo__anios">2010–2020<span class="calma-label"> · Fig. 04 — Plataforma</span></p>
+<h3 class="calma-tiempo__nombre">Redes sociales y nube</h3>
+<p class="calma-tiempo__desc">Identidad, vínculos y trabajo migran a plataformas digitales.</p>
+</li>
+<li class="calma-tiempo__epoca" data-forma="inteligencia" data-concepto="Inteligencia">
+<span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><circle cx="12" cy="12" r="2.2"/><circle cx="5" cy="7" r="1.6"/><circle cx="19" cy="7" r="1.6"/><circle cx="6" cy="18" r="1.6"/><circle cx="18" cy="17" r="1.6"/><path d="M6.4 7.8l3.8 2.9M17.6 7.8l-3.8 2.9M7.2 17l3.2-3.4M16.6 16.1l-3-2.6"/></svg></span>
+<p class="calma-tiempo__anios">2020–hoy<span class="calma-label"> · Fig. 05 — Inteligencia</span></p>
+<h3 class="calma-tiempo__nombre">IA y hiperconexión</h3>
+<p class="calma-tiempo__desc">La inteligencia artificial transforma mente, emoción y bienestar.</p>
+</li>
+</ol>
+</div>
 </section>
+
 
 
 

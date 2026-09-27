@@ -265,13 +265,15 @@ def e7_home(s):
     a = s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_7ce0f7-d0')
     b = div_balanceado(s, a)
     s = s[:a] + (cont(7) / 'bloques/inicio-momentos.html').read_text(encoding='utf-8') + s[b:]
-    # Cifras con visualización en lugar de las dos cajas de información.
-    a = s.index('<div class="wp-block-kadence-column kadence-column1204_745fe2-dc')
+    # Bienvenida: texto y cifras juntos, ilustración al lado (fila completa).
+    a = s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_239f87-24')
     b = div_balanceado(s, a)
-    col = s[a:b]
-    i = col.index('<div class="kt-inside-inner-col">') + len('<div class="kt-inside-inner-col">')
-    s = s[:a] + col[:i] + '\n' + (cont(7) / 'bloques/inicio-cifras.html').read_text(encoding='utf-8') + '</div></div>' + s[b:]
-    log.append('home: estados mentales y cifras (Etapa 7)')
+    s = s[:a] + (cont(7) / 'bloques/inicio-bienvenida.html').read_text(encoding='utf-8') + s[b:]
+    # Línea de tiempo que crece con el scroll (reemplaza la de la Etapa 1).
+    a = s.index('<!-- Código Calma · Inicio · Línea de tiempo (Etapa 1)')
+    b = s.index('</section>', s.index('<section class="calma-timeline"', a)) + len('</section>')
+    s = s[:a] + (cont(7) / 'bloques/inicio-linea-de-tiempo.html').read_text(encoding='utf-8') + s[b:]
+    log.append('home: bienvenida, línea de tiempo y estados mentales (Etapa 7)')
     return s
 
 # ---------------------------------------------------------------- CSS del plugin
