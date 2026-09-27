@@ -119,16 +119,43 @@ def org_reflejo():
                '<g class="o-reflejo"><circle cx="80" cy="78" r="7"/><path d="M62 58 C66 70 94 70 98 58"/></g>')
 
 
+# Los emojis del test, redibujados en línea fina (la misma familia que las figuras del sitio).
+# Cada uno tiene una pieza que se mueve al pasar el puntero o al elegirlo (clase "o-mueve").
 ICONOS_GEN = {
-    # Creciste con el cambio: de la computadora al teléfono.
-    '💾': ('psicologia', '<rect x="4" y="8" width="17" height="12" rx="2"/><path d="M9 24h7M12.5 20v4"/><rect x="20" y="12" width="8" height="14" rx="2"/><circle class="o-lleno" cx="24" cy="23" r="0.9"/>'),
-    # Adoptaste la tecnología: la computadora de escritorio.
-    '📼': ('tecnologia', '<rect x="5" y="7" width="22" height="15" rx="2"/><path d="M11 26h10M16 22v4"/><path d="M9 12h8M9 16h5"/>'),
-    # Nativa digital: el teléfono conectado.
-    '☁️': ('ia', '<rect x="11" y="9" width="10" height="18" rx="2.5"/><circle class="o-lleno" cx="16" cy="23.5" r="0.9"/><path d="M10 6.5a9 9 0 0 1 12 0M12.5 4a5.5 5.5 0 0 1 7 0"/>'),
-    # Otra / prefiero no decirlo: un círculo abierto.
-    '•': ('neurociencia', '<circle cx="16" cy="16" r="10" stroke-dasharray="3 3"/><circle class="o-lleno" cx="12" cy="16" r="1.2"/><circle class="o-lleno" cx="16" cy="16" r="1.2"/><circle class="o-lleno" cx="20" cy="16" r="1.2"/>'),
+    # 💾 Disquete: la tapa metálica se desliza.
+    '💾': ('psicologia', '<rect x="5" y="5" width="22" height="22" rx="3"/><rect class="o-mueve o-tapa" x="10" y="5" width="11" height="7" rx="1"/>'
+                         '<path d="M18 7.5v2.5"/><rect x="9" y="17" width="14" height="10" rx="1.5"/><path d="M12 21h8"/>'),
+    # 📼 Casete: los carretes giran.
+    '📼': ('tecnologia', '<rect x="3" y="8" width="26" height="17" rx="3"/><g class="o-mueve o-carrete"><circle cx="11" cy="16" r="3.2"/><path d="M11 13.5v5"/></g>'
+                          '<g class="o-mueve o-carrete"><circle cx="21" cy="16" r="3.2"/><path d="M21 13.5v5"/></g><path d="M14.5 16h3M9 25l2-3h10l2 3"/>'),
+    # ☁️ Nube: flota y deja caer datos.
+    '☁️': ('ia', '<path class="o-mueve o-nube" d="M9.5 23h13a5 5 0 0 0 .6-10 7 7 0 0 0-13.4 1.6A4.3 4.3 0 0 0 9.5 23Z"/>'
+                 '<path class="o-mueve o-gota" d="M12 26.5v1.5M16 26.5v1.5M20 26.5v1.5"/>'),
+    # • Otra: un punto con su órbita.
+    '•': ('neurociencia', '<circle cx="16" cy="16" r="10" stroke-dasharray="2 3.2"/><circle class="o-lleno" cx="16" cy="16" r="3"/>'
+                          '<circle class="o-mueve o-lleno o-orbita" cx="26" cy="16" r="1.6"/>'),
 }
+
+# Retroalimentación (✓ ⚠ 🔵) y perfiles del resultado (🌿 ⚖️ 🧭 🌊 📡 🆘), en la misma línea.
+ICONOS_FB = {
+    'good': '<circle cx="12" cy="12" r="9"/><path pathLength="1" d="M7.5 12.5l3 3 6-6.5"/>',
+    'mid': '<path d="M12 4 21 19.5H3Z" stroke-linejoin="round"/><path pathLength="1" d="M12 10v4.5"/><circle class="o-lleno" cx="12" cy="17" r="0.9"/>',
+    'low': '<circle cx="12" cy="12" r="9"/><circle class="o-lleno" cx="12" cy="12" r="4"/>',
+}
+ICONOS_PERFIL = [
+    # 🌿 Arquitecto digital
+    '<path pathLength="1" d="M32 56V26"/><path pathLength="1" d="M32 40c-12 0-18-8-18-18 10 0 18 6 18 18Z"/><path pathLength="1" d="M32 32c10 0 16-7 16-16-9 0-16 6-16 16Z"/>',
+    # ⚖️ Consumo consciente
+    '<path pathLength="1" d="M32 10v44M22 54h20M14 18h36"/><path pathLength="1" d="M14 18 7 34h14ZM50 18l-7 16h14Z"/><circle class="o-lleno" cx="32" cy="10" r="2.5"/>',
+    # 🧭 Navegante con marea
+    '<circle pathLength="1" cx="32" cy="32" r="22"/><path pathLength="1" d="M40 24 35 35 24 40 29 29Z"/><circle class="o-lleno" cx="32" cy="32" r="2"/>',
+    # 🌊 En modo automático
+    '<path pathLength="1" d="M8 26c6-6 10-6 16 0s10 6 16 0 10-6 16 0"/><path pathLength="1" d="M8 38c6-6 10-6 16 0s10 6 16 0 10-6 16 0"/>',
+    # 📡 Corriente abajo
+    '<path pathLength="1" d="M16 44a20 20 0 0 0 20-20L16 44Z"/><path pathLength="1" d="M26 34l10-10M24 52h16M32 44v8"/><path pathLength="1" d="M42 16a10 10 0 0 1 8 8M44 8a18 18 0 0 1 14 14"/>',
+    # 🆘 Atrapado en el sistema
+    '<circle pathLength="1" cx="32" cy="32" r="22"/><circle pathLength="1" cx="32" cy="32" r="10"/><path pathLength="1" d="M25 25 16.5 16.5M39 25l8.5-8.5M25 39l-8.5 8.5M39 39l8.5 8.5"/>',
+]
 
 
 def icono_gen(emoji):
@@ -185,15 +212,19 @@ def test(cabecera):
         assert viejo in s, emoji
         s = s.replace(viejo, icono_gen(emoji), 1)
     # Resultado: el perfil dibujado en lugar del emoji (el script ya no escribe el emoji).
+    perfiles = ''.join(f'<svg class="calma-test__perfil" data-i="{i}" viewBox="0 0 64 64" width="64" height="64" focusable="false">{d}</svg>'
+                       for i, d in enumerate(ICONOS_PERFIL))
     s = s.replace('<p class="calma-test__result-emoji" aria-hidden="true" data-calma-r-emoji></p>',
-                  '<div class="calma-test__result-fig calma-tono--neurociencia" aria-hidden="true" data-calma-r-emoji>' + org_perfil() + '</div>', 1)
+                  '<div class="calma-test__result-fig calma-tono--bienestar" aria-hidden="true" data-calma-r-emoji>' + perfiles + '</div>', 1)
     js_emoji = "q('[data-calma-r-emoji]').textContent = r.profile.emoji;"
     assert js_emoji in s
     s = s.replace(js_emoji, "q('[data-calma-r-emoji]').setAttribute('data-perfil', String(PROFILES.indexOf(r.profile)));", 1)
     # Retroalimentación: un punto en el tono de la respuesta en lugar de ✓ ⚠ 🔵.
     js_icono = "icon.textContent = f.icon + ' ';"
     assert js_icono in s
-    s = s.replace(js_icono, "icon.className = 'calma-test__fb-icono calma-test__fb-icono--' + kind;", 1)
+    iconos_fb = '{' + ','.join(f"{k}:'<svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" focusable=\"false\">{v}</svg>'"
+                               for k, v in ICONOS_FB.items()) + '}'
+    s = s.replace(js_icono, "icon.className = 'calma-test__fb-icono calma-test__fb-icono--' + kind; icon.innerHTML = " + iconos_fb + "[kind] || '';", 1)
     return (cabecera('Test de consumo digital',
                      'Reemplaza el bloque "HTML personalizado" del test (Etapa 2) en /test/ (id 1941). Misma lógica y mismos textos;\n'
                      '     cambia la forma (figuras y movimiento). Estilos y movimiento: plugin (calma-etapa7.css y calma-organismo.js).')

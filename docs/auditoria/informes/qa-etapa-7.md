@@ -171,3 +171,9 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
 - **Lámina del "Dato"**: la foto conserva su texto alternativo; la capa con los puntos y el candado es decorativa.
 - **Bienestar digital**: la figura de Venn es `role="img"` con `<title>` y `<desc>` que dicen lo mismo que la infografía anterior, y ese contenido además está como texto en las tarjetas. Títulos en orden (H1 → H2 → H3). En el celular, los textos de la figura se agrandan para seguir siendo legibles.
 
+## Recorrido de Bienestar digital e íconos del test
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos; reflow a 320 px sin desborde.
+- **Recorrido con scroll**: usa el scroll nativo (IntersectionObserver), sin bloquearlo ni cambiar su velocidad. Los cuatro pasos son texto real en orden de lectura; la figura es `role="img"` con descripción. Se comprobó que la figura muestra el paso 1, 2, 3 y 4 al llegar a cada texto, en 1280 y 390 px.
+- **Movimiento reducido / "Reducir movimiento"**: la figura queda en el paso 4 (todo visible y junto) y no hay animaciones.
+- **Test**: los íconos son decorativos (`aria-hidden`); los textos de opciones, retroalimentación y resultado no cambiaron. Cuestionario completo recorrido sin errores de JavaScript.
+

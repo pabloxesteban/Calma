@@ -5579,18 +5579,77 @@ html.calma-quieto .calma-tiempo__anio {
 	background: #fff;
 	border-color: var(--acento-texto);
 }
-.calma-test__fb-icono {
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	margin-right: 8px;
-	border-radius: 50%;
-	vertical-align: 0.05em;
-	background: #1d5f94;
-	box-shadow: 0 0 0 3px #d6e4f0;
+.calma-test__icono {
+	transition: background-color 0.3s var(--calma-ease-mente), border-color 0.3s var(--calma-ease-mente);
 }
-.calma-test__fb-icono--good { background: #1f6b47; box-shadow: 0 0 0 3px #cfe6db; }
-.calma-test__fb-icono--mid { background: #7a4d00; box-shadow: 0 0 0 3px #efe0bf; }
+/* Retroalimentación: ✓ ⚠ 🔵 redibujados; el trazo se dibuja al aparecer */
+.calma-test__fb-icono {
+	display: inline-flex;
+	vertical-align: -0.3em;
+	margin-right: 8px;
+	color: #1d5f94;
+}
+.calma-test__fb-icono--good { color: #1f6b47; }
+.calma-test__fb-icono--mid { color: #7a4d00; }
+.calma-test__fb-icono svg,
+.calma-test__perfil {
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.calma-test__fb-icono .o-lleno,
+.calma-test__perfil .o-lleno {
+	fill: currentColor;
+	stroke: none;
+}
+/* Resultado: el ícono del perfil (🌿 ⚖️ 🧭 🌊 📡 🆘 redibujados) */
+.calma-test__perfil {
+	display: none;
+	width: 72px;
+	height: 72px;
+	color: var(--acento-texto);
+	stroke-width: 2.2;
+}
+.calma-test__result-fig {
+	width: 104px;
+	height: 104px;
+	margin: var(--calma-space-4) auto !important;
+	display: grid !important;
+	place-items: center;
+	border-radius: 50%;
+	background: var(--tono);
+	border: 1px solid var(--acento);
+}
+.calma-test__result-fig[data-perfil="0"] [data-i="0"],
+.calma-test__result-fig[data-perfil="1"] [data-i="1"],
+.calma-test__result-fig[data-perfil="2"] [data-i="2"],
+.calma-test__result-fig[data-perfil="3"] [data-i="3"],
+.calma-test__result-fig[data-perfil="4"] [data-i="4"],
+.calma-test__result-fig[data-perfil="5"] [data-i="5"] {
+	display: block;
+}
+/* Generaciones: cada ícono tiene una pieza que se mueve al pasar el puntero o al elegirlo */
+.calma-test__icono .o-mueve {
+	transition: transform 0.8s var(--calma-ease-mente), opacity 0.6s var(--calma-ease-mente);
+}
+.calma-test__icono .o-carrete {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-test__icono .o-orbita {
+	transform-box: view-box;
+	transform-origin: 16px 16px;
+}
+.calma-test__icono .o-gota {
+	opacity: 0.35;
+}
+.calma-test__option:is(:hover, :has(input:checked)) .o-tapa { transform: translateX(4px); }
+.calma-test__option:is(:hover, :has(input:checked)) .o-carrete { transform: rotate(180deg); }
+.calma-test__option:is(:hover, :has(input:checked)) .o-nube { transform: translateY(-1.5px); }
+.calma-test__option:is(:hover, :has(input:checked)) .o-gota { opacity: 1; transform: translateY(1px); }
+.calma-test__option:is(:hover, :has(input:checked)) .o-orbita { transform: rotate(200deg); }
 .calma-test--e7 .calma-test__feedback-box {
 	border-radius: 12px !important;
 	border: 1px solid rgb(27 34 51 / 0.09) !important;
@@ -5733,9 +5792,83 @@ html.calma-quieto .calma-tiempo__anio {
 	color: var(--calma-ink-soft);
 }
 
-/* ---- Bienestar digital ---- */
-.calma-bienestar .calma-hero__inner--media {
-	align-items: center;
+/* ---- Bienestar digital: la intersección como recorrido con scroll ---- */
+.calma-bienestar__hero {
+	text-align: center;
+}
+.calma-bienestar__hero h1,
+.calma-bienestar__hero .calma-hero__lead {
+	margin-inline: auto !important;
+	max-width: 22ch;
+}
+.calma-bienestar__hero .calma-hero__lead {
+	max-width: 46ch;
+}
+.calma-bienestar__interseccion {
+	max-width: 760px;
+	margin: 0 auto var(--calma-space-8);
+	text-align: center;
+}
+.calma-bienestar__interseccion h2 {
+	margin-bottom: var(--calma-space-5) !important;
+	font-size: var(--calma-fs-2xl);
+}
+.calma-bienestar__interseccion h2::before {
+	content: "";
+	display: block;
+	width: 72px;
+	height: 2px;
+	margin: 0 auto var(--calma-space-5);
+	background: linear-gradient(90deg, var(--calma-teal), rgb(15 107 107 / 0));
+}
+.calma-bienestar .calma-resumen {
+	max-width: none;
+	margin: 0 !important;
+	text-align: left;
+	background: #fff !important;
+	border: 1px solid rgb(27 34 51 / 0.09) !important;
+	border-left: 3px solid #9cc3e3 !important;
+	border-radius: 12px !important;
+}
+.calma-historia__cuerpo {
+	display: grid;
+	gap: var(--calma-space-6);
+}
+@media (min-width: 900px) {
+	.calma-historia__cuerpo {
+		grid-template-columns: 1.05fr 0.95fr;
+		gap: var(--calma-space-12, 64px);
+		align-items: start;
+	}
+	.calma-historia__figura {
+		position: sticky;
+		top: calc(50vh - 250px);
+	}
+}
+@media (max-width: 899px) {
+	/* En el celular la figura queda arriba, fija y más chica, mientras pasan los textos */
+	.calma-historia__figura {
+		position: sticky;
+		top: 64px;
+		z-index: 2;
+		padding: var(--calma-space-2) 0;
+		background: linear-gradient(180deg, var(--calma-paper) 82%, rgb(250 248 244 / 0));
+	}
+	.calma-historia__figura svg {
+		max-width: 200px !important;
+	}
+	.calma-historia__pasos {
+		padding-top: 12vh !important;
+	}
+	.calma-venn__nombre {
+		font-size: 26px;
+	}
+	.calma-venn__centro text {
+		font-size: 20px;
+	}
+	.calma-venn__centro rect {
+		transform: scale(1.18);
+	}
 }
 .calma-venn {
 	margin: 0;
@@ -5744,26 +5877,100 @@ html.calma-quieto .calma-tiempo__anio {
 }
 .calma-venn svg {
 	width: 100%;
-	max-width: 460px;
+	max-width: 500px;
 	height: auto;
 	overflow: visible;
 }
-.calma-venn svg * {
-	transform-box: fill-box;
-	transform-origin: center;
+.calma-venn__orbita {
+	fill: none;
+	stroke: var(--calma-hairline-strong);
+	stroke-dasharray: 2 7;
+}
+.calma-venn__area {
+	transform: translate(var(--sx), var(--sy));
+	transition: transform 1.2s var(--calma-ease-mente), opacity 0.8s var(--calma-ease-mente);
+}
+.calma-venn[data-paso="4"] .calma-venn__area {
+	transform: translate(var(--jx), var(--jy));
+}
+.calma-venn[data-paso="1"] :is(.calma-venn__area--ciberseguridad, .calma-venn__area--humano),
+.calma-venn[data-paso="2"] .calma-venn__area--humano {
+	opacity: 0.14;
 }
 .calma-venn__circulo {
-	fill: var(--tono);
-	fill-opacity: 0.85;
+	fill: var(--acento);
+	fill-opacity: 0.32;
 	stroke: var(--acento);
 	stroke-width: 1.5;
 	mix-blend-mode: multiply;
-	transition: fill-opacity 0.4s var(--calma-ease-mente), opacity 0.4s var(--calma-ease-mente), stroke-width 0.4s;
+	transition: fill-opacity 0.8s var(--calma-ease-mente), stroke-width 0.4s;
+}
+.calma-venn[data-paso="1"] .calma-venn__area--ciberpsicologia .calma-venn__circulo,
+.calma-venn[data-paso="2"] .calma-venn__area--ciberseguridad .calma-venn__circulo,
+.calma-venn[data-paso="3"] .calma-venn__area--humano .calma-venn__circulo {
+	fill-opacity: 0.45;
+	stroke: var(--texto);
+}
+.calma-venn[data-paso="4"] .calma-venn__circulo {
+	fill-opacity: 0.4;
+}
+.calma-venn__icono,
+.calma-historia__icono {
+	fill: none;
+	stroke: var(--texto, var(--acento-texto));
+	stroke-width: 2.4;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.calma-venn__icono .o-lleno,
+.calma-historia__icono .o-lleno {
+	fill: currentColor;
+	stroke: none;
+}
+.calma-venn__icono {
+	color: var(--texto);
+	transition: opacity 0.6s var(--calma-ease-mente);
+}
+.calma-venn[data-paso="4"] .calma-venn__icono {
+	opacity: 0.35;
+}
+.calma-venn__icono *,
+.calma-historia__icono * {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-venn__icono .o-arco,
+.calma-historia__icono .o-arco {
+	transform-origin: 50% 100%;
 }
 .calma-venn__nombre {
 	fill: var(--texto);
-	font: 600 17px/1 var(--calma-font-body);
-	transition: opacity 0.4s var(--calma-ease-mente);
+	font: 600 19px/1 var(--calma-font-body);
+	transition: transform 1.2s var(--calma-ease-mente);
+}
+/* Al juntarse, los nombres salen hacia afuera para no pisarse */
+.calma-venn[data-paso="4"] .calma-venn__area--ciberpsicologia .calma-venn__nombre { transform: translate(-34px, -70px); }
+.calma-venn[data-paso="4"] .calma-venn__area--ciberseguridad .calma-venn__nombre { transform: translate(34px, -70px); }
+.calma-venn[data-paso="4"] .calma-venn__area--humano .calma-venn__nombre { transform: translate(0, 66px); }
+.calma-venn__circulo,
+.calma-venn__centro * {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-venn__centro {
+	opacity: 0;
+	transition: opacity 0.8s var(--calma-ease-mente) 0.5s;
+}
+.calma-venn[data-paso="4"] .calma-venn__centro {
+	opacity: 1;
+}
+.calma-venn__halo {
+	fill: none;
+	stroke: var(--calma-teal);
+	stroke-opacity: 0.35;
+}
+.calma-venn__nucleo {
+	fill: var(--calma-teal);
 }
 .calma-venn__centro rect {
 	fill: #fff;
@@ -5772,76 +5979,56 @@ html.calma-quieto .calma-tiempo__anio {
 }
 .calma-venn__centro text {
 	fill: var(--calma-teal);
-	font: 600 15px/1 var(--calma-font-body);
+	font: 600 16px/1 var(--calma-font-body);
 }
-.calma-venn[data-activa] .calma-venn__circulo,
-.calma-venn[data-activa] .calma-venn__nombre {
-	opacity: 0.35;
-}
-.calma-venn[data-activa="ciberpsicologia"] :is(.calma-venn__circulo--ciberpsicologia, .calma-venn__nombre--ciberpsicologia),
-.calma-venn[data-activa="ciberseguridad"] :is(.calma-venn__circulo--ciberseguridad, .calma-venn__nombre--ciberseguridad),
-.calma-venn[data-activa="humano"] :is(.calma-venn__circulo--humano, .calma-venn__nombre--humano) {
-	opacity: 1;
-	stroke-width: 2.5;
-}
-.calma-bienestar__interseccion {
-	max-width: 760px;
-	margin: 0 auto var(--calma-space-10);
-}
-.calma-bienestar__interseccion h2 {
-	margin-bottom: var(--calma-space-4) !important;
-	font-size: var(--calma-fs-xl);
-}
-.calma-bienestar__interseccion h2::before {
-	content: "";
-	display: block;
-	width: 72px;
-	height: 2px;
-	margin-bottom: var(--calma-space-5);
-	background: linear-gradient(90deg, var(--calma-teal), rgb(15 107 107 / 0));
-}
-.calma-bienestar .calma-definicion {
-	font-family: var(--calma-font-heading);
-	font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.625rem);
-	line-height: 1.35;
-}
-.calma-bienestar .calma-definicion strong {
-	font-weight: 500;
-}
-.calma-bienestar .calma-resumen {
-	max-width: none;
-	margin: var(--calma-space-6) 0 0 !important;
-	background: #fff !important;
-	border: 1px solid rgb(27 34 51 / 0.09) !important;
-	border-left: 3px solid #9cc3e3 !important;
-	border-radius: 12px !important;
-}
-.calma-areas,
-.calma-pasos-calma {
+.calma-historia__pasos {
 	list-style: none !important;
 	margin: 0 !important;
 	padding: 0 !important;
 	display: grid;
-	gap: var(--calma-space-4);
+	gap: var(--calma-space-5);
 }
-.calma-areas {
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+@media (min-width: 900px) {
+	.calma-historia__pasos {
+		gap: 0;
+		padding: 18vh 0 22vh !important;
+	}
+	.calma-historia__paso {
+		margin: 0 0 34vh !important;
+	}
+	.calma-historia__paso:last-child {
+		margin-bottom: 0 !important;
+	}
 }
-.calma-area,
-.calma-paso-calma {
+@media (max-width: 899px) {
+	.calma-historia__paso {
+		margin: 0 0 20vh !important;
+	}
+}
+.calma-historia__paso.calma-area {
 	display: flex;
 	flex-direction: column;
 	gap: var(--calma-space-3);
-	margin: 0 !important;
 	padding: var(--calma-space-6) !important;
 }
-.calma-area h3,
-.calma-paso-calma h3 {
+.calma-historia__paso.is-activo {
+	border-color: var(--acento) !important;
+}
+.calma-historia__icono {
+	width: 56px;
+	height: 56px;
+	padding: 6px;
+	border-radius: 50%;
+	background: var(--tono);
+	border: 1px solid color-mix(in srgb, var(--acento) 70%, transparent);
+	overflow: visible;
+	stroke-width: 3;
+}
+.calma-area h3 {
 	margin: var(--calma-space-2) 0 0 !important;
 	font-size: var(--calma-fs-lg);
 }
-.calma-area > p,
-.calma-paso-calma > p {
+.calma-area > p {
 	margin: 0 !important;
 	color: var(--calma-ink-soft);
 }
@@ -5849,8 +6036,8 @@ html.calma-quieto .calma-tiempo__anio {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 6px;
-	margin: auto 0 0 !important;
-	padding: var(--calma-space-3) 0 0 !important;
+	margin: var(--calma-space-2) 0 0 !important;
+	padding: 0 !important;
 	list-style: none !important;
 }
 .calma-area__temas li {
@@ -5866,15 +6053,46 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-area__temas li::before {
 	content: none !important;
 }
+.calma-historia__final {
+	padding: var(--calma-space-6) 0 !important;
+}
+.calma-historia__final .calma-definicion {
+	margin: 0 !important;
+	font-family: var(--calma-font-heading);
+	font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
+	line-height: 1.3;
+}
+.calma-historia__final .calma-definicion strong {
+	font-weight: 500;
+	background: linear-gradient(transparent 62%, rgb(15 107 107 / 0.14) 62%);
+}
+/* Primeros pasos hacia la calma */
 .calma-pasos-calma {
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: grid;
+	gap: var(--calma-space-4);
 	grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
-	counter-reset: none;
 }
 .calma-paso-calma {
 	display: grid !important;
 	grid-template-columns: 1fr auto;
 	grid-template-areas: "num fig" "titulo fig" "texto texto";
 	align-items: start;
+	gap: var(--calma-space-3);
+	margin: 0 !important;
+	padding: var(--calma-space-6) !important;
+}
+.calma-paso-calma h3 {
+	grid-area: titulo;
+	margin: var(--calma-space-2) 0 0 !important;
+	font-size: var(--calma-fs-lg);
+}
+.calma-paso-calma > p {
+	grid-area: texto;
+	margin: 0 !important;
+	color: var(--calma-ink-soft);
 }
 .calma-paso-calma__num {
 	grid-area: num;
@@ -5886,12 +6104,7 @@ html.calma-quieto .calma-tiempo__anio {
 	grid-area: fig;
 	width: 140px;
 	color: var(--acento-texto);
-}
-.calma-paso-calma h3 {
-	grid-area: titulo;
-}
-.calma-paso-calma > p {
-	grid-area: texto;
+	stroke-width: 1.4;
 }
 .calma-org .o-arco {
 	transform-origin: 50% 100%;
@@ -5903,13 +6116,6 @@ html.calma-quieto .calma-tiempo__anio {
 	}
 	.calma-paso-calma .calma-org {
 		width: 120px;
-	}
-	/* La figura se achica en el celular: textos más grandes dentro del SVG para que se sigan leyendo */
-	.calma-venn__nombre {
-		font-size: 21px;
-	}
-	.calma-venn__centro text {
-		font-size: 17px;
 	}
 }
 
@@ -6030,15 +6236,30 @@ html.calma-quieto .calma-tiempo__anio {
 	from { transform: translateY(-12px); }
 }
 @media (prefers-reduced-motion: no-preference) {
-	/* Bienestar: los tres círculos se separan desde el centro y aparece la intersección */
-	html:not(.calma-quieto) .calma-venn__circulo {
-		animation: calma-separar 1.6s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.12s) backwards;
+	/* Bienestar: cada área se enciende al llegar a su paso; en el último, los círculos se juntan */
+	html:not(.calma-quieto) .calma-venn[data-paso="1"] .calma-venn__area--ciberpsicologia .o-onda-viva,
+	html:not(.calma-quieto) .calma-historia__paso.is-vivo .o-onda-viva {
+		animation: calma-onda-viva 1.1s var(--calma-ease-mente) 2;
 	}
-	html:not(.calma-quieto) .calma-venn__nombre {
-		animation: calma-encender 0.8s var(--calma-ease-mente) 1.4s backwards;
+	html:not(.calma-quieto) .calma-venn[data-paso="2"] .calma-venn__area--ciberseguridad .o-arco,
+	html:not(.calma-quieto) .calma-historia__paso.is-vivo .o-arco {
+		animation: calma-cerrar 0.8s var(--calma-ease-mente) 0.3s backwards;
 	}
-	html:not(.calma-quieto) .calma-venn__centro {
-		animation: calma-encender 0.8s var(--calma-ease-mente) 1.1s backwards;
+	html:not(.calma-quieto) .calma-venn[data-paso="3"] .calma-venn__area--humano .o-trazo,
+	html:not(.calma-quieto) .calma-historia__paso.is-vivo .o-trazo {
+		stroke-dasharray: 1;
+		animation: calma-conectar 1.4s var(--calma-ease-mente) 0.2s backwards;
+	}
+	html:not(.calma-quieto) .calma-venn[data-paso="1"] .calma-venn__area--ciberpsicologia .calma-venn__circulo,
+	html:not(.calma-quieto) .calma-venn[data-paso="2"] .calma-venn__area--ciberseguridad .calma-venn__circulo,
+	html:not(.calma-quieto) .calma-venn[data-paso="3"] .calma-venn__area--humano .calma-venn__circulo {
+		animation: calma-latido-suave 1.2s var(--calma-ease-mente);
+	}
+	html:not(.calma-quieto) .calma-venn[data-paso="4"] .calma-venn__halo {
+		animation: calma-pulso 1.6s var(--calma-ease-mente) 1s 2 backwards;
+	}
+	html:not(.calma-quieto) .calma-venn[data-paso="4"] .calma-venn__nucleo {
+		animation: calma-latido 0.9s var(--calma-ease-mente) 1s 2;
 	}
 	html:not(.calma-quieto) .calma-paso-calma.is-vivo .o-trazo {
 		animation: calma-conectar 1.6s var(--calma-ease-mente) 0.3s backwards;
@@ -6056,11 +6277,30 @@ html.calma-quieto .calma-tiempo__anio {
 		animation: calma-latido 1s var(--calma-ease-mente) 2;
 	}
 }
-@keyframes calma-separar {
-	from { transform: translate(var(--dx), var(--dy)) scale(0.7); fill-opacity: 0.3; }
+@keyframes calma-onda-viva {
+	50% { transform: scaleY(-1); }
+}
+@keyframes calma-latido-suave {
+	50% { transform: scale(1.04); }
 }
 @keyframes calma-agrupar-suave {
 	from { opacity: 0; transform: scale(2.2); }
+}
+@media (prefers-reduced-motion: no-preference) {
+	/* Íconos del test: aparecen con la pregunta y el trazo se dibuja */
+	html:not(.calma-quieto) .calma-test--e7 .calma-test__step:not([hidden]) .calma-test__icono {
+		animation: calma-latido 0.7s var(--calma-ease-mente) 0.3s;
+	}
+	html:not(.calma-quieto) .calma-test__fb-icono [pathLength],
+	html:not(.calma-quieto) .calma-test__result:not([hidden]) .calma-test__perfil [pathLength] {
+		stroke-dasharray: 1;
+		animation: calma-conectar 1.2s var(--calma-ease-mente) 0.2s backwards;
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.calma-test__icono .o-mueve {
+		transition: none;
+	}
 }
 @keyframes calma-test-entra {
 	from { opacity: 0; transform: translateY(10px); }
