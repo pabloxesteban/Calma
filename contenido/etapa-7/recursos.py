@@ -95,11 +95,12 @@ def herramientas(cabecera):
     grupos = ''
     for n, (tema, titulo, apps) in enumerate(APPS):
         tarjetas = ''.join(
-            f'<li class="calma-app" style="--i:{i}"><img class="calma-app__logo" src="{SUBIDAS}{img}" width="{lado}" height="{lado}" alt="{e(alt)}" loading="lazy" decoding="async">'
-            f'<h3>{e(nombre)}</h3><p>{e(texto)}</p>'
-            f'<p class="calma-app__enlace"><a href="{e(url)}" rel="noopener" target="_blank">Ver {e(nombre.split(" y ")[0])}<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a></p></li>'
+            f'<li class="calma-app" style="--i:{i}"><a class="calma-app__enlace" href="{e(url)}" rel="noopener" target="_blank">'
+            f'<img class="calma-app__logo" src="{SUBIDAS}{img}" width="{lado}" height="{lado}" alt="" loading="lazy" decoding="async">'
+            f'<h3 class="calma-app__nombre">{e(nombre)}</h3><span class="calma-app__desc">{e(texto)}</span>'
+            f'<span class="calma-app__ir" aria-hidden="true"></span><span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a></li>'
             for i, (nombre, texto, url, img, lado, alt) in enumerate(apps))
-        grupos += (f'<div class="calma-apps calma-tono--{tema}"><h2 id="apps-{n}">{titulo}</h2>'
+        grupos += (f'<div class="calma-apps calma-tono--{tema}"><h2 class="calma-apps__titulo" id="apps-{n}">{titulo}</h2>'
                    f'<ul class="calma-apps__lista" aria-labelledby="apps-{n}">{tarjetas}</ul></div>')
     return (cabecera('Herramientas',
                      'Reemplaza TODO el contenido de Herramientas (título, textos, "Pequeños hábitos" y las dos filas de apps). Un solo bloque "HTML personalizado".\n'
@@ -116,7 +117,7 @@ def herramientas(cabecera):
 <ul class="calma-habitos">{habitos}</ul>
 <p class="calma-recursos__nota">Estas sugerencias son orientativas y no constituyen prescripción terapéutica.</p>
 </div></section>
-<section class="calma-section calma-section--white" aria-label="Apps recomendadas"><div class="calma-container">
+<section class="calma-section calma-recursos__apps" aria-label="Apps recomendadas"><div class="calma-container">
 {grupos}
 <p class="calma-notice calma-recursos__aviso">Este contenido es educativo. Las apps recomendadas acompañan el bienestar diario y no reemplazan atención profesional.</p>
 </div></section>
@@ -133,7 +134,7 @@ def descargas(cabecera):
         f'<div class="calma-descarga__texto"><p class="calma-descarga__autora">Por Tatiana X. Stacul</p>'
         f'<h2><span{lang(tl)}>{e(titulo)}</span>{" (en inglés)" if tl == "en" else ""}</h2><p{lang(dl)}>{e(texto)}</p>'
         f'<p class="calma-descarga__accion"><a class="calma-btn calma-btn--primary" href="https://codigocalma.com/wp-content/uploads/{pdf}" download>Descargar'
-        f'<span class="screen-reader-text"> {e(titulo)}</span> <span class="calma-descarga__formato">(PDF)</span></a></p></div></li>'
+        f'<span class="screen-reader-text"> {e(titulo)}</span> <span class="calma-descarga__formato">PDF</span></a></p></div></li>'
         for i, (titulo, tl, texto, dl, pdf, img, alt) in enumerate(GUIAS))
     return (cabecera('Descargas',
                      'Reemplaza TODO el contenido de Descargas (título y las dos filas de guías). Un solo bloque "HTML personalizado".\n'

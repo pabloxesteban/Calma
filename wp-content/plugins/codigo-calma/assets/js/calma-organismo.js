@@ -1312,6 +1312,87 @@
 	}
 
 	/* ------------------------------------------------------------------------
+	   5h. Páginas interiores ("red clara"): la luz de cada tarjeta sigue al
+	   puntero, las tarjetas que empiezan fuera de pantalla suben al entrar
+	   (una vez), la línea de cada título se dibuja y la cuadrícula del fondo
+	   se desplaza apenas con el scroll. Nada de esto oculta texto sin JS.
+	   ------------------------------------------------------------------------ */
+	var LUZ = '.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap';
+	var SUBE = LUZ + ', .calma-app, .calma-perfil__articulos li';
+	var LINEAS = '.calma-recursos .calma-section__head, .calma-apps__titulo, .calma-perfil .calma-section__head';
+
+	function prepararLuz() {
+		if ( ! document.querySelector( LUZ ) ) {
+			return;
+		}
+		document.addEventListener( 'pointermove', function ( ev ) {
+			if ( ev.pointerType !== 'mouse' || ! ev.target.closest ) {
+				return;
+			}
+			var t = ev.target.closest( LUZ );
+			if ( ! t ) {
+				return;
+			}
+			var r = t.getBoundingClientRect();
+			t.style.setProperty( '--mx', ( ev.clientX - r.left ).toFixed( 0 ) + 'px' );
+			t.style.setProperty( '--my', ( ev.clientY - r.top ).toFixed( 0 ) + 'px' );
+		}, { passive: true } );
+		// Con el teclado, la luz se centra arriba de la tarjeta que recibe el foco.
+		document.addEventListener( 'focusin', function ( ev ) {
+			var t = ev.target.closest && ev.target.closest( LUZ );
+			if ( t ) {
+				t.style.setProperty( '--mx', '50%' );
+				t.style.setProperty( '--my', '0%' );
+			}
+		} );
+	}
+
+	function prepararSube() {
+		var fondo = document.querySelector( '.calma-equipo, .calma-perfil, .calma-recursos, .page-id-1941' );
+		if ( fondo && ! quieto() ) {
+			var pendiente = false;
+			window.addEventListener( 'scroll', function () {
+				if ( pendiente ) {
+					return;
+				}
+				pendiente = true;
+				raf( function () {
+					pendiente = false;
+					raiz.style.setProperty( '--calma-red-y', quieto() ? 0 : ( window.scrollY * -0.12 ).toFixed( 1 ) );
+				} );
+			}, { passive: true } );
+		}
+		if ( quieto() || ! ( 'IntersectionObserver' in window ) ) {
+			return;
+		}
+		var limite = window.innerHeight * 0.92;
+		var io = new IntersectionObserver( function ( entradas ) {
+			entradas.forEach( function ( e ) {
+				if ( e.isIntersecting ) {
+					io.unobserve( e.target );
+					e.target.classList.add( 'is-visto' );
+				}
+			} );
+		}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' } );
+		document.querySelectorAll( SUBE ).forEach( function ( el ) {
+			if ( el.getBoundingClientRect().top < limite ) {
+				return;
+			}
+			var i = el.parentElement ? Array.prototype.indexOf.call( el.parentElement.children, el ) : 0;
+			el.style.setProperty( '--calma-delay', ( ( i % 4 ) * 0.09 ).toFixed( 2 ) + 's' );
+			el.classList.add( 'calma-sube' );
+			io.observe( el );
+		} );
+		document.querySelectorAll( LINEAS ).forEach( function ( el ) {
+			if ( el.getBoundingClientRect().top < limite ) {
+				return;
+			}
+			el.classList.add( 'calma-linea-viva' );
+			io.observe( el );
+		} );
+	}
+
+	/* ------------------------------------------------------------------------
 	   5f. Lectura de artículos: tiempo de lectura (contado del texto real) e
 	   índice del artículo con las secciones H2. En pantallas anchas va al
 	   costado y marca la sección que se está leyendo; en el resto, desplegable.
@@ -1507,6 +1588,8 @@
 		prepararPasos();
 		prepararLectura();
 		prepararMiradas();
+		prepararLuz();
+		prepararSube();
 
 		var hero = document.querySelector( '.calma-hero' );
 		var red = null;

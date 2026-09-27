@@ -151,3 +151,10 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
 - **Test**: se comprobó que sigue funcionando (Empezar → paso 1 de 2 → elegir opción) sin errores de JavaScript.
 - **Móvil**: sin desborde ni texto recortado a 360/390/430 en Equipo, Tatiana, Herramientas, Test y Descargas.
 
+## Dirección "red clara" (Equipo, perfiles, Herramientas, Test, Descargas)
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos. Reflow a 320 px sin desborde.
+- **Texto en degradé**: azul #1d5f94 → lavanda #5b3fb8; los dos extremos superan 6:1 sobre el papel.
+- **Luz que sigue al puntero**: solo con mouse; con teclado, la luz y el borde se encienden en la tarjeta que tiene el foco. Es decorativa: no transmite información.
+- **Aparición con el scroll**: solo en elementos que empiezan fuera de pantalla, una vez. Con movimiento reducido o "Reducir movimiento" no hay aparición, la cuadrícula no se mueve y las tarjetas no se desplazan.
+- Se comprobó: la señal de la figura de Equipo, la línea de formación, el test (Empezar → paso 1) y los micro-organismos, sin errores de JavaScript.
+

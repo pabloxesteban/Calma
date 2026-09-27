@@ -204,3 +204,13 @@ Mismo texto que hoy; cambia la forma, con el mismo lenguaje que el Inicio (tonos
 
 Se regeneran con `python3 contenido/etapa-7/generar-bloques.py`.
 
+## Dirección elegida para las páginas interiores: "red clara"
+Se eligió en la exploración de estilo (`exploracion/`, capturas en `docs/diseno/exploracion/`): la B (Nocturno) en versión clara, con el directorio de apps de la A. Vale para Equipo, los perfiles, Herramientas, Test y Descargas; cuando se apruebe, se lleva al Inicio.
+- **Fondo:** papel con la cuadrícula tenue de la red, que se desplaza apenas con el scroll.
+- **Tarjetas:** blancas, con borde fino. Al pasar el puntero, una luz suave lo sigue y el borde se ilumina en el tono de la persona o del tema; la tarjeta sube 3 px.
+- **Iniciales:** con halo en el tono de cada persona; laten una vez al entrar en pantalla y el halo crece al pasar el puntero.
+- **Títulos:** la palabra destacada en degradé azul → lavanda y una línea de circuito arriba de cada sección, que se dibuja al llegar.
+- **Apps:** directorio en filas (logo, nombre, descripción, flecha); el nombre del grupo queda fijo a la izquierda mientras se recorre la lista.
+- **Scroll:** las tarjetas que están más abajo suben al entrar, una tras otra. Las que ya se ven al cargar no se animan, y sin JavaScript todo está visible.
+- Sin cambios en WordPress respecto de los Pasos 3f y 3g: todo lo hace el plugin (CSS y JS). Solo cambió el bloque de Herramientas (apps en filas) y el de Descargas (etiqueta PDF); hay que usar la versión actual de `contenido/etapa-7/bloques/`.
+

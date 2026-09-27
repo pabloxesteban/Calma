@@ -4604,11 +4604,13 @@ html.calma-quieto .calma-tiempo__anio {
 
 /* --------------------------------------------------------------------------
    8i. Páginas interiores (Equipo, perfiles, Herramientas, Test, Descargas):
-   la misma paleta, tipografía y gramática de movimiento que el Inicio, con
-   tarjetas de esquinas suaves. Cada persona y cada tema tiene su tono.
-   Movimiento: las figuras "se encienden" al entrar en pantalla (una vez) y
-   reaccionan al pasar el puntero (perturbar → asentarse). El texto nunca
-   se oculta ni se mueve.
+   dirección "red clara" (B de la exploración, en claro, + el directorio de
+   apps de la A). Papel con la cuadrícula tenue de la red, tarjetas blancas
+   con una luz que sigue al puntero y un borde que se ilumina en el tono de
+   cada persona o tema, iniciales con halo, títulos con acento en degradé.
+   Movimiento: las tarjetas suben al entrar con el scroll (una vez), la
+   cuadrícula se desplaza apenas con el scroll, y todo reacciona al puntero
+   o al foco. Sin JavaScript o con movimiento reducido se ve todo quieto.
    -------------------------------------------------------------------------- */
 .calma-person--tatiana,
 .calma-perfil--tatiana,
@@ -4624,67 +4626,210 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-tono--neurociencia { --tono: #e9f1f8; --acento: #9cc3e3; --acento-texto: #1d5f94; }
 .calma-tono--bienestar { --tono: #e8f3ee; --acento: #9fd0c0; --acento-texto: #1f6b47; }
 .calma-tono--tecnologia { --tono: #f8ece6; --acento: #ebb79c; --acento-texto: #9a3412; }
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-column:nth-child(1) { --tono: #f6efe1; --acento: #e2c17e; --acento-texto: #7a4d00; }
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-column:nth-child(2) { --tono: #efedf9; --acento: #bdb0ee; --acento-texto: #5b3fb8; }
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-column:nth-child(3) { --tono: #e9f1f8; --acento: #9cc3e3; --acento-texto: #1d5f94; }
 
-.calma-page {
-	--calma-radio: 20px;
+/* ---- Fondo: la cuadrícula de la red, en claro ---- */
+.calma-equipo,
+.calma-perfil,
+.calma-recursos,
+.page-id-1941 .content-container,
+.page-id-1941 #inner-wrap .site-main {
+	background:
+		linear-gradient(rgb(27 34 51 / 0.045) 1px, transparent 1px) 0 calc(var(--calma-red-y, 0) * 1px) / 56px 56px,
+		linear-gradient(90deg, rgb(27 34 51 / 0.045) 1px, transparent 1px) 0 0 / 56px 56px,
+		var(--calma-paper);
+}
+.calma-equipo .calma-section,
+.calma-perfil .calma-section,
+.calma-recursos .calma-section,
+.calma-equipo .calma-hero,
+.calma-recursos .calma-hero {
+	background: transparent !important;
+}
+.calma-equipo .calma-hero,
+.calma-recursos .calma-hero,
+.calma-perfil .calma-hero {
+	border-bottom: 0;
+}
+.calma-equipo .calma-hero::after,
+.calma-recursos .calma-hero::after,
+.calma-perfil .calma-hero::after {
+	display: none;
+}
+.calma-recursos .calma-hero + .calma-section {
+	padding-top: var(--calma-space-6) !important;
+}
+.calma-perfil .calma-hero {
+	background: radial-gradient(60% 120% at 12% 0%, color-mix(in srgb, var(--acento) 30%, transparent), transparent 70%) !important;
 }
 
-/* Tarjeta suave: fondo del tono, esquinas redondeadas, sin sombra ni borde duro */
+/* Títulos: acento en degradé azul → lavanda, y una línea de circuito arriba de cada sección */
+.calma-recursos h1 em,
+.calma-equipo h1 .calma-grad-text,
+.calma-recursos .calma-section__head h2 em {
+	font-style: italic;
+	color: #1d5f94 !important;
+	background: linear-gradient(90deg, #1d5f94, #5b3fb8) !important;
+	-webkit-background-clip: text !important;
+	background-clip: text !important;
+	-webkit-text-fill-color: transparent;
+}
+.calma-recursos .calma-section__head::before,
+.calma-apps__titulo::before,
+.calma-perfil .calma-section__head::before {
+	content: "";
+	display: block;
+	width: 72px;
+	height: 2px;
+	margin: 0 auto var(--calma-space-5);
+	background: linear-gradient(90deg, var(--calma-teal), rgb(15 107 107 / 0));
+	transform-origin: 0 50%;
+}
+
+/* ---- Tarjeta "luz": blanca, borde fino, luz y borde que siguen al puntero ---- */
 .calma-equipo .calma-person,
 .calma-perfil__datos > .calma-card,
 .calma-page .calma-quote,
 .calma-habito,
-.calma-app,
 .calma-descarga,
 .calma-test .calma-test__card,
 .calma-test .calma-test__step,
-.calma-test .calma-test__result {
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap {
+	--luz-acento: var(--acento, #9cc3e3);
+	--luz-borde: color-mix(in srgb, var(--acento-texto, #1d5f94) 55%, var(--luz-acento));
 	position: relative;
-	border: 1px solid var(--calma-hairline) !important;
-	border-radius: var(--calma-radio, 20px) !important;
-	box-shadow: none !important;
-	transition: border-color var(--calma-dur-lento) var(--calma-ease-mente), transform var(--calma-dur-lento) var(--calma-ease-mente);
-}
-.calma-page .calma-cta {
-	border-top: 0;
-	border-radius: var(--calma-radio, 20px) !important;
+	isolation: isolate;
 	overflow: hidden;
+	background: #fff !important;
+	border: 1px solid rgb(27 34 51 / 0.09) !important;
+	border-radius: 16px !important;
+	box-shadow: 0 1px 2px rgb(27 34 51 / 0.04) !important;
+	transition: transform 0.6s var(--calma-ease-mente), box-shadow 0.6s var(--calma-ease-mente);
+}
+.calma-equipo .calma-person::before,
+.calma-perfil__datos > .calma-card::before,
+.calma-page .calma-quote::before,
+.calma-habito::before,
+.calma-descarga::before,
+.calma-test .calma-test__card::before,
+.calma-test .calma-test__step::before,
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap::before {
+	content: "" !important;
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: radial-gradient(440px circle at var(--mx, 50%) var(--my, -30%), color-mix(in srgb, var(--luz-acento) 30%, transparent), transparent 48%);
+	opacity: 0;
+	transition: opacity 0.5s var(--calma-ease-mente);
+	pointer-events: none;
+}
+.calma-equipo .calma-person::after,
+.calma-perfil__datos > .calma-card::after,
+.calma-page .calma-quote::after,
+.calma-habito::after,
+.calma-descarga::after,
+.calma-test .calma-test__card::after,
+.calma-test .calma-test__step::after,
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	padding: 1px;
+	background: radial-gradient(320px circle at var(--mx, 50%) var(--my, -30%), var(--luz-borde), transparent 55%);
+	-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	opacity: 0;
+	transition: opacity 0.5s var(--calma-ease-mente);
+	pointer-events: none;
+}
+:is(.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap):is(:hover, :focus-within)::before,
+:is(.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap):is(:hover, :focus-within)::after {
+	opacity: 1;
+}
+:is(.calma-equipo .calma-person, .calma-habito, .calma-descarga, .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap):hover {
+	transform: translateY(-3px);
+	box-shadow: 0 22px 44px -28px color-mix(in srgb, var(--acento-texto, #1d5f94) 55%, transparent) !important;
+}
+
+/* ---- Iniciales con halo (Equipo y perfil) ---- */
+.calma-person .calma-avatar,
+.calma-perfil .calma-avatar {
+	background: #fff !important;
+	color: var(--acento-texto) !important;
+	border: 1px solid var(--acento);
+	box-shadow: 0 0 0 6px color-mix(in srgb, var(--acento) 22%, transparent), 0 12px 32px -10px var(--acento) !important;
+	font-family: var(--calma-font-heading);
+	transition: box-shadow 0.6s var(--calma-ease-mente), transform 0.6s var(--calma-ease-mente);
+}
+.calma-equipo .calma-person:hover .calma-avatar,
+.calma-equipo .calma-person:focus-within .calma-avatar {
+	box-shadow: 0 0 0 10px color-mix(in srgb, var(--acento) 26%, transparent), 0 16px 44px -8px var(--acento) !important;
+}
+.calma-person__role,
+.calma-perfil .calma-person__role {
+	color: var(--acento-texto) !important;
 }
 
 /* ---- Equipo ---- */
 .calma-equipo .calma-person {
 	padding: var(--calma-space-6) !important;
-	background: var(--tono) !important;
-	border-color: transparent !important;
-	overflow: hidden;
 }
-.calma-equipo .calma-person::before {
-	content: "";
-	position: absolute;
-	left: 24px;
-	right: 24px;
-	top: 0;
-	height: 4px;
-	border-radius: 0 0 4px 4px;
-	background: var(--acento);
-	transform-origin: 0 50%;
+.calma-equipo .calma-person__head {
+	flex-direction: column;
+	align-items: flex-start !important;
+	gap: var(--calma-space-5) !important;
 }
-.calma-equipo .calma-person:hover,
-.calma-equipo .calma-person:focus-within {
-	border-color: var(--acento) !important;
+.calma-equipo .calma-person .calma-avatar {
+	width: 72px;
+	height: 72px;
+	font-size: 1.375rem;
 }
 .calma-equipo .calma-person h2 {
 	line-height: 1.15;
+}
+.calma-equipo .calma-person > p:not([class]) {
+	color: var(--calma-ink-soft);
 }
 .calma-equipo .calma-person__links {
 	margin-top: auto !important;
 	padding-top: var(--calma-space-4);
 }
-/* El enlace cubre toda la tarjeta (el texto sigue siendo "Conocer a …") */
+.calma-equipo .calma-person__links a {
+	display: flex !important;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--calma-ink) !important;
+	text-decoration: none !important;
+}
+.calma-equipo .calma-person__links a::after {
+	content: "→";
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	margin: 0;
+	border-radius: 50%;
+	border: 1px solid rgb(27 34 51 / 0.2);
+	transition: transform 0.5s var(--calma-ease-mente), background-color 0.4s var(--calma-ease-mente), border-color 0.4s, color 0.4s;
+}
+.calma-equipo .calma-person:hover .calma-person__links a::after,
+.calma-equipo .calma-person:focus-within .calma-person__links a::after {
+	transform: rotate(-45deg);
+	background: var(--acento-texto);
+	border-color: var(--acento-texto);
+	color: #fff;
+}
+/* Toda la tarjeta es clicable (el enlace sigue diciendo "Conocer a …") */
 .calma-equipo .calma-person__links a::before {
 	content: "";
 	position: absolute;
 	inset: 0;
+	z-index: 1;
 	border-radius: inherit;
 }
 .calma-equipo .calma-person__links a:focus-visible {
@@ -4694,12 +4839,9 @@ html.calma-quieto .calma-tiempo__anio {
 	outline: 3px solid var(--calma-primary);
 	outline-offset: 3px;
 }
-.calma-person .calma-avatar,
-.calma-perfil .calma-avatar {
-	transition: transform var(--calma-dur-lento) var(--calma-ease-mente);
-}
-.calma-equipo .calma-person:hover .calma-avatar {
-	transform: scale(1.06);
+.calma-equipo .calma-section:last-child,
+.calma-perfil .calma-section:last-child {
+	padding-top: 0 !important;
 }
 
 /* Figura "tres miradas" */
@@ -4743,9 +4885,10 @@ html.calma-quieto .calma-tiempo__anio {
 	transition: opacity 0.3s var(--calma-ease-mente);
 }
 .calma-miradas__nodo circle {
-	fill: var(--tono);
+	fill: #fff;
 	stroke: var(--acento);
 	stroke-width: 2;
+	filter: drop-shadow(0 6px 10px color-mix(in srgb, var(--acento) 70%, transparent));
 	transition: transform 0.5s var(--calma-ease-mente);
 }
 .calma-miradas text {
@@ -4765,7 +4908,6 @@ html.calma-quieto .calma-tiempo__anio {
 	stroke: var(--calma-teal);
 	stroke-opacity: 0.2;
 }
-/* Conectar: la persona que se mira se destaca; las otras dos se atenúan */
 .calma-miradas[data-activa] .calma-miradas__nodo,
 .calma-miradas[data-activa] .calma-miradas__linea {
 	opacity: 0.35;
@@ -4784,67 +4926,15 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-miradas[data-activa="emanuel"] .calma-miradas__nodo--emanuel circle {
 	transform: scale(1.12);
 }
-@media (prefers-reduced-motion: no-preference) {
-	html:not(.calma-quieto) .calma-miradas__nodo {
-		animation: calma-encender 0.8s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.3s) backwards;
-	}
-	html:not(.calma-quieto) .calma-miradas__linea {
-		animation: calma-trazar 1.4s var(--calma-ease-mente) calc(0.6s + var(--i) * 0.3s) backwards;
-	}
-	html:not(.calma-quieto) .calma-miradas__centro {
-		animation: calma-encender 0.8s var(--calma-ease-mente) 1.2s backwards;
-	}
-	html:not(.calma-quieto) .calma-miradas.is-senal-tatiana .calma-miradas__senal--tatiana,
-	html:not(.calma-quieto) .calma-miradas.is-senal-francisca .calma-miradas__senal--francisca,
-	html:not(.calma-quieto) .calma-miradas.is-senal-emanuel .calma-miradas__senal--emanuel {
-		animation: calma-recorrido-senal 1.1s var(--calma-ease-mente);
-	}
-	html:not(.calma-quieto) .calma-miradas.is-senal-tatiana .calma-miradas__halo,
-	html:not(.calma-quieto) .calma-miradas.is-senal-francisca .calma-miradas__halo,
-	html:not(.calma-quieto) .calma-miradas.is-senal-emanuel .calma-miradas__halo {
-		animation: calma-pulso 1.2s var(--calma-ease-mente) 0.9s;
-	}
-	/* Tarjetas al entrar: la línea de tono crece y el avatar late una vez */
-	html:not(.calma-quieto) .calma-person.is-vivo::before {
-		animation: calma-crecer 1s var(--calma-ease-mente) backwards;
-	}
-	html:not(.calma-quieto) .calma-person.is-vivo .calma-avatar,
-	html:not(.calma-quieto) .calma-perfil .calma-hero .calma-avatar {
-		animation: calma-halo 1.6s var(--calma-ease-mente) 0.3s;
-	}
-}
-@keyframes calma-crecer {
-	from { transform: scaleX(0); }
-}
-@keyframes calma-halo {
-	from { box-shadow: 0 0 0 2px var(--acento), 0 0 0 0 var(--acento); }
-	to { box-shadow: 0 0 0 2px var(--acento), 0 0 0 18px transparent; }
-}
 @media (max-width: 899px) {
 	.calma-miradas svg {
 		max-width: 340px;
 	}
 }
-.calma-equipo .calma-section:last-child,
-.calma-perfil .calma-section:last-child {
-	padding-top: 0 !important;
-}
 
-/* ---- Perfil: el hero toma el tono de la persona ---- */
-.calma-perfil .calma-hero {
-	background: linear-gradient(180deg, var(--tono) 0%, var(--calma-bg) 100%) !important;
-}
+/* ---- Perfil ---- */
 .calma-perfil .calma-hero__inner {
 	gap: var(--calma-space-2);
-}
-.calma-perfil .calma-avatar {
-	background: #fff !important;
-	color: var(--acento-texto) !important;
-	box-shadow: 0 0 0 2px var(--acento) !important;
-	font-family: var(--calma-font-heading);
-}
-.calma-perfil .calma-person__role {
-	color: var(--acento-texto) !important;
 }
 .calma-volver {
 	margin: 0 !important;
@@ -4869,11 +4959,9 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-volver a:hover::before {
 	transform: translateX(-3px);
 }
-
-/* "En qué acompaña" y "Formación declarada" */
 .calma-perfil__datos {
 	display: grid;
-	gap: var(--calma-space-6);
+	gap: var(--calma-space-5);
 	margin-top: var(--calma-space-8);
 }
 @media (min-width: 700px) {
@@ -4884,11 +4972,6 @@ html.calma-quieto .calma-tiempo__anio {
 }
 .calma-perfil__datos > .calma-card {
 	padding: var(--calma-space-6) !important;
-	background: #fff !important;
-}
-.calma-perfil__datos > .calma-card:first-child {
-	background: var(--tono) !important;
-	border-color: transparent !important;
 }
 .calma-perfil__datos h2 {
 	margin-bottom: var(--calma-space-4) !important;
@@ -4899,8 +4982,9 @@ html.calma-quieto .calma-tiempo__anio {
 }
 .calma-perfil .calma-person__topics li::before {
 	background: var(--acento-texto) !important;
+	box-shadow: 0 0 0 4px color-mix(in srgb, var(--acento) 30%, transparent);
 }
-/* Formación como un recorrido: la línea se llena con el scroll y cada punto se enciende */
+/* Formación: la línea se llena con el scroll y enciende cada punto */
 .calma-formacion {
 	--calma-pasos-p: 1;
 	position: relative;
@@ -4920,7 +5004,7 @@ html.calma-quieto .calma-tiempo__anio {
 	background: var(--calma-hairline);
 }
 .calma-formacion::after {
-	background: var(--acento);
+	background: linear-gradient(180deg, var(--acento), var(--acento-texto));
 	transform-origin: 50% 0;
 	transform: scaleY(var(--calma-pasos-p));
 }
@@ -4940,8 +5024,8 @@ html.calma-quieto .calma-tiempo__anio {
 	width: 12px;
 	height: 12px;
 	border-radius: 50%;
-	background: var(--acento);
-	box-shadow: 0 0 0 3px #fff;
+	background: var(--acento-texto);
+	box-shadow: 0 0 0 3px #fff, 0 0 12px var(--acento);
 }
 .calma-formacion.is-vivo li::before {
 	background: #fff;
@@ -4949,67 +5033,60 @@ html.calma-quieto .calma-tiempo__anio {
 	transition: background-color 0.4s var(--calma-ease-mente), box-shadow 0.4s var(--calma-ease-mente);
 }
 .calma-formacion.is-vivo li.is-encendido::before {
-	background: var(--acento);
-	box-shadow: 0 0 0 3px #fff, inset 0 0 0 2px var(--acento);
+	background: var(--acento-texto);
+	box-shadow: 0 0 0 3px #fff, 0 0 12px var(--acento);
 }
-
-/* Reseñas: sin el ícono de comillas (el texto ya las trae) */
+/* Reseñas */
 .calma-page .calma-quote {
 	padding: var(--calma-space-6) !important;
-	background: #fff !important;
-}
-.calma-quote::before {
-	content: none !important;
 }
 .calma-quote blockquote p {
 	font-family: var(--calma-font-heading);
 	font-size: 1.125rem;
 	line-height: 1.5;
 }
-
-/* Artículos de la persona: filas con el tema de cada uno */
+/* Artículos de la persona: filas del directorio */
 .calma-perfil__articulos {
 	list-style: none !important;
 	margin: var(--calma-space-4) 0 0 !important;
 	padding: 0 !important;
-	display: grid;
-	gap: var(--calma-space-3);
+	border-top: 1px solid var(--calma-hairline-strong);
 }
 .calma-perfil__articulos li {
 	margin: 0 !important;
 	padding: 0 !important;
+	border-bottom: 1px solid var(--calma-hairline-strong);
 }
 .calma-perfil__articulos li::before {
 	content: none !important;
 }
 .calma-perfil__articulos a {
 	display: grid;
-	grid-template-columns: 1fr auto;
+	grid-template-columns: 1fr 44px;
 	align-items: center;
 	gap: 6px var(--calma-space-4);
-	padding: var(--calma-space-4) var(--calma-space-5);
-	border: 1px solid var(--calma-hairline);
-	border-radius: 16px;
-	background: #fff;
+	padding: var(--calma-space-4) var(--calma-space-3);
 	color: var(--calma-ink) !important;
 	text-decoration: none !important;
-	transition: border-color 0.3s var(--calma-ease-mente), background-color 0.3s var(--calma-ease-mente);
+	transition: background-color 0.4s var(--calma-ease-mente);
 }
 .calma-perfil__articulos a::after {
 	content: "→";
 	grid-row: 1 / span 2;
 	grid-column: 2;
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
 	color: var(--calma-primary);
-	transition: transform 0.2s var(--calma-ease-mente);
+	transition: transform 0.5s var(--calma-ease-mente), background-color 0.4s;
 }
 .calma-perfil__articulos a:hover {
-	border-color: var(--calma-hairline-strong);
-	background: var(--calma-paper);
-}
-.calma-perfil__articulos a:hover .calma-perfil__titulo {
-	color: var(--calma-primary);
+	background: color-mix(in srgb, var(--acento) 16%, #fff);
 }
 .calma-perfil__articulos a:hover::after {
+	background: #fff;
 	transform: translateX(4px);
 }
 .calma-perfil__titulo {
@@ -5027,21 +5104,16 @@ html.calma-quieto .calma-tiempo__anio {
 	font-size: 0.8125rem;
 	font-weight: 600;
 	line-height: 1.6;
-	background: var(--tono, #e9f1f8);
+	background: color-mix(in srgb, var(--acento, #9cc3e3) 26%, #fff);
 	color: var(--acento-texto, #1d5f94);
 }
-.calma-perfil__tema[data-tema="psicologia"] { background: #f6efe1; color: #7a4d00; }
-.calma-perfil__tema[data-tema="neurociencia"] { background: #e9f1f8; color: #1d5f94; }
-.calma-perfil__tema[data-tema="ia"] { background: #efedf9; color: #5b3fb8; }
-.calma-perfil__tema[data-tema="tecnologia"] { background: #f8ece6; color: #9a3412; }
-.calma-perfil__tema[data-tema="bienestar"] { background: #e8f3ee; color: #1f6b47; }
+.calma-perfil__tema[data-tema="psicologia"] { --acento: #e2c17e; --acento-texto: #7a4d00; }
+.calma-perfil__tema[data-tema="neurociencia"] { --acento: #9cc3e3; --acento-texto: #1d5f94; }
+.calma-perfil__tema[data-tema="ia"] { --acento: #bdb0ee; --acento-texto: #5b3fb8; }
+.calma-perfil__tema[data-tema="tecnologia"] { --acento: #ebb79c; --acento-texto: #9a3412; }
+.calma-perfil__tema[data-tema="bienestar"] { --acento: #9fd0c0; --acento-texto: #1f6b47; }
 
-/* ---- Herramientas y Descargas ---- */
-.calma-recursos .calma-hero h1 em,
-.calma-recursos .calma-section__head h2 em {
-	font-style: italic;
-	color: var(--calma-primary);
-}
+/* ---- Herramientas ---- */
 .calma-recursos .calma-hero__inner > div > p:not(.calma-hero__lead) {
 	max-width: 68ch;
 	margin-top: var(--calma-space-4) !important;
@@ -5056,11 +5128,11 @@ html.calma-quieto .calma-tiempo__anio {
 	list-style: none !important;
 	margin: 0 !important;
 	padding: 0 !important;
-	display: grid;
-	gap: var(--calma-space-6);
 }
 .calma-habitos {
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+	display: grid;
+	gap: var(--calma-space-4);
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
 }
 .calma-habito {
 	display: flex;
@@ -5068,21 +5140,12 @@ html.calma-quieto .calma-tiempo__anio {
 	gap: var(--calma-space-3);
 	margin: 0 !important;
 	padding: var(--calma-space-6) !important;
-	background: var(--tono) !important;
-	border-color: transparent !important;
-}
-.calma-habito::before,
-.calma-app::before,
-.calma-descarga::before {
-	content: none !important;
 }
 .calma-habito .calma-org {
-	max-width: 160px;
+	max-width: 170px;
+	margin: var(--calma-space-2) 0 var(--calma-space-3);
 	color: var(--acento-texto);
-	margin-bottom: var(--calma-space-2);
-}
-.calma-habito .calma-habito__chip {
-	background: #fff;
+	filter: drop-shadow(0 0 6px color-mix(in srgb, var(--acento) 80%, transparent));
 }
 .calma-habito h3 {
 	margin: 0 !important;
@@ -5101,107 +5164,125 @@ html.calma-quieto .calma-tiempo__anio {
 	font-size: var(--calma-fs-sm);
 	color: var(--calma-ink-soft);
 }
-.calma-recursos .calma-section--white {
-	padding-top: var(--calma-space-6) !important;
+/* Apps: directorio en filas, con el nombre del grupo fijo a la izquierda */
+.calma-recursos__apps {
+	padding-top: var(--calma-space-4) !important;
 }
 .calma-apps + .calma-apps {
 	margin-top: var(--calma-space-12, 64px);
 }
-.calma-apps > h2 {
-	display: flex;
-	align-items: center;
-	gap: var(--calma-space-3);
-	margin: 0 0 var(--calma-space-6) !important;
+.calma-apps__titulo {
+	margin: 0 0 var(--calma-space-5) !important;
 	font-size: var(--calma-fs-xl);
+	line-height: 1.15;
 }
-.calma-apps > h2::before {
-	content: "";
-	flex: none;
-	width: 14px;
-	height: 14px;
-	border-radius: 50%;
-	background: var(--acento);
-	box-shadow: 0 0 0 6px var(--tono);
+.calma-apps__titulo::before {
+	margin: 0 0 var(--calma-space-4);
+	background: linear-gradient(90deg, var(--acento-texto), transparent);
+}
+@media (min-width: 900px) {
+	.calma-apps {
+		display: grid;
+		grid-template-columns: 0.8fr 2fr;
+		gap: var(--calma-space-12, 64px);
+		align-items: start;
+	}
+	.calma-apps__titulo {
+		position: sticky;
+		top: 110px;
+	}
 }
 .calma-apps__lista {
-	grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+	border-top: 1px solid var(--calma-hairline-strong);
 }
 .calma-app {
-	display: flex;
-	flex-direction: column;
-	gap: var(--calma-space-3);
 	margin: 0 !important;
-	padding: var(--calma-space-6) !important;
-	background: #fff !important;
+	padding: 0 !important;
+	border-bottom: 1px solid var(--calma-hairline-strong);
 }
-.calma-app:hover,
-.calma-app:focus-within {
-	border-color: var(--acento) !important;
+.calma-app::before {
+	content: none !important;
+}
+.calma-app__enlace {
+	display: grid;
+	grid-template-columns: 56px 1fr 44px;
+	grid-template-areas: "logo nombre ir" "logo desc ir";
+	gap: 2px var(--calma-space-5);
+	align-items: center;
+	padding: var(--calma-space-5) var(--calma-space-3);
+	color: var(--calma-ink) !important;
+	text-decoration: none !important;
+	transition: background-color 0.4s var(--calma-ease-mente);
 }
 .calma-app__logo {
-	width: 72px !important;
-	height: 72px !important;
-	border-radius: 18px;
+	grid-area: logo;
+	width: 56px !important;
+	height: 56px !important;
+	border-radius: 14px;
 	object-fit: cover;
-	box-shadow: 0 0 0 4px var(--tono);
-	transition: transform var(--calma-dur-lento) var(--calma-ease-mente);
+	box-shadow: 0 10px 24px -14px var(--acento-texto);
+	transition: transform 0.6s var(--calma-ease-mente);
 }
-.calma-app:hover .calma-app__logo {
-	transform: rotate(-4deg) scale(1.05);
-}
-.calma-app h3 {
-	margin: var(--calma-space-2) 0 0 !important;
-	font-size: var(--calma-fs-lg);
-}
-.calma-app p {
+.calma-app__nombre {
+	grid-area: nombre;
 	margin: 0 !important;
+	font-size: 1.25rem !important;
+	line-height: 1.2;
+}
+.calma-app__desc {
+	grid-area: desc;
+	max-width: 62ch;
 	color: var(--calma-ink-soft);
+	font-size: 0.9375rem;
+	line-height: 1.55;
 }
-.calma-app .calma-app__enlace {
-	margin-top: auto !important;
-	padding-top: var(--calma-space-2);
-	font-weight: 600;
+.calma-app__ir {
+	grid-area: ir;
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	color: var(--acento-texto);
+	transition: transform 0.5s var(--calma-ease-mente), background-color 0.4s;
 }
-.calma-app__enlace a {
-	display: inline-flex;
-	align-items: center;
-	min-height: 44px;
-	gap: 6px;
-	color: var(--calma-primary) !important;
-}
-.calma-app__enlace a::after {
+.calma-app__ir::before {
 	content: "↗";
-	transition: transform 0.2s var(--calma-ease-mente);
+	font-size: 1.125rem;
 }
-.calma-app__enlace a:hover::after {
-	transform: translate(2px, -2px);
+.calma-app__enlace:hover,
+.calma-app__enlace:focus-visible {
+	background: color-mix(in srgb, var(--acento) 20%, #fff);
+}
+.calma-app__enlace:hover .calma-app__logo {
+	transform: rotate(-6deg) scale(1.06);
+}
+.calma-app__enlace:hover .calma-app__ir {
+	background: #fff;
+	transform: translate(3px, -3px);
 }
 .calma-recursos__aviso {
 	margin-top: var(--calma-space-10) !important;
-	border-radius: 16px !important;
 }
 
-/* Descargas: portada, autora, título, descripción y botón abajo */
+/* ---- Descargas ---- */
 .calma-descargas {
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+	display: grid;
+	gap: var(--calma-space-5);
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
 }
 .calma-descarga {
-	display: grid;
-	grid-template-columns: minmax(120px, 38%) 1fr;
-	gap: var(--calma-space-6);
+	display: flex;
+	flex-direction: column;
+	gap: var(--calma-space-4);
 	margin: 0 !important;
-	padding: var(--calma-space-5) !important;
-	background: #fff !important;
-}
-.calma-descarga:hover,
-.calma-descarga:focus-within {
-	border-color: var(--calma-hairline-strong) !important;
+	padding: var(--calma-space-4) var(--calma-space-4) var(--calma-space-5) !important;
 }
 .calma-descarga__portada {
 	overflow: hidden;
-	border-radius: 14px;
-	box-shadow: 0 0 0 1px var(--calma-hairline);
-	align-self: start;
+	border-radius: 10px;
+	box-shadow: 0 0 0 1px rgb(27 34 51 / 0.06), 0 22px 40px -26px rgb(27 34 51 / 0.7);
+	transition: transform 0.8s var(--calma-ease-mente);
 }
 .calma-descarga__portada img {
 	display: block;
@@ -5209,16 +5290,17 @@ html.calma-quieto .calma-tiempo__anio {
 	height: auto;
 	aspect-ratio: 1;
 	object-fit: cover;
-	transition: transform 1.2s var(--calma-ease-mente);
 }
-.calma-descarga:hover .calma-descarga__portada img {
-	transform: scale(1.04);
+.calma-descarga:hover .calma-descarga__portada {
+	transform: translateY(-4px) scale(1.02);
 }
 .calma-descarga__texto {
 	display: flex;
+	flex: 1;
 	flex-direction: column;
 	gap: var(--calma-space-2);
 	min-width: 0;
+	padding: 0 var(--calma-space-1);
 }
 .calma-descarga__autora {
 	margin: 0 !important;
@@ -5227,28 +5309,44 @@ html.calma-quieto .calma-tiempo__anio {
 }
 .calma-descarga h2 {
 	margin: 0 !important;
-	font-size: 1.375rem;
+	font-size: 1.25rem;
 	line-height: 1.2;
 }
 .calma-descarga__texto > p:not([class]) {
 	margin: 0 !important;
 	color: var(--calma-ink-soft);
+	font-size: 0.9375rem;
 }
 .calma-descarga__accion {
 	margin: auto 0 0 !important;
-	padding-top: var(--calma-space-3);
+	padding-top: var(--calma-space-2);
+}
+.calma-descarga .calma-btn {
+	display: inline-flex !important;
+	align-items: center;
+	gap: 8px;
+	min-height: 44px;
+	padding: 0 !important;
+	background: none !important;
+	border: 0 !important;
+	box-shadow: none !important;
+	color: var(--calma-primary) !important;
+	font-weight: 600;
+}
+.calma-descarga .calma-btn::after {
+	content: "↓";
+	transition: transform 0.4s var(--calma-ease-mente);
+}
+.calma-descarga .calma-btn:hover::after {
+	transform: translateY(3px);
 }
 .calma-descarga__formato {
-	font-weight: 400;
-	opacity: 0.85;
-}
-@media (max-width: 519px) {
-	.calma-descarga {
-		grid-template-columns: 1fr;
-	}
-	.calma-descarga__portada {
-		max-width: 220px;
-	}
+	padding: 1px 6px;
+	border: 1px solid currentColor;
+	border-radius: 4px;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
 }
 
 /* ---- Test de consumo digital ---- */
@@ -5259,18 +5357,10 @@ html.calma-quieto .calma-tiempo__anio {
 	color: var(--calma-ink) !important;
 	letter-spacing: -0.02em;
 }
-.calma-test .calma-test__card,
-.calma-test .calma-test__step {
-	background: #fff !important;
-}
-.calma-test .calma-test__card:first-of-type {
-	background: #e9f1f8 !important;
-	border-color: transparent !important;
-}
 .calma-test .calma-test__num {
 	background: #fff !important;
 	color: var(--calma-primary) !important;
-	box-shadow: inset 0 0 0 2px #9cc3e3;
+	box-shadow: inset 0 0 0 2px #9cc3e3, 0 0 0 5px rgb(156 195 227 / 0.25);
 }
 .calma-test .calma-test__howto {
 	position: relative;
@@ -5282,26 +5372,27 @@ html.calma-quieto .calma-tiempo__anio {
 	top: 16px;
 	bottom: 16px;
 	width: 2px;
-	background: #d6e4f0;
+	background: linear-gradient(180deg, #9cc3e3, #bdb0ee);
 }
 .calma-test .calma-test__howto li {
 	position: relative;
 }
 .calma-test .calma-test__option {
-	border-radius: 14px !important;
+	border-radius: 12px !important;
 	border-color: var(--calma-hairline-strong) !important;
-	transition: border-color 0.2s var(--calma-ease-mente), background-color 0.2s var(--calma-ease-mente);
+	background: #fff !important;
+	transition: border-color 0.2s var(--calma-ease-mente), background-color 0.2s var(--calma-ease-mente), box-shadow 0.3s var(--calma-ease-mente);
 }
 .calma-test .calma-test__option:hover {
 	border-color: var(--calma-primary) !important;
-	background: var(--calma-paper);
+	box-shadow: 0 10px 24px -18px var(--calma-primary);
 }
 .calma-test .calma-test__option:has(input:checked) {
 	background: #e9f1f8 !important;
 	border-color: var(--calma-primary) !important;
 }
 .calma-test .calma-test__bar span {
-	background: linear-gradient(90deg, var(--calma-primary), var(--calma-teal)) !important;
+	background: linear-gradient(90deg, var(--calma-primary), #5b3fb8) !important;
 	transition: width 0.6s var(--calma-ease-mente);
 }
 .calma-test .calma-test__btn--block {
@@ -5316,13 +5407,10 @@ html.calma-quieto .calma-tiempo__anio {
 }
 /* "Dato que vale la pena saber" (filas de Kadence debajo del test; página 1941) */
 .page-id-1941 .kb-image1941_94a53c-56 img {
-	border-radius: 20px;
+	border-radius: 16px;
+	box-shadow: 0 30px 60px -36px rgb(27 34 51 / 0.6);
 }
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-column:nth-child(1) { --tono: #f6efe1; --acento: #e2c17e; --acento-texto: #7a4d00; }
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-column:nth-child(2) { --tono: #efedf9; --acento: #bdb0ee; --acento-texto: #5b3fb8; }
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-column:nth-child(3) { --tono: #e9f1f8; --acento: #9cc3e3; --acento-texto: #1d5f94; }
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-infobox,
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap {
+.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-infobox {
 	height: 100%;
 }
 .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap {
@@ -5330,24 +5418,20 @@ html.calma-quieto .calma-tiempo__anio {
 	flex-direction: column !important;
 	align-items: flex-start !important;
 	gap: var(--calma-space-3);
+	height: 100%;
 	padding: var(--calma-space-6) !important;
-	background: var(--tono) !important;
-	border: 0 !important;
-	border-radius: 20px !important;
-	box-shadow: none !important;
 }
 .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-media {
 	display: grid !important;
 	place-items: center;
-	width: 48px;
-	height: 48px;
+	width: 52px;
+	height: 52px;
 	margin: 0 !important;
 	padding: 0 !important;
-	border: 0 !important;
+	border: 1px solid var(--acento) !important;
 	border-radius: 50% !important;
 	background: #fff !important;
-	color: var(--acento-texto) !important;
-	box-shadow: 0 0 0 1px var(--acento);
+	box-shadow: 0 0 0 6px color-mix(in srgb, var(--acento) 22%, transparent), 0 12px 28px -10px var(--acento);
 }
 .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-info-svg-icon {
 	color: var(--acento-texto) !important;
@@ -5363,26 +5447,48 @@ html.calma-quieto .calma-tiempo__anio {
 	font-size: 1rem !important;
 	line-height: 1.6 !important;
 }
-@media (prefers-reduced-motion: reduce) {
-	.calma-volver a::before,
-	.calma-perfil__articulos a,
-	.calma-perfil__articulos a::after,
-	.calma-app__logo,
-	.calma-app__enlace a::after,
-	.calma-descarga__portada img,
-	.calma-person .calma-avatar,
-	.calma-test .calma-test__bar span {
-		transition: none !important;
-	}
-}
-html.calma-quieto .calma-app__logo,
-html.calma-quieto .calma-descarga__portada img,
-html.calma-quieto .calma-person .calma-avatar {
-	transform: none !important;
-}
 
-/* Hábitos: los micro-organismos se encienden al entrar en pantalla */
+/* ---- Movimiento ---- */
 @media (prefers-reduced-motion: no-preference) {
+	/* Scroll: las tarjetas suben al entrar (solo las que empiezan fuera de pantalla; las marca el JS) */
+	html:not(.calma-quieto) .calma-sube {
+		transition: opacity 0.9s var(--calma-ease-mente) var(--calma-delay, 0s), transform 0.9s var(--calma-ease-mente) var(--calma-delay, 0s), box-shadow 0.6s var(--calma-ease-mente);
+	}
+	html:not(.calma-quieto) .calma-sube:not(.is-visto) {
+		opacity: 0;
+		transform: translateY(28px);
+	}
+	/* La línea de circuito de cada título se dibuja al entrar */
+	html:not(.calma-quieto) .calma-linea-viva::before {
+		transition: transform 1.2s var(--calma-ease-mente) 0.2s;
+	}
+	html:not(.calma-quieto) .calma-linea-viva:not(.is-visto)::before {
+		transform: scaleX(0);
+	}
+	/* Figura "tres miradas" */
+	html:not(.calma-quieto) .calma-miradas__nodo {
+		animation: calma-encender 0.8s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.3s) backwards;
+	}
+	html:not(.calma-quieto) .calma-miradas__linea {
+		animation: calma-trazar 1.4s var(--calma-ease-mente) calc(0.6s + var(--i) * 0.3s) backwards;
+	}
+	html:not(.calma-quieto) .calma-miradas__centro {
+		animation: calma-encender 0.8s var(--calma-ease-mente) 1.2s backwards;
+	}
+	html:not(.calma-quieto) .calma-miradas.is-senal-tatiana .calma-miradas__senal--tatiana,
+	html:not(.calma-quieto) .calma-miradas.is-senal-francisca .calma-miradas__senal--francisca,
+	html:not(.calma-quieto) .calma-miradas.is-senal-emanuel .calma-miradas__senal--emanuel {
+		animation: calma-recorrido-senal 1.1s var(--calma-ease-mente);
+	}
+	html:not(.calma-quieto) :is(.calma-miradas.is-senal-tatiana, .calma-miradas.is-senal-francisca, .calma-miradas.is-senal-emanuel) .calma-miradas__halo {
+		animation: calma-pulso 1.2s var(--calma-ease-mente) 0.9s;
+	}
+	/* Iniciales: el halo late una vez al entrar */
+	html:not(.calma-quieto) .calma-person.is-vivo .calma-avatar,
+	html:not(.calma-quieto) .calma-perfil .calma-hero .calma-avatar {
+		animation: calma-halo 1.8s var(--calma-ease-mente) 0.3s;
+	}
+	/* Hábitos: los micro-organismos se encienden al entrar */
 	html:not(.calma-quieto) .calma-habito.is-vivo .o-trazo {
 		animation: calma-conectar 1.6s var(--calma-ease-mente) calc(var(--i, 0) * 0.3s) backwards;
 	}
@@ -5396,8 +5502,31 @@ html.calma-quieto .calma-person .calma-avatar {
 		animation: calma-calmar 2.4s var(--calma-ease-mente);
 	}
 }
+@keyframes calma-halo {
+	from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--acento) 60%, transparent), 0 12px 32px -10px var(--acento); }
+	to { box-shadow: 0 0 0 22px transparent, 0 12px 32px -10px var(--acento); }
+}
 @keyframes calma-calmar {
 	from { transform: scaleY(2.2); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.calma-equipo .calma-person,
+	.calma-habito,
+	.calma-descarga,
+	.calma-descarga__portada,
+	.calma-app__logo,
+	.calma-app__ir,
+	.calma-person .calma-avatar,
+	.calma-volver a::before,
+	.calma-perfil__articulos a::after,
+	.calma-test .calma-test__bar span,
+	.calma-equipo .calma-person__links a::after {
+		transition: none !important;
+		transform: none !important;
+	}
+}
+html.calma-quieto :is(.calma-equipo .calma-person, .calma-habito, .calma-descarga, .calma-descarga__portada, .calma-app__logo, .calma-app__ir) {
+	transform: none !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -5702,8 +5831,8 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 <ul class="calma-habitos"><li class="calma-habito calma-tono--psicologia" style="--i:0"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><path class="o-trazo" pathLength="1" d="M18 30 C30 12 40 48 52 26 S70 40 78 30 L142 30"/><path class="o-trazo" pathLength="1" style="--i:1" d="M18 52 C28 40 36 62 48 50 L142 50"/><path class="o-trazo" pathLength="1" style="--i:2" d="M18 72 L110 72"/><circle class="o-nucleo" cx="124" cy="72" r="4"/></svg><span class="calma-habito__chip">Regulación emocional</span><h3>Llevar un diario</h3><p>Escribir lo que sientes activa el pensamiento reflexivo. Cinco minutos al día pueden cambiar cómo procesas el estrés.</p></li><li class="calma-habito calma-tono--bienestar" style="--i:1"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-anillo" style="--i:0" cx="80" cy="50" r="14"/><circle class="o-anillo" style="--i:1" cx="80" cy="50" r="26"/><circle class="o-anillo" style="--i:2" cx="80" cy="50" r="38"/><circle class="o-nucleo" cx="80" cy="50" r="5"/></svg><span class="calma-habito__chip">Atención plena</span><h3>Meditar</h3><p>La práctica regular entrena la atención y reduce la reactividad automática. No hace falta una hora: diez minutos hacen diferencia.</p></li><li class="calma-habito calma-tono--neurociencia" style="--i:2"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><rect x="58" y="10" width="44" height="80" rx="9"/><path class="o-onda" d="M64 50 C68 38 72 62 76 50 S84 44 88 50 S94 54 96 50"/><circle class="o-nucleo" cx="80" cy="80" r="3"/></svg><span class="calma-habito__chip">Punto de entrada</span><h3>Calm y similares</h3><p>Apps como Calm, Headspace o Insight Timer ofrecen guías accesibles. Útiles como complemento para crear el hábito inicial.</p></li></ul>
 <p class="calma-recursos__nota">Estas sugerencias son orientativas y no constituyen prescripción terapéutica.</p>
 </div></section>
-<section class="calma-section calma-section--white" aria-label="Apps recomendadas"><div class="calma-container">
-<div class="calma-apps calma-tono--bienestar"><h2 id="apps-0">Mindfulness, relajación y hábitos de bienestar</h2><ul class="calma-apps__lista" aria-labelledby="apps-0"><li class="calma-app" style="--i:0"><img class="calma-app__logo" src="https://codigocalma.com/wp-content/uploads/2026/05/headspace.jpg" width="270" height="270" alt="Logo Headspace" loading="lazy" decoding="async"><h3>Headspace</h3><p>Una de las apps más populares de meditación y mindfulness con prácticas guiadas cortas, ejercicios de respiración y contenido para estrés, sueño o enfoque.</p><p class="calma-app__enlace"><a href="https://www.headspace.com/" rel="noopener" target="_blank">Ver Headspace<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a></p></li><li class="calma-app" style="--i:1"><img class="calma-app__logo" src="https://codigocalma.com/wp-content/uploads/2026/05/finch.jpg" width="270" height="270" alt="Logo Finch" loading="lazy" decoding="async"><h3>Finch</h3><p>Combina mindfulness y autocuidado con un estilo lúdico (cuidar “una mascota virtual” mediante actividades de bienestar).</p><p class="calma-app__enlace"><a href="https://finchcare.com/" rel="noopener" target="_blank">Ver Finch<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a></p></li><li class="calma-app" style="--i:2"><img class="calma-app__logo" src="https://codigocalma.com/wp-content/uploads/2026/05/calm.jpg" width="330" height="330" alt="Logo Calm" loading="lazy" decoding="async"><h3>Calm</h3><p>Enfocada en la relajación y el sueño: historias para dormir, sonidos calmantes, meditaciones guiadas y ejercicios de respiración.</p><p class="calma-app__enlace"><a href="https://health.calm.com/" rel="noopener" target="_blank">Ver Calm<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a></p></li></ul></div><div class="calma-apps calma-tono--psicologia"><h2 id="apps-1">Diario, hábitos y seguimiento</h2><ul class="calma-apps__lista" aria-labelledby="apps-1"><li class="calma-app" style="--i:0"><img class="calma-app__logo" src="https://codigocalma.com/wp-content/uploads/2026/05/daylio.jpg" width="181" height="181" alt="Logo Daylio" loading="lazy" decoding="async"><h3>Daylio</h3><p>App de diario y seguimiento del humor, muy simple y visual: eliges cómo te sentiste y qué hiciste, y con el tiempo podrás identificar áreas de mejora.</p><p class="calma-app__enlace"><a href="https://play.google.com/store/apps/details?id=net.daylio&amp;hl=es_419&amp;pli=1" rel="noopener" target="_blank">Ver Daylio<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a></p></li><li class="calma-app" style="--i:1"><img class="calma-app__logo" src="https://codigocalma.com/wp-content/uploads/2026/05/ptsd.jpg" width="240" height="240" alt="Logo PTSD Coach" loading="lazy" decoding="async"><h3>PTSD Coach y Mindfulness Coach</h3><p>Ejercicios de respiración, relajación y seguimiento de síntomas.</p><p class="calma-app__enlace"><a href="https://play.google.com/store/apps/details?id=is.vertical.ptsdcoach" rel="noopener" target="_blank">Ver PTSD Coach<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a></p></li></ul></div>
+<section class="calma-section calma-recursos__apps" aria-label="Apps recomendadas"><div class="calma-container">
+<div class="calma-apps calma-tono--bienestar"><h2 class="calma-apps__titulo" id="apps-0">Mindfulness, relajación y hábitos de bienestar</h2><ul class="calma-apps__lista" aria-labelledby="apps-0"><li class="calma-app" style="--i:0"><a class="calma-app__enlace" href="https://www.headspace.com/" rel="noopener" target="_blank"><img class="calma-app__logo" src="https://codigocalma.com/wp-content/uploads/2026/05/headspace.jpg" width="270" height="270" alt="" loading="lazy" decoding="async"><h3 class="calma-app__nombre">Headspace</h3><span class="calma-app__desc">Una de las apps más populares de meditación y mindfulness con prácticas guiadas cortas, ejercicios de respiración y contenido para estrés, sueño o enfoque.</span><span class="calma-app__ir" aria-hidden="true"></span><span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a></li><li class="calma-app" style="--i:1"><a class="calma-app__enlace" href="https://finchcare.com/" rel="noopener" target="_blank"><img class="calma-app__logo" src="https://codigocalma.com/wp-content/uploads/2026/05/finch.jpg" width="270" height="270" alt="" loading="lazy" decoding="async"><h3 class="calma-app__nombre">Finch</h3><span class="calma-app__desc">Combina mindfulness y autocuidado con un estilo lúdico (cuidar “una mascota virtual” mediante actividades de bienestar).</span><span class="calma-app__ir" aria-hidden="true"></span><span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a></li><li class="calma-app" style="--i:2"><a class="calma-app__enlace" href="https://health.calm.com/" rel="noopener" target="_blank"><img class="calma-app__logo" src="https://codigocalma.com/wp-content/uploads/2026/05/calm.jpg" width="330" height="330" alt="" loading="lazy" decoding="async"><h3 class="calma-app__nombre">Calm</h3><span class="calma-app__desc">Enfocada en la relajación y el sueño: historias para dormir, sonidos calmantes, meditaciones guiadas y ejercicios de respiración.</span><span class="calma-app__ir" aria-hidden="true"></span><span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a></li></ul></div><div class="calma-apps calma-tono--psicologia"><h2 class="calma-apps__titulo" id="apps-1">Diario, hábitos y seguimiento</h2><ul class="calma-apps__lista" aria-labelledby="apps-1"><li class="calma-app" style="--i:0"><a class="calma-app__enlace" href="https://play.google.com/store/apps/details?id=net.daylio&amp;hl=es_419&amp;pli=1" rel="noopener" target="_blank"><img class="calma-app__logo" src="https://codigocalma.com/wp-content/uploads/2026/05/daylio.jpg" width="181" height="181" alt="" loading="lazy" decoding="async"><h3 class="calma-app__nombre">Daylio</h3><span class="calma-app__desc">App de diario y seguimiento del humor, muy simple y visual: eliges cómo te sentiste y qué hiciste, y con el tiempo podrás identificar áreas de mejora.</span><span class="calma-app__ir" aria-hidden="true"></span><span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a></li><li class="calma-app" style="--i:1"><a class="calma-app__enlace" href="https://play.google.com/store/apps/details?id=is.vertical.ptsdcoach" rel="noopener" target="_blank"><img class="calma-app__logo" src="https://codigocalma.com/wp-content/uploads/2026/05/ptsd.jpg" width="240" height="240" alt="" loading="lazy" decoding="async"><h3 class="calma-app__nombre">PTSD Coach y Mindfulness Coach</h3><span class="calma-app__desc">Ejercicios de respiración, relajación y seguimiento de síntomas.</span><span class="calma-app__ir" aria-hidden="true"></span><span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a></li></ul></div>
 <p class="calma-notice calma-recursos__aviso">Este contenido es educativo. Las apps recomendadas acompañan el bienestar diario y no reemplazan atención profesional.</p>
 </div></section>
 </div>
