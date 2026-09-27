@@ -103,7 +103,7 @@ ACCESOS = [
 def accesos(cabecera):
     cards = ''.join(
         f'<li class="calma-acceso" data-acceso="{k}">\n'
-        f'<figure class="calma-acceso__escena">{fn()}<figcaption class="calma-label">{fig}</figcaption></figure>\n'
+        f'<div class="calma-acceso__escena">{fn()}</div>\n'
         f'<a class="calma-btn calma-btn--primary calma-acceso__boton" href="{href}">{texto}</a>\n</li>\n'
         for k, fn, fig, texto, href in ACCESOS)
     return (cabecera('Inicio · accesos (Aprender más / Solicitar una consulta / Recursos gratuitos)',

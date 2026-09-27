@@ -2,9 +2,10 @@
  * Código Calma — Etapa 7: "tecnología que se comporta como una mente".
  * Dirección de arte: docs/direccion-arte-organismo.md
  *
- * 1. Hero: la flor dentro de una red viva y suelta (Canvas 2D). Los nodos
- *    aparecen y se conectan, la red respira unos segundos y queda quieta.
- *    Pasar sobre la flor emite una onda que recorre la red. El puntero (o el dedo) la perturba y
+ * 1. Hero: la flor como núcleo de un circuito (Canvas 2D). Las pistas crecen
+ *    desde la flor y por ellas viajan señales: hacia afuera al cargar y al
+ *    pasar sobre la flor, hacia la flor cuando el puntero se acerca a un
+ *    nodo. La red no se deforma. La flor gira despacio con el scroll. El puntero (o el dedo) la perturba y
  *    vuelve sola al equilibrio: presencia → perturbación → regulación. Los
  *    nodos tocados se "activan", contagian a sus vecinos y se apagan despacio.
  *    No hay bucle permanente: el dibujo se detiene cuando la red está en calma.
@@ -58,12 +59,14 @@
 		( nav.deviceMemory && nav.deviceMemory <= 2 ) );
 
 	/* ------------------------------------------------------------------------
-	   1. Red viva del hero
-	   Una red suelta que ocupa todo el sector de la flor: nodos de tamaños y
-	   brillos distintos, uniones curvas e irregulares y algunos nodos sin
-	   conexión. Al cargar, los nodos aparecen uno a uno y las uniones se
-	   dibujan entre ellos (conexión, no zoom). Respira unos segundos y se queda
-	   quieta. Pasar sobre la flor emite una onda que recorre la red.
+	   1. Hero: la flor como núcleo de un circuito
+	   Las pistas de circuito de los pétalos se prolongan hacia afuera en rutas
+	   a 45° (como una placa) que terminan en nodos. Por esas pistas viajan
+	   señales: al cargar, de la flor hacia afuera (la mente se conecta con el
+	   mundo); al acercar el puntero a un nodo, del nodo hacia la flor (la
+	   atención llega a la mente); al pasar sobre la flor, una onda sale por
+	   todas las pistas. La red no se deforma: lo que se mueve es la señal.
+	   Todo se detiene solo cuando no quedan señales en viaje.
 	   ------------------------------------------------------------------------ */
 	function RedViva( seccion ) {
 		var flor = seccion.querySelector( '.calma-hero__media img' );
@@ -78,30 +81,29 @@
 		if ( ! ctx ) {
 			return;
 		}
+		var fondo = document.createElement( 'canvas' ); // retícula de puntos, se dibuja una vez
+		var fctx = fondo.getContext( '2d' );
 
 		var W = 0, H = 0, DPR = 1, cx = 0, cy = 0, R = 0, movil = false;
-		var nodos = [], aristas = [];
-		var puntero = { x: -9999, y: -9999, activo: false };
-		var onda = null; // { t0, max }
-		var corriendo = false, visible = true, t0 = 0, ultimo = 0, vigilia = 0;
-		var lentos = 0, avisos = 0; // regulador de rendimiento
-		var DESPERTAR = 4200; // ms: aparición + respiración que se apaga (< 5 s)
-		var RESPIRO = 2600; // ms de respiración después de cada interacción
+		var pistas = [], senales = [];
+		var corriendo = false, visible = true, t0 = 0, ultimo = 0, crecido = false;
+		var lentos = 0, avisos = 0;
+		var CRECER = 1700; // ms en que las pistas se dibujan desde la flor
+		var VEL = 0.42; // px por ms
 
 		function azar( semilla ) {
-			// Pseudoaleatorio estable: la red tiene siempre la misma forma.
 			var s = semilla;
 			return function () {
 				s = ( s * 16807 ) % 2147483647;
 				return ( s - 1 ) / 2147483646;
 			};
 		}
+		function ahoraMs() {
+			return window.performance ? performance.now() : Date.now();
+		}
 		function suave( x ) {
 			x = Math.max( 0, Math.min( 1, x ) );
 			return x * x * ( 3 - 2 * x );
-		}
-		function ahoraMs() {
-			return window.performance ? performance.now() : Date.now();
 		}
 
 		function medir() {
@@ -111,181 +113,183 @@
 			W = r.width;
 			H = r.height;
 			movil = W < 900;
-			canvas.width = Math.round( W * DPR );
-			canvas.height = Math.round( H * DPR );
+			[ canvas, fondo ].forEach( function ( c ) {
+				c.width = Math.round( W * DPR );
+				c.height = Math.round( H * DPR );
+			} );
 			ctx.setTransform( DPR, 0, 0, DPR, 0, 0 );
+			fctx.setTransform( DPR, 0, 0, DPR, 0, 0 );
 			cx = f.left - r.left + f.width / 2;
 			cy = f.top - r.top + f.height / 2;
 			R = f.width * 0.46;
 		}
 
+		function dentro( p ) {
+			return p[ 0 ] > 6 && p[ 0 ] < W - 6 && p[ 1 ] > 6 && p[ 1 ] < H - 6;
+		}
+
+		// Rutas a 45°: salen del borde de la flor, giran una o dos veces y terminan en un nodo.
 		function construir() {
 			var rnd = azar( 20260927 );
-			var objetivo = movil ? 64 : 150;
-			if ( equipoModesto ) {
-				objetivo = Math.round( objetivo * 0.7 );
-			}
-			var minDist = movil ? 24 : 30;
-			// Sector de la flor: la mitad derecha en escritorio, la parte baja en celular.
-			var x0 = movil ? 0 : W * 0.4, y0 = movil ? H * 0.42 : 0;
-			nodos = [];
-			var intentos = 0;
-			while ( nodos.length < objetivo && intentos < objetivo * 60 ) {
-				intentos++;
-				var x = x0 + rnd() * ( W - x0 ), y = y0 + rnd() * ( H - y0 );
-				var dx = x - cx, dy = y - cy;
-				var d = Math.sqrt( dx * dx + dy * dy );
-				if ( d < R * 0.8 ) {
-					continue; // detrás de la flor no se ve
+			var n = movil ? 16 : 30;
+			var paso = Math.PI / 4;
+			pistas = [];
+			for ( var i = 0; i < n; i++ ) {
+				var th = ( i / n ) * Math.PI * 2 + ( rnd() - 0.5 ) * 0.12;
+				var p0 = [ cx + Math.cos( th ) * R * 0.86, cy + Math.sin( th ) * R * 0.86 ];
+				var d0 = Math.round( th / paso ) * paso;
+				var giro = ( rnd() < 0.5 ? -1 : 1 ) * paso;
+				var tramos = [
+					[ d0, R * ( 0.22 + rnd() * 0.45 ) ],
+					[ d0 + giro, R * ( 0.18 + rnd() * 0.6 ) ]
+				];
+				if ( rnd() < 0.65 ) {
+					tramos.push( [ d0, R * ( 0.2 + rnd() * 0.9 ) ] );
 				}
-				// Más densa cerca de la flor, suelta hacia los bordes.
-				var densidad = 0.28 + 0.72 * Math.exp( -Math.pow( d / ( R * 2.6 ), 2 ) );
-				if ( rnd() > densidad ) {
-					continue;
-				}
-				var libre = true;
-				for ( var k = 0; k < nodos.length; k++ ) {
-					var ex = nodos[ k ].rx - x, ey = nodos[ k ].ry - y;
-					if ( ex * ex + ey * ey < minDist * minDist ) {
-						libre = false;
+				var pts = [ p0 ];
+				for ( var k = 0; k < tramos.length; k++ ) {
+					var ult = pts[ pts.length - 1 ];
+					var sig = [ ult[ 0 ] + Math.cos( tramos[ k ][ 0 ] ) * tramos[ k ][ 1 ], ult[ 1 ] + Math.sin( tramos[ k ][ 0 ] ) * tramos[ k ][ 1 ] ];
+					if ( ! dentro( sig ) ) {
 						break;
 					}
+					pts.push( sig );
 				}
-				if ( ! libre ) {
+				if ( pts.length < 2 ) {
 					continue;
 				}
-				var t = rnd();
-				nodos.push( {
-					rx: x, ry: y, x: x, y: y, vx: 0, vy: 0,
-					r: 0.7 + t * t * 2.2, // la mayoría chicos, algunos más grandes
-					brillo: 0.35 + rnd() * 0.5,
-					act: 0,
-					fase: rnd() * Math.PI * 2,
-					amp: 2 + rnd() * 6,
-					vel: 0.6 + rnd() * 0.8,
-					aparece: 200 + rnd() * 1500 + Math.min( 1, d / ( R * 4 ) ) * 500,
-					dist: d,
-					dendrita: d < R * 1.9 && rnd() < 0.55,
-					curva: ( rnd() - 0.5 ) * 0.5,
-					vec: []
-				} );
-			}
-			// Uniones irregulares: cada nodo busca entre 0 y 4 vecinos cercanos.
-			aristas = [];
-			var alcance = movil ? 78 : 96;
-			var vistas = {};
-			nodos.forEach( function ( a, i ) {
-				var grado = Math.floor( rnd() * rnd() * 5 ); // muchos con 0–1, pocos con 3–4
-				var cerca = [];
-				nodos.forEach( function ( b, j ) {
-					if ( j === i ) {
-						return;
-					}
-					var d2 = ( b.rx - a.rx ) * ( b.rx - a.rx ) + ( b.ry - a.ry ) * ( b.ry - a.ry );
-					if ( d2 < alcance * alcance ) {
-						cerca.push( { j: j, d: d2 } );
-					}
-				} );
-				cerca.sort( function ( p, q ) { return p.d - q.d; } );
-				for ( var k = 0; k < cerca.length && grado > 0; k++ ) {
-					if ( rnd() < 0.3 ) {
-						continue; // saltea algunos: menos estructura
-					}
-					var j = cerca[ k ].j;
-					var clave = i < j ? i + '-' + j : j + '-' + i;
-					if ( ! vistas[ clave ] ) {
-						vistas[ clave ] = 1;
-						aristas.push( { a: i, b: j, curva: ( rnd() - 0.5 ) * 0.7, alfa: 0.45 + rnd() * 0.55 } );
-						a.vec.push( j );
-						nodos[ j ].vec.push( i );
-						grado--;
+				var pista = { pts: pts, act: 0, ultimaSenal: 0 };
+				medirPista( pista );
+				pistas.push( pista );
+				// Algunas pistas tienen una derivación corta con su propio nodo.
+				if ( pts.length > 2 && rnd() < 0.4 ) {
+					var base = pts[ 1 ], dir = d0 - giro;
+					var fin = [ base[ 0 ] + Math.cos( dir ) * R * 0.35, base[ 1 ] + Math.sin( dir ) * R * 0.35 ];
+					if ( dentro( fin ) ) {
+						var rama = { pts: [ base, fin ], act: 0, ultimaSenal: 0, rama: true, padre: pista };
+						medirPista( rama );
+						pistas.push( rama );
 					}
 				}
-			} );
-		}
-
-		function enReposo() {
-			nodos.forEach( function ( p ) {
-				p.x = p.rx;
-				p.y = p.ry;
-				p.vx = p.vy = 0;
-				p.act = 0;
-			} );
-			onda = null;
-		}
-
-		// Curva cuadrática desde a hacia b, dibujada hasta la fracción g.
-		function curva( ax, ay, bx, by, k, g ) {
-			var mx = ( ax + bx ) / 2 - ( by - ay ) * k;
-			var my = ( ay + by ) / 2 + ( bx - ax ) * k;
-			ctx.beginPath();
-			ctx.moveTo( ax, ay );
-			if ( g >= 1 ) {
-				ctx.quadraticCurveTo( mx, my, bx, by );
-			} else {
-				var q1x = ax + ( mx - ax ) * g, q1y = ay + ( my - ay ) * g;
-				var q2x = q1x + ( ( mx + ( bx - mx ) * g ) - q1x ) * g;
-				var q2y = q1y + ( ( my + ( by - my ) * g ) - q1y ) * g;
-				ctx.quadraticCurveTo( q1x, q1y, q2x, q2y );
 			}
+			dibujarFondo();
+		}
+
+		function medirPista( p ) {
+			p.largos = [ 0 ];
+			for ( var k = 1; k < p.pts.length; k++ ) {
+				p.largos.push( p.largos[ k - 1 ] + Math.hypot( p.pts[ k ][ 0 ] - p.pts[ k - 1 ][ 0 ], p.pts[ k ][ 1 ] - p.pts[ k - 1 ][ 1 ] ) );
+			}
+			p.total = p.largos[ p.largos.length - 1 ];
+			p.fin = p.pts[ p.pts.length - 1 ];
+		}
+
+		// Punto a la distancia s del inicio de la pista.
+		function punto( p, s ) {
+			s = Math.max( 0, Math.min( p.total, s ) );
+			for ( var k = 1; k < p.pts.length; k++ ) {
+				if ( s <= p.largos[ k ] ) {
+					var f = ( s - p.largos[ k - 1 ] ) / ( ( p.largos[ k ] - p.largos[ k - 1 ] ) || 1 );
+					return [ p.pts[ k - 1 ][ 0 ] + ( p.pts[ k ][ 0 ] - p.pts[ k - 1 ][ 0 ] ) * f, p.pts[ k - 1 ][ 1 ] + ( p.pts[ k ][ 1 ] - p.pts[ k - 1 ][ 1 ] ) * f ];
+				}
+			}
+			return p.fin;
+		}
+
+		function trazo( p, desde, hasta ) {
+			ctx.beginPath();
+			var a = punto( p, desde );
+			ctx.moveTo( a[ 0 ], a[ 1 ] );
+			for ( var k = 1; k < p.pts.length; k++ ) {
+				if ( p.largos[ k ] > desde && p.largos[ k ] < hasta ) {
+					ctx.lineTo( p.pts[ k ][ 0 ], p.pts[ k ][ 1 ] );
+				}
+			}
+			var b = punto( p, hasta );
+			ctx.lineTo( b[ 0 ], b[ 1 ] );
 			ctx.stroke();
 		}
 
-		function dibujar( edad ) {
-			ctx.clearRect( 0, 0, W, H );
-			var i, p, vis;
-			// Dendritas: del borde de la flor a algunos nodos cercanos.
-			for ( i = 0; i < nodos.length; i++ ) {
-				p = nodos[ i ];
-				if ( ! p.dendrita ) {
-					continue;
+		function dibujarFondo() {
+			// Retícula de puntos muy tenue alrededor de la flor: el "sustrato" técnico.
+			fctx.clearRect( 0, 0, W, H );
+			var sep = movil ? 20 : 24;
+			for ( var x = sep / 2; x < W; x += sep ) {
+				for ( var y = sep / 2; y < H; y += sep ) {
+					var d = Math.hypot( x - cx, y - cy );
+					if ( d < R * 0.9 ) {
+						continue;
+					}
+					var a = 0.22 * Math.max( 0, 1 - d / ( R * 4.2 ) );
+					if ( a > 0.01 ) {
+						fctx.fillStyle = 'rgba(29,95,148,' + a.toFixed( 3 ) + ')';
+						fctx.fillRect( x - 0.75, y - 0.75, 1.5, 1.5 );
+					}
 				}
-				vis = suave( ( edad - p.aparece ) / 800 );
-				if ( vis <= 0 ) {
-					continue;
-				}
-				var dx = p.x - cx, dy = p.y - cy;
-				var dist = Math.sqrt( dx * dx + dy * dy ) || 1;
-				ctx.strokeStyle = 'rgba(29,95,148,' + ( ( 0.1 + p.act * 0.5 ) * vis ).toFixed( 3 ) + ')';
-				ctx.lineWidth = 0.6 + p.act * 0.6;
-				curva( cx + dx / dist * R * 0.82, cy + dy / dist * R * 0.82, p.x, p.y, p.curva, vis );
 			}
-			// Uniones: se dibujan de un nodo al otro cuando ambos aparecieron.
-			for ( i = 0; i < aristas.length; i++ ) {
-				var e = aristas[ i ], a = nodos[ e.a ], b = nodos[ e.b ];
-				var g = suave( ( edad - Math.max( a.aparece, b.aparece ) ) / 700 );
+		}
+
+		function dibujar( ahora ) {
+			var edad = ahora - t0;
+			ctx.clearRect( 0, 0, W, H );
+			ctx.drawImage( fondo, 0, 0, W, H );
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
+			var i, p;
+			for ( i = 0; i < pistas.length; i++ ) {
+				p = pistas[ i ];
+				var retraso = p.rama ? 500 : ( i % 7 ) * 60;
+				var g = crecido ? 1 : suave( ( edad - retraso ) / ( CRECER - 420 ) );
 				if ( g <= 0 ) {
 					continue;
 				}
-				var act = Math.max( a.act, b.act ) * 0.8 + Math.min( a.act, b.act ) * 0.2;
-				ctx.strokeStyle = act > 0.03 ?
-					'rgba(15,107,107,' + ( 0.14 + act * 0.6 ).toFixed( 3 ) + ')' :
-					'rgba(29,95,148,' + ( 0.22 * e.alfa ).toFixed( 3 ) + ')';
-				ctx.lineWidth = 0.55 + act * 0.8;
-				curva( a.x, a.y, b.x, b.y, e.curva, g );
-			}
-			// Nodos.
-			for ( i = 0; i < nodos.length; i++ ) {
-				p = nodos[ i ];
-				vis = suave( ( edad - p.aparece ) / 600 );
-				if ( vis <= 0 ) {
-					continue;
-				}
-				ctx.fillStyle = p.act > 0.03 ?
-					'rgba(15,107,107,' + ( ( 0.55 + p.act * 0.45 ) * vis ).toFixed( 3 ) + ')' :
-					'rgba(29,95,148,' + ( p.brillo * vis ).toFixed( 3 ) + ')';
-				ctx.beginPath();
-				ctx.arc( p.x, p.y, p.r + p.act * 1.8, 0, Math.PI * 2 );
-				ctx.fill();
-				if ( p.act > 0.12 ) {
-					// Halo de activación: la "atención" que deja el contacto.
-					ctx.strokeStyle = 'rgba(15,107,107,' + ( p.act * 0.35 ).toFixed( 3 ) + ')';
-					ctx.lineWidth = 0.8;
+				// Pista: azul tenue; se aviva (verde azulado) cuando pasa una señal.
+				ctx.lineWidth = 1.1;
+				ctx.strokeStyle = p.act > 0.02 ?
+					'rgba(15,107,107,' + ( 0.28 + p.act * 0.5 ).toFixed( 3 ) + ')' :
+					'rgba(29,95,148,0.28)';
+				trazo( p, 0, p.total * g );
+				if ( g >= 1 ) {
+					// Nodo al final de la pista (una "vía" del circuito).
+					var f = p.fin;
+					ctx.fillStyle = p.act > 0.02 ? 'rgba(15,107,107,' + ( 0.6 + p.act * 0.4 ).toFixed( 3 ) + ')' : 'rgba(29,95,148,0.55)';
 					ctx.beginPath();
-					ctx.arc( p.x, p.y, p.r + 3 + p.act * 7, 0, Math.PI * 2 );
+					ctx.arc( f[ 0 ], f[ 1 ], 2.6, 0, Math.PI * 2 );
+					ctx.fill();
+					ctx.strokeStyle = 'rgba(29,95,148,' + ( 0.22 + p.act * 0.4 ).toFixed( 3 ) + ')';
+					ctx.lineWidth = 1;
+					ctx.beginPath();
+					ctx.arc( f[ 0 ], f[ 1 ], 5.5 + p.act * 3, 0, Math.PI * 2 );
 					ctx.stroke();
 				}
 			}
+			// Señales en viaje: un tramo brillante con estela.
+			for ( i = 0; i < senales.length; i++ ) {
+				var s = senales[ i ];
+				if ( s.s < 0 || s.s > s.p.total ) {
+					continue; // todavía no salió
+				}
+				var cola = 26;
+				var desde = s.dir > 0 ? s.s - cola : s.s;
+				var hasta = s.dir > 0 ? s.s : s.s + cola;
+				var grad;
+				var a0 = punto( s.p, desde ), a1 = punto( s.p, hasta );
+				grad = ctx.createLinearGradient( a0[ 0 ], a0[ 1 ], a1[ 0 ], a1[ 1 ] );
+				grad.addColorStop( s.dir > 0 ? 0 : 1, 'rgba(15,107,107,0)' );
+				grad.addColorStop( s.dir > 0 ? 1 : 0, 'rgba(15,107,107,0.95)' );
+				ctx.strokeStyle = grad;
+				ctx.lineWidth = 2.2;
+				trazo( s.p, desde, hasta );
+				var cabeza = punto( s.p, s.s );
+				ctx.fillStyle = 'rgba(15,107,107,0.95)';
+				ctx.beginPath();
+				ctx.arc( cabeza[ 0 ], cabeza[ 1 ], 2.4, 0, Math.PI * 2 );
+				ctx.fill();
+			}
+		}
+
+		function enviar( p, dir, demora ) {
+			senales.push( { p: p, dir: dir, s: dir > 0 ? -VEL * ( demora || 0 ) : p.total + VEL * ( demora || 0 ) } );
 		}
 
 		function paso( ahora ) {
@@ -294,10 +298,7 @@
 			}
 			var dt = ultimo ? Math.min( 48, ahora - ultimo ) : 16;
 			ultimo = ahora;
-			var edad = ahora - t0;
-			// Regulador: cuadros lentos sostenidos (no durante la carga) → reposo;
-			// a la segunda vez, la red queda quieta.
-			if ( edad > 1200 && dt > 34 ) {
+			if ( ahora - t0 > 1200 && dt > 34 ) {
 				if ( ++lentos > 45 ) {
 					lentos = 0;
 					if ( ++avisos > 1 ) {
@@ -309,63 +310,63 @@
 			} else {
 				lentos = Math.max( 0, lentos - 2 );
 			}
-			// Respiración: amplitud que se apaga sola (al cargar y tras cada interacción).
-			var respira = Math.max( 1 - edad / DESPERTAR, 1 - ( ahora - vigilia ) / RESPIRO, 0 );
-			respira = respira * respira;
-			var radio = movil ? 90 : 140;
-			var radioOnda = onda ? ( ahora - onda.t0 ) / 1500 * onda.max : -1;
-			if ( onda && radioOnda > onda.max + 40 ) {
-				onda = null;
+			if ( ! crecido && ahora - t0 > CRECER + 600 ) {
+				crecido = true;
 			}
-			var energia = 0, i, p;
-			for ( i = 0; i < nodos.length; i++ ) {
-				p = nodos[ i ];
-				var ox = Math.cos( ahora / 1000 * p.vel + p.fase ) * p.amp * respira;
-				var oy = Math.sin( ahora / 1300 * p.vel + p.fase * 1.3 ) * p.amp * respira;
-				var fx = ( p.rx + ox - p.x ) * 0.02, fy = ( p.ry + oy - p.y ) * 0.02;
-				if ( puntero.activo ) {
-					var dx = p.x - puntero.x, dy = p.y - puntero.y;
-					var d2 = dx * dx + dy * dy;
-					if ( d2 < radio * radio ) {
-						var d = Math.sqrt( d2 ) || 1;
-						var fuerza = Math.pow( 1 - d / radio, 2 ) * 1.6;
-						fx += dx / d * fuerza;
-						fy += dy / d * fuerza;
-						p.act = Math.min( 1, p.act + fuerza * 0.2 );
+			// Avanzar señales; al llegar, encienden el nodo (hacia afuera) o la flor (hacia adentro).
+			for ( var i = senales.length - 1; i >= 0; i-- ) {
+				var s = senales[ i ];
+				if ( s.dir > 0 ) {
+					s.s += VEL * dt;
+					if ( s.s >= 0 ) {
+						s.p.act = Math.max( s.p.act, 0.7 );
+					}
+					if ( s.s >= s.p.total ) {
+						s.p.act = 1;
+						senales.splice( i, 1 );
+					}
+				} else {
+					s.s -= VEL * dt;
+					if ( s.s <= s.p.total ) {
+						s.p.act = Math.max( s.p.act, 0.7 );
+					}
+					if ( s.s <= 0 ) {
+						senales.splice( i, 1 );
+						if ( s.p.padre ) {
+							// Desde una derivación, la señal sigue por la pista principal.
+							var base = s.p.padre.largos[ 1 ];
+							senales.push( { p: s.p.padre, dir: -1, s: base } );
+						} else {
+							latido();
+						}
 					}
 				}
-				if ( radioOnda > 0 && Math.abs( p.dist - radioOnda ) < 26 ) {
-					// La onda de la flor: empuja apenas hacia afuera y enciende.
-					var ux = ( p.x - cx ) / ( p.dist || 1 ), uy = ( p.y - cy ) / ( p.dist || 1 );
-					fx += ux * 0.5;
-					fy += uy * 0.5;
-					p.act = Math.max( p.act, 0.85 * ( 1 - radioOnda / ( onda.max + 40 ) ) + 0.15 );
-				}
-				p.vx = ( p.vx + fx ) * 0.86;
-				p.vy = ( p.vy + fy ) * 0.86;
-				p.x += p.vx;
-				p.y += p.vy;
-				energia += Math.abs( p.vx ) + Math.abs( p.vy );
 			}
-			// Conexión: la activación se contagia (0,45 por salto) y se olvida despacio.
-			for ( i = 0; i < nodos.length; i++ ) {
-				p = nodos[ i ];
-				var vecina = 0;
-				for ( var v = 0; v < p.vec.length; v++ ) {
-					vecina = Math.max( vecina, nodos[ p.vec[ v ] ].act );
+			var activo = senales.length > 0;
+			for ( var k = 0; k < pistas.length; k++ ) {
+				pistas[ k ].act *= 0.955;
+				if ( pistas[ k ].act < 0.01 ) {
+					pistas[ k ].act = 0;
+				} else {
+					activo = true;
 				}
-				p.act = Math.max( p.act * 0.965, vecina * 0.45 );
-				if ( p.act < 0.004 ) {
-					p.act = 0;
-				}
-				energia += p.act;
 			}
-			dibujar( edad );
-			if ( respira === 0 && ! puntero.activo && ! onda && energia < 0.4 ) {
-				detener();
+			dibujar( ahora );
+			if ( crecido && ! activo ) {
+				corriendo = false;
 				return;
 			}
 			raf( paso );
+		}
+
+		// La flor "recibe" la señal: un brillo breve.
+		var tLatido = null;
+		function latido() {
+			seccion.classList.add( 'is-senal' );
+			clearTimeout( tLatido );
+			tLatido = setTimeout( function () {
+				seccion.classList.remove( 'is-senal' );
+			}, 420 );
 		}
 
 		function despertar() {
@@ -379,34 +380,51 @@
 
 		function detener() {
 			corriendo = false;
-			enReposo();
-			dibujar( 1e9 );
+			crecido = true;
+			senales = [];
+			pistas.forEach( function ( p ) {
+				p.act = 0;
+			} );
+			dibujar( ahoraMs() );
 		}
 
-		function tocar( x, y ) {
-			puntero.x = x;
-			puntero.y = y;
-			puntero.activo = true;
-			vigilia = ahoraMs();
-			despertar();
-		}
-
-		function emitirOnda() {
+		function onda() {
 			if ( quieto() || pocosRecursos ) {
 				return;
 			}
-			var t = ahoraMs();
-			if ( onda && t - onda.t0 < 1200 ) {
+			pistas.forEach( function ( p, i ) {
+				if ( ! p.rama ) {
+					enviar( p, 1, ( i % 5 ) * 70 );
+				}
+			} );
+			despertar();
+		}
+
+		// El puntero cerca de un nodo: la señal viaja del nodo hacia la flor.
+		function cerca( x, y ) {
+			if ( quieto() || pocosRecursos || ! crecido ) {
 				return;
 			}
-			onda = { t0: t, max: Math.max( W - cx, cx, H ) };
-			vigilia = t;
-			despertar();
+			var t = ahoraMs(), radio = movil ? 70 : 90, hubo = false;
+			pistas.forEach( function ( p ) {
+				if ( t - p.ultimaSenal < 1400 ) {
+					return;
+				}
+				if ( Math.hypot( p.fin[ 0 ] - x, p.fin[ 1 ] - y ) < radio ) {
+					p.ultimaSenal = t;
+					p.act = 1;
+					enviar( p, -1, 0 );
+					hubo = true;
+				}
+			} );
+			if ( hubo ) {
+				despertar();
+			}
 		}
 
 		function posicion( ev ) {
 			var r = seccion.getBoundingClientRect();
-			return { x: ev.clientX - r.left, y: ev.clientY - r.top };
+			return [ ev.clientX - r.left, ev.clientY - r.top ];
 		}
 
 		medir();
@@ -415,6 +433,13 @@
 			detener();
 		} else {
 			t0 = ahoraMs();
+			// Al cargar: las pistas crecen desde la flor y unas pocas señales salen hacia afuera.
+			var rnd = azar( 7 );
+			pistas.forEach( function ( p ) {
+				if ( ! p.rama && rnd() < 0.4 ) {
+					enviar( p, 1, CRECER + rnd() * 1400 );
+				}
+			} );
 			despertar();
 		}
 		raf( function () {
@@ -423,39 +448,22 @@
 
 		seccion.addEventListener( 'pointermove', function ( ev ) {
 			var q = posicion( ev );
-			tocar( q.x, q.y );
+			cerca( q[ 0 ], q[ 1 ] );
 		}, { passive: true } );
 		seccion.addEventListener( 'pointerdown', function ( ev ) {
 			var q = posicion( ev );
-			tocar( q.x, q.y );
-			if ( ev.pointerType !== 'mouse' ) {
-				// En pantallas táctiles, un toque es una perturbación breve.
-				setTimeout( function () {
-					puntero.activo = false;
-				}, 260 );
-			}
+			cerca( q[ 0 ], q[ 1 ] );
 		}, { passive: true } );
-		seccion.addEventListener( 'pointerleave', function () {
-			puntero.activo = false;
-		} );
-		// La flor: al pasar (o tocarla) gira despacio y emite una onda por la red.
-		flor.addEventListener( 'pointerenter', emitirOnda );
+		flor.addEventListener( 'pointerenter', onda );
 		flor.addEventListener( 'pointerdown', function () {
-			emitirOnda();
+			onda();
 			seccion.classList.add( 'is-flor-activa' );
 			setTimeout( function () {
 				seccion.classList.remove( 'is-flor-activa' );
 			}, 1800 );
 		}, { passive: true } );
-		// El foco del teclado también "toca" la red, cerca del elemento enfocado.
-		seccion.addEventListener( 'focusin', function ( ev ) {
-			var r = seccion.getBoundingClientRect();
-			var e = ev.target.getBoundingClientRect();
-			tocar( Math.min( W - 10, e.right - r.left + 40 ), e.top - r.top + e.height / 2 );
-			setTimeout( function () {
-				puntero.activo = false;
-			}, 400 );
-		} );
+		// El foco del teclado en el hero también dispara la onda.
+		seccion.addEventListener( 'focusin', onda );
 
 		if ( 'IntersectionObserver' in window ) {
 			new IntersectionObserver( function ( e ) {
@@ -470,14 +478,13 @@
 				detener();
 			}
 		} );
-		var ancho = W;
-		var tResize = null;
+		var ancho = W, tResize = null;
 		window.addEventListener( 'resize', function () {
 			clearTimeout( tResize );
 			tResize = setTimeout( function () {
 				var r = seccion.getBoundingClientRect();
 				if ( Math.abs( r.width - ancho ) < 2 && Math.abs( r.height - H ) < 40 ) {
-					return; // barra de direcciones del móvil: no rehacer la red
+					return;
 				}
 				ancho = r.width;
 				medir();
@@ -486,6 +493,28 @@
 			}, 200 );
 		} );
 		this.pausar = detener;
+	}
+
+	/* La flor gira despacio con el scroll (mientras el hero está en pantalla). */
+	function prepararFlor() {
+		var flor = document.querySelector( '.calma-hero__media img' );
+		if ( ! flor ) {
+			return;
+		}
+		var pendiente = false;
+		function girar() {
+			pendiente = false;
+			var y = Math.min( window.scrollY || window.pageYOffset, 1400 );
+			flor.style.setProperty( '--calma-flor-giro', quieto() ? 0 : ( y * 0.12 ).toFixed( 2 ) );
+		}
+		window.addEventListener( 'scroll', function () {
+			if ( ! pendiente ) {
+				pendiente = true;
+				raf( girar );
+			}
+		}, { passive: true } );
+		raiz.addEventListener( 'calma-quieto', girar );
+		girar();
 	}
 
 	/* ------------------------------------------------------------------------
@@ -587,10 +616,15 @@
 				if ( ev.target.closest( 'a' ) ) {
 					return;
 				}
-				poner( true, true );
+				// El foco se mueve solo con teclado (un clic de teclado tiene detail 0).
+				poner( true, ev.detail === 0 );
 			} );
-			volver.addEventListener( 'click', function () {
-				poner( false, true );
+			// Una vez dada vuelta, un clic en cualquier parte la devuelve (menos en el enlace de la fuente).
+			dorso.addEventListener( 'click', function ( ev ) {
+				if ( ev.target.closest( 'a' ) ) {
+					return;
+				}
+				poner( false, ev.detail === 0 );
 				encender( tarjeta );
 			} );
 			dorso.addEventListener( 'keydown', function ( ev ) {
@@ -1118,6 +1152,7 @@
 		prepararFiguras();
 		prepararTiempo();
 		prepararAccesos();
+		prepararFlor();
 
 		var hero = document.querySelector( '.calma-hero' );
 		var red = null;

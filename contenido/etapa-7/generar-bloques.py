@@ -161,16 +161,15 @@ def momentos():
         tarjetas += f'''<li class="calma-estado" data-estado="{e['slug']}">
 <div class="calma-estado__caras">
 <div class="calma-estado__frente">
-<figure class="calma-estado__fig">{e['org']()}<figcaption class="calma-label">Fig. {n:02d} — {e['concepto']}</figcaption></figure>
+<div class="calma-estado__fig">{e['org']()}</div>
 <h3 class="calma-estado__titulo" id="estado-{e['slug']}-titulo">{e['titulo']}</h3>
 <p class="calma-estado__pregunta">{e['pregunta']}</p>
-<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-{e['slug']}" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Dar vuelta y ver el hallazgo<span class="screen-reader-text"> sobre {e['titulo'].lower()}</span></button>
+<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-{e['slug']}" hidden><span class="calma-estado__giro-texto">Ver más<span class="screen-reader-text">: hallazgo sobre {e['titulo'].lower()}</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 <div class="calma-estado__dorso" id="estado-{e['slug']}" role="region" aria-labelledby="estado-{e['slug']}-titulo">
-<p class="calma-label calma-estado__rotulo">Fig. {n:02d} — Hallazgo</p>
 <p class="calma-estado__dato">{e['hallazgo']}</p>
-<p class="calma-estado__fuente"><span class="calma-label">Fuente</span> {fuente}<br><span class="calma-estado__obra">{e['obra']}</span></p>
-<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Volver a la pregunta</button>
+<p class="calma-estado__fuente"><span class="calma-fuente-rotulo">Fuente:</span> {fuente}<br><span class="calma-estado__obra">{e['obra']}</span></p>
+<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-texto">Volver<span class="screen-reader-text"> a la pregunta</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 </div>
 </li>
@@ -180,7 +179,6 @@ def momentos():
                      '     Bloque "HTML personalizado" a ancho completo. Borrar también la fila vacía que queda debajo de las 3 tarjetas de acceso.')
             + '''<section class="calma-momentos" aria-labelledby="momentos-titulo">
 <div class="calma-momentos__head">
-<p class="calma-eyebrow">Seis estados · Fig. 01–06</p>
 <h2 id="momentos-titulo">¿Cómo son tus momentos con la <em>tecnología</em>?</h2>
 <p class="calma-sub">6 escenarios en los que la tecnología y el comportamiento humano se cruzan.</p>
 <p class="calma-momentos__ayuda"><span class="calma-momentos__ayuda-icono" aria-hidden="true"></span>Haz clic en las tarjetas para explorar los hallazgos científicos sobre cada tema.</p>
@@ -241,7 +239,7 @@ def cifras():
 {red_conexiones()}
 <figcaption><strong class="calma-cifra__num">+6 mil millones</strong> de personas acceden a Internet</figcaption>
 </figure>
-<p class="calma-cifras__fuente"><span class="calma-label">Fuente</span> {ph('fuente del 74 % y de los 6 mil millones (p. ej. UIT)')}</p>
+<p class="calma-cifras__fuente"><span class="calma-fuente-rotulo">Fuente:</span> {ph('fuente del 74 % y de los 6 mil millones (p. ej. UIT)')}</p>
 </div>'''
 
 
@@ -255,7 +253,6 @@ def bienvenida():
                      '     Bloque "HTML personalizado" a ancho completo. Texto e ilustración: los mismos que hoy. Falta la fuente de las cifras (docs/placeholders.md).')
             + f'''<section class="calma-bienvenida" aria-labelledby="bienvenida-titulo">
 <div class="calma-bienvenida__texto">
-<p class="calma-eyebrow">Ciberpsicología · para todos los días</p>
 <h2 id="bienvenida-titulo">Te damos la bienvenida a <em>Código Calma</em></h2>
 <p class="calma-bienvenida__lead">Nuestras decisiones digitales importan. Desde la <strong>ciberpsicología</strong>, te acercamos investigaciones, artículos y herramientas explicadas de forma clara y simple para ayudarte a vivir entre dispositivos en una relación más consciente.</p>
 {cifras()}
@@ -293,7 +290,7 @@ def linea_tiempo():
     for n, (forma, concepto, anios, nombre, desc) in enumerate(EPOCAS, 1):
         items += f'''<li class="calma-tiempo__epoca" data-forma="{forma}" data-concepto="{concepto}">
 <span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false">{GLIFOS[forma]}</svg></span>
-<p class="calma-tiempo__anios">{anios}<span class="calma-label"> · Fig. {n:02d} — {concepto}</span></p>
+<p class="calma-tiempo__anios">{anios}</p>
 <h3 class="calma-tiempo__nombre">{nombre}</h3>
 <p class="calma-tiempo__desc">{desc}</p>
 </li>
@@ -302,12 +299,11 @@ def linea_tiempo():
                      'Reemplaza el bloque "HTML personalizado" de la línea de tiempo de la Etapa 1 (sección calma-timeline). Mismo texto.')
             + '''<section class="calma-tiempo" aria-labelledby="tiempo-titulo">
 <div class="calma-tiempo__head">
-<p class="calma-eyebrow">Cinco épocas · 1975–hoy</p>
 <h2 id="tiempo-titulo">Línea de tiempo: tecnología y adopción</h2>
 <p class="calma-sub">Una mirada clara y organizada a cómo la tecnología se integró en la vida humana.</p>
 </div>
 <div class="calma-tiempo__cuerpo">
-<div class="calma-tiempo__figura" aria-hidden="true" hidden><p class="calma-tiempo__anio">1975–1985</p><div class="calma-tiempo__lienzo"></div><p class="calma-label calma-tiempo__rotulo">Fig. 01 — Objeto</p><p class="calma-tiempo__leyenda">Figura ilustrativa: cada punto es una persona.</p></div>
+<div class="calma-tiempo__figura" aria-hidden="true" hidden><p class="calma-tiempo__anio">1975–1985</p><div class="calma-tiempo__lienzo"></div><p class="calma-tiempo__leyenda">Figura ilustrativa: cada punto es una persona.</p></div>
 <ol class="calma-tiempo__lista">
 ''' + items + '''</ol>
 </div>
@@ -321,7 +317,6 @@ def lecturas_cabecera():
                      '     La grilla bento la arma calma-etapa7.css sobre el bloque de entradas, sin cambiarlo.')
             + '''<div class="calma-lecturas__head">
 <div>
-<p class="calma-eyebrow">Blog · lecturas recientes</p>
 <h2 id="lecturas-titulo">Lecturas <em>recientes</em></h2>
 </div>
 <a class="calma-link calma-lecturas__todas" href="https://codigocalma.com/blog/">Ver todos los artículos</a>

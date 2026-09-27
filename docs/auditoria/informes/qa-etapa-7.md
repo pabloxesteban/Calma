@@ -70,3 +70,15 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
   - solo se redibuja cuando cambia el scroll;
   - con movimiento reducido pasa de una época a otra sin transición.
 - **Móvil**: sin desborde ni texto recortado a 360/390/430. En celular, la grilla bento pasa a una columna y los personajes llegan a su pose al entrar cada tarjeta.
+
+## Quinta ronda (sin rótulos grises, botón "Ver más", flor que gira, red en circuito)
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos. Reflow a 320 px sin desborde. Con movimiento reducido no anima nada: la flor no gira y el circuito se dibuja completo, sin señales.
+- **Tarjetas que giran** (probado con teclado):
+  - Tab → "Ver más: hallazgo sobre …" (nombre accesible completo, aunque en pantalla solo se vea el ícono) → Enter gira y lleva el foco al dorso → Tab a la fuente → Tab a "Volver a la pregunta" → Enter vuelve.
+  - Escape también vuelve.
+  - Con el mouse el foco no se mueve.
+- **Hero**:
+  - el circuito es decorativo (`aria-hidden`);
+  - las señales duran unos 4 s al cargar y ≈ 1,5 s por interacción, y después el dibujo se detiene (WCAG 2.2.2);
+  - la red no cambia de forma, así que no hay movimiento de fondo que distraiga la lectura;
+  - la rotación de la flor depende solo de la posición del scroll.

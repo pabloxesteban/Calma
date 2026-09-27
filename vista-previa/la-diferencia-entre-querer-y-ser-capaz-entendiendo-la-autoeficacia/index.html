@@ -2068,15 +2068,24 @@ body,
 	z-index: 1;
 	max-width: 340px;
 	filter: drop-shadow(0 18px 30px rgb(29 95 148 / 0.18));
-	transition: transform 1.8s var(--calma-ease-mente), filter 1.8s var(--calma-ease-mente);
+	/* Gira con el scroll (--calma-flor-giro, en grados, lo pone el JS) y al pasar */
+	transform: rotate(calc(var(--calma-flor-giro, 0) * 1deg + var(--calma-flor-hover, 0deg))) scale(var(--calma-flor-escala, 1));
+	transition: transform 0.9s var(--calma-ease-mente), filter 1.2s var(--calma-ease-mente);
 }
-/* Al pasar sobre la flor: gira despacio, respira y emite una onda en la red (JS) */
+.calma-hero.is-senal .calma-hero__media img {
+	filter: drop-shadow(0 18px 34px rgb(15 107 107 / 0.42));
+	transition-duration: 0.9s, 0.2s;
+}
 @media (hover: hover) and (pointer: fine) {
-	.calma-hero__media img:hover,
-	.calma-hero.is-flor-activa .calma-hero__media img {
-		transform: rotate(14deg) scale(1.045);
+	.calma-hero__media img:hover {
+		--calma-flor-hover: 14deg;
+		--calma-flor-escala: 1.045;
 		filter: drop-shadow(0 22px 44px rgb(15 107 107 / 0.32)) saturate(1.08);
 	}
+}
+.calma-hero.is-flor-activa .calma-hero__media img {
+	--calma-flor-hover: 14deg;
+	--calma-flor-escala: 1.045;
 }
 .calma-red {
 	position: absolute;
@@ -2372,6 +2381,14 @@ body,
 	font-size: var(--calma-fs-sm);
 	line-height: 1.5;
 }
+.calma-fuente-rotulo {
+	font-weight: 600;
+}
+/* Sin rótulos grises de sección: el título alcanza */
+.calma-eyebrow {
+	display: none !important;
+}
+
 /* Dorso: el hallazgo, en tinta oscura (contraste 14:1 y enlaces 8:1) */
 .calma-estado__dorso {
 	background: var(--calma-ink);
@@ -2402,10 +2419,10 @@ p.calma-estado__fuente {
 .calma-estado__obra {
 	font-style: italic;
 }
-/* Botones de girar y volver */
+/* Botones de girar y volver: un círculo con la flecha; "Ver más" aparece al pasar */
 .calma-estado__girar,
 .calma-estado__volver {
-	align-self: flex-start;
+	align-self: flex-end;
 	display: inline-flex;
 	align-items: center;
 	gap: 10px;
@@ -2420,32 +2437,47 @@ p.calma-estado__fuente {
 	cursor: pointer;
 }
 .calma-estado__volver {
-	margin-top: var(--calma-space-3);
 	color: #9cc3e3 !important;
+}
+.calma-estado__giro-texto {
+	opacity: 0;
+	transform: translateX(10px);
+	transition: opacity var(--calma-dur-medio) var(--calma-ease-mente), transform var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-estado:hover .calma-estado__giro-texto,
+.calma-estado__girar:focus-visible .calma-estado__giro-texto,
+.calma-estado__volver:focus-visible .calma-estado__giro-texto {
+	opacity: 1;
+	transform: none;
+}
+@media (hover: none) {
+	.calma-estado__giro-texto {
+		opacity: 1;
+		transform: none;
+	}
 }
 .calma-estado__giro-icono {
 	position: relative;
-	width: 30px;
-	height: 30px;
+	width: 44px;
+	height: 44px;
 	flex: none;
 	border: 1px solid currentColor;
 	border-radius: 50%;
-	transition: transform var(--calma-dur-lento) var(--calma-ease-mente);
+	transition: transform var(--calma-dur-lento) var(--calma-ease-mente), background-color var(--calma-dur-lento) var(--calma-ease-mente);
 }
 .calma-estado__giro-icono::after {
 	content: "";
 	position: absolute;
-	inset: 6px;
+	inset: 12px;
 	background: currentColor;
 	-webkit-mask: var(--calma-icono-giro) center / contain no-repeat;
 	mask: var(--calma-icono-giro) center / contain no-repeat;
 }
-.calma-estado__girar:hover,
-.calma-estado__volver:hover,
-.calma-estado__girar:focus-visible,
-.calma-estado__volver:focus-visible {
-	text-decoration: underline;
-	text-underline-offset: 4px;
+.calma-estado:hover .calma-estado__giro-icono {
+	transform: rotate(-180deg);
+}
+.calma-estados--giro .calma-estado__dorso {
+	cursor: pointer;
 }
 
 /* ---- Con JS: tarjetas que se dan vuelta ---- */
@@ -2480,9 +2512,6 @@ p.calma-estado__fuente {
 	.calma-estados--giro .calma-estado:not(.is-girada):hover .calma-estado__frente {
 		background: #fff;
 		border-color: var(--calma-ink);
-	}
-	.calma-estado:hover .calma-estado__girar .calma-estado__giro-icono {
-		transform: rotate(-180deg);
 	}
 }
 @media (prefers-reduced-motion: no-preference) {

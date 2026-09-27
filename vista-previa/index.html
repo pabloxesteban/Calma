@@ -2117,15 +2117,24 @@ body,
 	z-index: 1;
 	max-width: 340px;
 	filter: drop-shadow(0 18px 30px rgb(29 95 148 / 0.18));
-	transition: transform 1.8s var(--calma-ease-mente), filter 1.8s var(--calma-ease-mente);
+	/* Gira con el scroll (--calma-flor-giro, en grados, lo pone el JS) y al pasar */
+	transform: rotate(calc(var(--calma-flor-giro, 0) * 1deg + var(--calma-flor-hover, 0deg))) scale(var(--calma-flor-escala, 1));
+	transition: transform 0.9s var(--calma-ease-mente), filter 1.2s var(--calma-ease-mente);
 }
-/* Al pasar sobre la flor: gira despacio, respira y emite una onda en la red (JS) */
+.calma-hero.is-senal .calma-hero__media img {
+	filter: drop-shadow(0 18px 34px rgb(15 107 107 / 0.42));
+	transition-duration: 0.9s, 0.2s;
+}
 @media (hover: hover) and (pointer: fine) {
-	.calma-hero__media img:hover,
-	.calma-hero.is-flor-activa .calma-hero__media img {
-		transform: rotate(14deg) scale(1.045);
+	.calma-hero__media img:hover {
+		--calma-flor-hover: 14deg;
+		--calma-flor-escala: 1.045;
 		filter: drop-shadow(0 22px 44px rgb(15 107 107 / 0.32)) saturate(1.08);
 	}
+}
+.calma-hero.is-flor-activa .calma-hero__media img {
+	--calma-flor-hover: 14deg;
+	--calma-flor-escala: 1.045;
 }
 .calma-red {
 	position: absolute;
@@ -2421,6 +2430,14 @@ body,
 	font-size: var(--calma-fs-sm);
 	line-height: 1.5;
 }
+.calma-fuente-rotulo {
+	font-weight: 600;
+}
+/* Sin rótulos grises de sección: el título alcanza */
+.calma-eyebrow {
+	display: none !important;
+}
+
 /* Dorso: el hallazgo, en tinta oscura (contraste 14:1 y enlaces 8:1) */
 .calma-estado__dorso {
 	background: var(--calma-ink);
@@ -2451,10 +2468,10 @@ p.calma-estado__fuente {
 .calma-estado__obra {
 	font-style: italic;
 }
-/* Botones de girar y volver */
+/* Botones de girar y volver: un círculo con la flecha; "Ver más" aparece al pasar */
 .calma-estado__girar,
 .calma-estado__volver {
-	align-self: flex-start;
+	align-self: flex-end;
 	display: inline-flex;
 	align-items: center;
 	gap: 10px;
@@ -2469,32 +2486,47 @@ p.calma-estado__fuente {
 	cursor: pointer;
 }
 .calma-estado__volver {
-	margin-top: var(--calma-space-3);
 	color: #9cc3e3 !important;
+}
+.calma-estado__giro-texto {
+	opacity: 0;
+	transform: translateX(10px);
+	transition: opacity var(--calma-dur-medio) var(--calma-ease-mente), transform var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-estado:hover .calma-estado__giro-texto,
+.calma-estado__girar:focus-visible .calma-estado__giro-texto,
+.calma-estado__volver:focus-visible .calma-estado__giro-texto {
+	opacity: 1;
+	transform: none;
+}
+@media (hover: none) {
+	.calma-estado__giro-texto {
+		opacity: 1;
+		transform: none;
+	}
 }
 .calma-estado__giro-icono {
 	position: relative;
-	width: 30px;
-	height: 30px;
+	width: 44px;
+	height: 44px;
 	flex: none;
 	border: 1px solid currentColor;
 	border-radius: 50%;
-	transition: transform var(--calma-dur-lento) var(--calma-ease-mente);
+	transition: transform var(--calma-dur-lento) var(--calma-ease-mente), background-color var(--calma-dur-lento) var(--calma-ease-mente);
 }
 .calma-estado__giro-icono::after {
 	content: "";
 	position: absolute;
-	inset: 6px;
+	inset: 12px;
 	background: currentColor;
 	-webkit-mask: var(--calma-icono-giro) center / contain no-repeat;
 	mask: var(--calma-icono-giro) center / contain no-repeat;
 }
-.calma-estado__girar:hover,
-.calma-estado__volver:hover,
-.calma-estado__girar:focus-visible,
-.calma-estado__volver:focus-visible {
-	text-decoration: underline;
-	text-underline-offset: 4px;
+.calma-estado:hover .calma-estado__giro-icono {
+	transform: rotate(-180deg);
+}
+.calma-estados--giro .calma-estado__dorso {
+	cursor: pointer;
 }
 
 /* ---- Con JS: tarjetas que se dan vuelta ---- */
@@ -2529,9 +2561,6 @@ p.calma-estado__fuente {
 	.calma-estados--giro .calma-estado:not(.is-girada):hover .calma-estado__frente {
 		background: #fff;
 		border-color: var(--calma-ink);
-	}
-	.calma-estado:hover .calma-estado__girar .calma-estado__giro-icono {
-		transform: rotate(-180deg);
 	}
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -3598,7 +3627,6 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
      Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
 <section class="calma-bienvenida" aria-labelledby="bienvenida-titulo">
 <div class="calma-bienvenida__texto">
-<p class="calma-eyebrow">Ciberpsicología · para todos los días</p>
 <h2 id="bienvenida-titulo">Te damos la bienvenida a <em>Código Calma</em></h2>
 <p class="calma-bienvenida__lead">Nuestras decisiones digitales importan. Desde la <strong>ciberpsicología</strong>, te acercamos investigaciones, artículos y herramientas explicadas de forma clara y simple para ayudarte a vivir entre dispositivos en una relación más consciente.</p>
 <div class="calma-cifras">
@@ -3610,7 +3638,7 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 <svg class="calma-cifra__viz calma-cifra__viz--red" viewBox="0 0 160 124" width="160" height="124" aria-hidden="true" focusable="false"><line class="o-arista" style="--i:0" x1="121.1" y1="95.5" x2="143.2" y2="71.2" pathLength="1" /><line class="o-arista" style="--i:1" x1="121.1" y1="95.5" x2="100.2" y2="82.6" pathLength="1" /><line class="o-arista" style="--i:2" x1="121.1" y1="95.5" x2="147.1" y2="102.8" pathLength="1" /><line class="o-arista" style="--i:3" x1="121.1" y1="95.5" x2="103.8" y2="102.5" pathLength="1" /><line class="o-arista" style="--i:4" x1="77.9" y1="37.2" x2="98.9" y2="40.3" pathLength="1" /><line class="o-arista" style="--i:5" x1="77.9" y1="37.2" x2="62.8" y2="50.5" pathLength="1" /><line class="o-arista" style="--i:6" x1="77.9" y1="37.2" x2="67.3" y2="18.9" pathLength="1" /><line class="o-arista" style="--i:7" x1="10.1" y1="78.9" x2="37.0" y2="67.6" pathLength="1" /><line class="o-arista" style="--i:8" x1="10.1" y1="78.9" x2="23.0" y2="93.2" pathLength="1" /><line class="o-arista" style="--i:9" x1="75.8" y1="89.0" x2="60.5" y2="107.0" pathLength="1" /><line class="o-arista" style="--i:10" x1="75.8" y1="89.0" x2="100.2" y2="82.6" pathLength="1" /><line class="o-arista" style="--i:11" x1="48.2" y1="93.4" x2="37.0" y2="67.6" pathLength="1" /><line class="o-arista" style="--i:12" x1="48.2" y1="93.4" x2="23.0" y2="93.2" pathLength="1" /><line class="o-arista" style="--i:13" x1="48.2" y1="93.4" x2="60.5" y2="107.0" pathLength="1" /><line class="o-arista" style="--i:14" x1="48.2" y1="93.4" x2="27.8" y2="114.0" pathLength="1" /><line class="o-arista" style="--i:15" x1="112.2" y1="53.1" x2="122.7" y2="37.6" pathLength="1" /><line class="o-arista" style="--i:16" x1="112.2" y1="53.1" x2="98.9" y2="40.3" pathLength="1" /><line class="o-arista" style="--i:17" x1="37.0" y1="67.6" x2="14.0" y2="47.6" pathLength="1" /><line class="o-arista" style="--i:18" x1="37.0" y1="67.6" x2="45.7" y2="52.7" pathLength="1" /><line class="o-arista" style="--i:19" x1="122.7" y1="37.6" x2="98.9" y2="40.3" pathLength="1" /><line class="o-arista" style="--i:20" x1="122.7" y1="37.6" x2="107.8" y2="11.3" pathLength="1" /><line class="o-arista" style="--i:21" x1="122.7" y1="37.6" x2="147.3" y2="35.5" pathLength="1" /><line class="o-arista" style="--i:22" x1="23.0" y1="93.2" x2="27.8" y2="114.0" pathLength="1" /><line class="o-arista" style="--i:23" x1="23.1" y1="30.5" x2="14.0" y2="47.6" pathLength="1" /><line class="o-arista" style="--i:24" x1="23.1" y1="30.5" x2="34.1" y2="12.3" pathLength="1" /><line class="o-arista" style="--i:25" x1="98.9" y1="40.3" x2="92.5" y2="19.3" pathLength="1" /><line class="o-arista" style="--i:26" x1="143.2" y1="71.2" x2="147.3" y2="35.5" pathLength="1" /><line class="o-arista" style="--i:27" x1="143.2" y1="71.2" x2="147.1" y2="102.8" pathLength="1" /><line class="o-arista" style="--i:28" x1="100.2" y1="82.6" x2="103.8" y2="102.5" pathLength="1" /><line class="o-arista" style="--i:29" x1="92.5" y1="19.3" x2="107.8" y2="11.3" pathLength="1" /><line class="o-arista" style="--i:30" x1="53.7" y1="30.4" x2="62.8" y2="50.5" pathLength="1" /><line class="o-arista" style="--i:31" x1="53.7" y1="30.4" x2="67.3" y2="18.9" pathLength="1" /><line class="o-arista" style="--i:32" x1="53.7" y1="30.4" x2="34.1" y2="12.3" pathLength="1" /><line class="o-arista" style="--i:33" x1="62.8" y1="50.5" x2="45.7" y2="52.7" pathLength="1" /><circle class="o-nodo" style="--i:0" cx="121.1" cy="95.5" r="2.6" /><circle class="o-nodo" style="--i:1" cx="77.9" cy="37.2" r="2.6" /><circle class="o-nodo" style="--i:2" cx="10.1" cy="78.9" r="2.6" /><circle class="o-nodo" style="--i:3" cx="75.8" cy="89.0" r="2.6" /><circle class="o-nodo" style="--i:4" cx="48.2" cy="93.4" r="2.6" /><circle class="o-nodo" style="--i:5" cx="112.2" cy="53.1" r="2.6" /><circle class="o-nodo" style="--i:6" cx="37.0" cy="67.6" r="2.6" /><circle class="o-nodo" style="--i:7" cx="122.7" cy="37.6" r="2.6" /><circle class="o-nodo" style="--i:8" cx="23.0" cy="93.2" r="2.6" /><circle class="o-nodo" style="--i:9" cx="23.1" cy="30.5" r="2.6" /><circle class="o-nodo" style="--i:10" cx="98.9" cy="40.3" r="2.6" /><circle class="o-nodo" style="--i:11" cx="143.2" cy="71.2" r="2.6" /><circle class="o-nodo" style="--i:12" cx="60.5" cy="107.0" r="2.6" /><circle class="o-nodo" style="--i:13" cx="100.2" cy="82.6" r="2.6" /><circle class="o-nodo" style="--i:14" cx="14.0" cy="47.6" r="2.6" /><circle class="o-nodo" style="--i:15" cx="92.5" cy="19.3" r="2.6" /><circle class="o-nodo" style="--i:16" cx="53.7" cy="30.4" r="2.6" /><circle class="o-nodo" style="--i:17" cx="107.8" cy="11.3" r="2.6" /><circle class="o-nodo" style="--i:18" cx="62.8" cy="50.5" r="2.6" /><circle class="o-nodo" style="--i:19" cx="27.8" cy="114.0" r="2.6" /><circle class="o-nodo" style="--i:20" cx="147.3" cy="35.5" r="2.6" /><circle class="o-nodo" style="--i:21" cx="147.1" cy="102.8" r="2.6" /><circle class="o-nodo" style="--i:22" cx="103.8" cy="102.5" r="2.6" /><circle class="o-nodo" style="--i:23" cx="67.3" cy="18.9" r="2.6" /><circle class="o-nodo" style="--i:24" cx="34.1" cy="12.3" r="2.6" /><circle class="o-nodo" style="--i:25" cx="45.7" cy="52.7" r="2.6" /></svg>
 <figcaption><strong class="calma-cifra__num">+6 mil millones</strong> de personas acceden a Internet</figcaption>
 </figure>
-<p class="calma-cifras__fuente"><span class="calma-label">Fuente</span> <span class="calma-placeholder">[COMPLETAR: fuente del 74 % y de los 6 mil millones (p. ej. UIT)]</span></p>
+<p class="calma-cifras__fuente"><span class="calma-fuente-rotulo">Fuente:</span> <span class="calma-placeholder">[COMPLETAR: fuente del 74 % y de los 6 mil millones (p. ej. UIT)]</span></p>
 </div>
 </div>
 <figure class="calma-bienvenida__ilustracion"><img loading="lazy" decoding="async" width="864" height="1219" src="https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr-726x1024.png" srcset="https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr-213x300.png 213w, https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr-726x1024.png 726w, https://codigocalma.com/wp-content/uploads/2026/07/Gemini_Generated_Image_24frf624frf624fr.png 864w" sizes="(min-width: 900px) 380px, 70vw" alt=""></figure>
@@ -3624,7 +3652,6 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
      Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
 <div class="calma-lecturas__head">
 <div>
-<p class="calma-eyebrow">Blog · lecturas recientes</p>
 <h2 id="lecturas-titulo">Lecturas <em>recientes</em></h2>
 </div>
 <a class="calma-link calma-lecturas__todas" href="/Calma/vista-previa/blog/">Ver todos los artículos</a>
@@ -3826,40 +3853,39 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
      Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
 <section class="calma-tiempo" aria-labelledby="tiempo-titulo">
 <div class="calma-tiempo__head">
-<p class="calma-eyebrow">Cinco épocas · 1975–hoy</p>
 <h2 id="tiempo-titulo">Línea de tiempo: tecnología y adopción</h2>
 <p class="calma-sub">Una mirada clara y organizada a cómo la tecnología se integró en la vida humana.</p>
 </div>
 <div class="calma-tiempo__cuerpo">
-<div class="calma-tiempo__figura" aria-hidden="true" hidden><p class="calma-tiempo__anio">1975–1985</p><div class="calma-tiempo__lienzo"></div><p class="calma-label calma-tiempo__rotulo">Fig. 01 — Objeto</p><p class="calma-tiempo__leyenda">Figura ilustrativa: cada punto es una persona.</p></div>
+<div class="calma-tiempo__figura" aria-hidden="true" hidden><p class="calma-tiempo__anio">1975–1985</p><div class="calma-tiempo__lienzo"></div><p class="calma-tiempo__leyenda">Figura ilustrativa: cada punto es una persona.</p></div>
 <ol class="calma-tiempo__lista">
 <li class="calma-tiempo__epoca" data-forma="objeto" data-concepto="Objeto">
 <span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M9 20h6M12 16v4"/></svg></span>
-<p class="calma-tiempo__anios">1975–1985<span class="calma-label"> · Fig. 01 — Objeto</span></p>
+<p class="calma-tiempo__anios">1975–1985</p>
 <h3 class="calma-tiempo__nombre">Computadora personal</h3>
 <p class="calma-tiempo__desc">La computadora personal (PC) entra en hogares y oficinas. Nace la informática doméstica.</p>
 </li>
 <li class="calma-tiempo__epoca" data-forma="red" data-concepto="Red">
 <span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.5 2.5 2.5 13.5 0 16M12 4c-2.5 2.5-2.5 13.5 0 16"/></svg></span>
-<p class="calma-tiempo__anios">1990–2000<span class="calma-label"> · Fig. 02 — Red</span></p>
+<p class="calma-tiempo__anios">1990–2000</p>
 <h3 class="calma-tiempo__nombre">Internet y Web</h3>
 <p class="calma-tiempo__desc">La Web conecta al mundo. Aparecen buscadores, correo y navegación.</p>
 </li>
 <li class="calma-tiempo__epoca" data-forma="dispositivo" data-concepto="Dispositivo">
 <span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/></svg></span>
-<p class="calma-tiempo__anios">2000–2010<span class="calma-label"> · Fig. 03 — Dispositivo</span></p>
+<p class="calma-tiempo__anios">2000–2010</p>
 <h3 class="calma-tiempo__nombre">Móvil y smartphones</h3>
 <p class="calma-tiempo__desc">La conexión se vuelve portátil, constante y personal.</p>
 </li>
 <li class="calma-tiempo__epoca" data-forma="plataforma" data-concepto="Plataforma">
 <span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></span>
-<p class="calma-tiempo__anios">2010–2020<span class="calma-label"> · Fig. 04 — Plataforma</span></p>
+<p class="calma-tiempo__anios">2010–2020</p>
 <h3 class="calma-tiempo__nombre">Redes sociales y nube</h3>
 <p class="calma-tiempo__desc">Identidad, vínculos y trabajo migran a plataformas digitales.</p>
 </li>
 <li class="calma-tiempo__epoca" data-forma="inteligencia" data-concepto="Inteligencia">
 <span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><circle cx="12" cy="12" r="2.2"/><circle cx="5" cy="7" r="1.6"/><circle cx="19" cy="7" r="1.6"/><circle cx="6" cy="18" r="1.6"/><circle cx="18" cy="17" r="1.6"/><path d="M6.4 7.8l3.8 2.9M17.6 7.8l-3.8 2.9M7.2 17l3.2-3.4M16.6 16.1l-3-2.6"/></svg></span>
-<p class="calma-tiempo__anios">2020–hoy<span class="calma-label"> · Fig. 05 — Inteligencia</span></p>
+<p class="calma-tiempo__anios">2020–hoy</p>
 <h3 class="calma-tiempo__nombre">IA y hiperconexión</h3>
 <p class="calma-tiempo__desc">La inteligencia artificial transforma mente, emoción y bienestar.</p>
 </li>
@@ -3876,7 +3902,6 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
      Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
 <section class="calma-momentos" aria-labelledby="momentos-titulo">
 <div class="calma-momentos__head">
-<p class="calma-eyebrow">Seis estados · Fig. 01–06</p>
 <h2 id="momentos-titulo">¿Cómo son tus momentos con la <em>tecnología</em>?</h2>
 <p class="calma-sub">6 escenarios en los que la tecnología y el comportamiento humano se cruzan.</p>
 <p class="calma-momentos__ayuda"><span class="calma-momentos__ayuda-icono" aria-hidden="true"></span>Haz clic en las tarjetas para explorar los hallazgos científicos sobre cada tema.</p>
@@ -3885,96 +3910,90 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 <li class="calma-estado" data-estado="disponibilidad">
 <div class="calma-estado__caras">
 <div class="calma-estado__frente">
-<figure class="calma-estado__fig"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-anillo" style="--i:0" cx="80" cy="50" r="12" /><circle class="o-anillo" style="--i:1" cx="80" cy="50" r="23" /><circle class="o-anillo" style="--i:2" cx="80" cy="50" r="34" /><circle class="o-anillo" style="--i:3" cx="80" cy="50" r="45" /><circle class="o-nucleo" cx="80" cy="50" r="5" /></svg><figcaption class="calma-label">Fig. 01 — Pulsación</figcaption></figure>
+<div class="calma-estado__fig"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-anillo" style="--i:0" cx="80" cy="50" r="12" /><circle class="o-anillo" style="--i:1" cx="80" cy="50" r="23" /><circle class="o-anillo" style="--i:2" cx="80" cy="50" r="34" /><circle class="o-anillo" style="--i:3" cx="80" cy="50" r="45" /><circle class="o-nucleo" cx="80" cy="50" r="5" /></svg></div>
 <h3 class="calma-estado__titulo" id="estado-disponibilidad-titulo">Disponibilidad permanente</h3>
 <p class="calma-estado__pregunta">¿Entregamos nuestro espacio personal a cambio de la velocidad de respuesta?</p>
-<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-disponibilidad" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Dar vuelta y ver el hallazgo<span class="screen-reader-text"> sobre disponibilidad permanente</span></button>
+<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-disponibilidad" hidden><span class="calma-estado__giro-texto">Ver más<span class="screen-reader-text">: hallazgo sobre disponibilidad permanente</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 <div class="calma-estado__dorso" id="estado-disponibilidad" role="region" aria-labelledby="estado-disponibilidad-titulo">
-<p class="calma-label calma-estado__rotulo">Fig. 01 — Hallazgo</p>
 <p class="calma-estado__dato">Revisar el correo laboral fuera del horario reduce la desconexión psicológica del trabajo, aumenta el conflicto trabajo-familia y contribuye al agotamiento emocional crónico.</p>
-<p class="calma-estado__fuente"><span class="calma-label">Fuente</span> PMC · NIH, 2022<br><span class="calma-estado__obra">Keeping Up With Work Email After Hours and Employee Wellbeing: Examining Relationships During and Prior to the COVID-19 Pandemic</span></p>
-<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Volver a la pregunta</button>
+<p class="calma-estado__fuente"><span class="calma-fuente-rotulo">Fuente:</span> PMC · NIH, 2022<br><span class="calma-estado__obra">Keeping Up With Work Email After Hours and Employee Wellbeing: Examining Relationships During and Prior to the COVID-19 Pandemic</span></p>
+<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-texto">Volver<span class="screen-reader-text"> a la pregunta</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 </div>
 </li>
 <li class="calma-estado" data-estado="validacion">
 <div class="calma-estado__caras">
 <div class="calma-estado__frente">
-<figure class="calma-estado__fig"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-halo" cx="80" cy="50" r="34" /><circle class="o-part" style="--dx:19.4px;--dy:-33.7px;--i:0" cx="76.3" cy="55.8" r="2.4" /><circle class="o-part" style="--dx:47.9px;--dy:-23.2px;--i:1" cx="94.3" cy="57.7" r="1.6" /><circle class="o-part" style="--dx:-49.6px;--dy:-6.2px;--i:2" cx="74.1" cy="52.1" r="2.4" /><circle class="o-part" style="--dx:14.4px;--dy:32.9px;--i:3" cx="86.9" cy="55.4" r="2.4" /><circle class="o-part" style="--dx:-33.5px;--dy:4.8px;--i:4" cx="74.8" cy="47.5" r="1.6" /><circle class="o-part" style="--dx:-47.0px;--dy:-15.8px;--i:5" cx="78.0" cy="56.2" r="2.4" /><circle class="o-part" style="--dx:15.8px;--dy:-12.2px;--i:6" cx="87.3" cy="62.5" r="2.4" /><circle class="o-part" style="--dx:15.6px;--dy:2.3px;--i:7" cx="76.0" cy="36.9" r="2.4" /><circle class="o-part" style="--dx:12.7px;--dy:-4.4px;--i:8" cx="69.6" cy="54.1" r="2" /><circle class="o-part" style="--dx:34.7px;--dy:-33.2px;--i:9" cx="80.1" cy="57.0" r="2" /><circle class="o-part" style="--dx:33.1px;--dy:-15.5px;--i:10" cx="56.9" cy="47.1" r="1.6" /><circle class="o-part" style="--dx:29.9px;--dy:-27.9px;--i:11" cx="90.2" cy="57.4" r="2" /><circle class="o-part" style="--dx:-47.9px;--dy:2.5px;--i:12" cx="57.8" cy="59.5" r="2" /><circle class="o-part" style="--dx:0.9px;--dy:20.9px;--i:13" cx="73.4" cy="58.3" r="1.6" /><circle class="o-part" style="--dx:-5.9px;--dy:15.8px;--i:14" cx="93.3" cy="33.2" r="1.6" /><circle class="o-part" style="--dx:9.9px;--dy:15.6px;--i:15" cx="78.6" cy="40.9" r="2" /><circle class="o-part" style="--dx:21.5px;--dy:-38.3px;--i:16" cx="77.2" cy="60.2" r="2" /><circle class="o-part" style="--dx:1.4px;--dy:-23.7px;--i:17" cx="69.0" cy="61.2" r="2" /><circle class="o-part" style="--dx:-14.9px;--dy:27.0px;--i:18" cx="87.0" cy="55.9" r="1.6" /><circle class="o-part" style="--dx:-28.9px;--dy:-29.5px;--i:19" cx="86.7" cy="59.3" r="2" /><circle class="o-part" style="--dx:-11.9px;--dy:-9.4px;--i:20" cx="87.1" cy="43.5" r="2" /><circle class="o-part" style="--dx:-41.7px;--dy:-20.0px;--i:21" cx="87.9" cy="48.3" r="1.6" /></svg><figcaption class="calma-label">Fig. 02 — Agrupamiento</figcaption></figure>
+<div class="calma-estado__fig"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-halo" cx="80" cy="50" r="34" /><circle class="o-part" style="--dx:19.4px;--dy:-33.7px;--i:0" cx="76.3" cy="55.8" r="2.4" /><circle class="o-part" style="--dx:47.9px;--dy:-23.2px;--i:1" cx="94.3" cy="57.7" r="1.6" /><circle class="o-part" style="--dx:-49.6px;--dy:-6.2px;--i:2" cx="74.1" cy="52.1" r="2.4" /><circle class="o-part" style="--dx:14.4px;--dy:32.9px;--i:3" cx="86.9" cy="55.4" r="2.4" /><circle class="o-part" style="--dx:-33.5px;--dy:4.8px;--i:4" cx="74.8" cy="47.5" r="1.6" /><circle class="o-part" style="--dx:-47.0px;--dy:-15.8px;--i:5" cx="78.0" cy="56.2" r="2.4" /><circle class="o-part" style="--dx:15.8px;--dy:-12.2px;--i:6" cx="87.3" cy="62.5" r="2.4" /><circle class="o-part" style="--dx:15.6px;--dy:2.3px;--i:7" cx="76.0" cy="36.9" r="2.4" /><circle class="o-part" style="--dx:12.7px;--dy:-4.4px;--i:8" cx="69.6" cy="54.1" r="2" /><circle class="o-part" style="--dx:34.7px;--dy:-33.2px;--i:9" cx="80.1" cy="57.0" r="2" /><circle class="o-part" style="--dx:33.1px;--dy:-15.5px;--i:10" cx="56.9" cy="47.1" r="1.6" /><circle class="o-part" style="--dx:29.9px;--dy:-27.9px;--i:11" cx="90.2" cy="57.4" r="2" /><circle class="o-part" style="--dx:-47.9px;--dy:2.5px;--i:12" cx="57.8" cy="59.5" r="2" /><circle class="o-part" style="--dx:0.9px;--dy:20.9px;--i:13" cx="73.4" cy="58.3" r="1.6" /><circle class="o-part" style="--dx:-5.9px;--dy:15.8px;--i:14" cx="93.3" cy="33.2" r="1.6" /><circle class="o-part" style="--dx:9.9px;--dy:15.6px;--i:15" cx="78.6" cy="40.9" r="2" /><circle class="o-part" style="--dx:21.5px;--dy:-38.3px;--i:16" cx="77.2" cy="60.2" r="2" /><circle class="o-part" style="--dx:1.4px;--dy:-23.7px;--i:17" cx="69.0" cy="61.2" r="2" /><circle class="o-part" style="--dx:-14.9px;--dy:27.0px;--i:18" cx="87.0" cy="55.9" r="1.6" /><circle class="o-part" style="--dx:-28.9px;--dy:-29.5px;--i:19" cx="86.7" cy="59.3" r="2" /><circle class="o-part" style="--dx:-11.9px;--dy:-9.4px;--i:20" cx="87.1" cy="43.5" r="2" /><circle class="o-part" style="--dx:-41.7px;--dy:-20.0px;--i:21" cx="87.9" cy="48.3" r="1.6" /></svg></div>
 <h3 class="calma-estado__titulo" id="estado-validacion-titulo">Validación métrica</h3>
 <p class="calma-estado__pregunta">¿Quién decide qué es visible y quién se beneficia de nuestra atención?</p>
-<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-validacion" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Dar vuelta y ver el hallazgo<span class="screen-reader-text"> sobre validación métrica</span></button>
+<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-validacion" hidden><span class="calma-estado__giro-texto">Ver más<span class="screen-reader-text">: hallazgo sobre validación métrica</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 <div class="calma-estado__dorso" id="estado-validacion" role="region" aria-labelledby="estado-validacion-titulo">
-<p class="calma-label calma-estado__rotulo">Fig. 02 — Hallazgo</p>
 <p class="calma-estado__dato">El feedback positivo en redes activa regiones cerebrales vinculadas al refuerzo y la autoevaluación. Recibir likes sube la autoestima de forma medible; no recibirlos la baja.</p>
-<p class="calma-estado__fuente"><span class="calma-label">Fuente</span> <a href="https://pubmed.ncbi.nlm.nih.gov/41064185/" target="_blank" rel="noopener noreferrer">Frontiers in Psychology, 2025<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a><br><span class="calma-estado__obra">A comparative study of state self-esteem responses to social media feedback loops in adolescents and adults · doi: 10.3389/fpsyg.2025.1625771</span></p>
-<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Volver a la pregunta</button>
+<p class="calma-estado__fuente"><span class="calma-fuente-rotulo">Fuente:</span> <a href="https://pubmed.ncbi.nlm.nih.gov/41064185/" target="_blank" rel="noopener noreferrer">Frontiers in Psychology, 2025<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a><br><span class="calma-estado__obra">A comparative study of state self-esteem responses to social media feedback loops in adolescents and adults · doi: 10.3389/fpsyg.2025.1625771</span></p>
+<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-texto">Volver<span class="screen-reader-text"> a la pregunta</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 </div>
 </li>
 <li class="calma-estado" data-estado="presencia">
 <div class="calma-estado__caras">
 <div class="calma-estado__frente">
-<figure class="calma-estado__fig"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><line class="o-corte" x1="80" y1="14" x2="80" y2="86" /><g class="o-mitad o-mitad--izq"><circle cx="64.0" cy="67.0" r="1.8" /><circle cx="74.6" cy="44.5" r="1.8" /><circle cx="79.1" cy="64.5" r="1.8" /><circle cx="72.5" cy="41.1" r="1.8" /><circle cx="61.5" cy="29.1" r="1.8" /><circle cx="54.4" cy="46.3" r="1.8" /><circle cx="76.4" cy="43.3" r="1.8" /><circle cx="78.3" cy="55.0" r="1.8" /><circle cx="74.5" cy="22.4" r="1.8" /><circle cx="73.6" cy="21.9" r="1.8" /><circle cx="58.8" cy="66.5" r="1.8" /><circle cx="52.7" cy="59.9" r="1.8" /><circle cx="68.5" cy="38.2" r="1.8" /><circle cx="61.4" cy="49.2" r="1.8" /><circle cx="66.4" cy="68.5" r="1.8" /><circle cx="55.4" cy="35.6" r="1.8" /><circle cx="68.0" cy="23.7" r="1.8" /><circle cx="74.2" cy="39.3" r="1.8" /><circle cx="76.9" cy="36.6" r="1.8" /><circle cx="78.4" cy="57.4" r="1.8" /></g><g class="o-mitad o-mitad--der"><circle cx="81.7" cy="72.1" r="1.8" /><circle cx="107.4" cy="52.3" r="1.8" /><circle cx="100.6" cy="49.4" r="1.8" /><circle cx="90.7" cy="32.3" r="1.8" /><circle cx="81.2" cy="27.0" r="1.8" /><circle cx="93.7" cy="34.6" r="1.8" /><circle cx="86.8" cy="43.5" r="1.8" /><circle cx="89.2" cy="60.5" r="1.8" /><circle cx="99.3" cy="45.7" r="1.8" /><circle cx="98.5" cy="26.6" r="1.8" /><circle cx="98.9" cy="27.4" r="1.8" /><circle cx="98.7" cy="37.2" r="1.8" /><circle cx="91.1" cy="30.2" r="1.8" /><circle cx="98.1" cy="26.3" r="1.8" /></g></svg><figcaption class="calma-label">Fig. 03 — División</figcaption></figure>
+<div class="calma-estado__fig"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><line class="o-corte" x1="80" y1="14" x2="80" y2="86" /><g class="o-mitad o-mitad--izq"><circle cx="64.0" cy="67.0" r="1.8" /><circle cx="74.6" cy="44.5" r="1.8" /><circle cx="79.1" cy="64.5" r="1.8" /><circle cx="72.5" cy="41.1" r="1.8" /><circle cx="61.5" cy="29.1" r="1.8" /><circle cx="54.4" cy="46.3" r="1.8" /><circle cx="76.4" cy="43.3" r="1.8" /><circle cx="78.3" cy="55.0" r="1.8" /><circle cx="74.5" cy="22.4" r="1.8" /><circle cx="73.6" cy="21.9" r="1.8" /><circle cx="58.8" cy="66.5" r="1.8" /><circle cx="52.7" cy="59.9" r="1.8" /><circle cx="68.5" cy="38.2" r="1.8" /><circle cx="61.4" cy="49.2" r="1.8" /><circle cx="66.4" cy="68.5" r="1.8" /><circle cx="55.4" cy="35.6" r="1.8" /><circle cx="68.0" cy="23.7" r="1.8" /><circle cx="74.2" cy="39.3" r="1.8" /><circle cx="76.9" cy="36.6" r="1.8" /><circle cx="78.4" cy="57.4" r="1.8" /></g><g class="o-mitad o-mitad--der"><circle cx="81.7" cy="72.1" r="1.8" /><circle cx="107.4" cy="52.3" r="1.8" /><circle cx="100.6" cy="49.4" r="1.8" /><circle cx="90.7" cy="32.3" r="1.8" /><circle cx="81.2" cy="27.0" r="1.8" /><circle cx="93.7" cy="34.6" r="1.8" /><circle cx="86.8" cy="43.5" r="1.8" /><circle cx="89.2" cy="60.5" r="1.8" /><circle cx="99.3" cy="45.7" r="1.8" /><circle cx="98.5" cy="26.6" r="1.8" /><circle cx="98.9" cy="27.4" r="1.8" /><circle cx="98.7" cy="37.2" r="1.8" /><circle cx="91.1" cy="30.2" r="1.8" /><circle cx="98.1" cy="26.3" r="1.8" /></g></svg></div>
 <h3 class="calma-estado__titulo" id="estado-presencia-titulo">Presencia fragmentada</h3>
 <p class="calma-estado__pregunta">¿Estamos viviendo el momento o posando para después?</p>
-<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-presencia" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Dar vuelta y ver el hallazgo<span class="screen-reader-text"> sobre presencia fragmentada</span></button>
+<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-presencia" hidden><span class="calma-estado__giro-texto">Ver más<span class="screen-reader-text">: hallazgo sobre presencia fragmentada</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 <div class="calma-estado__dorso" id="estado-presencia" role="region" aria-labelledby="estado-presencia-titulo">
-<p class="calma-label calma-estado__rotulo">Fig. 03 — Hallazgo</p>
 <p class="calma-estado__dato">En promedio, las personas usan el móvil durante el 27% del tiempo que pasan con su pareja. Ese uso —no el tiempo total de pantalla— predice menor satisfacción en la relación.</p>
-<p class="calma-estado__fuente"><span class="calma-label">Fuente</span> <a href="https://pubmed.ncbi.nlm.nih.gov/41346411/" target="_blank" rel="noopener noreferrer">PMC · NIH, 2024<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a><br><span class="calma-estado__obra">Objective Phone Use During Time with One’s Partner: Associations with Relationship and Individual Well-being</span></p>
-<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Volver a la pregunta</button>
+<p class="calma-estado__fuente"><span class="calma-fuente-rotulo">Fuente:</span> <a href="https://pubmed.ncbi.nlm.nih.gov/41346411/" target="_blank" rel="noopener noreferrer">PMC · NIH, 2024<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a><br><span class="calma-estado__obra">Objective Phone Use During Time with One’s Partner: Associations with Relationship and Individual Well-being</span></p>
+<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-texto">Volver<span class="screen-reader-text"> a la pregunta</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 </div>
 </li>
 <li class="calma-estado" data-estado="scroll">
 <div class="calma-estado__caras">
 <div class="calma-estado__frente">
-<figure class="calma-estado__fig"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><defs><linearGradient id="o-desv" x1="0" x2="1"><stop offset="0" stop-color="currentColor" stop-opacity="0"/><stop offset=".25" stop-color="currentColor"/><stop offset=".75" stop-color="currentColor"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs><g stroke="url(#o-desv)"><path class="o-flujo" style="--i:0" d="M4 30 C 44 18, 76 44, 116 30 S 150 24, 156 30" /><path class="o-flujo" style="--i:1" d="M4 44 C 44 32, 76 58, 116 44 S 150 38, 156 44" /><path class="o-flujo" style="--i:2" d="M4 58 C 44 46, 76 72, 116 58 S 150 52, 156 58" /><path class="o-flujo" style="--i:3" d="M4 72 C 44 60, 76 86, 116 72 S 150 66, 156 72" /></g></svg><figcaption class="calma-label">Fig. 04 — Flujo sin destino</figcaption></figure>
+<div class="calma-estado__fig"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><defs><linearGradient id="o-desv" x1="0" x2="1"><stop offset="0" stop-color="currentColor" stop-opacity="0"/><stop offset=".25" stop-color="currentColor"/><stop offset=".75" stop-color="currentColor"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs><g stroke="url(#o-desv)"><path class="o-flujo" style="--i:0" d="M4 30 C 44 18, 76 44, 116 30 S 150 24, 156 30" /><path class="o-flujo" style="--i:1" d="M4 44 C 44 32, 76 58, 116 44 S 150 38, 156 44" /><path class="o-flujo" style="--i:2" d="M4 58 C 44 46, 76 72, 116 58 S 150 52, 156 58" /><path class="o-flujo" style="--i:3" d="M4 72 C 44 60, 76 86, 116 72 S 150 66, 156 72" /></g></svg></div>
 <h3 class="calma-estado__titulo" id="estado-scroll-titulo">Scroll sin horizonte</h3>
 <p class="calma-estado__pregunta">¿Cuántas veces abrimos una app sin saber qué buscábamos?</p>
-<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-scroll" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Dar vuelta y ver el hallazgo<span class="screen-reader-text"> sobre scroll sin horizonte</span></button>
+<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-scroll" hidden><span class="calma-estado__giro-texto">Ver más<span class="screen-reader-text">: hallazgo sobre scroll sin horizonte</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 <div class="calma-estado__dorso" id="estado-scroll" role="region" aria-labelledby="estado-scroll-titulo">
-<p class="calma-label calma-estado__rotulo">Fig. 04 — Hallazgo</p>
 <p class="calma-estado__dato">Aza Raskin, inventor del scroll infinito, declaró públicamente arrepentirse de haberlo creado. En 2026, la Comisión Europea determinó que el diseño adictivo de TikTok incumple la Ley de Servicios Digitales.</p>
-<p class="calma-estado__fuente"><span class="calma-label">Fuente</span> <a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_26_312" target="_blank" rel="noopener noreferrer">Aza Raskin, X (2019) · Comisión Europea, 2026<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a><br><span class="calma-estado__obra">EC Press release IP/26/312 · EU Digital Services Act enforcement against TikTok</span></p>
-<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Volver a la pregunta</button>
+<p class="calma-estado__fuente"><span class="calma-fuente-rotulo">Fuente:</span> <a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_26_312" target="_blank" rel="noopener noreferrer">Aza Raskin, X (2019) · Comisión Europea, 2026<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a><br><span class="calma-estado__obra">EC Press release IP/26/312 · EU Digital Services Act enforcement against TikTok</span></p>
+<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-texto">Volver<span class="screen-reader-text"> a la pregunta</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 </div>
 </li>
 <li class="calma-estado" data-estado="ruido">
 <div class="calma-estado__caras">
 <div class="calma-estado__frente">
-<figure class="calma-estado__fig"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><path class="o-onda" d="M4 50 Q 10 38 22 50 Q 34 62 46 50 Q 58 38 70 50 Q 82 62 94 50 Q 106 38 118 50 Q 130 62 142 50" /><line class="o-tick" style="--i:0" x1="9.8" y1="35.0" x2="9.8" y2="65.0" /><line class="o-tick" style="--i:1" x1="20.9" y1="36.5" x2="20.9" y2="63.5" /><line class="o-tick" style="--i:2" x1="28.4" y1="34.6" x2="28.4" y2="65.4" /><line class="o-tick" style="--i:3" x1="36.3" y1="35.8" x2="36.3" y2="64.2" /><line class="o-tick" style="--i:4" x1="47.3" y1="31.3" x2="47.3" y2="68.7" /><line class="o-tick" style="--i:5" x1="54.4" y1="39.1" x2="54.4" y2="60.9" /><line class="o-tick" style="--i:6" x1="63.6" y1="31.0" x2="63.6" y2="69.0" /><line class="o-tick" style="--i:7" x1="75.2" y1="43.3" x2="75.2" y2="56.7" /><line class="o-tick" style="--i:8" x1="85.5" y1="28.6" x2="85.5" y2="71.4" /><line class="o-tick" style="--i:9" x1="93.4" y1="34.2" x2="93.4" y2="65.8" /><line class="o-tick" style="--i:10" x1="100.6" y1="43.8" x2="100.6" y2="56.2" /><line class="o-tick" style="--i:11" x1="111.3" y1="43.0" x2="111.3" y2="57.0" /><line class="o-tick" style="--i:12" x1="119.2" y1="40.1" x2="119.2" y2="59.9" /><line class="o-tick" style="--i:13" x1="127.7" y1="36.6" x2="127.7" y2="63.4" /><line class="o-tick" style="--i:14" x1="138.6" y1="30.5" x2="138.6" y2="69.5" /><line class="o-tick" style="--i:15" x1="148.1" y1="33.8" x2="148.1" y2="66.2" /></svg><figcaption class="calma-label">Fig. 05 — Interferencia</figcaption></figure>
+<div class="calma-estado__fig"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><path class="o-onda" d="M4 50 Q 10 38 22 50 Q 34 62 46 50 Q 58 38 70 50 Q 82 62 94 50 Q 106 38 118 50 Q 130 62 142 50" /><line class="o-tick" style="--i:0" x1="9.8" y1="35.0" x2="9.8" y2="65.0" /><line class="o-tick" style="--i:1" x1="20.9" y1="36.5" x2="20.9" y2="63.5" /><line class="o-tick" style="--i:2" x1="28.4" y1="34.6" x2="28.4" y2="65.4" /><line class="o-tick" style="--i:3" x1="36.3" y1="35.8" x2="36.3" y2="64.2" /><line class="o-tick" style="--i:4" x1="47.3" y1="31.3" x2="47.3" y2="68.7" /><line class="o-tick" style="--i:5" x1="54.4" y1="39.1" x2="54.4" y2="60.9" /><line class="o-tick" style="--i:6" x1="63.6" y1="31.0" x2="63.6" y2="69.0" /><line class="o-tick" style="--i:7" x1="75.2" y1="43.3" x2="75.2" y2="56.7" /><line class="o-tick" style="--i:8" x1="85.5" y1="28.6" x2="85.5" y2="71.4" /><line class="o-tick" style="--i:9" x1="93.4" y1="34.2" x2="93.4" y2="65.8" /><line class="o-tick" style="--i:10" x1="100.6" y1="43.8" x2="100.6" y2="56.2" /><line class="o-tick" style="--i:11" x1="111.3" y1="43.0" x2="111.3" y2="57.0" /><line class="o-tick" style="--i:12" x1="119.2" y1="40.1" x2="119.2" y2="59.9" /><line class="o-tick" style="--i:13" x1="127.7" y1="36.6" x2="127.7" y2="63.4" /><line class="o-tick" style="--i:14" x1="138.6" y1="30.5" x2="138.6" y2="69.5" /><line class="o-tick" style="--i:15" x1="148.1" y1="33.8" x2="148.1" y2="66.2" /></svg></div>
 <h3 class="calma-estado__titulo" id="estado-ruido-titulo">Ruido constante</h3>
 <p class="calma-estado__pregunta">¿Cuándo fue la última vez que tuvimos una conversación sin mirar el celular?</p>
-<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-ruido" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Dar vuelta y ver el hallazgo<span class="screen-reader-text"> sobre ruido constante</span></button>
+<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-ruido" hidden><span class="calma-estado__giro-texto">Ver más<span class="screen-reader-text">: hallazgo sobre ruido constante</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 <div class="calma-estado__dorso" id="estado-ruido" role="region" aria-labelledby="estado-ruido-titulo">
-<p class="calma-label calma-estado__rotulo">Fig. 05 — Hallazgo</p>
 <p class="calma-estado__dato">La simple presencia de un teléfono sobre la mesa —sin usarlo— reduce la calidad de la conversación y los niveles de empatía reportados, especialmente entre personas cercanas.</p>
-<p class="calma-estado__fuente"><span class="calma-label">Fuente</span> <a href="https://journals.sagepub.com/doi/10.1177/0013916514539755" target="_blank" rel="noopener noreferrer">Misra et al. · Virginia Tech, 2014<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a><br><span class="calma-estado__obra">The iPhone Effect: The Quality of In-Person Social Interactions in the Presence of Mobile Devices · Environment and Behavior · doi: 10.1177/0013916514539755</span></p>
-<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Volver a la pregunta</button>
+<p class="calma-estado__fuente"><span class="calma-fuente-rotulo">Fuente:</span> <a href="https://journals.sagepub.com/doi/10.1177/0013916514539755" target="_blank" rel="noopener noreferrer">Misra et al. · Virginia Tech, 2014<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a><br><span class="calma-estado__obra">The iPhone Effect: The Quality of In-Person Social Interactions in the Presence of Mobile Devices · Environment and Behavior · doi: 10.1177/0013916514539755</span></p>
+<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-texto">Volver<span class="screen-reader-text"> a la pregunta</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 </div>
 </li>
 <li class="calma-estado" data-estado="sueno">
 <div class="calma-estado__caras">
 <div class="calma-estado__frente">
-<figure class="calma-estado__fig"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><rect class="o-noche" x="0" y="0" width="160" height="100" rx="12" /><path class="o-rapida" d="M4 50 Q 7 40 10 50 Q 19 60 22 50 Q 31 40 34 50 Q 43 60 46 50 Q 55 40 58 50 Q 67 60 70 50 Q 79 40 82 50 Q 91 60 94 50 Q 103 40 106 50 Q 115 60 118 50 Q 127 40 130 50 Q 139 60 142 50 Q 151 40 154 50" /><path class="o-lenta" d="M4 50 C 30 34, 54 34, 80 50 S 130 66, 156 50" /><circle class="o-luna" cx="132" cy="24" r="6" /></svg><figcaption class="calma-label">Fig. 06 — Baja frecuencia</figcaption></figure>
+<div class="calma-estado__fig"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><rect class="o-noche" x="0" y="0" width="160" height="100" rx="12" /><path class="o-rapida" d="M4 50 Q 7 40 10 50 Q 19 60 22 50 Q 31 40 34 50 Q 43 60 46 50 Q 55 40 58 50 Q 67 60 70 50 Q 79 40 82 50 Q 91 60 94 50 Q 103 40 106 50 Q 115 60 118 50 Q 127 40 130 50 Q 139 60 142 50 Q 151 40 154 50" /><path class="o-lenta" d="M4 50 C 30 34, 54 34, 80 50 S 130 66, 156 50" /><circle class="o-luna" cx="132" cy="24" r="6" /></svg></div>
 <h3 class="calma-estado__titulo" id="estado-sueno-titulo">Pantalla hasta dormir</h3>
 <p class="calma-estado__pregunta">¿Descansamos de verdad o solo apagamos la pantalla?</p>
-<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-sueno" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Dar vuelta y ver el hallazgo<span class="screen-reader-text"> sobre pantalla hasta dormir</span></button>
+<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-sueno" hidden><span class="calma-estado__giro-texto">Ver más<span class="screen-reader-text">: hallazgo sobre pantalla hasta dormir</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 <div class="calma-estado__dorso" id="estado-sueno" role="region" aria-labelledby="estado-sueno-titulo">
-<p class="calma-label calma-estado__rotulo">Fig. 06 — Hallazgo</p>
 <p class="calma-estado__dato">Un estudio con 122.058 participantes vinculó el uso de pantallas antes de dormir con menor duración del sueño y peor calidad autopercibida, especialmente en personas con cronotipos nocturnos.</p>
-<p class="calma-estado__fuente"><span class="calma-label">Fuente</span> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11950897/" target="_blank" rel="noopener noreferrer">JAMA Network Open, 2025<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a><br><span class="calma-estado__obra">Electronic Screen Use and Sleep Duration and Timing in Adults — American Cancer Society Cancer Prevention Study–3 · doi: 10.1001/jamanetworkopen.2025.2193</span></p>
-<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Volver a la pregunta</button>
+<p class="calma-estado__fuente"><span class="calma-fuente-rotulo">Fuente:</span> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11950897/" target="_blank" rel="noopener noreferrer">JAMA Network Open, 2025<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a><br><span class="calma-estado__obra">Electronic Screen Use and Sleep Duration and Timing in Adults — American Cancer Society Cancer Prevention Study–3 · doi: 10.1001/jamanetworkopen.2025.2193</span></p>
+<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-texto">Volver<span class="screen-reader-text"> a la pregunta</span></span><span class="calma-estado__giro-icono" aria-hidden="true"></span></button>
 </div>
 </div>
 </li>
@@ -3989,15 +4008,15 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 <section class="calma-accesos" aria-label="Accesos rápidos">
 <ul class="calma-accesos__lista" role="list">
 <li class="calma-acceso" data-acceso="aprender">
-<figure class="calma-acceso__escena"><svg class="calma-escena calma-escena--aprender" viewBox="0 0 350 350" width="350" height="350" aria-hidden="true" focusable="false"><g class="a-arcos"><path d="M66 88 Q80 58 102 46"/><path d="M132 36 Q164 22 196 36"/><path d="M226 46 Q250 58 262 86"/></g><g transform="translate(52 100)"><g class="a-icono" style="--i:0"><rect x="-15" y="-15" width="30" height="30" rx="6"/><path class="a-glifo" d="M-1 10 V-2 Q-1 -8 5 -8 M-5 0 H4"/></g></g><g transform="translate(116 40)"><g class="a-icono" style="--i:1"><rect x="-15" y="-15" width="30" height="30" rx="6"/><rect class="a-glifo" x="-7" y="-7" width="14" height="14" rx="4"/><circle class="a-glifo" cx="0" cy="0" r="3.4"/></g></g><g transform="translate(210 40)"><g class="a-icono" style="--i:2"><rect x="-15" y="-15" width="30" height="30" rx="6"/><path class="a-glifo" d="M-6 7 L-4.5 3 A7 7 0 1 1 -1 6.3 Z"/></g></g><g transform="translate(272 100)"><g class="a-icono" style="--i:3"><rect x="-15" y="-15" width="30" height="30" rx="6"/><path class="a-glifo" d="M1 -8 V4 A4 4 0 1 1 -3 0 M1 -8 Q3 -3 8 -3"/></g></g><path class="a-silla" d="M72 300 V196 Q72 180 88 180 H96"/><g class="a-personaje"><path class="a-cuerpo" d="M96 276 C92 222 96 170 110 132 C122 102 146 90 170 90 C200 90 222 112 228 142 C234 174 236 222 236 276 Z"/><g class="a-ojos"><circle cx="158" cy="144" r="6"/><circle cx="196" cy="144" r="6"/></g><path class="a-sonrisa" d="M166 160 Q178 170 190 159"/><g class="a-brazo"><path d="M118 202 C124 224 140 238 164 238 C176 238 184 232 190 226"/><path class="a-lapiz" d="M170 210 L194 250"/></g></g><g class="a-escritorio"><path class="a-papel" d="M138 262 L232 254 L240 270 L146 278 Z"/><path class="a-fino" d="M160 264 L200 261 M164 270 L214 266"/><path class="a-tapa" d="M20 280 H340 V350 H20 Z"/><path d="M28 280 H330 M44 280 V350 M314 280 V350"/></g><g class="a-laptop"><path class="a-pantalla" d="M246 168 L322 158 L330 228 L254 238 Z"/><path class="a-pantalla" d="M240 246 L332 234 L342 246 L250 258 Z"/><circle class="a-fino" cx="266" cy="186" r="6"/><path class="a-fino" d="M280 184 H304 M280 194 H298 M262 204 H278"/><circle class="a-fino" cx="308" cy="210" r="10"/><path class="a-check" pathLength="1" d="M302 210 L306 214 L314 205"/></g></svg><figcaption class="calma-label">Fig. — Aprender</figcaption></figure>
+<div class="calma-acceso__escena"><svg class="calma-escena calma-escena--aprender" viewBox="0 0 350 350" width="350" height="350" aria-hidden="true" focusable="false"><g class="a-arcos"><path d="M66 88 Q80 58 102 46"/><path d="M132 36 Q164 22 196 36"/><path d="M226 46 Q250 58 262 86"/></g><g transform="translate(52 100)"><g class="a-icono" style="--i:0"><rect x="-15" y="-15" width="30" height="30" rx="6"/><path class="a-glifo" d="M-1 10 V-2 Q-1 -8 5 -8 M-5 0 H4"/></g></g><g transform="translate(116 40)"><g class="a-icono" style="--i:1"><rect x="-15" y="-15" width="30" height="30" rx="6"/><rect class="a-glifo" x="-7" y="-7" width="14" height="14" rx="4"/><circle class="a-glifo" cx="0" cy="0" r="3.4"/></g></g><g transform="translate(210 40)"><g class="a-icono" style="--i:2"><rect x="-15" y="-15" width="30" height="30" rx="6"/><path class="a-glifo" d="M-6 7 L-4.5 3 A7 7 0 1 1 -1 6.3 Z"/></g></g><g transform="translate(272 100)"><g class="a-icono" style="--i:3"><rect x="-15" y="-15" width="30" height="30" rx="6"/><path class="a-glifo" d="M1 -8 V4 A4 4 0 1 1 -3 0 M1 -8 Q3 -3 8 -3"/></g></g><path class="a-silla" d="M72 300 V196 Q72 180 88 180 H96"/><g class="a-personaje"><path class="a-cuerpo" d="M96 276 C92 222 96 170 110 132 C122 102 146 90 170 90 C200 90 222 112 228 142 C234 174 236 222 236 276 Z"/><g class="a-ojos"><circle cx="158" cy="144" r="6"/><circle cx="196" cy="144" r="6"/></g><path class="a-sonrisa" d="M166 160 Q178 170 190 159"/><g class="a-brazo"><path d="M118 202 C124 224 140 238 164 238 C176 238 184 232 190 226"/><path class="a-lapiz" d="M170 210 L194 250"/></g></g><g class="a-escritorio"><path class="a-papel" d="M138 262 L232 254 L240 270 L146 278 Z"/><path class="a-fino" d="M160 264 L200 261 M164 270 L214 266"/><path class="a-tapa" d="M20 280 H340 V350 H20 Z"/><path d="M28 280 H330 M44 280 V350 M314 280 V350"/></g><g class="a-laptop"><path class="a-pantalla" d="M246 168 L322 158 L330 228 L254 238 Z"/><path class="a-pantalla" d="M240 246 L332 234 L342 246 L250 258 Z"/><circle class="a-fino" cx="266" cy="186" r="6"/><path class="a-fino" d="M280 184 H304 M280 194 H298 M262 204 H278"/><circle class="a-fino" cx="308" cy="210" r="10"/><path class="a-check" pathLength="1" d="M302 210 L306 214 L314 205"/></g></svg></div>
 <a class="calma-btn calma-btn--primary calma-acceso__boton" href="/Calma/vista-previa/ciberpsicologia/">Aprender más</a>
 </li>
 <li class="calma-acceso" data-acceso="consulta">
-<figure class="calma-acceso__escena"><svg class="calma-escena calma-escena--consulta" viewBox="0 0 350 350" width="350" height="350" aria-hidden="true" focusable="false"><g class="a-personaje"><path class="a-cuerpo" d="M64 350 C58 296 62 244 72 196 C80 146 84 94 114 72 C146 50 198 58 212 96 C224 128 220 176 222 214 C224 264 222 314 224 350 Z"/><path class="a-fino" d="M140 322 V350 M166 322 V350 M140 322 Q153 316 166 322"/><g class="a-cara"><g class="a-ojos"><circle cx="158" cy="126" r="6"/><circle cx="196" cy="126" r="6"/></g><path class="a-sonrisa" d="M166 142 Q178 152 190 141"/></g><path d="M90 224 C104 248 136 254 170 248 C190 244 204 238 214 234"/></g><g class="a-telefono"><g transform="translate(228 196) rotate(22)"><rect class="a-tel" x="-21" y="-41" width="42" height="82" rx="9"/><path class="a-brillo" d="M-13 -30 V-6"/></g><path d="M118 188 C124 206 138 216 160 216 C178 216 190 210 202 204"/><path class="a-mano" d="M232 206 C246 202 252 214 250 226 C248 240 238 246 228 242"/></g><g class="a-globo"><path d="M246 70 H316 Q326 70 326 80 V110 Q326 120 316 120 H270 L256 134 V120 H246 Q236 120 236 110 V80 Q236 70 246 70 Z"/><circle class="a-punto" style="--i:0" cx="262" cy="95" r="4.5"/><circle class="a-punto" style="--i:1" cx="281" cy="95" r="4.5"/><circle class="a-punto" style="--i:2" cx="300" cy="95" r="4.5"/></g></svg><figcaption class="calma-label">Fig. — Conversar</figcaption></figure>
+<div class="calma-acceso__escena"><svg class="calma-escena calma-escena--consulta" viewBox="0 0 350 350" width="350" height="350" aria-hidden="true" focusable="false"><g class="a-personaje"><path class="a-cuerpo" d="M64 350 C58 296 62 244 72 196 C80 146 84 94 114 72 C146 50 198 58 212 96 C224 128 220 176 222 214 C224 264 222 314 224 350 Z"/><path class="a-fino" d="M140 322 V350 M166 322 V350 M140 322 Q153 316 166 322"/><g class="a-cara"><g class="a-ojos"><circle cx="158" cy="126" r="6"/><circle cx="196" cy="126" r="6"/></g><path class="a-sonrisa" d="M166 142 Q178 152 190 141"/></g><path d="M90 224 C104 248 136 254 170 248 C190 244 204 238 214 234"/></g><g class="a-telefono"><g transform="translate(228 196) rotate(22)"><rect class="a-tel" x="-21" y="-41" width="42" height="82" rx="9"/><path class="a-brillo" d="M-13 -30 V-6"/></g><path d="M118 188 C124 206 138 216 160 216 C178 216 190 210 202 204"/><path class="a-mano" d="M232 206 C246 202 252 214 250 226 C248 240 238 246 228 242"/></g><g class="a-globo"><path d="M246 70 H316 Q326 70 326 80 V110 Q326 120 316 120 H270 L256 134 V120 H246 Q236 120 236 110 V80 Q236 70 246 70 Z"/><circle class="a-punto" style="--i:0" cx="262" cy="95" r="4.5"/><circle class="a-punto" style="--i:1" cx="281" cy="95" r="4.5"/><circle class="a-punto" style="--i:2" cx="300" cy="95" r="4.5"/></g></svg></div>
 <a class="calma-btn calma-btn--primary calma-acceso__boton" href="/Calma/vista-previa/contacto/">Solicitar una consulta</a>
 </li>
 <li class="calma-acceso" data-acceso="recursos">
-<figure class="calma-acceso__escena"><svg class="calma-escena calma-escena--recursos" viewBox="0 0 350 350" width="350" height="350" aria-hidden="true" focusable="false"><g class="a-pdf"><path class="a-hoja" d="M236 30 H290 L314 54 V132 H236 Z"/><path class="a-fino" d="M290 30 V54 H314"/><text x="275" y="100" text-anchor="middle">PDF</text></g><g class="a-sillon"><path class="a-sillon-fondo" d="M84 336 V180 Q84 150 114 150 H236 Q266 150 266 180 V336 Z"/></g><g class="a-personaje"><path class="a-cuerpo" d="M106 306 C104 256 100 206 112 158 C122 116 146 100 175 100 C206 100 230 118 238 158 C246 198 244 256 242 306 Z"/><g class="a-ojos"><circle cx="152" cy="164" r="6"/><circle cx="198" cy="164" r="6"/></g><path class="a-sonrisa" d="M162 182 Q175 193 188 182"/><g class="a-libro"><path class="a-pag a-pag--izq" d="M175 214 C160 206 138 206 122 212 V264 C138 258 160 258 175 266 Z"/><path class="a-pag a-pag--der" d="M175 214 C190 206 212 206 228 212 V264 C212 258 190 258 175 266 Z"/><path class="a-fino" d="M132 226 Q150 222 166 228 M132 240 Q150 236 166 242 M184 228 Q200 222 218 226 M184 242 Q200 236 218 240"/></g><path d="M112 250 C104 264 112 278 126 272 M238 250 C246 264 238 278 224 272"/></g><g class="a-sillon-frente"><path class="a-sillon-brazos" d="M50 336 V222 Q50 200 72 200 Q94 200 94 222 V336 M256 336 V222 Q256 200 278 200 Q300 200 300 222 V336"/><path d="M94 300 H256 M60 336 H290"/></g><path class="a-manta" d="M112 306 C150 320 200 330 250 336"/></svg><figcaption class="calma-label">Fig. — Descargar</figcaption></figure>
+<div class="calma-acceso__escena"><svg class="calma-escena calma-escena--recursos" viewBox="0 0 350 350" width="350" height="350" aria-hidden="true" focusable="false"><g class="a-pdf"><path class="a-hoja" d="M236 30 H290 L314 54 V132 H236 Z"/><path class="a-fino" d="M290 30 V54 H314"/><text x="275" y="100" text-anchor="middle">PDF</text></g><g class="a-sillon"><path class="a-sillon-fondo" d="M84 336 V180 Q84 150 114 150 H236 Q266 150 266 180 V336 Z"/></g><g class="a-personaje"><path class="a-cuerpo" d="M106 306 C104 256 100 206 112 158 C122 116 146 100 175 100 C206 100 230 118 238 158 C246 198 244 256 242 306 Z"/><g class="a-ojos"><circle cx="152" cy="164" r="6"/><circle cx="198" cy="164" r="6"/></g><path class="a-sonrisa" d="M162 182 Q175 193 188 182"/><g class="a-libro"><path class="a-pag a-pag--izq" d="M175 214 C160 206 138 206 122 212 V264 C138 258 160 258 175 266 Z"/><path class="a-pag a-pag--der" d="M175 214 C190 206 212 206 228 212 V264 C212 258 190 258 175 266 Z"/><path class="a-fino" d="M132 226 Q150 222 166 228 M132 240 Q150 236 166 242 M184 228 Q200 222 218 226 M184 242 Q200 236 218 240"/></g><path d="M112 250 C104 264 112 278 126 272 M238 250 C246 264 238 278 224 272"/></g><g class="a-sillon-frente"><path class="a-sillon-brazos" d="M50 336 V222 Q50 200 72 200 Q94 200 94 222 V336 M256 336 V222 Q256 200 278 200 Q300 200 300 222 V336"/><path d="M94 300 H256 M60 336 H290"/></g><path class="a-manta" d="M112 306 C150 320 200 330 250 336"/></svg></div>
 <a class="calma-btn calma-btn--primary calma-acceso__boton" href="/Calma/vista-previa/descargas-2/">Recursos gratuitos</a>
 </li>
 </ul>

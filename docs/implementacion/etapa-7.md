@@ -70,3 +70,18 @@ Si hay que editar un texto de la bienvenida, la línea de tiempo, los estados o 
 | **Línea de tiempo** | La figura de la izquierda es abstracta, con puntos como el resto del sitio, y cuenta cómo la tecnología fue conectando a las personas; cada punto es una persona. Se transforma con el scroll:<br>• 1975–1985: pocas tienen computadora.<br>• 1990–2000: muchas se conectan a través de unos pocos nodos (la Web).<br>• 2000–2010: todas llevan su dispositivo y están conectadas entre sí.<br>• 2010–2020: se agrupan alrededor de plataformas.<br>• Hoy: un sistema de IA en el centro, conectado con todas.<br>Arriba, el año de la época en grande; abajo, la aclaración "Figura ilustrativa: cada punto es una persona". | Mismo bloque del Paso 3b (`inicio-linea-de-tiempo.html`, regenerado) |
 | **Accesos** (Aprender más / Solicitar una consulta / Recursos gratuitos) | Los personajes de las ilustraciones originales, redibujados en SVG por partes, llegan a su pose con el scroll:<br>• Aprender más: se sienta, escribe y las redes aparecen de a una.<br>• Solicitar una consulta: entra caminando, levanta el teléfono y aparece un mensaje escribiéndose.<br>• Recursos gratuitos: se deja caer en el sillón, abre el libro y cae el PDF.<br>Al llegar, parpadean y hacen su gesto. El botón queda debajo del dibujo, sin taparlo. | Reemplazar la fila de las 3 tarjetas (y la fila vacía) por un bloque **HTML personalizado** con `contenido/etapa-7/bloques/inicio-accesos.html` |
 | **Lecturas recientes** | En el Inicio, las entradas van en una grilla "bento" con tamaños distintos:<br>• la primera, ancha, con la imagen al lado;<br>• la segunda, alta;<br>• las dos siguientes, compactas;<br>• las dos últimas, anchas.<br>Cada tarjeta tiene un tono suave según su categoría y un número de índice grande, y es clicable entera. La lectura de siempre se mantiene (imagen, categoría, título, resumen, "Leer más"). El bloque de entradas de Kadence no se toca: lo arma el CSS. La página del Blog mantiene sus tarjetas. | Agregar un bloque **HTML personalizado** con `contenido/etapa-7/bloques/inicio-lecturas-cabecera.html` justo encima del bloque de entradas del Inicio |
+
+## Quinta ronda de ajustes
+- **Sin rótulos grises.** Se quitaron los rótulos de sección ("Ciberpsicología · para todos los días", "Seis estados…", "Cinco épocas…", "Blog · lecturas recientes") y los "Fig. …" de los estados, la línea de tiempo y los accesos.
+  - El rótulo del hero ("Portal de ciberpsicología") y los de Servicios y Equipo se ocultan por CSS; el texto sigue en el HTML por si se quieren recuperar.
+- **Tarjetas que giran.** El texto "Dar vuelta y ver el hallazgo" pasa a ser un círculo con la flecha; al pasar el puntero aparece "Ver más". En celular, "Ver más" se ve siempre.
+  - Dada vuelta, un clic en cualquier parte de la tarjeta la devuelve (salvo en el enlace de la fuente); el botón "Volver" sigue para el teclado.
+  - El foco solo se mueve cuando se usa el teclado.
+- **Flor.** Gira despacio con el scroll mientras el hero está en pantalla, y al pasar el puntero.
+- **Red del hero.** Pasa a ser un circuito que continúa las pistas de los pétalos: rutas a 45° que terminan en nodos, sobre una retícula de puntos. La red no se deforma: lo que se mueve son las señales.
+  - Al cargar, las pistas crecen desde la flor y algunas señales salen hacia afuera.
+  - Al pasar sobre la flor, sale una señal por cada pista.
+  - Al acercar el puntero a un nodo, la señal viaja del nodo a la flor, que se ilumina al recibirla.
+  - Todo se detiene solo cuando no quedan señales en viaje.
+
+Todo esto va en los mismos archivos (plugin y bloques regenerados); los pasos de aplicación no cambian.

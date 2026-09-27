@@ -266,7 +266,7 @@
    "A:Solicitar una consulta|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
    "A:Perfil de Tatiana X. S|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
    "DIV:Ver perfil en LinkedIn|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Más testimonios|o=solid 1px rgb(35, 99, 151)|sh=0|vis=true",
+   "A:Más testimonios|o=solid 1px rgb(42, 104, 154)|sh=0|vis=true",
    "A:Solicitar una consulta|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
    "A:Ciberpsicología|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
    "A:Bienestar digital|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
@@ -1164,7 +1164,6 @@
    "A:Contacto|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "BUTTON:Ver el formulario de b|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Solicitar una consulta|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
-   "A:Equipo|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:LinkedIn de Tatiana X.|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ver reseña de Alicia G|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ver reseña de Bárbara |o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
@@ -1173,7 +1172,8 @@
    "A:La tecnología te super|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:¿Por qué fallamos al i|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ver todos los artículo|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Consultar con Tatiana|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
+   "A:Consultar con Tatiana|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Solicitar una consulta|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true"
   ]
  },
  "equipo-francisca@1280": {
@@ -1208,7 +1208,6 @@
    "A:Contacto|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "BUTTON:Ver el formulario de b|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Solicitar una consulta|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
-   "A:Equipo|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Consultar con Francisc|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Solicitar una consulta|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
    "A:Ciberpsicología|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
@@ -1217,7 +1216,8 @@
    "A:Herramientas|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
    "A:Test de consumo digita|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
    "A:Descargas gratuitas|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
-   "A:Testimonios|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true"
+   "A:Testimonios|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Servicios y acompañami|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true"
   ]
  },
  "inicio@390": {
@@ -2378,7 +2378,6 @@
    "A:Saltar al contenido|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
    "A:Código Calma|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "BUTTON:Abrir menú|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Equipo|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:LinkedIn de Tatiana X.|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ver reseña de Alicia G|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ver reseña de Bárbara |o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
@@ -2394,7 +2393,8 @@
    "A:Blog|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
    "A:Herramientas|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
    "A:Test de consumo digita|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
-   "A:Descargas gratuitas|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true"
+   "A:Descargas gratuitas|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
+   "A:Testimonios|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true"
   ]
  },
  "equipo-francisca@390": {
@@ -2422,7 +2422,6 @@
    "A:Saltar al contenido|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
    "A:Código Calma|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "BUTTON:Abrir menú|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Equipo|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Consultar con Francisc|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Solicitar una consulta|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
    "A:Ciberpsicología|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
@@ -2438,7 +2437,8 @@
    "A:LinkedIn de Tatiana X.|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
    "A:Política de privacidad|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
    "BUTTON:Reducir movimiento|o=solid 2px rgb(255, 255, 255)|sh=1|vis=true",
-   "BODY"
+   "BODY",
+   "A:Saltar al contenido|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true"
   ]
  },
  "reflow320": {
@@ -2527,7 +2527,7 @@
   },
   "axeDrawer": [],
   "tabSeq": [
-   "Inicio o=solid rgb(27, 44, 67) inDrawer=true",
+   "Inicio o=solid rgb(27, 34, 51) inDrawer=true",
    "Ciberpsicología o=solid rgb(27, 34, 51) inDrawer=true",
    "Bienestar digital o=solid rgb(27, 34, 51) inDrawer=true",
    "Blog o=solid rgb(27, 34, 51) inDrawer=true",
@@ -2538,7 +2538,7 @@
    "Equipo o=solid rgb(27, 34, 51) inDrawer=true",
    "Contacto o=solid rgb(27, 34, 51) inDrawer=true",
    "Solicitar una consulta o=solid rgb(29, 95, 148) inDrawer=true",
-   "Cerrar menú o=solid rgb(28, 70, 108) inDrawer=true"
+   "Cerrar menú o=solid rgb(29, 91, 141) inDrawer=true"
   ],
   "afterEsc": {
    "exp": "false",
