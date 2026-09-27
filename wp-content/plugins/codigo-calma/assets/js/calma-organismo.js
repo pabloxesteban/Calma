@@ -1099,6 +1099,98 @@
 	}
 
 	/* ------------------------------------------------------------------------
+	   5c. Mapa de temas: la lista de temas pasa a ser un mapa. Un tema por vez
+	   (botones con aria-pressed); al elegir uno se encienden sus uniones y una
+	   señal las recorre, y el panel muestra sus artículos y conexiones.
+	   ------------------------------------------------------------------------ */
+	function prepararMapa() {
+		var mapa = document.querySelector( '.calma-mapa' );
+		if ( ! mapa ) {
+			return;
+		}
+		var grafo = mapa.querySelector( '.calma-mapa__grafo' );
+		var nodos = Array.prototype.slice.call( mapa.querySelectorAll( '.calma-mapa__nodo' ) );
+		var paneles = Array.prototype.slice.call( mapa.querySelectorAll( '.calma-mapa__panel' ) );
+		var aristas = Array.prototype.slice.call( mapa.querySelectorAll( '.calma-mapa__arista' ) );
+		var senales = Array.prototype.slice.call( mapa.querySelectorAll( '.calma-mapa__senal' ) );
+		if ( ! grafo || ! nodos.length ) {
+			return;
+		}
+		grafo.hidden = false;
+		mapa.classList.add( 'calma-mapa--vivo' );
+
+		function marcar( tema, senal ) {
+			var vecinos = {};
+			aristas.forEach( function ( a ) {
+				var toca = a.getAttribute( 'data-a' ) === tema || a.getAttribute( 'data-b' ) === tema;
+				a.classList.toggle( 'is-on', toca );
+				a.classList.toggle( 'is-apagada', ! toca );
+				if ( toca ) {
+					vecinos[ a.getAttribute( 'data-a' ) ] = 1;
+					vecinos[ a.getAttribute( 'data-b' ) ] = 1;
+				}
+			} );
+			// La señal sale del tema elegido hacia sus vecinos.
+			senales.forEach( function ( s ) {
+				var toca = s.getAttribute( 'data-a' ) === tema || s.getAttribute( 'data-b' ) === tema;
+				s.classList.remove( 'is-senal' );
+				if ( toca && senal && ! quieto() ) {
+					s.style.animationDirection = s.getAttribute( 'data-a' ) === tema ? 'normal' : 'reverse';
+					void s.getBoundingClientRect();
+					s.classList.add( 'is-senal' );
+				}
+			} );
+			nodos.forEach( function ( n ) {
+				var k = n.getAttribute( 'data-tema' );
+				n.classList.toggle( 'is-vecino', k !== tema && !! vecinos[ k ] );
+			} );
+		}
+
+		var actual = null;
+		function elegir( tema, senal ) {
+			actual = tema;
+			nodos.forEach( function ( n ) {
+				n.setAttribute( 'aria-pressed', n.getAttribute( 'data-tema' ) === tema ? 'true' : 'false' );
+			} );
+			paneles.forEach( function ( p ) {
+				p.hidden = p.getAttribute( 'data-tema' ) !== tema;
+			} );
+			marcar( tema, senal );
+		}
+
+		nodos.forEach( function ( n ) {
+			n.addEventListener( 'click', function () {
+				elegir( n.getAttribute( 'data-tema' ), true );
+			} );
+			if ( finoHover ) {
+				// Al pasar, se ven sus uniones sin cambiar el panel.
+				n.addEventListener( 'pointerenter', function () {
+					marcar( n.getAttribute( 'data-tema' ), false );
+				} );
+				n.addEventListener( 'pointerleave', function () {
+					marcar( actual, false );
+				} );
+			}
+		} );
+		elegir( 'ciberpsicologia', false );
+
+		// Al llegar a la sección, las uniones se dibujan desde el centro.
+		if ( ! quieto() && 'IntersectionObserver' in window ) {
+			mapa.classList.add( 'is-esperando' );
+			var io = new IntersectionObserver( function ( e ) {
+				if ( e[ 0 ].isIntersecting ) {
+					io.disconnect();
+					mapa.classList.remove( 'is-esperando' );
+					setTimeout( function () {
+						marcar( actual, true );
+					}, 900 );
+				}
+			}, { threshold: 0.3 } );
+			io.observe( grafo );
+		}
+	}
+
+	/* ------------------------------------------------------------------------
 	   6. Header, barra de lectura y "Reducir movimiento"
 	   ------------------------------------------------------------------------ */
 	var progreso = null;
@@ -1160,6 +1252,7 @@
 		prepararTiempo();
 		prepararAccesos();
 		prepararFlor();
+		prepararMapa();
 
 		var hero = document.querySelector( '.calma-hero' );
 		var red = null;

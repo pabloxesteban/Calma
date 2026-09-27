@@ -90,3 +90,10 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
   - los personajes son decorativos (`aria-hidden`);
   - el texto de "Recursos gratuitos" sale de lo que hoy dice la página de Descargas (no se inventan contenidos).
 - **Tarjetas que giran**: probado que al girar una, la anterior vuelve. El teclado funciona igual que antes.
+
+## Mapa de temas
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos. Reflow a 320 px sin desborde. Con movimiento reducido no anima nada: la entrada del panel y las señales quedan desactivadas y las uniones se ven dibujadas.
+- **Teclado**: Tab recorre los seis temas (botones con `aria-pressed` y `aria-controls`); Enter elige y muestra solo ese panel; el Tab siguiente entra a los enlaces del panel. Los paneles están en una región `aria-live="polite"`.
+- **Estructura**: el grafo (líneas y señales) es decorativo (`aria-hidden`); el contenido está en los paneles, cada uno con H3. Sin JS se ven todos los paneles.
+- **Móvil**: los temas pasan a fichas de 44 px de alto; sin desborde a 360/390/430.
+- **Datos**: los artículos y las uniones salen de la taxonomía de la Etapa 5; no se agregan temas ni artículos inventados.

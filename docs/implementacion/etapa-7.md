@@ -97,3 +97,30 @@ Todo esto va en los mismos archivos (plugin y bloques regenerados); los pasos de
     - "Solicita una consulta" → Contacto;
     - "Recursos gratuitos" → Descargas ("Libros y guías de Tatiana X. Stacul para descargar sin costo", según la página de Descargas).
   - Se reemplaza el mismo bloque: `inicio-accesos.html`, regenerado.
+
+## Paso 3c · Inicio: mapa de temas (5 min)
+Entre "¿Cómo son tus momentos con la tecnología?" y los accesos, agregar un bloque **HTML personalizado** a ancho completo con `contenido/etapa-7/bloques/inicio-mapa.html`.
+
+**Qué hace.** La ciberpsicología va en el centro y cinco temas alrededor: Psicología, Neurociencia, IA, Tecnología y Bienestar digital.
+- **Las uniones son reales.** Dos temas se unen por las etiquetas que comparten sus artículos, según `contenido/etapa-5/taxonomia.json`; el grosor de la línea es la cantidad de etiquetas compartidas.
+- **Al elegir un tema** se encienden sus uniones, una señal sale hacia los temas vecinos y el panel muestra:
+  - una descripción corta;
+  - sus artículos;
+  - con qué temas se conecta y por qué;
+  - el enlace a su categoría.
+- **En celular**, los temas son fichas y el panel va debajo.
+- **Sin JavaScript** se ve la lista completa de temas con sus artículos.
+
+**Cada tema corresponde a estas categorías del blog (Etapa 5):**
+
+| Tema | Categoría |
+|---|---|
+| Psicología | Hábitos y conducta |
+| Neurociencia | Neurociencia y atención |
+| IA | IA y mente |
+| Tecnología | Redes sociales y plataformas + Ciberseguridad y factor humano |
+| Bienestar digital | Bienestar digital |
+
+- Los enlaces a las categorías nuevas funcionan después de aplicar la taxonomía (Etapa 5, Paso 2). Hasta entonces, las de categorías que todavía no existen dan 404.
+- Las descripciones cortas resumen las descripciones de categoría de la Etapa 5, así que quedan **pendientes de la misma revisión de la autora**. La del centro usa la definición de la página pilar, también pendiente.
+- Si cambia la taxonomía, regenerar con `python3 contenido/etapa-7/generar-bloques.py`: los artículos y las uniones se recalculan solos.

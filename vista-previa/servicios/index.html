@@ -2681,6 +2681,328 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 }
 
 /* --------------------------------------------------------------------------
+   8e. Mapa de temas: la ciberpsicología en el centro, cinco temas alrededor,
+   unidos por las etiquetas que comparten sus artículos. Sin JS: lista de
+   temas; con JS: mapa con un tema por vez (calma-organismo.js).
+   -------------------------------------------------------------------------- */
+.calma-mapa {
+	max-width: var(--calma-container);
+	margin: 0 auto;
+	padding: var(--calma-section-y) var(--calma-gutter) 0;
+}
+.calma-mapa__head {
+	max-width: 60ch;
+	margin-bottom: var(--calma-space-10);
+}
+.calma-mapa__head h2 {
+	margin: 0 0 var(--calma-space-3) !important;
+	font-size: var(--calma-fs-2xl);
+	line-height: 1.08;
+	letter-spacing: -0.02em;
+}
+.calma-mapa__head h2 em {
+	font-style: italic;
+	font-weight: 500;
+	color: var(--calma-primary);
+}
+.calma-mapa__head .calma-sub {
+	margin: 0 !important;
+	color: var(--calma-ink-soft);
+}
+.calma-mapa__cuerpo {
+	display: grid;
+	gap: var(--calma-space-8);
+	align-items: start;
+}
+@media (min-width: 900px) {
+	.calma-mapa__cuerpo {
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+		gap: var(--calma-space-12);
+	}
+}
+/* Paneles: sin JS se ven todos, en grilla */
+.calma-mapa__paneles {
+	display: grid;
+	gap: var(--calma-space-4);
+}
+.calma-mapa__panel {
+	padding: var(--calma-space-6);
+	background: #fff;
+	border: 1px solid var(--calma-hairline-strong);
+}
+.calma-mapa__panel h3 {
+	margin: 0 0 var(--calma-space-2) !important;
+	font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+	line-height: 1.1;
+}
+.calma-mapa__sub {
+	font-family: var(--calma-font-body);
+	font-size: var(--calma-fs-sm);
+	font-weight: 500;
+	color: var(--calma-ink-soft);
+}
+.calma-mapa__texto {
+	margin: 0 0 var(--calma-space-5) !important;
+	color: var(--calma-ink-soft);
+}
+.calma-mapa__rotulo {
+	margin: var(--calma-space-4) 0 var(--calma-space-2) !important;
+	font-size: var(--calma-fs-xs);
+	font-weight: 700;
+	color: var(--calma-ink);
+}
+.calma-mapa__articulos,
+.calma-mapa__conexiones {
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none;
+}
+.calma-mapa__articulos li {
+	margin: 0 !important;
+	border-top: 1px solid var(--calma-hairline);
+}
+.calma-mapa__articulos a {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--calma-space-3);
+	min-height: 44px;
+	padding: var(--calma-space-2) 0;
+	color: var(--calma-ink) !important;
+	font-family: var(--calma-font-heading);
+	font-size: 1.0625rem;
+	line-height: 1.3;
+	text-decoration: none !important;
+	transition: color var(--calma-dur) var(--calma-ease), padding var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-mapa__articulos a::after {
+	content: "→";
+	flex: none;
+	color: var(--calma-primary);
+	transition: transform var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-mapa__articulos a:hover {
+	color: var(--calma-primary) !important;
+	padding-left: 6px;
+}
+.calma-mapa__articulos a:hover::after {
+	transform: translateX(4px);
+}
+.calma-mapa__conexiones li {
+	margin: 0 0 4px !important;
+	font-size: var(--calma-fs-sm);
+	color: var(--calma-ink-soft);
+}
+.calma-mapa__conexiones strong {
+	color: var(--calma-teal);
+}
+.calma-mapa__enlaces {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--calma-space-2) var(--calma-space-6);
+	margin: var(--calma-space-5) 0 0 !important;
+}
+.calma-mapa__enlaces a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	font-weight: 600;
+}
+/* Con JS: un panel por vez, con una entrada suave */
+.calma-mapa--vivo .calma-mapa__panel[hidden] {
+	display: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-mapa--vivo .calma-mapa__panel {
+		animation: calma-panel 0.6s var(--calma-ease-mente);
+	}
+}
+@keyframes calma-panel {
+	from { opacity: 0; transform: translate3d(0, 8px, 0); }
+}
+
+/* ---- Grafo ---- */
+.calma-mapa__grafo {
+	position: relative;
+	width: 100%;
+	max-width: 560px;
+	aspect-ratio: 1;
+	justify-self: center;
+}
+.calma-mapa__grafo::before {
+	/* Retícula de puntos, como el circuito del hero */
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(circle, rgb(29 95 148 / 0.16) 1px, transparent 1.4px) 0 0 / 24px 24px;
+	-webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 72%);
+	mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 72%);
+}
+.calma-mapa__svg {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	fill: none;
+}
+.calma-mapa__arista {
+	stroke: var(--calma-primary);
+	stroke-opacity: 0.3;
+	stroke-width: calc(0.16px + var(--peso) * 0.06px);
+	stroke-linecap: round;
+	stroke-dasharray: 1;
+	stroke-dashoffset: 0;
+	transition: stroke-opacity var(--calma-dur-lento) var(--calma-ease-mente), stroke var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-mapa__arista.is-on {
+	stroke: var(--calma-teal);
+	stroke-opacity: 0.85;
+}
+.calma-mapa__arista.is-apagada {
+	stroke-opacity: 0.12;
+}
+.calma-mapa__senal {
+	stroke: var(--calma-teal);
+	stroke-width: 0.9px;
+	stroke-linecap: round;
+	stroke-dasharray: 0.05 0.95;
+	stroke-dashoffset: 1;
+	opacity: 0;
+}
+.calma-mapa__nodos {
+	position: absolute;
+	inset: 0;
+}
+.calma-mapa__nodo {
+	position: absolute;
+	left: calc(var(--x) * 1%);
+	top: calc(var(--y) * 1%);
+	transform: translate(-50%, -50%);
+	display: grid;
+	justify-items: center;
+	gap: 8px;
+	min-width: 44px;
+	min-height: 44px;
+	padding: 6px 8px;
+	border: 0;
+	background: none !important;
+	box-shadow: none !important;
+	color: var(--calma-ink) !important;
+	font: 600 var(--calma-fs-sm)/1.2 var(--calma-font-body);
+	cursor: pointer;
+}
+.calma-mapa__punto {
+	position: relative;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: #fff;
+	border: 2px solid var(--calma-primary);
+	transition: transform var(--calma-dur-lento) var(--calma-ease-mente), background-color var(--calma-dur-lento) var(--calma-ease-mente), border-color var(--calma-dur-lento) var(--calma-ease-mente), box-shadow var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-mapa__nodo--centro .calma-mapa__punto {
+	width: 44px;
+	height: 44px;
+	background: var(--calma-primary);
+	box-shadow: 0 0 0 8px rgb(29 95 148 / 0.12), 0 0 0 18px rgb(29 95 148 / 0.06);
+}
+.calma-mapa__nombre {
+	padding: 4px 10px;
+	border-radius: var(--calma-radius-pill);
+	background: var(--calma-paper);
+	white-space: nowrap;
+	transition: background-color var(--calma-dur-lento) var(--calma-ease-mente), color var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-mapa__nodo--centro .calma-mapa__nombre {
+	font-family: var(--calma-font-heading);
+	font-size: 1.125rem;
+}
+.calma-mapa__nodo:hover .calma-mapa__punto,
+.calma-mapa__nodo:focus-visible .calma-mapa__punto {
+	transform: scale(1.2);
+	border-color: var(--calma-teal);
+}
+.calma-mapa__nodo[aria-pressed="true"] .calma-mapa__punto {
+	background: var(--calma-teal);
+	border-color: var(--calma-teal);
+	box-shadow: 0 0 0 8px rgb(15 107 107 / 0.14), 0 0 0 18px rgb(15 107 107 / 0.06);
+}
+.calma-mapa__nodo[aria-pressed="true"] .calma-mapa__nombre {
+	background: var(--calma-ink);
+	color: #fff;
+}
+.calma-mapa__nodo.is-vecino .calma-mapa__punto {
+	border-color: var(--calma-teal);
+}
+@media (prefers-reduced-motion: no-preference) {
+	/* Las uniones se dibujan al llegar a la sección */
+	html:not(.calma-quieto) .calma-mapa--vivo.is-esperando .calma-mapa__arista {
+		stroke-dashoffset: 1;
+	}
+	html:not(.calma-quieto) .calma-mapa--vivo .calma-mapa__arista {
+		transition: stroke-dashoffset 1.2s var(--calma-ease-mente) calc(var(--i) * 70ms), stroke-opacity var(--calma-dur-lento) var(--calma-ease-mente), stroke var(--calma-dur-lento) var(--calma-ease-mente);
+	}
+	/* Señal que recorre las uniones del tema elegido */
+	html:not(.calma-quieto) .calma-mapa__senal.is-senal {
+		opacity: 1;
+		animation: calma-mapa-senal 1.2s linear 3;
+	}
+}
+@keyframes calma-mapa-senal {
+	from { stroke-dashoffset: 1; }
+	to { stroke-dashoffset: 0; }
+}
+/* Celular: los temas como fichas y el panel debajo */
+@media (max-width: 699px) {
+	.calma-mapa__grafo {
+		aspect-ratio: auto;
+	}
+	.calma-mapa__grafo::before,
+	.calma-mapa__svg {
+		display: none;
+	}
+	.calma-mapa__nodos {
+		position: static;
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--calma-space-2);
+	}
+	.calma-mapa__nodo {
+		position: static;
+		transform: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 0 14px 0 10px;
+		border: 1px solid var(--calma-hairline-strong);
+		border-radius: var(--calma-radius-pill);
+		background: #fff !important;
+	}
+	.calma-mapa__punto,
+	.calma-mapa__nodo--centro .calma-mapa__punto {
+		width: 14px;
+		height: 14px;
+		box-shadow: none;
+	}
+	.calma-mapa__nombre {
+		padding: 0;
+		background: none;
+	}
+	.calma-mapa__nodo[aria-pressed="true"] {
+		background: var(--calma-ink) !important;
+		border-color: var(--calma-ink);
+	}
+	.calma-mapa__nodo[aria-pressed="true"] .calma-mapa__nombre {
+		background: none;
+	}
+	.calma-mapa__nodo[aria-pressed="true"] .calma-mapa__punto {
+		box-shadow: none;
+		border-color: #fff;
+	}
+}
+
+/* --------------------------------------------------------------------------
    8c. Accesos: los personajes llegan a su pose con el scroll.
    calma-organismo.js pone --p (0 → 1) en cada tarjeta; sin JS vale 1.
    -------------------------------------------------------------------------- */

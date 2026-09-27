@@ -8,7 +8,9 @@ Decisiones aprobadas: paleta cálida, la flor dentro de la red animada, arrancar
 - F5: tarjetas del blog y cuadros de acceso;
 - F3: línea de tiempo que crece y se transforma con el scroll.
 
-Guía: `docs/implementacion/etapa-7.md` · QA: `docs/auditoria/informes/qa-etapa-7.md`. Queda la F4 (mapa de conocimiento).
+Guía: `docs/implementacion/etapa-7.md` · QA: `docs/auditoria/informes/qa-etapa-7.md`. - F4: mapa de temas en el Inicio.
+
+El plan original de la dirección de arte está completo.
 
 Propuesta para evolucionar Código Calma hacia una experiencia editorial e interactiva (análisis y plan original).
 

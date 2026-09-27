@@ -32,6 +32,8 @@
     "H3:Scroll sin horizonte",
     "H3:Ruido constante",
     "H3:Pantalla hasta dormir",
+    "H2:Explora por temas",
+    "H3:Ciberpsicología",
     "H3:Aprende ciberpsicología",
     "H3:Solicita una consulta",
     "H3:Recursos gratuitos"
@@ -1256,6 +1258,8 @@
     "H3:Scroll sin horizonte",
     "H3:Ruido constante",
     "H3:Pantalla hasta dormir",
+    "H2:Explora por temas",
+    "H3:Ciberpsicología",
     "H3:Aprende ciberpsicología",
     "H3:Solicita una consulta",
     "H3:Recursos gratuitos"
@@ -2544,7 +2548,7 @@
    "Equipo o=solid rgb(27, 34, 51) inDrawer=true",
    "Contacto o=solid rgb(27, 34, 51) inDrawer=true",
    "Solicitar una consulta o=solid rgb(29, 95, 148) inDrawer=true",
-   "Cerrar menú o=solid rgb(28, 70, 108) inDrawer=true"
+   "Cerrar menú o=solid rgb(29, 82, 127) inDrawer=true"
   ],
   "afterEsc": {
    "exp": "false",

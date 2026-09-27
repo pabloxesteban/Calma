@@ -2746,6 +2746,328 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 }
 
 /* --------------------------------------------------------------------------
+   8e. Mapa de temas: la ciberpsicología en el centro, cinco temas alrededor,
+   unidos por las etiquetas que comparten sus artículos. Sin JS: lista de
+   temas; con JS: mapa con un tema por vez (calma-organismo.js).
+   -------------------------------------------------------------------------- */
+.calma-mapa {
+	max-width: var(--calma-container);
+	margin: 0 auto;
+	padding: var(--calma-section-y) var(--calma-gutter) 0;
+}
+.calma-mapa__head {
+	max-width: 60ch;
+	margin-bottom: var(--calma-space-10);
+}
+.calma-mapa__head h2 {
+	margin: 0 0 var(--calma-space-3) !important;
+	font-size: var(--calma-fs-2xl);
+	line-height: 1.08;
+	letter-spacing: -0.02em;
+}
+.calma-mapa__head h2 em {
+	font-style: italic;
+	font-weight: 500;
+	color: var(--calma-primary);
+}
+.calma-mapa__head .calma-sub {
+	margin: 0 !important;
+	color: var(--calma-ink-soft);
+}
+.calma-mapa__cuerpo {
+	display: grid;
+	gap: var(--calma-space-8);
+	align-items: start;
+}
+@media (min-width: 900px) {
+	.calma-mapa__cuerpo {
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+		gap: var(--calma-space-12);
+	}
+}
+/* Paneles: sin JS se ven todos, en grilla */
+.calma-mapa__paneles {
+	display: grid;
+	gap: var(--calma-space-4);
+}
+.calma-mapa__panel {
+	padding: var(--calma-space-6);
+	background: #fff;
+	border: 1px solid var(--calma-hairline-strong);
+}
+.calma-mapa__panel h3 {
+	margin: 0 0 var(--calma-space-2) !important;
+	font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+	line-height: 1.1;
+}
+.calma-mapa__sub {
+	font-family: var(--calma-font-body);
+	font-size: var(--calma-fs-sm);
+	font-weight: 500;
+	color: var(--calma-ink-soft);
+}
+.calma-mapa__texto {
+	margin: 0 0 var(--calma-space-5) !important;
+	color: var(--calma-ink-soft);
+}
+.calma-mapa__rotulo {
+	margin: var(--calma-space-4) 0 var(--calma-space-2) !important;
+	font-size: var(--calma-fs-xs);
+	font-weight: 700;
+	color: var(--calma-ink);
+}
+.calma-mapa__articulos,
+.calma-mapa__conexiones {
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none;
+}
+.calma-mapa__articulos li {
+	margin: 0 !important;
+	border-top: 1px solid var(--calma-hairline);
+}
+.calma-mapa__articulos a {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--calma-space-3);
+	min-height: 44px;
+	padding: var(--calma-space-2) 0;
+	color: var(--calma-ink) !important;
+	font-family: var(--calma-font-heading);
+	font-size: 1.0625rem;
+	line-height: 1.3;
+	text-decoration: none !important;
+	transition: color var(--calma-dur) var(--calma-ease), padding var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-mapa__articulos a::after {
+	content: "→";
+	flex: none;
+	color: var(--calma-primary);
+	transition: transform var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-mapa__articulos a:hover {
+	color: var(--calma-primary) !important;
+	padding-left: 6px;
+}
+.calma-mapa__articulos a:hover::after {
+	transform: translateX(4px);
+}
+.calma-mapa__conexiones li {
+	margin: 0 0 4px !important;
+	font-size: var(--calma-fs-sm);
+	color: var(--calma-ink-soft);
+}
+.calma-mapa__conexiones strong {
+	color: var(--calma-teal);
+}
+.calma-mapa__enlaces {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--calma-space-2) var(--calma-space-6);
+	margin: var(--calma-space-5) 0 0 !important;
+}
+.calma-mapa__enlaces a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	font-weight: 600;
+}
+/* Con JS: un panel por vez, con una entrada suave */
+.calma-mapa--vivo .calma-mapa__panel[hidden] {
+	display: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-mapa--vivo .calma-mapa__panel {
+		animation: calma-panel 0.6s var(--calma-ease-mente);
+	}
+}
+@keyframes calma-panel {
+	from { opacity: 0; transform: translate3d(0, 8px, 0); }
+}
+
+/* ---- Grafo ---- */
+.calma-mapa__grafo {
+	position: relative;
+	width: 100%;
+	max-width: 560px;
+	aspect-ratio: 1;
+	justify-self: center;
+}
+.calma-mapa__grafo::before {
+	/* Retícula de puntos, como el circuito del hero */
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(circle, rgb(29 95 148 / 0.16) 1px, transparent 1.4px) 0 0 / 24px 24px;
+	-webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 72%);
+	mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 72%);
+}
+.calma-mapa__svg {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	fill: none;
+}
+.calma-mapa__arista {
+	stroke: var(--calma-primary);
+	stroke-opacity: 0.3;
+	stroke-width: calc(0.16px + var(--peso) * 0.06px);
+	stroke-linecap: round;
+	stroke-dasharray: 1;
+	stroke-dashoffset: 0;
+	transition: stroke-opacity var(--calma-dur-lento) var(--calma-ease-mente), stroke var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-mapa__arista.is-on {
+	stroke: var(--calma-teal);
+	stroke-opacity: 0.85;
+}
+.calma-mapa__arista.is-apagada {
+	stroke-opacity: 0.12;
+}
+.calma-mapa__senal {
+	stroke: var(--calma-teal);
+	stroke-width: 0.9px;
+	stroke-linecap: round;
+	stroke-dasharray: 0.05 0.95;
+	stroke-dashoffset: 1;
+	opacity: 0;
+}
+.calma-mapa__nodos {
+	position: absolute;
+	inset: 0;
+}
+.calma-mapa__nodo {
+	position: absolute;
+	left: calc(var(--x) * 1%);
+	top: calc(var(--y) * 1%);
+	transform: translate(-50%, -50%);
+	display: grid;
+	justify-items: center;
+	gap: 8px;
+	min-width: 44px;
+	min-height: 44px;
+	padding: 6px 8px;
+	border: 0;
+	background: none !important;
+	box-shadow: none !important;
+	color: var(--calma-ink) !important;
+	font: 600 var(--calma-fs-sm)/1.2 var(--calma-font-body);
+	cursor: pointer;
+}
+.calma-mapa__punto {
+	position: relative;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: #fff;
+	border: 2px solid var(--calma-primary);
+	transition: transform var(--calma-dur-lento) var(--calma-ease-mente), background-color var(--calma-dur-lento) var(--calma-ease-mente), border-color var(--calma-dur-lento) var(--calma-ease-mente), box-shadow var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-mapa__nodo--centro .calma-mapa__punto {
+	width: 44px;
+	height: 44px;
+	background: var(--calma-primary);
+	box-shadow: 0 0 0 8px rgb(29 95 148 / 0.12), 0 0 0 18px rgb(29 95 148 / 0.06);
+}
+.calma-mapa__nombre {
+	padding: 4px 10px;
+	border-radius: var(--calma-radius-pill);
+	background: var(--calma-paper);
+	white-space: nowrap;
+	transition: background-color var(--calma-dur-lento) var(--calma-ease-mente), color var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-mapa__nodo--centro .calma-mapa__nombre {
+	font-family: var(--calma-font-heading);
+	font-size: 1.125rem;
+}
+.calma-mapa__nodo:hover .calma-mapa__punto,
+.calma-mapa__nodo:focus-visible .calma-mapa__punto {
+	transform: scale(1.2);
+	border-color: var(--calma-teal);
+}
+.calma-mapa__nodo[aria-pressed="true"] .calma-mapa__punto {
+	background: var(--calma-teal);
+	border-color: var(--calma-teal);
+	box-shadow: 0 0 0 8px rgb(15 107 107 / 0.14), 0 0 0 18px rgb(15 107 107 / 0.06);
+}
+.calma-mapa__nodo[aria-pressed="true"] .calma-mapa__nombre {
+	background: var(--calma-ink);
+	color: #fff;
+}
+.calma-mapa__nodo.is-vecino .calma-mapa__punto {
+	border-color: var(--calma-teal);
+}
+@media (prefers-reduced-motion: no-preference) {
+	/* Las uniones se dibujan al llegar a la sección */
+	html:not(.calma-quieto) .calma-mapa--vivo.is-esperando .calma-mapa__arista {
+		stroke-dashoffset: 1;
+	}
+	html:not(.calma-quieto) .calma-mapa--vivo .calma-mapa__arista {
+		transition: stroke-dashoffset 1.2s var(--calma-ease-mente) calc(var(--i) * 70ms), stroke-opacity var(--calma-dur-lento) var(--calma-ease-mente), stroke var(--calma-dur-lento) var(--calma-ease-mente);
+	}
+	/* Señal que recorre las uniones del tema elegido */
+	html:not(.calma-quieto) .calma-mapa__senal.is-senal {
+		opacity: 1;
+		animation: calma-mapa-senal 1.2s linear 3;
+	}
+}
+@keyframes calma-mapa-senal {
+	from { stroke-dashoffset: 1; }
+	to { stroke-dashoffset: 0; }
+}
+/* Celular: los temas como fichas y el panel debajo */
+@media (max-width: 699px) {
+	.calma-mapa__grafo {
+		aspect-ratio: auto;
+	}
+	.calma-mapa__grafo::before,
+	.calma-mapa__svg {
+		display: none;
+	}
+	.calma-mapa__nodos {
+		position: static;
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--calma-space-2);
+	}
+	.calma-mapa__nodo {
+		position: static;
+		transform: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 0 14px 0 10px;
+		border: 1px solid var(--calma-hairline-strong);
+		border-radius: var(--calma-radius-pill);
+		background: #fff !important;
+	}
+	.calma-mapa__punto,
+	.calma-mapa__nodo--centro .calma-mapa__punto {
+		width: 14px;
+		height: 14px;
+		box-shadow: none;
+	}
+	.calma-mapa__nombre {
+		padding: 0;
+		background: none;
+	}
+	.calma-mapa__nodo[aria-pressed="true"] {
+		background: var(--calma-ink) !important;
+		border-color: var(--calma-ink);
+	}
+	.calma-mapa__nodo[aria-pressed="true"] .calma-mapa__nombre {
+		background: none;
+	}
+	.calma-mapa__nodo[aria-pressed="true"] .calma-mapa__punto {
+		box-shadow: none;
+		border-color: #fff;
+	}
+}
+
+/* --------------------------------------------------------------------------
    8c. Accesos: los personajes llegan a su pose con el scroll.
    calma-organismo.js pone --p (0 → 1) en cada tarjeta; sin JS vale 1.
    -------------------------------------------------------------------------- */
@@ -4019,6 +4341,64 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 </section>
 
 
+<!-- Código Calma · Inicio · mapa de temas (Etapa 7)
+     Va entre "¿Cómo son tus momentos con la tecnología?" y los accesos. Bloque "HTML personalizado" a ancho completo.
+     Artículos y conexiones salen de contenido/etapa-5/taxonomia.json. Los enlaces a categorías nuevas funcionan después de la Etapa 5 (Paso 2).
+     Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
+<section class="calma-mapa" aria-labelledby="mapa-titulo">
+<div class="calma-mapa__head">
+<h2 id="mapa-titulo">Explora por <em>temas</em></h2>
+<p class="calma-sub">La ciberpsicología está en el centro: cruza la psicología con la tecnología. Elige un tema para ver sus artículos y con qué se conecta.</p>
+</div>
+<div class="calma-mapa__cuerpo">
+<div class="calma-mapa__grafo" hidden>
+<svg class="calma-mapa__svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="calma-mapa__arista" data-a="ciberpsicologia" data-b="psicologia" style="--i:0;--peso:1" pathLength="1" d="M50 50 L50.0 13.0"/><path class="calma-mapa__senal" data-a="ciberpsicologia" data-b="psicologia" pathLength="1" d="M50 50 L50.0 13.0"/><path class="calma-mapa__arista" data-a="ciberpsicologia" data-b="neurociencia" style="--i:1;--peso:1" pathLength="1" d="M50 50 L85.2 38.6"/><path class="calma-mapa__senal" data-a="ciberpsicologia" data-b="neurociencia" pathLength="1" d="M50 50 L85.2 38.6"/><path class="calma-mapa__arista" data-a="ciberpsicologia" data-b="ia" style="--i:2;--peso:1" pathLength="1" d="M50 50 L71.7 79.9"/><path class="calma-mapa__senal" data-a="ciberpsicologia" data-b="ia" pathLength="1" d="M50 50 L71.7 79.9"/><path class="calma-mapa__arista" data-a="ciberpsicologia" data-b="tecnologia" style="--i:3;--peso:1" pathLength="1" d="M50 50 L28.3 79.9"/><path class="calma-mapa__senal" data-a="ciberpsicologia" data-b="tecnologia" pathLength="1" d="M50 50 L28.3 79.9"/><path class="calma-mapa__arista" data-a="ciberpsicologia" data-b="bienestar" style="--i:4;--peso:1" pathLength="1" d="M50 50 L14.8 38.6"/><path class="calma-mapa__senal" data-a="ciberpsicologia" data-b="bienestar" pathLength="1" d="M50 50 L14.8 38.6"/><path class="calma-mapa__arista" data-a="psicologia" data-b="neurociencia" style="--i:5;--peso:2" pathLength="1" d="M50.0 13.0 Q61.4 34.3 85.2 38.6"/><path class="calma-mapa__senal" data-a="psicologia" data-b="neurociencia" pathLength="1" d="M50.0 13.0 Q61.4 34.3 85.2 38.6"/><path class="calma-mapa__arista" data-a="psicologia" data-b="ia" style="--i:6;--peso:2" pathLength="1" d="M50.0 13.0 Q57.1 47.7 71.7 79.9"/><path class="calma-mapa__senal" data-a="psicologia" data-b="ia" pathLength="1" d="M50.0 13.0 Q57.1 47.7 71.7 79.9"/><path class="calma-mapa__arista" data-a="psicologia" data-b="tecnologia" style="--i:7;--peso:2" pathLength="1" d="M50.0 13.0 Q42.9 47.7 28.3 79.9"/><path class="calma-mapa__senal" data-a="psicologia" data-b="tecnologia" pathLength="1" d="M50.0 13.0 Q42.9 47.7 28.3 79.9"/><path class="calma-mapa__arista" data-a="psicologia" data-b="bienestar" style="--i:8;--peso:3" pathLength="1" d="M50.0 13.0 Q38.6 34.3 14.8 38.6"/><path class="calma-mapa__senal" data-a="psicologia" data-b="bienestar" pathLength="1" d="M50.0 13.0 Q38.6 34.3 14.8 38.6"/><path class="calma-mapa__arista" data-a="neurociencia" data-b="ia" style="--i:9;--peso:1" pathLength="1" d="M85.2 38.6 Q68.5 56.0 71.7 79.9"/><path class="calma-mapa__senal" data-a="neurociencia" data-b="ia" pathLength="1" d="M85.2 38.6 Q68.5 56.0 71.7 79.9"/><path class="calma-mapa__arista" data-a="neurociencia" data-b="tecnologia" style="--i:10;--peso:1" pathLength="1" d="M85.2 38.6 Q54.4 56.0 28.3 79.9"/><path class="calma-mapa__senal" data-a="neurociencia" data-b="tecnologia" pathLength="1" d="M85.2 38.6 Q54.4 56.0 28.3 79.9"/><path class="calma-mapa__arista" data-a="neurociencia" data-b="bienestar" style="--i:11;--peso:3" pathLength="1" d="M85.2 38.6 Q50.0 42.6 14.8 38.6"/><path class="calma-mapa__senal" data-a="neurociencia" data-b="bienestar" pathLength="1" d="M85.2 38.6 Q50.0 42.6 14.8 38.6"/><path class="calma-mapa__arista" data-a="ia" data-b="tecnologia" style="--i:12;--peso:4" pathLength="1" d="M71.7 79.9 Q50.0 69.4 28.3 79.9"/><path class="calma-mapa__senal" data-a="ia" data-b="tecnologia" pathLength="1" d="M71.7 79.9 Q50.0 69.4 28.3 79.9"/><path class="calma-mapa__arista" data-a="ia" data-b="bienestar" style="--i:13;--peso:3" pathLength="1" d="M71.7 79.9 Q45.6 56.0 14.8 38.6"/><path class="calma-mapa__senal" data-a="ia" data-b="bienestar" pathLength="1" d="M71.7 79.9 Q45.6 56.0 14.8 38.6"/><path class="calma-mapa__arista" data-a="tecnologia" data-b="bienestar" style="--i:14;--peso:2" pathLength="1" d="M28.3 79.9 Q31.5 56.0 14.8 38.6"/><path class="calma-mapa__senal" data-a="tecnologia" data-b="bienestar" pathLength="1" d="M28.3 79.9 Q31.5 56.0 14.8 38.6"/></svg>
+<div class="calma-mapa__nodos" role="group" aria-label="Temas del mapa"><button type="button" class="calma-mapa__nodo calma-mapa__nodo--centro" style="--x:50;--y:50" data-tema="ciberpsicologia" aria-controls="tema-ciberpsicologia" aria-pressed="false"><span class="calma-mapa__punto" aria-hidden="true"></span><span class="calma-mapa__nombre">Ciberpsicología</span></button><button type="button" class="calma-mapa__nodo" style="--x:50.0;--y:13.0" data-tema="psicologia" aria-controls="tema-psicologia" aria-pressed="false"><span class="calma-mapa__punto" aria-hidden="true"></span><span class="calma-mapa__nombre">Psicología</span></button><button type="button" class="calma-mapa__nodo" style="--x:85.2;--y:38.6" data-tema="neurociencia" aria-controls="tema-neurociencia" aria-pressed="false"><span class="calma-mapa__punto" aria-hidden="true"></span><span class="calma-mapa__nombre">Neurociencia</span></button><button type="button" class="calma-mapa__nodo" style="--x:71.7;--y:79.9" data-tema="ia" aria-controls="tema-ia" aria-pressed="false"><span class="calma-mapa__punto" aria-hidden="true"></span><span class="calma-mapa__nombre">IA</span></button><button type="button" class="calma-mapa__nodo" style="--x:28.3;--y:79.9" data-tema="tecnologia" aria-controls="tema-tecnologia" aria-pressed="false"><span class="calma-mapa__punto" aria-hidden="true"></span><span class="calma-mapa__nombre">Tecnología</span></button><button type="button" class="calma-mapa__nodo" style="--x:14.8;--y:38.6" data-tema="bienestar" aria-controls="tema-bienestar" aria-pressed="false"><span class="calma-mapa__punto" aria-hidden="true"></span><span class="calma-mapa__nombre">Bienestar digital</span></button></div>
+</div>
+<div class="calma-mapa__paneles" aria-live="polite">
+<article class="calma-mapa__panel" id="tema-ciberpsicologia" data-tema="ciberpsicologia" aria-labelledby="tema-ciberpsicologia-titulo">
+<h3 id="tema-ciberpsicologia-titulo">Ciberpsicología</h3>
+<p class="calma-mapa__texto">El campo de la psicología que estudia la mente y el comportamiento humanos en su interacción con la tecnología. Cruza todos los temas del mapa.</p>
+<p class="calma-mapa__enlaces"><a class="calma-link" href="/Calma/vista-previa/ciberpsicologia/">¿Qué es la ciberpsicología?</a><a class="calma-link" href="/Calma/vista-previa/blog/">Todos los artículos</a></p>
+</article>
+<article class="calma-mapa__panel" id="tema-psicologia" data-tema="psicologia" aria-labelledby="tema-psicologia-titulo">
+<h3 id="tema-psicologia-titulo">Psicología <span class="calma-mapa__sub">· Hábitos y conducta</span></h3>
+<p class="calma-mapa__texto">Por qué repetimos ciertos gestos con la tecnología, qué papel tiene el entorno y por qué la fuerza de voluntad no lo explica todo.</p>
+<p class="calma-mapa__rotulo">Artículos</p><ul class="calma-mapa__articulos"><li><a href="/Calma/vista-previa/por-que-tu-fuerza-de-voluntad-es-mas-lista-de-lo-que-crees/">Por qué tu fuerza de voluntad es más lista de lo que crees</a></li><li><a href="/Calma/vista-previa/la-diferencia-entre-querer-y-ser-capaz-entendiendo-la-autoeficacia/">La diferencia entre «querer» y «ser capaz»: entendiendo la autoeficacia</a></li><li><a href="/Calma/vista-previa/por-que-fallamos-al-intentar-cambiar-conductas/">¿Por qué fallamos al intentar cambiar conductas?</a></li><li><a href="/Calma/vista-previa/descubriendo-que-modela-nuestro-comportamiento/">¿Qué modela nuestro comportamiento?</a></li><li><a href="/Calma/vista-previa/el-arte-de-redisenar-tu-entorno/">El arte de rediseñar tu entorno</a></li></ul>
+<p class="calma-mapa__rotulo">Se conecta con</p><ul class="calma-mapa__conexiones"><li><strong>Bienestar digital</strong>: Atención, hábitos, trabajo digital</li><li><strong>Neurociencia</strong>: Atención, hábitos</li><li><strong>IA</strong>: Sesgos cognitivos, trabajo digital</li></ul>
+<p class="calma-mapa__enlaces"><a class="calma-link" href="https://codigocalma.com/category/habitos-y-conducta/">Ver Hábitos y conducta</a></p>
+</article>
+<article class="calma-mapa__panel" id="tema-neurociencia" data-tema="neurociencia" aria-labelledby="tema-neurociencia-titulo">
+<h3 id="tema-neurociencia-titulo">Neurociencia <span class="calma-mapa__sub">· Neurociencia y atención</span></h3>
+<p class="calma-mapa__texto">El cerebro en la vida digital: cómo funciona la atención, qué la fragmenta y cómo se relacionan el descanso y la carga cognitiva con las pantallas.</p>
+<p class="calma-mapa__rotulo">Artículos</p><ul class="calma-mapa__articulos"><li><a href="/Calma/vista-previa/preguntas-clave-para-entender-y-cuidar-nuestro-cerebro/">Preguntas clave para entender y cuidar nuestro cerebro</a></li></ul>
+<p class="calma-mapa__rotulo">Se conecta con</p><ul class="calma-mapa__conexiones"><li><strong>Bienestar digital</strong>: Atención, hábitos, salud mental</li><li><strong>Psicología</strong>: Atención, hábitos</li><li><strong>IA</strong>: Salud mental</li></ul>
+<p class="calma-mapa__enlaces"><a class="calma-link" href="https://codigocalma.com/category/neurociencia/">Ver Neurociencia y atención</a></p>
+</article>
+<article class="calma-mapa__panel" id="tema-ia" data-tema="ia" aria-labelledby="tema-ia-titulo">
+<h3 id="tema-ia-titulo">IA <span class="calma-mapa__sub">· IA y mente</span></h3>
+<p class="calma-mapa__texto">Cómo pensamos, sentimos y confiamos cuando la inteligencia artificial entra en la conversación, y las preguntas éticas que abre.</p>
+<p class="calma-mapa__rotulo">Artículos</p><ul class="calma-mapa__articulos"><li><a href="/Calma/vista-previa/ia-y-apoyo-emocional-saber-la-autoria-cambia-tu-perspectiva/">IA y apoyo emocional: saber la autoría cambia tu perspectiva</a></li><li><a href="/Calma/vista-previa/el-estigma-de-la-estructura-x-entonces-y/">El estigma de la estructura: «X entonces Y»</a></li><li><a href="/Calma/vista-previa/reflexiones-eticas-sobre-el-desarrollo-de-la-inteligencia-artificial/">Reflexiones éticas sobre el desarrollo de la inteligencia artificial</a></li></ul>
+<p class="calma-mapa__rotulo">Se conecta con</p><ul class="calma-mapa__conexiones"><li><strong>Tecnología</strong>: Infancia y adolescencia, salud mental, sesgos cognitivos</li><li><strong>Bienestar digital</strong>: Infancia y adolescencia, salud mental, trabajo digital</li><li><strong>Psicología</strong>: Sesgos cognitivos, trabajo digital</li></ul>
+<p class="calma-mapa__enlaces"><a class="calma-link" href="https://codigocalma.com/category/ia-y-mente/">Ver IA y mente</a></p>
+</article>
+<article class="calma-mapa__panel" id="tema-tecnologia" data-tema="tecnologia" aria-labelledby="tema-tecnologia-titulo">
+<h3 id="tema-tecnologia-titulo">Tecnología <span class="calma-mapa__sub">· Plataformas y ciberseguridad</span></h3>
+<p class="calma-mapa__texto">Cómo influyen las plataformas y sus algoritmos en lo que ves y sientes, y por qué confiamos en un mensaje que no deberíamos abrir.</p>
+<p class="calma-mapa__rotulo">Artículos</p><ul class="calma-mapa__articulos"><li><a href="/Calma/vista-previa/5-puntos-clave-que-el-caso-de-meta-nos-deja-en-salud-mental/">5 puntos clave que el caso de Meta nos deja en salud mental</a></li><li><a href="/Calma/vista-previa/como-un-te-quiero-infecto-45-millones-de-computadoras-en-todo-el-mundo/">Cómo un «te quiero» infectó 45 millones de computadoras en todo el mundo</a></li></ul>
+<p class="calma-mapa__rotulo">Se conecta con</p><ul class="calma-mapa__conexiones"><li><strong>IA</strong>: Infancia y adolescencia, salud mental, sesgos cognitivos</li><li><strong>Psicología</strong>: Diseño del comportamiento, sesgos cognitivos</li><li><strong>Bienestar digital</strong>: Infancia y adolescencia, salud mental</li></ul>
+<p class="calma-mapa__enlaces"><a class="calma-link" href="https://codigocalma.com/category/redes-sociales/">Ver Redes sociales y plataformas</a><a class="calma-link" href="/Calma/vista-previa/category/ciberseguridad/">Ver Ciberseguridad y factor humano</a></p>
+</article>
+<article class="calma-mapa__panel" id="tema-bienestar" data-tema="bienestar" aria-labelledby="tema-bienestar-titulo">
+<h3 id="tema-bienestar-titulo">Bienestar digital</h3>
+<p class="calma-mapa__texto">Convivir con las pantallas sin que te desborden: el tiempo y la calidad de uso, el tecnoestrés y la vida digital de niñas, niños y adolescentes.</p>
+<p class="calma-mapa__rotulo">Artículos</p><ul class="calma-mapa__articulos"><li><a href="/Calma/vista-previa/infancias-figitales/">Infancias «Figitales»</a></li><li><a href="/Calma/vista-previa/calidad-vs-cantidad-la-hipotesis-de-ricitos-de-oro/">Calidad vs. cantidad: la hipótesis de Ricitos de Oro</a></li><li><a href="/Calma/vista-previa/autoevaluacion-del-consumo-digital-como-estamos-manejando-nuestro-tiempo-frente-a-las-pantallas/">Autoevaluación del consumo digital: ¿cómo estamos manejando nuestro tiempo frente a las pantallas?</a></li><li><a href="/Calma/vista-previa/la-tecnologia-te-supera-como-identificar-y-gestionar-el-tecnoestres/">La tecnología te supera: cómo identificar y gestionar el tecnoestrés</a></li></ul>
+<p class="calma-mapa__rotulo">Se conecta con</p><ul class="calma-mapa__conexiones"><li><strong>Psicología</strong>: Atención, hábitos, trabajo digital</li><li><strong>Neurociencia</strong>: Atención, hábitos, salud mental</li><li><strong>IA</strong>: Infancia y adolescencia, salud mental, trabajo digital</li></ul>
+<p class="calma-mapa__enlaces"><a class="calma-link" href="/Calma/vista-previa/bienestar-digital/">Ver Bienestar digital</a></p>
+</article>
+</div>
+</div>
+</section>
 <!-- Código Calma · Inicio · accesos (Aprende ciberpsicología / Solicita una consulta / Recursos gratuitos) (Etapa 7)
      Reemplaza la fila de las 3 tarjetas con ilustración y botón, y la fila vacía de debajo.
      Bloque "HTML personalizado" a ancho completo. El personaje es el de las ilustraciones originales, rediseñado en SVG para animarlo.
