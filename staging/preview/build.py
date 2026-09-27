@@ -7,13 +7,13 @@ codigo-calma, bloques de reemplazo, correcciones.json y ajustes que se hacen en
 el editor o el Personalizador (emulados). Escribe staging/preview/build/<slug>.html.
 Las capturas se sacan con staging/preview/capturas.js.
 
-Uso: python3 staging/preview/build.py [etapa-1|etapa-2|etapa-3]
+Uso: python3 staging/preview/build.py [etapa-1|etapa-2|etapa-3|etapa-5]  (la Etapa 4 no cambia el HTML visible)
 """
 import json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 SNAP = sorted((ROOT / 'docs/auditoria').glob('snapshot-*/html'))[-1]
-HASTA = int((sys.argv[1] if len(sys.argv) > 1 else 'etapa-3').split('-')[-1])
+HASTA = int((sys.argv[1] if len(sys.argv) > 1 else 'etapa-5').split('-')[-1])
 PLUGIN = ROOT / 'wp-content/plugins/codigo-calma'
 CSS = PLUGIN / 'assets/css'
 OUT = pathlib.Path(__file__).with_name('build')
@@ -203,15 +203,51 @@ def e3_contacto(s):
 
 CTAS = None
 def e3_articulo(slug, s):
+    # Con la Etapa 5, el mismo renderizador PHP agrega "En resumen" y "Fuentes".
     global CTAS
     if CTAS is None:
-        CTAS = json.loads(subprocess.run(['php', str(pathlib.Path(__file__).with_name('php') / 'render-cta.php')],
-                                         capture_output=True, text=True, check=True).stdout)
+        args = ['php', str(pathlib.Path(__file__).with_name('php') / 'render-cta.php')] + (['--geo'] if HASTA >= 5 else [])
+        CTAS = json.loads(subprocess.run(args, capture_output=True, text=True, check=True).stdout)
     if slug not in CTAS:
         return s
-    _, b = entry_bounds(s)
-    log.append(f'{slug}: caja de consulta')
-    return s[:b] + CTAS[slug] + s[b:]
+    a, b = entry_bounds(s)
+    inicio = a + len('<div class="entry-content single-content">')
+    s = s[:b] + CTAS[slug]['despues'] + s[b:]
+    s = s[:inicio] + CTAS[slug]['antes'] + s[inicio:]
+    log.append(f'{slug}: caja de consulta' + (' + resumen/fuentes' if HASTA >= 5 else ''))
+    return s
+
+# ---------------------------------------------------------------- Etapa 5
+def e5_h2(slug, s):
+    data = json.loads((cont(5) / 'articulos.json').read_text(encoding='utf-8'))
+    art = next((x for x in data['articulos'] if x['slug'] == slug), None)
+    if not art:
+        return s
+    for h in art.get('h2', []):
+        de = h.get('nivel_actual', 'h3')
+        pat = re.compile(r'<' + de + r'( class="wp-block-heading[^"]*")>(.*?)</' + de + '>', re.S)
+        def cambiar(m):
+            plano = re.sub(r'<[^>]+>', '', m.group(2)).strip()
+            import html as _h
+            return '<h2' + m.group(1) + '>' + m.group(2) + '</h2>' if _h.unescape(plano) == h['antes'].strip() else m.group(0)
+        s = pat.sub(cambiar, s)
+    log.append(f'{slug}: encabezados de sección a H2')
+    return s
+
+def e5_pilar(s):
+    a, b = entry_bounds(s)
+    s = s[:a] + '<div class="entry-content single-content">\n' + (cont(5) / 'bloques/ciberpsicologia.html').read_text(encoding='utf-8') + '\n' + s[b:]
+    s = s.replace('content-width-normal content-style-boxed content-vertical-padding-show', 'content-width-fullwidth content-style-unboxed content-vertical-padding-hide', 1)
+    log.append('ciberpsicologia: página pilar')
+    return s
+
+def e5_bienestar(s):
+    ap = (cont(5) / 'bloques/bienestar-digital-apertura.html').read_text(encoding='utf-8')
+    i = s.index('El bienestar digital emerge cuando')
+    i = s.rindex('<p', 0, i)
+    j = s.index('</p>', s.index('Es usar los dispositivos con intención', i)) + 4
+    log.append('bienestar-digital: apertura con definición')
+    return s[:i] + ap + s[j:]
 
 EQUIPO = {'equipo': ('El equipo', 'equipo.html'), 'equipo_tatiana-x-stacul': ('Tatiana X. Stacul', 'equipo-tatiana-x-stacul.html'),
           'equipo_francisca-cortes-santoro': ('Francisca Cortés Santoro', 'equipo-francisca-cortes-santoro.html'),
@@ -273,6 +309,13 @@ for slug, s in fuentes():
             if slug in POSTS:
                 s = e3_articulo(slug, s)
             s = apply_correcciones(3, slug, s)
+        if HASTA >= 5:
+            if slug in POSTS:
+                s = e5_h2(slug, s)
+            if slug == 'ciberpsicologia':
+                s = e5_pilar(s)
+            if slug == 'bienestar-digital':
+                s = e5_bienestar(s)
         s = e2_global(slug, s)
         if HASTA >= 3:
             s = e3_menus(slug, s)

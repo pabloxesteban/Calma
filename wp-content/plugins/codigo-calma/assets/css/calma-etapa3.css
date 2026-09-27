@@ -555,3 +555,61 @@
 .calma-fuentes a {
 	overflow-wrap: anywhere;
 }
+
+/* Etapa 5 · Páginas de texto largo (pilar) y definiciones citables */
+.calma-prosa {
+	font-size: var(--calma-fs-base);
+	line-height: var(--calma-lh-body);
+}
+.calma-prosa > * + * {
+	margin-top: var(--calma-space-4) !important;
+}
+.calma-prosa h2 {
+	margin-top: var(--calma-space-12) !important;
+}
+.calma-prosa h3 {
+	margin-top: var(--calma-space-8) !important;
+}
+.calma-prosa ul,
+.calma-prosa ol {
+	padding-left: 1.25em;
+}
+.calma-prosa li + li {
+	margin-top: var(--calma-space-2);
+}
+.calma-prosa blockquote {
+	margin-left: 0;
+	padding: var(--calma-space-4) var(--calma-space-5);
+	border-left: 4px solid var(--calma-violet);
+	background: var(--calma-surface-soft);
+	border-radius: 0 var(--calma-radius-sm) var(--calma-radius-sm) 0;
+	font-size: var(--calma-fs-sm);
+}
+.calma-prosa table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--calma-fs-sm);
+	display: block;
+	overflow-x: auto;
+}
+.calma-prosa th,
+.calma-prosa td {
+	border: 1px solid var(--calma-border);
+	padding: var(--calma-space-2) var(--calma-space-3);
+	text-align: left;
+	vertical-align: top;
+}
+.calma-prosa a {
+	color: var(--calma-primary);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+.calma-definicion {
+	font-size: var(--calma-fs-lg);
+	line-height: 1.5;
+}
+
+/* Etapa 5 · Colores de badge para las categorías nuevas */
+.entry-taxonomies .category-links a[href*="/habitos-y-conducta/"] { background: #fdf3dc; color: #7a4d00 !important; }
+.entry-taxonomies .category-links a[href*="/ia-y-mente/"] { background: #eef0fd; color: #3730a3 !important; }
+.entry-taxonomies .category-links a[href*="/redes-sociales/"] { background: #fce8f3; color: #9d174d !important; }

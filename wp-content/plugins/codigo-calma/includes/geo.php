@@ -312,9 +312,9 @@ function calma_taxonomia_aplicar( $aplicar = false ) {
 	foreach ( (array) ( $t['redirecciones'] ?? array() ) as $r ) {
 		$origen    = trim( $r['origen'], '/' );
 		$ya        = $rm && class_exists( '\RankMath\Redirections\DB' ) && \RankMath\Redirections\DB::match_redirections( $origen );
-		$informe[] = array( 'accion' => $rm ? ( $ya ? 'redirección existente' : 'crear redirección 301' ) : 'redirección (Rank Math inactivo: crearla a mano)', 'detalle' => $origen . ' → ' . $r['destino'] );
+		$accion = $rm ? ( $ya ? 'redirección existente' : 'crear redirección 301' ) : 'redirección (Rank Math inactivo: crearla a mano)';
 		if ( $aplicar && $rm && ! $ya ) {
-			\RankMath\Redirections\Redirection::from(
+			$id = \RankMath\Redirections\Redirection::from(
 				array(
 					'url_to'      => $r['destino'],
 					'header_code' => (string) ( $r['tipo'] ?? 301 ),
@@ -322,7 +322,10 @@ function calma_taxonomia_aplicar( $aplicar = false ) {
 					'sources'     => array( array( 'pattern' => $origen, 'comparison' => 'exact' ) ),
 				)
 			)->save();
+			// Si Rank Math no pudo guardarla (módulo Redirecciones inactivo, tabla ausente…), se informa.
+			$accion = $id ? 'redirección 301 creada' : 'ERROR: no se pudo crear (revisar Rank Math → Redirecciones)';
 		}
+		$informe[] = array( 'accion' => $accion, 'detalle' => $origen . ' → ' . $r['destino'] );
 	}
 	if ( $aplicar && $mapa ) {
 		update_option( 'calma_cta_mapa', $mapa );
@@ -384,3 +387,60 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		WP_CLI\Utils\format_items( 'table', calma_taxonomia_aplicar( empty( $assoc['dry-run'] ) ), array( 'accion', 'detalle' ) );
 	} );
 }
+
+/* ---------------------------------------------------------------------------
+ * 4. Página pilar /ciberpsicologia/: Article + FAQPage desde su contenido
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Extrae preguntas (h3) y respuestas de la sección "Preguntas frecuentes" (h2).
+ * Omite las respuestas que aún tienen [COMPLETAR] o [verificar].
+ */
+function calma_faq_desde_contenido( $html ) {
+	if ( ! preg_match( '#<h2[^>]*>\s*Preguntas frecuentes\s*</h2>(.*?)(?=<h2|$)#si', $html, $m ) ) {
+		return array();
+	}
+	$faq = array();
+	foreach ( preg_split( '#(?=<h3)#i', $m[1] ) as $trozo ) {
+		if ( ! preg_match( '#<h3[^>]*>(.*?)</h3>(.*)#si', $trozo, $q ) ) {
+			continue;
+		}
+		$respuesta = trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( $q[2] ) ) );
+		if ( '' === $respuesta || preg_match( '/COMPLETAR|verificar/i', $respuesta ) ) {
+			continue;
+		}
+		$faq[] = array( trim( wp_strip_all_tags( $q[1] ) ), $respuesta );
+	}
+	return $faq;
+}
+
+add_filter( 'calma_schema_graph', function ( $graph ) {
+	if ( ! is_page() || 'ciberpsicologia' !== calma_schema_ruta() ) {
+		return $graph;
+	}
+	$post  = get_queried_object();
+	$url   = get_permalink( $post );
+	$html  = apply_filters( 'the_content', $post->post_content ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals -- filtro del core.
+	$graph[] = calma_schema_persona( 'tatiana-x-stacul', calma_schema_personas()['tatiana-x-stacul'] );
+	$graph[] = array(
+		'@type'            => 'Article',
+		'@id'              => $url . '#article',
+		'headline'         => '¿Qué es la ciberpsicología?',
+		'about'            => array( '@type' => 'Thing', 'name' => 'Ciberpsicología' ),
+		'author'           => array( '@id' => calma_schema_persona_id( 'tatiana-x-stacul' ) ),
+		'publisher'        => array( '@id' => calma_org_id() ),
+		'datePublished'    => get_the_date( 'c', $post ),
+		'dateModified'     => get_the_modified_date( 'c', $post ),
+		'mainEntityOfPage' => $url,
+		'inLanguage'       => 'es',
+	);
+	$faq = calma_faq_desde_contenido( $html );
+	if ( $faq ) {
+		$graph[] = array(
+			'@type'      => 'FAQPage',
+			'@id'        => $url . '#faq',
+			'mainEntity' => array_map( fn( $q ) => array( '@type' => 'Question', 'name' => $q[0], 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $q[1] ) ), $faq ),
+		);
+	}
+	return $graph;
+} );
