@@ -215,3 +215,16 @@ Se eligió en la exploración de estilo (`exploracion/`, capturas en `docs/disen
 - Sin cambios en WordPress respecto de los Pasos 3f y 3g: todo lo hace el plugin (CSS y JS). Solo cambió el bloque de Herramientas (apps en filas) y el de Descargas (etiqueta PDF); hay que usar la versión actual de `contenido/etapa-7/bloques/`.
 - **Ajuste "más sutil":** sin sombras ni halos en ninguna parte (tarjetas, iniciales, logos, portadas, figura de Equipo, test). Las tarjetas ya no suben al pasar el puntero; la luz que sigue al puntero y el borde iluminado son más tenues; las iniciales van sobre el tono de cada persona con un borde fino; en las portadas, solo la imagen se acerca apenas dentro de su marco.
 
+## Paso 3h · Test con más vida (10 min)
+Reemplaza lo que decía el Paso 3g sobre el Test ("no hay que cambiar nada").
+1. En /test/, reemplazar el bloque **HTML personalizado** del test (Etapa 2) por `contenido/etapa-7/bloques/test-consumo-digital.html`. Mismos textos, mismas preguntas y la misma lógica (el script y los atributos `data-calma-*` no cambian).
+2. Borrar las dos filas de Kadence de abajo (la imagen con "Dato que vale la pena saber" y las tres cajas con ícono) y poner en su lugar un bloque **HTML personalizado** con `contenido/etapa-7/bloques/test-dato.html`. Usa la misma imagen de la biblioteca de medios.
+
+Qué trae:
+- **Cabecera con la figura "12 preguntas, 4 dimensiones":** doce puntos en cuatro arcos (uno por dimensión, cada uno con su tono). Al cargar, los arcos se dibujan y los puntos se encienden en orden. Mientras respondes, la figura se vacía y se van llenando las preguntas contestadas; la actual late una vez. Al ver el resultado se encienden las doce y el centro respira. La figura lee el progreso de la barra del propio test, sin tocar su lógica.
+- **"Cómo funciona":** tres tarjetas con su figura (elegir una de cuatro generaciones, las doce preguntas que se encienden, el perfil que se dibuja entre cuatro ejes).
+- **"Antes de empezar"** con una onda que se calma, y **"Qué mide"** con los 4 × 3 puntos y la escala de 1 a 4 que crece.
+- **Cuestionario:** cada pregunta entra con suavidad y las opciones llegan una tras otra; la barra de progreso avanza con un degradé; el resultado aparece con su puntaje en una barra que se llena.
+- **"Dato que vale la pena saber":** la imagen se descubre al bajar y las tres tarjetas tienen figura: tres contextos que colapsan en uno, puntos de conducta que se unen en un patrón y una forma con su reflejo.
+- "Tus resultados son tuyos." pasa de H2 a una frase destacada, para no repetir dos títulos seguidos.
+

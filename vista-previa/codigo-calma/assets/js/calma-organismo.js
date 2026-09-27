@@ -535,7 +535,7 @@
 	}
 
 	function prepararFiguras() {
-		var figuras = document.querySelectorAll( '.calma-cifra, .calma-estado, .calma-person, .calma-habito' );
+		var figuras = document.querySelectorAll( '.calma-cifra, .calma-estado, .calma-person, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta' );
 		if ( ! figuras.length ) {
 			return;
 		}
@@ -673,7 +673,7 @@
 				}
 			} );
 		}, { threshold: 0.25 } );
-		document.querySelectorAll( '.loop-entry .post-thumbnail, .kb-row-layout-id1204_6c7f8b-e0 .kb-is-ratio-image, .calma-descarga__portada' ).forEach( function ( el ) {
+		document.querySelectorAll( '.loop-entry .post-thumbnail, .kb-row-layout-id1204_6c7f8b-e0 .kb-is-ratio-image, .calma-descarga__portada, .calma-dato__imagen' ).forEach( function ( el ) {
 			if ( el.getBoundingClientRect().top < limite ) {
 				return;
 			}
@@ -1317,7 +1317,7 @@
 	   (una vez), la línea de cada título se dibuja y la cuadrícula del fondo
 	   se desplaza apenas con el scroll. Nada de esto oculta texto sin JS.
 	   ------------------------------------------------------------------------ */
-	var LUZ = '.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap';
+	var LUZ = '.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .calma-test__paso, .calma-dato__tarjeta';
 	var SUBE = LUZ + ', .calma-app, .calma-perfil__articulos li';
 	var LINEAS = '.calma-recursos .calma-section__head, .calma-apps__titulo, .calma-perfil .calma-section__head';
 
@@ -1390,6 +1390,47 @@
 			el.classList.add( 'calma-linea-viva' );
 			io.observe( el );
 		} );
+	}
+
+	/* ------------------------------------------------------------------------
+	   5i. Test: la figura de la cabecera (12 preguntas en 4 dimensiones) sigue
+	   el progreso del cuestionario. Se lee de la barra de progreso del propio
+	   test, sin tocar su lógica: se encienden las preguntas ya respondidas y
+	   late la actual; al ver el resultado, se encienden todas.
+	   ------------------------------------------------------------------------ */
+	function prepararTestFig() {
+		var fig = document.querySelector( '[data-calma-test-fig]' );
+		var test = document.getElementById( 'calma-test' );
+		if ( ! fig || ! test || ! ( 'MutationObserver' in window ) ) {
+			return;
+		}
+		var puntos = Array.prototype.slice.call( fig.querySelectorAll( '.calma-test-fig__punto' ) );
+		var barra = test.querySelector( '[data-calma-bar]' );
+		var intro = test.querySelector( '[data-calma-intro]' );
+		var resultado = test.querySelector( '[data-calma-result]' );
+		var anterior = -1;
+		function actualizar() {
+			var enResultado = resultado && ! resultado.hidden;
+			var enIntro = intro && ! intro.hidden;
+			fig.classList.toggle( 'is-completo', !! enResultado );
+			fig.classList.toggle( 'is-en-curso', ! enResultado && ! enIntro );
+			var actual = -1;
+			if ( ! enResultado && ! enIntro && barra ) {
+				// Pregunta k de 12 ⇒ barra al k/12; la generación (paso 0) deja la barra en 0.
+				actual = Math.round( ( parseFloat( barra.style.width ) || 0 ) / 100 * puntos.length ) - 1;
+			}
+			puntos.forEach( function ( p, i ) {
+				p.classList.toggle( 'is-on', enResultado || ( actual >= 0 && i < actual ) );
+				p.classList.remove( 'is-actual' );
+			} );
+			if ( actual >= 0 && actual !== anterior && puntos[ actual ] && ! quieto() ) {
+				void puntos[ actual ].getBoundingClientRect();
+				puntos[ actual ].classList.add( 'is-actual' );
+			}
+			anterior = actual;
+		}
+		new MutationObserver( actualizar ).observe( test, { attributes: true, subtree: true, attributeFilter: [ 'hidden', 'style' ] } );
+		actualizar();
 	}
 
 	/* ------------------------------------------------------------------------
@@ -1590,6 +1631,7 @@
 		prepararMiradas();
 		prepararLuz();
 		prepararSube();
+		prepararTestFig();
 
 		var hero = document.querySelector( '.calma-hero' );
 		var red = null;

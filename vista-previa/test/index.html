@@ -4624,9 +4624,6 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-tono--neurociencia { --tono: #e9f1f8; --acento: #9cc3e3; --acento-texto: #1d5f94; }
 .calma-tono--bienestar { --tono: #e8f3ee; --acento: #9fd0c0; --acento-texto: #1f6b47; }
 .calma-tono--tecnologia { --tono: #f8ece6; --acento: #ebb79c; --acento-texto: #9a3412; }
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-column:nth-child(1) { --tono: #f6efe1; --acento: #e2c17e; --acento-texto: #7a4d00; }
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-column:nth-child(2) { --tono: #efedf9; --acento: #bdb0ee; --acento-texto: #5b3fb8; }
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-column:nth-child(3) { --tono: #e9f1f8; --acento: #9cc3e3; --acento-texto: #1d5f94; }
 
 /* ---- Fondo: la cuadrícula de la red, en claro ---- */
 .calma-equipo,
@@ -4694,7 +4691,8 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-descarga,
 .calma-test .calma-test__card,
 .calma-test .calma-test__step,
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap {
+.calma-test__paso,
+.calma-dato__tarjeta {
 	--luz-acento: var(--acento, #9cc3e3);
 	--luz-borde: color-mix(in srgb, var(--acento-texto, #1d5f94) 35%, var(--luz-acento));
 	position: relative;
@@ -4713,7 +4711,8 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-descarga::before,
 .calma-test .calma-test__card::before,
 .calma-test .calma-test__step::before,
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap::before {
+.calma-test__paso::before,
+.calma-dato__tarjeta::before {
 	content: "" !important;
 	position: absolute;
 	inset: 0;
@@ -4730,7 +4729,8 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-descarga::after,
 .calma-test .calma-test__card::after,
 .calma-test .calma-test__step::after,
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap::after {
+.calma-test__paso::after,
+.calma-dato__tarjeta::after {
 	content: "";
 	position: absolute;
 	inset: 0;
@@ -4744,8 +4744,8 @@ html.calma-quieto .calma-tiempo__anio {
 	transition: opacity 0.5s var(--calma-ease-mente);
 	pointer-events: none;
 }
-:is(.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap):is(:hover, :focus-within)::before,
-:is(.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap):is(:hover, :focus-within)::after {
+:is(.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .calma-test__paso, .calma-dato__tarjeta):is(:hover, :focus-within)::before,
+:is(.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .calma-test__paso, .calma-dato__tarjeta):is(:hover, :focus-within)::after {
 	opacity: 1;
 }
 
@@ -5345,42 +5345,168 @@ html.calma-quieto .calma-tiempo__anio {
 }
 
 /* ---- Test de consumo digital ---- */
-.calma-test {
+.calma-test.calma-test--e7 {
+	max-width: 1080px;
 	background: transparent !important;
 }
-.calma-test .calma-test__title {
+.calma-test--e7 .calma-test__form,
+.calma-test--e7 .calma-test__result {
+	max-width: 760px;
+	margin-inline: auto;
+}
+.calma-test__hero {
+	display: grid;
+	gap: var(--calma-space-6);
+	align-items: center;
+	margin: 0 0 var(--calma-space-10);
+}
+@media (min-width: 800px) {
+	.calma-test__hero {
+		grid-template-columns: 1.25fr 0.75fr;
+	}
+}
+.calma-test--e7 .calma-test__title {
+	text-align: left !important;
 	color: var(--calma-ink) !important;
-	letter-spacing: -0.02em;
+	font-size: clamp(2.25rem, 1.3rem + 3.4vw, 3.75rem) !important;
+	line-height: 1.06 !important;
+	letter-spacing: -0.022em;
 }
-.calma-test .calma-test__num {
-	background: #fff !important;
-	color: var(--calma-primary) !important;
-	border: 1px solid #9cc3e3;
+.calma-test--e7 .calma-test__lead {
+	text-align: left !important;
+	margin: var(--calma-space-3) 0 0 !important;
+	font-size: var(--calma-fs-lg);
+	color: var(--calma-ink-soft) !important;
 }
-.calma-test .calma-test__howto {
-	position: relative;
+/* Figura: 12 preguntas en 4 dimensiones; se enciende con el progreso */
+.calma-test-fig {
+	display: flex;
+	justify-content: center;
 }
-.calma-test .calma-test__howto::before {
-	content: "";
-	position: absolute;
-	left: 15px;
-	top: 16px;
-	bottom: 16px;
-	width: 2px;
-	background: linear-gradient(180deg, #9cc3e3, #bdb0ee);
+.calma-test-fig__svg {
+	width: 100%;
+	max-width: 260px;
+	height: auto;
+	overflow: visible;
 }
-.calma-test .calma-test__howto li {
-	position: relative;
+.calma-test-fig__svg * {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-test-fig__guia {
+	fill: none;
+	stroke: var(--calma-hairline-strong);
+	stroke-dasharray: 2 6;
+}
+.calma-test-fig__arco {
+	fill: none;
+	stroke: var(--acento);
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-dasharray: 1;
+	opacity: 0.55;
+}
+.calma-test-fig__halo {
+	fill: none;
+	stroke: var(--calma-teal);
+	stroke-opacity: 0.2;
+}
+.calma-test-fig__nucleo {
+	fill: #fff;
+	stroke: var(--calma-hairline-strong);
+	transition: fill 0.6s var(--calma-ease-mente);
+}
+.calma-test-fig__num {
+	fill: var(--calma-ink);
+	font: 600 22px/1 var(--calma-font-heading);
+}
+.calma-test-fig__punto {
+	fill: var(--acento);
+	stroke: var(--texto);
+	stroke-width: 1.5;
+	transition: fill 0.5s var(--calma-ease-mente), stroke 0.5s var(--calma-ease-mente);
+}
+.calma-test-fig.is-en-curso .calma-test-fig__punto:not(.is-on) {
+	fill: #fff;
+	stroke: var(--acento);
+}
+.calma-test-fig.is-completo .calma-test-fig__nucleo {
+	fill: #e8f3ee;
+}
+/* Intro */
+.calma-test--e7 .calma-test__intro {
+	display: grid;
+	gap: var(--calma-space-6);
+}
+.calma-test--e7 .calma-test__card,
+.calma-test--e7 .calma-test__paso {
+	margin: 0 !important;
+}
+.calma-test__antes,
+.calma-test__mide {
+	display: grid;
+	gap: var(--calma-space-6);
+	align-items: center;
+}
+@media (min-width: 700px) {
+	.calma-test__antes {
+		grid-template-columns: 160px 1fr;
+	}
+	.calma-test__mide {
+		grid-template-columns: 1.4fr 0.6fr;
+	}
+}
+.calma-test__antes .calma-org,
+.calma-test__mide .calma-org,
+.calma-test__paso .calma-org,
+.calma-dato__tarjeta .calma-org {
+	max-width: 160px;
+	color: var(--acento-texto);
+}
+.calma-test__bloque h2 {
+	margin-bottom: var(--calma-space-4) !important;
+}
+.calma-test--e7 .calma-test__howto {
+	margin: 0 !important;
+	padding: 0 !important;
+	display: grid !important;
+	gap: var(--calma-space-4) !important;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+.calma-test--e7 .calma-test__howto::before {
+	content: none;
+}
+.calma-test--e7 .calma-test__howto li.calma-test__paso {
+	display: flex !important;
+	flex-direction: column;
+	gap: var(--calma-space-3) !important;
+	padding: var(--calma-space-6) !important;
+}
+.calma-test__paso .calma-org {
+	margin-bottom: var(--calma-space-2);
+}
+.calma-test--e7 .calma-test__num {
+	width: 32px;
+	height: 32px;
+	background: var(--tono, #fff) !important;
+	color: var(--acento-texto, var(--calma-primary)) !important;
+	border: 1px solid var(--acento, #9cc3e3);
+	box-shadow: none !important;
+}
+.calma-test--e7 [data-calma-start]:not([hidden]) {
+	display: flex !important;
+	width: auto !important;
+	min-width: 260px;
+	margin: var(--calma-space-2) auto 0 !important;
 }
 .calma-test .calma-test__option {
 	border-radius: 12px !important;
 	border-color: var(--calma-hairline-strong) !important;
 	background: #fff !important;
-	transition: border-color 0.2s var(--calma-ease-mente), background-color 0.2s var(--calma-ease-mente), box-shadow 0.3s var(--calma-ease-mente);
+	transition: border-color 0.2s var(--calma-ease-mente), background-color 0.2s var(--calma-ease-mente);
 }
 .calma-test .calma-test__option:hover {
 	border-color: var(--calma-primary) !important;
-	box-shadow: none;
 }
 .calma-test .calma-test__option:has(input:checked) {
 	background: #e9f1f8 !important;
@@ -5390,57 +5516,102 @@ html.calma-quieto .calma-tiempo__anio {
 	background: linear-gradient(90deg, var(--calma-primary), #5b3fb8) !important;
 	transition: width 0.6s var(--calma-ease-mente);
 }
-.calma-test .calma-test__btn--block {
-	width: auto !important;
-	min-width: 240px;
-	margin: var(--calma-space-2) auto 0 !important;
-	display: flex !important;
+.calma-test .calma-test__meter span {
+	transition: width 1.4s var(--calma-ease-mente) 0.3s;
+}
+/* Botón del resultado: texto blanco siempre (un estilo de enlaces del tema lo teñía del mismo azul) */
+.calma-test a.calma-test__btn--primary,
+.calma-test a.calma-test__btn--primary:hover {
+	color: #fff !important;
+	-webkit-text-fill-color: #fff;
 }
 .calma-test .calma-test__qnum,
 .calma-test .calma-test__progress-text {
 	color: var(--calma-primary) !important;
 }
-/* "Dato que vale la pena saber" (filas de Kadence debajo del test; página 1941) */
-.page-id-1941 .kb-image1941_94a53c-56 img {
+/* Figuras propias del test */
+.calma-org .o-nodo { fill: #fff; stroke: currentColor; }
+.calma-org .o-nodo[r="9"] { fill: currentColor; }
+.calma-org .o-punto { fill: currentColor; stroke: none; opacity: 0.4; }
+.calma-org .o-punto.o-marcado { opacity: 1; }
+.calma-test__preguntas .o-punto,
+.calma-test__paso .o-punto { opacity: 0.85; }
+.calma-org .o-eje { stroke-opacity: 0.3; }
+.calma-org .o-forma { fill: currentColor; fill-opacity: 0.12; }
+.calma-org .o-contexto { --dy: 0px; fill: currentColor; fill-opacity: 0.08; }
+.calma-org .o-barra { fill: currentColor; stroke: none; opacity: 0.55; transform-origin: 50% 100%; }
+.calma-org .o-reflejo { opacity: 0.35; }
+.calma-test__mide .o-punto { opacity: 1; }
+
+/* "Dato que vale la pena saber" */
+.calma-dato {
+	max-width: var(--calma-container, 1160px);
+	margin: clamp(56px, 8vw, 104px) auto 0;
+	padding: 0 var(--calma-gutter, 20px) clamp(56px, 8vw, 96px);
+}
+.calma-dato__cabeza {
+	display: grid;
+	gap: var(--calma-space-8);
+	align-items: center;
+}
+@media (min-width: 800px) {
+	.calma-dato__cabeza {
+		grid-template-columns: 0.8fr 1.2fr;
+	}
+}
+.calma-dato__imagen {
+	margin: 0;
+	overflow: hidden;
 	border-radius: 16px;
-	box-shadow: none;
+	border: 1px solid rgb(27 34 51 / 0.08);
 }
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-infobox {
-	height: 100%;
+.calma-dato__imagen img {
+	display: block;
+	width: 100%;
+	height: auto;
 }
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap {
-	display: flex !important;
-	flex-direction: column !important;
-	align-items: flex-start !important;
+.calma-dato__texto h2 {
+	margin: 0 0 var(--calma-space-2) !important;
+	font-size: var(--calma-fs-xl);
+}
+.calma-dato__lema {
+	margin: 0 0 var(--calma-space-4) !important;
+	font: 500 clamp(1.75rem, 1.2rem + 2vw, 2.5rem)/1.15 var(--calma-font-heading);
+}
+.calma-dato__lema em {
+	font-style: italic;
+	color: #1d5f94;
+	background: linear-gradient(90deg, #1d5f94, #5b3fb8);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.calma-dato__texto > p:last-child {
+	color: var(--calma-ink-soft);
+	max-width: 56ch;
+}
+.calma-dato__tarjetas {
+	display: grid;
+	gap: var(--calma-space-4);
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+	margin: var(--calma-space-10) 0 0 !important;
+	padding: 0 !important;
+	list-style: none !important;
+}
+.calma-dato__tarjeta {
+	display: flex;
+	flex-direction: column;
 	gap: var(--calma-space-3);
-	height: 100%;
+	margin: 0 !important;
 	padding: var(--calma-space-6) !important;
 }
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-media {
-	display: grid !important;
-	place-items: center;
-	width: 52px;
-	height: 52px;
+.calma-dato__tarjeta h3 {
+	margin: var(--calma-space-2) 0 0 !important;
+	font-size: var(--calma-fs-lg);
+}
+.calma-dato__tarjeta p {
 	margin: 0 !important;
-	padding: 0 !important;
-	border: 1px solid var(--acento) !important;
-	border-radius: 50% !important;
-	background: #fff !important;
-	box-shadow: none;
-}
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-info-svg-icon {
-	color: var(--acento-texto) !important;
-	font-size: 22px !important;
-}
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-title {
-	margin: 0 0 var(--calma-space-2) !important;
-	font-size: var(--calma-fs-lg) !important;
-	line-height: 1.2 !important;
-}
-.page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-text {
-	color: var(--calma-ink-soft) !important;
-	font-size: 1rem !important;
-	line-height: 1.6 !important;
+	color: var(--calma-ink-soft);
 }
 
 /* ---- Movimiento ---- */
@@ -5492,6 +5663,63 @@ html.calma-quieto .calma-tiempo__anio {
 	html:not(.calma-quieto) .calma-habito.is-vivo .o-onda {
 		animation: calma-calmar 2.4s var(--calma-ease-mente);
 	}
+}
+/* Test: la figura de la cabecera, las figuras de cada paso y el paso a paso del cuestionario */
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-test-fig__arco {
+		animation: calma-trazar 1.2s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.15s) backwards;
+	}
+	html:not(.calma-quieto) .calma-test-fig__punto {
+		animation: calma-encender 0.5s var(--calma-ease-mente) calc(0.4s + var(--i) * 0.07s) backwards;
+	}
+	html:not(.calma-quieto) .calma-test-fig__punto.is-actual {
+		animation: calma-latido 0.9s var(--calma-ease-mente);
+	}
+	html:not(.calma-quieto) .calma-test-fig.is-completo .calma-test-fig__halo {
+		animation: calma-pulso 1.6s var(--calma-ease-mente) 2;
+	}
+	html:not(.calma-quieto) :is(.calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta).is-vivo .o-trazo {
+		animation: calma-conectar 1.4s var(--calma-ease-mente) 0.5s backwards;
+	}
+	html:not(.calma-quieto) :is(.calma-test__paso, .calma-test__mide, .calma-dato__tarjeta).is-vivo :is(.o-nodo, .o-punto) {
+		animation: calma-encender 0.5s var(--calma-ease-mente) calc(var(--i) * 0.07s) backwards;
+	}
+	html:not(.calma-quieto) :is(.calma-test__paso, .calma-test__antes).is-vivo .o-anillo {
+		animation: calma-pulso 1.6s var(--calma-ease-mente) 0.6s 2 backwards;
+	}
+	html:not(.calma-quieto) .calma-test__antes.is-vivo .o-onda {
+		animation: calma-calmar 2.4s var(--calma-ease-mente);
+	}
+	html:not(.calma-quieto) .calma-test__mide.is-vivo .o-barra {
+		animation: calma-crecer-y 0.9s var(--calma-ease-mente) calc(0.9s + var(--i) * 0.12s) backwards;
+	}
+	html:not(.calma-quieto) .calma-dato__tarjeta.is-vivo .o-contexto {
+		animation: calma-agrupar 1.8s var(--calma-ease-mente) calc(var(--i) * 0.05s) backwards;
+	}
+	html:not(.calma-quieto) .calma-dato__tarjeta.is-vivo .o-reflejo {
+		animation: calma-encender 1.4s var(--calma-ease-mente) 0.6s backwards;
+	}
+	/* Cuestionario: cada pregunta entra con suavidad y las opciones llegan una tras otra */
+	html:not(.calma-quieto) .calma-test--e7 .calma-test__step:not([hidden]),
+	html:not(.calma-quieto) .calma-test--e7 .calma-test__result:not([hidden]),
+	html:not(.calma-quieto) .calma-test--e7 .calma-test__feedback-box {
+		animation: calma-test-entra 0.5s var(--calma-ease-mente);
+	}
+	html:not(.calma-quieto) .calma-test--e7 .calma-test__step:not([hidden]) .calma-test__option {
+		animation: calma-test-entra 0.45s var(--calma-ease-mente) backwards;
+	}
+	html:not(.calma-quieto) .calma-test--e7 .calma-test__option:nth-child(2) { animation-delay: 0.06s; }
+	html:not(.calma-quieto) .calma-test--e7 .calma-test__option:nth-child(3) { animation-delay: 0.12s; }
+	html:not(.calma-quieto) .calma-test--e7 .calma-test__option:nth-child(4) { animation-delay: 0.18s; }
+	html:not(.calma-quieto) .calma-test--e7 .calma-test__result-emoji {
+		animation: calma-latido 0.9s var(--calma-ease-mente) 0.3s;
+	}
+}
+@keyframes calma-test-entra {
+	from { opacity: 0; transform: translateY(10px); }
+}
+@keyframes calma-crecer-y {
+	from { transform: scaleY(0); }
 }
 @keyframes calma-calmar {
 	from { transform: scaleY(2.2); }
@@ -5805,59 +6033,11 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 	<div class="kb-row-layout-wrap kb-row-layout-id1941_a6afa5-34 alignnone wp-block-kadence-rowlayout"><div class="kt-row-column-wrap kt-has-1-columns kt-row-layout-equal kt-tab-layout-inherit kt-mobile-layout-row kt-row-valign-top">
 
 <div class="wp-block-kadence-column kadence-column1941_6d7620-f4"><div class="kt-inside-inner-col">
-<!--
-Código Calma · Test de consumo digital · bloque "HTML personalizado" (Etapa 2)
-Reemplaza el bloque HTML del test en la página /test/ (id 1941). Ver test-consumo-digital.md.
-Resuelve: A11Y-01, A11Y-05, A11Y-11, A11Y-12, GEO-14 y las correcciones E01 a E10 (Etapa 1).
-TEXTOS CAMBIADOS (antes → después). Solo voseo → tuteo, ortografía y puntuación evidentes.
-Interfaz
- E10  Test de Consumo Digital → Test de consumo digital (H1, color #1d5f94)
- E01  Descubrí cómo es tu relación con la tecnología en 5 minutos → Descubre cómo es tu relación con la tecnología en 5 minutos
- E02  Elegís tu generación → Eliges tu generación
- E03  Respondés 12 preguntas → Respondes 12 preguntas
- E04  Obtenés tu perfil → Obtienes tu perfil
- E05  ¿De qué generación sos? → ¿De qué generación eres?
- E06  Elegí la que mejor te representa → Elige la que mejor te representa
- E07  Contactanos → (a /contacto/) → Solicitar una consulta → (a /contacto/?area=habitos)
- E08  Volver a jugar → → Repetir el test
-      1981 — 1996 / 1965 — 1980 / 1997 — 2012 → 1981–1996 / 1965–1980 / 1997–2012 (raya → guion de intervalo)
-      Continuar → → Continuar (la flecha se conserva, oculta a lectores de pantalla)
-      Siguiente → → Siguiente / Siguiente pregunta / Ver mi resultado (último paso)
-      Escribinos a hola@codigocalma.com para acompañamiento personalizado. → Escríbenos a hola@codigocalma.com para acompañamiento personalizado.
-      / 48 pts → Tu puntaje: N de 48 puntos
-      Retroalimentación: <strong>✓ Buen manejo</strong> Tu respuesta... → ✓ Buen manejo. Tu respuesta... (punto tras la etiqueta, ícono oculto a lectores de pantalla; igual en "Patrón común" y "Comportamiento frecuente")
-      Dato por pregunta: se antepone la etiqueta "Dato:" al texto
-Preguntas y opciones
- P1   Son las 11pm. Estás en la cama. ¿Qué hacés antes de dormir? → Son las 11 p. m. Estás en la cama. ¿Qué haces antes de dormir?
- E09  Si de repente te quedás sin batería, ¿cómo te sentís? → Si de repente te quedas sin batería, ¿cómo te sientes?
- P2   Un poco incómodo pero me adapto → Un poco incómodo, pero me adapto
- P3   ¿Cuántas veces al día abrís una app sin recordar para qué? → ¿Cuántas veces al día abres una app sin recordar para qué?
- P4   ¿Podés trabajar 1 hora con foco sin revisar el celular? → ¿Puedes trabajar 1 hora con foco sin revisar el celular?
- P5   ¿Tuvo impacto en vos una discusión por malentendido en WhatsApp? → ¿Tuvo impacto en ti una discusión por malentendido en WhatsApp?
- P6   Subís una foto y en 2 horas tiene pocos likes. ¿Cómo impacta? → Subes una foto y en 2 horas tiene pocos likes. ¿Cómo impacta?
- P7   ¿Podés quedarte a solas sin pantalla ni estímulos 10 minutos? → ¿Puedes quedarte a solas sin pantalla ni estímulos 10 minutos?
- P7   Sí pero requiere práctica → Sí, pero requiere práctica
- P7   Sí lo disfruto → Sí, lo disfruto
- P8   ¿Sabés cuánto tiempo pasás en pantalla por día? → ¿Sabes cuánto tiempo pasas en pantalla por día?
- P12  ¿Checkeás el teléfono dentro de los primeros 5 min de despertarte? → ¿Chequeas el teléfono dentro de los primeros 5 min de despertarte?
-Datos por pregunta
- D8   La brecha entre lo que pasás en pantalla y lo que elegiría conscientemente... → La brecha entre lo que pasas en pantalla y lo que elegirías conscientemente...
- D10  ...donde decidís ser interrumpido. → ...donde decides ser interrumpido.
-Perfiles (títulos en minúscula tras la primera palabra, como en E10)
-      Arquitecto Digital → Arquitecto digital; Consumo Consciente → Consumo consciente; Navegante con Marea → Navegante con marea;
-      En Modo Automático → En modo automático; Corriente Abajo → Corriente abajo; Atrapado en el Sistema → Atrapado en el sistema
-      elegís la tecnología como herramienta → eliges la tecnología como herramienta
-      Sabés lo que pasa. Tomás decisiones activas. → Sabes lo que pasa. Tomas decisiones activas.
-      No siempre hacés lo que querrías, pero sabés cuándo... → No siempre haces lo que querrías, pero sabes cuándo...
-      Avanzás, pero la corriente también te lleva. → Avanzas, pero la corriente también te lleva.
-      una parte de vos ya sabe → una parte de ti ya sabe
-Textos nuevos (no existían)
-      Opción de generación "Otra / prefiero no decirlo" (el cálculo no usa la generación: contexto neutro, ver .md)
-      Sección "Qué mide" con placeholder de las 4 dimensiones y cómo se calcula el perfil (dato tomado del script original)
-      Aviso sin JavaScript; aviso de resultado orientativo; aviso de urgencias con placeholder
-Eliminado: botón "↺" del encabezado (lo reemplaza "Repetir el test"), pie "Código Calma" de la intro (contraste 2,27:1), estilos globales (:root, *, Roboto).
--->
-<div class="calma-test" id="calma-test">
+<!-- Código Calma · Test de consumo digital (Etapa 7)
+     Reemplaza el bloque "HTML personalizado" del test (Etapa 2) en /test/ (id 1941). Misma lógica y mismos textos;
+     cambia la forma (figuras y movimiento). Estilos y movimiento: plugin (calma-etapa7.css y calma-organismo.js).
+     Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
+<div class="calma-test calma-test--e7" id="calma-test">
 <style>
 .calma-test{box-sizing:border-box;max-width:var(--calma-container-text,720px);margin:0 auto;padding:0;color:var(--calma-text,#0f172a);background:var(--calma-surface,#fff);font-family:var(--calma-font-body,inherit);font-size:var(--calma-fs-base,1.0625rem);line-height:var(--calma-lh-body,1.65);text-align:left}
 .calma-test *,.calma-test *::before,.calma-test *::after{box-sizing:border-box}
@@ -5931,28 +6111,26 @@ Eliminado: botón "↺" del encabezado (lo reemplaza "Repetir el test"), pie "C�
 @media (prefers-reduced-motion:no-preference){.calma-test__bar span{transition:width var(--calma-dur,180ms) var(--calma-ease,ease)}.calma-test__btn,.calma-test__option{transition:background-color var(--calma-dur,180ms) var(--calma-ease,ease),border-color var(--calma-dur,180ms) var(--calma-ease,ease)}}
 </style>
 <!-- H1: hoy el único H1 de /test/ vive dentro de este bloque (el título de página de Kadence está oculto). Si se activa el título de Kadence como H1, cambiar este H1 por <p class="calma-test__lead"> para no duplicarlo. -->
+<header class="calma-test__hero"><div class="calma-test__hero-texto">
 <h1 class="calma-test__title">Test de consumo digital</h1>
 <p class="calma-test__lead">Descubre cómo es tu relación con la tecnología en 5 minutos</p>
+</div><div class="calma-test-fig" data-calma-test-fig aria-hidden="true"><svg class="calma-test-fig__svg" viewBox="0 0 260 260" width="260" height="260" aria-hidden="true" focusable="false"><circle class="calma-test-fig__guia" cx="130" cy="130" r="96"/><path class="calma-test-fig__arco" style="--acento:#e2c17e;--i:0" pathLength="1" d="M79.1 48.6 A96 96 0 0 1 180.9 48.6"/><path class="calma-test-fig__arco" style="--acento:#bdb0ee;--i:1" pathLength="1" d="M211.4 79.1 A96 96 0 0 1 211.4 180.9"/><path class="calma-test-fig__arco" style="--acento:#9cc3e3;--i:2" pathLength="1" d="M180.9 211.4 A96 96 0 0 1 79.1 211.4"/><path class="calma-test-fig__arco" style="--acento:#9fd0c0;--i:3" pathLength="1" d="M48.6 180.9 A96 96 0 0 1 48.6 79.1"/><circle class="calma-test-fig__halo" cx="130" cy="130" r="44"/><circle class="calma-test-fig__nucleo" cx="130" cy="130" r="30"/><circle class="calma-test-fig__punto" style="--acento:#e2c17e;--texto:#7a4d00;--i:0" cx="91.0" cy="42.3" r="9"/><circle class="calma-test-fig__punto" style="--acento:#e2c17e;--texto:#7a4d00;--i:1" cx="130.0" cy="34.0" r="9"/><circle class="calma-test-fig__punto" style="--acento:#e2c17e;--texto:#7a4d00;--i:2" cx="169.0" cy="42.3" r="9"/><circle class="calma-test-fig__punto" style="--acento:#bdb0ee;--texto:#5b3fb8;--i:3" cx="217.7" cy="91.0" r="9"/><circle class="calma-test-fig__punto" style="--acento:#bdb0ee;--texto:#5b3fb8;--i:4" cx="226.0" cy="130.0" r="9"/><circle class="calma-test-fig__punto" style="--acento:#bdb0ee;--texto:#5b3fb8;--i:5" cx="217.7" cy="169.0" r="9"/><circle class="calma-test-fig__punto" style="--acento:#9cc3e3;--texto:#1d5f94;--i:6" cx="169.0" cy="217.7" r="9"/><circle class="calma-test-fig__punto" style="--acento:#9cc3e3;--texto:#1d5f94;--i:7" cx="130.0" cy="226.0" r="9"/><circle class="calma-test-fig__punto" style="--acento:#9cc3e3;--texto:#1d5f94;--i:8" cx="91.0" cy="217.7" r="9"/><circle class="calma-test-fig__punto" style="--acento:#9fd0c0;--texto:#1f6b47;--i:9" cx="42.3" cy="169.0" r="9"/><circle class="calma-test-fig__punto" style="--acento:#9fd0c0;--texto:#1f6b47;--i:10" cx="34.0" cy="130.0" r="9"/><circle class="calma-test-fig__punto" style="--acento:#9fd0c0;--texto:#1f6b47;--i:11" cx="42.3" cy="91.0" r="9"/><text class="calma-test-fig__num" x="130" y="136" text-anchor="middle">12</text></svg></div></header>
 <p class="calma-test__sr" role="status" aria-live="polite" data-calma-live></p>
 <section class="calma-test__intro" data-calma-intro aria-labelledby="calma-test-antes">
-<div class="calma-test__card">
+<div class="calma-test__card calma-test__antes calma-tono--bienestar"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><path class="o-onda" d="M18 50 C34 22 46 78 62 50 S90 38 102 50 S126 56 142 50"/><circle class="o-nucleo" cx="142" cy="50" r="4"/></svg><div>
 <h2 id="calma-test-antes" tabindex="-1">Antes de empezar</h2>
 <p>Este test es <strong>educativo y orientativo</strong>. No reemplaza una evaluación profesional. Se basa en investigación sobre comportamiento digital y está diseñado para invitarte a reflexionar.</p>
-</div>
-<div class="calma-test__card">
+</div></div>
+<div class="calma-test__bloque">
 <h2>Cómo funciona</h2>
-<ol class="calma-test__howto">
-<li><span class="calma-test__num" aria-hidden="true">1</span><span><strong>Eliges tu generación</strong> para personalizar el contexto</span></li>
-<li><span class="calma-test__num" aria-hidden="true">2</span><span><strong>Respondes 12 preguntas</strong> sobre 4 dimensiones de tu vida digital</span></li>
-<li><span class="calma-test__num" aria-hidden="true">3</span><span><strong>Obtienes tu perfil</strong> con análisis y recomendaciones concretas</span></li>
-</ol>
+<ol class="calma-test__howto"><li class="calma-test__paso calma-tono--psicologia" style="--i:0"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><path class="o-trazo" pathLength="1" d="M20 50 H140"/><circle class="o-nodo" style="--i:0" cx="28" cy="50" r="5"/><circle class="o-nodo" style="--i:1" cx="62" cy="50" r="5"/><circle class="o-nodo" style="--i:2" cx="98" cy="50" r="9"/><circle class="o-nodo" style="--i:3" cx="132" cy="50" r="5"/><circle class="o-anillo" style="--i:0" cx="98" cy="50" r="17"/></svg><span class="calma-test__num" aria-hidden="true">1</span><span><strong>Eliges tu generación</strong> para personalizar el contexto</span></li><li class="calma-test__paso calma-tono--ia" style="--i:1"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-punto" style="--i:0" cx="44" cy="26" r="6"/><circle class="o-punto" style="--i:1" cx="68" cy="26" r="6"/><circle class="o-punto" style="--i:2" cx="92" cy="26" r="6"/><circle class="o-punto" style="--i:3" cx="116" cy="26" r="6"/><circle class="o-punto" style="--i:4" cx="44" cy="50" r="6"/><circle class="o-punto" style="--i:5" cx="68" cy="50" r="6"/><circle class="o-punto" style="--i:6" cx="92" cy="50" r="6"/><circle class="o-punto" style="--i:7" cx="116" cy="50" r="6"/><circle class="o-punto" style="--i:8" cx="44" cy="74" r="6"/><circle class="o-punto" style="--i:9" cx="68" cy="74" r="6"/><circle class="o-punto" style="--i:10" cx="92" cy="74" r="6"/><circle class="o-punto" style="--i:11" cx="116" cy="74" r="6"/></svg><span class="calma-test__num" aria-hidden="true">2</span><span><strong>Respondes 12 preguntas</strong> sobre 4 dimensiones de tu vida digital</span></li><li class="calma-test__paso calma-tono--neurociencia" style="--i:2"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><path class="o-eje" d="M80 50 L80 8"/><path class="o-eje" d="M80 50 L130 50"/><path class="o-eje" d="M80 50 L80 92"/><path class="o-eje" d="M80 50 L30 50"/><path class="o-trazo o-forma" pathLength="1" d="M80 20 L116 50 L80 80 L50 50 Z"/><circle class="o-nucleo" cx="80" cy="50" r="4"/></svg><span class="calma-test__num" aria-hidden="true">3</span><span><strong>Obtienes tu perfil</strong> con análisis y recomendaciones concretas</span></li></ol>
 </div>
-<div class="calma-test__card">
+<div class="calma-test__card calma-test__mide calma-tono--neurociencia"><div>
 <h2>Qué mide</h2>
 <p>Las 12 preguntas recorren 4 dimensiones de tu vida digital:</p>
 <p class="calma-test__placeholder">[COMPLETAR: nombres de las 4 dimensiones que mide el test; el test original no las define]</p>
 <p>Cada respuesta suma de 1 a 4 puntos, con un máximo de 48. Tu perfil se calcula a partir del puntaje total.</p>
-</div>
+</div><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-punto" style="--i:0;fill:#e2c17e" cx="22" cy="28" r="6"/><circle class="o-punto" style="--i:1;fill:#e2c17e" cx="22" cy="50" r="6"/><circle class="o-punto" style="--i:2;fill:#e2c17e" cx="22" cy="72" r="6"/><circle class="o-punto" style="--i:3;fill:#bdb0ee" cx="44" cy="28" r="6"/><circle class="o-punto" style="--i:4;fill:#bdb0ee" cx="44" cy="50" r="6"/><circle class="o-punto" style="--i:5;fill:#bdb0ee" cx="44" cy="72" r="6"/><circle class="o-punto" style="--i:6;fill:#9cc3e3" cx="66" cy="28" r="6"/><circle class="o-punto" style="--i:7;fill:#9cc3e3" cx="66" cy="50" r="6"/><circle class="o-punto" style="--i:8;fill:#9cc3e3" cx="66" cy="72" r="6"/><circle class="o-punto" style="--i:9;fill:#9fd0c0" cx="88" cy="28" r="6"/><circle class="o-punto" style="--i:10;fill:#9fd0c0" cx="88" cy="50" r="6"/><circle class="o-punto" style="--i:11;fill:#9fd0c0" cx="88" cy="72" r="6"/><rect class="o-barra" style="--i:0" x="112" y="65" width="7" height="13" rx="2"/><rect class="o-barra" style="--i:1" x="123" y="52" width="7" height="26" rx="2"/><rect class="o-barra" style="--i:2" x="134" y="39" width="7" height="39" rx="2"/><rect class="o-barra" style="--i:3" x="145" y="26" width="7" height="52" rx="2"/></svg></div>
 <p class="calma-test__nojs" data-calma-nojs>Para calcular tu resultado necesitas tener JavaScript activado. Igualmente puedes leer todas las preguntas a continuación.</p>
 <button type="button" class="calma-test__btn calma-test__btn--primary calma-test__btn--block" data-calma-start hidden>Empezar <span aria-hidden="true">→</span></button>
 </section>
@@ -6309,53 +6487,22 @@ Eliminado: botón "↺" del encabezado (lo reemplaza "Repetir el test"), pie "C�
 
 </div></div>
 
-<div class="kb-row-layout-wrap kb-row-layout-id1941_572bb6-0b alignnone wp-block-kadence-rowlayout"><div class="kt-row-column-wrap kt-has-1-columns kt-row-layout-equal kt-tab-layout-inherit kt-mobile-layout-row kt-row-valign-top">
+<!-- Código Calma · Test · Dato que vale la pena saber (Etapa 7)
+     Reemplaza las dos filas de Kadence debajo del test (la imagen con "Dato que vale la pena saber" y las tres cajas con ícono).
+     Un bloque "HTML personalizado", ancho completo. Mismo texto y la misma imagen.
+     Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
+<section class="calma-dato" aria-labelledby="calma-dato-h2">
+<div class="calma-dato__cabeza">
+<figure class="calma-dato__imagen"><img src="https://codigocalma.com/wp-content/uploads/2026/06/test-1.jpg" width="520" height="520" alt="Test de Consumo Digital." loading="lazy" decoding="async"></figure>
+<div class="calma-dato__texto">
+<h2 id="calma-dato-h2">Dato que vale la pena saber</h2>
+<p class="calma-dato__lema">Tus resultados <em>son tuyos.</em></p>
+<p>Compartir los resultados de un test puede parecer inofensivo, pero cada vez que lo hacemos estamos construyendo un perfil público de nuestro comportamiento digital que no siempre controlamos.</p>
+</div>
+</div>
+<ul class="calma-dato__tarjetas"><li class="calma-dato__tarjeta calma-tono--psicologia" style="--i:0"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-contexto" style="--dx:-34px;--i:0" cx="70" cy="50" r="22"/><circle class="o-contexto" style="--dx:0px;--i:1" cx="80" cy="50" r="22"/><circle class="o-contexto" style="--dx:34px;--i:2" cx="90" cy="50" r="22"/></svg><h3>Contexto colapsado</h3><p>Lo que compartimos en un contexto (aquí, con intención reflexiva) puede leerse de forma muy distinta en otro (redes, trabajo, familia).</p></li><li class="calma-dato__tarjeta calma-tono--ia" style="--i:1"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><path class="o-trazo" pathLength="1" d="M28 24 L54 50 L106 50 L132 76"/><circle class="o-punto o-marcado" style="--i:0" cx="28" cy="24" r="5"/><circle class="o-punto" style="--i:1" cx="54" cy="24" r="3"/><circle class="o-punto" style="--i:2" cx="80" cy="24" r="3"/><circle class="o-punto" style="--i:3" cx="106" cy="24" r="3"/><circle class="o-punto" style="--i:4" cx="132" cy="24" r="3"/><circle class="o-punto" style="--i:5" cx="28" cy="50" r="3"/><circle class="o-punto o-marcado" style="--i:6" cx="54" cy="50" r="5"/><circle class="o-punto" style="--i:7" cx="80" cy="50" r="3"/><circle class="o-punto o-marcado" style="--i:8" cx="106" cy="50" r="5"/><circle class="o-punto" style="--i:9" cx="132" cy="50" r="3"/><circle class="o-punto" style="--i:10" cx="28" cy="76" r="3"/><circle class="o-punto" style="--i:11" cx="54" cy="76" r="3"/><circle class="o-punto" style="--i:12" cx="80" cy="76" r="3"/><circle class="o-punto" style="--i:13" cx="106" cy="76" r="3"/><circle class="o-punto o-marcado" style="--i:14" cx="132" cy="76" r="5"/></svg><h3>Datos de comportamiento</h3><p>Los patrones de consumo digital son datos sensibles. Revelarlos públicamente puede usarse para inferir hábitos, vulnerabilidades o estados emocionales.</p></li><li class="calma-dato__tarjeta calma-tono--neurociencia" style="--i:2"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><path class="o-corte" d="M24 52 H136"/><circle class="o-nucleo" cx="80" cy="26" r="7"/><path d="M62 46 C66 34 94 34 98 46"/><g class="o-reflejo"><circle cx="80" cy="78" r="7"/><path d="M62 58 C66 70 94 70 98 58"/></g></svg><h3>El valor está en la reflexión</h3><p>Este test no está diseñado para compararse con otros. Está diseñado para que cada persona se conozca mejor, a su ritmo y en privado.</p></li></ul>
+</section>
 
-<div class="wp-block-kadence-column kadence-column1941_b970b7-88"><div class="kt-inside-inner-col"><div class="kb-row-layout-wrap kb-row-layout-id1941_40957c-cc alignnone wp-block-kadence-rowlayout"><div class="kt-row-column-wrap kt-has-2-columns kt-row-layout-right-golden kt-tab-layout-inherit kt-mobile-layout-row kt-row-valign-top kt-inner-column-height-full">
-
-<div class="wp-block-kadence-column kadence-column1941_1c5d6d-5a"><div class="kt-inside-inner-col">
-<figure class="wp-block-kadence-image kb-image1941_94a53c-56 size-full"><img decoding="async" width="520" height="520" src="https://codigocalma.com/wp-content/uploads/2026/06/test-1.jpg" alt="Test de Consumo Digital." class="kb-img wp-image-1966" srcset="https://codigocalma.com/wp-content/uploads/2026/06/test-1.jpg 520w, https://codigocalma.com/wp-content/uploads/2026/06/test-1-300x300.jpg 300w, https://codigocalma.com/wp-content/uploads/2026/06/test-1-150x150.jpg 150w" sizes="(max-width: 520px) 100vw, 520px" /></figure>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1941_fda826-d6"><div class="kt-inside-inner-col">
-<h2 class="kt-adv-heading1941_513169-0a wp-block-kadence-advancedheading" data-kb-block="kb-adv-heading1941_513169-0a">Dato que vale la pena saber</h2>
-
-
-
-<h2 class="kt-adv-heading1941_46d081-ed wp-block-kadence-advancedheading" data-kb-block="kb-adv-heading1941_46d081-ed"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-theme-palette-2-color">Tus resultados<br>son tuyos.</mark></h2>
-
-
-
-<p class="kt-adv-heading1941_64c345-89 wp-block-kadence-advancedheading" data-kb-block="kb-adv-heading1941_64c345-89">Compartir los resultados de un test puede parecer inofensivo, pero cada vez que lo hacemos estamos construyendo un perfil público de nuestro comportamiento digital que no siempre controlamos.</p>
-</div></div>
-
-</div></div>
-
-
-<div class="wp-block-kadence-column kadence-column1941_1ae963-d7"><div class="kt-inside-inner-col"><div class="kb-row-layout-wrap kb-row-layout-id1941_2b6a25-16 alignnone animated fadeInUp delay-500ms wp-block-kadence-rowlayout"><div class="kt-row-column-wrap kt-has-3-columns kt-row-layout-equal kt-tab-layout-two-grid kt-mobile-layout-row kt-row-valign-top kt-inner-column-height-full">
-
-<div class="wp-block-kadence-column kadence-column1941_8195e1-20"><div class="kt-inside-inner-col">
-<div class="wp-block-kadence-infobox kt-info-box1941_2de82f-54"><span class="kt-blocks-info-box-link-wrap info-box-link kt-blocks-info-box-media-align-left kt-info-halign-left"><div class="kt-blocks-info-box-media-container"><div class="kt-blocks-info-box-media kt-info-media-animate-none"><div class="kadence-info-box-icon-container kt-info-icon-animate-none"><div class="kadence-info-box-icon-inner-container"><span class="kb-svg-icon-wrap kb-svg-icon-fe_eye kt-info-svg-icon"><svg viewBox="0 0 24 24"  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"  aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span></div></div></div></div><div class="kt-infobox-textcontent"><h3 class="kt-blocks-info-box-title">Contexto colapsado</h3><p class="kt-blocks-info-box-text">Lo que compartimos en un contexto (aquí, con intención reflexiva) puede leerse de forma muy distinta en otro (redes, trabajo, familia).</p></div></span></div>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1941_a13431-b0"><div class="kt-inside-inner-col">
-<div class="wp-block-kadence-infobox kt-info-box1941_9699d5-3e"><span class="kt-blocks-info-box-link-wrap info-box-link kt-blocks-info-box-media-align-left kt-info-halign-left kb-info-tablet-halign-left"><div class="kt-blocks-info-box-media-container"><div class="kt-blocks-info-box-media kt-info-media-animate-none"><div class="kadence-info-box-icon-container kt-info-icon-animate-none"><div class="kadence-info-box-icon-inner-container"><span class="kb-svg-icon-wrap kb-svg-icon-fe_shield kt-info-svg-icon"><svg viewBox="0 0 24 24"  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"  aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span></div></div></div></div><div class="kt-infobox-textcontent"><h3 class="kt-blocks-info-box-title">Datos de comportamiento</h3><p class="kt-blocks-info-box-text">Los patrones de consumo digital son datos sensibles. Revelarlos públicamente puede usarse para inferir hábitos, vulnerabilidades o estados emocionales.</p></div></span></div>
-</div></div>
-
-
-
-<div class="wp-block-kadence-column kadence-column1941_3cbfc1-98"><div class="kt-inside-inner-col">
-<div class="wp-block-kadence-infobox kt-info-box1941_b63afe-08"><span class="kt-blocks-info-box-link-wrap info-box-link kt-blocks-info-box-media-align-left kt-info-halign-left"><div class="kt-blocks-info-box-media-container"><div class="kt-blocks-info-box-media kt-info-media-animate-none"><div class="kadence-info-box-icon-container kt-info-icon-animate-none"><div class="kadence-info-box-icon-inner-container"><span class="kb-svg-icon-wrap kb-svg-icon-ic_warning kt-info-svg-icon"><svg viewBox="0 0 8 8"  fill="currentColor" xmlns="http://www.w3.org/2000/svg"  aria-hidden="true"><path d="M3.09 0c-.06 0-.1.04-.13.09l-2.94 6.81c-.02.05-.03.13-.03.19v.81c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-.81c0-.05-.01-.14-.03-.19l-2.94-6.81c-.02-.05-.07-.09-.13-.09h-.81zm-.09 3h1v2h-1v-2zm0 3h1v1h-1v-1z"/></svg></span></div></div></div></div><div class="kt-infobox-textcontent"><h3 class="kt-blocks-info-box-title">El valor está en la reflexión</h3><p class="kt-blocks-info-box-text">Este test no está diseñado para compararse con otros. Está diseñado para que cada persona se conozca mejor, a su ritmo y en privado.</p></div></span></div>
-</div></div>
-
-</div></div></div></div>
-</div></div>
-
-</div></div>
 
 
 <p class="wp-block-paragraph"></p>

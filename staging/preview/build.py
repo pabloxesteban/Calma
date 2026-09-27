@@ -159,7 +159,7 @@ def e2_herramientas(s):
     return s[:i] + (cont(2) / 'bloques/herramientas-habitos.html').read_text(encoding='utf-8') + s[j:]
 
 def e2_test(s):
-    f = cont(2) / 'bloques/test-consumo-digital.html'
+    f = cont(7 if HASTA >= 7 else 2) / 'bloques/test-consumo-digital.html'
     if not f.exists():
         return s
     a, _ = entry_bounds(s)
@@ -314,6 +314,13 @@ def e7_pagina_entera(s, bloque, slug):
     log.append(f'{slug}: versión Etapa 7')
     return s
 
+def e7_test_dato(s):
+    # "Dato que vale la pena saber": la fila de Kadence que contiene la imagen y las tres cajas.
+    a = s.index('<div class="kb-row-layout-wrap kb-row-layout-id1941_572bb6-0b')
+    b = div_balanceado(s, a)
+    log.append('test: "Dato que vale la pena saber" (Etapa 7)')
+    return s[:a] + (cont(7) / 'bloques/test-dato.html').read_text(encoding='utf-8') + s[b:]
+
 def e7_home(s):
     # Seis estados mentales en lugar de las 6 tarjetas giratorias (fila completa con su título).
     a = s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_7ce0f7-d0')
@@ -404,6 +411,8 @@ for slug, s in fuentes():
             s = e7_contacto(s)
         if HASTA >= 7 and slug in POSTS:
             s = e7_articulo(slug, s)
+        if HASTA >= 7 and slug == 'test':
+            s = e7_test_dato(s)
         if HASTA >= 7 and slug == 'herramientas':
             s = e7_pagina_entera(s, 'herramientas.html', slug)
         if HASTA >= 7 and slug == 'descargas-2':

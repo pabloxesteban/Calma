@@ -158,3 +158,10 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
 - **Aparición con el scroll**: solo en elementos que empiezan fuera de pantalla, una vez. Con movimiento reducido o "Reducir movimiento" no hay aparición, la cuadrícula no se mueve y las tarjetas no se desplazan.
 - Se comprobó: la señal de la figura de Equipo, la línea de formación, el test (Empezar → paso 1) y los micro-organismos, sin errores de JavaScript.
 
+## Test con más vida
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos; reflow a 320 px sin desborde. Un H1; títulos en orden (H1 → H2 → H3).
+- **Cuestionario completo** recorrido de punta a punta (generación, 12 preguntas, resultado, "Repetir el test") sin errores de JavaScript. La figura acompaña el progreso: 5 preguntas respondidas ⇒ 5 puntos encendidos; resultado ⇒ 12.
+- **La figura es decorativa** (`aria-hidden`); el progreso se sigue anunciando con "Pregunta N de 12" y la región `aria-live` del test.
+- **Movimiento**: todo ocurre una vez por acción (entrar en pantalla, cambiar de pregunta, ver el resultado). Con movimiento reducido o "Reducir movimiento" no hay animaciones, pero la figura igual muestra el progreso.
+- Se corrigió el botón "Solicitar una consulta" del resultado: el texto quedaba del mismo azul que el fondo (ahora blanco sobre #1d5f94).
+
