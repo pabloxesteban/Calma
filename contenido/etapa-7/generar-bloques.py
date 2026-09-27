@@ -15,7 +15,11 @@ reducido, todo el texto se ve y cada figura muestra su estado final.
 
 Ejecutar: python3 contenido/etapa-7/generar-bloques.py
 """
-import math, pathlib, random
+import math, pathlib, random, sys
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+from escenas import accesos  # noqa: E402
 
 OUT = pathlib.Path(__file__).with_name('bloques')
 OUT.mkdir(exist_ok=True)
@@ -155,14 +159,20 @@ def momentos():
         fuente = (f'<a href="{e["url"]}" target="_blank" rel="noopener noreferrer">{e["fuente"]}<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a>'
                   if e['url'] else e['fuente'])
         tarjetas += f'''<li class="calma-estado" data-estado="{e['slug']}">
+<div class="calma-estado__caras">
+<div class="calma-estado__frente">
 <figure class="calma-estado__fig">{e['org']()}<figcaption class="calma-label">Fig. {n:02d} — {e['concepto']}</figcaption></figure>
-<h3 class="calma-estado__titulo">{e['titulo']}</h3>
+<h3 class="calma-estado__titulo" id="estado-{e['slug']}-titulo">{e['titulo']}</h3>
 <p class="calma-estado__pregunta">{e['pregunta']}</p>
-<button type="button" class="calma-estado__abrir" aria-expanded="true" aria-controls="estado-{e['slug']}" hidden>Ver el hallazgo<span class="screen-reader-text"> sobre {e['titulo'].lower()}</span></button>
-<div class="calma-estado__hallazgo" id="estado-{e['slug']}"><div>
-<p>{e['hallazgo']}</p>
+<button type="button" class="calma-estado__girar" aria-expanded="false" aria-controls="estado-{e['slug']}" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Dar vuelta y ver el hallazgo<span class="screen-reader-text"> sobre {e['titulo'].lower()}</span></button>
+</div>
+<div class="calma-estado__dorso" id="estado-{e['slug']}" role="region" aria-labelledby="estado-{e['slug']}-titulo">
+<p class="calma-label calma-estado__rotulo">Fig. {n:02d} — Hallazgo</p>
+<p class="calma-estado__dato">{e['hallazgo']}</p>
 <p class="calma-estado__fuente"><span class="calma-label">Fuente</span> {fuente}<br><span class="calma-estado__obra">{e['obra']}</span></p>
-</div></div>
+<button type="button" class="calma-estado__volver" hidden><span class="calma-estado__giro-icono" aria-hidden="true"></span>Volver a la pregunta</button>
+</div>
+</div>
 </li>
 '''
     return (cabecera('Inicio · ¿Cómo son tus momentos con la tecnología?',
@@ -173,7 +183,7 @@ def momentos():
 <p class="calma-eyebrow">Seis estados · Fig. 01–06</p>
 <h2 id="momentos-titulo">¿Cómo son tus momentos con la <em>tecnología</em>?</h2>
 <p class="calma-sub">6 escenarios en los que la tecnología y el comportamiento humano se cruzan.</p>
-<p class="calma-momentos__ayuda">Abre cada tarjeta para explorar el hallazgo científico sobre cada tema.</p>
+<p class="calma-momentos__ayuda"><span class="calma-momentos__ayuda-icono" aria-hidden="true"></span>Haz clic en las tarjetas para explorar los hallazgos científicos sobre cada tema.</p>
 </div>
 <ul class="calma-estados" role="list">
 ''' + tarjetas + '''</ul>
@@ -277,6 +287,37 @@ EPOCAS = [
 ]
 
 
+def figura_tiempo():
+    # "Cada vez más cerca": una persona de perfil y la tecnología de cada época,
+    # dibujada cada vez más cerca de su cabeza (hasta quedar dentro).
+    def t(d, extra=''):
+        return f'<path class="t-trazo" pathLength="1" d="{d}"{extra}/>'
+    cabeza = ('<g class="t-cabeza">' + t('M88 292 L90 252 C62 242 46 214 46 178 C46 120 88 82 138 82 C186 82 214 116 216 154 '
+              'C217 162 226 172 230 182 C232 188 226 190 220 191 L219 206 C219 216 211 221 201 220 L188 218 L186 242 '
+              'C186 264 170 274 150 278 L146 292') + '<circle class="t-ojo" cx="197" cy="150" r="2.6"/></g>')
+    grupos = {
+        'objeto': t('M244 252 H392') + t('M282 168 H374 V232 H282 Z') + t('M294 184 H336 M294 198 H352 M294 212 H324')
+                  + t('M328 232 V252') + t('M205 152 L280 190', ' class="t-trazo t-mirada"'),
+        'red': t('M320 98 A52 52 0 1 1 319.9 98 Z') + t('M320 98 C296 124 296 176 320 202 C344 176 344 124 320 98')
+               + t('M268 150 H372') + t('M276 124 C300 132 340 132 364 124 M276 176 C300 168 340 168 364 176')
+               + t('M160 84 C200 40 262 60 282 112', ' class="t-trazo t-mirada"') + t('M214 160 C236 156 250 154 268 152', ' class="t-trazo t-mirada"')
+               + ''.join(f'<circle class="t-nodo" cx="{x}" cy="{y}" r="3.4"/>' for x, y in [(282, 112), (336, 110), (352, 150), (306, 186), (268, 152)]),
+        'dispositivo': t('M238 146 H268 Q274 146 274 152 V206 Q274 212 268 212 H238 Q232 212 232 206 V152 Q232 146 238 146 Z')
+                       + t('M247 204 H259') + t('M206 262 C222 244 232 232 240 214') + t('M205 154 L232 164', ' class="t-trazo t-mirada"'),
+        'plataforma': t('M276 70 C270 56 286 46 296 54 C302 40 326 42 328 58 C342 58 344 78 330 80 H282 C272 80 270 72 276 70 Z')
+                      + t('M300 118 H350 V142 H316 L306 152 V142 H300 Z') + t('M292 186 H336 V208 H308 L298 218 V208 H292 Z')
+                      + t('M24 70 H64 V92 H40 L32 100 V92 H24 Z') + t('M30 214 C24 206 26 196 36 196 C40 188 52 190 52 198 C58 204 50 214 44 212 Z')
+                      + t('M190 104 L276 72 M214 160 L300 132 M212 196 L292 198 M86 106 L60 90 M70 200 L52 204', ' class="t-trazo t-mirada"'),
+        'inteligencia': t('M100 140 L130 116 L162 130 L146 152 L120 176 L100 140 M146 152 L166 172 L120 176 M130 116 L146 152 M96 196 L120 176 M166 172 L200 186')
+                        + t('M200 130 L240 118 L268 138 M240 118 L262 96 M232 176 L268 138', ' class="t-trazo t-mirada"')
+                        + ''.join(f'<circle class="t-nodo" cx="{x}" cy="{y}" r="{r}"/>' for x, y, r in
+                                  [(100, 140, 3.6), (130, 116, 4), (162, 130, 3.6), (146, 152, 5), (120, 176, 3.6), (166, 172, 3.6), (96, 196, 3), (200, 186, 3), (240, 118, 3), (268, 138, 3), (262, 96, 2.6), (232, 176, 2.6), (200, 130, 2.6)]),
+    }
+    capas = ''.join(f'<g class="t-grupo" data-g="{k}">{v}</g>' for k, v in grupos.items())
+    return ('<svg class="calma-tiempo__svg" viewBox="0 0 400 300" width="400" height="300" aria-hidden="true" focusable="false">'
+            + cabeza + capas + '</svg>')
+
+
 def linea_tiempo():
     items = ''
     for n, (forma, concepto, anios, nombre, desc) in enumerate(EPOCAS, 1):
@@ -296,7 +337,7 @@ def linea_tiempo():
 <p class="calma-sub">Una mirada clara y organizada a cómo la tecnología se integró en la vida humana.</p>
 </div>
 <div class="calma-tiempo__cuerpo">
-<div class="calma-tiempo__figura" aria-hidden="true" hidden><div class="calma-tiempo__lienzo"></div><p class="calma-label calma-tiempo__rotulo">Objeto</p></div>
+<div class="calma-tiempo__figura" aria-hidden="true" hidden data-forma="objeto"><p class="calma-tiempo__anio">1975–1985</p>''' + figura_tiempo() + '''<p class="calma-label calma-tiempo__rotulo">Fig. 01 — Objeto</p></div>
 <ol class="calma-tiempo__lista">
 ''' + items + '''</ol>
 </div>
@@ -304,6 +345,22 @@ def linea_tiempo():
 ''')
 
 
+def lecturas_cabecera():
+    return (cabecera('Inicio · cabecera de "Lecturas recientes"',
+                     'Va justo encima del bloque de entradas (Kadence Posts) del Inicio. Bloque "HTML personalizado".\n'
+                     '     El índice editorial (destacado + filas numeradas) lo arma calma-etapa7.css sobre el bloque de entradas, sin cambiarlo.')
+            + '''<div class="calma-lecturas__head">
+<div>
+<p class="calma-eyebrow">Índice · lecturas recientes</p>
+<h2 id="lecturas-titulo">Lecturas <em>recientes</em></h2>
+</div>
+<a class="calma-link calma-lecturas__todas" href="https://codigocalma.com/blog/">Ver todos los artículos</a>
+</div>
+''')
+
+
+(OUT / 'inicio-lecturas-cabecera.html').write_text(lecturas_cabecera(), encoding='utf-8')
+(OUT / 'inicio-accesos.html').write_text(accesos(cabecera), encoding='utf-8')
 (OUT / 'inicio-momentos.html').write_text(momentos(), encoding='utf-8')
 (OUT / 'inicio-bienvenida.html').write_text(bienvenida(), encoding='utf-8')
 (OUT / 'inicio-linea-de-tiempo.html').write_text(linea_tiempo(), encoding='utf-8')

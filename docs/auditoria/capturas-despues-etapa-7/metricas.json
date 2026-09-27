@@ -4,7 +4,7 @@
   "page": "inicio",
   "overflowX": 0,
   "clipped": [],
-  "hiddenText": 12,
+  "hiddenText": 0,
   "smallTargets": 0,
   "smallSample": [],
   "minGutter": 20,
@@ -31,7 +31,7 @@
     "h": 48
    }
   ],
-  "height": 12042
+  "height": 11369
  },
  {
   "w": 360,
@@ -62,7 +62,7 @@
   "page": "inicio",
   "overflowX": 0,
   "clipped": [],
-  "hiddenText": 12,
+  "hiddenText": 0,
   "smallTargets": 0,
   "smallSample": [],
   "minGutter": 20,
@@ -89,7 +89,7 @@
     "h": 48
    }
   ],
-  "height": 11926
+  "height": 10982
  },
  {
   "w": 390,
@@ -120,7 +120,7 @@
   "page": "inicio",
   "overflowX": 0,
   "clipped": [],
-  "hiddenText": 12,
+  "hiddenText": 0,
   "smallTargets": 0,
   "smallSample": [],
   "minGutter": 22,
@@ -147,7 +147,7 @@
     "h": 48
    }
   ],
-  "height": 12008
+  "height": 10763
  },
  {
   "w": 430,
@@ -179,7 +179,7 @@
   "page": "inicio",
   "overflowX": 0,
   "clipped": [],
-  "hiddenText": 12,
+  "hiddenText": 0,
   "smallTargets": 2,
   "smallSample": [
    "Menú hijo de Ciberpsicología",
@@ -215,7 +215,7 @@
     "h": 48
    }
   ],
-  "height": 6529
+  "height": 6962
  },
  {
   "w": 1280,

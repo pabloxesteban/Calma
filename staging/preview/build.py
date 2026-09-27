@@ -269,6 +269,13 @@ def e7_home(s):
     a = s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_239f87-24')
     b = div_balanceado(s, a)
     s = s[:a] + (cont(7) / 'bloques/inicio-bienvenida.html').read_text(encoding='utf-8') + s[b:]
+    # Cabecera del índice de lecturas, encima del bloque de entradas.
+    a = s.index('<div class="wp-block-zolo-flexbox zolo-flexbox flexbox-74fde1')
+    s = s[:a] + (cont(7) / 'bloques/inicio-lecturas-cabecera.html').read_text(encoding='utf-8') + s[a:]
+    # Accesos con personajes animados (reemplaza la fila de 3 tarjetas y la fila vacía).
+    a = s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_6c7f8b-e0')
+    b = div_balanceado(s, s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_addcaa-c1'))
+    s = s[:a] + (cont(7) / 'bloques/inicio-accesos.html').read_text(encoding='utf-8') + s[b:]
     # Línea de tiempo que crece con el scroll (reemplaza la de la Etapa 1).
     a = s.index('<!-- Código Calma · Inicio · Línea de tiempo (Etapa 1)')
     b = s.index('</section>', s.index('<section class="calma-timeline"', a)) + len('</section>')

@@ -1,0 +1,113 @@
+"""Accesos del Inicio (Aprender más / Solicitar una consulta / Recursos
+gratuitos): los personajes de las ilustraciones originales, redibujados en SVG
+por partes para que "lleguen" a su pose final con el scroll.
+
+calma-organismo.js pone --p de 0 a 1 en cada tarjeta mientras entra en
+pantalla; sin JS o con movimiento reducido, --p vale 1 y se ve la pose final.
+Lo usa generar-bloques.py.
+"""
+
+
+def ojos(x1, x2, y):
+    return f'<g class="a-ojos"><circle cx="{x1}" cy="{y}" r="6"/><circle cx="{x2}" cy="{y}" r="6"/></g>'
+
+
+GLIFOS = {
+    'f': '<path class="a-glifo" d="M-1 10 V-2 Q-1 -8 5 -8 M-5 0 H4"/>',
+    'ig': '<rect class="a-glifo" x="-7" y="-7" width="14" height="14" rx="4"/><circle class="a-glifo" cx="0" cy="0" r="3.4"/>',
+    'wa': '<path class="a-glifo" d="M-6 7 L-4.5 3 A7 7 0 1 1 -1 6.3 Z"/>',
+    'tt': '<path class="a-glifo" d="M1 -8 V4 A4 4 0 1 1 -3 0 M1 -8 Q3 -3 8 -3"/>',
+}
+
+
+def svg(clase, contenido):
+    return (f'<svg class="calma-escena calma-escena--{clase}" viewBox="0 0 350 350" width="350" height="350" '
+            f'aria-hidden="true" focusable="false">{contenido}</svg>')
+
+
+def escena_aprender():
+    iconos = [(52, 100, 'f'), (116, 40, 'ig'), (210, 40, 'wa'), (272, 100, 'tt')]
+    ico = ''.join(
+        f'<g transform="translate({x} {y})"><g class="a-icono" style="--i:{n}">'
+        f'<rect x="-15" y="-15" width="30" height="30" rx="6"/>{GLIFOS[k]}</g></g>'
+        for n, (x, y, k) in enumerate(iconos))
+    return svg('aprender',
+        '<g class="a-arcos"><path d="M66 88 Q80 58 102 46"/><path d="M132 36 Q164 22 196 36"/>'
+        '<path d="M226 46 Q250 58 262 86"/></g>'
+        + ico
+        + '<path class="a-silla" d="M72 300 V196 Q72 180 88 180 H96"/>'
+        '<g class="a-personaje">'
+        '<path class="a-cuerpo" d="M96 276 C92 222 96 170 110 132 C122 102 146 90 170 90 C200 90 222 112 228 142 C234 174 236 222 236 276 Z"/>'
+        + ojos(158, 196, 144)
+        + '<path class="a-sonrisa" d="M166 160 Q178 170 190 159"/>'
+        '<g class="a-brazo"><path d="M118 202 C124 224 140 238 164 238 C176 238 184 232 190 226"/>'
+        '<path class="a-lapiz" d="M170 210 L194 250"/></g>'
+        '</g>'
+        '<g class="a-escritorio"><path class="a-papel" d="M138 262 L232 254 L240 270 L146 278 Z"/>'
+        '<path class="a-fino" d="M160 264 L200 261 M164 270 L214 266"/>'
+        '<path class="a-tapa" d="M20 280 H340 V350 H20 Z"/>'
+        '<path d="M28 280 H330 M44 280 V350 M314 280 V350"/></g>'
+        '<g class="a-laptop"><path class="a-pantalla" d="M246 168 L322 158 L330 228 L254 238 Z"/>'
+        '<path class="a-pantalla" d="M240 246 L332 234 L342 246 L250 258 Z"/>'
+        '<circle class="a-fino" cx="266" cy="186" r="6"/><path class="a-fino" d="M280 184 H304 M280 194 H298 M262 204 H278"/>'
+        '<circle class="a-fino" cx="308" cy="210" r="10"/><path class="a-check" pathLength="1" d="M302 210 L306 214 L314 205"/></g>')
+
+
+def escena_consulta():
+    return svg('consulta',
+        '<g class="a-personaje">'
+        '<path class="a-cuerpo" d="M64 350 C58 296 62 244 72 196 C80 146 84 94 114 72 C146 50 198 58 212 96 '
+        'C224 128 220 176 222 214 C224 264 222 314 224 350 Z"/>'
+        '<path class="a-fino" d="M140 322 V350 M166 322 V350 M140 322 Q153 316 166 322"/>'
+        '<g class="a-cara">' + ojos(158, 196, 126) + '<path class="a-sonrisa" d="M166 142 Q178 152 190 141"/></g>'
+        '<path d="M90 224 C104 248 136 254 170 248 C190 244 204 238 214 234"/>'
+        '</g>'
+        '<g class="a-telefono"><g transform="translate(228 196) rotate(22)">'
+        '<rect class="a-tel" x="-21" y="-41" width="42" height="82" rx="9"/><path class="a-brillo" d="M-13 -30 V-6"/></g>'
+        '<path d="M118 188 C124 206 138 216 160 216 C178 216 190 210 202 204"/>'
+        '<path class="a-mano" d="M232 206 C246 202 252 214 250 226 C248 240 238 246 228 242"/></g>'
+        '<g class="a-globo"><path d="M246 70 H316 Q326 70 326 80 V110 Q326 120 316 120 H270 L256 134 V120 H246 '
+        'Q236 120 236 110 V80 Q236 70 246 70 Z"/>'
+        '<circle class="a-punto" style="--i:0" cx="262" cy="95" r="4.5"/><circle class="a-punto" style="--i:1" cx="281" cy="95" r="4.5"/>'
+        '<circle class="a-punto" style="--i:2" cx="300" cy="95" r="4.5"/></g>')
+
+
+def escena_recursos():
+    return svg('recursos',
+        '<g class="a-pdf"><path class="a-hoja" d="M236 30 H290 L314 54 V132 H236 Z"/><path class="a-fino" d="M290 30 V54 H314"/>'
+        '<text x="275" y="100" text-anchor="middle">PDF</text></g>'
+        '<g class="a-sillon"><path class="a-sillon-fondo" d="M84 336 V180 Q84 150 114 150 H236 Q266 150 266 180 V336 Z"/>'
+        '</g>'
+        '<g class="a-personaje">'
+        '<path class="a-cuerpo" d="M106 306 C104 256 100 206 112 158 C122 116 146 100 175 100 C206 100 230 118 238 158 '
+        'C246 198 244 256 242 306 Z"/>'
+        + ojos(152, 198, 164)
+        + '<path class="a-sonrisa" d="M162 182 Q175 193 188 182"/>'
+        '<g class="a-libro"><path class="a-pag a-pag--izq" d="M175 214 C160 206 138 206 122 212 V264 C138 258 160 258 175 266 Z"/>'
+        '<path class="a-pag a-pag--der" d="M175 214 C190 206 212 206 228 212 V264 C212 258 190 258 175 266 Z"/>'
+        '<path class="a-fino" d="M132 226 Q150 222 166 228 M132 240 Q150 236 166 242 M184 228 Q200 222 218 226 M184 242 Q200 236 218 240"/></g>'
+        '<path d="M112 250 C104 264 112 278 126 272 M238 250 C246 264 238 278 224 272"/>'
+        '</g>'
+        '<g class="a-sillon-frente"><path class="a-sillon-brazos" d="M50 336 V222 Q50 200 72 200 Q94 200 94 222 V336 M256 336 V222 Q256 200 278 200 Q300 200 300 222 V336"/>'
+        '<path d="M94 300 H256 M60 336 H290"/></g>'
+        '<path class="a-manta" d="M112 306 C150 320 200 330 250 336"/>')
+
+
+ACCESOS = [
+    ('aprender', escena_aprender, 'Fig. — Aprender', 'Aprender más', 'https://codigocalma.com/ciberpsicologia/'),
+    ('consulta', escena_consulta, 'Fig. — Conversar', 'Solicitar una consulta', 'https://codigocalma.com/contacto/'),
+    ('recursos', escena_recursos, 'Fig. — Descargar', 'Recursos gratuitos', 'https://codigocalma.com/descargas/'),
+]
+
+
+def accesos(cabecera):
+    cards = ''.join(
+        f'<li class="calma-acceso" data-acceso="{k}">\n'
+        f'<figure class="calma-acceso__escena">{fn()}<figcaption class="calma-label">{fig}</figcaption></figure>\n'
+        f'<a class="calma-btn calma-btn--primary calma-acceso__boton" href="{href}">{texto}</a>\n</li>\n'
+        for k, fn, fig, texto, href in ACCESOS)
+    return (cabecera('Inicio · accesos (Aprender más / Solicitar una consulta / Recursos gratuitos)',
+                     'Reemplaza la fila de las 3 tarjetas con ilustración y botón, y la fila vacía de debajo.\n'
+                     '     Bloque "HTML personalizado" a ancho completo. Los personajes son los de las ilustraciones originales, redibujados en SVG para animarlos.')
+            + '<section class="calma-accesos" aria-label="Accesos rápidos">\n<ul class="calma-accesos__lista" role="list">\n'
+            + cards + '</ul>\n</section>\n')

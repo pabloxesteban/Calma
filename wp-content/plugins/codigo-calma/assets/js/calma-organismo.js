@@ -10,12 +10,13 @@
  *    No hay bucle permanente: el dibujo se detiene cuando la red está en calma.
  * 2. Figuras (cifras y seis estados) que se encienden al entrar en pantalla y
  *    al pasar el puntero o el foco. Duran menos de 5 s.
- * 3. Hallazgos de los seis estados como disclosure accesible (botón + región).
+ * 3. Seis estados como tarjetas que se dan vuelta: toda la cara es clicable,
+ *    el botón "Dar vuelta" es el control accesible y la cara oculta queda inert.
  * 4. Láminas: las imágenes de tarjetas fuera de la primera pantalla se
  *    descubren al llegar. El texto nunca se oculta.
  * 5. Línea de tiempo: la línea crece con el scroll, las épocas se encienden
- *    y una figura se transforma (objeto → red → dispositivo → plataforma →
- *    inteligencia). El scroll siempre es nativo.
+ *    y una figura ("cada vez más cerca") dibuja la tecnología de cada época
+ *    más cerca de la persona. El scroll siempre es nativo.
  * 6. Header compacto, barra de lectura y control "Reducir movimiento".
  *
  * Sin JavaScript, con prefers-reduced-motion, en equipos de pocos recursos o
@@ -545,28 +546,74 @@
 	   3. Hallazgos: disclosure accesible
 	   ------------------------------------------------------------------------ */
 	function prepararHallazgos() {
-		document.querySelectorAll( '.calma-estado' ).forEach( function ( tarjeta ) {
-			var boton = tarjeta.querySelector( '.calma-estado__abrir' );
-			var panel = tarjeta.querySelector( '.calma-estado__hallazgo' );
-			if ( ! boton || ! panel ) {
+		var lista = document.querySelector( '.calma-estados' );
+		if ( ! lista ) {
+			return;
+		}
+		var tarjetas = Array.prototype.slice.call( lista.querySelectorAll( '.calma-estado' ) );
+		lista.classList.add( 'calma-estados--giro' );
+		tarjetas.forEach( function ( tarjeta, n ) {
+			var girar = tarjeta.querySelector( '.calma-estado__girar' );
+			var volver = tarjeta.querySelector( '.calma-estado__volver' );
+			var frente = tarjeta.querySelector( '.calma-estado__frente' );
+			var dorso = tarjeta.querySelector( '.calma-estado__dorso' );
+			if ( ! girar || ! volver || ! frente || ! dorso ) {
 				return;
 			}
-			boton.hidden = false;
-			function poner( abierto ) {
-				boton.setAttribute( 'aria-expanded', abierto ? 'true' : 'false' );
-				boton.firstChild.nodeValue = abierto ? 'Ocultar el hallazgo' : 'Ver el hallazgo';
-				tarjeta.classList.toggle( 'is-cerrado', ! abierto );
-				tarjeta.classList.toggle( 'is-abierto', abierto );
+			tarjeta.style.setProperty( '--calma-n', n );
+			girar.hidden = false;
+			volver.hidden = false;
+			dorso.setAttribute( 'tabindex', '-1' );
+			function poner( girada, mover ) {
+				tarjeta.classList.toggle( 'is-girada', girada );
+				girar.setAttribute( 'aria-expanded', girada ? 'true' : 'false' );
+				// La cara que no se ve no se lee ni recibe foco.
+				frente.inert = girada;
+				dorso.inert = ! girada;
+				if ( girada ) {
+					frente.setAttribute( 'aria-hidden', 'true' );
+					dorso.removeAttribute( 'aria-hidden' );
+				} else {
+					dorso.setAttribute( 'aria-hidden', 'true' );
+					frente.removeAttribute( 'aria-hidden' );
+				}
+				if ( mover ) {
+					( girada ? dorso : girar ).focus( { preventScroll: true } );
+				}
 			}
-			poner( false );
-			boton.addEventListener( 'click', function () {
-				var abrir = boton.getAttribute( 'aria-expanded' ) !== 'true';
-				poner( abrir );
-				if ( abrir ) {
-					encender( tarjeta );
+			poner( false, false );
+			// Toda la cara es clicable (el botón sigue siendo el control accesible).
+			frente.addEventListener( 'click', function ( ev ) {
+				if ( ev.target.closest( 'a' ) ) {
+					return;
+				}
+				poner( true, true );
+			} );
+			volver.addEventListener( 'click', function () {
+				poner( false, true );
+				encender( tarjeta );
+			} );
+			dorso.addEventListener( 'keydown', function ( ev ) {
+				if ( ev.key === 'Escape' ) {
+					poner( false, true );
 				}
 			} );
 		} );
+		// Al llegar a la sección, las tarjetas se asoman una vez: se pueden dar vuelta.
+		if ( ! quieto() && 'IntersectionObserver' in window ) {
+			var io = new IntersectionObserver( function ( e ) {
+				if ( e[ 0 ].isIntersecting ) {
+					io.disconnect();
+					tarjetas.forEach( function ( t ) {
+						t.classList.add( 'is-asomo' );
+						setTimeout( function () {
+							t.classList.remove( 'is-asomo' );
+						}, 2400 );
+					} );
+				}
+			}, { threshold: 0.35 } );
+			io.observe( lista );
+		}
 	}
 
 	/* ------------------------------------------------------------------------
@@ -589,6 +636,11 @@
 			if ( el.getBoundingClientRect().top < limite ) {
 				return;
 			}
+			// En el índice del Inicio, las filas tienen su propia forma de mostrar la imagen.
+			var fila = el.closest( '.home .kb-post-list-item' );
+			if ( fila && fila.previousElementSibling ) {
+				return;
+			}
 			var item = el.closest( 'li, .wp-block-kadence-column' );
 			var i = item && item.parentElement ? Array.prototype.indexOf.call( item.parentElement.children, item ) % 3 : 0;
 			el.style.setProperty( '--calma-delay', ( i * 0.12 ).toFixed( 2 ) + 's' );
@@ -598,87 +650,12 @@
 	}
 
 	/* ------------------------------------------------------------------------
-	   5. Línea de tiempo: la línea crece con el scroll (nativo), cada época se
-	   enciende cuando la línea la alcanza y, en escritorio, una figura hecha
-	   de los mismos 40 nodos se transforma: objeto → red → dispositivo →
-	   plataforma → inteligencia. Solo se redibuja cuando cambia el scroll.
+	   5. Línea de tiempo: la línea crece con el scroll (nativo) y cada época se
+	   enciende cuando la línea la alcanza. En escritorio, una figura fija
+	   cuenta la idea de la sección, "cada vez más cerca": una persona de
+	   perfil y la tecnología de cada época dibujándose más cerca de su cabeza
+	   (objeto en el escritorio → red → teléfono → plataformas → dentro).
 	   ------------------------------------------------------------------------ */
-	var N_FORMA = 40;
-
-	function formas() {
-		var F = {}, i, t;
-		function perimetro( pts, n ) {
-			// Reparte n puntos a lo largo de un polígono cerrado.
-			var largos = [], total = 0, out = [];
-			for ( i = 0; i < pts.length; i++ ) {
-				var a = pts[ i ], b = pts[ ( i + 1 ) % pts.length ];
-				var l = Math.hypot( b[ 0 ] - a[ 0 ], b[ 1 ] - a[ 1 ] );
-				largos.push( l );
-				total += l;
-			}
-			for ( var k = 0; k < n; k++ ) {
-				var d = total * k / n, s = 0;
-				for ( i = 0; i < pts.length; i++ ) {
-					if ( d <= s + largos[ i ] ) {
-						var f = ( d - s ) / largos[ i ], p = pts[ i ], q = pts[ ( i + 1 ) % pts.length ];
-						out.push( [ p[ 0 ] + ( q[ 0 ] - p[ 0 ] ) * f, p[ 1 ] + ( q[ 1 ] - p[ 1 ] ) * f ] );
-						break;
-					}
-					s += largos[ i ];
-				}
-			}
-			return out;
-		}
-		function linea( a, b, n ) {
-			var out = [];
-			for ( var k = 0; k < n; k++ ) {
-				t = n === 1 ? 0.5 : k / ( n - 1 );
-				out.push( [ a[ 0 ] + ( b[ 0 ] - a[ 0 ] ) * t, a[ 1 ] + ( b[ 1 ] - a[ 1 ] ) * t ] );
-			}
-			return out;
-		}
-		var rnd = ( function () {
-			var s = 1975;
-			return function () {
-				s = ( s * 16807 ) % 2147483647;
-				return ( s - 1 ) / 2147483646;
-			};
-		}() );
-
-		// Objeto: la computadora personal (pantalla, pie y base).
-		F.objeto = { u: 0.25, p: perimetro( [ [ -0.8, -0.7 ], [ 0.8, -0.7 ], [ 0.8, 0.25 ], [ -0.8, 0.25 ] ], 26 )
-			.concat( linea( [ 0, 0.32 ], [ 0, 0.5 ], 3 ) ).concat( linea( [ -0.5, 0.6 ], [ 0.5, 0.6 ], 11 ) ) };
-		// Red: un globo de nodos conectados.
-		var red = perimetro( [ [ 0, -0.85 ], [ 0.6, -0.6 ], [ 0.85, 0 ], [ 0.6, 0.6 ], [ 0, 0.85 ], [ -0.6, 0.6 ], [ -0.85, 0 ], [ -0.6, -0.6 ] ], 16 );
-		for ( i = 0; i < 24; i++ ) {
-			var ang = rnd() * Math.PI * 2, rr = Math.sqrt( rnd() ) * 0.72;
-			red.push( [ Math.cos( ang ) * rr, Math.sin( ang ) * rr ] );
-		}
-		F.red = { u: 0.42, p: red };
-		// Dispositivo: el teléfono (contorno, parlante y botón).
-		F.dispositivo = { u: 0.2, p: perimetro( [ [ -0.42, -0.88 ], [ 0.42, -0.88 ], [ 0.42, 0.88 ], [ -0.42, 0.88 ] ], 34 )
-			.concat( linea( [ -0.1, -0.74 ], [ 0.1, -0.74 ], 3 ) ).concat( [ [ -0.05, 0.72 ], [ 0.05, 0.72 ], [ 0, 0.66 ] ] ) };
-		// Plataforma: capas apiladas y nodos que flotan encima.
-		var capas = [];
-		[ -0.2, 0.2, 0.6 ].forEach( function ( y ) {
-			capas = capas.concat( perimetro( [ [ -0.8, y ], [ 0, y - 0.3 ], [ 0.8, y ], [ 0, y + 0.3 ] ], 12 ) );
-		} );
-		F.plataforma = { u: 0.33, p: capas.concat( [ [ -0.45, -0.8 ], [ 0.45, -0.8 ], [ 0, -0.95 ], [ 0.12, -0.68 ] ] ) };
-		// Inteligencia: un tejido orgánico (filotaxis con irregularidad).
-		var ia = [];
-		for ( i = 0; i < N_FORMA; i++ ) {
-			var r = 0.88 * Math.sqrt( ( i + 0.5 ) / N_FORMA ), a2 = i * 2.39996;
-			ia.push( [ Math.cos( a2 ) * r * 1.05 + ( rnd() - 0.5 ) * 0.08, Math.sin( a2 ) * r * 0.9 + ( rnd() - 0.5 ) * 0.08 ] );
-		}
-		F.inteligencia = { u: 0.36, p: ia };
-
-		// Mismo orden angular en todas: la transformación gira, no se desarma.
-		Object.keys( F ).forEach( function ( k ) {
-			F[ k ].p.sort( function ( a, b ) { return Math.atan2( a[ 1 ], a[ 0 ] ) - Math.atan2( b[ 1 ], b[ 0 ] ); } );
-		} );
-		return F;
-	}
-
 	function prepararTiempo() {
 		var seccion = document.querySelector( '.calma-tiempo' );
 		if ( ! seccion ) {
@@ -687,77 +664,46 @@
 		var lista = seccion.querySelector( '.calma-tiempo__lista' );
 		var epocas = Array.prototype.slice.call( seccion.querySelectorAll( '.calma-tiempo__epoca' ) );
 		var figura = seccion.querySelector( '.calma-tiempo__figura' );
-		var rotulo = seccion.querySelector( '.calma-tiempo__rotulo' );
 		if ( ! lista || ! epocas.length ) {
 			return;
 		}
-		var F = formas();
-		var claves = epocas.map( function ( e ) { return e.getAttribute( 'data-forma' ); } );
-		var canvas = null, ctx = null, lado = 0, DPR = 1, ultimoF = -1, pendiente = false;
-
-		if ( figura && window.HTMLCanvasElement ) {
+		var anio = figura && figura.querySelector( '.calma-tiempo__anio' );
+		var rotulo = figura && figura.querySelector( '.calma-tiempo__rotulo' );
+		var grupos = figura ? figura.querySelectorAll( '.t-grupo' ) : [];
+		var actualFigura = -1, pendiente = false, tAnio = null;
+		if ( figura ) {
 			figura.hidden = false;
-			canvas = document.createElement( 'canvas' );
-			figura.querySelector( '.calma-tiempo__lienzo' ).appendChild( canvas );
-			ctx = canvas.getContext( '2d' );
+			if ( ! quieto() ) {
+				figura.classList.add( 'is-esperando' );
+			}
 		}
 
-		function medirLienzo() {
-			if ( ! canvas ) {
+		function mostrarEpoca( i ) {
+			if ( ! figura || i === actualFigura ) {
 				return;
 			}
-			lado = canvas.parentNode.getBoundingClientRect().width;
-			DPR = Math.min( window.devicePixelRatio || 1, 1.5 );
-			canvas.width = Math.round( lado * DPR );
-			canvas.height = Math.round( lado * DPR );
-			ctx.setTransform( DPR, 0, 0, DPR, 0, 0 );
-			ultimoF = -1;
-		}
-
-		function dibujarForma( f ) {
-			if ( ! ctx || ! lado ) {
-				return;
-			}
-			var i0 = Math.max( 0, Math.min( claves.length - 1, Math.floor( f ) ) );
-			var i1 = Math.min( claves.length - 1, i0 + 1 );
-			var t = f - i0;
-			t = t * t * ( 3 - 2 * t );
-			var A = F[ claves[ i0 ] ], B = F[ claves[ i1 ] ];
-			var umbral = A.u + ( B.u - A.u ) * t;
-			var escala = lado * 0.4, c = lado / 2;
-			var pts = [];
-			for ( var k = 0; k < N_FORMA; k++ ) {
-				var a = A.p[ k ], b = B.p[ k ];
-				// Un leve desvío durante el cambio: la forma "piensa" antes de llegar.
-				var desvio = Math.sin( t * Math.PI ) * 0.12 * Math.sin( k * 1.7 );
-				pts.push( [ ( a[ 0 ] + ( b[ 0 ] - a[ 0 ] ) * t + desvio ), ( a[ 1 ] + ( b[ 1 ] - a[ 1 ] ) * t - desvio * 0.6 ) ] );
-			}
-			// Cerca de una época la figura se "enciende" (verde azulado).
-			var llegada = 1 - Math.sin( t * Math.PI );
-			ctx.clearRect( 0, 0, lado, lado );
-			ctx.lineWidth = 1;
-			for ( var i = 0; i < N_FORMA; i++ ) {
-				for ( var j = i + 1; j < N_FORMA; j++ ) {
-					var dx = pts[ i ][ 0 ] - pts[ j ][ 0 ], dy = pts[ i ][ 1 ] - pts[ j ][ 1 ];
-					var d = Math.sqrt( dx * dx + dy * dy );
-					if ( d < umbral ) {
-						var al = ( 1 - d / umbral ) * 0.8 + 0.12;
-						ctx.strokeStyle = 'rgba(' + ( llegada > 0.6 ? '15,107,107,' : '29,95,148,' ) + al.toFixed( 3 ) + ')';
-						ctx.beginPath();
-						ctx.moveTo( c + pts[ i ][ 0 ] * escala, c + pts[ i ][ 1 ] * escala );
-						ctx.lineTo( c + pts[ j ][ 0 ] * escala, c + pts[ j ][ 1 ] * escala );
-						ctx.stroke();
-					}
-				}
-			}
-			ctx.fillStyle = llegada > 0.6 ? '#0f6b6b' : '#1d5f94';
-			for ( var n = 0; n < N_FORMA; n++ ) {
-				ctx.beginPath();
-				ctx.arc( c + pts[ n ][ 0 ] * escala, c + pts[ n ][ 1 ] * escala, 2.4, 0, Math.PI * 2 );
-				ctx.fill();
-			}
+			actualFigura = i;
+			var e = epocas[ i ];
+			var clave = e.getAttribute( 'data-forma' );
+			figura.setAttribute( 'data-forma', clave );
+			Array.prototype.forEach.call( grupos, function ( g ) {
+				g.classList.toggle( 'is-on', g.getAttribute( 'data-g' ) === clave );
+			} );
 			if ( rotulo ) {
-				rotulo.textContent = 'Fig. ' + ( '0' + ( Math.round( f ) + 1 ) ).slice( -2 ) + ' — ' + epocas[ Math.round( f ) ].getAttribute( 'data-concepto' );
+				rotulo.textContent = 'Fig. ' + ( '0' + ( i + 1 ) ).slice( -2 ) + ' — ' + e.getAttribute( 'data-concepto' );
+			}
+			if ( anio ) {
+				var texto = e.querySelector( '.calma-tiempo__anios' ).firstChild.nodeValue;
+				if ( quieto() ) {
+					anio.textContent = texto;
+				} else {
+					anio.classList.add( 'is-cambio' );
+					clearTimeout( tAnio );
+					tAnio = setTimeout( function () {
+						anio.textContent = texto;
+						anio.classList.remove( 'is-cambio' );
+					}, 260 );
+				}
 			}
 		}
 
@@ -771,10 +717,9 @@
 			var vivo = ! quieto();
 			seccion.classList.toggle( 'is-vivo', vivo );
 			seccion.style.setProperty( '--calma-tiempo-p', vivo ? p.toFixed( 4 ) : 1 );
-			var ys = epocas.map( function ( e ) { return e.offsetTop; } );
-			var actual = -1;
+			var actual = 0;
 			epocas.forEach( function ( e, i ) {
-				var encendida = ys[ i ] <= yLinea + 1;
+				var encendida = e.offsetTop <= yLinea + 1;
 				e.classList.toggle( 'is-encendida', encendida );
 				if ( encendida ) {
 					actual = i;
@@ -783,23 +728,10 @@
 			epocas.forEach( function ( e, i ) {
 				e.classList.toggle( 'is-actual', vivo && i === actual );
 			} );
-			// Posición continua de la figura entre épocas.
-			var f = 0;
-			for ( var i = 0; i < ys.length - 1; i++ ) {
-				if ( yLinea >= ys[ i ] ) {
-					f = i + Math.min( 1, ( yLinea - ys[ i ] ) / ( ys[ i + 1 ] - ys[ i ] ) );
-				}
+			if ( figura && r.top < window.innerHeight * 0.9 ) {
+				figura.classList.remove( 'is-esperando' );
 			}
-			if ( yLinea >= ys[ ys.length - 1 ] ) {
-				f = ys.length - 1;
-			}
-			if ( ! vivo ) {
-				f = Math.max( 0, actual ); // sin movimiento: cambios de estado, sin transición
-			}
-			if ( Math.abs( f - ultimoF ) > 0.002 ) {
-				ultimoF = f;
-				dibujarForma( f );
-			}
+			mostrarEpoca( actual );
 		}
 
 		function pedir() {
@@ -809,13 +741,78 @@
 			}
 		}
 
-		medirLienzo();
 		actualizar();
 		window.addEventListener( 'scroll', pedir, { passive: true } );
-		window.addEventListener( 'resize', function () {
-			medirLienzo();
-			pedir();
+		window.addEventListener( 'resize', pedir );
+		raiz.addEventListener( 'calma-quieto', pedir );
+	}
+
+	/* ------------------------------------------------------------------------
+	   5b. Accesos: cada personaje llega a su pose final siguiendo el scroll
+	   (--p de 0 a 1 mientras la tarjeta entra en pantalla). Al llegar, y al
+	   pasar el puntero o el foco, parpadea y hace su gesto (menos de 2 s).
+	   ------------------------------------------------------------------------ */
+	function prepararAccesos() {
+		var tarjetas = Array.prototype.slice.call( document.querySelectorAll( '.calma-acceso' ) );
+		if ( ! tarjetas.length ) {
+			return;
+		}
+		var pendiente = false;
+		function saludar( t ) {
+			if ( quieto() ) {
+				return;
+			}
+			t.classList.remove( 'is-vivo' );
+			void t.offsetWidth;
+			t.classList.add( 'is-vivo' );
+			clearTimeout( t._calmaT );
+			t._calmaT = setTimeout( function () {
+				t.classList.remove( 'is-vivo' );
+			}, 2200 );
+		}
+		function actualizar() {
+			pendiente = false;
+			var vh = window.innerHeight;
+			tarjetas.forEach( function ( t ) {
+				if ( quieto() ) {
+					t.style.setProperty( '--p', 1 );
+					return;
+				}
+				var r = t.getBoundingClientRect();
+				// 0 cuando la tarjeta asoma por abajo; 1 cuando su borde superior pasa el 45 % de la pantalla.
+				var p = Math.max( 0, Math.min( 1, ( vh - r.top ) / ( vh * 0.55 ) ) );
+				t.style.setProperty( '--p', p.toFixed( 3 ) );
+				if ( p >= 1 && ! t._calmaLlego ) {
+					t._calmaLlego = true;
+					saludar( t );
+				} else if ( p < 0.6 ) {
+					t._calmaLlego = false;
+				}
+			} );
+		}
+		function pedir() {
+			if ( ! pendiente ) {
+				pendiente = true;
+				raf( actualizar );
+			}
+		}
+		tarjetas.forEach( function ( t ) {
+			var ultimo = 0;
+			function otraVez() {
+				var ahora = Date.now();
+				if ( ahora - ultimo > 2400 && t._calmaLlego ) {
+					ultimo = ahora;
+					saludar( t );
+				}
+			}
+			if ( finoHover ) {
+				t.addEventListener( 'pointerenter', otraVez );
+			}
+			t.addEventListener( 'focusin', otraVez );
 		} );
+		actualizar();
+		window.addEventListener( 'scroll', pedir, { passive: true } );
+		window.addEventListener( 'resize', pedir );
 		raiz.addEventListener( 'calma-quieto', pedir );
 	}
 
@@ -879,6 +876,7 @@
 		prepararLaminas();
 		prepararFiguras();
 		prepararTiempo();
+		prepararAccesos();
 
 		var hero = document.querySelector( '.calma-hero' );
 		var red = null;

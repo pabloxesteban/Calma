@@ -49,3 +49,19 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
 ## Capturas
 - `docs/auditoria/capturas-despues-etapa-7/` (Inicio y Blog en 4 anchos).
 - `docs/diseno/etapa-7-*.png`: hero en reposo y perturbado, cifras, estados, hallazgo abierto, tarjetas, cuadros, móvil y movimiento reducido.
+
+## Tercera ronda (tarjetas que giran, figura "cada vez más cerca", accesos animados, índice de lecturas)
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos. Reflow a 320 px sin desborde. Nada anima con movimiento reducido.
+- **Tarjetas que giran** (probado con teclado):
+  - Tab → "Dar vuelta y ver el hallazgo" (`aria-expanded`) → Enter gira la tarjeta y lleva el foco al dorso (región con nombre) → Tab al enlace de la fuente → Tab a "Volver a la pregunta" → Enter vuelve y devuelve el foco al botón. Escape también vuelve.
+  - La cara oculta queda `inert` y `aria-hidden`.
+  - Sin JS, las dos caras se ven una debajo de la otra.
+  - Con movimiento reducido, el giro es instantáneo.
+- **Accesos**:
+  - los dibujos son decorativos (`aria-hidden`) y el nombre accesible es el del botón;
+  - con movimiento reducido o sin JS se ven en su pose final (`--p: 1`);
+  - el recorrido depende solo de la posición de scroll y los gestos al llegar duran menos de 2 s.
+- **Índice de lecturas**:
+  - la fila entera es clicable (el enlace del título la cubre) y la categoría sigue siendo un enlace propio;
+  - la imagen aparece también con el foco del teclado.
+- **Móvil**: sin desborde ni texto recortado a 360/390/430. En celular, las filas del índice muestran la miniatura y los personajes llegan a su pose al entrar cada tarjeta.

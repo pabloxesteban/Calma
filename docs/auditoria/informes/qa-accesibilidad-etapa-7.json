@@ -12,6 +12,7 @@
    "headings": [
     "H1:Entiende cómo te afecta la tecnología y ",
     "H2:Te damos la bienvenida a Código Calma",
+    "H2:Lecturas recientes",
     "H2:Por qué tu fuerza de voluntad es más lis",
     "H2:La diferencia entre «querer» y «ser capa",
     "H2:¿Por qué fallamos al intentar cambiar co",
@@ -32,18 +33,7 @@
     "H3:Ruido constante",
     "H3:Pantalla hasta dormir"
    ],
-   "hidden": [
-    "P:Revisar el correo laboral fuer",
-    "P:Fuente PMC · NIH, 2022Keeping ",
-    "P:El feedback positivo en redes ",
-    "P:Fuente Frontiers in Psychology",
-    "P:En promedio, las personas usan",
-    "P:Fuente PMC · NIH, 2024 (se abr",
-    "P:Aza Raskin, inventor del scrol",
-    "P:Fuente Aza Raskin, X (2019) · ",
-    "P:La simple presencia de un telé",
-    "P:Fuente Misra et al. · Virginia"
-   ],
+   "hidden": [],
    "offscreen": [],
    "overflow": 0,
    "forms": []
@@ -61,12 +51,12 @@
    "A:Solicitar una consulta|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
    "A:Solicitar una consulta|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Explorar recursos grat|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Ver todos los artículo|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Psicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Por qué tu fuerza de v|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Leer más Por qué tu fu|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Psicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:La diferencia entre «q|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Leer más La diferencia|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ciberseguridad|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:¿Por qué fallamos al i|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
   ]
@@ -1243,6 +1233,7 @@
    "headings": [
     "H1:Entiende cómo te afecta la tecnología y ",
     "H2:Te damos la bienvenida a Código Calma",
+    "H2:Lecturas recientes",
     "H2:Por qué tu fuerza de voluntad es más lis",
     "H2:La diferencia entre «querer» y «ser capa",
     "H2:¿Por qué fallamos al intentar cambiar co",
@@ -1263,18 +1254,7 @@
     "H3:Ruido constante",
     "H3:Pantalla hasta dormir"
    ],
-   "hidden": [
-    "P:Revisar el correo laboral fuer",
-    "P:Fuente PMC · NIH, 2022Keeping ",
-    "P:El feedback positivo en redes ",
-    "P:Fuente Frontiers in Psychology",
-    "P:En promedio, las personas usan",
-    "P:Fuente PMC · NIH, 2024 (se abr",
-    "P:Aza Raskin, inventor del scrol",
-    "P:Fuente Aza Raskin, X (2019) · ",
-    "P:La simple presencia de un telé",
-    "P:Fuente Misra et al. · Virginia"
-   ],
+   "hidden": [],
    "offscreen": [],
    "overflow": 0,
    "forms": []
@@ -1285,21 +1265,21 @@
    "BUTTON:Abrir menú|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Solicitar una consulta|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Explorar recursos grat|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
+   "A:Ver todos los artículo|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Psicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Por qué tu fuerza de v|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Leer más Por qué tu fu|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Psicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:La diferencia entre «q|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Leer más La diferencia|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ciberseguridad|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:¿Por qué fallamos al i|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Leer más ¿Por qué fall|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ciberpsicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:IA y apoyo emocional: |o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Leer más IA y apoyo em|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Neurociencia y tecnolo|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:El estigma de la estru|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Leer más El estigma de|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
+   "A:Bienestar digital|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ciberpsicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Infancias «Figitales»|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
   ]
  },
  "servicios@390": {
@@ -2558,7 +2538,7 @@
    "Equipo o=solid rgb(27, 34, 51) inDrawer=true",
    "Contacto o=solid rgb(27, 34, 51) inDrawer=true",
    "Solicitar una consulta o=solid rgb(29, 95, 148) inDrawer=true",
-   "Cerrar menú o=solid rgb(28, 70, 108) inDrawer=true"
+   "Cerrar menú o=solid rgb(28, 60, 92) inDrawer=true"
   ],
   "afterEsc": {
    "exp": "false",
