@@ -57,8 +57,8 @@
    "A:Leer más Por qué tu fu|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Psicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:La diferencia entre «q|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Ciberseguridad|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:¿Por qué fallamos al i|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
+   "A:Leer más La diferencia|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Ciberseguridad|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
   ]
  },
  "servicios@1280": {
@@ -266,7 +266,7 @@
    "A:Solicitar una consulta|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
    "A:Perfil de Tatiana X. S|o=solid 2px rgb(29, 95, 148)|sh=1|vis=true",
    "DIV:Ver perfil en LinkedIn|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Más testimonios|o=solid 1px rgb(42, 104, 154)|sh=0|vis=true",
+   "A:Más testimonios|o=solid 1px rgb(35, 99, 151)|sh=0|vis=true",
    "A:Solicitar una consulta|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
    "A:Ciberpsicología|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
    "A:Bienestar digital|o=solid 2px rgb(255, 255, 255)|sh=0|vis=true",
@@ -1271,15 +1271,15 @@
    "A:Leer más Por qué tu fu|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Psicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:La diferencia entre «q|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Leer más La diferencia|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ciberseguridad|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:¿Por qué fallamos al i|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Leer más ¿Por qué fall|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Ciberpsicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:IA y apoyo emocional: |o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
+   "A:Leer más IA y apoyo em|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
    "A:Neurociencia y tecnolo|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:El estigma de la estru|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Bienestar digital|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Ciberpsicología|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true",
-   "A:Infancias «Figitales»|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
+   "A:El estigma de la estru|o=solid 2px rgb(29, 95, 148)|sh=0|vis=true"
   ]
  },
  "servicios@390": {
@@ -2538,7 +2538,7 @@
    "Equipo o=solid rgb(27, 34, 51) inDrawer=true",
    "Contacto o=solid rgb(27, 34, 51) inDrawer=true",
    "Solicitar una consulta o=solid rgb(29, 95, 148) inDrawer=true",
-   "Cerrar menú o=solid rgb(28, 60, 92) inDrawer=true"
+   "Cerrar menú o=solid rgb(28, 70, 108) inDrawer=true"
   ],
   "afterEsc": {
    "exp": "false",

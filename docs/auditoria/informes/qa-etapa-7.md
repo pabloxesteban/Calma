@@ -50,7 +50,7 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
 - `docs/auditoria/capturas-despues-etapa-7/` (Inicio y Blog en 4 anchos).
 - `docs/diseno/etapa-7-*.png`: hero en reposo y perturbado, cifras, estados, hallazgo abierto, tarjetas, cuadros, móvil y movimiento reducido.
 
-## Tercera ronda (tarjetas que giran, figura "cada vez más cerca", accesos animados, índice de lecturas)
+## Tercera y cuarta ronda (tarjetas que giran, accesos animados, figura de conexiones, lecturas en grilla bento)
 - **axe-core**: 0 violaciones en 14 páginas × 2 anchos. Reflow a 320 px sin desborde. Nada anima con movimiento reducido.
 - **Tarjetas que giran** (probado con teclado):
   - Tab → "Dar vuelta y ver el hallazgo" (`aria-expanded`) → Enter gira la tarjeta y lleva el foco al dorso (región con nombre) → Tab al enlace de la fuente → Tab a "Volver a la pregunta" → Enter vuelve y devuelve el foco al botón. Escape también vuelve.
@@ -61,7 +61,12 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
   - los dibujos son decorativos (`aria-hidden`) y el nombre accesible es el del botón;
   - con movimiento reducido o sin JS se ven en su pose final (`--p: 1`);
   - el recorrido depende solo de la posición de scroll y los gestos al llegar duran menos de 2 s.
-- **Índice de lecturas**:
-  - la fila entera es clicable (el enlace del título la cubre) y la categoría sigue siendo un enlace propio;
-  - la imagen aparece también con el foco del teclado.
-- **Móvil**: sin desborde ni texto recortado a 360/390/430. En celular, las filas del índice muestran la miniatura y los personajes llegan a su pose al entrar cada tarjeta.
+- **Lecturas (grilla bento)**:
+  - la tarjeta entera es clicable (el enlace del título la cubre) y la categoría y "Leer más" siguen siendo enlaces propios;
+  - los tonos de fondo por categoría mantienen el contraste del texto (tinta sobre tonos muy claros);
+  - el número de índice es decorativo.
+- **Figura de la línea de tiempo**:
+  - es un canvas decorativo (`aria-hidden`) con la aclaración visible "Figura ilustrativa: cada punto es una persona";
+  - solo se redibuja cuando cambia el scroll;
+  - con movimiento reducido pasa de una época a otra sin transición.
+- **Móvil**: sin desborde ni texto recortado a 360/390/430. En celular, la grilla bento pasa a una columna y los personajes llegan a su pose al entrar cada tarjeta.

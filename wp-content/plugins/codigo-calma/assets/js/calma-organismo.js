@@ -15,8 +15,8 @@
  * 4. Láminas: las imágenes de tarjetas fuera de la primera pantalla se
  *    descubren al llegar. El texto nunca se oculta.
  * 5. Línea de tiempo: la línea crece con el scroll, las épocas se encienden
- *    y una figura ("cada vez más cerca") dibuja la tecnología de cada época
- *    más cerca de la persona. El scroll siempre es nativo.
+ *    y una figura de puntos (cada punto, una persona) muestra cómo la
+ *    tecnología las fue conectando en cada época. El scroll siempre es nativo.
  * 6. Header compacto, barra de lectura y control "Reducir movimiento".
  *
  * Sin JavaScript, con prefers-reduced-motion, en equipos de pocos recursos o
@@ -636,11 +636,6 @@
 			if ( el.getBoundingClientRect().top < limite ) {
 				return;
 			}
-			// En el índice del Inicio, las filas tienen su propia forma de mostrar la imagen.
-			var fila = el.closest( '.home .kb-post-list-item' );
-			if ( fila && fila.previousElementSibling ) {
-				return;
-			}
 			var item = el.closest( 'li, .wp-block-kadence-column' );
 			var i = item && item.parentElement ? Array.prototype.indexOf.call( item.parentElement.children, item ) % 3 : 0;
 			el.style.setProperty( '--calma-delay', ( i * 0.12 ).toFixed( 2 ) + 's' );
@@ -652,10 +647,97 @@
 	/* ------------------------------------------------------------------------
 	   5. Línea de tiempo: la línea crece con el scroll (nativo) y cada época se
 	   enciende cuando la línea la alcanza. En escritorio, una figura fija
-	   cuenta la idea de la sección, "cada vez más cerca": una persona de
-	   perfil y la tecnología de cada época dibujándose más cerca de su cabeza
-	   (objeto en el escritorio → red → teléfono → plataformas → dentro).
+	   muestra cómo la tecnología fue conectando a las personas (cada punto es
+	   una persona) y se transforma de una época a la otra con el scroll:
+	   1. Objeto: pocas personas tienen una computadora; el resto, sin conexión.
+	   2. Red: muchas se conectan a través de unos pocos nodos (la Web).
+	   3. Dispositivo: todas llevan su dispositivo y están conectadas entre sí.
+	   4. Plataforma: las personas se agrupan alrededor de plataformas.
+	   5. Inteligencia: un sistema en el centro conectado con todas.
 	   ------------------------------------------------------------------------ */
+	function redesDeEpoca() {
+		var rnd = ( function () {
+			var s = 1975;
+			return function () {
+				s = ( s * 16807 ) % 2147483647;
+				return ( s - 1 ) / 2147483646;
+			};
+		}() );
+		var N = 46, P = [], i, k;
+		// Base: personas repartidas en un disco, sin amontonarse.
+		while ( P.length < N ) {
+			var ang = rnd() * Math.PI * 2, r = Math.sqrt( rnd() ) * 0.88;
+			var x = Math.cos( ang ) * r, y = Math.sin( ang ) * r, libre = true;
+			for ( k = 0; k < P.length; k++ ) {
+				if ( Math.hypot( P[ k ].b[ 0 ] - x, P[ k ].b[ 1 ] - y ) < 0.17 ) {
+					libre = false;
+					break;
+				}
+			}
+			if ( libre ) {
+				P.push( { b: [ x, y ], ang: Math.atan2( y, x ) } );
+			}
+		}
+		var hubs = [ [ -0.42, -0.4 ], [ 0.46, -0.3 ], [ -0.3, 0.46 ], [ 0.4, 0.44 ] ];
+		var plataformas = [ [ -0.46, -0.3 ], [ 0.5, -0.12 ], [ -0.04, 0.55 ] ];
+		P.forEach( function ( p, n ) {
+			p.pc = n % 7 === 0; // unas pocas, con computadora
+			p.online = p.pc || rnd() < 0.45;
+			var mejor = 0, dmin = 9;
+			hubs.forEach( function ( h, j ) {
+				var d = Math.hypot( h[ 0 ] - p.b[ 0 ], h[ 1 ] - p.b[ 1 ] );
+				if ( d < dmin ) {
+					dmin = d;
+					mejor = j;
+				}
+			} );
+			p.hub = mejor;
+			mejor = 0;
+			dmin = 9;
+			plataformas.forEach( function ( c, j ) {
+				var d = Math.hypot( c[ 0 ] - p.b[ 0 ], c[ 1 ] - p.b[ 1 ] );
+				if ( d < dmin ) {
+					dmin = d;
+					mejor = j;
+				}
+			} );
+			p.plat = mejor;
+			var c = plataformas[ mejor ];
+			var jit = [ ( rnd() - 0.5 ) * 0.1, ( rnd() - 0.5 ) * 0.1 ];
+			var anillo = 0.42 + ( n % 3 ) * 0.2;
+			// Posición de la persona en cada época.
+			p.pos = [
+				p.b,
+				p.b,
+				[ p.b[ 0 ] + jit[ 0 ], p.b[ 1 ] + jit[ 1 ] ],
+				[ c[ 0 ] + ( p.b[ 0 ] - c[ 0 ] ) * 0.42, c[ 1 ] + ( p.b[ 1 ] - c[ 1 ] ) * 0.42 ],
+				[ Math.cos( p.ang ) * anillo, Math.sin( p.ang ) * anillo ]
+			];
+		} );
+		// Vecinos (para la época del dispositivo: todas conectadas entre sí).
+		P.forEach( function ( p ) {
+			p.vec = P.map( function ( q, j ) {
+				return { j: j, d: Math.hypot( q.pos[ 2 ][ 0 ] - p.pos[ 2 ][ 0 ], q.pos[ 2 ][ 1 ] - p.pos[ 2 ][ 1 ] ) };
+			} ).sort( function ( a, b ) { return a.d - b.d; } ).slice( 1, 3 ).map( function ( o ) { return o.j; } );
+		} );
+		for ( i = 0; i < P.length; i++ ) {
+			P[ i ].i = i;
+		}
+		return { P: P, hubs: hubs, plataformas: plataformas };
+	}
+
+	// Opacidad de cada capa en las 5 épocas.
+	var CAPAS = {
+		pc: [ 1, 0.6, 0, 0, 0 ],
+		hubs: [ 0, 1, 0.25, 0, 0 ],
+		lineasHub: [ 0, 1, 0.15, 0, 0 ],
+		anillos: [ 0, 0, 1, 0.45, 0.25 ],
+		malla: [ 0, 0, 1, 0.25, 0.1 ],
+		plataformas: [ 0, 0, 0, 1, 0 ],
+		lineasPlat: [ 0, 0, 0, 1, 0.15 ],
+		ia: [ 0, 0, 0, 0, 1 ]
+	};
+
 	function prepararTiempo() {
 		var seccion = document.querySelector( '.calma-tiempo' );
 		if ( ! seccion ) {
@@ -669,26 +751,169 @@
 		}
 		var anio = figura && figura.querySelector( '.calma-tiempo__anio' );
 		var rotulo = figura && figura.querySelector( '.calma-tiempo__rotulo' );
-		var grupos = figura ? figura.querySelectorAll( '.t-grupo' ) : [];
-		var actualFigura = -1, pendiente = false, tAnio = null;
-		if ( figura ) {
+		var canvas = null, ctx = null, lado = 0, DPR = 1, ultimoF = -1, epocaRotulo = -1, pendiente = false, tAnio = null;
+		var red = redesDeEpoca();
+
+		if ( figura && window.HTMLCanvasElement ) {
 			figura.hidden = false;
-			if ( ! quieto() ) {
-				figura.classList.add( 'is-esperando' );
+			canvas = document.createElement( 'canvas' );
+			figura.querySelector( '.calma-tiempo__lienzo' ).appendChild( canvas );
+			ctx = canvas.getContext( '2d' );
+		}
+
+		function medir() {
+			if ( ! canvas ) {
+				return;
 			}
+			lado = canvas.parentNode.getBoundingClientRect().width;
+			DPR = Math.min( window.devicePixelRatio || 1, 1.5 );
+			canvas.width = Math.round( lado * DPR );
+			canvas.height = Math.round( lado * DPR );
+			ctx.setTransform( DPR, 0, 0, DPR, 0, 0 );
+			ultimoF = -1;
+		}
+
+		function dibujar( f ) {
+			if ( ! ctx || ! lado ) {
+				return;
+			}
+			var i0 = Math.max( 0, Math.min( 4, Math.floor( f ) ) ), i1 = Math.min( 4, i0 + 1 );
+			var t = f - i0;
+			t = t * t * ( 3 - 2 * t );
+			function capa( nombre ) {
+				var v = CAPAS[ nombre ];
+				return v[ i0 ] + ( v[ i1 ] - v[ i0 ] ) * t;
+			}
+			var c = lado / 2, e = lado * 0.46;
+			function X( v ) {
+				return c + v * e;
+			}
+			var P = red.P;
+			var pts = P.map( function ( p ) {
+				var a = p.pos[ i0 ], b = p.pos[ i1 ];
+				return [ X( a[ 0 ] + ( b[ 0 ] - a[ 0 ] ) * t ), X( a[ 1 ] + ( b[ 1 ] - a[ 1 ] ) * t ) ];
+			} );
+			// ¿Qué tan "conectada" está cada persona en cada época?
+			function encendida( p, ep ) {
+				return ep === 0 ? ( p.pc ? 1 : 0 ) : ep === 1 ? ( p.online ? 1 : 0 ) : 1;
+			}
+			ctx.clearRect( 0, 0, lado, lado );
+			ctx.lineWidth = 1;
+			var a;
+
+			// Red: líneas a los nodos de la Web.
+			a = capa( 'lineasHub' );
+			if ( a > 0.01 ) {
+				ctx.strokeStyle = 'rgba(29,95,148,' + ( 0.35 * a ).toFixed( 3 ) + ')';
+				P.forEach( function ( p, n ) {
+					if ( p.online ) {
+						var h = red.hubs[ p.hub ];
+						ctx.beginPath();
+						ctx.moveTo( pts[ n ][ 0 ], pts[ n ][ 1 ] );
+						ctx.lineTo( X( h[ 0 ] ), X( h[ 1 ] ) );
+						ctx.stroke();
+					}
+				} );
+			}
+			// Dispositivo: todas conectadas con sus vecinas.
+			a = capa( 'malla' );
+			if ( a > 0.01 ) {
+				ctx.strokeStyle = 'rgba(29,95,148,' + ( 0.38 * a ).toFixed( 3 ) + ')';
+				P.forEach( function ( p, n ) {
+					p.vec.forEach( function ( j ) {
+						ctx.beginPath();
+						ctx.moveTo( pts[ n ][ 0 ], pts[ n ][ 1 ] );
+						ctx.lineTo( pts[ j ][ 0 ], pts[ j ][ 1 ] );
+						ctx.stroke();
+					} );
+				} );
+			}
+			// Plataforma: cada persona unida a su plataforma.
+			a = capa( 'lineasPlat' );
+			if ( a > 0.01 ) {
+				ctx.strokeStyle = 'rgba(15,107,107,' + ( 0.4 * a ).toFixed( 3 ) + ')';
+				P.forEach( function ( p, n ) {
+					var q = red.plataformas[ p.plat ];
+					ctx.beginPath();
+					ctx.moveTo( pts[ n ][ 0 ], pts[ n ][ 1 ] );
+					ctx.lineTo( X( q[ 0 ] ), X( q[ 1 ] ) );
+					ctx.stroke();
+				} );
+			}
+			// Inteligencia: un sistema en el centro, conectado con todas.
+			a = capa( 'ia' );
+			if ( a > 0.01 ) {
+				ctx.strokeStyle = 'rgba(15,107,107,' + ( 0.28 * a ).toFixed( 3 ) + ')';
+				pts.forEach( function ( q ) {
+					ctx.beginPath();
+					ctx.moveTo( c, c );
+					ctx.quadraticCurveTo( ( c + q[ 0 ] ) / 2 + ( q[ 1 ] - c ) * 0.18, ( c + q[ 1 ] ) / 2 - ( q[ 0 ] - c ) * 0.18, q[ 0 ], q[ 1 ] );
+					ctx.stroke();
+				} );
+				ctx.fillStyle = 'rgba(15,107,107,' + a.toFixed( 3 ) + ')';
+				ctx.beginPath();
+				ctx.arc( c, c, lado * 0.045, 0, Math.PI * 2 );
+				ctx.fill();
+				ctx.strokeStyle = 'rgba(15,107,107,' + ( 0.35 * a ).toFixed( 3 ) + ')';
+				[ 0.075, 0.105 ].forEach( function ( r ) {
+					ctx.beginPath();
+					ctx.arc( c, c, lado * r, 0, Math.PI * 2 );
+					ctx.stroke();
+				} );
+			}
+			// Nodos de la Web y plataformas.
+			a = capa( 'hubs' );
+			if ( a > 0.01 ) {
+				ctx.fillStyle = 'rgba(27,34,51,' + a.toFixed( 3 ) + ')';
+				red.hubs.forEach( function ( h ) {
+					ctx.fillRect( X( h[ 0 ] ) - 5, X( h[ 1 ] ) - 5, 10, 10 );
+				} );
+			}
+			a = capa( 'plataformas' );
+			if ( a > 0.01 ) {
+				ctx.strokeStyle = 'rgba(15,107,107,' + a.toFixed( 3 ) + ')';
+				ctx.fillStyle = 'rgba(216,235,232,' + a.toFixed( 3 ) + ')';
+				red.plataformas.forEach( function ( q ) {
+					ctx.beginPath();
+					ctx.rect( X( q[ 0 ] ) - 13, X( q[ 1 ] ) - 13, 26, 26 );
+					ctx.fill();
+					ctx.stroke();
+				} );
+			}
+			// Personas.
+			var anillos = capa( 'anillos' ), pc = capa( 'pc' ), iaA = capa( 'ia' );
+			P.forEach( function ( p, n ) {
+				var on = encendida( p, i0 ) + ( encendida( p, i1 ) - encendida( p, i0 ) ) * t;
+				var x = pts[ n ][ 0 ], y = pts[ n ][ 1 ];
+				if ( p.pc && pc > 0.01 ) {
+					// La computadora personal, al lado de la persona.
+					ctx.strokeStyle = 'rgba(27,34,51,' + pc.toFixed( 3 ) + ')';
+					ctx.strokeRect( x + 6, y - 9, 11, 8 );
+				}
+				if ( anillos > 0.01 ) {
+					ctx.strokeStyle = 'rgba(29,95,148,' + ( 0.55 * anillos ).toFixed( 3 ) + ')';
+					ctx.beginPath();
+					ctx.arc( x, y, 7, 0, Math.PI * 2 );
+					ctx.stroke();
+				}
+				var r = 3.2;
+				if ( on > 0.5 ) {
+					ctx.fillStyle = iaA > 0.5 ? '#0f6b6b' : '#1d5f94';
+				} else {
+					ctx.fillStyle = '#b4ad9f';
+				}
+				ctx.beginPath();
+				ctx.arc( x, y, r, 0, Math.PI * 2 );
+				ctx.fill();
+			} );
 		}
 
 		function mostrarEpoca( i ) {
-			if ( ! figura || i === actualFigura ) {
+			if ( ! figura || i === epocaRotulo ) {
 				return;
 			}
-			actualFigura = i;
+			epocaRotulo = i;
 			var e = epocas[ i ];
-			var clave = e.getAttribute( 'data-forma' );
-			figura.setAttribute( 'data-forma', clave );
-			Array.prototype.forEach.call( grupos, function ( g ) {
-				g.classList.toggle( 'is-on', g.getAttribute( 'data-g' ) === clave );
-			} );
 			if ( rotulo ) {
 				rotulo.textContent = 'Fig. ' + ( '0' + ( i + 1 ) ).slice( -2 ) + ' — ' + e.getAttribute( 'data-concepto' );
 			}
@@ -717,9 +942,10 @@
 			var vivo = ! quieto();
 			seccion.classList.toggle( 'is-vivo', vivo );
 			seccion.style.setProperty( '--calma-tiempo-p', vivo ? p.toFixed( 4 ) : 1 );
+			var ys = epocas.map( function ( e ) { return e.offsetTop; } );
 			var actual = 0;
 			epocas.forEach( function ( e, i ) {
-				var encendida = e.offsetTop <= yLinea + 1;
+				var encendida = ys[ i ] <= yLinea + 1;
 				e.classList.toggle( 'is-encendida', encendida );
 				if ( encendida ) {
 					actual = i;
@@ -728,10 +954,21 @@
 			epocas.forEach( function ( e, i ) {
 				e.classList.toggle( 'is-actual', vivo && i === actual );
 			} );
-			if ( figura && r.top < window.innerHeight * 0.9 ) {
-				figura.classList.remove( 'is-esperando' );
+			// Posición continua entre épocas: la figura se transforma con el scroll.
+			var f = 0;
+			for ( var i = 0; i < ys.length - 1; i++ ) {
+				if ( yLinea >= ys[ i ] ) {
+					f = i + Math.min( 1, ( yLinea - ys[ i ] ) / ( ys[ i + 1 ] - ys[ i ] ) );
+				}
+			}
+			if ( ! vivo ) {
+				f = actual; // sin movimiento: cambios de estado, sin transición
 			}
 			mostrarEpoca( actual );
+			if ( Math.abs( f - ultimoF ) > 0.002 ) {
+				ultimoF = f;
+				dibujar( f );
+			}
 		}
 
 		function pedir() {
@@ -741,9 +978,13 @@
 			}
 		}
 
+		medir();
 		actualizar();
 		window.addEventListener( 'scroll', pedir, { passive: true } );
-		window.addEventListener( 'resize', pedir );
+		window.addEventListener( 'resize', function () {
+			medir();
+			pedir();
+		} );
 		raiz.addEventListener( 'calma-quieto', pedir );
 	}
 
