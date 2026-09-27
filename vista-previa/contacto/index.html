@@ -4607,7 +4607,8 @@ html.calma-quieto .calma-tiempo__anio {
    dirección "red clara" (B de la exploración, en claro, + el directorio de
    apps de la A). Papel con la cuadrícula tenue de la red, tarjetas blancas
    con una luz que sigue al puntero y un borde que se ilumina en el tono de
-   cada persona o tema, iniciales con halo, títulos con acento en degradé.
+   cada persona o tema, iniciales en su tono, títulos con acento en degradé.
+   Todo plano: sin sombras ni halos; la luz y el borde son muy tenues.
    Movimiento: las tarjetas suben al entrar con el scroll (una vez), la
    cuadrícula se desplaza apenas con el scroll, y todo reacciona al puntero
    o al foco. Sin JavaScript o con movimiento reducido se ve todo quieto.
@@ -4698,14 +4699,14 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-test .calma-test__step,
 .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap {
 	--luz-acento: var(--acento, #9cc3e3);
-	--luz-borde: color-mix(in srgb, var(--acento-texto, #1d5f94) 55%, var(--luz-acento));
+	--luz-borde: color-mix(in srgb, var(--acento-texto, #1d5f94) 35%, var(--luz-acento));
 	position: relative;
 	isolation: isolate;
 	overflow: hidden;
 	background: #fff !important;
 	border: 1px solid rgb(27 34 51 / 0.09) !important;
 	border-radius: 16px !important;
-	box-shadow: 0 1px 2px rgb(27 34 51 / 0.04) !important;
+	box-shadow: none;
 	transition: transform 0.6s var(--calma-ease-mente), box-shadow 0.6s var(--calma-ease-mente);
 }
 .calma-equipo .calma-person::before,
@@ -4720,7 +4721,7 @@ html.calma-quieto .calma-tiempo__anio {
 	position: absolute;
 	inset: 0;
 	z-index: -1;
-	background: radial-gradient(440px circle at var(--mx, 50%) var(--my, -30%), color-mix(in srgb, var(--luz-acento) 30%, transparent), transparent 48%);
+	background: radial-gradient(440px circle at var(--mx, 50%) var(--my, -30%), color-mix(in srgb, var(--luz-acento) 14%, transparent), transparent 50%);
 	opacity: 0;
 	transition: opacity 0.5s var(--calma-ease-mente);
 	pointer-events: none;
@@ -4750,24 +4751,21 @@ html.calma-quieto .calma-tiempo__anio {
 :is(.calma-equipo .calma-person, .calma-perfil__datos > .calma-card, .calma-page .calma-quote, .calma-habito, .calma-descarga, .calma-test .calma-test__card, .calma-test .calma-test__step, .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap):is(:hover, :focus-within)::after {
 	opacity: 1;
 }
-:is(.calma-equipo .calma-person, .calma-habito, .calma-descarga, .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-blocks-info-box-link-wrap):hover {
-	transform: translateY(-3px);
-	box-shadow: 0 22px 44px -28px color-mix(in srgb, var(--acento-texto, #1d5f94) 55%, transparent) !important;
-}
 
-/* ---- Iniciales con halo (Equipo y perfil) ---- */
+
+/* ---- Iniciales: fondo del tono y borde fino (sin sombras) ---- */
 .calma-person .calma-avatar,
 .calma-perfil .calma-avatar {
-	background: #fff !important;
+	background: var(--tono) !important;
 	color: var(--acento-texto) !important;
 	border: 1px solid var(--acento);
-	box-shadow: 0 0 0 6px color-mix(in srgb, var(--acento) 22%, transparent), 0 12px 32px -10px var(--acento) !important;
+	box-shadow: none !important;
 	font-family: var(--calma-font-heading);
-	transition: box-shadow 0.6s var(--calma-ease-mente), transform 0.6s var(--calma-ease-mente);
+	transition: border-color 0.5s var(--calma-ease-mente);
 }
 .calma-equipo .calma-person:hover .calma-avatar,
 .calma-equipo .calma-person:focus-within .calma-avatar {
-	box-shadow: 0 0 0 10px color-mix(in srgb, var(--acento) 26%, transparent), 0 16px 44px -8px var(--acento) !important;
+	border-color: var(--acento-texto);
 }
 .calma-person__role,
 .calma-perfil .calma-person__role {
@@ -4888,7 +4886,6 @@ html.calma-quieto .calma-tiempo__anio {
 	fill: #fff;
 	stroke: var(--acento);
 	stroke-width: 2;
-	filter: drop-shadow(0 6px 10px color-mix(in srgb, var(--acento) 70%, transparent));
 	transition: transform 0.5s var(--calma-ease-mente);
 }
 .calma-miradas text {
@@ -4982,7 +4979,7 @@ html.calma-quieto .calma-tiempo__anio {
 }
 .calma-perfil .calma-person__topics li::before {
 	background: var(--acento-texto) !important;
-	box-shadow: 0 0 0 4px color-mix(in srgb, var(--acento) 30%, transparent);
+	box-shadow: none;
 }
 /* Formación: la línea se llena con el scroll y enciende cada punto */
 .calma-formacion {
@@ -5025,16 +5022,16 @@ html.calma-quieto .calma-tiempo__anio {
 	height: 12px;
 	border-radius: 50%;
 	background: var(--acento-texto);
-	box-shadow: 0 0 0 3px #fff, 0 0 12px var(--acento);
+	box-shadow: none;
 }
 .calma-formacion.is-vivo li::before {
 	background: #fff;
-	box-shadow: 0 0 0 3px #fff, inset 0 0 0 2px var(--calma-hairline-strong);
+	box-shadow: none;
 	transition: background-color 0.4s var(--calma-ease-mente), box-shadow 0.4s var(--calma-ease-mente);
 }
 .calma-formacion.is-vivo li.is-encendido::before {
 	background: var(--acento-texto);
-	box-shadow: 0 0 0 3px #fff, 0 0 12px var(--acento);
+	box-shadow: none;
 }
 /* Reseñas */
 .calma-page .calma-quote {
@@ -5083,7 +5080,7 @@ html.calma-quieto .calma-tiempo__anio {
 	transition: transform 0.5s var(--calma-ease-mente), background-color 0.4s;
 }
 .calma-perfil__articulos a:hover {
-	background: color-mix(in srgb, var(--acento) 16%, #fff);
+	background: color-mix(in srgb, var(--acento) 10%, #fff);
 }
 .calma-perfil__articulos a:hover::after {
 	background: #fff;
@@ -5145,7 +5142,6 @@ html.calma-quieto .calma-tiempo__anio {
 	max-width: 170px;
 	margin: var(--calma-space-2) 0 var(--calma-space-3);
 	color: var(--acento-texto);
-	filter: drop-shadow(0 0 6px color-mix(in srgb, var(--acento) 80%, transparent));
 }
 .calma-habito h3 {
 	margin: 0 !important;
@@ -5220,7 +5216,7 @@ html.calma-quieto .calma-tiempo__anio {
 	height: 56px !important;
 	border-radius: 14px;
 	object-fit: cover;
-	box-shadow: 0 10px 24px -14px var(--acento-texto);
+	box-shadow: none;
 	transition: transform 0.6s var(--calma-ease-mente);
 }
 .calma-app__nombre {
@@ -5252,10 +5248,10 @@ html.calma-quieto .calma-tiempo__anio {
 }
 .calma-app__enlace:hover,
 .calma-app__enlace:focus-visible {
-	background: color-mix(in srgb, var(--acento) 20%, #fff);
+	background: color-mix(in srgb, var(--acento) 12%, #fff);
 }
-.calma-app__enlace:hover .calma-app__logo {
-	transform: rotate(-6deg) scale(1.06);
+.calma-app__logo {
+	border: 1px solid rgb(27 34 51 / 0.08);
 }
 .calma-app__enlace:hover .calma-app__ir {
 	background: #fff;
@@ -5281,8 +5277,7 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-descarga__portada {
 	overflow: hidden;
 	border-radius: 10px;
-	box-shadow: 0 0 0 1px rgb(27 34 51 / 0.06), 0 22px 40px -26px rgb(27 34 51 / 0.7);
-	transition: transform 0.8s var(--calma-ease-mente);
+	border: 1px solid rgb(27 34 51 / 0.08);
 }
 .calma-descarga__portada img {
 	display: block;
@@ -5291,8 +5286,11 @@ html.calma-quieto .calma-tiempo__anio {
 	aspect-ratio: 1;
 	object-fit: cover;
 }
-.calma-descarga:hover .calma-descarga__portada {
-	transform: translateY(-4px) scale(1.02);
+.calma-descarga__portada img {
+	transition: transform 1s var(--calma-ease-mente);
+}
+.calma-descarga:hover .calma-descarga__portada img {
+	transform: scale(1.03);
 }
 .calma-descarga__texto {
 	display: flex;
@@ -5329,7 +5327,7 @@ html.calma-quieto .calma-tiempo__anio {
 	padding: 0 !important;
 	background: none !important;
 	border: 0 !important;
-	box-shadow: none !important;
+	box-shadow: none;
 	color: var(--calma-primary) !important;
 	font-weight: 600;
 }
@@ -5360,7 +5358,7 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-test .calma-test__num {
 	background: #fff !important;
 	color: var(--calma-primary) !important;
-	box-shadow: inset 0 0 0 2px #9cc3e3, 0 0 0 5px rgb(156 195 227 / 0.25);
+	border: 1px solid #9cc3e3;
 }
 .calma-test .calma-test__howto {
 	position: relative;
@@ -5385,7 +5383,7 @@ html.calma-quieto .calma-tiempo__anio {
 }
 .calma-test .calma-test__option:hover {
 	border-color: var(--calma-primary) !important;
-	box-shadow: 0 10px 24px -18px var(--calma-primary);
+	box-shadow: none;
 }
 .calma-test .calma-test__option:has(input:checked) {
 	background: #e9f1f8 !important;
@@ -5408,7 +5406,7 @@ html.calma-quieto .calma-tiempo__anio {
 /* "Dato que vale la pena saber" (filas de Kadence debajo del test; página 1941) */
 .page-id-1941 .kb-image1941_94a53c-56 img {
 	border-radius: 16px;
-	box-shadow: 0 30px 60px -36px rgb(27 34 51 / 0.6);
+	box-shadow: none;
 }
 .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .wp-block-kadence-infobox {
 	height: 100%;
@@ -5431,7 +5429,7 @@ html.calma-quieto .calma-tiempo__anio {
 	border: 1px solid var(--acento) !important;
 	border-radius: 50% !important;
 	background: #fff !important;
-	box-shadow: 0 0 0 6px color-mix(in srgb, var(--acento) 22%, transparent), 0 12px 28px -10px var(--acento);
+	box-shadow: none;
 }
 .page-id-1941 .kb-row-layout-id1941_2b6a25-16 .kt-info-svg-icon {
 	color: var(--acento-texto) !important;
@@ -5484,10 +5482,6 @@ html.calma-quieto .calma-tiempo__anio {
 		animation: calma-pulso 1.2s var(--calma-ease-mente) 0.9s;
 	}
 	/* Iniciales: el halo late una vez al entrar */
-	html:not(.calma-quieto) .calma-person.is-vivo .calma-avatar,
-	html:not(.calma-quieto) .calma-perfil .calma-hero .calma-avatar {
-		animation: calma-halo 1.8s var(--calma-ease-mente) 0.3s;
-	}
 	/* Hábitos: los micro-organismos se encienden al entrar */
 	html:not(.calma-quieto) .calma-habito.is-vivo .o-trazo {
 		animation: calma-conectar 1.6s var(--calma-ease-mente) calc(var(--i, 0) * 0.3s) backwards;
@@ -5501,10 +5495,6 @@ html.calma-quieto .calma-tiempo__anio {
 	html:not(.calma-quieto) .calma-habito.is-vivo .o-onda {
 		animation: calma-calmar 2.4s var(--calma-ease-mente);
 	}
-}
-@keyframes calma-halo {
-	from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--acento) 60%, transparent), 0 12px 32px -10px var(--acento); }
-	to { box-shadow: 0 0 0 22px transparent, 0 12px 32px -10px var(--acento); }
 }
 @keyframes calma-calmar {
 	from { transform: scaleY(2.2); }

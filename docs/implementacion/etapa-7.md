@@ -213,4 +213,5 @@ Se eligió en la exploración de estilo (`exploracion/`, capturas en `docs/disen
 - **Apps:** directorio en filas (logo, nombre, descripción, flecha); el nombre del grupo queda fijo a la izquierda mientras se recorre la lista.
 - **Scroll:** las tarjetas que están más abajo suben al entrar, una tras otra. Las que ya se ven al cargar no se animan, y sin JavaScript todo está visible.
 - Sin cambios en WordPress respecto de los Pasos 3f y 3g: todo lo hace el plugin (CSS y JS). Solo cambió el bloque de Herramientas (apps en filas) y el de Descargas (etiqueta PDF); hay que usar la versión actual de `contenido/etapa-7/bloques/`.
+- **Ajuste "más sutil":** sin sombras ni halos en ninguna parte (tarjetas, iniciales, logos, portadas, figura de Equipo, test). Las tarjetas ya no suben al pasar el puntero; la luz que sigue al puntero y el borde iluminado son más tenues; las iniciales van sobre el tono de cada persona con un borde fino; en las portadas, solo la imagen se acerca apenas dentro de su marco.
 
