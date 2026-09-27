@@ -535,7 +535,7 @@
 	}
 
 	function prepararFiguras() {
-		var figuras = document.querySelectorAll( '.calma-cifra, .calma-estado, .calma-person, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta, .calma-dato__imagen, .calma-paso-calma, .calma-historia__paso' );
+		var figuras = document.querySelectorAll( '.calma-cifra, .calma-estado, .calma-person, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta, .calma-dato__imagen, .calma-paso-calma' );
 		if ( ! figuras.length ) {
 			return;
 		}
@@ -555,7 +555,7 @@
 				io.observe( f );
 			} );
 		}
-		document.querySelectorAll( '.calma-estado, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta, .calma-paso-calma, .calma-historia__paso, .calma-person' ).forEach( function ( f ) {
+		document.querySelectorAll( '.calma-estado, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta, .calma-paso-calma, .calma-person' ).forEach( function ( f ) {
 			var ultimo = 0;
 			function otraVez() {
 				var ahora = Date.now();
@@ -1398,41 +1398,30 @@
 	   test, sin tocar su lógica: se encienden las preguntas ya respondidas y
 	   late la actual; al ver el resultado, se encienden todas.
 	   ------------------------------------------------------------------------ */
-	/* Bienestar digital: la intersección como recorrido con scroll. La figura
-	   queda fija y muestra el paso que se está leyendo (1, 2, 3: cada área;
-	   4: los tres círculos se juntan). Sin JS o con movimiento reducido se ve
-	   directamente el paso 4 (todo visible). No toma el control del scroll. */
+	/* Bienestar digital: la figura de la cabecera se arma sola una vez al
+	   cargar (cada área y después los tres círculos juntos, en menos de 4 s).
+	   Sin JS o con movimiento reducido se ve directamente completa. Al pasar
+	   por la tarjeta de un área, la figura destaca su círculo. */
 	function prepararVenn() {
 		var venn = document.querySelector( '[data-calma-venn]' );
-		var pasos = Array.prototype.slice.call( document.querySelectorAll( '.calma-historia__paso[data-paso]' ) );
-		if ( ! venn || ! pasos.length || ! ( 'IntersectionObserver' in window ) ) {
+		if ( ! venn ) {
 			return;
 		}
-		function poner( n ) {
-			venn.setAttribute( 'data-paso', quieto() ? '4' : n );
-			pasos.forEach( function ( p ) {
-				p.classList.toggle( 'is-activo', p.getAttribute( 'data-paso' ) === n );
+		if ( ! quieto() ) {
+			venn.setAttribute( 'data-paso', '1' );
+			[ [ '2', 900 ], [ '3', 1800 ], [ '4', 2800 ] ].forEach( function ( p ) {
+				setTimeout( function () {
+					venn.setAttribute( 'data-paso', p[ 0 ] );
+				}, p[ 1 ] );
 			} );
 		}
-		var actual = '4';
-		var io = new IntersectionObserver( function ( entradas ) {
-			entradas.forEach( function ( e ) {
-				if ( e.isIntersecting ) {
-					actual = e.target.getAttribute( 'data-paso' );
-					poner( actual );
-				}
+		document.querySelectorAll( '.calma-area[data-area]' ).forEach( function ( t ) {
+			t.addEventListener( 'mouseenter', function () {
+				venn.setAttribute( 'data-activa', t.getAttribute( 'data-area' ) );
 			} );
-		}, { rootMargin: window.innerWidth < 900 ? '-58% 0px -32% 0px' : '-45% 0px -45% 0px' } );
-		pasos.forEach( function ( p ) {
-			io.observe( p );
-		} );
-		// Antes de llegar al primer paso, la figura empieza en el paso 1.
-		if ( pasos[ 0 ].getBoundingClientRect().top > window.innerHeight * 0.55 ) {
-			actual = '1';
-		}
-		poner( actual );
-		raiz.addEventListener( 'calma-quieto', function () {
-			poner( actual );
+			t.addEventListener( 'mouseleave', function () {
+				venn.removeAttribute( 'data-activa' );
+			} );
 		} );
 	}
 

@@ -5788,84 +5788,7 @@ html.calma-quieto .calma-tiempo__anio {
 	color: var(--calma-ink-soft);
 }
 
-/* ---- Bienestar digital: la intersección como recorrido con scroll ---- */
-.calma-bienestar__hero {
-	text-align: center;
-}
-.calma-bienestar__hero h1,
-.calma-bienestar__hero .calma-hero__lead {
-	margin-inline: auto !important;
-	max-width: 22ch;
-}
-.calma-bienestar__hero .calma-hero__lead {
-	max-width: 46ch;
-}
-.calma-bienestar__interseccion {
-	max-width: 760px;
-	margin: 0 auto var(--calma-space-8);
-	text-align: center;
-}
-.calma-bienestar__interseccion h2 {
-	margin-bottom: var(--calma-space-5) !important;
-	font-size: var(--calma-fs-2xl);
-}
-.calma-bienestar__interseccion h2::before {
-	content: "";
-	display: block;
-	width: 72px;
-	height: 2px;
-	margin: 0 auto var(--calma-space-5);
-	background: linear-gradient(90deg, var(--calma-teal), rgb(15 107 107 / 0));
-}
-.calma-bienestar .calma-resumen {
-	max-width: none;
-	margin: 0 !important;
-	text-align: left;
-	background: #fff !important;
-	border: 1px solid rgb(27 34 51 / 0.09) !important;
-	border-left: 3px solid #9cc3e3 !important;
-	border-radius: 12px !important;
-}
-.calma-historia__cuerpo {
-	display: grid;
-	gap: var(--calma-space-6);
-}
-@media (min-width: 900px) {
-	.calma-historia__cuerpo {
-		grid-template-columns: 1.05fr 0.95fr;
-		gap: var(--calma-space-12, 64px);
-		align-items: start;
-	}
-	.calma-historia__figura {
-		position: sticky;
-		top: calc(50vh - 250px);
-	}
-}
-@media (max-width: 899px) {
-	/* En el celular la figura queda arriba, fija y más chica, mientras pasan los textos */
-	.calma-historia__figura {
-		position: sticky;
-		top: 64px;
-		z-index: 2;
-		padding: var(--calma-space-2) 0;
-		background: linear-gradient(180deg, var(--calma-paper) 82%, rgb(250 248 244 / 0));
-	}
-	.calma-historia__figura svg {
-		max-width: 200px !important;
-	}
-	.calma-historia__pasos {
-		padding-top: 12vh !important;
-	}
-	.calma-venn__nombre {
-		font-size: 26px;
-	}
-	.calma-venn__centro text {
-		font-size: 20px;
-	}
-	.calma-venn__centro rect {
-		transform: scale(1.18);
-	}
-}
+/* ---- Bienestar digital ---- */
 .calma-venn {
 	margin: 0;
 	display: flex;
@@ -5873,7 +5796,7 @@ html.calma-quieto .calma-tiempo__anio {
 }
 .calma-venn svg {
 	width: 100%;
-	max-width: 500px;
+	max-width: 460px;
 	height: auto;
 	overflow: visible;
 }
@@ -5882,80 +5805,62 @@ html.calma-quieto .calma-tiempo__anio {
 	stroke: var(--calma-hairline-strong);
 	stroke-dasharray: 2 7;
 }
+/* Estados de la figura: 1, 2, 3 = cada área; 4 = los tres círculos juntos (estado final, también sin JS) */
 .calma-venn__area {
 	transform: translate(var(--sx), var(--sy));
-	transition: transform 1.2s var(--calma-ease-mente), opacity 0.8s var(--calma-ease-mente);
+	transition: transform 1.1s var(--calma-ease-mente), opacity 0.7s var(--calma-ease-mente);
 }
 .calma-venn[data-paso="4"] .calma-venn__area {
 	transform: translate(var(--jx), var(--jy));
 }
 .calma-venn[data-paso="1"] :is(.calma-venn__area--ciberseguridad, .calma-venn__area--humano),
 .calma-venn[data-paso="2"] .calma-venn__area--humano {
-	opacity: 0.14;
+	opacity: 0;
 }
 .calma-venn__circulo {
 	fill: var(--acento);
-	fill-opacity: 0.32;
+	fill-opacity: 0.36;
 	stroke: var(--acento);
 	stroke-width: 1.5;
 	mix-blend-mode: multiply;
-	transition: fill-opacity 0.8s var(--calma-ease-mente), stroke-width 0.4s;
+	transition: fill-opacity 0.6s var(--calma-ease-mente), stroke-width 0.4s, opacity 0.4s;
 }
-.calma-venn[data-paso="1"] .calma-venn__area--ciberpsicologia .calma-venn__circulo,
-.calma-venn[data-paso="2"] .calma-venn__area--ciberseguridad .calma-venn__circulo,
-.calma-venn[data-paso="3"] .calma-venn__area--humano .calma-venn__circulo {
-	fill-opacity: 0.45;
-	stroke: var(--texto);
-}
-.calma-venn[data-paso="4"] .calma-venn__circulo {
-	fill-opacity: 0.4;
-}
-.calma-venn__icono,
-.calma-historia__icono {
+.calma-venn__icono {
 	fill: none;
-	stroke: var(--texto, var(--acento-texto));
+	stroke: var(--texto);
 	stroke-width: 2.4;
 	stroke-linecap: round;
 	stroke-linejoin: round;
-}
-.calma-venn__icono .o-lleno,
-.calma-historia__icono .o-lleno {
-	fill: currentColor;
-	stroke: none;
-}
-.calma-venn__icono {
 	color: var(--texto);
 	transition: opacity 0.6s var(--calma-ease-mente);
 }
+.calma-venn__icono .o-lleno {
+	fill: currentColor;
+	stroke: none;
+}
 .calma-venn[data-paso="4"] .calma-venn__icono {
-	opacity: 0.35;
+	opacity: 0.4;
 }
 .calma-venn__icono *,
-.calma-historia__icono * {
-	transform-box: fill-box;
-	transform-origin: center;
-}
-.calma-venn__icono .o-arco,
-.calma-historia__icono .o-arco {
-	transform-origin: 50% 100%;
-}
-.calma-venn__nombre {
-	fill: var(--texto);
-	font: 600 19px/1 var(--calma-font-body);
-	transition: transform 1.2s var(--calma-ease-mente);
-}
-/* Al juntarse, los nombres salen hacia afuera para no pisarse */
-.calma-venn[data-paso="4"] .calma-venn__area--ciberpsicologia .calma-venn__nombre { transform: translate(-34px, -70px); }
-.calma-venn[data-paso="4"] .calma-venn__area--ciberseguridad .calma-venn__nombre { transform: translate(34px, -70px); }
-.calma-venn[data-paso="4"] .calma-venn__area--humano .calma-venn__nombre { transform: translate(0, 66px); }
 .calma-venn__circulo,
 .calma-venn__centro * {
 	transform-box: fill-box;
 	transform-origin: center;
 }
+.calma-venn__icono .o-arco {
+	transform-origin: 50% 100%;
+}
+.calma-venn__nombre {
+	fill: var(--texto);
+	font: 600 19px/1 var(--calma-font-body);
+	transition: transform 1.1s var(--calma-ease-mente), opacity 0.4s;
+}
+.calma-venn[data-paso="4"] .calma-venn__area--ciberpsicologia .calma-venn__nombre { transform: translate(-72px, -70px); }
+.calma-venn[data-paso="4"] .calma-venn__area--ciberseguridad .calma-venn__nombre { transform: translate(72px, -70px); }
+.calma-venn[data-paso="4"] .calma-venn__area--humano .calma-venn__nombre { transform: translate(0, 66px); }
 .calma-venn__centro {
 	opacity: 0;
-	transition: opacity 0.8s var(--calma-ease-mente) 0.5s;
+	transition: opacity 0.7s var(--calma-ease-mente) 0.5s;
 }
 .calma-venn[data-paso="4"] .calma-venn__centro {
 	opacity: 1;
@@ -5977,63 +5882,53 @@ html.calma-quieto .calma-tiempo__anio {
 	fill: var(--calma-teal);
 	font: 600 16px/1 var(--calma-font-body);
 }
-.calma-historia__pasos {
-	list-style: none !important;
+/* Al pasar por la tarjeta de un área, la figura destaca su círculo (conectar) */
+.calma-venn[data-activa] :is(.calma-venn__circulo, .calma-venn__nombre, .calma-venn__icono) {
+	opacity: 0.3;
+}
+.calma-venn[data-activa="ciberpsicologia"] .calma-venn__area--ciberpsicologia :is(.calma-venn__circulo, .calma-venn__nombre, .calma-venn__icono),
+.calma-venn[data-activa="ciberseguridad"] .calma-venn__area--ciberseguridad :is(.calma-venn__circulo, .calma-venn__nombre, .calma-venn__icono),
+.calma-venn[data-activa="humano"] .calma-venn__area--humano :is(.calma-venn__circulo, .calma-venn__nombre, .calma-venn__icono) {
+	opacity: 1;
+}
+.calma-venn[data-activa="ciberpsicologia"] .calma-venn__area--ciberpsicologia .calma-venn__circulo,
+.calma-venn[data-activa="ciberseguridad"] .calma-venn__area--ciberseguridad .calma-venn__circulo,
+.calma-venn[data-activa="humano"] .calma-venn__area--humano .calma-venn__circulo {
+	stroke-width: 2.5;
+	fill-opacity: 0.5;
+}
+/* La intersección: definición y resumen, después las tres áreas */
+.calma-bienestar__interseccion {
+	max-width: 760px;
+	margin: 0 auto var(--calma-space-8);
+}
+.calma-bienestar .calma-definicion {
+	margin: 0 0 var(--calma-space-5) !important;
+	text-align: center;
+	font-family: var(--calma-font-heading);
+	font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.625rem);
+	line-height: 1.35;
+}
+.calma-bienestar .calma-definicion strong {
+	font-weight: 500;
+}
+.calma-bienestar .calma-resumen {
+	max-width: none;
 	margin: 0 !important;
-	padding: 0 !important;
-	display: grid;
-	gap: var(--calma-space-5);
+	background: #fff !important;
+	border: 1px solid rgb(27 34 51 / 0.09) !important;
+	border-left: 3px solid #9cc3e3 !important;
+	border-radius: 12px !important;
 }
-@media (min-width: 900px) {
-	.calma-historia__pasos {
-		gap: 0;
-		padding: 18vh 0 22vh !important;
-	}
-	.calma-historia__paso {
-		margin: 0 0 34vh !important;
-	}
-	.calma-historia__paso:last-child {
-		margin-bottom: 0 !important;
-	}
-}
-@media (max-width: 899px) {
-	.calma-historia__paso {
-		margin: 0 0 20vh !important;
-	}
-}
-.calma-historia__paso.calma-area {
-	display: flex;
-	flex-direction: column;
-	gap: var(--calma-space-3);
-	padding: var(--calma-space-6) !important;
-}
-.calma-historia__paso.is-activo {
-	border-color: var(--acento) !important;
-}
-.calma-historia__icono {
-	width: 56px;
-	height: 56px;
-	padding: 6px;
-	border-radius: 50%;
-	background: var(--tono);
-	border: 1px solid color-mix(in srgb, var(--acento) 70%, transparent);
-	overflow: visible;
-	stroke-width: 3;
-}
-.calma-area h3 {
-	margin: var(--calma-space-2) 0 0 !important;
-	font-size: var(--calma-fs-lg);
-}
-.calma-area > p {
-	margin: 0 !important;
-	color: var(--calma-ink-soft);
+.calma-habitos--4 {
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)) !important;
 }
 .calma-area__temas {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 6px;
-	margin: var(--calma-space-2) 0 0 !important;
-	padding: 0 !important;
+	margin: auto 0 0 !important;
+	padding: var(--calma-space-2) 0 0 !important;
 	list-style: none !important;
 }
 .calma-area__temas li {
@@ -6049,69 +5944,12 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-area__temas li::before {
 	content: none !important;
 }
-.calma-historia__final {
-	padding: var(--calma-space-6) 0 !important;
-}
-.calma-historia__final .calma-definicion {
-	margin: 0 !important;
-	font-family: var(--calma-font-heading);
-	font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
-	line-height: 1.3;
-}
-.calma-historia__final .calma-definicion strong {
-	font-weight: 500;
-	background: linear-gradient(transparent 62%, rgb(15 107 107 / 0.14) 62%);
-}
-/* Primeros pasos hacia la calma */
-.calma-pasos-calma {
-	list-style: none !important;
-	margin: 0 !important;
-	padding: 0 !important;
-	display: grid;
-	gap: var(--calma-space-4);
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
-}
-.calma-paso-calma {
-	display: grid !important;
-	grid-template-columns: 1fr auto;
-	grid-template-areas: "num fig" "titulo fig" "texto texto";
-	align-items: start;
-	gap: var(--calma-space-3);
-	margin: 0 !important;
-	padding: var(--calma-space-6) !important;
-}
-.calma-paso-calma h3 {
-	grid-area: titulo;
-	margin: var(--calma-space-2) 0 0 !important;
-	font-size: var(--calma-fs-lg);
-}
-.calma-paso-calma > p {
-	grid-area: texto;
-	margin: 0 !important;
-	color: var(--calma-ink-soft);
-}
-.calma-paso-calma__num {
-	grid-area: num;
-	font: 500 0.875rem/1 var(--calma-font-body);
-	letter-spacing: 0.08em;
-	color: var(--acento-texto);
-}
-.calma-paso-calma .calma-org {
-	grid-area: fig;
-	width: 140px;
-	color: var(--acento-texto);
-	stroke-width: 1.4;
-}
 .calma-org .o-arco {
 	transform-origin: 50% 100%;
 }
 @media (max-width: 599px) {
-	.calma-paso-calma {
-		grid-template-columns: 1fr;
-		grid-template-areas: "fig" "num" "titulo" "texto";
-	}
-	.calma-paso-calma .calma-org {
-		width: 120px;
+	.calma-venn__nombre {
+		font-size: 22px;
 	}
 }
 
@@ -6160,6 +5998,12 @@ html.calma-quieto .calma-tiempo__anio {
 	}
 	html:not(.calma-quieto) .calma-habito.is-vivo .o-nucleo {
 		animation: calma-latido 1s var(--calma-ease-mente) 3;
+	}
+	html:not(.calma-quieto) .calma-habito.is-vivo .o-punto {
+		animation: calma-agrupar-suave 1.4s var(--calma-ease-mente) calc(var(--i) * 0.08s) backwards;
+	}
+	html:not(.calma-quieto) .calma-habito.is-vivo .o-arco {
+		animation: calma-cerrar 0.8s var(--calma-ease-mente) 0.9s backwards;
 	}
 	html:not(.calma-quieto) .calma-habito.is-vivo .o-onda {
 		animation: calma-calmar 2.4s var(--calma-ease-mente);
@@ -6232,30 +6076,19 @@ html.calma-quieto .calma-tiempo__anio {
 	from { transform: translateY(-12px); }
 }
 @media (prefers-reduced-motion: no-preference) {
-	/* Bienestar: cada área se enciende al llegar a su paso; en el último, los círculos se juntan */
-	html:not(.calma-quieto) .calma-venn[data-paso="1"] .calma-venn__area--ciberpsicologia .o-onda-viva,
-	html:not(.calma-quieto) .calma-historia__paso.is-vivo .o-onda-viva {
-		animation: calma-onda-viva 1.1s var(--calma-ease-mente) 2;
+	/* Bienestar: al cargar, la figura se arma sola (cada área con su ícono y luego los tres juntos) */
+	html:not(.calma-quieto) .calma-venn[data-paso="1"] .calma-venn__area--ciberpsicologia .o-onda-viva {
+		animation: calma-onda-viva 0.9s var(--calma-ease-mente);
 	}
-	html:not(.calma-quieto) .calma-venn[data-paso="2"] .calma-venn__area--ciberseguridad .o-arco,
-	html:not(.calma-quieto) .calma-historia__paso.is-vivo .o-arco {
-		animation: calma-cerrar 0.8s var(--calma-ease-mente) 0.3s backwards;
+	html:not(.calma-quieto) .calma-venn[data-paso="2"] .calma-venn__area--ciberseguridad .o-arco {
+		animation: calma-cerrar 0.7s var(--calma-ease-mente) 0.2s backwards;
 	}
-	html:not(.calma-quieto) .calma-venn[data-paso="3"] .calma-venn__area--humano .o-trazo,
-	html:not(.calma-quieto) .calma-historia__paso.is-vivo .o-trazo {
+	html:not(.calma-quieto) .calma-venn[data-paso="3"] .calma-venn__area--humano .o-trazo {
 		stroke-dasharray: 1;
-		animation: calma-conectar 1.4s var(--calma-ease-mente) 0.2s backwards;
-	}
-	html:not(.calma-quieto) .calma-venn[data-paso="1"] .calma-venn__area--ciberpsicologia .calma-venn__circulo,
-	html:not(.calma-quieto) .calma-venn[data-paso="2"] .calma-venn__area--ciberseguridad .calma-venn__circulo,
-	html:not(.calma-quieto) .calma-venn[data-paso="3"] .calma-venn__area--humano .calma-venn__circulo {
-		animation: calma-latido-suave 1.2s var(--calma-ease-mente);
+		animation: calma-conectar 1s var(--calma-ease-mente) backwards;
 	}
 	html:not(.calma-quieto) .calma-venn[data-paso="4"] .calma-venn__halo {
-		animation: calma-pulso 1.6s var(--calma-ease-mente) 1s 2 backwards;
-	}
-	html:not(.calma-quieto) .calma-venn[data-paso="4"] .calma-venn__nucleo {
-		animation: calma-latido 0.9s var(--calma-ease-mente) 1s 2;
+		animation: calma-pulso 1.4s var(--calma-ease-mente) 0.9s backwards;
 	}
 	html:not(.calma-quieto) .calma-paso-calma.is-vivo .o-trazo {
 		animation: calma-conectar 1.6s var(--calma-ease-mente) 0.3s backwards;
@@ -6618,24 +6451,22 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
      Un solo bloque "HTML personalizado", ancho completo, sin caja ni título de Kadence. Mismo texto; la infografía pasa a figura dibujada.
      Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
 <div class="calma-page calma-recursos calma-bienestar">
-<section class="calma-hero calma-bienestar__hero" aria-labelledby="bienestar-h1"><div class="calma-hero__inner"><div>
+<section class="calma-hero" aria-labelledby="bienestar-h1"><div class="calma-hero__inner calma-hero__inner--media"><div>
 <h1 id="bienestar-h1">Bienestar <em>Digital</em></h1>
 <p class="calma-hero__lead">La intersección entre ciberpsicología, ciberseguridad y bienestar humano.</p>
-</div></div></section>
-<section class="calma-section calma-historia" aria-labelledby="interseccion-h2"><div class="calma-container">
+</div><figure class="calma-venn" data-calma-venn data-paso="4"><svg viewBox="0 0 480 480" width="480" height="480" role="img" aria-labelledby="venn-titulo venn-desc"><title id="venn-titulo">Las tres áreas del bienestar digital</title><desc id="venn-desc">Tres círculos que se cruzan: ciberpsicología (comportamiento, patrones digitales y relaciones), ciberseguridad (privacidad, protección de datos y autonomía) y bienestar humano (calidad de vida, salud mental y presencia real). En la intersección de los tres está el bienestar digital.</desc><circle class="calma-venn__orbita" cx="240" cy="245" r="200"/><circle class="calma-venn__orbita" cx="240" cy="245" r="150"/><g class="calma-venn__area calma-venn__area--ciberpsicologia" data-area="ciberpsicologia" style="--acento:#bdb0ee;--texto:#5b3fb8;--sx:150px;--sy:195px;--jx:197px;--jy:215px;--i:0"><circle class="calma-venn__circulo" r="112"/><g class="calma-venn__icono"><circle cx="-22" cy="0" r="6"/><circle cx="22" cy="0" r="6"/><path class="o-onda-viva" d="M-16 0c4-10 7-10 10.7 0s6.6 10 10.6 0 7-10 10.7 0"/></g><text class="calma-venn__nombre" y="-62" text-anchor="middle">Ciberpsicología</text></g><g class="calma-venn__area calma-venn__area--ciberseguridad" data-area="ciberseguridad" style="--acento:#9cc3e3;--texto:#1d5f94;--sx:330px;--sy:195px;--jx:283px;--jy:215px;--i:1"><circle class="calma-venn__circulo" r="112"/><g class="calma-venn__icono"><path class="o-arco" d="M-11 -2v-8a11 11 0 0 1 22 0v8"/><rect x="-17" y="-2" width="34" height="26" rx="5"/><circle class="o-lleno" cx="0" cy="10" r="3"/></g><text class="calma-venn__nombre" y="-62" text-anchor="middle">Ciberseguridad</text></g><g class="calma-venn__area calma-venn__area--humano" data-area="humano" style="--acento:#9fd0c0;--texto:#1f6b47;--sx:240px;--sy:350px;--jx:240px;--jy:290px;--i:2"><circle class="calma-venn__circulo" r="112"/><g class="calma-venn__icono"><path class="o-trazo" pathLength="1" d="M-16 20C-16 -4 -2 -18 20 -18c0 22-14 38-36 38Z"/><path class="o-trazo" pathLength="1" d="M-16 20 8 -4"/></g><text class="calma-venn__nombre" y="70" text-anchor="middle">Bienestar humano</text></g><g class="calma-venn__centro"><circle class="calma-venn__halo" cx="240" cy="240" r="34"/><circle class="calma-venn__nucleo" cx="240" cy="240" r="14"/><rect x="156" y="262" width="168" height="40" rx="20"/><text x="240" y="288" text-anchor="middle">Bienestar digital</text></g></svg></figure></div></section>
+<section class="calma-section" aria-labelledby="interseccion-h2"><div class="calma-container">
+<div class="calma-section__head"><h2 id="interseccion-h2">La <em>intersección</em></h2></div>
 <div class="calma-bienestar__interseccion">
-<h2 id="interseccion-h2">La intersección</h2>
+<p class="calma-definicion"><strong>El bienestar digital es usar la tecnología con intención: entender cómo funcionas con ella, proteger tu privacidad y decidir de forma consciente qué lugar quieres que ocupe en tu vida.</strong></p>
 <aside class="calma-resumen" aria-label="En resumen"><p><strong>En resumen:</strong> en la práctica, significa saber por qué estás en cada plataforma, reconocer su costo real y decidir si vale la pena. Se apoya en tres áreas: la <a href="/Calma/vista-previa/ciberpsicologia/">ciberpsicología</a>, que estudia cómo la tecnología influye en tu comportamiento, tus emociones y tus vínculos; la ciberseguridad, que cuida tu privacidad y tus datos; y el bienestar humano, que es el objetivo final.</p></aside>
 </div>
-<div class="calma-historia__cuerpo">
-<div class="calma-historia__figura"><figure class="calma-venn" data-calma-venn data-paso="4"><svg viewBox="0 0 480 480" width="480" height="480" role="img" aria-labelledby="venn-titulo venn-desc"><title id="venn-titulo">Las tres áreas del bienestar digital</title><desc id="venn-desc">Tres círculos que se cruzan: ciberpsicología (comportamiento, patrones digitales y relaciones), ciberseguridad (privacidad, protección de datos y autonomía) y bienestar humano (calidad de vida, salud mental y presencia real). En la intersección de los tres está el bienestar digital.</desc><circle class="calma-venn__orbita" cx="240" cy="245" r="200"/><circle class="calma-venn__orbita" cx="240" cy="245" r="150"/><g class="calma-venn__area calma-venn__area--ciberpsicologia" data-area="ciberpsicologia" style="--acento:#bdb0ee;--texto:#5b3fb8;--sx:150px;--sy:195px;--jx:197px;--jy:215px;--i:0"><circle class="calma-venn__circulo" r="112"/><g class="calma-venn__icono"><circle cx="-22" cy="0" r="6"/><circle cx="22" cy="0" r="6"/><path class="o-onda-viva" d="M-16 0c4-10 7-10 10.7 0s6.6 10 10.6 0 7-10 10.7 0"/></g><text class="calma-venn__nombre" y="-62" text-anchor="middle">Ciberpsicología</text></g><g class="calma-venn__area calma-venn__area--ciberseguridad" data-area="ciberseguridad" style="--acento:#9cc3e3;--texto:#1d5f94;--sx:330px;--sy:195px;--jx:283px;--jy:215px;--i:1"><circle class="calma-venn__circulo" r="112"/><g class="calma-venn__icono"><path class="o-arco" d="M-11 -2v-8a11 11 0 0 1 22 0v8"/><rect x="-17" y="-2" width="34" height="26" rx="5"/><circle class="o-lleno" cx="0" cy="10" r="3"/></g><text class="calma-venn__nombre" y="-62" text-anchor="middle">Ciberseguridad</text></g><g class="calma-venn__area calma-venn__area--humano" data-area="humano" style="--acento:#9fd0c0;--texto:#1f6b47;--sx:240px;--sy:350px;--jx:240px;--jy:290px;--i:2"><circle class="calma-venn__circulo" r="112"/><g class="calma-venn__icono"><path class="o-trazo" pathLength="1" d="M-16 20C-16 -4 -2 -18 20 -18c0 22-14 38-36 38Z"/><path class="o-trazo" pathLength="1" d="M-16 20 8 -4"/></g><text class="calma-venn__nombre" y="70" text-anchor="middle">Bienestar humano</text></g><g class="calma-venn__centro"><circle class="calma-venn__halo" cx="240" cy="240" r="34"/><circle class="calma-venn__nucleo" cx="240" cy="240" r="14"/><rect x="156" y="262" width="168" height="40" rx="20"/><text x="240" y="288" text-anchor="middle">Bienestar digital</text></g></svg></figure></div>
-<ol class="calma-historia__pasos"><li class="calma-historia__paso calma-area calma-tono--ia" data-area="ciberpsicologia" data-paso="1" style="--i:0"><svg class="calma-historia__icono" viewBox="-32 -32 64 64" width="56" height="56" aria-hidden="true" focusable="false"><circle cx="-22" cy="0" r="6"/><circle cx="22" cy="0" r="6"/><path class="o-onda-viva" d="M-16 0c4-10 7-10 10.7 0s6.6 10 10.6 0 7-10 10.7 0"/></svg><h3>Ciberpsicología</h3><p>Estudia cómo la tecnología impacta tu comportamiento, tus emociones y tus vínculos. Entiende tus patrones reales.</p><ul class="calma-area__temas" aria-label="Temas de ciberpsicología"><li>Comportamiento</li><li>Patrones digitales</li><li>Relaciones</li></ul></li><li class="calma-historia__paso calma-area calma-tono--neurociencia" data-area="ciberseguridad" data-paso="2" style="--i:1"><svg class="calma-historia__icono" viewBox="-32 -32 64 64" width="56" height="56" aria-hidden="true" focusable="false"><path class="o-arco" d="M-11 -2v-8a11 11 0 0 1 22 0v8"/><rect x="-17" y="-2" width="34" height="26" rx="5"/><circle class="o-lleno" cx="0" cy="10" r="3"/></svg><h3>Ciberseguridad</h3><p>Aprender a proteger tu privacidad, tus datos y tu autonomía en el ciberespacio. Comprender cómo se usan tus datos y elegir estar de acuerdo o no.</p><ul class="calma-area__temas" aria-label="Temas de ciberseguridad"><li>Privacidad</li><li>Protección de datos</li><li>Autonomía</li></ul></li><li class="calma-historia__paso calma-area calma-tono--bienestar" data-area="humano" data-paso="3" style="--i:2"><svg class="calma-historia__icono" viewBox="-32 -32 64 64" width="56" height="56" aria-hidden="true" focusable="false"><path class="o-trazo" pathLength="1" d="M-16 20C-16 -4 -2 -18 20 -18c0 22-14 38-36 38Z"/><path class="o-trazo" pathLength="1" d="M-16 20 8 -4"/></svg><h3>Bienestar Humano</h3><p>El objetivo final: quizás, una vida donde la tecnología sirve a nuestras necesidades reales.</p><ul class="calma-area__temas" aria-label="Temas de bienestar humano"><li>Calidad de vida</li><li>Salud mental</li><li>Presencia real</li></ul></li><li class="calma-historia__paso calma-historia__final" data-paso="4"><p class="calma-definicion"><strong>El bienestar digital es usar la tecnología con intención: entender cómo funcionas con ella, proteger tu privacidad y decidir de forma consciente qué lugar quieres que ocupe en tu vida.</strong></p></li></ol>
-</div>
+<ul class="calma-habitos"><li class="calma-habito calma-area calma-tono--ia" data-area="ciberpsicologia" style="--i:0"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-punto" style="--i:0" cx="30" cy="22" r="2.4"/><circle class="o-punto" style="--i:1" cx="130" cy="22" r="2.4"/><circle class="o-punto" style="--i:2" cx="22" cy="78" r="2.4"/><circle class="o-punto" style="--i:3" cx="138" cy="78" r="2.4"/><circle cx="42" cy="50" r="10"/><circle cx="118" cy="50" r="10"/><path class="o-onda" d="M53 50c5-14 9-14 13 0s8 14 13 0 8-14 13 0 6 12 15 0"/></svg><h3>Ciberpsicología</h3><p>Estudia cómo la tecnología impacta tu comportamiento, tus emociones y tus vínculos. Entiende tus patrones reales.</p><ul class="calma-area__temas" aria-label="Temas de ciberpsicología"><li>Comportamiento</li><li>Patrones digitales</li><li>Relaciones</li></ul></li><li class="calma-habito calma-area calma-tono--neurociencia" data-area="ciberseguridad" style="--i:1"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><path class="o-trazo" pathLength="1" d="M80 12 110 24v24c0 20-13 32-30 40-17-8-30-20-30-40V24Z"/><path class="o-trazo" pathLength="1" style="--i:2" d="M68 50l9 9 17-19"/></svg><h3>Ciberseguridad</h3><p>Aprender a proteger tu privacidad, tus datos y tu autonomía en el ciberespacio. Comprender cómo se usan tus datos y elegir estar de acuerdo o no.</p><ul class="calma-area__temas" aria-label="Temas de ciberseguridad"><li>Privacidad</li><li>Protección de datos</li><li>Autonomía</li></ul></li><li class="calma-habito calma-area calma-tono--bienestar" data-area="humano" style="--i:2"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><path class="o-trazo" pathLength="1" d="M52 84C52 50 72 22 112 18c0 40-24 66-60 66Z"/><path class="o-trazo" pathLength="1" style="--i:1" d="M52 84 92 42"/><circle class="o-nucleo" cx="52" cy="84" r="4"/></svg><h3>Bienestar Humano</h3><p>El objetivo final: quizás, una vida donde la tecnología sirve a nuestras necesidades reales.</p><ul class="calma-area__temas" aria-label="Temas de bienestar humano"><li>Calidad de vida</li><li>Salud mental</li><li>Presencia real</li></ul></li></ul>
 </div></section>
 <section class="calma-section" aria-labelledby="pasos-h2"><div class="calma-container">
 <div class="calma-section__head"><h2 id="pasos-h2">Primeros pasos hacia la <em>calma</em></h2>
 <p>Cómo comenzar a construir una relación más consciente con la tecnología</p></div>
-<ol class="calma-pasos-calma"><li class="calma-paso-calma calma-tono--neurociencia" style="--i:0"><span class="calma-paso-calma__num" aria-hidden="true">01</span><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><path class="o-trazo" pathLength="1" d="M80 12 A38 38 0 1 1 79.9 12"/><rect x="66" y="28" width="28" height="44" rx="6"/><path d="M76 43v14M84 43v14" stroke-width="2.2"/></svg><h3>Tiempo de pantalla consciente</h3><p>Establecer límites y pausas en el uso de dispositivos ayuda a mantener un equilibrio saludable entre la vida digital y la presencial.</p></li><li class="calma-paso-calma calma-tono--tecnologia" style="--i:1"><span class="calma-paso-calma__num" aria-hidden="true">02</span><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-punto" style="--i:0" cx="28" cy="30" r="2.6"/><circle class="o-punto" style="--i:1" cx="40" cy="70" r="2.6"/><circle class="o-punto" style="--i:2" cx="122" cy="26" r="2.6"/><circle class="o-punto" style="--i:3" cx="134" cy="64" r="2.6"/><circle class="o-punto" style="--i:4" cx="22" cy="52" r="2.6"/><circle class="o-punto" style="--i:5" cx="140" cy="44" r="2.6"/><path class="o-arco" d="M70 50v-8a10 10 0 0 1 20 0v8"/><rect x="64" y="50" width="32" height="26" rx="5"/><circle class="o-nucleo" cx="80" cy="62" r="3"/></svg><h3>Seguridad y privacidad</h3><p>Proteger tus datos y manejar permisos de aplicaciones garantiza una experiencia digital segura y confiable.</p></li><li class="calma-paso-calma calma-tono--bienestar" style="--i:2"><span class="calma-paso-calma__num" aria-hidden="true">03</span><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-anillo" style="--i:0" cx="80" cy="50" r="14"/><circle class="o-anillo" style="--i:1" cx="80" cy="50" r="26"/><circle class="o-anillo" style="--i:2" cx="80" cy="50" r="38"/><circle class="o-nucleo" cx="80" cy="50" r="5"/></svg><h3>Bienestar digital</h3><p>Incorporar hábitos como desconexión programada y mindfulness digital mejora tu salud mental y tu relación con la tecnología.</p></li><li class="calma-paso-calma calma-tono--ia" style="--i:3"><span class="calma-paso-calma__num" aria-hidden="true">04</span><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle cx="40" cy="42" r="10"/><path d="M24 76c2-12 30-12 32 0"/><circle cx="120" cy="42" r="10"/><path d="M104 76c2-12 30-12 32 0"/><path class="o-trazo" pathLength="1" d="M52 46 C70 24 90 24 108 46"/><circle class="o-nucleo" cx="80" cy="30" r="3.5"/></svg><h3>Conexiones significativas</h3><p>Cultivar relaciones auténticas y presenciales mientras usas la tecnología de manera intencional fortalece tu bienestar emocional.</p></li></ol>
+<ul class="calma-habitos calma-habitos--4"><li class="calma-habito calma-tono--neurociencia" style="--i:0"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><path class="o-trazo" pathLength="1" d="M80 12 A38 38 0 1 1 79.9 12"/><rect x="66" y="28" width="28" height="44" rx="6"/><path d="M76 43v14M84 43v14" stroke-width="2.2"/></svg><span class="calma-habito__chip">Paso 01</span><h3>Tiempo de pantalla consciente</h3><p>Establecer límites y pausas en el uso de dispositivos ayuda a mantener un equilibrio saludable entre la vida digital y la presencial.</p></li><li class="calma-habito calma-tono--tecnologia" style="--i:1"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-punto" style="--i:0" cx="28" cy="30" r="2.6"/><circle class="o-punto" style="--i:1" cx="40" cy="70" r="2.6"/><circle class="o-punto" style="--i:2" cx="122" cy="26" r="2.6"/><circle class="o-punto" style="--i:3" cx="134" cy="64" r="2.6"/><circle class="o-punto" style="--i:4" cx="22" cy="52" r="2.6"/><circle class="o-punto" style="--i:5" cx="140" cy="44" r="2.6"/><path class="o-arco" d="M70 50v-8a10 10 0 0 1 20 0v8"/><rect x="64" y="50" width="32" height="26" rx="5"/><circle class="o-nucleo" cx="80" cy="62" r="3"/></svg><span class="calma-habito__chip">Paso 02</span><h3>Seguridad y privacidad</h3><p>Proteger tus datos y manejar permisos de aplicaciones garantiza una experiencia digital segura y confiable.</p></li><li class="calma-habito calma-tono--bienestar" style="--i:2"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle class="o-anillo" style="--i:0" cx="80" cy="50" r="14"/><circle class="o-anillo" style="--i:1" cx="80" cy="50" r="26"/><circle class="o-anillo" style="--i:2" cx="80" cy="50" r="38"/><circle class="o-nucleo" cx="80" cy="50" r="5"/></svg><span class="calma-habito__chip">Paso 03</span><h3>Bienestar digital</h3><p>Incorporar hábitos como desconexión programada y mindfulness digital mejora tu salud mental y tu relación con la tecnología.</p></li><li class="calma-habito calma-tono--ia" style="--i:3"><svg class="calma-org" viewBox="0 0 160 100" width="160" height="100" aria-hidden="true" focusable="false"><circle cx="40" cy="42" r="10"/><path d="M24 76c2-12 30-12 32 0"/><circle cx="120" cy="42" r="10"/><path d="M104 76c2-12 30-12 32 0"/><path class="o-trazo" pathLength="1" d="M52 46 C70 24 90 24 108 46"/><circle class="o-nucleo" cx="80" cy="30" r="3.5"/></svg><span class="calma-habito__chip">Paso 04</span><h3>Conexiones significativas</h3><p>Cultivar relaciones auténticas y presenciales mientras usas la tecnología de manera intencional fortalece tu bienestar emocional.</p></li></ul>
 </div></section>
 </div>
 

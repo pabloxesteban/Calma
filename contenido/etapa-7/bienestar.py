@@ -2,10 +2,10 @@
 
 Mismo texto que hoy (con la apertura de la Etapa 5); cambia la forma:
 
-- La infografía en imagen (diagrama de Venn) pasa a un recorrido con scroll: la
-  figura queda fija mientras se lee cada área; cada círculo aparece con su
-  ícono animado y, en el último paso, los tres se juntan y se enciende
-  "Bienestar digital" en la intersección (con la definición al lado). Es role="img" con descripción,
+- La infografía en imagen (diagrama de Venn) pasa a una figura dibujada en el
+  mismo lugar (arriba a la derecha): al cargar, se arma sola una vez (cada
+  área aparece con su ícono y al final los tres círculos se juntan y se
+  enciende "Bienestar digital" en la intersección). Es role="img" con descripción,
   y lo que decía la imagen dentro de cada círculo pasa a texto real en la
   tarjeta de cada área.
 - Las tres áreas: tarjetas con ícono de línea, su texto y los tres temas de
@@ -131,43 +131,62 @@ def venn():
             '</svg></figure>')
 
 
+def org_ciberpsicologia():
+    # La persona y la tecnología: dos nodos unidos por una onda que se calma, y los patrones alrededor.
+    puntos = ''.join(f'<circle class="o-punto" style="--i:{i}" cx="{x}" cy="{y}" r="2.4"/>'
+                     for i, (x, y) in enumerate(((30, 22), (130, 22), (22, 78), (138, 78))))
+    return svg(puntos + '<circle cx="42" cy="50" r="10"/><circle cx="118" cy="50" r="10"/>'
+               '<path class="o-onda" d="M53 50c5-14 9-14 13 0s8 14 13 0 8-14 13 0 6 12 15 0"/>')
+
+
+def org_ciberseguridad():
+    # Un escudo que se dibuja y se completa con su marca.
+    return svg('<path class="o-trazo" pathLength="1" d="M80 12 110 24v24c0 20-13 32-30 40-17-8-30-20-30-40V24Z"/>'
+               '<path class="o-trazo" pathLength="1" style="--i:2" d="M68 50l9 9 17-19"/>')
+
+
+def org_humano():
+    # Una hoja que crece y un centro que late.
+    return svg('<path class="o-trazo" pathLength="1" d="M52 84C52 50 72 22 112 18c0 40-24 66-60 66Z"/>'
+               '<path class="o-trazo" pathLength="1" style="--i:1" d="M52 84 92 42"/>'
+               '<circle class="o-nucleo" cx="52" cy="84" r="4"/>')
+
+
+FIGURAS_AREA = {'ciberpsicologia': org_ciberpsicologia, 'ciberseguridad': org_ciberseguridad, 'humano': org_humano}
+
+
 def bienestar(cabecera):
-    icono = lambda clave: (f'<svg class="calma-historia__icono" viewBox="-32 -32 64 64" width="56" height="56" aria-hidden="true" focusable="false">'
-                           f'{ICONOS_GRANDES[clave]}</svg>')
+    # Las tres áreas y los cuatro pasos usan la misma tarjeta que Herramientas y el Test:
+    # figura animada arriba, etiqueta, título y texto (con la luz que sigue al puntero).
     areas = ''.join(
-        f'<li class="calma-historia__paso calma-area calma-tono--{tono}" data-area="{clave}" data-paso="{i + 1}" style="--i:{i}">'
-        f'{icono(clave)}<h3>{nombre}</h3><p>{texto}</p>'
+        f'<li class="calma-habito calma-area calma-tono--{tono}" data-area="{clave}" style="--i:{i}">{FIGURAS_AREA[clave]()}'
+        f'<h3>{nombre}</h3><p>{texto}</p>'
         f'<ul class="calma-area__temas" aria-label="Temas de {nombre.lower()}">' + ''.join(f'<li>{t}</li>' for t in temas) + '</ul></li>'
         for i, (clave, tono, nombre, texto, temas, _) in enumerate(AREAS))
-    areas += ('<li class="calma-historia__paso calma-historia__final" data-paso="4">'
-              '<p class="calma-definicion"><strong>El bienestar digital es usar la tecnología con intención: entender cómo funcionas con ella, '
-              'proteger tu privacidad y decidir de forma consciente qué lugar quieres que ocupe en tu vida.</strong></p></li>')
     pasos = ''.join(
-        f'<li class="calma-paso-calma calma-tono--{tono}" style="--i:{i}"><span class="calma-paso-calma__num" aria-hidden="true">0{i + 1}</span>'
-        f'{fig()}<h3>{titulo}</h3><p>{texto}</p></li>'
+        f'<li class="calma-habito calma-tono--{tono}" style="--i:{i}">{fig()}'
+        f'<span class="calma-habito__chip">Paso 0{i + 1}</span><h3>{titulo}</h3><p>{texto}</p></li>'
         for i, (fig, tono, titulo, texto) in enumerate(PASOS))
     return (cabecera('Bienestar digital',
                      'Reemplaza TODO el contenido de Bienestar digital (título, infografía, "La intersección", las tres cajas y "Primeros pasos hacia la calma").\n'
                      '     Un solo bloque "HTML personalizado", ancho completo, sin caja ni título de Kadence. Mismo texto; la infografía pasa a figura dibujada.')
-            + f'''<div class="calma-page calma-recursos calma-bienestar">
-<section class="calma-hero calma-bienestar__hero" aria-labelledby="bienestar-h1"><div class="calma-hero__inner"><div>
+            + f"""<div class="calma-page calma-recursos calma-bienestar">
+<section class="calma-hero" aria-labelledby="bienestar-h1"><div class="calma-hero__inner calma-hero__inner--media"><div>
 <h1 id="bienestar-h1">Bienestar <em>Digital</em></h1>
 <p class="calma-hero__lead">La intersección entre ciberpsicología, ciberseguridad y bienestar humano.</p>
-</div></div></section>
-<section class="calma-section calma-historia" aria-labelledby="interseccion-h2"><div class="calma-container">
+</div>{venn()}</div></section>
+<section class="calma-section" aria-labelledby="interseccion-h2"><div class="calma-container">
+<div class="calma-section__head"><h2 id="interseccion-h2">La <em>intersección</em></h2></div>
 <div class="calma-bienestar__interseccion">
-<h2 id="interseccion-h2">La intersección</h2>
+<p class="calma-definicion"><strong>El bienestar digital es usar la tecnología con intención: entender cómo funcionas con ella, proteger tu privacidad y decidir de forma consciente qué lugar quieres que ocupe en tu vida.</strong></p>
 <aside class="calma-resumen" aria-label="En resumen"><p><strong>En resumen:</strong> en la práctica, significa saber por qué estás en cada plataforma, reconocer su costo real y decidir si vale la pena. Se apoya en tres áreas: la <a href="https://codigocalma.com/ciberpsicologia/">ciberpsicología</a>, que estudia cómo la tecnología influye en tu comportamiento, tus emociones y tus vínculos; la ciberseguridad, que cuida tu privacidad y tus datos; y el bienestar humano, que es el objetivo final.</p></aside>
 </div>
-<div class="calma-historia__cuerpo">
-<div class="calma-historia__figura">{venn()}</div>
-<ol class="calma-historia__pasos">{areas}</ol>
-</div>
+<ul class="calma-habitos">{areas}</ul>
 </div></section>
 <section class="calma-section" aria-labelledby="pasos-h2"><div class="calma-container">
 <div class="calma-section__head"><h2 id="pasos-h2">Primeros pasos hacia la <em>calma</em></h2>
 <p>Cómo comenzar a construir una relación más consciente con la tecnología</p></div>
-<ol class="calma-pasos-calma">{pasos}</ol>
+<ul class="calma-habitos calma-habitos--4">{pasos}</ul>
 </div></section>
 </div>
-''')
+""")
