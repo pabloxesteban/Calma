@@ -121,3 +121,23 @@ Todo sale de datos que ya estaban en el proyecto; no se agregó información nue
 **Importante:**
 - Las etiquetas y categorías se asignaron en la Etapa 5 leyendo cada artículo, y también las tiene que revisar la autora. Si cambia alguna, se regenera todo con `python3 contenido/etapa-7/generar-bloques.py` (reescribe `data/mapa-temas.json`) y se sube el plugin.
 - Los enlaces a las categorías nuevas funcionan después de aplicar la taxonomía (Etapa 5, Paso 2).
+
+## Paso 3d · Servicios y Contacto (15 min)
+Mismo texto que la Etapa 3; cambian la forma y el orden.
+
+**Servicios**
+1. Reemplazar el bloque **HTML personalizado** de Servicios por `contenido/etapa-7/bloques/servicios.html`.
+2. Cambios que trae:
+   - en el hero, la figura **"tu recorrido"** (Nos escribes → Primer encuentro → De 3 a 6 sesiones → Tu plan por escrito), que se dibuja al cargar;
+   - "Qué pasa en cada etapa" con los pasos **unidos por una línea que crece con el scroll**; cada paso se enciende al llegar;
+   - las tarjetas del equipo con el tono de cada área;
+   - "Cuándo no es para ti" y el aviso de urgencias en tono arcilla suave;
+   - preguntas frecuentes sin cajas;
+   - el cierre en celeste suave, en lugar del bloque oscuro.
+3. Estos estilos son de los componentes, así que también actualizan **Equipo** y las páginas de cada profesional sin editarlas.
+
+**Contacto**
+1. Reemplazar el bloque de intro de la Etapa 3 por `contenido/etapa-7/bloques/contacto-intro.html` (título y párrafo; los pasos se mudan).
+2. En la columna derecha, borrar la ilustración y agregar un bloque **HTML personalizado** con `contenido/etapa-7/bloques/contacto-proceso.html`: "Qué pasa después de enviar" con los tres pasos conectados.
+3. En la columna derecha, en **Visibilidad**, activar que se vea también en tablet y celular (hoy está oculta). En celular queda debajo del formulario.
+4. El formulario no se toca: los estilos del plugin hacen los campos más grandes y claros, y convierten las áreas de consulta en opciones que se eligen tocando toda la fila.

@@ -113,3 +113,14 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
   - con movimiento reducido no hay señal.
 - **Contenedores**: el mapa usa consultas por contenedor, así que dentro de la columna de texto de la pilar se ve en una columna (grafo arriba, panel abajo) y a lo ancho en Inicio y Blog.
 - **Móvil**: sin desborde en Inicio, Blog, pilar y un artículo a 360/390/430.
+
+## Servicios y Contacto
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos (incluye Servicios, Contacto, Equipo y las páginas de cada profesional). Reflow a 320 px sin desborde. Con movimiento reducido no anima nada: la figura del recorrido aparece dibujada y los pasos, encendidos.
+- **Servicios**:
+  - la figura "tu recorrido" es decorativa (`aria-hidden`) y repite lo que dice el texto de los pasos;
+  - la línea de los pasos sigue al scroll nativo.
+- **Contacto**:
+  - el formulario queda solo en su columna (menos carga al escribir) y "Qué pasa después de enviar" se ve al lado, fijo al bajar en escritorio, y debajo en celular;
+  - campos de 48 px, foco visible (borde azul + halo), opciones de área en filas de 48 px clicables enteras (radio de 24 px, cumple WCAG 2.5.8).
+  - La métrica de objetivos táctiles de `capturas.js` marca los radios porque exige 44 px por elemento; el objetivo real es la fila completa.
+- **Móvil**: sin desborde en Servicios, Contacto, Equipo y Tatiana a 360/390/430.

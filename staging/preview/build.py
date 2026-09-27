@@ -289,6 +289,23 @@ def e7_mapa_en(s, donde):
     log.append(f'{donde}: mapa de temas')
     return s[:i] + '<div class="calma-mapa-envoltura">' + mapa_php()['mapa'] + '</div>' + s[i:]
 
+def e7_servicios(s):
+    a, b = entry_bounds(s)
+    log.append('servicios: versión Etapa 7 (figura del recorrido y componentes nuevos)')
+    return s[:a] + '<div class="entry-content single-content">\n' + (cont(7) / 'bloques/servicios.html').read_text(encoding='utf-8') + '\n' + s[b:]
+
+def e7_contacto(s):
+    # Intro sin los pasos (se mudan a la derecha).
+    a = s.index('<!-- Código Calma · Contacto · intro (Etapa 3)')
+    b = s.index('</div>', s.index('<ol class="calma-next"', a)) + len('</div>')
+    s = s[:a] + (cont(7) / 'bloques/contacto-intro.html').read_text(encoding='utf-8') + s[b:]
+    # Columna derecha: "Qué pasa después de enviar" en lugar de la ilustración, visible también en celular.
+    a = s.index('<div class="wp-block-kadence-column kadence-column790_9c2ba2-0b')
+    b = div_balanceado(s, a)
+    col = '<div class="wp-block-kadence-column kadence-column790_9c2ba2-0b calma-contacto-lateral"><div class="kt-inside-inner-col">' + (cont(7) / 'bloques/contacto-proceso.html').read_text(encoding='utf-8') + '</div></div>'
+    log.append('contacto: versión Etapa 7 (proceso a la derecha)')
+    return s[:a] + col + s[b:]
+
 def e7_home(s):
     # Seis estados mentales en lugar de las 6 tarjetas giratorias (fila completa con su título).
     a = s.index('<div class="kb-row-layout-wrap kb-row-layout-id1204_7ce0f7-d0')
@@ -373,6 +390,10 @@ for slug, s in fuentes():
                 s = e5_bienestar(s)
         if HASTA >= 7 and slug == 'home':
             s = e7_home(s)
+        if HASTA >= 7 and slug == 'servicios':
+            s = e7_servicios(s)
+        if HASTA >= 7 and slug == 'contacto':
+            s = e7_contacto(s)
         if HASTA >= 7 and slug in POSTS:
             s = e7_articulo(slug, s)
         if HASTA >= 7 and slug in ('ciberpsicologia', 'blog'):

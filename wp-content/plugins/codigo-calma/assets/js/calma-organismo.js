@@ -1233,6 +1233,43 @@
 	}
 
 	/* ------------------------------------------------------------------------
+	   5e. Pasos de Servicios: la línea que une los pasos crece con el scroll y
+	   cada paso se enciende cuando la línea lo alcanza (como la línea de tiempo).
+	   ------------------------------------------------------------------------ */
+	function prepararPasos() {
+		document.querySelectorAll( '.calma-steps' ).forEach( function ( lista ) {
+			var pasos = Array.prototype.slice.call( lista.children );
+			if ( pasos.length < 2 ) {
+				return;
+			}
+			var pendiente = false;
+			function actualizar() {
+				pendiente = false;
+				var vivo = ! quieto();
+				lista.classList.toggle( 'is-vivo', vivo );
+				var r = lista.getBoundingClientRect();
+				var vh = window.innerHeight;
+				// 0 cuando la lista entra por abajo; 1 cuando llega a la mitad de la pantalla.
+				var p = vivo ? Math.max( 0, Math.min( 1, ( vh * 0.85 - r.top ) / ( vh * 0.45 ) ) ) : 1;
+				lista.style.setProperty( '--calma-pasos-p', p.toFixed( 3 ) );
+				pasos.forEach( function ( li, i ) {
+					li.classList.toggle( 'is-encendido', p >= i / ( pasos.length - 1 ) - 0.001 );
+				} );
+			}
+			function pedir() {
+				if ( ! pendiente ) {
+					pendiente = true;
+					raf( actualizar );
+				}
+			}
+			actualizar();
+			window.addEventListener( 'scroll', pedir, { passive: true } );
+			window.addEventListener( 'resize', pedir );
+			raiz.addEventListener( 'calma-quieto', pedir );
+		} );
+	}
+
+	/* ------------------------------------------------------------------------
 	   6. Header, barra de lectura y "Reducir movimiento"
 	   ------------------------------------------------------------------------ */
 	var progreso = null;
@@ -1296,6 +1333,7 @@
 		prepararFlor();
 		prepararMapa();
 		prepararExplora();
+		prepararPasos();
 
 		var hero = document.querySelector( '.calma-hero' );
 		var red = null;

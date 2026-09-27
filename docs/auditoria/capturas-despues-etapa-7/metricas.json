@@ -31,23 +31,68 @@
     "h": 48
    }
   ],
-  "height": 13293
+  "height": 13292
  },
  {
   "w": 360,
-  "page": "blog",
+  "page": "servicios",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
-  "smallTargets": 1,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Mentoría uno a uno para ordenar tu relación con la"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 12201
+ },
+ {
+  "w": 360,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 6,
   "smallSample": [
-   "Infancias «Figitales»"
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "política de privacidad"
   ],
-  "minGutter": 20,
+  "minGutter": 24,
   "h1": [
-   "Blog"
+   "¿Cómo podemos ayudarte?"
   ],
   "ctas": [
+   {
+    "t": "Enviar mi consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 52
+   },
    {
     "t": "Solicitar una consulta",
     "color": "rgb(22, 33, 77)",
@@ -55,11 +100,11 @@
     "h": 48
    }
   ],
-  "height": 8598
+  "height": 3982
  },
  {
   "w": 360,
-  "page": "ciberpsicologia",
+  "page": "equipo",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
@@ -67,9 +112,15 @@
   "smallSample": [],
   "minGutter": 20,
   "h1": [
-   "¿Qué es la ciberpsicología?"
+   "El equipo de Código Calma"
   ],
   "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
    {
     "t": "Solicitar una consulta",
     "color": "rgb(22, 33, 77)",
@@ -77,19 +128,19 @@
     "h": 48
    }
   ],
-  "height": 18943
+  "height": 3366
  },
  {
   "w": 360,
-  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "page": "equipo-tatiana",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
   "smallTargets": 0,
   "smallSample": [],
-  "minGutter": 19,
+  "minGutter": 20,
   "h1": [
-   "¿Por qué fallamos al intentar cambiar conductas?"
+   "Tatiana X. Stacul"
   ],
   "ctas": [
    {
@@ -99,7 +150,7 @@
     "h": 48
    }
   ],
-  "height": 9480
+  "height": 5435
  },
  {
   "w": 390,
@@ -133,23 +184,68 @@
     "h": 48
    }
   ],
-  "height": 13002
+  "height": 13001
  },
  {
   "w": 390,
-  "page": "blog",
+  "page": "servicios",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
-  "smallTargets": 1,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 20,
+  "h1": [
+   "Mentoría uno a uno para ordenar tu relación con la"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 11614
+ },
+ {
+  "w": 390,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 6,
   "smallSample": [
-   "Infancias «Figitales»"
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "política de privacidad"
   ],
-  "minGutter": 20,
+  "minGutter": 24,
   "h1": [
-   "Blog"
+   "¿Cómo podemos ayudarte?"
   ],
   "ctas": [
+   {
+    "t": "Enviar mi consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 52
+   },
    {
     "t": "Solicitar una consulta",
     "color": "rgb(22, 33, 77)",
@@ -157,11 +253,11 @@
     "h": 48
    }
   ],
-  "height": 8676
+  "height": 3809
  },
  {
   "w": 390,
-  "page": "ciberpsicologia",
+  "page": "equipo",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
@@ -169,9 +265,15 @@
   "smallSample": [],
   "minGutter": 20,
   "h1": [
-   "¿Qué es la ciberpsicología?"
+   "El equipo de Código Calma"
   ],
   "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
    {
     "t": "Solicitar una consulta",
     "color": "rgb(22, 33, 77)",
@@ -179,19 +281,19 @@
     "h": 48
    }
   ],
-  "height": 17497
+  "height": 3186
  },
  {
   "w": 390,
-  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "page": "equipo-tatiana",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
   "smallTargets": 0,
   "smallSample": [],
-  "minGutter": 19,
+  "minGutter": 20,
   "h1": [
-   "¿Por qué fallamos al intentar cambiar conductas?"
+   "Tatiana X. Stacul"
   ],
   "ctas": [
    {
@@ -201,7 +303,7 @@
     "h": 48
    }
   ],
-  "height": 8909
+  "height": 5235
  },
  {
   "w": 430,
@@ -235,22 +337,121 @@
     "h": 48
    }
   ],
-  "height": 12823
+  "height": 12822
  },
  {
   "w": 430,
-  "page": "blog",
+  "page": "servicios",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 1,
+  "smallSample": [
+   "Ver reseña de Hugo B. en Googl"
+  ],
+  "minGutter": 22,
+  "h1": [
+   "Mentoría uno a uno para ordenar tu relación con la"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 11077
+ },
+ {
+  "w": 430,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 6,
+  "smallSample": [
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "política de privacidad"
+  ],
+  "minGutter": 24,
+  "h1": [
+   "¿Cómo podemos ayudarte?"
+  ],
+  "ctas": [
+   {
+    "t": "Enviar mi consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 52
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3687
+ },
+ {
+  "w": 430,
+  "page": "equipo",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 0,
+  "smallSample": [],
+  "minGutter": 22,
+  "h1": [
+   "El equipo de Código Calma"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 3090
+ },
+ {
+  "w": 430,
+  "page": "equipo-tatiana",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
   "smallTargets": 2,
   "smallSample": [
-   "El estigma de la estructura: «",
-   "Infancias «Figitales»"
+   "Ver reseña de Alicia G. en Goo",
+   "Ver reseña de Abdi O. en Googl"
   ],
   "minGutter": 22,
   "h1": [
-   "Blog"
+   "Tatiana X. Stacul"
   ],
   "ctas": [
    {
@@ -260,51 +461,7 @@
     "h": 48
    }
   ],
-  "height": 8808
- },
- {
-  "w": 430,
-  "page": "ciberpsicologia",
-  "overflowX": 0,
-  "clipped": [],
-  "hiddenText": 0,
-  "smallTargets": 0,
-  "smallSample": [],
-  "minGutter": 22,
-  "h1": [
-   "¿Qué es la ciberpsicología?"
-  ],
-  "ctas": [
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(22, 33, 77)",
-    "bg": "rgb(255, 255, 255)",
-    "h": 48
-   }
-  ],
-  "height": 16500
- },
- {
-  "w": 430,
-  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
-  "overflowX": 0,
-  "clipped": [],
-  "hiddenText": 0,
-  "smallTargets": 0,
-  "smallSample": [],
-  "minGutter": 21,
-  "h1": [
-   "¿Por qué fallamos al intentar cambiar conductas?"
-  ],
-  "ctas": [
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(22, 33, 77)",
-    "bg": "rgb(255, 255, 255)",
-    "h": 48
-   }
-  ],
-  "height": 8442
+  "height": 5008
  },
  {
   "w": 1280,
@@ -351,19 +508,65 @@
  },
  {
   "w": 1280,
-  "page": "blog",
+  "page": "servicios",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
-  "smallTargets": 3,
+  "smallTargets": 2,
+  "smallSample": [
+   "Menú hijo de Ciberpsicología",
+   "Ver el formulario de búsqueda"
+  ],
+  "minGutter": 60,
+  "h1": [
+   "Mentoría uno a uno para ordenar tu relación con la"
+  ],
+  "ctas": [
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 44
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
+    "color": "rgb(22, 33, 77)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 48
+   }
+  ],
+  "height": 7440
+ },
+ {
+  "w": 1280,
+  "page": "contacto",
+  "overflowX": 0,
+  "clipped": [],
+  "hiddenText": 0,
+  "smallTargets": 8,
   "smallSample": [
    "Menú hijo de Ciberpsicología",
    "Ver el formulario de búsqueda",
-   "Infancias «Figitales»"
+   "INPUT",
+   "INPUT",
+   "INPUT",
+   "INPUT"
   ],
   "minGutter": 64,
   "h1": [
-   "Blog"
+   "¿Cómo podemos ayudarte?"
   ],
   "ctas": [
    {
@@ -373,17 +576,23 @@
     "h": 44
    },
    {
+    "t": "Enviar mi consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 52
+   },
+   {
     "t": "Solicitar una consulta",
     "color": "rgb(22, 33, 77)",
     "bg": "rgb(255, 255, 255)",
     "h": 48
    }
   ],
-  "height": 4408
+  "height": 2306
  },
  {
   "w": 1280,
-  "page": "ciberpsicologia",
+  "page": "equipo",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
@@ -392,9 +601,9 @@
    "Menú hijo de Ciberpsicología",
    "Ver el formulario de búsqueda"
   ],
-  "minGutter": 280,
+  "minGutter": 60,
   "h1": [
-   "¿Qué es la ciberpsicología?"
+   "El equipo de Código Calma"
   ],
   "ctas": [
    {
@@ -405,16 +614,22 @@
    },
    {
     "t": "Solicitar una consulta",
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgb(29, 95, 148)",
+    "h": 48
+   },
+   {
+    "t": "Solicitar una consulta",
     "color": "rgb(22, 33, 77)",
     "bg": "rgb(255, 255, 255)",
     "h": 48
    }
   ],
-  "height": 11841
+  "height": 2102
  },
  {
   "w": 1280,
-  "page": "por-que-fallamos-al-intentar-cambiar-conductas",
+  "page": "equipo-tatiana",
   "overflowX": 0,
   "clipped": [],
   "hiddenText": 0,
@@ -423,9 +638,9 @@
    "Menú hijo de Ciberpsicología",
    "Ver el formulario de búsqueda"
   ],
-  "minGutter": 113,
+  "minGutter": 93,
   "h1": [
-   "¿Por qué fallamos al intentar cambiar conductas?"
+   "Tatiana X. Stacul"
   ],
   "ctas": [
    {
@@ -441,6 +656,6 @@
     "h": 48
    }
   ],
-  "height": 6106
+  "height": 3937
  }
 ]

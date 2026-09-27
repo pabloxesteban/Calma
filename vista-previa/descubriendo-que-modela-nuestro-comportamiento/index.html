@@ -3816,6 +3816,473 @@ html.calma-quieto .calma-tiempo__anio {
 }
 
 /* --------------------------------------------------------------------------
+   8g. Páginas de servicio (Servicios, Equipo, Contacto): los componentes de
+   la Etapa 3 con el lenguaje de la Etapa 7. Planos, tonos suaves, líneas
+   finas y recorridos conectados. El texto no cambia.
+   -------------------------------------------------------------------------- */
+.calma-page .calma-card,
+.calma-card {
+	background: #fff;
+	border: 1px solid var(--calma-hairline-strong);
+	border-radius: 0;
+	box-shadow: none;
+}
+.calma-section__head h2 {
+	font-size: var(--calma-fs-2xl);
+	line-height: 1.08;
+	letter-spacing: -0.02em;
+}
+.calma-hero .calma-facts li::before,
+.calma-facts li::before {
+	background: var(--calma-teal);
+}
+/* Lista "¿Es para ti?" */
+.calma-checklist li::before {
+	background-color: var(--calma-teal) !important;
+}
+/* "Cuándo no es para ti" y aviso de urgencias: tono arcilla suave */
+.calma-fit > .calma-card {
+	background: #f8ece6;
+	border: 0;
+	border-top: 4px solid #ebb79c;
+}
+.calma-notice {
+	background: #f8ece6;
+	border-left-color: #ebb79c;
+	border-radius: 0;
+	color: var(--calma-ink);
+}
+/* Figura "tu recorrido" en el hero de Servicios */
+.calma-recorrido {
+	display: flex;
+	justify-content: center;
+}
+.calma-recorrido svg {
+	width: 100%;
+	max-width: 440px;
+	height: auto;
+	overflow: visible;
+	fill: none;
+}
+.calma-recorrido__base {
+	stroke: var(--calma-hairline-strong);
+	stroke-width: 2;
+	stroke-linejoin: round;
+}
+.calma-recorrido__linea {
+	stroke: var(--calma-primary);
+	stroke-width: 2;
+	stroke-linejoin: round;
+	stroke-dasharray: 1;
+	stroke-dashoffset: 0;
+}
+.calma-recorrido__senal {
+	stroke: var(--calma-teal);
+	stroke-width: 4;
+	stroke-linecap: round;
+	stroke-dasharray: 0.04 0.96;
+	stroke-dashoffset: 1;
+	opacity: 0;
+}
+.calma-recorrido__nodo circle {
+	fill: #fff;
+	stroke: var(--calma-primary);
+	stroke-width: 2;
+}
+.calma-recorrido__nodo:last-child circle:first-child {
+	fill: var(--calma-teal);
+	stroke: var(--calma-teal);
+}
+.calma-recorrido__halo {
+	fill: none !important;
+	stroke: var(--calma-primary) !important;
+	stroke-opacity: 0.15;
+	stroke-width: 1 !important;
+}
+.calma-recorrido text {
+	fill: var(--calma-ink);
+	stroke: none;
+	font: 600 15px/1 var(--calma-font-body);
+}
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-recorrido__linea {
+		animation: calma-trazar 2.4s var(--calma-ease-mente) 0.3s backwards;
+	}
+	html:not(.calma-quieto) .calma-recorrido__nodo {
+		animation: calma-encender 0.8s var(--calma-ease-mente) calc(0.3s + var(--i) * 0.6s) backwards;
+	}
+	html:not(.calma-quieto) .calma-recorrido__senal {
+		animation: calma-recorrido-senal 2.2s linear 2.9s 2;
+	}
+}
+@keyframes calma-trazar {
+	from { stroke-dashoffset: 1; }
+}
+@keyframes calma-recorrido-senal {
+	0% { opacity: 1; stroke-dashoffset: 1; }
+	99% { opacity: 1; }
+	100% { opacity: 0; stroke-dashoffset: 0; }
+}
+@media (max-width: 899px) {
+	.calma-recorrido svg {
+		max-width: 300px;
+	}
+}
+
+/* "Qué pasa en cada etapa": los pasos unidos por una línea que crece con el scroll */
+.calma-steps {
+	--calma-pasos-p: 1;
+	position: relative;
+	gap: var(--calma-space-8) !important;
+	counter-reset: calma-step;
+}
+.calma-steps > li.calma-card {
+	position: relative;
+	display: block !important;
+	padding: 0 0 0 64px;
+	background: none;
+	border: 0;
+}
+.calma-steps > li::before {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	width: 44px !important;
+	height: 44px !important;
+	border: 2px solid var(--calma-primary);
+	background: #fff !important;
+	color: var(--calma-primary) !important;
+	font-family: var(--calma-font-heading);
+	font-size: 1.125rem;
+	box-shadow: none !important;
+	transition: background-color var(--calma-dur-lento) var(--calma-ease-mente), color var(--calma-dur-lento) var(--calma-ease-mente), border-color var(--calma-dur-lento) var(--calma-ease-mente);
+}
+.calma-steps.is-vivo > li.is-encendido::before,
+.calma-steps:not(.is-vivo) > li::before {
+	background: var(--calma-teal) !important;
+	border-color: var(--calma-teal);
+	color: #fff !important;
+}
+.calma-steps::before,
+.calma-steps::after {
+	content: "";
+	position: absolute;
+	left: 21px;
+	top: 22px;
+	bottom: 22px;
+	width: 2px;
+	background: var(--calma-hairline-strong);
+}
+.calma-steps::after {
+	background: linear-gradient(180deg, var(--calma-primary), var(--calma-teal));
+	transform-origin: 50% 0;
+	transform: scaleY(var(--calma-pasos-p));
+}
+.calma-steps h3 {
+	margin-top: 8px !important;
+}
+.calma-steps p {
+	color: var(--calma-ink-soft);
+}
+@media (min-width: 900px) {
+	.calma-steps > li.calma-card {
+		padding: 68px 0 0;
+	}
+	.calma-steps::before,
+	.calma-steps::after {
+		left: 22px;
+		right: calc(33.33% - 22px);
+		top: 21px;
+		bottom: auto;
+		width: auto;
+		height: 2px;
+	}
+	.calma-steps::after {
+		background: linear-gradient(90deg, var(--calma-primary), var(--calma-teal));
+		transform-origin: 0 50%;
+		transform: scaleX(var(--calma-pasos-p));
+	}
+}
+
+/* Personas: cada una con el tono de su área */
+.calma-person {
+	--tono: #e9f1f8;
+	--acento: #9cc3e3;
+	--acento-texto: #1d5f94;
+	border-top: 4px solid var(--acento) !important;
+}
+.calma-people > .calma-person:nth-child(1) { --tono: #f6efe1; --acento: #e2c17e; --acento-texto: #7a4d00; }
+.calma-people > .calma-person:nth-child(2) { --tono: #efedf9; --acento: #bdb0ee; --acento-texto: #5b3fb8; }
+.calma-people > .calma-person:nth-child(3) { --tono: #e9f1f8; --acento: #9cc3e3; --acento-texto: #1d5f94; }
+.calma-person .calma-badge {
+	background: var(--tono) !important;
+	color: var(--acento-texto) !important;
+	border: 0 !important;
+}
+.calma-person .calma-avatar {
+	background: var(--tono) !important;
+	color: var(--acento-texto) !important;
+	box-shadow: 0 0 0 1px var(--acento) !important;
+	font-family: var(--calma-font-heading);
+}
+.calma-person__role {
+	color: var(--acento-texto) !important;
+}
+.calma-person__topics li::before {
+	background: var(--acento) !important;
+}
+.calma-avatar {
+	background: #e9f1f8;
+	box-shadow: 0 0 0 1px #9cc3e3;
+}
+
+/* Testimonios y preguntas frecuentes */
+.calma-quote {
+	position: relative;
+	padding-top: var(--calma-space-10) !important;
+}
+.calma-quote::before {
+	content: "«";
+	position: absolute;
+	top: 6px;
+	left: var(--calma-space-5);
+	font-family: var(--calma-font-heading);
+	font-size: 3rem;
+	line-height: 1;
+	color: #9cc3e3;
+}
+.calma-faq details {
+	background: none !important;
+	border: 0 !important;
+	border-top: 1px solid var(--calma-hairline-strong) !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+}
+.calma-faq details:last-child {
+	border-bottom: 1px solid var(--calma-hairline-strong) !important;
+}
+.calma-faq summary {
+	font-family: var(--calma-font-heading);
+	font-size: 1.125rem;
+	font-weight: 600;
+}
+.calma-faq details[open] summary {
+	color: var(--calma-primary);
+}
+
+/* Cierre: tono celeste suave con la retícula de puntos, en lugar del bloque oscuro */
+.calma-cta,
+.cc-final {
+	position: relative;
+	isolation: isolate;
+	background: #e9f1f8 !important;
+	border-top: 4px solid #9cc3e3;
+	border-radius: 0 !important;
+	color: var(--calma-ink) !important;
+}
+.calma-cta::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: radial-gradient(circle, rgb(29 95 148 / 0.16) 1px, transparent 1.4px) 0 0 / 22px 22px;
+	-webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 20%, transparent 75%);
+	mask-image: radial-gradient(ellipse at 50% 50%, #000 20%, transparent 75%);
+}
+.calma-cta h2,
+.calma-cta p {
+	color: var(--calma-ink) !important;
+}
+.calma-cta .calma-micro {
+	color: var(--calma-ink-soft) !important;
+}
+.entry-content .calma-cta a.calma-btn--on-dark,
+.calma-cta .calma-btn--on-dark {
+	background: var(--calma-primary) !important;
+	color: #fff !important;
+	border-color: var(--calma-primary) !important;
+}
+.calma-cta a:not(.calma-btn) {
+	color: var(--calma-primary) !important;
+}
+
+/* ---- Contacto ---- */
+.calma-contact-intro__lead {
+	margin-top: var(--calma-space-3) !important;
+	font-size: var(--calma-fs-lg);
+	line-height: 1.5;
+	color: var(--calma-ink-soft);
+}
+.calma-contacto-lateral > .kt-inside-inner-col {
+	background: none !important;
+	padding: 0 !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	justify-content: flex-start !important;
+}
+/* El panel acompaña al formulario desde arriba y queda fijo al bajar */
+.kb-row-layout-id790_d51732-53 > .kt-row-column-wrap {
+	align-items: stretch !important;
+}
+@media (min-width: 1025px) {
+	.calma-contacto-lateral > .kt-inside-inner-col {
+		display: block !important;
+		height: 100%;
+	}
+	.calma-contacto-lateral .calma-proceso {
+		position: sticky;
+		top: 110px;
+	}
+}
+.calma-contact-intro {
+	margin-bottom: var(--calma-space-8);
+}
+.calma-proceso {
+	padding: var(--calma-space-8);
+	background: #e9f1f8;
+	border-top: 4px solid #9cc3e3;
+}
+.calma-proceso h2 {
+	margin: 0 0 var(--calma-space-6) !important;
+	font-size: var(--calma-fs-xl);
+	line-height: 1.15;
+}
+.calma-proceso__pasos {
+	position: relative;
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none;
+	counter-reset: proceso;
+}
+.calma-proceso__pasos::before {
+	content: "";
+	position: absolute;
+	left: 19px;
+	top: 20px;
+	bottom: 20px;
+	width: 2px;
+	background: linear-gradient(180deg, var(--calma-primary), var(--calma-teal));
+	opacity: 0.5;
+}
+.calma-proceso__pasos li {
+	position: relative;
+	margin: 0 0 var(--calma-space-6) !important;
+	padding-left: 60px;
+	counter-increment: proceso;
+	color: var(--calma-ink);
+	line-height: 1.55;
+}
+.calma-proceso__pasos li:last-child {
+	margin-bottom: 0 !important;
+}
+.calma-proceso__pasos li::before {
+	content: counter(proceso);
+	position: absolute;
+	left: 0;
+	top: -4px;
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #fff;
+	border: 2px solid var(--calma-primary);
+	color: var(--calma-primary);
+	font: 600 1.0625rem/1 var(--calma-font-heading);
+}
+.calma-proceso__pasos li:last-child::before {
+	background: var(--calma-teal);
+	border-color: var(--calma-teal);
+	color: #fff;
+}
+.calma-proceso__pasos strong {
+	display: block;
+	font-family: var(--calma-font-heading);
+	font-size: 1.125rem;
+}
+
+/* Formulario: campos claros y cómodos, sin animaciones que distraigan */
+.kb-advanced-form .kb-adv-form-label {
+	color: var(--calma-ink) !important;
+	font-weight: 600 !important;
+	font-size: var(--calma-fs-sm) !important;
+}
+.kb-advanced-form input[type="text"],
+.kb-advanced-form input[type="email"],
+.kb-advanced-form textarea {
+	width: 100%;
+	min-height: 48px;
+	padding: 12px 14px !important;
+	background: #fff !important;
+	border: 1px solid var(--calma-hairline-strong) !important;
+	border-radius: 10px !important;
+	color: var(--calma-ink) !important;
+	font-size: 1rem !important;
+	box-shadow: none !important;
+	transition: border-color var(--calma-dur) var(--calma-ease), box-shadow var(--calma-dur) var(--calma-ease);
+}
+.kb-advanced-form textarea {
+	min-height: 140px;
+}
+.kb-advanced-form input[type="text"]:focus,
+.kb-advanced-form input[type="email"]:focus,
+.kb-advanced-form textarea:focus {
+	border-color: var(--calma-primary) !important;
+	box-shadow: 0 0 0 3px rgb(29 95 148 / 0.18) !important;
+	outline: 2px solid transparent;
+}
+.kb-advanced-form .calma-form-help {
+	color: var(--calma-ink-soft);
+}
+/* Áreas de consulta como opciones seleccionables */
+.kb-advanced-form .kb-radio-check-item {
+	display: flex !important;
+	align-items: center;
+	gap: 12px;
+	min-height: 48px;
+	margin: 0 0 8px !important;
+	padding: 0 14px;
+	background: #fff;
+	border: 1px solid var(--calma-hairline-strong);
+	border-radius: 10px;
+	cursor: pointer;
+	transition: border-color var(--calma-dur) var(--calma-ease), background-color var(--calma-dur) var(--calma-ease);
+}
+.kb-advanced-form .kb-radio-check-item:hover {
+	border-color: var(--calma-primary);
+}
+.kb-advanced-form .kb-radio-check-item:has(input:checked) {
+	background: #e9f1f8;
+	border-color: var(--calma-primary);
+}
+.kb-advanced-form .kb-radio-check-item input,
+.kb-advanced-form .kb-accept-field input {
+	width: 24px !important;
+	height: 24px !important;
+	margin: 0 !important;
+	flex: none;
+	accent-color: var(--calma-primary);
+}
+.kb-advanced-form .kb-radio-check-item label {
+	flex: 1;
+	padding: 12px 0;
+	cursor: pointer;
+	color: var(--calma-ink);
+	font-size: 1rem;
+}
+.kb-advanced-form .kb-accept-field input {
+	accent-color: var(--calma-primary);
+}
+.kb-advanced-form .kb-adv-form-submit-button {
+	min-height: 52px;
+	padding: 0 28px !important;
+	border-radius: var(--calma-radius-pill) !important;
+	font-size: 1rem !important;
+	font-weight: 600 !important;
+}
+
+/* --------------------------------------------------------------------------
    9. Aparición editorial (solo elementos fuera de la primera pantalla,
    la marca calma-organismo.js). Nunca se oculta texto: se revela la imagen
    como una lámina que se descubre, y las figuras "se encienden".

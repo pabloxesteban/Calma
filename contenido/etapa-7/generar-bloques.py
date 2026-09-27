@@ -21,6 +21,7 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from escenas import accesos  # noqa: E402
 from mapa import mapa  # noqa: E402
+from paginas import servicios, contacto_intro, contacto_proceso  # noqa: E402
 
 OUT = pathlib.Path(__file__).with_name('bloques')
 OUT.mkdir(exist_ok=True)
@@ -326,6 +327,9 @@ def lecturas_cabecera():
 
 
 (OUT / 'inicio-lecturas-cabecera.html').write_text(lecturas_cabecera(), encoding='utf-8')
+(OUT / 'servicios.html').write_text(servicios(cabecera), encoding='utf-8')
+(OUT / 'contacto-intro.html').write_text(contacto_intro(cabecera), encoding='utf-8')
+(OUT / 'contacto-proceso.html').write_text(contacto_proceso(cabecera), encoding='utf-8')
 (OUT / 'inicio-mapa.html').write_text(mapa(cabecera), encoding='utf-8')
 (OUT / 'inicio-accesos.html').write_text(accesos(cabecera), encoding='utf-8')
 (OUT / 'inicio-momentos.html').write_text(momentos(), encoding='utf-8')
