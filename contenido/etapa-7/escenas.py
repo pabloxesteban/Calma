@@ -1,113 +1,160 @@
-"""Accesos del Inicio (Aprender más / Solicitar una consulta / Recursos
-gratuitos): los personajes de las ilustraciones originales, redibujados en SVG
-por partes para que "lleguen" a su pose final con el scroll.
+"""Accesos del Inicio (Aprender / Consulta / Recursos): el personaje de las
+ilustraciones originales, rediseñado como ilustración plana con volumen
+(cuerpo con degradado de marca, mejillas, objetos de color) en lugar de solo
+líneas, y separado por partes para que "llegue" a su pose final con el scroll.
 
 calma-organismo.js pone --p de 0 a 1 en cada tarjeta mientras entra en
 pantalla; sin JS o con movimiento reducido, --p vale 1 y se ve la pose final.
 Lo usa generar-bloques.py.
 """
 
-
-def ojos(x1, x2, y):
-    return f'<g class="a-ojos"><circle cx="{x1}" cy="{y}" r="6"/><circle cx="{x2}" cy="{y}" r="6"/></g>'
-
-
-GLIFOS = {
-    'f': '<path class="a-glifo" d="M-1 10 V-2 Q-1 -8 5 -8 M-5 0 H4"/>',
-    'ig': '<rect class="a-glifo" x="-7" y="-7" width="14" height="14" rx="4"/><circle class="a-glifo" cx="0" cy="0" r="3.4"/>',
-    'wa': '<path class="a-glifo" d="M-6 7 L-4.5 3 A7 7 0 1 1 -1 6.3 Z"/>',
-    'tt': '<path class="a-glifo" d="M1 -8 V4 A4 4 0 1 1 -3 0 M1 -8 Q3 -3 8 -3"/>',
-}
+TINTA = '#1b2233'
+PIEL = '#8fbbe3'      # brazos y manos: un tono más oscuro que el cuerpo
+MEJILLA = '#f2a9a0'
+VERDE = '#0f6b6b'
+VERDE_SUAVE = '#d8ebe8'
+ARCILLA = '#b4532a'
 
 
-def svg(clase, contenido):
-    return (f'<svg class="calma-escena calma-escena--{clase}" viewBox="0 0 350 350" width="350" height="350" '
-            f'aria-hidden="true" focusable="false">{contenido}</svg>')
+def defs(k):
+    # Degradado del cuerpo (ids únicos por escena).
+    return (f'<defs><linearGradient id="cuerpo-{k}" x1="0" y1="0" x2="0.35" y2="1">'
+            '<stop offset="0" stop-color="#e3eefa"/><stop offset=".55" stop-color="#bcd6f0"/>'
+            '<stop offset="1" stop-color="#9dc2e8"/></linearGradient>'
+            f'<linearGradient id="pantalla-{k}" x1="0" y1="0" x2="1" y2="1">'
+            '<stop offset="0" stop-color="#1f3b5c"/><stop offset="1" stop-color="#0f6b6b"/></linearGradient></defs>')
+
+
+def cara(k, x1, x2, y, boca):
+    # Ojos, brillo en los ojos, mejillas y sonrisa.
+    return (f'<g class="a-cara"><g class="a-ojos"><ellipse cx="{x1}" cy="{y}" rx="6.5" ry="7.5" fill="{TINTA}"/>'
+            f'<ellipse cx="{x2}" cy="{y}" rx="6.5" ry="7.5" fill="{TINTA}"/></g>'
+            f'<circle cx="{x1 + 2}" cy="{y - 3}" r="1.8" fill="#fff"/><circle cx="{x2 + 2}" cy="{y - 3}" r="1.8" fill="#fff"/>'
+            f'<ellipse cx="{x1 - 10}" cy="{y + 16}" rx="9" ry="5.5" fill="{MEJILLA}" opacity=".75"/>'
+            f'<ellipse cx="{x2 + 10}" cy="{y + 16}" rx="9" ry="5.5" fill="{MEJILLA}" opacity=".75"/>'
+            f'<path d="{boca}" fill="none" stroke="{TINTA}" stroke-width="4" stroke-linecap="round"/></g>')
+
+
+def brazo(d, clase=''):
+    return f'<path class="a-extremidad {clase}" d="{d}" fill="none" stroke="{PIEL}" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>'
+
+
+def svg(k, contenido):
+    return (f'<svg class="calma-escena calma-escena--{k}" viewBox="0 0 350 350" width="350" height="350" '
+            f'aria-hidden="true" focusable="false">{defs(k)}{contenido}</svg>')
+
+
+ICONOS = [
+    (52, 100, '#1d5f94', '<path d="M-1 10 V-2 Q-1 -8 5 -8 M-5 0 H4" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>'),
+    (116, 40, '#5b3fb8', '<rect x="-7" y="-7" width="14" height="14" rx="4.5" fill="none" stroke="#fff" stroke-width="2.4"/><circle r="3.4" fill="none" stroke="#fff" stroke-width="2.4"/>'),
+    (210, 40, VERDE, '<path d="M-6 7 L-4.5 3 A7 7 0 1 1 -1 6.3 Z" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>'),
+    (272, 100, TINTA, '<path d="M1 -8 V4 A4 4 0 1 1 -3 0 M1 -8 Q3 -3 8 -3" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>'),
+]
 
 
 def escena_aprender():
-    iconos = [(52, 100, 'f'), (116, 40, 'ig'), (210, 40, 'wa'), (272, 100, 'tt')]
+    k = 'aprender'
     ico = ''.join(
         f'<g transform="translate({x} {y})"><g class="a-icono" style="--i:{n}">'
-        f'<rect x="-15" y="-15" width="30" height="30" rx="6"/>{GLIFOS[k]}</g></g>'
-        for n, (x, y, k) in enumerate(iconos))
-    return svg('aprender',
-        '<g class="a-arcos"><path d="M66 88 Q80 58 102 46"/><path d="M132 36 Q164 22 196 36"/>'
-        '<path d="M226 46 Q250 58 262 86"/></g>'
+        f'<rect x="-16" y="-16" width="32" height="32" rx="9" fill="{c}"/>{g}</g></g>'
+        for n, (x, y, c, g) in enumerate(ICONOS))
+    return svg(k,
+        f'<g class="a-arcos" fill="none" stroke="{VERDE}" stroke-width="3.5" stroke-linecap="round">'
+        '<path d="M66 86 Q80 58 100 48"/><path d="M134 36 Q164 24 194 36"/><path d="M228 48 Q250 58 262 84"/></g>'
         + ico
-        + '<path class="a-silla" d="M72 300 V196 Q72 180 88 180 H96"/>'
+        + f'<rect class="a-silla" x="64" y="176" width="40" height="128" rx="18" fill="#2c4f7c"/>'
         '<g class="a-personaje">'
-        '<path class="a-cuerpo" d="M96 276 C92 222 96 170 110 132 C122 102 146 90 170 90 C200 90 222 112 228 142 C234 174 236 222 236 276 Z"/>'
-        + ojos(158, 196, 144)
-        + '<path class="a-sonrisa" d="M166 160 Q178 170 190 159"/>'
-        '<g class="a-brazo"><path d="M118 202 C124 224 140 238 164 238 C176 238 184 232 190 226"/>'
-        '<path class="a-lapiz" d="M170 210 L194 250"/></g>'
+        f'<path class="a-cuerpo" fill="url(#cuerpo-{k})" d="M96 280 C92 222 96 170 110 132 C122 102 146 90 170 90 C200 90 222 112 228 142 C234 174 236 222 236 280 Z"/>'
+        + cara(k, 158, 196, 142, 'M166 160 Q178 170 190 159')
+        + '<g class="a-brazo">' + brazo('M118 204 C124 226 142 238 166 236 C176 235 184 230 190 224')
+        + f'<path class="a-lapiz" d="M172 208 L196 250" stroke="{ARCILLA}" stroke-width="6" stroke-linecap="round"/></g>'
         '</g>'
-        '<g class="a-escritorio"><path class="a-papel" d="M138 262 L232 254 L240 270 L146 278 Z"/>'
-        '<path class="a-fino" d="M160 264 L200 261 M164 270 L214 266"/>'
-        '<path class="a-tapa" d="M20 280 H340 V350 H20 Z"/>'
-        '<path d="M28 280 H330 M44 280 V350 M314 280 V350"/></g>'
-        '<g class="a-laptop"><path class="a-pantalla" d="M246 168 L322 158 L330 228 L254 238 Z"/>'
-        '<path class="a-pantalla" d="M240 246 L332 234 L342 246 L250 258 Z"/>'
-        '<circle class="a-fino" cx="266" cy="186" r="6"/><path class="a-fino" d="M280 184 H304 M280 194 H298 M262 204 H278"/>'
-        '<circle class="a-fino" cx="308" cy="210" r="10"/><path class="a-check" pathLength="1" d="M302 210 L306 214 L314 205"/></g>')
+        '<g class="a-escritorio">'
+        '<path class="a-papel" d="M138 262 L232 254 L240 270 L146 278 Z" fill="#fff" stroke="#e3ded3" stroke-width="2"/>'
+        f'<path d="M160 264 L200 261 M164 270 L214 266" stroke="{VERDE}" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>'
+        '<rect class="a-tapa" x="18" y="278" width="324" height="80" fill="#fff"/>'
+        '<rect x="22" y="276" width="316" height="14" rx="7" fill="#d9c6ab"/>'
+        '<rect x="38" y="290" width="12" height="60" rx="5" fill="#bfa889"/><rect x="310" y="290" width="12" height="60" rx="5" fill="#bfa889"/></g>'
+        '<g class="a-laptop">'
+        '<path d="M246 168 L322 158 L330 228 L254 238 Z" fill="' + TINTA + '"/>'
+        f'<path d="M252 174 L316 166 L322 222 L258 230 Z" fill="url(#pantalla-{k})"/>'
+        '<circle cx="270" cy="188" r="6" fill="#bcd6f0"/><path d="M282 186 H304 M282 196 H298" stroke="#bcd6f0" stroke-width="3" stroke-linecap="round"/>'
+        '<circle cx="304" cy="210" r="10" fill="#fff" opacity=".95"/>'
+        f'<path class="a-check" pathLength="1" d="M298.5 210 L302.5 214 L310 205.5" fill="none" stroke="{VERDE}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
+        '<path d="M238 244 L334 232 L344 246 L248 258 Z" fill="#4a5263"/></g>')
 
 
 def escena_consulta():
-    return svg('consulta',
+    k = 'consulta'
+    return svg(k,
         '<g class="a-personaje">'
-        '<path class="a-cuerpo" d="M64 350 C58 296 62 244 72 196 C80 146 84 94 114 72 C146 50 198 58 212 96 '
+        f'<path class="a-cuerpo" fill="url(#cuerpo-{k})" d="M64 350 C58 296 62 244 72 196 C80 146 84 94 114 72 C146 50 198 58 212 96 '
         'C224 128 220 176 222 214 C224 264 222 314 224 350 Z"/>'
-        '<path class="a-fino" d="M140 322 V350 M166 322 V350 M140 322 Q153 316 166 322"/>'
-        '<g class="a-cara">' + ojos(158, 196, 126) + '<path class="a-sonrisa" d="M166 142 Q178 152 190 141"/></g>'
-        '<path d="M90 224 C104 248 136 254 170 248 C190 244 204 238 214 234"/>'
-        '</g>'
+        + cara(k, 158, 196, 124, 'M166 142 Q178 152 190 141')
+        + brazo('M92 226 C106 250 138 256 172 250 C190 246 204 240 212 236')
+        + '</g>'
         '<g class="a-telefono"><g transform="translate(228 196) rotate(22)">'
-        '<rect class="a-tel" x="-21" y="-41" width="42" height="82" rx="9"/><path class="a-brillo" d="M-13 -30 V-6"/></g>'
-        '<path d="M118 188 C124 206 138 216 160 216 C178 216 190 210 202 204"/>'
-        '<path class="a-mano" d="M232 206 C246 202 252 214 250 226 C248 240 238 246 228 242"/></g>'
-        '<g class="a-globo"><path d="M246 70 H316 Q326 70 326 80 V110 Q326 120 316 120 H270 L256 134 V120 H246 '
-        'Q236 120 236 110 V80 Q236 70 246 70 Z"/>'
-        '<circle class="a-punto" style="--i:0" cx="262" cy="95" r="4.5"/><circle class="a-punto" style="--i:1" cx="281" cy="95" r="4.5"/>'
-        '<circle class="a-punto" style="--i:2" cx="300" cy="95" r="4.5"/></g>')
+        f'<rect class="a-tel" x="-22" y="-42" width="44" height="84" rx="10" fill="{TINTA}"/>'
+        f'<rect x="-17" y="-35" width="34" height="68" rx="6" fill="url(#pantalla-{k})"/>'
+        '<path d="M-9 -22 H9 M-9 -13 H4" stroke="#bcd6f0" stroke-width="3" stroke-linecap="round"/></g>'
+        + brazo('M118 190 C124 208 140 218 162 218 C180 218 192 212 204 206')
+        + brazo('M234 210 C246 206 250 218 248 228 C246 238 238 244 230 242', 'a-mano')
+        + '</g>'
+        f'<g class="a-globo"><path d="M250 76 H320 Q332 76 332 88 V114 Q332 126 320 126 H276 L262 140 V126 H250 Q238 126 238 114 V88 Q238 76 250 76 Z" fill="{VERDE_SUAVE}" transform="translate(4 5)"/>'
+        '<path d="M246 70 H316 Q328 70 328 82 V108 Q328 120 316 120 H272 L258 134 V120 H246 Q234 120 234 108 V82 Q234 70 246 70 Z" fill="#fff" stroke="#cfe4e0" stroke-width="2"/>'
+        f'<circle class="a-punto" style="--i:0" cx="262" cy="95" r="5" fill="{VERDE}"/><circle class="a-punto" style="--i:1" cx="281" cy="95" r="5" fill="{VERDE}"/>'
+        f'<circle class="a-punto" style="--i:2" cx="300" cy="95" r="5" fill="{VERDE}"/></g>')
 
 
 def escena_recursos():
-    return svg('recursos',
-        '<g class="a-pdf"><path class="a-hoja" d="M236 30 H290 L314 54 V132 H236 Z"/><path class="a-fino" d="M290 30 V54 H314"/>'
-        '<text x="275" y="100" text-anchor="middle">PDF</text></g>'
-        '<g class="a-sillon"><path class="a-sillon-fondo" d="M84 336 V180 Q84 150 114 150 H236 Q266 150 266 180 V336 Z"/>'
-        '</g>'
+    k = 'recursos'
+    return svg(k,
+        '<g class="a-pdf"><path d="M240 36 H294 L318 60 V138 H240 Z" fill="#e7e1d5" transform="translate(4 5)"/>'
+        '<path class="a-hoja" d="M236 30 H290 L314 54 V132 H236 Z" fill="#fff" stroke="#e3ded3" stroke-width="2"/>'
+        '<path d="M290 30 V54 H314" fill="#f2eee6" stroke="#e3ded3" stroke-width="2"/>'
+        f'<rect x="246" y="78" width="58" height="26" rx="6" fill="{ARCILLA}"/>'
+        '<text x="275" y="97" text-anchor="middle">PDF</text>'
+        '<path d="M250 116 H300" stroke="#cfc8ba" stroke-width="3" stroke-linecap="round"/></g>'
+        '<g class="a-sillon"><path class="a-sillon-fondo" d="M84 336 V182 Q84 150 116 150 H234 Q266 150 266 182 V336 Z" fill="#9ccbc3"/></g>'
         '<g class="a-personaje">'
-        '<path class="a-cuerpo" d="M106 306 C104 256 100 206 112 158 C122 116 146 100 175 100 C206 100 230 118 238 158 '
+        f'<path class="a-cuerpo" fill="url(#cuerpo-{k})" d="M106 306 C104 256 100 206 112 158 C122 116 146 100 175 100 C206 100 230 118 238 158 '
         'C246 198 244 256 242 306 Z"/>'
-        + ojos(152, 198, 164)
-        + '<path class="a-sonrisa" d="M162 182 Q175 193 188 182"/>'
-        '<g class="a-libro"><path class="a-pag a-pag--izq" d="M175 214 C160 206 138 206 122 212 V264 C138 258 160 258 175 266 Z"/>'
-        '<path class="a-pag a-pag--der" d="M175 214 C190 206 212 206 228 212 V264 C212 258 190 258 175 266 Z"/>'
-        '<path class="a-fino" d="M132 226 Q150 222 166 228 M132 240 Q150 236 166 242 M184 228 Q200 222 218 226 M184 242 Q200 236 218 240"/></g>'
-        '<path d="M112 250 C104 264 112 278 126 272 M238 250 C246 264 238 278 224 272"/>'
-        '</g>'
-        '<g class="a-sillon-frente"><path class="a-sillon-brazos" d="M50 336 V222 Q50 200 72 200 Q94 200 94 222 V336 M256 336 V222 Q256 200 278 200 Q300 200 300 222 V336"/>'
-        '<path d="M94 300 H256 M60 336 H290"/></g>'
-        '<path class="a-manta" d="M112 306 C150 320 200 330 250 336"/>')
+        + cara(k, 152, 198, 160, 'M162 180 Q175 191 188 180')
+        + f'<g class="a-libro"><path d="M120 262 C140 256 160 258 175 268 C190 258 210 256 230 262 V268 C210 262 190 264 175 274 C160 264 140 262 120 268 Z" fill="{VERDE}"/>'
+        '<path class="a-pag a-pag--izq" d="M175 214 C160 206 138 206 122 212 V264 C138 258 160 258 175 266 Z" fill="#fff"/>'
+        '<path class="a-pag a-pag--der" d="M175 214 C190 206 212 206 228 212 V264 C212 258 190 258 175 266 Z" fill="#f7f4ee"/>'
+        '<path d="M132 226 Q150 222 166 228 M132 238 Q150 234 166 240 M184 228 Q200 222 218 226 M184 240 Q200 234 218 238" '
+        'fill="none" stroke="#bcd6f0" stroke-width="3" stroke-linecap="round"/></g>'
+        + brazo('M114 246 C104 262 112 278 126 270') + brazo('M236 246 C246 262 238 278 224 270')
+        + '</g>'
+        '<g class="a-sillon-frente"><path d="M50 336 V224 Q50 200 72 200 Q94 200 94 224 V336 Z M256 336 V224 Q256 200 278 200 Q300 200 300 224 V336 Z" fill="#6fb0a5"/>'
+        '<rect x="44" y="330" width="262" height="12" rx="6" fill="#4f8f85"/></g>'
+        '<path class="a-manta" d="M104 300 C140 318 196 324 250 312 L256 336 H100 Z" fill="#f1ddd2"/>')
 
 
+# (clave, escena, título, descripción, texto del botón, destino)
 ACCESOS = [
-    ('aprender', escena_aprender, 'Fig. — Aprender', 'Aprender más', 'https://codigocalma.com/ciberpsicologia/'),
-    ('consulta', escena_consulta, 'Fig. — Conversar', 'Solicitar una consulta', 'https://codigocalma.com/contacto/'),
-    ('recursos', escena_recursos, 'Fig. — Descargar', 'Recursos gratuitos', 'https://codigocalma.com/descargas/'),
+    ('aprender', escena_aprender, 'Aprende ciberpsicología',
+     'Qué es, en qué áreas trabaja y ejemplos para entenderla.', 'Aprender más', 'https://codigocalma.com/ciberpsicologia/'),
+    ('consulta', escena_consulta, 'Solicita una consulta',
+     'Acompañamiento uno a uno. Te respondemos en 48 horas hábiles.', 'Solicitar una consulta', 'https://codigocalma.com/contacto/'),
+    ('recursos', escena_recursos, 'Recursos gratuitos',
+     'Libros y guías de Tatiana X. Stacul para descargar sin costo.', 'Ver las descargas', 'https://codigocalma.com/descargas/'),
 ]
 
 
 def accesos(cabecera):
     cards = ''.join(
         f'<li class="calma-acceso" data-acceso="{k}">\n'
+        f'<a class="calma-acceso__enlace" href="{href}">\n'
         f'<div class="calma-acceso__escena">{fn()}</div>\n'
-        f'<a class="calma-btn calma-btn--primary calma-acceso__boton" href="{href}">{texto}</a>\n</li>\n'
-        for k, fn, fig, texto, href in ACCESOS)
-    return (cabecera('Inicio · accesos (Aprender más / Solicitar una consulta / Recursos gratuitos)',
+        f'<h3 class="calma-acceso__titulo">{titulo}</h3>\n'
+        f'<p class="calma-acceso__texto">{texto}</p>\n'
+        f'<span class="calma-acceso__boton">{boton}<span class="calma-acceso__flecha" aria-hidden="true"></span></span>\n'
+        '</a>\n</li>\n'
+        for k, fn, titulo, texto, boton, href in ACCESOS)
+    return (cabecera('Inicio · accesos (Aprende ciberpsicología / Solicita una consulta / Recursos gratuitos)',
                      'Reemplaza la fila de las 3 tarjetas con ilustración y botón, y la fila vacía de debajo.\n'
-                     '     Bloque "HTML personalizado" a ancho completo. Los personajes son los de las ilustraciones originales, redibujados en SVG para animarlos.')
+                     '     Bloque "HTML personalizado" a ancho completo. El personaje es el de las ilustraciones originales, rediseñado en SVG para animarlo.')
             + '<section class="calma-accesos" aria-label="Accesos rápidos">\n<ul class="calma-accesos__lista" role="list">\n'
             + cards + '</ul>\n</section>\n')

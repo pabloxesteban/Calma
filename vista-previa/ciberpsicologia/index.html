@@ -2738,32 +2738,69 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 }
 .calma-acceso {
 	--p: 1;
+	margin: 0 !important;
+}
+.calma-acceso__enlace {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	gap: var(--calma-space-4);
-	margin: 0 !important;
-	padding: var(--calma-space-6) var(--calma-space-5) var(--calma-space-6);
+	height: 100%;
+	padding: var(--calma-space-6);
 	background: #fff;
 	border: 1px solid var(--calma-hairline-strong);
-	transition: border-color var(--calma-dur-lento) var(--calma-ease-mente);
+	color: var(--calma-ink) !important;
+	text-decoration: none !important;
+	transition: border-color var(--calma-dur-lento) var(--calma-ease-mente), background-color var(--calma-dur-lento) var(--calma-ease-mente);
 }
-.calma-acceso:hover,
-.calma-acceso:focus-within {
+.calma-acceso__enlace:hover,
+.calma-acceso__enlace:focus-visible {
 	border-color: var(--calma-ink);
 }
 .calma-acceso__escena {
-	margin: 0;
-	width: 100%;
 	display: grid;
 	justify-items: center;
-	gap: var(--calma-space-2);
+	margin: 0 0 var(--calma-space-5);
+	padding: var(--calma-space-4) 0 0;
+	background: linear-gradient(180deg, var(--calma-paper) 0%, #fff 100%);
 }
-.calma-acceso__escena figcaption {
-	justify-self: start;
+.calma-acceso__titulo {
+	margin: 0 0 var(--calma-space-2) !important;
+	font-size: var(--calma-fs-lg);
+	line-height: 1.2;
+	color: var(--calma-ink);
+}
+.calma-acceso__texto {
+	margin: 0 0 var(--calma-space-5) !important;
+	font-size: var(--calma-fs-sm);
+	line-height: 1.5;
+	color: var(--calma-ink-soft);
 }
 .calma-acceso__boton {
-	text-decoration: none !important;
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	align-self: flex-start;
+	margin-top: auto;
+	min-height: 44px;
+	padding: 0 8px 0 20px;
+	border-radius: var(--calma-radius-pill);
+	background: var(--calma-primary);
+	color: #fff;
+	font-weight: 600;
+	font-size: var(--calma-fs-sm);
+	transition: background-color var(--calma-dur) var(--calma-ease);
+}
+.calma-acceso__flecha {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: #fff center / 14px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d5f94' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+	transition: transform var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-acceso__enlace:hover .calma-acceso__boton {
+	background: var(--calma-primary-hover);
+}
+.calma-acceso__enlace:hover .calma-acceso__flecha {
+	transform: translateX(3px);
 }
 .calma-escena {
 	/* Tramos del recorrido: llegar, acomodarse, detalles */
@@ -2772,35 +2809,16 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 	--e3: clamp(0, calc((var(--p) - 0.55) * 2.4), 1);
 	display: block;
 	width: 100%;
-	max-width: 260px;
+	max-width: 250px;
 	height: auto;
 	overflow: hidden;
-	fill: none;
-	stroke: var(--calma-ink);
-	stroke-width: 6;
-	stroke-linecap: round;
-	stroke-linejoin: round;
 }
 .calma-escena * {
 	transform-box: view-box;
 }
-.calma-escena .a-fino { stroke-width: 3.5; }
-.calma-escena .a-cuerpo,
-.calma-escena .a-papel,
-.calma-escena .a-hoja,
-.calma-escena .a-sillon-fondo,
-.calma-escena .a-pag,
-.calma-escena .a-globo path { fill: #fff; }
-.calma-escena .a-tapa { fill: #fff; stroke: none; }
-.calma-escena .a-ojos circle,
-.calma-escena .a-punto { fill: var(--calma-ink); stroke: none; }
-.calma-escena .a-tel { fill: var(--calma-ink); }
-.calma-escena .a-brillo { stroke: #fff; stroke-width: 3; }
-.calma-escena .a-icono rect { fill: var(--calma-ink); stroke: none; }
-.calma-escena .a-glifo { stroke: #fff; stroke-width: 2.4; fill: none; }
-.calma-escena .a-arcos path { stroke-width: 4; stroke-dasharray: 0.1 10; }
-.calma-escena text { fill: var(--calma-ink); stroke: none; font: 700 30px/1 var(--calma-font-body); }
-.calma-escena .a-check { stroke-width: 3.5; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--e3)); }
+.calma-escena text { fill: #fff; font: 700 17px/1 var(--calma-font-body); letter-spacing: 0.06em; }
+.calma-escena .a-check { stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--e3)); }
+.calma-escena .a-arcos path { stroke-dasharray: 0.1 10; }
 
 /* Aprender: la persona se sienta, escribe, y las redes aparecen de a una */
 .calma-escena--aprender .a-laptop { transform: translateX(calc((1 - var(--e1)) * 60px)); opacity: var(--e1); }

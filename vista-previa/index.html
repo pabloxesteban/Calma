@@ -2769,32 +2769,69 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 }
 .calma-acceso {
 	--p: 1;
+	margin: 0 !important;
+}
+.calma-acceso__enlace {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	gap: var(--calma-space-4);
-	margin: 0 !important;
-	padding: var(--calma-space-6) var(--calma-space-5) var(--calma-space-6);
+	height: 100%;
+	padding: var(--calma-space-6);
 	background: #fff;
 	border: 1px solid var(--calma-hairline-strong);
-	transition: border-color var(--calma-dur-lento) var(--calma-ease-mente);
+	color: var(--calma-ink) !important;
+	text-decoration: none !important;
+	transition: border-color var(--calma-dur-lento) var(--calma-ease-mente), background-color var(--calma-dur-lento) var(--calma-ease-mente);
 }
-.calma-acceso:hover,
-.calma-acceso:focus-within {
+.calma-acceso__enlace:hover,
+.calma-acceso__enlace:focus-visible {
 	border-color: var(--calma-ink);
 }
 .calma-acceso__escena {
-	margin: 0;
-	width: 100%;
 	display: grid;
 	justify-items: center;
-	gap: var(--calma-space-2);
+	margin: 0 0 var(--calma-space-5);
+	padding: var(--calma-space-4) 0 0;
+	background: linear-gradient(180deg, var(--calma-paper) 0%, #fff 100%);
 }
-.calma-acceso__escena figcaption {
-	justify-self: start;
+.calma-acceso__titulo {
+	margin: 0 0 var(--calma-space-2) !important;
+	font-size: var(--calma-fs-lg);
+	line-height: 1.2;
+	color: var(--calma-ink);
+}
+.calma-acceso__texto {
+	margin: 0 0 var(--calma-space-5) !important;
+	font-size: var(--calma-fs-sm);
+	line-height: 1.5;
+	color: var(--calma-ink-soft);
 }
 .calma-acceso__boton {
-	text-decoration: none !important;
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	align-self: flex-start;
+	margin-top: auto;
+	min-height: 44px;
+	padding: 0 8px 0 20px;
+	border-radius: var(--calma-radius-pill);
+	background: var(--calma-primary);
+	color: #fff;
+	font-weight: 600;
+	font-size: var(--calma-fs-sm);
+	transition: background-color var(--calma-dur) var(--calma-ease);
+}
+.calma-acceso__flecha {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: #fff center / 14px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d5f94' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+	transition: transform var(--calma-dur-medio) var(--calma-ease-mente);
+}
+.calma-acceso__enlace:hover .calma-acceso__boton {
+	background: var(--calma-primary-hover);
+}
+.calma-acceso__enlace:hover .calma-acceso__flecha {
+	transform: translateX(3px);
 }
 .calma-escena {
 	/* Tramos del recorrido: llegar, acomodarse, detalles */
@@ -2803,35 +2840,16 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 	--e3: clamp(0, calc((var(--p) - 0.55) * 2.4), 1);
 	display: block;
 	width: 100%;
-	max-width: 260px;
+	max-width: 250px;
 	height: auto;
 	overflow: hidden;
-	fill: none;
-	stroke: var(--calma-ink);
-	stroke-width: 6;
-	stroke-linecap: round;
-	stroke-linejoin: round;
 }
 .calma-escena * {
 	transform-box: view-box;
 }
-.calma-escena .a-fino { stroke-width: 3.5; }
-.calma-escena .a-cuerpo,
-.calma-escena .a-papel,
-.calma-escena .a-hoja,
-.calma-escena .a-sillon-fondo,
-.calma-escena .a-pag,
-.calma-escena .a-globo path { fill: #fff; }
-.calma-escena .a-tapa { fill: #fff; stroke: none; }
-.calma-escena .a-ojos circle,
-.calma-escena .a-punto { fill: var(--calma-ink); stroke: none; }
-.calma-escena .a-tel { fill: var(--calma-ink); }
-.calma-escena .a-brillo { stroke: #fff; stroke-width: 3; }
-.calma-escena .a-icono rect { fill: var(--calma-ink); stroke: none; }
-.calma-escena .a-glifo { stroke: #fff; stroke-width: 2.4; fill: none; }
-.calma-escena .a-arcos path { stroke-width: 4; stroke-dasharray: 0.1 10; }
-.calma-escena text { fill: var(--calma-ink); stroke: none; font: 700 30px/1 var(--calma-font-body); }
-.calma-escena .a-check { stroke-width: 3.5; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--e3)); }
+.calma-escena text { fill: #fff; font: 700 17px/1 var(--calma-font-body); letter-spacing: 0.06em; }
+.calma-escena .a-check { stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--e3)); }
+.calma-escena .a-arcos path { stroke-dasharray: 0.1 10; }
 
 /* Aprender: la persona se sienta, escribe, y las redes aparecen de a una */
 .calma-escena--aprender .a-laptop { transform: translateX(calc((1 - var(--e1)) * 60px)); opacity: var(--e1); }
@@ -3857,7 +3875,7 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 <p class="calma-sub">Una mirada clara y organizada a cómo la tecnología se integró en la vida humana.</p>
 </div>
 <div class="calma-tiempo__cuerpo">
-<div class="calma-tiempo__figura" aria-hidden="true" hidden><p class="calma-tiempo__anio">1975–1985</p><div class="calma-tiempo__lienzo"></div><p class="calma-tiempo__leyenda">Figura ilustrativa: cada punto es una persona.</p></div>
+<div class="calma-tiempo__figura" aria-hidden="true" hidden><p class="calma-tiempo__anio">1975–1985</p><div class="calma-tiempo__lienzo"></div></div>
 <ol class="calma-tiempo__lista">
 <li class="calma-tiempo__epoca" data-forma="objeto" data-concepto="Objeto">
 <span class="calma-tiempo__punto" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M9 20h6M12 16v4"/></svg></span>
@@ -4001,23 +4019,35 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 </section>
 
 
-<!-- Código Calma · Inicio · accesos (Aprender más / Solicitar una consulta / Recursos gratuitos) (Etapa 7)
+<!-- Código Calma · Inicio · accesos (Aprende ciberpsicología / Solicita una consulta / Recursos gratuitos) (Etapa 7)
      Reemplaza la fila de las 3 tarjetas con ilustración y botón, y la fila vacía de debajo.
-     Bloque "HTML personalizado" a ancho completo. Los personajes son los de las ilustraciones originales, redibujados en SVG para animarlos.
+     Bloque "HTML personalizado" a ancho completo. El personaje es el de las ilustraciones originales, rediseñado en SVG para animarlo.
      Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
 <section class="calma-accesos" aria-label="Accesos rápidos">
 <ul class="calma-accesos__lista" role="list">
 <li class="calma-acceso" data-acceso="aprender">
-<div class="calma-acceso__escena"><svg class="calma-escena calma-escena--aprender" viewBox="0 0 350 350" width="350" height="350" aria-hidden="true" focusable="false"><g class="a-arcos"><path d="M66 88 Q80 58 102 46"/><path d="M132 36 Q164 22 196 36"/><path d="M226 46 Q250 58 262 86"/></g><g transform="translate(52 100)"><g class="a-icono" style="--i:0"><rect x="-15" y="-15" width="30" height="30" rx="6"/><path class="a-glifo" d="M-1 10 V-2 Q-1 -8 5 -8 M-5 0 H4"/></g></g><g transform="translate(116 40)"><g class="a-icono" style="--i:1"><rect x="-15" y="-15" width="30" height="30" rx="6"/><rect class="a-glifo" x="-7" y="-7" width="14" height="14" rx="4"/><circle class="a-glifo" cx="0" cy="0" r="3.4"/></g></g><g transform="translate(210 40)"><g class="a-icono" style="--i:2"><rect x="-15" y="-15" width="30" height="30" rx="6"/><path class="a-glifo" d="M-6 7 L-4.5 3 A7 7 0 1 1 -1 6.3 Z"/></g></g><g transform="translate(272 100)"><g class="a-icono" style="--i:3"><rect x="-15" y="-15" width="30" height="30" rx="6"/><path class="a-glifo" d="M1 -8 V4 A4 4 0 1 1 -3 0 M1 -8 Q3 -3 8 -3"/></g></g><path class="a-silla" d="M72 300 V196 Q72 180 88 180 H96"/><g class="a-personaje"><path class="a-cuerpo" d="M96 276 C92 222 96 170 110 132 C122 102 146 90 170 90 C200 90 222 112 228 142 C234 174 236 222 236 276 Z"/><g class="a-ojos"><circle cx="158" cy="144" r="6"/><circle cx="196" cy="144" r="6"/></g><path class="a-sonrisa" d="M166 160 Q178 170 190 159"/><g class="a-brazo"><path d="M118 202 C124 224 140 238 164 238 C176 238 184 232 190 226"/><path class="a-lapiz" d="M170 210 L194 250"/></g></g><g class="a-escritorio"><path class="a-papel" d="M138 262 L232 254 L240 270 L146 278 Z"/><path class="a-fino" d="M160 264 L200 261 M164 270 L214 266"/><path class="a-tapa" d="M20 280 H340 V350 H20 Z"/><path d="M28 280 H330 M44 280 V350 M314 280 V350"/></g><g class="a-laptop"><path class="a-pantalla" d="M246 168 L322 158 L330 228 L254 238 Z"/><path class="a-pantalla" d="M240 246 L332 234 L342 246 L250 258 Z"/><circle class="a-fino" cx="266" cy="186" r="6"/><path class="a-fino" d="M280 184 H304 M280 194 H298 M262 204 H278"/><circle class="a-fino" cx="308" cy="210" r="10"/><path class="a-check" pathLength="1" d="M302 210 L306 214 L314 205"/></g></svg></div>
-<a class="calma-btn calma-btn--primary calma-acceso__boton" href="/Calma/vista-previa/ciberpsicologia/">Aprender más</a>
+<a class="calma-acceso__enlace" href="/Calma/vista-previa/ciberpsicologia/">
+<div class="calma-acceso__escena"><svg class="calma-escena calma-escena--aprender" viewBox="0 0 350 350" width="350" height="350" aria-hidden="true" focusable="false"><defs><linearGradient id="cuerpo-aprender" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#e3eefa"/><stop offset=".55" stop-color="#bcd6f0"/><stop offset="1" stop-color="#9dc2e8"/></linearGradient><linearGradient id="pantalla-aprender" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f3b5c"/><stop offset="1" stop-color="#0f6b6b"/></linearGradient></defs><g class="a-arcos" fill="none" stroke="#0f6b6b" stroke-width="3.5" stroke-linecap="round"><path d="M66 86 Q80 58 100 48"/><path d="M134 36 Q164 24 194 36"/><path d="M228 48 Q250 58 262 84"/></g><g transform="translate(52 100)"><g class="a-icono" style="--i:0"><rect x="-16" y="-16" width="32" height="32" rx="9" fill="#1d5f94"/><path d="M-1 10 V-2 Q-1 -8 5 -8 M-5 0 H4" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></g></g><g transform="translate(116 40)"><g class="a-icono" style="--i:1"><rect x="-16" y="-16" width="32" height="32" rx="9" fill="#5b3fb8"/><rect x="-7" y="-7" width="14" height="14" rx="4.5" fill="none" stroke="#fff" stroke-width="2.4"/><circle r="3.4" fill="none" stroke="#fff" stroke-width="2.4"/></g></g><g transform="translate(210 40)"><g class="a-icono" style="--i:2"><rect x="-16" y="-16" width="32" height="32" rx="9" fill="#0f6b6b"/><path d="M-6 7 L-4.5 3 A7 7 0 1 1 -1 6.3 Z" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/></g></g><g transform="translate(272 100)"><g class="a-icono" style="--i:3"><rect x="-16" y="-16" width="32" height="32" rx="9" fill="#1b2233"/><path d="M1 -8 V4 A4 4 0 1 1 -3 0 M1 -8 Q3 -3 8 -3" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></g></g><rect class="a-silla" x="64" y="176" width="40" height="128" rx="18" fill="#2c4f7c"/><g class="a-personaje"><path class="a-cuerpo" fill="url(#cuerpo-aprender)" d="M96 280 C92 222 96 170 110 132 C122 102 146 90 170 90 C200 90 222 112 228 142 C234 174 236 222 236 280 Z"/><g class="a-cara"><g class="a-ojos"><ellipse cx="158" cy="142" rx="6.5" ry="7.5" fill="#1b2233"/><ellipse cx="196" cy="142" rx="6.5" ry="7.5" fill="#1b2233"/></g><circle cx="160" cy="139" r="1.8" fill="#fff"/><circle cx="198" cy="139" r="1.8" fill="#fff"/><ellipse cx="148" cy="158" rx="9" ry="5.5" fill="#f2a9a0" opacity=".75"/><ellipse cx="206" cy="158" rx="9" ry="5.5" fill="#f2a9a0" opacity=".75"/><path d="M166 160 Q178 170 190 159" fill="none" stroke="#1b2233" stroke-width="4" stroke-linecap="round"/></g><g class="a-brazo"><path class="a-extremidad " d="M118 204 C124 226 142 238 166 236 C176 235 184 230 190 224" fill="none" stroke="#8fbbe3" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path class="a-lapiz" d="M172 208 L196 250" stroke="#b4532a" stroke-width="6" stroke-linecap="round"/></g></g><g class="a-escritorio"><path class="a-papel" d="M138 262 L232 254 L240 270 L146 278 Z" fill="#fff" stroke="#e3ded3" stroke-width="2"/><path d="M160 264 L200 261 M164 270 L214 266" stroke="#0f6b6b" stroke-width="2.5" stroke-linecap="round" opacity=".6"/><rect class="a-tapa" x="18" y="278" width="324" height="80" fill="#fff"/><rect x="22" y="276" width="316" height="14" rx="7" fill="#d9c6ab"/><rect x="38" y="290" width="12" height="60" rx="5" fill="#bfa889"/><rect x="310" y="290" width="12" height="60" rx="5" fill="#bfa889"/></g><g class="a-laptop"><path d="M246 168 L322 158 L330 228 L254 238 Z" fill="#1b2233"/><path d="M252 174 L316 166 L322 222 L258 230 Z" fill="url(#pantalla-aprender)"/><circle cx="270" cy="188" r="6" fill="#bcd6f0"/><path d="M282 186 H304 M282 196 H298" stroke="#bcd6f0" stroke-width="3" stroke-linecap="round"/><circle cx="304" cy="210" r="10" fill="#fff" opacity=".95"/><path class="a-check" pathLength="1" d="M298.5 210 L302.5 214 L310 205.5" fill="none" stroke="#0f6b6b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M238 244 L334 232 L344 246 L248 258 Z" fill="#4a5263"/></g></svg></div>
+<h3 class="calma-acceso__titulo">Aprende ciberpsicología</h3>
+<p class="calma-acceso__texto">Qué es, en qué áreas trabaja y ejemplos para entenderla.</p>
+<span class="calma-acceso__boton">Aprender más<span class="calma-acceso__flecha" aria-hidden="true"></span></span>
+</a>
 </li>
 <li class="calma-acceso" data-acceso="consulta">
-<div class="calma-acceso__escena"><svg class="calma-escena calma-escena--consulta" viewBox="0 0 350 350" width="350" height="350" aria-hidden="true" focusable="false"><g class="a-personaje"><path class="a-cuerpo" d="M64 350 C58 296 62 244 72 196 C80 146 84 94 114 72 C146 50 198 58 212 96 C224 128 220 176 222 214 C224 264 222 314 224 350 Z"/><path class="a-fino" d="M140 322 V350 M166 322 V350 M140 322 Q153 316 166 322"/><g class="a-cara"><g class="a-ojos"><circle cx="158" cy="126" r="6"/><circle cx="196" cy="126" r="6"/></g><path class="a-sonrisa" d="M166 142 Q178 152 190 141"/></g><path d="M90 224 C104 248 136 254 170 248 C190 244 204 238 214 234"/></g><g class="a-telefono"><g transform="translate(228 196) rotate(22)"><rect class="a-tel" x="-21" y="-41" width="42" height="82" rx="9"/><path class="a-brillo" d="M-13 -30 V-6"/></g><path d="M118 188 C124 206 138 216 160 216 C178 216 190 210 202 204"/><path class="a-mano" d="M232 206 C246 202 252 214 250 226 C248 240 238 246 228 242"/></g><g class="a-globo"><path d="M246 70 H316 Q326 70 326 80 V110 Q326 120 316 120 H270 L256 134 V120 H246 Q236 120 236 110 V80 Q236 70 246 70 Z"/><circle class="a-punto" style="--i:0" cx="262" cy="95" r="4.5"/><circle class="a-punto" style="--i:1" cx="281" cy="95" r="4.5"/><circle class="a-punto" style="--i:2" cx="300" cy="95" r="4.5"/></g></svg></div>
-<a class="calma-btn calma-btn--primary calma-acceso__boton" href="/Calma/vista-previa/contacto/">Solicitar una consulta</a>
+<a class="calma-acceso__enlace" href="/Calma/vista-previa/contacto/">
+<div class="calma-acceso__escena"><svg class="calma-escena calma-escena--consulta" viewBox="0 0 350 350" width="350" height="350" aria-hidden="true" focusable="false"><defs><linearGradient id="cuerpo-consulta" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#e3eefa"/><stop offset=".55" stop-color="#bcd6f0"/><stop offset="1" stop-color="#9dc2e8"/></linearGradient><linearGradient id="pantalla-consulta" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f3b5c"/><stop offset="1" stop-color="#0f6b6b"/></linearGradient></defs><g class="a-personaje"><path class="a-cuerpo" fill="url(#cuerpo-consulta)" d="M64 350 C58 296 62 244 72 196 C80 146 84 94 114 72 C146 50 198 58 212 96 C224 128 220 176 222 214 C224 264 222 314 224 350 Z"/><g class="a-cara"><g class="a-ojos"><ellipse cx="158" cy="124" rx="6.5" ry="7.5" fill="#1b2233"/><ellipse cx="196" cy="124" rx="6.5" ry="7.5" fill="#1b2233"/></g><circle cx="160" cy="121" r="1.8" fill="#fff"/><circle cx="198" cy="121" r="1.8" fill="#fff"/><ellipse cx="148" cy="140" rx="9" ry="5.5" fill="#f2a9a0" opacity=".75"/><ellipse cx="206" cy="140" rx="9" ry="5.5" fill="#f2a9a0" opacity=".75"/><path d="M166 142 Q178 152 190 141" fill="none" stroke="#1b2233" stroke-width="4" stroke-linecap="round"/></g><path class="a-extremidad " d="M92 226 C106 250 138 256 172 250 C190 246 204 240 212 236" fill="none" stroke="#8fbbe3" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></g><g class="a-telefono"><g transform="translate(228 196) rotate(22)"><rect class="a-tel" x="-22" y="-42" width="44" height="84" rx="10" fill="#1b2233"/><rect x="-17" y="-35" width="34" height="68" rx="6" fill="url(#pantalla-consulta)"/><path d="M-9 -22 H9 M-9 -13 H4" stroke="#bcd6f0" stroke-width="3" stroke-linecap="round"/></g><path class="a-extremidad " d="M118 190 C124 208 140 218 162 218 C180 218 192 212 204 206" fill="none" stroke="#8fbbe3" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path class="a-extremidad a-mano" d="M234 210 C246 206 250 218 248 228 C246 238 238 244 230 242" fill="none" stroke="#8fbbe3" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></g><g class="a-globo"><path d="M250 76 H320 Q332 76 332 88 V114 Q332 126 320 126 H276 L262 140 V126 H250 Q238 126 238 114 V88 Q238 76 250 76 Z" fill="#d8ebe8" transform="translate(4 5)"/><path d="M246 70 H316 Q328 70 328 82 V108 Q328 120 316 120 H272 L258 134 V120 H246 Q234 120 234 108 V82 Q234 70 246 70 Z" fill="#fff" stroke="#cfe4e0" stroke-width="2"/><circle class="a-punto" style="--i:0" cx="262" cy="95" r="5" fill="#0f6b6b"/><circle class="a-punto" style="--i:1" cx="281" cy="95" r="5" fill="#0f6b6b"/><circle class="a-punto" style="--i:2" cx="300" cy="95" r="5" fill="#0f6b6b"/></g></svg></div>
+<h3 class="calma-acceso__titulo">Solicita una consulta</h3>
+<p class="calma-acceso__texto">Acompañamiento uno a uno. Te respondemos en 48 horas hábiles.</p>
+<span class="calma-acceso__boton">Solicitar una consulta<span class="calma-acceso__flecha" aria-hidden="true"></span></span>
+</a>
 </li>
 <li class="calma-acceso" data-acceso="recursos">
-<div class="calma-acceso__escena"><svg class="calma-escena calma-escena--recursos" viewBox="0 0 350 350" width="350" height="350" aria-hidden="true" focusable="false"><g class="a-pdf"><path class="a-hoja" d="M236 30 H290 L314 54 V132 H236 Z"/><path class="a-fino" d="M290 30 V54 H314"/><text x="275" y="100" text-anchor="middle">PDF</text></g><g class="a-sillon"><path class="a-sillon-fondo" d="M84 336 V180 Q84 150 114 150 H236 Q266 150 266 180 V336 Z"/></g><g class="a-personaje"><path class="a-cuerpo" d="M106 306 C104 256 100 206 112 158 C122 116 146 100 175 100 C206 100 230 118 238 158 C246 198 244 256 242 306 Z"/><g class="a-ojos"><circle cx="152" cy="164" r="6"/><circle cx="198" cy="164" r="6"/></g><path class="a-sonrisa" d="M162 182 Q175 193 188 182"/><g class="a-libro"><path class="a-pag a-pag--izq" d="M175 214 C160 206 138 206 122 212 V264 C138 258 160 258 175 266 Z"/><path class="a-pag a-pag--der" d="M175 214 C190 206 212 206 228 212 V264 C212 258 190 258 175 266 Z"/><path class="a-fino" d="M132 226 Q150 222 166 228 M132 240 Q150 236 166 242 M184 228 Q200 222 218 226 M184 242 Q200 236 218 240"/></g><path d="M112 250 C104 264 112 278 126 272 M238 250 C246 264 238 278 224 272"/></g><g class="a-sillon-frente"><path class="a-sillon-brazos" d="M50 336 V222 Q50 200 72 200 Q94 200 94 222 V336 M256 336 V222 Q256 200 278 200 Q300 200 300 222 V336"/><path d="M94 300 H256 M60 336 H290"/></g><path class="a-manta" d="M112 306 C150 320 200 330 250 336"/></svg></div>
-<a class="calma-btn calma-btn--primary calma-acceso__boton" href="/Calma/vista-previa/descargas-2/">Recursos gratuitos</a>
+<a class="calma-acceso__enlace" href="/Calma/vista-previa/descargas-2/">
+<div class="calma-acceso__escena"><svg class="calma-escena calma-escena--recursos" viewBox="0 0 350 350" width="350" height="350" aria-hidden="true" focusable="false"><defs><linearGradient id="cuerpo-recursos" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#e3eefa"/><stop offset=".55" stop-color="#bcd6f0"/><stop offset="1" stop-color="#9dc2e8"/></linearGradient><linearGradient id="pantalla-recursos" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f3b5c"/><stop offset="1" stop-color="#0f6b6b"/></linearGradient></defs><g class="a-pdf"><path d="M240 36 H294 L318 60 V138 H240 Z" fill="#e7e1d5" transform="translate(4 5)"/><path class="a-hoja" d="M236 30 H290 L314 54 V132 H236 Z" fill="#fff" stroke="#e3ded3" stroke-width="2"/><path d="M290 30 V54 H314" fill="#f2eee6" stroke="#e3ded3" stroke-width="2"/><rect x="246" y="78" width="58" height="26" rx="6" fill="#b4532a"/><text x="275" y="97" text-anchor="middle">PDF</text><path d="M250 116 H300" stroke="#cfc8ba" stroke-width="3" stroke-linecap="round"/></g><g class="a-sillon"><path class="a-sillon-fondo" d="M84 336 V182 Q84 150 116 150 H234 Q266 150 266 182 V336 Z" fill="#9ccbc3"/></g><g class="a-personaje"><path class="a-cuerpo" fill="url(#cuerpo-recursos)" d="M106 306 C104 256 100 206 112 158 C122 116 146 100 175 100 C206 100 230 118 238 158 C246 198 244 256 242 306 Z"/><g class="a-cara"><g class="a-ojos"><ellipse cx="152" cy="160" rx="6.5" ry="7.5" fill="#1b2233"/><ellipse cx="198" cy="160" rx="6.5" ry="7.5" fill="#1b2233"/></g><circle cx="154" cy="157" r="1.8" fill="#fff"/><circle cx="200" cy="157" r="1.8" fill="#fff"/><ellipse cx="142" cy="176" rx="9" ry="5.5" fill="#f2a9a0" opacity=".75"/><ellipse cx="208" cy="176" rx="9" ry="5.5" fill="#f2a9a0" opacity=".75"/><path d="M162 180 Q175 191 188 180" fill="none" stroke="#1b2233" stroke-width="4" stroke-linecap="round"/></g><g class="a-libro"><path d="M120 262 C140 256 160 258 175 268 C190 258 210 256 230 262 V268 C210 262 190 264 175 274 C160 264 140 262 120 268 Z" fill="#0f6b6b"/><path class="a-pag a-pag--izq" d="M175 214 C160 206 138 206 122 212 V264 C138 258 160 258 175 266 Z" fill="#fff"/><path class="a-pag a-pag--der" d="M175 214 C190 206 212 206 228 212 V264 C212 258 190 258 175 266 Z" fill="#f7f4ee"/><path d="M132 226 Q150 222 166 228 M132 238 Q150 234 166 240 M184 228 Q200 222 218 226 M184 240 Q200 234 218 238" fill="none" stroke="#bcd6f0" stroke-width="3" stroke-linecap="round"/></g><path class="a-extremidad " d="M114 246 C104 262 112 278 126 270" fill="none" stroke="#8fbbe3" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path class="a-extremidad " d="M236 246 C246 262 238 278 224 270" fill="none" stroke="#8fbbe3" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></g><g class="a-sillon-frente"><path d="M50 336 V224 Q50 200 72 200 Q94 200 94 224 V336 Z M256 336 V224 Q256 200 278 200 Q300 200 300 224 V336 Z" fill="#6fb0a5"/><rect x="44" y="330" width="262" height="12" rx="6" fill="#4f8f85"/></g><path class="a-manta" d="M104 300 C140 318 196 324 250 312 L256 336 H100 Z" fill="#f1ddd2"/></svg></div>
+<h3 class="calma-acceso__titulo">Recursos gratuitos</h3>
+<p class="calma-acceso__texto">Libros y guías de Tatiana X. Stacul para descargar sin costo.</p>
+<span class="calma-acceso__boton">Ver las descargas<span class="calma-acceso__flecha" aria-hidden="true"></span></span>
+</a>
 </li>
 </ul>
 </section>

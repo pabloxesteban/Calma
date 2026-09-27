@@ -85,3 +85,15 @@ Si hay que editar un texto de la bienvenida, la línea de tiempo, los estados o 
   - Todo se detiene solo cuando no quedan señales en viaje.
 
 Todo esto va en los mismos archivos (plugin y bloques regenerados); los pasos de aplicación no cambian.
+
+## Sexta ronda de ajustes
+- **Flor:** gira más lento con el scroll (unos 27° cada 600 px; antes eran 72°).
+- **Tarjetas que giran:** una por vez. Al dar vuelta una, la que estaba girada vuelve a su estado original.
+- **Línea de tiempo:** se quitó la frase "Figura ilustrativa: cada punto es una persona".
+- **Accesos:**
+  - El personaje está rediseñado como ilustración plana con volumen: el mismo cuerpo redondeado del original, con degradado de marca, ojos con brillo, mejillas y objetos de color. Las animaciones de llegada son las mismas.
+  - Cada tarjeta es un enlace completo con título, una línea que dice adónde lleva y un botón con flecha:
+    - "Aprende ciberpsicología" → página de Ciberpsicología;
+    - "Solicita una consulta" → Contacto;
+    - "Recursos gratuitos" → Descargas ("Libros y guías de Tatiana X. Stacul para descargar sin costo", según la página de Descargas).
+  - Se reemplaza el mismo bloque: `inicio-accesos.html`, regenerado.

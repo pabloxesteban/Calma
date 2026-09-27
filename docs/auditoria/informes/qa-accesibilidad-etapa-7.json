@@ -31,7 +31,10 @@
     "H3:Presencia fragmentada",
     "H3:Scroll sin horizonte",
     "H3:Ruido constante",
-    "H3:Pantalla hasta dormir"
+    "H3:Pantalla hasta dormir",
+    "H3:Aprende ciberpsicología",
+    "H3:Solicita una consulta",
+    "H3:Recursos gratuitos"
    ],
    "hidden": [],
    "offscreen": [],
@@ -1252,7 +1255,10 @@
     "H3:Presencia fragmentada",
     "H3:Scroll sin horizonte",
     "H3:Ruido constante",
-    "H3:Pantalla hasta dormir"
+    "H3:Pantalla hasta dormir",
+    "H3:Aprende ciberpsicología",
+    "H3:Solicita una consulta",
+    "H3:Recursos gratuitos"
    ],
    "hidden": [],
    "offscreen": [],
@@ -2538,7 +2544,7 @@
    "Equipo o=solid rgb(27, 34, 51) inDrawer=true",
    "Contacto o=solid rgb(27, 34, 51) inDrawer=true",
    "Solicitar una consulta o=solid rgb(29, 95, 148) inDrawer=true",
-   "Cerrar menú o=solid rgb(29, 91, 141) inDrawer=true"
+   "Cerrar menú o=solid rgb(28, 70, 108) inDrawer=true"
   ],
   "afterEsc": {
    "exp": "false",

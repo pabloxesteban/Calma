@@ -82,3 +82,11 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
   - las señales duran unos 4 s al cargar y ≈ 1,5 s por interacción, y después el dibujo se detiene (WCAG 2.2.2);
   - la red no cambia de forma, así que no hay movimiento de fondo que distraiga la lectura;
   - la rotación de la flor depende solo de la posición del scroll.
+
+## Sexta ronda (flor más lenta, una tarjeta girada por vez, accesos con título)
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos. Reflow a 320 px sin desborde. Nada anima con movimiento reducido.
+- **Accesos**:
+  - cada tarjeta es un único enlace con título (H3), descripción y botón visual, así que el nombre accesible dice adónde lleva;
+  - los personajes son decorativos (`aria-hidden`);
+  - el texto de "Recursos gratuitos" sale de lo que hoy dice la página de Descargas (no se inventan contenidos).
+- **Tarjetas que giran**: probado que al girar una, la anterior vuelve. El teclado funciona igual que antes.

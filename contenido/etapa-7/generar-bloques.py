@@ -303,7 +303,7 @@ def linea_tiempo():
 <p class="calma-sub">Una mirada clara y organizada a cómo la tecnología se integró en la vida humana.</p>
 </div>
 <div class="calma-tiempo__cuerpo">
-<div class="calma-tiempo__figura" aria-hidden="true" hidden><p class="calma-tiempo__anio">1975–1985</p><div class="calma-tiempo__lienzo"></div><p class="calma-tiempo__leyenda">Figura ilustrativa: cada punto es una persona.</p></div>
+<div class="calma-tiempo__figura" aria-hidden="true" hidden><p class="calma-tiempo__anio">1975–1985</p><div class="calma-tiempo__lienzo"></div></div>
 <ol class="calma-tiempo__lista">
 ''' + items + '''</ol>
 </div>

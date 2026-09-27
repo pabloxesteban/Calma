@@ -504,8 +504,8 @@
 		var pendiente = false;
 		function girar() {
 			pendiente = false;
-			var y = Math.min( window.scrollY || window.pageYOffset, 1400 );
-			flor.style.setProperty( '--calma-flor-giro', quieto() ? 0 : ( y * 0.12 ).toFixed( 2 ) );
+			var y = Math.min( window.scrollY || window.pageYOffset, 2000 );
+			flor.style.setProperty( '--calma-flor-giro', quieto() ? 0 : ( y * 0.045 ).toFixed( 2 ) );
 		}
 		window.addEventListener( 'scroll', function () {
 			if ( ! pendiente ) {
@@ -610,12 +610,19 @@
 					( girada ? dorso : girar ).focus( { preventScroll: true } );
 				}
 			}
+			tarjeta._calmaPoner = poner;
 			poner( false, false );
 			// Toda la cara es clicable (el botón sigue siendo el control accesible).
 			frente.addEventListener( 'click', function ( ev ) {
 				if ( ev.target.closest( 'a' ) ) {
 					return;
 				}
+				// Una por vez: la que estaba dada vuelta vuelve a su estado original.
+				tarjetas.forEach( function ( otra ) {
+					if ( otra !== tarjeta && otra.classList.contains( 'is-girada' ) && otra._calmaPoner ) {
+						otra._calmaPoner( false, false );
+					}
+				} );
 				// El foco se mueve solo con teclado (un clic de teclado tiene detail 0).
 				poner( true, ev.detail === 0 );
 			} );

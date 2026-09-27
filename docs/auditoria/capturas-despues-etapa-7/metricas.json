@@ -19,10 +19,10 @@
     "h": 48
    },
    {
-    "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 48
+    "t": "Solicita una consulta\nAcompaña",
+    "color": "rgb(27, 34, 51)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 482
    },
    {
     "t": "Solicitar una consulta",
@@ -31,7 +31,7 @@
     "h": 48
    }
   ],
-  "height": 12157
+  "height": 12481
  },
  {
   "w": 360,
@@ -58,40 +58,6 @@
   "height": 7747
  },
  {
-  "w": 360,
-  "page": "servicios",
-  "overflowX": 0,
-  "clipped": [],
-  "hiddenText": 0,
-  "smallTargets": 0,
-  "smallSample": [],
-  "minGutter": 20,
-  "h1": [
-   "Mentoría uno a uno para ordenar tu relación con la"
-  ],
-  "ctas": [
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 48
-   },
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(22, 33, 77)",
-    "bg": "rgb(255, 255, 255)",
-    "h": 48
-   },
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(22, 33, 77)",
-    "bg": "rgb(255, 255, 255)",
-    "h": 48
-   }
-  ],
-  "height": 12003
- },
- {
   "w": 390,
   "page": "inicio",
   "overflowX": 0,
@@ -111,10 +77,10 @@
     "h": 48
    },
    {
-    "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 48
+    "t": "Solicita una consulta\nAcompaña",
+    "color": "rgb(27, 34, 51)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 482
    },
    {
     "t": "Solicitar una consulta",
@@ -123,7 +89,7 @@
     "h": 48
    }
   ],
-  "height": 11879
+  "height": 12203
  },
  {
   "w": 390,
@@ -150,40 +116,6 @@
   "height": 7838
  },
  {
-  "w": 390,
-  "page": "servicios",
-  "overflowX": 0,
-  "clipped": [],
-  "hiddenText": 0,
-  "smallTargets": 0,
-  "smallSample": [],
-  "minGutter": 20,
-  "h1": [
-   "Mentoría uno a uno para ordenar tu relación con la"
-  ],
-  "ctas": [
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 48
-   },
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(22, 33, 77)",
-    "bg": "rgb(255, 255, 255)",
-    "h": 48
-   },
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(22, 33, 77)",
-    "bg": "rgb(255, 255, 255)",
-    "h": 48
-   }
-  ],
-  "height": 11362
- },
- {
   "w": 430,
   "page": "inicio",
   "overflowX": 0,
@@ -203,10 +135,10 @@
     "h": 48
    },
    {
-    "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 48
+    "t": "Solicita una consulta\nAcompaña",
+    "color": "rgb(27, 34, 51)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 482
    },
    {
     "t": "Solicitar una consulta",
@@ -215,7 +147,7 @@
     "h": 48
    }
   ],
-  "height": 11752
+  "height": 12077
  },
  {
   "w": 430,
@@ -241,42 +173,6 @@
    }
   ],
   "height": 8023
- },
- {
-  "w": 430,
-  "page": "servicios",
-  "overflowX": 0,
-  "clipped": [],
-  "hiddenText": 0,
-  "smallTargets": 1,
-  "smallSample": [
-   "Ver reseña de Hugo B. en Googl"
-  ],
-  "minGutter": 22,
-  "h1": [
-   "Mentoría uno a uno para ordenar tu relación con la"
-  ],
-  "ctas": [
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 48
-   },
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(22, 33, 77)",
-    "bg": "rgb(255, 255, 255)",
-    "h": 48
-   },
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(22, 33, 77)",
-    "bg": "rgb(255, 255, 255)",
-    "h": 48
-   }
-  ],
-  "height": 10857
  },
  {
   "w": 1280,
@@ -307,10 +203,10 @@
     "h": 48
    },
    {
-    "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 48
+    "t": "Solicita una consulta\nAcompaña",
+    "color": "rgb(27, 34, 51)",
+    "bg": "rgb(255, 255, 255)",
+    "h": 485
    },
    {
     "t": "Solicitar una consulta",
@@ -319,7 +215,7 @@
     "h": 48
    }
   ],
-  "height": 6930
+  "height": 7040
  },
  {
   "w": 1280,
@@ -352,48 +248,5 @@
    }
   ],
   "height": 3604
- },
- {
-  "w": 1280,
-  "page": "servicios",
-  "overflowX": 0,
-  "clipped": [],
-  "hiddenText": 0,
-  "smallTargets": 2,
-  "smallSample": [
-   "Menú hijo de Ciberpsicología",
-   "Ver el formulario de búsqueda"
-  ],
-  "minGutter": 60,
-  "h1": [
-   "Mentoría uno a uno para ordenar tu relación con la"
-  ],
-  "ctas": [
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 44
-   },
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(255, 255, 255)",
-    "bg": "rgb(29, 95, 148)",
-    "h": 48
-   },
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(22, 33, 77)",
-    "bg": "rgb(255, 255, 255)",
-    "h": 48
-   },
-   {
-    "t": "Solicitar una consulta",
-    "color": "rgb(22, 33, 77)",
-    "bg": "rgb(255, 255, 255)",
-    "h": 48
-   }
-  ],
-  "height": 7164
  }
 ]
