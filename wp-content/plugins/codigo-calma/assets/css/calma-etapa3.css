@@ -513,3 +513,45 @@
 	min-height: 44px;
 	cursor: pointer;
 }
+
+/* --------------------------------------------------------------------------
+   5. Etapa 5 · "En resumen" y "Fuentes" en las entradas (includes/geo.php)
+   -------------------------------------------------------------------------- */
+.calma-resumen {
+	max-width: var(--calma-measure);
+	margin: 0 0 var(--calma-space-8);
+	padding: var(--calma-space-5) var(--calma-space-6);
+	background: var(--calma-surface-soft);
+	border-left: 4px solid var(--calma-primary);
+	border-radius: 0 var(--calma-radius-sm) var(--calma-radius-sm) 0;
+}
+.calma-resumen p {
+	margin: 0;
+	line-height: 1.6;
+}
+.calma-resumen__def {
+	margin-top: var(--calma-space-3) !important;
+	font-style: italic;
+	color: var(--calma-text-muted);
+}
+.calma-fuentes {
+	max-width: var(--calma-measure);
+	margin: var(--calma-space-12) 0 0;
+	padding-top: var(--calma-space-6);
+	border-top: 1px solid var(--calma-border);
+	font-size: var(--calma-fs-sm);
+}
+.calma-fuentes h2 {
+	font-size: var(--calma-fs-lg) !important;
+	margin: 0 0 var(--calma-space-3) !important;
+}
+.calma-fuentes ol {
+	padding-left: 1.25em;
+	margin: 0;
+	display: grid;
+	gap: var(--calma-space-2);
+	color: var(--calma-text-muted);
+}
+.calma-fuentes a {
+	overflow-wrap: anywhere;
+}

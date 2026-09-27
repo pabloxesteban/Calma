@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Código Calma
  * Description:       Design system (tokens calma-*) y correcciones del sitio sobre el tema Kadence, sin tema hijo (así se conservan los ajustes del Personalizador).
- * Version:           1.3.0-etapa4
+ * Version:           1.4.0-etapa5
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Author:            Código Calma
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CALMA_VERSION', '1.3.0-etapa4' );
+define( 'CALMA_VERSION', '1.4.0-etapa5' );
 define( 'CALMA_URL', plugin_dir_url( __FILE__ ) );
 define( 'CALMA_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -120,3 +120,6 @@ require_once CALMA_DIR . 'includes/schema.php';
 
 // Etapa 4 · Importación de títulos y descripciones a Rank Math (Herramientas → Código Calma: SEO).
 require_once CALMA_DIR . 'includes/seo-import.php';
+
+// Etapa 5 · GEO: llms.txt, "En resumen", fuentes, importadores de artículos y taxonomía.
+require_once CALMA_DIR . 'includes/geo.php';
