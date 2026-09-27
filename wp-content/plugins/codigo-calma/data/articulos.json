@@ -1,0 +1,607 @@
+{
+  "version": "etapa-5",
+  "articulos": [
+    {
+      "slug": "por-que-tu-fuerza-de-voluntad-es-mas-lista-de-lo-que-crees",
+      "pregunta": "¿La fuerza de voluntad se agota como un músculo o una batería?",
+      "resumen": "No. Según las investigaciones más recientes, tu fuerza de voluntad no es una reserva que se agota como un músculo o una batería, sino un sistema dinámico. Cuando sientes que ya no puedes más, tu cerebro no se apaga: prioriza lo que requiere menos esfuerzo y da recompensa inmediata. Lo que crees de ti cambia esa negociación.",
+      "resumen_origen": [
+        "Sin embargo, las investigaciones más recientes han demostrado que el cerebro es mucho más astuto que un simple tejido muscular.",
+        "Tu fuerza de voluntad no es una reserva que se agota; es un sistema dinámico que responde a lo que crees de ti mismo y a cómo estructuras tu mundo.",
+        "Cuando detecta fatiga, no se apaga; simplemente prioriza: «Oye, ya hemos trabajado suficiente por hoy. ¿Qué te parece si hacemos algo que requiera menos esfuerzo y nos dé una recompensa inmediata?».",
+        "Si crees firmemente que tu fuerza de voluntad es limitada, tu cerebro te dará la razón y se pondrá en modo «ahorro» en cuanto te sientas mínimamente agotado.",
+        "No es un fallo en tu sistema, es una negociación constante."
+      ],
+      "definicion": {
+        "texto": "La fuerza de voluntad es un sistema dinámico que responde a lo que crees de ti mismo y a cómo estructuras tu mundo, no una reserva que se agota.",
+        "tipo": "adaptada",
+        "origen": "Tu fuerza de voluntad no es una reserva que se agota; es un sistema dinámico que responde a lo que crees de ti mismo y a cómo estructuras tu mundo."
+      },
+      "h2": [
+        {
+          "antes": "El día que la neurociencia cambió el juego",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "Si, la creencia importa",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "Tres pasos para «hackear» tu fatiga desde la calma",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "La verdad es más amable",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        }
+      ],
+      "fuentes": [],
+      "pendientes": [
+        "[COMPLETAR: referencia (autor, año, DOI) de «las investigaciones más recientes» que cuestionan el modelo del «agotamiento del ego» / metáfora del músculo; el artículo no nombra ningún estudio]",
+        "[COMPLETAR: corrección ortográfica en el encabezado «Si, la creencia importa» → «Sí, la creencia importa» (tilde; se aplica al pasar a H2 si la autora lo aprueba)]",
+        "[COMPLETAR: revisar «En Código Calma no buscamos entendernos.»; parece faltar texto (en otro artículo la fórmula es «no solo para entendernos, sino para vivir con más conciencia»)]"
+      ]
+    },
+    {
+      "slug": "la-diferencia-entre-querer-y-ser-capaz-entendiendo-la-autoeficacia",
+      "pregunta": "¿Qué es la autoeficacia y en qué se diferencia de querer hacer algo?",
+      "resumen": "Querer hacer algo y sentirse capaz de hacerlo no es lo mismo. La autoeficacia, término acuñado por Albert Bandura, es un juicio sobre lo que puedes hacer con las herramientas que tienes en una situación específica; no es autoestima. Se construye con experiencias de dominio, experiencias vicarias, persuasión social y la interpretación de tus estados fisiológicos.",
+      "resumen_origen": [
+        "«Tengo todas las ganas del mundo, pero cuando llega el momento, me paralizo».",
+        "una baja percepción de autoeficacia",
+        "El término fue acuñado por Albert Bandura, y aunque a veces se confunde con la autoestima, no son lo mismo.",
+        "la autoeficacia es un juicio sobre lo que puedes hacer con las herramientas que tienes en una situación específica",
+        "Experiencias de dominio (La fuente reina)",
+        "Experiencias vicarias: efecto espejo.",
+        "Persuasión social: El feedback de calidad que recibes de otros.",
+        "Estados fisiológicos: ¿Cómo interpretas tu pulso acelerado o tus manos sudorosas."
+      ],
+      "definicion": {
+        "texto": "La autoeficacia es un juicio sobre lo que puedes hacer con las herramientas que tienes en una situación específica.",
+        "tipo": "textual",
+        "origen": "Mientras que la autoestima es un juicio de valor sobre quién eres, la autoeficacia es un juicio sobre lo que puedes hacer con las herramientas que tienes en una situación específica."
+      },
+      "h2": [
+        {
+          "antes": "¿Qué es, realmente, la autoeficacia?",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "Tu cerebro necesita pruebas, no palabras.",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "La trampa de la «batería»",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "¿Cómo saber si tu autoeficacia necesita un ajuste?",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "¿Quieres saber cómo aplicar esto cuando el cansancio te gana?",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        }
+      ],
+      "fuentes": [
+        {
+          "texto": "Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change. Psychological Review, 84(2), 191–215.",
+          "url": "https://doi.org/10.1037/0033-295X.84.2.191",
+          "estado": "verificada",
+          "cita_en": "El término fue acuñado por Albert Bandura, y aunque a veces se confunde con la autoestima, no son lo mismo."
+        }
+      ],
+      "pendientes": [
+        "[COMPLETAR: confirmar que Bandura (1977) es la obra de referencia de la autora; es el artículo donde se acuña el término y se proponen las cuatro fuentes]",
+        "[COMPLETAR: errata «microurlogros» → «micrologros»]",
+        "[COMPLETAR: cerrar el signo de interrogación en «¿Cómo interpretas tu pulso acelerado o tus manos sudorosas.»]"
+      ]
+    },
+    {
+      "slug": "por-que-fallamos-al-intentar-cambiar-conductas",
+      "pregunta": "¿Por qué no basta con informar o simplificar para cambiar conductas?",
+      "resumen": "Porque muchas veces el problema no está en lo que la gente sabe, sino en cómo se siente la decisión. Un estudio en Frontiers in Behavioral Economics propone el paternalismo afectivo: usar la emoción como recurso de diseño. Frente al nudge, que simplifica el camino, el cudge trabaja la textura emocional de la elección. Las cifras frías suelen desconectar.",
+      "resumen_origen": [
+        "¿Y si el problema no está en lo que la gente sabe, sino en cómo se siente la decisión?",
+        "Un estudio publicado en Frontiers in Behavioral Economics aborda esto desde el marco del «paternalismo afectivo».",
+        "la emoción no es una falla del sistema que deba eliminarse por lógica; es un recurso legítimo para diseñar mejores entornos.",
+        "El Nudge simplifica el camino; el Cudge conecta con el propósito",
+        "Mientras el nudge acomoda el orden de las opciones para evitar errores por despiste, el cudge trabaja con la textura emocional de la elección.",
+        "cuando la emoción está saturada, la razón no convence; desconecta."
+      ],
+      "definicion": {
+        "texto": "El cudge es una intervención que trabaja con la textura emocional de la elección, mientras que el nudge acomoda el orden de las opciones para evitar errores por despiste.",
+        "tipo": "adaptada",
+        "origen": "Mientras el nudge acomoda el orden de las opciones para evitar errores por despiste, el cudge trabaja con la textura emocional de la elección."
+      },
+      "h2": [],
+      "fuentes": [
+        {
+          "texto": "Västfjäll, D., Asutay, E., & Tinghög, G. (2026). Beyond nudging: affective paternalism and affect architecture for impactful behavioral public policy. Frontiers in Behavioral Economics, 5, 1866819.",
+          "url": "https://doi.org/10.3389/frbhe.2026.1866819",
+          "estado": "verificada",
+          "cita_en": "Un estudio publicado en Frontiers in Behavioral Economics aborda esto desde el marco del «paternalismo afectivo»."
+        }
+      ],
+      "pendientes": [
+        "[COMPLETAR: confirmar con la autora que el estudio es Västfjäll, Asutay y Tinghög (2026); coincide revista, «paternalismo afectivo», «cudge», insensibilidad al alcance y fecha (30-06-2026, mismo día que el artículo)]",
+        "[COMPLETAR: fuente original del experimento de impuestos vehiculares con fotografía del automóvil («multiplicó los pagos por seis») y del de donaciones con gráficos; indicar si vienen citados en Västfjäll et al. (2026)]",
+        "[COMPLETAR: fuente del ejemplo de insensibilidad al alcance (doscientas frente a doscientas mil aves)]"
+      ]
+    },
+    {
+      "slug": "ia-y-apoyo-emocional-saber-la-autoria-cambia-tu-perspectiva",
+      "pregunta": "¿Cambia la valoración de un consejo emocional si sabemos que lo escribió una IA?",
+      "resumen": "Sí. En un estudio de Brandtzaeg, Skjuve y Følstad (2026), las personas jóvenes valoraban más la respuesta de apoyo emocional generada por IA cuando no sabían quién la había escrito: la veían clara, útil y fácil de seguir. Al revelarse la autoría, la respuesta humana pasaba a sentirse más confiable. La percepción no provenía del contenido, sino del marco mental.",
+      "resumen_origen": [
+        "Bibliografia: Effects of author disclosure on young people’s perceptions of mental health advice Vol.20,No.2(2026) Petter Bae Brandtzaeg , Marita Skjuve, Asbjørn Følstad.",
+        "En los casos en que no se indicaba quién había escrito la respuesta, las personas jóvenes tendían a valorar más la generada por IA. La describían como clara, útil y fácil de seguir.",
+        "El giro aparece cuando se informa que una de las respuestas proviene de una IA.",
+        "La respuesta humana pasa a sentirse más confiable.",
+        "La percepción no provenía del contenido, sino del marco mental."
+      ],
+      "definicion": null,
+      "h2": [
+        {
+          "antes": "Cuando la autoría está oculta",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "Cuando la autoría se revela",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "Lo que esto significa para quienes trabajamos en bienestar digital",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "La pregunta que queda abierta",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "Lo que realmente valoran las personas jóvenes",
+          "nivel_actual": "h5",
+          "despues_nivel": "h2"
+        }
+      ],
+      "fuentes": [
+        {
+          "texto": "Brandtzaeg, P. B., Skjuve, M., & Følstad, A. (2026). AI aversion? Effects of author disclosure on young people’s perceptions of mental health advice. Cyberpsychology: Journal of Psychosocial Research on Cyberspace, 20(2).",
+          "url": "https://doi.org/10.5817/CP2026-2-1",
+          "estado": "verificada",
+          "cita_en": "Bibliografia: Effects of author disclosure on young people’s perceptions of mental health advice Vol.20,No.2(2026) Petter Bae Brandtzaeg , Marita Skjuve, Asbjørn Følstad. (La investigación fue enfocada en la aversión a la IA.)"
+        }
+      ],
+      "pendientes": [
+        "[COMPLETAR: la bibliografía del artículo omite el inicio del título («AI aversion?») y el nombre de la revista; reemplazarla por la referencia completa con DOI]",
+        "[COMPLETAR: errata «Bibliografia» → «Bibliografía»]",
+        "[COMPLETAR: el artículo no define ningún concepto; si la autora quiere, una oración propia que defina «aversión a la IA», que ya menciona en la bibliografía]",
+        "[COMPLETAR: «Lo que realmente valoran las personas jóvenes» es un H5 que funciona como sección; se propone pasarlo a H2 junto con los H3]"
+      ]
+    },
+    {
+      "slug": "el-estigma-de-la-estructura-x-entonces-y",
+      "pregunta": "¿Un texto con estructura lógica indica que lo escribió una IA?",
+      "resumen": "No. La estructura «X, entonces Y», el condicional lógico, no nació en Silicon Valley: es la base de la filosofía presocrática, el corazón del método científico y la columna vertebral de cualquier argumento sólido. La IA la usa porque fue entrenada con el pensamiento humano. Descartar un texto bien organizado sacrifica la calidad del mensaje por prejuicio contra el mensajero.",
+      "resumen_origen": [
+        "La estructura «X, entonces Y» (el condicional lógico) no nació en un servidor de Silicon Valley. Es la base de la filosofía presocrática, el corazón del método científico y la columna vertebral de cualquier argumento sólido desde hace milenios.",
+        "La IA utiliza estas estructuras porque ha sido entrenada con lo mejor del pensamiento humano.",
+        "Cuando alguien descarta un argumento simplemente porque está «demasiado bien organizado», comete un error costoso: sacrifica la calidad del mensaje por prejuicio contra el mensajero."
+      ],
+      "definicion": {
+        "texto": "El condicional lógico, la estructura «X, entonces Y», es la base de la filosofía presocrática, el corazón del método científico y la columna vertebral de cualquier argumento sólido desde hace milenios.",
+        "tipo": "adaptada",
+        "origen": "La estructura «X, entonces Y» (el condicional lógico) no nació en un servidor de Silicon Valley. Es la base de la filosofía presocrática, el corazón del método científico y la columna vertebral de cualquier argumento sólido desde hace milenios."
+      },
+      "h2": [
+        {
+          "antes": "Por qué «X entonces Y» no es falta de alma, es claridad",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "La construcción lógica: Una herencia humana",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "¿Por qué nos molesta tanto la estructura hoy?",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "La lógica como aliada de la calma",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "Recuperar el valor del pensamiento",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        }
+      ],
+      "fuentes": [],
+      "pendientes": [
+        "[COMPLETAR: el párrafo inicial se repite casi literal al comienzo de «La construcción lógica: Una herencia humana»; decidir si el bloque «En resumen» sustituye al párrafo inicial (cambio de fondo, solo propuesto)]",
+        "[COMPLETAR: espacios faltantes en «“Esto lo escribió una IA”.¿La prueba del delito?» y «autenticidad.Hoy»]"
+      ]
+    },
+    {
+      "slug": "infancias-figitales",
+      "pregunta": "¿Cómo acompañar a infancias que viven sin frontera entre lo digital y lo físico?",
+      "resumen": "Acompañando en lugar de vigilar. Para las nuevas generaciones no hay frontera entre pantalla y vida real, así que el desafío de la crianza no es limitar el uso, sino educar la mirada: preguntar en vez de prohibir, crear espacios de silencio digital, ser modelo de desconexión consciente y trabajar identidad, desinformación e inmediatez.",
+      "resumen_origen": [
+        "para las nuevas generaciones no hay frontera.",
+        "Por eso, el desafío de la crianza hoy no es limitar el uso, sino educar la mirada.",
+        "La alternativa es el acompañamiento crítico.",
+        "No prohíbas; pregunta:",
+        "Crea espacios de «Silencio Digital»:",
+        "Sé el modelo de «Desconexión Consciente«:",
+        "La identidad fragmentada:",
+        "La desinformación como ruido ambiental:",
+        "El sesgo de la inmediatez:"
+      ],
+      "definicion": null,
+      "h2": [
+        {
+          "antes": "Criar en un mundo donde el «offline» no existe",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "Lo que la investigación nos enseña: Más allá del filtro",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "De la vigilancia al acompañamiento",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "El derecho a una vida digital serena",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        }
+      ],
+      "fuentes": [
+        {
+          "texto": "Fundación Cibervoluntarios. (s. f.). Proyectos.",
+          "url": "https://www.cibervoluntarios.org/es/que-hacemos/proyectos",
+          "estado": "verificada",
+          "cita_en": "Te dejamos el link hacia sus proyectos: https://www.cibervoluntarios.org/es/que-hacemos/proyectos"
+        }
+      ],
+      "pendientes": [
+        "[COMPLETAR: título, año y enlace del informe o estudio concreto de Cibervoluntarios al que se refiere «la investigación de Cibervoluntarios»; hoy solo se enlaza la página general de proyectos]",
+        "[COMPLETAR: definición de «figital» en palabras de la autora (el término da título al artículo y no se define; el texto solo dice «Viven en un mundo integrado»)]",
+        "[COMPLETAR: comilla mal cerrada en «Desconexión Consciente«» y punto final faltante en «Viven en un mundo integrado»]"
+      ]
+    },
+    {
+      "slug": "calidad-vs-cantidad-la-hipotesis-de-ricitos-de-oro",
+      "pregunta": "¿Importa más la cantidad de horas de pantalla o la calidad del uso?",
+      "resumen": "Según la «hipótesis de ricitos de oro» del investigador Andrew Przybylski, el bienestar no depende solo de las horas de pantalla: tanto la abstinencia total como el uso excesivo tienen efectos adversos, y lo negativo se asocia más al uso pasivo, como el scroll infinito. La clave es un uso activo y equilibrado con el sueño y el ejercicio.",
+      "resumen_origen": [
+        "Andrew Przybylski, del Oxford Internet Institute, presenta la «hipótesis del ricitos de oro», que desafía esta perspectiva.",
+        "Su investigación sugiere que tanto la abstinencia total de pantallas como el uso excesivo de pantallas generan efectos adversos sobre nuestro bienestar.",
+        "experimentar efectos negativos está más relacionado con el uso pasivo de la tecnología, como el desplazamiento interminable en redes sociales, que con el tiempo total invertido.",
+        "siempre que se utilice de manera activa y en equilibrio con otras actividades vitales, como el sueño y el ejercicio.",
+        "La clave radica en el uso consciente y activo de los dispositivos."
+      ],
+      "definicion": {
+        "texto": "La hipótesis de ricitos de oro, propuesta por Andrew Przybylski (Oxford Internet Institute), sostiene que el uso moderado de la tecnología puede ser benéfico, mientras que tanto la abstinencia total como el uso excesivo de pantallas generan efectos adversos sobre el bienestar.",
+        "tipo": "adaptada",
+        "origen": "Przybylski argumenta que el uso moderado de la tecnología no solo es inofensivo, sino que también puede ser benéfico. Su investigación sugiere que tanto la abstinencia total de pantallas como el uso excesivo de pantallas generan efectos adversos sobre nuestro bienestar."
+      },
+      "h2": [],
+      "fuentes": [
+        {
+          "texto": "Przybylski, A. K., & Weinstein, N. (2017). A large-scale test of the Goldilocks hypothesis: Quantifying the relations between digital-screen use and the mental well-being of adolescents. Psychological Science, 28(2), 204–215.",
+          "url": "https://doi.org/10.1177/0956797616678438",
+          "estado": "verificada",
+          "cita_en": "Andrew Przybylski, del Oxford Internet Institute, presenta la «hipótesis del ricitos de oro», que desafía esta perspectiva."
+        }
+      ],
+      "pendientes": [
+        "[COMPLETAR: confirmar que Przybylski y Weinstein (2017) es el trabajo al que se refiere la autora y añadir el año en el texto]",
+        "[COMPLETAR: unificar «hipótesis del ricitos de oro» / «hipótesis de «ricitos de oro»» / «Hipótesis de Ricitos de Oro» en una sola forma]"
+      ]
+    },
+    {
+      "slug": "autoevaluacion-del-consumo-digital-como-estamos-manejando-nuestro-tiempo-frente-a-las-pantallas",
+      "pregunta": "¿Cómo evaluar mi consumo digital?",
+      "resumen": "Durante al menos una semana, registra cuánto tiempo dedicas a cada actividad digital y clasifícala en categorías como redes sociales, streaming o trabajo. Puntúa del 1 al 5 el valor de cada una y reflexiona cómo te sientes después. Luego revisa el tiempo total, su distribución y el impacto emocional: el objetivo no es generar culpa, sino optimizar el uso.",
+      "resumen_origen": [
+        "Durante al menos una semana, registra cuánto tiempo dedicas a cada actividad digital.",
+        "Clasifica el uso en categorías como:",
+        "2. Evaluar el valor percibido de cada actividad",
+        "Después de cada sesión digital, reflexiona brevemente:",
+        "Una vez completada la semana de registro, revisa tres variables clave:",
+        "El objetivo no es generar culpa, sino obtener información accionable sobre nuestros hábitos.",
+        "sino optimizar su uso para que funcione como una herramienta y no como una fuente constante de distracción."
+      ],
+      "definicion": {
+        "texto": "El consumo digital comprende el tiempo que destinamos a interactuar con pantallas: redes sociales, plataformas de streaming, videojuegos, mensajería o navegación web.",
+        "tipo": "textual",
+        "origen": "El consumo digital comprende el tiempo que destinamos a interactuar con pantallas: redes sociales, plataformas de streaming, videojuegos, mensajería o navegación web."
+      },
+      "h2": [
+        {
+          "antes": "¿Por qué es estratégico evaluar nuestro consumo digital?",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "Cómo realizar una autoevaluación de consumo digital",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        },
+        {
+          "antes": "Interpretar los resultados",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        }
+      ],
+      "fuentes": [],
+      "pendientes": [
+        "[COMPLETAR: referencias (DOI/PMC) de «Diversas investigaciones en psicología cognitiva y ciencias del comportamiento» sobre recompensas variables y notificaciones; el artículo no nombra ningún estudio]",
+        "[COMPLETAR: la escala de puntaje 1–5 aparece como párrafo corrido («Puntaje Interpretación 1 Consumo automático…»); convertirla en tabla]",
+        "[COMPLETAR: espacio sobrante en «eliminar la tecnología , lo cual»]"
+      ]
+    },
+    {
+      "slug": "preguntas-clave-para-entender-y-cuidar-nuestro-cerebro",
+      "pregunta": "¿Qué es la salud cerebral y cómo cuidarla?",
+      "resumen": "La salud cerebral abarca el bienestar físico, mental y emocional del cerebro, el órgano que controla nuestras funciones cognitivas, emocionales y motoras. Se cuida con una dieta equilibrada, ejercicio regular, desafío cognitivo, gestión del estrés y descanso adecuado. Ante cambios en la memoria, dificultad para concentrarse o confusión, es recomendable consultar a un profesional de la salud.",
+      "resumen_origen": [
+        "La salud cerebral abarca el bienestar físico, mental y emocional de nuestro órgano más complejo: el cerebro. Este controla todas nuestras funciones cognitivas, emocionales y motoras",
+        "Primero, una dieta equilibrada rica en nutrientes",
+        "el ejercicio regular no solo beneficia el cuerpo, sino también el cerebro",
+        "Otra manera crucial de cuidar el cerebro es a través del desafío cognitivo.",
+        "también es fundamental gestionar el estrés de manera efectiva y asegurar un descanso adecuado",
+        "Algunas señales de alerta pueden incluir cambios en la memoria, dificultad para concentrarse",
+        "Si notas un aumento en la confusión o la falta de claridad mental, es recomendable consultar a un profesional de la salud."
+      ],
+      "definicion": {
+        "texto": "La salud cerebral abarca el bienestar físico, mental y emocional de nuestro órgano más complejo: el cerebro.",
+        "tipo": "textual",
+        "origen": "La salud cerebral abarca el bienestar físico, mental y emocional de nuestro órgano más complejo: el cerebro."
+      },
+      "h2": [],
+      "fuentes": [],
+      "pendientes": [
+        "[COMPLETAR: fuentes revisadas por pares u organismo de salud que respalden las recomendaciones (omega-3 y antioxidantes, ejercicio y neuroplasticidad, sueño y estrés crónico) y las señales de alerta; el artículo no cita ninguna]"
+      ]
+    },
+    {
+      "slug": "5-puntos-clave-que-el-caso-de-meta-nos-deja-en-salud-mental",
+      "pregunta": "¿Qué revela el caso Meta/Proyecto Mercury sobre redes sociales y salud mental?",
+      "resumen": "Documentos judiciales revelaron que Meta canceló el Proyecto Mercury, una investigación interna sobre el impacto de Facebook en la salud mental. Quienes dejaron Facebook durante una semana reportaron menos depresión, ansiedad y soledad, y un estudio realizado junto a Nielsen en 2020 apuntó en la misma dirección. El caso reclama más transparencia, responsabilidad ética y regulación de las plataformas.",
+      "resumen_origen": [
+        "Este contexto se ha evidenciado a través de una serie de documentos judiciales que han revelado información crucial, específicamente la existencia de un proyecto denominado Mercury.",
+        "Este proyecto estaba destinado a examinar internamente el impacto que el uso de Facebook podría tener en la salud mental de sus usuarios.",
+        "uno de los aspectos más preocupantes que ha salido a la luz es la cancelación de esta investigación interna.",
+        "los usuarios que se abstuvieron de usar Facebook durante una semana reportaron una disminución notable de sus niveles de depresión, ansiedad y soledad.",
+        "es pertinente considerar el estudio realizado junto a Nielsen en el año 2020. Este estudio reveló un posible vínculo entre la disminución del uso de la plataforma y la mejora de la salud mental de los usuarios",
+        "fomentar la transparencia no solo es un reto ético, sino también un imperativo",
+        "La regulación es clave para asegurar que las prácticas de las redes sociales promuevan el bienestar social en lugar de comprometerlo."
+      ],
+      "definicion": {
+        "texto": "El Proyecto Mercury fue un proyecto interno de Meta destinado a examinar el impacto que el uso de Facebook podía tener en la salud mental de sus usuarios.",
+        "tipo": "adaptada",
+        "origen": "la existencia de un proyecto denominado Mercury. Este proyecto estaba destinado a examinar internamente el impacto que el uso de Facebook podría tener en la salud mental de sus usuarios."
+      },
+      "h2": [],
+      "fuentes": [
+        {
+          "texto": "Documentos judiciales que revelaron la existencia y cancelación del Proyecto Mercury (tribunal, número de causa y fecha sin identificar).",
+          "url": null,
+          "estado": "[verificar]",
+          "cita_en": "Este contexto se ha evidenciado a través de una serie de documentos judiciales que han revelado información crucial, específicamente la existencia de un proyecto denominado Mercury."
+        },
+        {
+          "texto": "Estudio de Meta realizado junto a Nielsen (2020) sobre la desactivación de Facebook y la salud mental (documento interno; referencia sin identificar).",
+          "url": null,
+          "estado": "[verificar]",
+          "cita_en": "es pertinente considerar el estudio realizado junto a Nielsen en el año 2020."
+        }
+      ],
+      "pendientes": [
+        "[COMPLETAR: referencia de los documentos judiciales (tribunal, número de causa, fecha y enlace oficial o a una cobertura periodística fiable que los reproduzca)]",
+        "[COMPLETAR: referencia del estudio con Nielsen (2020) y aclarar si es el mismo estudio que el Proyecto Mercury o uno distinto; el texto los presenta por separado]",
+        "[COMPLETAR: fuente de «Expertos en psicología y sociología han señalado que el uso excesivo de las redes sociales puede conducir a un aumento de problemas como la ansiedad, la depresión y la baja autoestima»]",
+        "[COMPLETAR: el título promete «5 puntos clave» y el artículo tiene 4 secciones H2; revisar título o estructura]"
+      ]
+    },
+    {
+      "slug": "reflexiones-eticas-sobre-el-desarrollo-de-la-inteligencia-artificial",
+      "pregunta": "¿Qué dilemas éticos plantea el desarrollo de la IA?",
+      "resumen": "El desarrollo de la inteligencia artificial plantea dilemas sobre privacidad, seguridad, equidad y posible pérdida de empleo. Los sesgos algorítmicos pueden perpetuar discriminaciones, la recopilación masiva de datos amenaza la privacidad, las lagunas legales dificultan atribuir responsabilidad y el acceso desigual puede ampliar brechas sociales. Por eso se proponen marcos éticos, transparencia, rendición de cuentas y colaboración interdisciplinaria.",
+      "resumen_origen": [
+        "La implementación de la IA plantea preguntas complejas sobre la privacidad, la seguridad, la equidad y la posible pérdida de empleo.",
+        "Los sesgos algorítmicos representan una problemática significativa en el desarrollo de la inteligencia artificial (IA).",
+        "perpetuando así discriminaciones históricas",
+        "estos avances también han suscitado preocupaciones sobre la privacidad y la seguridad de los datos personales.",
+        "Un aspecto importante a considerar son las lagunas legales que actualmente existen en la regulación de la inteligencia artificial.",
+        "Un aspecto significativo a tener en cuenta es el acceso desigual a la IA.",
+        "Una de las recomendaciones esenciales para el desarrollo ético de la inteligencia artificial es la promoción de una colaboración interdisciplinaria.",
+        "adopten prácticas de transparencia y rendición de cuentas"
+      ],
+      "definicion": {
+        "texto": "La inteligencia artificial (IA) es un campo multidisciplinario que busca desarrollar sistemas capaces de realizar tareas que normalmente requieren inteligencia humana.",
+        "tipo": "textual",
+        "origen": "La inteligencia artificial (IA) es un campo multidisciplinario que busca desarrollar sistemas capaces de realizar tareas que normalmente requieren inteligencia humana."
+      },
+      "h2": [],
+      "fuentes": [],
+      "pendientes": [
+        "[COMPLETAR: fuente (estudio con DOI u organismo) de «los sistemas de reconocimiento facial, que han demostrado tener una precisión significativamente menor en personas de piel oscura»; el artículo no la cita]",
+        "[COMPLETAR: erratas «entrenar ochos modelos» y «desarrolladores yusuarios»]",
+        "[COMPLETAR: la sección sobre sesgos algorítmicos no tiene encabezado propio (queda dentro de «El Paradigma Ético en la Tecnología»); valorar un H2 «Sesgos algorítmicos»]"
+      ]
+    },
+    {
+      "slug": "descubriendo-que-modela-nuestro-comportamiento",
+      "pregunta": "¿Qué factores modelan nuestro comportamiento?",
+      "resumen": "Nuestro comportamiento se moldea por factores culturales, sociales, emocionales y cognitivos a menudo difíciles de identificar. La ciencia del comportamiento lo explica desde tres miradas: el refuerzo de B.F. Skinner, las recompensas y castigos que hacen más o menos probable repetir una acción; los dos sistemas de pensamiento de Daniel Kahneman; y el aprendizaje social por observación de Albert Bandura.",
+      "resumen_origen": [
+        "muchas de nuestras decisiones se ven moldeadas por fuerzas a menudo difíciles de identificar. Estas influencias subyacentes pueden incluir factores culturales, sociales, emocionales y cognitivos.",
+        "Skinner postuló que las acciones son moldeadas a través de un sistema de recompensas y castigos, donde las consecuencias de un comportamiento afectan la probabilidad de que este se repita en el futuro.",
+        "Kahneman introduce dos sistemas de pensamiento: el Sistema 1, que opera de manera rápida e intuitiva, y el Sistema 2, que opera de manera más lenta y analítica.",
+        "La teoría del aprendizaje social, propuesta por Albert Bandura, resalta el papel crucial que desempeñan la observación y la imitación en la adquisición de comportamientos."
+      ],
+      "definicion": {
+        "texto": "La ciencia del comportamiento es el estudio sistemático de las acciones y reacciones humanas y de los factores que influyen en nuestras decisiones, hábitos y respuestas automáticas.",
+        "tipo": "adaptada",
+        "origen": "La ciencia del comportamiento se ocupa del estudio sistemático de las acciones y reacciones humanas, explorando los diversos factores que influyen en nuestras decisiones, hábitos y respuestas automáticas."
+      },
+      "h2": [],
+      "fuentes": [
+        {
+          "texto": "Kahneman, D. (2011). Thinking, fast and slow. Farrar, Straus and Giroux. ISBN 978-0-374-27563-1. (Ed. en español: Pensar rápido, pensar despacio.)",
+          "url": "https://openlibrary.org/books/OL24896701M",
+          "estado": "verificada",
+          "cita_en": "ha ofrecido una perspectiva profunda sobre cómo se forman nuestras decisiones en su obra más destacada, «Pensar rápido y lento»."
+        },
+        {
+          "texto": "Bandura, A. (1977). Social learning theory. Prentice Hall. LCCN 76043024.",
+          "url": "https://openlibrary.org/books/OL4899477M",
+          "estado": "verificada",
+          "cita_en": "La teoría del aprendizaje social, propuesta por Albert Bandura, resalta el papel crucial que desempeñan la observación y la imitación en la adquisición de comportamientos."
+        },
+        {
+          "texto": "Skinner, B. F. (obra no especificada en el artículo sobre conductismo radical y refuerzo).",
+          "url": null,
+          "estado": "[verificar]",
+          "cita_en": "La teoría del conductismo radical, desarrollada por B.F. Skinner."
+        }
+      ],
+      "pendientes": [
+        "[COMPLETAR: obra de B. F. Skinner a la que se refiere el artículo (título, año, editorial); no se puede identificar con certeza a partir del texto]",
+        "[COMPLETAR: confirmar el título de la edición en español del libro de Kahneman (Open Library registra «Thinking, fast and slow», 2011; el artículo lo llama «Pensar rápido y lento») y la edición de Bandura que usa la autora (1971, General Learning Press, o 1977, Prentice Hall)]",
+        "[COMPLETAR: repetición «desarrollada por B.F. Skinner. Skinner, ha tenido…»]",
+        "[COMPLETAR: voseo «¿Con cuál de estas miradas conectás más?» → «conectas» (tuteo de marca)]"
+      ]
+    },
+    {
+      "slug": "la-tecnologia-te-supera-como-identificar-y-gestionar-el-tecnoestres",
+      "pregunta": "¿Qué es el tecnoestrés y cómo identificarlo y gestionarlo?",
+      "resumen": "El tecnoestrés es el estrés o la ansiedad que provoca el uso constante de dispositivos tecnológicos, impulsado por la presión de estar siempre disponible, la sobrecarga de información y la multitarea. Se identifica por ansiedad, agotamiento, irritabilidad e insomnio. Se gestiona estableciendo límites y horarios de uso, practicando técnicas de desconexión y, cuando hace falta, buscando apoyo profesional.",
+      "resumen_origen": [
+        "Este término se refiere al estrés o ansiedad que experimentan las personas debido al uso constante de dispositivos tecnológicos, como smartphones, computadoras y redes sociales.",
+        "El tecnoestrés surge principalmente por la presión de estar siempre disponible",
+        "la sobrecarga de información, la multitarea y la falta de control sobre las herramientas tecnológicas",
+        "Uno de los síntomas más evidentes es la ansiedad",
+        "Otro síntoma común es el agotamiento",
+        "La irritabilidad es un síntoma emocional",
+        "el insomnio se ha convertido en un problema prevalente, asociado al tecnoestrés",
+        "Una de las primeras estrategias efectivas es establecer límites saludables en el uso de la tecnología. Esto puede incluir la creación de horarios específicos para el uso de dispositivos",
+        "Adicionalmente, practicar técnicas de desconexión es fundamental.",
+        "en ocasiones, el tecnoestrés puede requerir apoyo profesional."
+      ],
+      "definicion": {
+        "texto": "El tecnoestrés es el estrés o la ansiedad que experimentan las personas debido al uso constante de dispositivos tecnológicos, como smartphones, computadoras y redes sociales.",
+        "tipo": "adaptada",
+        "origen": "Este término se refiere al estrés o ansiedad que experimentan las personas debido al uso constante de dispositivos tecnológicos, como smartphones, computadoras y redes sociales."
+      },
+      "h2": [],
+      "fuentes": [],
+      "pendientes": [
+        "[COMPLETAR: fuente, año y enlace de la estadística «el 70% de los jóvenes y el 56% de los profesionales se ven afectados por el tecnoestrés»; si no se localiza, retirarla]",
+        "[COMPLETAR: referencias (DOI/PMC) que respalden la definición, los síntomas y las consecuencias del tecnoestrés; el artículo no cita ningún estudio ni autor]",
+        "[COMPLETAR: aviso al cierre, p. ej. «Este contenido es educativo y no sustituye una consulta profesional. Si estás en crisis, contacta con los servicios de emergencia de tu país.»]"
+      ]
+    },
+    {
+      "slug": "el-arte-de-redisenar-tu-entorno",
+      "pregunta": "¿Por qué cambiar el entorno funciona mejor que la fuerza de voluntad para cambiar hábitos?",
+      "resumen": "Porque el fallo no suele ser de carácter, sino de escenario. La psicóloga Wendy Wood observó que, cuando estudiantes universitarios cambiaban de campus, sus hábitos anteriores se rompían de forma natural al desaparecer las señales de siempre. Sin mudarte, puedes aplicar lo mismo: interrumpir el flujo visual, añadir fricción a lo que te drena y cambiar de lugar para trabajar.",
+      "resumen_origen": [
+        "Nos castigamos cuando volvemos a caer en los mismos errores, asumiendo que el fallo es de carácter.",
+        "no somos nosotros, es nuestro escenario.",
+        "El experimento más elegante de Wood se realizó en el caos del mundo real, observando a estudiantes universitarios que cambiaban de campus.",
+        "Al cambiar de entorno físico, algo fascinante sucedió: los hábitos anteriores se rompieron de forma natural.",
+        "al desaparecer las señales visuales y los espacios de siempre",
+        "sin necesidad de mudarte de ciudad",
+        "Interrumpe el flujo visual:",
+        "La regla de la fricción:",
+        "Pequeños desplazamientos, grandes cambios:"
+      ],
+      "definicion": {
+        "texto": "El hábito es una inercia; el cambio de entorno es la fricción necesaria para detenerla.",
+        "tipo": "textual",
+        "origen": "El hábito es una inercia; el cambio de entorno es la fricción necesaria para detenerla."
+      },
+      "h2": [],
+      "fuentes": [
+        {
+          "texto": "Wood, W., Tam, L., & Witt, M. G. (2005). Changing circumstances, disrupting habits. Journal of Personality and Social Psychology, 88(6), 918–933.",
+          "url": "https://doi.org/10.1037/0022-3514.88.6.918",
+          "estado": "verificada",
+          "cita_en": "Wood analizó a estudiantes que se transferían de una universidad a otra."
+        }
+      ],
+      "pendientes": [
+        "[COMPLETAR: confirmar que Wood, Tam y Witt (2005) es el estudio al que se refiere la autora y añadir el año en el texto]"
+      ]
+    },
+    {
+      "slug": "como-un-te-quiero-infecto-45-millones-de-computadoras-en-todo-el-mundo",
+      "pregunta": "¿Por qué tanta gente abrió el virus ILOVEYOU?",
+      "resumen": "Porque apelaba a la necesidad de afecto. En mayo de 2000, un asunto que decía «ILOVEYOU» activaba una respuesta emocional antes que el análisis, y la doble extensión del archivo engañaba a la atención selectiva. Además, el software de correo permitía ejecutarlo con un solo clic y reenviarlo a toda la libreta de contactos sin confirmación humana.",
+      "resumen_origen": [
+        "El virus que hackeó la necesidad de afecto (ILOVEYOU)",
+        "En mayo de 2000, el mundo corporativo colapsó por culpa de un archivo de texto que se hacía pasar por una declaración de amor: LOVE-LETTER-FOR-YOU.TXT.Vbs.",
+        "Antes de que tu parte analítica se pregunte qué hace el contador de la empresa mandándote una carta de amor, el sistema límbico ya te empujó el dedo hacia el ratón.",
+        "El engaño visual de la doble extensión aprovechó nuestra atención selectiva",
+        "El software de correo de entonces permitía que un archivo ejecutable se ejecutara con un solo clic y se reenviara automáticamente a toda la libreta de contactos, sin requerir confirmación humana alguna."
+      ],
+      "definicion": {
+        "texto": "ILOVEYOU (LoveLetter) fue un virus informático que en mayo de 2000 se propagó como un archivo que se hacía pasar por una declaración de amor: LOVE-LETTER-FOR-YOU.TXT.Vbs.",
+        "tipo": "adaptada",
+        "origen": "En mayo de 2000, el mundo corporativo colapsó por culpa de un archivo de texto que se hacía pasar por una declaración de amor: LOVE-LETTER-FOR-YOU.TXT.Vbs."
+      },
+      "h2": [
+        {
+          "antes": "El virus que hackeó la necesidad de afecto (ILOVEYOU)",
+          "nivel_actual": "h3",
+          "despues_nivel": "h2"
+        }
+      ],
+      "fuentes": [
+        {
+          "texto": "Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel común de ciberseguridad en toda la Unión (Directiva SRI 2 / NIS2). Diario Oficial de la Unión Europea.",
+          "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
+          "estado": "verificada",
+          "cita_en": "Por eso, las normativas actuales, como NIS2 o DORA, ya no exigen que los empleados se conviertan en robots infalibles."
+        },
+        {
+          "texto": "Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA). Diario Oficial de la Unión Europea.",
+          "url": "https://eur-lex.europa.eu/eli/reg/2022/2554/oj",
+          "estado": "verificada",
+          "cita_en": "Por eso, las normativas actuales, como NIS2 o DORA, ya no exigen que los empleados se conviertan en robots infalibles."
+        }
+      ],
+      "pendientes": [
+        "[COMPLETAR: fuente de la cifra «45 millones de computadoras infectadas en pocas horas» (también en el título y el slug)]",
+        "[COMPLETAR: fuente de la cifra «pérdidas de 10.000 millones de dólares»]",
+        "[COMPLETAR: fuente de «Un asunto que dice «ILOVEYOU» desencadena una respuesta dopaminérgica inmediata» o reformular como hipótesis]",
+        "[COMPLETAR: revisar la grafía del adjunto «LOVE-LETTER-FOR-YOU.TXT.Vbs» (mayúscula en «.Vbs») y el espacio faltante tras el punto]"
+      ]
+    }
+  ]
+}

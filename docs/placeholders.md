@@ -77,6 +77,12 @@ Estado: ☐ pendiente · ☑ resuelto. Origen: informe de `docs/auditoria/inform
 | ☐ | **Decisión:** el cálculo original compara los umbrales con el porcentaje; 3 perfiles nunca salen y todo puntaje ≥ 18 da "Arquitecto digital". Se conservó igual; ¿se corrige? | Test (script) | test-consumo-digital.md |
 | ☐ | Enlace a líneas de ayuda en el resultado del test | Test, resultado | test-consumo-digital.md |
 
+## Artículos (Etapa 5)
+| ☐ | Dato | Dónde | Origen |
+|---|---|---|---|
+| ☐ | 43 pendientes por artículo (cifras sin fuente, 3 fuentes por verificar, erratas, confirmar que cada estudio es el citado) | 15 artículos | `contenido/etapa-5/pendientes-autora.md` |
+| ☐ | Revisión de los 15 resúmenes "En resumen" y 8 definiciones adaptadas | 15 artículos | `contenido/etapa-5/articulos.json` |
+
 ## Estrategia
 | ☐ | Dato | Dónde | Origen |
 |---|---|---|---|

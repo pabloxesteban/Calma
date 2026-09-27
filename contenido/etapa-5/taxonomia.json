@@ -1,0 +1,136 @@
+{
+  "_meta": {
+    "etapa": 5,
+    "fecha": "2026-09-27",
+    "base": "docs/auditoria/informes/contenidos.md §2–§3; slugs de docs/auditoria/snapshot-2026-09-26/api/posts.json, cats.json y tags.json",
+    "estado": "PENDIENTE DE REVISIÓN: las 6 descripciones de categoría las valida Tatiana X. Stacul antes de aplicarse. No publicar sin su visto bueno.",
+    "orden_de_aplicacion": [
+      "1. Crear o actualizar (por slug) las categorías y etiquetas de este archivo. 'bienestar', 'ciberseguridad' y 'neurociencia' ya existen: solo cambian nombre y descripción. 'consumo-digital' y 'tecnoestres' ya existen como etiquetas.",
+      "2. Ajustes > Escritura > Categoría por defecto: 'bienestar' (WordPress no permite borrar la categoría por defecto 'sin-categoria' mientras lo sea).",
+      "3. Aplicar 'asignacion' reemplazando (no sumando) categorías y etiquetas de cada entrada.",
+      "4. Borrar 'eliminar_categorias' y 'eliminar_etiquetas' (deben quedar con 0 entradas tras el paso 3).",
+      "5. Crear las redirecciones 301 en Rank Math con regex que cubran /page/N/ y /feed/, p. ej. ^category/psicologia(/.*)?$. Purgar LiteSpeed y CDN."
+    ],
+    "notas": [
+      "salud_mental -> salud-mental: se puede renombrar el slug de la etiqueta existente (id 25, conserva el id) en vez de borrar y crear; en ambos casos se mantiene la 301.",
+      "area_cta sustituye el mapa de calma_cta_area_de_entrada() en wp-content/plugins/codigo-calma/includes/conversion.php (líneas 65–74), que hoy usa slugs antiguos y cae en 'equipo' para cualquier categoría que no conozca.",
+      "Se mantienen los campos calma_cta_area de la Etapa 3 (contenido/etapa-3/cta-por-entrada.json): por-que-fallamos… = proyectos, ILOVEYOU = equipo. Sugerido (pendiente de decisión): el-estigma-de-la-estructura-x-entonces-y = accesibilidad (Francisca), por la etiqueta lenguaje-claro.",
+      "La etiqueta 'habitos' coincide en parte con la categoría 'Hábitos y conducta'. Se conserva porque cruza categorías (autoevaluación en Bienestar digital, cerebro en Neurociencia). Si Tatiana lo prefiere, puede quitarse de las entradas de Hábitos y conducta sin dejar ninguna por debajo de 2 etiquetas, salvo la-diferencia-entre-querer-y-ser-capaz…, que necesitaría otra.",
+      "Fuera de la taxonomía y fuera de este archivo: 301 de author/admin -> /equipo/tatiana-x-stacul/ tras reasignar la autoría."
+    ],
+    "validacion": "Comprobado a mano, sin ejecutar script (en esta sesión no hay intérprete disponible): 15 entradas, 15 slugs reales, 1 categoría existente por entrada, 2–5 etiquetas por entrada, las 15 etiquetas se usan al menos una vez, ninguna categoría queda vacía, ningún slug usa guion bajo ni choca con una página.",
+    "script_validacion": "cd /home/user/Calma && python3 -c \"import json,re;d=json.load(open('contenido/etapa-5/taxonomia.json'));p={x['slug'] for x in json.load(open('docs/auditoria/snapshot-2026-09-26/api/posts.json'))};c={x['slug'] for x in d['categorias']};t={x['slug'] for x in d['etiquetas']};a=d['asignacion'];pag={'ciberpsicologia','bienestar-digital','herramientas','test','descargas','servicios','contacto','equipo','blog','testimonios'};assert len(a)==15 and {x['slug_entrada'] for x in a}==p,'entradas';assert all(x['categoria'] in c and 2<=len(x['etiquetas'])<=5 and set(x['etiquetas'])<=t for x in a),'asignacion';assert c=={x['categoria'] for x in a},'categoria huerfana';assert t=={e for x in a for e in x['etiquetas']},'etiqueta huerfana';assert all(re.fullmatch('[a-z0-9]+(-[a-z0-9]+)*',s) for s in c|t),'slug';assert not c&pag,'choque con pagina';print('OK')\""
+  },
+  "categorias": [
+    {
+      "slug": "bienestar",
+      "nombre": "Bienestar digital",
+      "descripcion": "En esta categoría reunimos los artículos sobre cómo convivir con las pantallas sin que te desborden: el tiempo que pasas frente a ellas, la calidad de ese uso, el tecnoestrés en el trabajo y el acompañamiento de niñas, niños y adolescentes en su vida digital. La idea es que uses los dispositivos con intención, sepas por qué estás en cada plataforma y decidas qué lugar quieres darles en tu día. Si buscas una visión general, empieza por la página <a href=\"https://codigocalma.com/bienestar-digital/\">Bienestar digital</a>. Para situarla dentro del campo, lee <a href=\"https://codigocalma.com/ciberpsicologia/\">¿Qué es la ciberpsicología?</a>. Y si quieres ver tu punto de partida, haz el <a href=\"https://codigocalma.com/test/\">test de consumo digital</a>.",
+      "validacion": "pendiente: Tatiana X. Stacul",
+      "area_cta": "habitos"
+    },
+    {
+      "slug": "habitos-y-conducta",
+      "nombre": "Hábitos y conducta",
+      "descripcion": "Aquí encontrarás artículos de ciencia del comportamiento aplicada a tu relación con la tecnología: por qué repites ciertos gestos casi sin pensarlo, qué papel tienen el entorno y el contexto en tus hábitos, qué es la autoeficacia y por qué la fuerza de voluntad no lo explica todo. También hablamos de por qué fallan muchos intentos de cambiar conductas, en personas y en equipos, y de cómo la forma en que se presentan las opciones influye en lo que eliges. La idea es que entiendas tus patrones antes de intentar cambiarlos. Esta categoría es una de las áreas de la <a href=\"https://codigocalma.com/ciberpsicologia/\">ciberpsicología</a>. Si quieres mirar tus hábitos digitales de hoy, prueba el <a href=\"https://codigocalma.com/test/\">test de consumo digital</a>.",
+      "validacion": "pendiente: Tatiana X. Stacul",
+      "area_cta": "habitos"
+    },
+    {
+      "slug": "ia-y-mente",
+      "nombre": "IA y mente",
+      "descripcion": "En esta categoría exploramos cómo pensamos, sentimos y confiamos cuando la inteligencia artificial entra en la conversación. Hablamos de lo que pasa cuando buscas apoyo emocional en una IA, de por qué cambia tu opinión sobre un consejo cuando sabes quién lo escribió, del prejuicio hacia los textos que parecen escritos por una máquina y de las preguntas éticas que abre su desarrollo, como los sesgos, la privacidad y el trabajo. No se trata de estar a favor o en contra, sino de entender qué nos pasa a las personas frente a estas herramientas. Es una de las áreas de la <a href=\"https://codigocalma.com/ciberpsicologia/\">ciberpsicología</a>, que te presentamos en nuestra página principal sobre el tema.",
+      "validacion": "pendiente: Tatiana X. Stacul",
+      "area_cta": "habitos"
+    },
+    {
+      "slug": "redes-sociales",
+      "nombre": "Redes sociales y plataformas",
+      "descripcion": "Aquí reunimos los artículos sobre cómo las plataformas y sus algoritmos influyen en lo que ves, en lo que sientes y en el tiempo que pasas en ellas. Hablamos de comparación social, de diseños pensados para retener tu atención y de la responsabilidad de las empresas tecnológicas con la salud mental de quienes las usan, en especial de adolescentes. Intentamos partir de documentos e investigaciones, no de alarmas, para que tengas criterio al decidir cómo y cuándo usar cada red, sin culpa y con información. Esta categoría es una de las áreas de la <a href=\"https://codigocalma.com/ciberpsicologia/\">ciberpsicología</a>. Si te preocupa tu propio uso, puedes empezar por el <a href=\"https://codigocalma.com/test/\">test de consumo digital</a>.",
+      "validacion": "pendiente: Tatiana X. Stacul",
+      "area_cta": "habitos"
+    },
+    {
+      "slug": "ciberseguridad",
+      "nombre": "Ciberseguridad y factor humano",
+      "descripcion": "En esta categoría miramos la ciberseguridad desde las personas: por qué confiamos en un mensaje que no deberíamos abrir, qué emociones y sesgos aprovecha la ingeniería social y cómo se construye una cultura de seguridad en un equipo sin buscar culpables. No encontrarás manuales técnicos de configuración, sino explicaciones sobre cómo decidimos cuando algo parece urgente, familiar o afectuoso. Entender esos mecanismos puede ayudarte a detenerte un momento antes de hacer clic. Es una de las áreas de la <a href=\"https://codigocalma.com/ciberpsicologia/\">ciberpsicología</a>. En <a href=\"https://codigocalma.com/descargas/\">Descargas</a> tienes materiales sobre ciberseguridad y confianza para seguir leyendo con calma.",
+      "validacion": "pendiente: Tatiana X. Stacul",
+      "area_cta": "equipo"
+    },
+    {
+      "slug": "neurociencia",
+      "nombre": "Neurociencia y atención",
+      "descripcion": "Aquí hablamos del cerebro en la vida digital: cómo funciona la atención, qué la fragmenta, cómo se relacionan el descanso y la carga cognitiva con lo que haces frente a las pantallas y qué hábitos cuidan tu salud cerebral. Explicamos conceptos de neurociencia con lenguaje claro y separamos lo que la investigación sabe de lo que todavía no está claro, para que no te quedes solo con titulares simplificados. Esta categoría se conecta con los hábitos y con el bienestar digital, y es una de las áreas de la <a href=\"https://codigocalma.com/ciberpsicologia/\">ciberpsicología</a>. Si quieres ver cómo usas hoy la tecnología, haz el <a href=\"https://codigocalma.com/test/\">test de consumo digital</a>.",
+      "validacion": "pendiente: Tatiana X. Stacul",
+      "area_cta": "habitos"
+    }
+  ],
+  "etiquetas": [
+    { "slug": "salud-mental", "nombre": "Salud mental" },
+    { "slug": "tecnoestres", "nombre": "Tecnoestrés" },
+    { "slug": "tiempo-de-pantalla", "nombre": "Tiempo de pantalla" },
+    { "slug": "consumo-digital", "nombre": "Consumo digital" },
+    { "slug": "habitos", "nombre": "Hábitos" },
+    { "slug": "autoeficacia", "nombre": "Autoeficacia" },
+    { "slug": "diseno-del-comportamiento", "nombre": "Diseño del comportamiento" },
+    { "slug": "sesgos-cognitivos", "nombre": "Sesgos cognitivos" },
+    { "slug": "atencion", "nombre": "Atención" },
+    { "slug": "infancia-y-adolescencia", "nombre": "Infancia y adolescencia" },
+    { "slug": "trabajo-digital", "nombre": "Trabajo digital" },
+    { "slug": "etica-digital", "nombre": "Ética digital" },
+    { "slug": "ingenieria-social", "nombre": "Ingeniería social" },
+    { "slug": "apoyo-emocional", "nombre": "Apoyo emocional" },
+    { "slug": "lenguaje-claro", "nombre": "Lenguaje claro" }
+  ],
+  "asignacion": [
+    { "slug_entrada": "por-que-tu-fuerza-de-voluntad-es-mas-lista-de-lo-que-crees", "categoria": "habitos-y-conducta", "etiquetas": ["habitos", "autoeficacia", "trabajo-digital"] },
+    { "slug_entrada": "la-diferencia-entre-querer-y-ser-capaz-entendiendo-la-autoeficacia", "categoria": "habitos-y-conducta", "etiquetas": ["autoeficacia", "habitos"] },
+    { "slug_entrada": "por-que-fallamos-al-intentar-cambiar-conductas", "categoria": "habitos-y-conducta", "etiquetas": ["diseno-del-comportamiento", "sesgos-cognitivos", "trabajo-digital"] },
+    { "slug_entrada": "ia-y-apoyo-emocional-saber-la-autoria-cambia-tu-perspectiva", "categoria": "ia-y-mente", "etiquetas": ["apoyo-emocional", "sesgos-cognitivos", "infancia-y-adolescencia", "salud-mental"] },
+    { "slug_entrada": "el-estigma-de-la-estructura-x-entonces-y", "categoria": "ia-y-mente", "etiquetas": ["sesgos-cognitivos", "lenguaje-claro"] },
+    { "slug_entrada": "infancias-figitales", "categoria": "bienestar", "etiquetas": ["infancia-y-adolescencia", "tiempo-de-pantalla", "salud-mental"] },
+    { "slug_entrada": "calidad-vs-cantidad-la-hipotesis-de-ricitos-de-oro", "categoria": "bienestar", "etiquetas": ["tiempo-de-pantalla", "consumo-digital", "salud-mental"] },
+    { "slug_entrada": "autoevaluacion-del-consumo-digital-como-estamos-manejando-nuestro-tiempo-frente-a-las-pantallas", "categoria": "bienestar", "etiquetas": ["consumo-digital", "tiempo-de-pantalla", "atencion", "habitos"] },
+    { "slug_entrada": "preguntas-clave-para-entender-y-cuidar-nuestro-cerebro", "categoria": "neurociencia", "etiquetas": ["salud-mental", "atencion", "habitos"] },
+    { "slug_entrada": "5-puntos-clave-que-el-caso-de-meta-nos-deja-en-salud-mental", "categoria": "redes-sociales", "etiquetas": ["salud-mental", "etica-digital", "infancia-y-adolescencia"] },
+    { "slug_entrada": "reflexiones-eticas-sobre-el-desarrollo-de-la-inteligencia-artificial", "categoria": "ia-y-mente", "etiquetas": ["etica-digital", "trabajo-digital"] },
+    { "slug_entrada": "descubriendo-que-modela-nuestro-comportamiento", "categoria": "habitos-y-conducta", "etiquetas": ["habitos", "diseno-del-comportamiento", "sesgos-cognitivos"] },
+    { "slug_entrada": "la-tecnologia-te-supera-como-identificar-y-gestionar-el-tecnoestres", "categoria": "bienestar", "etiquetas": ["tecnoestres", "trabajo-digital", "salud-mental", "atencion"] },
+    { "slug_entrada": "el-arte-de-redisenar-tu-entorno", "categoria": "habitos-y-conducta", "etiquetas": ["habitos", "diseno-del-comportamiento", "atencion"] },
+    { "slug_entrada": "como-un-te-quiero-infecto-45-millones-de-computadoras-en-todo-el-mundo", "categoria": "ciberseguridad", "etiquetas": ["ingenieria-social", "sesgos-cognitivos", "diseno-del-comportamiento"] }
+  ],
+  "eliminar_categorias": ["ciberpsicologia", "psicologia", "sin-categoria"],
+  "eliminar_etiquetas": [
+    "awareness-humano",
+    "ciberpsicologia",
+    "ciberseguridad",
+    "inteligencia_artificial",
+    "liderazgo_consciente",
+    "mindfulness_digital",
+    "neurociencias",
+    "neuroplasticidad",
+    "redes_sociales",
+    "salud_mental",
+    "tecnologia",
+    "terapia_online",
+    "transformacion_digital"
+  ],
+  "redirecciones": [
+    { "origen": "category/ciberpsicologia", "destino": "https://codigocalma.com/ciberpsicologia/", "tipo": 301 },
+    { "origen": "category/psicologia", "destino": "https://codigocalma.com/category/habitos-y-conducta/", "tipo": 301 },
+    { "origen": "category/sin-categoria", "destino": "https://codigocalma.com/blog/", "tipo": 301 },
+    { "origen": "tag/ciberpsicologia", "destino": "https://codigocalma.com/ciberpsicologia/", "tipo": 301 },
+    { "origen": "tag/ciberseguridad", "destino": "https://codigocalma.com/category/ciberseguridad/", "tipo": 301 },
+    { "origen": "tag/inteligencia_artificial", "destino": "https://codigocalma.com/category/ia-y-mente/", "tipo": 301 },
+    { "origen": "tag/neurociencias", "destino": "https://codigocalma.com/category/neurociencia/", "tipo": 301 },
+    { "origen": "tag/redes_sociales", "destino": "https://codigocalma.com/category/redes-sociales/", "tipo": 301 },
+    { "origen": "tag/salud_mental", "destino": "https://codigocalma.com/tag/salud-mental/", "tipo": 301 },
+    { "origen": "tag/mindfulness_digital", "destino": "https://codigocalma.com/tag/atencion/", "tipo": 301 },
+    { "origen": "tag/tecnologia", "destino": "https://codigocalma.com/blog/", "tipo": 301 },
+    { "origen": "tag/transformacion_digital", "destino": "https://codigocalma.com/category/ciberseguridad/", "tipo": 301 },
+    { "origen": "tag/awareness-humano", "destino": "https://codigocalma.com/category/ciberseguridad/", "tipo": 301 },
+    { "origen": "tag/neuroplasticidad", "destino": "https://codigocalma.com/category/neurociencia/", "tipo": 301 },
+    { "origen": "tag/liderazgo_consciente", "destino": "https://codigocalma.com/blog/", "tipo": 301 },
+    { "origen": "tag/terapia_online", "destino": "https://codigocalma.com/blog/", "tipo": 301 }
+  ]
+}

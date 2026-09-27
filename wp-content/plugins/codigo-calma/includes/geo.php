@@ -204,6 +204,9 @@ function calma_subir_encabezado( $contenido, $texto, $de = 3, $a = 2 ) {
 		$cambios++;
 		$attrs = trim( $m[1] . $m[2], ', ' );
 		$json  = $attrs ? '{' . $attrs . '}' : '';
+		if ( 2 !== $a ) {
+			$json = '{' . ltrim( '"level":' . $a . ( $attrs ? ',' . $attrs : '' ), ',' ) . '}';
+		}
 		// Nivel 2 es el valor por defecto del bloque: se omite el atributo.
 		return '<!-- wp:heading ' . ( $json ? $json . ' ' : '' ) . '--><h' . $a . $m[3] . '>' . $m[4] . '</h' . $a . '><!-- /wp:heading -->';
 	}, $contenido );
@@ -225,7 +228,9 @@ function calma_geo_importar( $aplicar = false ) {
 		$contenido = $post->post_content;
 		$subidos   = 0;
 		foreach ( (array) ( $a['h2'] ?? array() ) as $h ) {
-			list( $contenido, $n ) = calma_subir_encabezado( $contenido, $h['antes'] );
+			$de = (int) preg_replace( '/\D/', '', (string) ( $h['nivel_actual'] ?? 'h3' ) ) ?: 3;
+			$a2 = (int) preg_replace( '/\D/', '', (string) ( $h['despues_nivel'] ?? 'h2' ) ) ?: 2;
+			list( $contenido, $n ) = calma_subir_encabezado( $contenido, $h['antes'], $de, $a2 );
 			$subidos += $n;
 		}
 		if ( $aplicar ) {
