@@ -2752,37 +2752,39 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 	gap: var(--calma-space-4);
 }
 .calma-mapa__panel {
-	--acento: var(--calma-primary);
+	/* Tono suave del tema (el mismo de las tarjetas del blog), texto en tinta */
+	--tono: #e9f1f8;
+	--acento: #8fbbe3;
+	--acento-texto: #1d5f94;
 	background: #fff;
-	border: 1px solid var(--calma-ink);
+	border: 1px solid var(--calma-hairline-strong);
 	overflow: hidden;
 }
-.calma-mapa__panel[data-tema="psicologia"] { --acento: #d9a441; }
-.calma-mapa__panel[data-tema="neurociencia"] { --acento: #6aa6dd; }
-.calma-mapa__panel[data-tema="ia"] { --acento: #9b86e8; }
-.calma-mapa__panel[data-tema="tecnologia"] { --acento: #e08a5e; }
-.calma-mapa__panel[data-tema="bienestar"] { --acento: #4fb3a5; }
-.calma-mapa__panel[data-tema="ciberpsicologia"] { --acento: #6aa6dd; }
+.calma-mapa__panel[data-tema="psicologia"] { --tono: #f6efe1; --acento: #e2c17e; --acento-texto: #7a4d00; }
+.calma-mapa__panel[data-tema="neurociencia"] { --tono: #e9f1f8; --acento: #9cc3e3; --acento-texto: #1d5f94; }
+.calma-mapa__panel[data-tema="ia"] { --tono: #efedf9; --acento: #bdb0ee; --acento-texto: #5b3fb8; }
+.calma-mapa__panel[data-tema="tecnologia"] { --tono: #f8ece6; --acento: #ebb79c; --acento-texto: #9a3412; }
+.calma-mapa__panel[data-tema="bienestar"] { --tono: #e8f3ee; --acento: #9fd0c0; --acento-texto: #1f6b47; }
 .calma-mapa__panel-cabeza {
 	padding: var(--calma-space-6);
-	background: var(--calma-ink);
-	border-top: 5px solid var(--acento);
+	background: var(--tono);
+	border-top: 4px solid var(--acento);
 }
 .calma-mapa__panel h3 {
 	margin: 0 0 var(--calma-space-2) !important;
 	font-size: clamp(1.625rem, 1.25rem + 1.1vw, 2.125rem);
 	line-height: 1.1;
-	color: #fff !important;
+	color: var(--calma-ink) !important;
 }
 .calma-mapa__sub {
 	font-family: var(--calma-font-body);
 	font-size: var(--calma-fs-sm);
 	font-weight: 600;
-	color: var(--acento);
+	color: var(--acento-texto);
 }
 .calma-mapa__texto {
 	margin: 0 !important;
-	color: #e6ebf2;
+	color: var(--calma-ink);
 	font-size: var(--calma-fs-base);
 	line-height: 1.55;
 }
@@ -2795,7 +2797,7 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 	font-weight: 700;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
-	color: var(--calma-ink);
+	color: var(--acento-texto);
 }
 .calma-mapa__articulos,
 .calma-mapa__conexiones {
@@ -2831,12 +2833,13 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
-	background: var(--calma-primary) center / 14px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+	background: var(--tono) center / 14px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d5f94' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+	border: 1px solid var(--acento);
 	transition: transform var(--calma-dur-medio) var(--calma-ease-mente);
 }
 .calma-mapa__articulos a:hover,
 .calma-mapa__articulos a:focus-visible {
-	background: var(--calma-paper-deep);
+	background: var(--tono);
 	color: var(--calma-primary-hover) !important;
 }
 .calma-mapa__articulos a:hover::after {
@@ -2877,8 +2880,9 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 	transition: background-color var(--calma-dur) var(--calma-ease), color var(--calma-dur) var(--calma-ease);
 }
 .calma-mapa__enlaces a:first-child {
-	background: var(--calma-primary);
-	color: #fff !important;
+	background: var(--tono);
+	border-color: var(--acento-texto);
+	color: var(--acento-texto) !important;
 }
 .calma-mapa__enlaces a:hover {
 	background: var(--calma-primary-hover);
@@ -3088,8 +3092,8 @@ html.calma-quieto .calma-estados--giro .calma-estado__caras {
 	margin: var(--calma-space-12) 0 var(--calma-space-8);
 	padding: var(--calma-space-6);
 	background: #fff;
-	border: 1px solid var(--calma-ink);
-	border-top: 5px solid var(--calma-teal);
+	border: 1px solid var(--calma-hairline-strong);
+	border-top: 4px solid #9fd0c0;
 }
 .calma-explora h2 {
 	margin: 0 0 var(--calma-space-1) !important;

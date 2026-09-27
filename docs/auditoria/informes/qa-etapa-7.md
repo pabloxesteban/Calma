@@ -101,7 +101,11 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
 ## Mapa en más páginas y "Sigue explorando"
 - **axe-core**: 0 violaciones en 14 páginas × 2 anchos, y 0 en la página pilar a 1280 y 390.
   - En la pilar apareció un hallazgo previo: la tabla que se desplaza en celular no era accesible con teclado. Ahora tiene `tabindex="0"`, también en el generador de la Etapa 5.
-- **Panel del mapa**: cabecera en tinta (título blanco 15:1, texto #e6ebf2 13:1, subtítulo en el color del tema ≥ 5:1); artículos en tinta con peso 600; conexiones en fichas #0b4f4f sobre #d8ebe8 (8:1); enlaces como botones.
+- **Panel del mapa** (versión suave):
+  - cabecera con el tono claro de cada tema (los mismos de las tarjetas del blog) y título y texto en tinta (≥ 14:1);
+  - subtítulo y rótulos en el color oscuro del tema (≥ 6:1 sobre su tono);
+  - artículos en tinta con peso 600;
+  - conexiones en fichas #0b4f4f sobre #d8ebe8 (8:1).
 - **"Sigue explorando"**:
   - lista ordenada de enlaces, cada uno con tema, título y motivo de la conexión;
   - el grafo es decorativo (`aria-hidden`) y se oculta en columnas angostas;
