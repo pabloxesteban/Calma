@@ -17,7 +17,7 @@ const PAGES = {
   blog: 'blog/', ciberpsicologia: 'ciberpsicologia/', testimonios: 'testimonios/', test: 'test/',
   herramientas: 'herramientas/', 'descargas-2': 'descargas-2/', 'bienestar-digital': 'bienestar-digital/',
   'por-que-fallamos-al-intentar-cambiar-conductas': 'por-que-fallamos-al-intentar-cambiar-conductas/',
-  equipo: 'equipo/', 'equipo-tatiana': 'equipo/tatiana-x-stacul/', 'equipo-francisca': 'equipo/francisca-cortes-santoro/',
+  equipo: 'equipo/', 'equipo-tatiana': 'equipo/tatiana-x-stacul/', 'equipo-francisca': 'equipo/francisca-cortes-santoro/', 'equipo-emanuel': 'equipo/emanuel-c-franco/',
 };
 const WIDTHS = [360, 390, 430, 1280];
 const fileFor = (p) => path.join(BUILD, (p.replace(/\/$/, '').replace(/\//g, '_') || 'home') + '.html');

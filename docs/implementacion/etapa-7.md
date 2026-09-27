@@ -157,3 +157,27 @@ Casi todo lo hace el plugin, sin editar los artículos:
 **Una sola cosa en WordPress:** Apariencia → Personalizar → Diseño de entradas → desactivar **"Publicaciones relacionadas"**. Las reemplaza "Sigue explorando" (el CSS ya las oculta, pero conviene apagarlas para no cargarlas).
 
 Todo esto se aplica solo a los artículos nuevos que publique Tatiana.
+
+## Paso 3f · Equipo y perfiles (15 min)
+Mismo texto que la Etapa 3; cambia la forma. En cada página, reemplazar el bloque **HTML personalizado** de la Etapa 3 por el de la Etapa 7:
+
+| Página | Bloque |
+|---|---|
+| Equipo | `contenido/etapa-7/bloques/equipo.html` |
+| Tatiana X. Stacul | `contenido/etapa-7/bloques/equipo-tatiana-x-stacul.html` |
+| Francisca Cortés Santoro | `contenido/etapa-7/bloques/equipo-francisca-cortes-santoro.html` |
+| Emanuel C. Franco | `contenido/etapa-7/bloques/equipo-emanuel-c-franco.html` |
+
+Cambios que traen:
+- **Equipo:**
+  - figura "tres miradas" en el hero: psicología, accesibilidad cognitiva y gestión de proyectos se unen en "lo que traigas", tal como dice el texto de la página. Es decorativa: se dibuja una vez y no se repite;
+  - cada tarjeta con el tono de su persona y el enlace "Conocer a…" siempre abajo, alineado.
+- **Perfiles:**
+  - la página toma el tono de la persona (arena para Tatiana, lavanda para Francisca, celeste para Emanuel);
+  - "Volver al equipo" visible arriba, en lugar del rótulo oculto;
+  - "En qué acompaña" y "Formación declarada" como dos paneles; la formación se lee como un recorrido de puntos. Los `[COMPLETAR]` siguen visibles hasta tener los datos;
+  - las reseñas de Google sin el ícono de comillas repetido (el texto ya las tiene);
+  - "Artículos de Tatiana" como filas con el tema de cada artículo (sale del mapa de temas).
+
+Se regeneran con `python3 contenido/etapa-7/generar-bloques.py`.
+

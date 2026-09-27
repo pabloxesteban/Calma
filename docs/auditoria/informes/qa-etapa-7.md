@@ -134,3 +134,11 @@ Vista previa: `staging/preview/build.py etapa-7` sobre el snapshot de producció
   - en pantallas angostas se abre con un botón con `aria-expanded` y `aria-controls`;
   - los subtítulos tienen `scroll-margin-top` para no quedar debajo del header fijo.
 - **Tiempo de lectura**: se cuenta sobre el texto del artículo (párrafos, listas, subtítulos y citas), sin las cajas agregadas.
+
+## Equipo y perfiles
+- **axe-core**: 0 violaciones en 14 páginas × 2 anchos (incluye Equipo, Tatiana y Francisca). Reflow a 320 px sin desborde.
+- **Figura "tres miradas"**: decorativa (`aria-hidden`); lo que muestra está en el texto del hero. Se dibuja una sola vez (menos de 2,5 s); con movimiento reducido o "Reducir movimiento" aparece dibujada.
+- **"Volver al equipo"**: enlace de 44 px de alto, primero en el orden de lectura del hero.
+- **Temas de los artículos**: fichas con texto oscuro sobre tono suave (las mismas combinaciones del mapa, todas ≥ 4,5:1).
+- **Móvil**: sin desborde ni texto recortado en Equipo y los tres perfiles a 360/390/430. En Tatiana a 430 px, `capturas.js` marca los enlaces "Ver reseña… en Google" porque miden menos de 44 px; son enlaces dentro de texto, exceptuados por WCAG 2.5.8.
+

@@ -4615,6 +4615,292 @@ html.calma-quieto .calma-tiempo__anio {
 }
 
 /* --------------------------------------------------------------------------
+   8i. Equipo y perfiles: cada persona con el tono de su área (el mismo de
+   las tarjetas de Equipo). "Tres miradas" en el hero de Equipo: las tres
+   áreas se conectan con lo que trae cada persona.
+   -------------------------------------------------------------------------- */
+.calma-person--tatiana,
+.calma-perfil--tatiana,
+.calma-miradas__nodo--tatiana { --tono: #f6efe1; --acento: #e2c17e; --acento-texto: #7a4d00; }
+.calma-person--francisca,
+.calma-perfil--francisca,
+.calma-miradas__nodo--francisca { --tono: #efedf9; --acento: #bdb0ee; --acento-texto: #5b3fb8; }
+.calma-person--emanuel,
+.calma-perfil--emanuel,
+.calma-miradas__nodo--emanuel { --tono: #e9f1f8; --acento: #9cc3e3; --acento-texto: #1d5f94; }
+
+/* Equipo: tarjetas con el enlace siempre abajo, sin hueco debajo de la grilla */
+.calma-equipo .calma-person {
+	padding: var(--calma-space-6) !important;
+	background: linear-gradient(180deg, var(--tono) 0, #fff 140px) !important;
+}
+.calma-equipo .calma-person h2 {
+	line-height: 1.15;
+}
+.calma-equipo .calma-person__links {
+	margin-top: auto !important;
+	padding-top: var(--calma-space-4);
+}
+
+/* Figura "tres miradas" */
+.calma-miradas {
+	display: flex;
+	justify-content: center;
+}
+.calma-miradas svg {
+	width: 100%;
+	max-width: 420px;
+	height: auto;
+	overflow: visible;
+	fill: none;
+}
+.calma-miradas__base {
+	stroke: var(--calma-hairline-strong);
+	stroke-width: 2;
+	stroke-linejoin: round;
+}
+.calma-miradas__linea {
+	stroke-width: 2;
+	stroke-linejoin: round;
+	stroke-dasharray: 1;
+	stroke-dashoffset: 0;
+}
+.calma-miradas__linea--tatiana { stroke: #e2c17e; }
+.calma-miradas__linea--francisca { stroke: #bdb0ee; }
+.calma-miradas__linea--emanuel { stroke: #9cc3e3; }
+.calma-miradas__nodo circle {
+	fill: var(--tono);
+	stroke: var(--acento);
+	stroke-width: 2;
+}
+.calma-miradas text {
+	fill: var(--calma-ink);
+	stroke: none;
+	font: 600 17px/1 var(--calma-font-body);
+}
+.calma-miradas .calma-miradas__ini {
+	fill: var(--acento-texto);
+	font: 700 20px/1 var(--calma-font-heading);
+}
+.calma-miradas__centro circle {
+	fill: var(--calma-teal);
+}
+.calma-miradas__centro .calma-miradas__halo {
+	fill: none;
+	stroke: var(--calma-teal);
+	stroke-opacity: 0.2;
+}
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-miradas__nodo {
+		animation: calma-encender 0.8s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.3s) backwards;
+	}
+	html:not(.calma-quieto) .calma-miradas__linea {
+		animation: calma-trazar 1.4s var(--calma-ease-mente) calc(0.6s + var(--i) * 0.3s) backwards;
+	}
+	html:not(.calma-quieto) .calma-miradas__centro {
+		animation: calma-encender 0.8s var(--calma-ease-mente) 1.2s backwards;
+	}
+}
+@media (max-width: 899px) {
+	.calma-miradas svg {
+		max-width: 340px;
+	}
+}
+.calma-equipo .calma-section:last-child,
+.calma-perfil .calma-section:last-child {
+	padding-top: 0 !important;
+}
+
+/* Perfil: el hero toma el tono de la persona */
+.calma-perfil .calma-hero {
+	background: linear-gradient(180deg, var(--tono) 0%, var(--calma-bg) 100%) !important;
+}
+.calma-perfil .calma-avatar {
+	background: #fff !important;
+	color: var(--acento-texto) !important;
+	box-shadow: 0 0 0 2px var(--acento) !important;
+	font-family: var(--calma-font-heading);
+}
+.calma-perfil .calma-person__role {
+	color: var(--acento-texto) !important;
+}
+.calma-perfil .calma-hero__inner {
+	gap: var(--calma-space-2);
+}
+.calma-volver {
+	margin: 0 !important;
+	font-size: var(--calma-fs-sm);
+	font-weight: 600;
+}
+.calma-volver a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	gap: 6px;
+	color: var(--calma-ink-soft) !important;
+	text-decoration: none !important;
+}
+.calma-volver a::before {
+	content: "←";
+	transition: transform 0.2s var(--calma-ease-mente);
+}
+.calma-volver a:hover {
+	color: var(--calma-primary) !important;
+}
+.calma-volver a:hover::before {
+	transform: translateX(-3px);
+}
+
+/* "En qué acompaña" y "Formación declarada": dos paneles planos */
+.calma-perfil__datos {
+	display: grid;
+	gap: var(--calma-space-6);
+	margin-top: var(--calma-space-8);
+}
+@media (min-width: 700px) {
+	.calma-perfil__datos {
+		grid-template-columns: 1fr 1fr;
+		align-items: start;
+	}
+}
+.calma-perfil__datos > .calma-card {
+	padding: var(--calma-space-6) !important;
+	border: 0 !important;
+	border-top: 4px solid var(--acento) !important;
+}
+.calma-perfil__datos > .calma-card:first-child {
+	background: var(--tono) !important;
+}
+.calma-perfil__datos h2 {
+	margin-bottom: var(--calma-space-4) !important;
+}
+.calma-perfil .calma-person__topics li {
+	font-size: 1rem;
+	line-height: 1.5;
+}
+.calma-perfil .calma-person__topics li::before {
+	background: var(--acento) !important;
+}
+/* Formación como un recorrido: puntos unidos por una línea */
+.calma-formacion {
+	position: relative;
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.calma-formacion::before {
+	content: "";
+	position: absolute;
+	left: 5px;
+	top: 10px;
+	bottom: 10px;
+	width: 2px;
+	background: var(--calma-hairline);
+}
+.calma-formacion li {
+	position: relative;
+	margin: 0 !important;
+	padding: 0 0 var(--calma-space-3) 26px !important;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+.calma-formacion li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 6px;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: inset 0 0 0 2px var(--acento);
+}
+
+/* Reseñas: sin el ícono de comillas (el texto ya las trae) */
+.calma-perfil .calma-quote,
+.calma-page .calma-quote {
+	padding-top: var(--calma-space-6) !important;
+	border: 0 !important;
+	border-left: 3px solid var(--acento, #9cc3e3) !important;
+	background: #fff !important;
+}
+.calma-quote::before {
+	content: none !important;
+}
+.calma-quote blockquote p {
+	font-family: var(--calma-font-heading);
+	font-size: 1.125rem;
+	line-height: 1.5;
+}
+
+/* Artículos de la persona: filas con el tema de cada uno */
+.calma-perfil__articulos {
+	list-style: none !important;
+	margin: var(--calma-space-4) 0 0 !important;
+	padding: 0 !important;
+	border-top: 1px solid var(--calma-hairline-strong);
+}
+.calma-perfil__articulos li {
+	margin: 0 !important;
+	padding: 0 !important;
+	border-bottom: 1px solid var(--calma-hairline-strong);
+}
+.calma-perfil__articulos li::before {
+	content: none !important;
+}
+.calma-perfil__articulos a {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	gap: 4px var(--calma-space-4);
+	padding: var(--calma-space-4) 0;
+	color: var(--calma-ink) !important;
+	text-decoration: none !important;
+}
+.calma-perfil__articulos a::after {
+	content: "→";
+	grid-row: 1 / span 2;
+	grid-column: 2;
+	color: var(--calma-primary);
+	transition: transform 0.2s var(--calma-ease-mente);
+}
+.calma-perfil__articulos a:hover .calma-perfil__titulo {
+	color: var(--calma-primary);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+.calma-perfil__articulos a:hover::after {
+	transform: translateX(4px);
+}
+.calma-perfil__titulo {
+	font-family: var(--calma-font-heading);
+	font-size: 1.125rem;
+	font-weight: 600;
+	line-height: 1.35;
+}
+.calma-perfil__tema {
+	justify-self: start;
+	padding: 2px 10px;
+	border-radius: 999px;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	line-height: 1.6;
+	background: #e9f1f8;
+	color: #1d5f94;
+}
+.calma-perfil__tema[data-tema="psicologia"] { background: #f6efe1; color: #7a4d00; }
+.calma-perfil__tema[data-tema="neurociencia"] { background: #e9f1f8; color: #1d5f94; }
+.calma-perfil__tema[data-tema="ia"] { background: #efedf9; color: #5b3fb8; }
+.calma-perfil__tema[data-tema="tecnologia"] { background: #f8ece6; color: #9a3412; }
+.calma-perfil__tema[data-tema="bienestar"] { background: #e8f3ee; color: #1f6b47; }
+@media (prefers-reduced-motion: reduce) {
+	.calma-volver a::before,
+	.calma-perfil__articulos a::after {
+		transition: none;
+	}
+}
+
+/* --------------------------------------------------------------------------
    9. Aparición editorial (solo elementos fuera de la primera pantalla,
    la marca calma-organismo.js). Nunca se oculta texto: se revela la imagen
    como una lámina que se descubre, y las figuras "se encienden".

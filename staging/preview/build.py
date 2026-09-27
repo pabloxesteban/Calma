@@ -362,7 +362,7 @@ def fuentes():
             s = s.replace('content-width-normal content-style-boxed content-vertical-padding-show',
                           'content-width-fullwidth content-style-unboxed content-vertical-padding-hide')
             a, b = entry_bounds(s)
-            s = s[:a] + '<div class="entry-content single-content">\n' + (cont(3) / 'bloques' / bloque).read_text(encoding='utf-8') + '\n' + s[b:]
+            s = s[:a] + '<div class="entry-content single-content">\n' + (cont(7 if HASTA >= 7 else 3) / 'bloques' / bloque).read_text(encoding='utf-8') + '\n' + s[b:]
             log.append(f'{slug}: página nueva')
             yield slug, s
 
