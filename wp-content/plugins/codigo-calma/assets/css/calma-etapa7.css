@@ -3658,6 +3658,66 @@ html.calma-quieto .calma-tiempo__anio {
 .calma-org .o-reflejo { opacity: 0.35; }
 .calma-test__mide .o-punto { opacity: 1; }
 
+/* Íconos del test: línea fina sobre el tono, la misma familia que las figuras (sin emojis) */
+.calma-test__icono {
+	display: grid;
+	place-items: center;
+	flex: none;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background: var(--tono);
+	color: var(--acento-texto);
+	border: 1px solid color-mix(in srgb, var(--acento) 60%, transparent);
+}
+.calma-test__icono svg {
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.5;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.calma-test__icono .o-lleno {
+	fill: currentColor;
+	stroke: none;
+}
+.calma-test .calma-test__option:has(input:checked) .calma-test__icono {
+	background: #fff;
+	border-color: var(--acento-texto);
+}
+.calma-test__fb-icono {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin-right: 8px;
+	border-radius: 50%;
+	vertical-align: 0.05em;
+	background: #1d5f94;
+	box-shadow: 0 0 0 3px #d6e4f0;
+}
+.calma-test__fb-icono--good { background: #1f6b47; box-shadow: 0 0 0 3px #cfe6db; }
+.calma-test__fb-icono--mid { background: #7a4d00; box-shadow: 0 0 0 3px #efe0bf; }
+.calma-test--e7 .calma-test__feedback-box {
+	border-radius: 12px !important;
+	border: 1px solid rgb(27 34 51 / 0.09) !important;
+	border-left-width: 1px !important;
+	background: #fff !important;
+}
+.calma-test__result-fig {
+	display: flex;
+	justify-content: center;
+	margin: var(--calma-space-4) 0;
+}
+.calma-test__result-fig .calma-org {
+	max-width: 140px;
+	color: var(--acento-texto);
+}
+/* Los títulos reciben el foco del test solo para lectores de pantalla: sin recuadro */
+.calma-test--e7 h2[tabindex="-1"]:focus,
+.calma-test--e7 h2[tabindex="-1"]:focus-visible {
+	outline: none !important;
+}
+
 /* "Dato que vale la pena saber" */
 .calma-dato {
 	max-width: var(--calma-container, 1160px);
@@ -3675,15 +3735,65 @@ html.calma-quieto .calma-tiempo__anio {
 	}
 }
 .calma-dato__imagen {
+	position: relative;
+	isolation: isolate;
 	margin: 0;
 	overflow: hidden;
 	border-radius: 16px;
 	border: 1px solid rgb(27 34 51 / 0.08);
+	background: linear-gradient(135deg, #bcd5ec, #d2c9f2);
 }
+/* La foto en duotono (azul → lavanda), para que sea una lámina del sitio y no la foto de un blog */
 .calma-dato__imagen img {
 	display: block;
 	width: 100%;
 	height: auto;
+	filter: grayscale(1) contrast(1.05) brightness(1.08);
+	mix-blend-mode: multiply;
+	opacity: 0.62;
+}
+.calma-dato__capa {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+.calma-dato__capa * {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-dato__guia {
+	fill: none;
+	stroke: #fff;
+	stroke-opacity: 0.7;
+	stroke-dasharray: 3 8;
+}
+.calma-dato__punto {
+	fill: var(--acento);
+	stroke: #fff;
+	stroke-width: 3;
+}
+.calma-dato__halo {
+	fill: none;
+	stroke: #fff;
+	stroke-opacity: 0.6;
+}
+.calma-dato__disco {
+	fill: #fff;
+}
+.calma-dato__arco {
+	fill: none;
+	stroke: #1d5f94;
+	stroke-width: 6;
+	stroke-linecap: round;
+	transform-origin: 50% 100%;
+}
+.calma-dato__cuerpo {
+	fill: #1d5f94;
+}
+.calma-dato__ojo {
+	fill: #fff;
 }
 .calma-dato__texto h2 {
 	margin: 0 0 var(--calma-space-2) !important;
@@ -3829,6 +3939,21 @@ html.calma-quieto .calma-tiempo__anio {
 	html:not(.calma-quieto) .calma-test--e7 .calma-test__result-emoji {
 		animation: calma-latido 0.9s var(--calma-ease-mente) 0.3s;
 	}
+}
+@media (prefers-reduced-motion: no-preference) {
+	/* "Dato": los doce puntos rodean la foto y el candado se cierra */
+	html:not(.calma-quieto) .calma-dato__imagen.is-vivo .calma-dato__punto {
+		animation: calma-encender 0.5s var(--calma-ease-mente) calc(0.3s + var(--i) * 0.07s) backwards;
+	}
+	html:not(.calma-quieto) .calma-dato__imagen.is-vivo .calma-dato__arco {
+		animation: calma-cerrar 0.7s var(--calma-ease-mente) 1.3s backwards;
+	}
+	html:not(.calma-quieto) .calma-dato__imagen.is-vivo .calma-dato__halo {
+		animation: calma-pulso 1.6s var(--calma-ease-mente) 1.9s backwards;
+	}
+}
+@keyframes calma-cerrar {
+	from { transform: translateY(-12px); }
 }
 @keyframes calma-test-entra {
 	from { opacity: 0; transform: translateY(10px); }

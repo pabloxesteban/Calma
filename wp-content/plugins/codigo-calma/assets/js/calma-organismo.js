@@ -535,7 +535,7 @@
 	}
 
 	function prepararFiguras() {
-		var figuras = document.querySelectorAll( '.calma-cifra, .calma-estado, .calma-person, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta' );
+		var figuras = document.querySelectorAll( '.calma-cifra, .calma-estado, .calma-person, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta, .calma-dato__imagen' );
 		if ( ! figuras.length ) {
 			return;
 		}

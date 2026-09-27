@@ -119,6 +119,24 @@ def org_reflejo():
                '<g class="o-reflejo"><circle cx="80" cy="78" r="7"/><path d="M62 58 C66 70 94 70 98 58"/></g>')
 
 
+ICONOS_GEN = {
+    # Creciste con el cambio: de la computadora al teléfono.
+    '💾': ('psicologia', '<rect x="4" y="8" width="17" height="12" rx="2"/><path d="M9 24h7M12.5 20v4"/><rect x="20" y="12" width="8" height="14" rx="2"/><circle class="o-lleno" cx="24" cy="23" r="0.9"/>'),
+    # Adoptaste la tecnología: la computadora de escritorio.
+    '📼': ('tecnologia', '<rect x="5" y="7" width="22" height="15" rx="2"/><path d="M11 26h10M16 22v4"/><path d="M9 12h8M9 16h5"/>'),
+    # Nativa digital: el teléfono conectado.
+    '☁️': ('ia', '<rect x="11" y="9" width="10" height="18" rx="2.5"/><circle class="o-lleno" cx="16" cy="23.5" r="0.9"/><path d="M10 6.5a9 9 0 0 1 12 0M12.5 4a5.5 5.5 0 0 1 7 0"/>'),
+    # Otra / prefiero no decirlo: un círculo abierto.
+    '•': ('neurociencia', '<circle cx="16" cy="16" r="10" stroke-dasharray="3 3"/><circle class="o-lleno" cx="12" cy="16" r="1.2"/><circle class="o-lleno" cx="16" cy="16" r="1.2"/><circle class="o-lleno" cx="20" cy="16" r="1.2"/>'),
+}
+
+
+def icono_gen(emoji):
+    tono, dibujo = ICONOS_GEN[emoji]
+    return (f'<span class="calma-test__icono calma-tono--{tono}" aria-hidden="true">'
+            f'<svg viewBox="0 0 32 32" width="28" height="28" focusable="false">{dibujo}</svg></span>')
+
+
 def test(cabecera):
     s = E2.read_text(encoding='utf-8')
     s = re.sub(r'^<!--.*?-->\n', '', s, count=1, flags=re.S)
@@ -161,10 +179,42 @@ def test(cabecera):
 {empezar}
 </section>'''
     s = s[:a] + nueva + s[b:]
+    # Generaciones: íconos de línea en lugar de emojis.
+    for emoji in ICONOS_GEN:
+        viejo = f'<span class="calma-test__emoji" aria-hidden="true">{emoji}</span>'
+        assert viejo in s, emoji
+        s = s.replace(viejo, icono_gen(emoji), 1)
+    # Resultado: el perfil dibujado en lugar del emoji (el script ya no escribe el emoji).
+    s = s.replace('<p class="calma-test__result-emoji" aria-hidden="true" data-calma-r-emoji></p>',
+                  '<div class="calma-test__result-fig calma-tono--neurociencia" aria-hidden="true" data-calma-r-emoji>' + org_perfil() + '</div>', 1)
+    js_emoji = "q('[data-calma-r-emoji]').textContent = r.profile.emoji;"
+    assert js_emoji in s
+    s = s.replace(js_emoji, "q('[data-calma-r-emoji]').setAttribute('data-perfil', String(PROFILES.indexOf(r.profile)));", 1)
+    # Retroalimentación: un punto en el tono de la respuesta en lugar de ✓ ⚠ 🔵.
+    js_icono = "icon.textContent = f.icon + ' ';"
+    assert js_icono in s
+    s = s.replace(js_icono, "icon.className = 'calma-test__fb-icono calma-test__fb-icono--' + kind;", 1)
     return (cabecera('Test de consumo digital',
                      'Reemplaza el bloque "HTML personalizado" del test (Etapa 2) en /test/ (id 1941). Misma lógica y mismos textos;\n'
                      '     cambia la forma (figuras y movimiento). Estilos y movimiento: plugin (calma-etapa7.css y calma-organismo.js).')
             + s)
+
+
+def capa_dato():
+    """Sobre la foto: los 12 puntos del test alrededor de un candado que se cierra."""
+    puntos = ''
+    for i in range(12):
+        a = math.radians(-90 + i * 30)
+        acento = DIMENSIONES[i // 3][0]
+        puntos += (f'<circle class="calma-dato__punto" style="--i:{i};--acento:{acento}" '
+                   f'cx="{260 + 150 * math.cos(a):.1f}" cy="{260 + 150 * math.sin(a):.1f}" r="11"/>')
+    return ('<svg class="calma-dato__capa" viewBox="0 0 520 520" aria-hidden="true" focusable="false">'
+            '<circle class="calma-dato__guia" cx="260" cy="260" r="150"/>' + puntos +
+            '<circle class="calma-dato__halo" cx="260" cy="260" r="78"/>'
+            '<circle class="calma-dato__disco" cx="260" cy="260" r="58"/>'
+            '<path class="calma-dato__arco" d="M242 256 v-14 a18 18 0 0 1 36 0 v14"/>'
+            '<rect class="calma-dato__cuerpo" x="232" y="254" width="56" height="42" rx="8"/>'
+            '<circle class="calma-dato__ojo" cx="260" cy="273" r="5"/></svg>')
 
 
 def dato(cabecera):
@@ -183,7 +233,7 @@ def dato(cabecera):
                      '     Un bloque "HTML personalizado", ancho completo. Mismo texto y la misma imagen.')
             + f'''<section class="calma-dato" aria-labelledby="calma-dato-h2">
 <div class="calma-dato__cabeza">
-<figure class="calma-dato__imagen"><img src="https://codigocalma.com/wp-content/uploads/2026/06/test-1.jpg" width="520" height="520" alt="Test de Consumo Digital." loading="lazy" decoding="async"></figure>
+<figure class="calma-dato__imagen"><img src="https://codigocalma.com/wp-content/uploads/2026/06/test-1.jpg" width="520" height="520" alt="Test de Consumo Digital." loading="lazy" decoding="async">{capa_dato()}</figure>
 <div class="calma-dato__texto">
 <h2 id="calma-dato-h2">Dato que vale la pena saber</h2>
 <p class="calma-dato__lema">Tus resultados <em>son tuyos.</em></p>
