@@ -55,12 +55,13 @@ def testimonios(cabecera):
         if texto.endswith('«'):
             texto = texto[:-1].rstrip() + '»'
         tono = TONOS[i % len(TONOS)][0]
-        tarjetas += (f'<li class="calma-habito calma-resena calma-tono--{tono}" style="--i:{i}">'
-                     f'<figure>{estrellas()}<blockquote><p>{e(texto)}</p></blockquote>'
-                     f'<figcaption><span class="calma-resena__inicial" aria-hidden="true">{e(r["nombre"][:1])}</span>'
-                     f'<strong>{e(r["nombre"].strip())}</strong>'
-                     f'<a href="{e(r["enlace"])}" rel="noopener" target="_blank">Ver reseña en Google'
-                     f'<span class="screen-reader-text"> de {e(r["nombre"].strip())} (se abre en una pestaña nueva)</span></a></figcaption>'
+        nombre = e(r['nombre'].strip())
+        tarjetas += (f'<li class="calma-habito calma-resena calma-tono--{tono}" style="--i:{i}"><figure>'
+                     f'<figcaption class="calma-resena__cabeza"><span class="calma-resena__inicial" aria-hidden="true">{e(r["nombre"][:1])}</span>'
+                     f'<span class="calma-resena__quien"><strong>{nombre}</strong><span>Reseña publicada en Google</span></span></figcaption>'
+                     f'{estrellas()}<blockquote><p>{e(texto)}</p></blockquote>'
+                     f'<p class="calma-resena__enlace"><a href="{e(r["enlace"])}" rel="noopener" target="_blank">Ver reseña en Google'
+                     f'<span class="screen-reader-text"> de {nombre} (se abre en una pestaña nueva)</span></a></p>'
                      f'</figure></li>')
     return (cabecera('Testimonios',
                      'Reemplaza TODO el contenido de Testimonios (el bloque de testimonios de Kadence y las fotos). Un solo bloque "HTML personalizado", ancho completo, sin caja ni título de Kadence.\n'

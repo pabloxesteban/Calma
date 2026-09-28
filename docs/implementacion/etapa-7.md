@@ -272,4 +272,5 @@ Qué trae:
 - Las reseñas en un muro de tarjetas de distinto alto, con la inicial de cada persona en su tono; las estrellas se encienden al aparecer y la tarjeta tiene la luz que sigue al puntero.
 - Se quitan las 14 fotos de ambiente (no eran de las personas y hacían ver la página como un blog). Las imágenes quedan en la biblioteca de medios.
 - Cierre con la caja de consulta ("Consultar con Tatiana").
+- **Ajuste de Testimonios:** cada tarjeta se lee como una reseña de Google: arriba la inicial en un círculo de color lleno (texto blanco, contraste ≥ 4,5:1), el nombre y "Reseña publicada en Google"; debajo las cinco estrellas amarillas y el texto en tinta; al pie, "Ver reseña en Google". Borde de la tarjeta más marcado para dar más contraste, sin sombras.
 

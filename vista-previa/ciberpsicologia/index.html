@@ -6550,21 +6550,52 @@ html.calma-quieto .calma-tiempo__anio {
 	display: block !important;
 	break-inside: avoid;
 	margin: 0 0 var(--calma-space-4) !important;
-	padding: var(--calma-space-6) !important;
+	padding: var(--calma-space-5) var(--calma-space-6) var(--calma-space-5) !important;
+	border-color: rgb(27 34 51 / 0.16) !important;
 }
 .calma-resena figure {
 	margin: 0;
 }
+/* Como una reseña de Google: persona arriba, estrellas, texto */
+.calma-resena__cabeza {
+	display: flex;
+	align-items: center;
+	gap: var(--calma-space-3);
+	margin: 0 0 var(--calma-space-3);
+}
+.calma-resena__inicial {
+	display: grid;
+	place-items: center;
+	flex: none;
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	background: var(--acento-texto);
+	color: #fff;
+	font: 600 1.125rem/1 var(--calma-font-body);
+}
+.calma-resena__quien {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.3;
+}
+.calma-resena__quien strong {
+	font-size: 1rem;
+	color: var(--calma-ink);
+}
+.calma-resena__quien span {
+	font-size: 0.8125rem;
+	color: var(--calma-ink-soft);
+}
 .calma-resena__estrellas {
 	display: flex;
-	gap: 3px;
+	gap: 2px;
 	margin: 0 0 var(--calma-space-3) !important;
-	color: var(--acento-texto);
 }
 .calma-resena__estrellas svg {
-	fill: var(--acento);
-	stroke: var(--acento-texto);
-	stroke-width: 0.8;
+	fill: #f2b01e;
+	stroke: #c98a00;
+	stroke-width: 0.6;
 }
 .calma-resena blockquote {
 	margin: 0 !important;
@@ -6574,58 +6605,42 @@ html.calma-quieto .calma-tiempo__anio {
 }
 .calma-resena blockquote p {
 	margin: 0 !important;
-	font-family: var(--calma-font-heading);
-	font-size: 1.125rem;
+	font-family: var(--calma-font-body);
+	font-size: 1rem;
 	font-style: normal;
-	line-height: 1.55;
+	line-height: 1.6;
 	color: var(--calma-ink);
 }
 .calma-resena:first-child blockquote p {
-	font-size: 1.3125rem;
+	font-family: var(--calma-font-heading);
+	font-size: 1.25rem;
+	line-height: 1.5;
 }
-.calma-resena figcaption {
-	display: grid;
-	grid-template-columns: auto 1fr;
-	grid-template-areas: "ini nombre" "ini enlace";
-	gap: 0 var(--calma-space-3);
-	align-items: center;
-	margin-top: var(--calma-space-5);
-	padding-top: var(--calma-space-4);
-	border-top: 1px solid var(--calma-hairline);
+.calma-resena__enlace {
+	margin: var(--calma-space-4) 0 0 !important;
+	padding-top: var(--calma-space-3);
+	border-top: 1px solid rgb(27 34 51 / 0.1);
 }
-.calma-resena__inicial {
-	grid-area: ini;
-	display: grid;
-	place-items: center;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	background: var(--tono);
-	border: 1px solid var(--acento);
-	color: var(--acento-texto);
-	font: 600 1rem/1 var(--calma-font-heading);
-}
-.calma-resena figcaption strong {
-	grid-area: nombre;
-	font-size: 0.9375rem;
-}
-.calma-resena figcaption a {
-	grid-area: enlace;
+.calma-resena__enlace a {
 	position: relative;
 	z-index: 1;
-	justify-self: start;
 	display: inline-flex;
 	align-items: center;
 	min-height: 32px;
 	font-size: var(--calma-fs-sm);
-	color: var(--acento-texto) !important;
+	font-weight: 600;
+	color: var(--calma-primary) !important;
+	text-decoration: none !important;
 }
-.calma-resena figcaption a::after {
+.calma-resena__enlace a:hover {
+	text-decoration: underline !important;
+}
+.calma-resena__enlace a::after {
 	content: " ↗";
 	margin-left: 4px;
 	transition: transform 0.3s var(--calma-ease-mente);
 }
-.calma-resena figcaption a:hover::after {
+.calma-resena__enlace a:hover::after {
 	transform: translate(2px, -2px);
 }
 /* Figura de cabecera: catorce puntos alrededor de unas comillas */
@@ -6676,6 +6691,7 @@ html.calma-quieto .calma-tiempo__anio {
 	html:not(.calma-quieto) .calma-resena.is-vivo .calma-resena__estrellas svg {
 		animation: calma-latido 0.6s var(--calma-ease-mente) backwards;
 	}
+	html:not(.calma-quieto) .calma-resena.is-vivo .calma-resena__estrellas svg:nth-child(2) { animation-delay: 0s; }
 	html:not(.calma-quieto) .calma-resena.is-vivo .calma-resena__estrellas svg:nth-child(3) { animation-delay: 0.08s; }
 	html:not(.calma-quieto) .calma-resena.is-vivo .calma-resena__estrellas svg:nth-child(4) { animation-delay: 0.16s; }
 	html:not(.calma-quieto) .calma-resena.is-vivo .calma-resena__estrellas svg:nth-child(5) { animation-delay: 0.24s; }
