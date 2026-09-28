@@ -5997,6 +5997,130 @@ html.calma-quieto .calma-tiempo__anio {
 	transform-origin: 50% 100%;
 }
 
+/* ---- Patrón de las páginas interiores (tomado del Test) ----
+   Cabecera: título grande a la izquierda y figura propia a la derecha.
+   Secciones: título alineado a la izquierda, del mismo tamaño en todas, sin
+   línea decorativa ni centrado; la bajada debajo, a la izquierda. */
+:is(.calma-equipo, .calma-perfil, .calma-recursos) .calma-section__head {
+	max-width: none !important;
+	margin: 0 0 var(--calma-space-6) !important;
+	text-align: left !important;
+}
+:is(.calma-equipo, .calma-perfil, .calma-recursos) .calma-section__head h2,
+.calma-bienestar__intro h2,
+.calma-apps__titulo {
+	font-size: var(--calma-fs-xl) !important;
+	line-height: 1.12 !important;
+	letter-spacing: -0.015em;
+}
+:is(.calma-equipo, .calma-perfil, .calma-recursos) .calma-section__head p {
+	max-width: 60ch;
+	margin: var(--calma-space-2) 0 0 !important;
+	text-align: left !important;
+}
+:is(.calma-equipo, .calma-perfil, .calma-recursos) .calma-section__head::before,
+.calma-apps__titulo::before,
+.calma-bienestar__intro h2::before {
+	content: none !important;
+}
+.calma-perfil .calma-section__head {
+	max-width: var(--calma-container) !important;
+	margin-inline: auto !important;
+}
+.calma-perfil .calma-container--text {
+	max-width: var(--calma-container) !important;
+	margin-inline: auto !important;
+}
+.calma-perfil .calma-container--text > p,
+.calma-perfil .calma-perfil__articulos,
+.calma-perfil .calma-container--text > h2 {
+	max-width: 68ch;
+}
+.calma-perfil .calma-container--text > h2 {
+	font-size: var(--calma-fs-xl) !important;
+}
+/* Figuras de cabecera de Herramientas y Descargas */
+.calma-hero-fig {
+	display: flex;
+	justify-content: center;
+}
+.calma-hero-fig svg {
+	width: 100%;
+	max-width: 300px;
+	height: auto;
+	overflow: visible;
+	fill: none;
+}
+.calma-hero-fig svg * {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-hero-fig__guia {
+	stroke: var(--calma-hairline-strong);
+	stroke-dasharray: 2 6;
+}
+.calma-hero-fig__nodo {
+	fill: var(--acento);
+	stroke: #fff;
+	stroke-width: 3;
+}
+.calma-hero-fig__marco {
+	fill: #fff;
+	stroke: var(--calma-ink);
+	stroke-width: 2;
+}
+.calma-hero-fig__app {
+	fill: var(--acento);
+	fill-opacity: 0.8;
+}
+.calma-hero-fig__boton {
+	fill: var(--calma-ink);
+}
+.calma-hero-fig__halo {
+	stroke: #1f6b47;
+	stroke-opacity: 0.5;
+}
+.calma-hero-fig__libro rect {
+	fill: color-mix(in srgb, var(--acento) 35%, #fff);
+	stroke: var(--acento);
+	stroke-width: 2;
+}
+.calma-hero-fig__libro path {
+	stroke: var(--calma-ink);
+	stroke-opacity: 0.35;
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+.calma-hero-fig__flecha {
+	stroke: var(--calma-primary);
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-dasharray: 1;
+}
+.calma-hero-fig__bandeja {
+	stroke: var(--calma-ink);
+	stroke-width: 3;
+	stroke-linecap: round;
+}
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-hero-fig__app {
+		animation: calma-encender 0.5s var(--calma-ease-mente) calc(0.3s + var(--i) * 0.1s) backwards;
+	}
+	html:not(.calma-quieto) .calma-hero-fig__nodo {
+		animation: calma-encender 0.6s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.2s) backwards;
+	}
+	html:not(.calma-quieto) .calma-hero-fig__halo {
+		animation: calma-pulso 1.6s var(--calma-ease-mente) 1.3s 2 backwards;
+	}
+	html:not(.calma-quieto) .calma-hero-fig__libro {
+		animation: calma-test-entra 0.8s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.2s) backwards;
+	}
+	html:not(.calma-quieto) .calma-hero-fig__flecha {
+		animation: calma-conectar 0.9s var(--calma-ease-mente) 1s backwards;
+	}
+}
+
 /* ---- Movimiento ---- */
 @media (prefers-reduced-motion: no-preference) {
 	/* Scroll: las tarjetas suben al entrar (solo las que empiezan fuera de pantalla; las marca el JS) */
@@ -6498,11 +6622,11 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
      Mismo texto que hoy; cambia la forma. Estilos: plugin (calma-etapa7.css). Ancho completo, sin caja, sin título de Kadence.
      Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
 <div class="calma-page calma-recursos">
-<section class="calma-hero" aria-labelledby="herramientas-h1"><div class="calma-hero__inner"><div>
+<section class="calma-hero" aria-labelledby="herramientas-h1"><div class="calma-hero__inner calma-hero__inner--media"><div>
 <h1 id="herramientas-h1">Aplicaciones de <em>productividad</em> y <em>calma</em></h1>
 <p class="calma-hero__lead">Aquí encontrarás recomendaciones de apps para salud mental y productividad.</p>
 <p>Las aplicaciones de salud mental utilizan principios de la psicología para ofrecer técnicas de meditación que pueden reducir el estrés y la ansiedad. Además, herramientas como los dispositivos de seguimiento del sueño y la actividad física ayudan a los usuarios a monitorear y mejorar su salud general. Si bien están pensadas como apoyo al bienestar diario, es importante recordar que no reemplazan el acompañamiento profesional.</p>
-</div></div></section>
+</div><div class="calma-hero__media calma-hero-fig" aria-hidden="true"><svg viewBox="0 0 260 260" width="260" height="260" focusable="false"><circle class="calma-hero-fig__guia" cx="130" cy="130" r="112"/><circle class="calma-hero-fig__nodo" style="--i:0;--acento:#e2c17e" cx="33.00515477614286" cy="74.0" r="9"/><circle class="calma-hero-fig__nodo" style="--i:1;--acento:#9fd0c0" cx="226.99484522385714" cy="74.0" r="9"/><circle class="calma-hero-fig__nodo" style="--i:2;--acento:#9cc3e3" cx="130.0" cy="242.0" r="9"/><rect class="calma-hero-fig__marco" x="92" y="40" width="76" height="180" rx="16"/><rect class="calma-hero-fig__app" style="--i:0;--acento:#e2c17e" x="104" y="66" width="22" height="22" rx="6"/><rect class="calma-hero-fig__app" style="--i:1;--acento:#bdb0ee" x="134" y="66" width="22" height="22" rx="6"/><rect class="calma-hero-fig__app" style="--i:2;--acento:#9cc3e3" x="104" y="96" width="22" height="22" rx="6"/><rect class="calma-hero-fig__app" style="--i:3;--acento:#9fd0c0" x="134" y="96" width="22" height="22" rx="6"/><rect class="calma-hero-fig__app" style="--i:4;--acento:#ebb79c" x="104" y="126" width="22" height="22" rx="6"/><rect class="calma-hero-fig__app" style="--i:5;--acento:#9cc3e3" x="134" y="126" width="22" height="22" rx="6"/><rect class="calma-hero-fig__app" style="--i:6;--acento:#bdb0ee" x="104" y="156" width="22" height="22" rx="6"/><rect class="calma-hero-fig__app" style="--i:7;--acento:#9fd0c0" x="134" y="156" width="22" height="22" rx="6"/><circle class="calma-hero-fig__boton" cx="130" cy="202" r="4"/><circle class="calma-hero-fig__halo" style="--acento:#9fd0c0" cx="145" cy="137" r="20"/></svg></div></div></section>
 <section class="calma-section" aria-labelledby="habitos-h2"><div class="calma-container">
 <div class="calma-section__head"><h2 id="habitos-h2">Pequeños hábitos, <em>gran diferencia</em>.</h2>
 <p>Estas herramientas no reemplazan el acompañamiento profesional. Son puntos de partida que muchas personas encuentran útiles.</p></div>

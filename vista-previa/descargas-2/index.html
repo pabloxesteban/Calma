@@ -5994,6 +5994,130 @@ html.calma-quieto .calma-tiempo__anio {
 	transform-origin: 50% 100%;
 }
 
+/* ---- Patrón de las páginas interiores (tomado del Test) ----
+   Cabecera: título grande a la izquierda y figura propia a la derecha.
+   Secciones: título alineado a la izquierda, del mismo tamaño en todas, sin
+   línea decorativa ni centrado; la bajada debajo, a la izquierda. */
+:is(.calma-equipo, .calma-perfil, .calma-recursos) .calma-section__head {
+	max-width: none !important;
+	margin: 0 0 var(--calma-space-6) !important;
+	text-align: left !important;
+}
+:is(.calma-equipo, .calma-perfil, .calma-recursos) .calma-section__head h2,
+.calma-bienestar__intro h2,
+.calma-apps__titulo {
+	font-size: var(--calma-fs-xl) !important;
+	line-height: 1.12 !important;
+	letter-spacing: -0.015em;
+}
+:is(.calma-equipo, .calma-perfil, .calma-recursos) .calma-section__head p {
+	max-width: 60ch;
+	margin: var(--calma-space-2) 0 0 !important;
+	text-align: left !important;
+}
+:is(.calma-equipo, .calma-perfil, .calma-recursos) .calma-section__head::before,
+.calma-apps__titulo::before,
+.calma-bienestar__intro h2::before {
+	content: none !important;
+}
+.calma-perfil .calma-section__head {
+	max-width: var(--calma-container) !important;
+	margin-inline: auto !important;
+}
+.calma-perfil .calma-container--text {
+	max-width: var(--calma-container) !important;
+	margin-inline: auto !important;
+}
+.calma-perfil .calma-container--text > p,
+.calma-perfil .calma-perfil__articulos,
+.calma-perfil .calma-container--text > h2 {
+	max-width: 68ch;
+}
+.calma-perfil .calma-container--text > h2 {
+	font-size: var(--calma-fs-xl) !important;
+}
+/* Figuras de cabecera de Herramientas y Descargas */
+.calma-hero-fig {
+	display: flex;
+	justify-content: center;
+}
+.calma-hero-fig svg {
+	width: 100%;
+	max-width: 300px;
+	height: auto;
+	overflow: visible;
+	fill: none;
+}
+.calma-hero-fig svg * {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-hero-fig__guia {
+	stroke: var(--calma-hairline-strong);
+	stroke-dasharray: 2 6;
+}
+.calma-hero-fig__nodo {
+	fill: var(--acento);
+	stroke: #fff;
+	stroke-width: 3;
+}
+.calma-hero-fig__marco {
+	fill: #fff;
+	stroke: var(--calma-ink);
+	stroke-width: 2;
+}
+.calma-hero-fig__app {
+	fill: var(--acento);
+	fill-opacity: 0.8;
+}
+.calma-hero-fig__boton {
+	fill: var(--calma-ink);
+}
+.calma-hero-fig__halo {
+	stroke: #1f6b47;
+	stroke-opacity: 0.5;
+}
+.calma-hero-fig__libro rect {
+	fill: color-mix(in srgb, var(--acento) 35%, #fff);
+	stroke: var(--acento);
+	stroke-width: 2;
+}
+.calma-hero-fig__libro path {
+	stroke: var(--calma-ink);
+	stroke-opacity: 0.35;
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+.calma-hero-fig__flecha {
+	stroke: var(--calma-primary);
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-dasharray: 1;
+}
+.calma-hero-fig__bandeja {
+	stroke: var(--calma-ink);
+	stroke-width: 3;
+	stroke-linecap: round;
+}
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-hero-fig__app {
+		animation: calma-encender 0.5s var(--calma-ease-mente) calc(0.3s + var(--i) * 0.1s) backwards;
+	}
+	html:not(.calma-quieto) .calma-hero-fig__nodo {
+		animation: calma-encender 0.6s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.2s) backwards;
+	}
+	html:not(.calma-quieto) .calma-hero-fig__halo {
+		animation: calma-pulso 1.6s var(--calma-ease-mente) 1.3s 2 backwards;
+	}
+	html:not(.calma-quieto) .calma-hero-fig__libro {
+		animation: calma-test-entra 0.8s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.2s) backwards;
+	}
+	html:not(.calma-quieto) .calma-hero-fig__flecha {
+		animation: calma-conectar 0.9s var(--calma-ease-mente) 1s backwards;
+	}
+}
+
 /* ---- Movimiento ---- */
 @media (prefers-reduced-motion: no-preference) {
 	/* Scroll: las tarjetas suben al entrar (solo las que empiezan fuera de pantalla; las marca el JS) */
@@ -6495,9 +6619,9 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
      Mismo texto que hoy; cambia la forma. Estilos: plugin (calma-etapa7.css). Ancho completo, sin caja, sin título de Kadence.
      Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
 <div class="calma-page calma-recursos">
-<section class="calma-hero" aria-labelledby="descargas-h1"><div class="calma-hero__inner"><div>
+<section class="calma-hero" aria-labelledby="descargas-h1"><div class="calma-hero__inner calma-hero__inner--media"><div>
 <h1 id="descargas-h1">Libros de <em>descarga gratuita</em></h1>
-</div></div></section>
+</div><div class="calma-hero__media calma-hero-fig" aria-hidden="true"><svg viewBox="0 0 260 260" width="260" height="260" focusable="false"><circle class="calma-hero-fig__guia" cx="130" cy="130" r="118"/><g class="calma-hero-fig__libro" style="--i:0;--acento:#e2c17e"><rect x="58" y="72" width="96" height="128" rx="8"/><path d="M72 72v128"/><path d="M84 104h52M84 118h36"/></g><g class="calma-hero-fig__libro" style="--i:1;--acento:#bdb0ee"><rect x="84" y="58" width="96" height="128" rx="8"/><path d="M98 58v128"/><path d="M110 90h52M110 104h36"/></g><g class="calma-hero-fig__libro" style="--i:2;--acento:#9cc3e3"><rect x="110" y="44" width="96" height="128" rx="8"/><path d="M124 44v128"/><path d="M136 76h52M136 90h36"/></g><path class="calma-hero-fig__flecha" pathLength="1" d="M130 186v42M116 214l14 14 14-14"/><path class="calma-hero-fig__bandeja" d="M96 238h68"/></svg></div></div></section>
 <section class="calma-section" aria-label="Guías para descargar"><div class="calma-container">
 <ul class="calma-descargas"><li class="calma-descarga" style="--i:0"><div class="calma-descarga__portada"><img src="https://codigocalma.com/wp-content/uploads/2026/05/ansiedad-1.jpg" width="400" height="400" alt="Portada de la guía Ansiedad funcional vs. ansiedad desbordada" decoding="async"></div><div class="calma-descarga__texto"><p class="calma-descarga__autora">Por Tatiana X. Stacul</p><h2><span>Ansiedad funcional vs. ansiedad desbordada</span></h2><p>Nuestra interacción digital y su impacto en la salud mental</p><p class="calma-descarga__accion"><a class="calma-btn calma-btn--primary" href="https://codigocalma.com/wp-content/uploads/2026/06/Ansiedad-Funcional-vs-Ansiedad-Desbordada.pdf" download>Descargar<span class="screen-reader-text"> Ansiedad funcional vs. ansiedad desbordada</span> <span class="calma-descarga__formato">PDF</span></a></p></div></li><li class="calma-descarga" style="--i:1"><div class="calma-descarga__portada"><img src="https://codigocalma.com/wp-content/uploads/2026/05/guia-1.jpg" width="400" height="400" alt="Portada de la Guía de ciberseguridad para psicólogos" decoding="async"></div><div class="calma-descarga__texto"><p class="calma-descarga__autora">Por Tatiana X. Stacul</p><h2><span>Guía de ciberseguridad para psicólogos</span></h2><p>Conceptos, herramientas y recomendaciones.</p><p class="calma-descarga__accion"><a class="calma-btn calma-btn--primary" href="https://codigocalma.com/wp-content/uploads/2026/06/Guia-de-Ciberseguridad-para-Psicologos.pdf" download>Descargar<span class="screen-reader-text"> Guía de ciberseguridad para psicólogos</span> <span class="calma-descarga__formato">PDF</span></a></p></div></li><li class="calma-descarga" style="--i:2"><div class="calma-descarga__portada"><img src="https://codigocalma.com/wp-content/uploads/2026/05/para_devs-1.jpg" width="400" height="400" alt="Portada de la guía Psicología para devs" loading="lazy" decoding="async"></div><div class="calma-descarga__texto"><p class="calma-descarga__autora">Por Tatiana X. Stacul</p><h2><span>Psicología para devs</span></h2><p>Conceptos para integrar psicología a tu desarrollo.</p><p class="calma-descarga__accion"><a class="calma-btn calma-btn--primary" href="https://codigocalma.com/wp-content/uploads/2026/06/psicologia-para-devs.pdf" download>Descargar<span class="screen-reader-text"> Psicología para devs</span> <span class="calma-descarga__formato">PDF</span></a></p></div></li><li class="calma-descarga" style="--i:3"><div class="calma-descarga__portada"><img src="https://codigocalma.com/wp-content/uploads/2026/05/trust-1.jpg" width="400" height="400" alt="Portada de la guía The Psychology of Trust" loading="lazy" decoding="async"></div><div class="calma-descarga__texto"><p class="calma-descarga__autora">Por Tatiana X. Stacul</p><h2><span lang="en">The Psychology of Trust</span> (en inglés)</h2><p lang="en">Behavioral Science and Cybersecurity Awareness. A 3-phase Learning Journey with AI</p><p class="calma-descarga__accion"><a class="calma-btn calma-btn--primary" href="https://codigocalma.com/wp-content/uploads/2026/06/The-psychology-of-trust-Tatiana-Stacul.pdf" download>Descargar<span class="screen-reader-text"> The Psychology of Trust</span> <span class="calma-descarga__formato">PDF</span></a></p></div></li></ul>
 </div></section>

@@ -5994,6 +5994,130 @@ html.calma-quieto .calma-tiempo__anio {
 	transform-origin: 50% 100%;
 }
 
+/* ---- Patrón de las páginas interiores (tomado del Test) ----
+   Cabecera: título grande a la izquierda y figura propia a la derecha.
+   Secciones: título alineado a la izquierda, del mismo tamaño en todas, sin
+   línea decorativa ni centrado; la bajada debajo, a la izquierda. */
+:is(.calma-equipo, .calma-perfil, .calma-recursos) .calma-section__head {
+	max-width: none !important;
+	margin: 0 0 var(--calma-space-6) !important;
+	text-align: left !important;
+}
+:is(.calma-equipo, .calma-perfil, .calma-recursos) .calma-section__head h2,
+.calma-bienestar__intro h2,
+.calma-apps__titulo {
+	font-size: var(--calma-fs-xl) !important;
+	line-height: 1.12 !important;
+	letter-spacing: -0.015em;
+}
+:is(.calma-equipo, .calma-perfil, .calma-recursos) .calma-section__head p {
+	max-width: 60ch;
+	margin: var(--calma-space-2) 0 0 !important;
+	text-align: left !important;
+}
+:is(.calma-equipo, .calma-perfil, .calma-recursos) .calma-section__head::before,
+.calma-apps__titulo::before,
+.calma-bienestar__intro h2::before {
+	content: none !important;
+}
+.calma-perfil .calma-section__head {
+	max-width: var(--calma-container) !important;
+	margin-inline: auto !important;
+}
+.calma-perfil .calma-container--text {
+	max-width: var(--calma-container) !important;
+	margin-inline: auto !important;
+}
+.calma-perfil .calma-container--text > p,
+.calma-perfil .calma-perfil__articulos,
+.calma-perfil .calma-container--text > h2 {
+	max-width: 68ch;
+}
+.calma-perfil .calma-container--text > h2 {
+	font-size: var(--calma-fs-xl) !important;
+}
+/* Figuras de cabecera de Herramientas y Descargas */
+.calma-hero-fig {
+	display: flex;
+	justify-content: center;
+}
+.calma-hero-fig svg {
+	width: 100%;
+	max-width: 300px;
+	height: auto;
+	overflow: visible;
+	fill: none;
+}
+.calma-hero-fig svg * {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-hero-fig__guia {
+	stroke: var(--calma-hairline-strong);
+	stroke-dasharray: 2 6;
+}
+.calma-hero-fig__nodo {
+	fill: var(--acento);
+	stroke: #fff;
+	stroke-width: 3;
+}
+.calma-hero-fig__marco {
+	fill: #fff;
+	stroke: var(--calma-ink);
+	stroke-width: 2;
+}
+.calma-hero-fig__app {
+	fill: var(--acento);
+	fill-opacity: 0.8;
+}
+.calma-hero-fig__boton {
+	fill: var(--calma-ink);
+}
+.calma-hero-fig__halo {
+	stroke: #1f6b47;
+	stroke-opacity: 0.5;
+}
+.calma-hero-fig__libro rect {
+	fill: color-mix(in srgb, var(--acento) 35%, #fff);
+	stroke: var(--acento);
+	stroke-width: 2;
+}
+.calma-hero-fig__libro path {
+	stroke: var(--calma-ink);
+	stroke-opacity: 0.35;
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+.calma-hero-fig__flecha {
+	stroke: var(--calma-primary);
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-dasharray: 1;
+}
+.calma-hero-fig__bandeja {
+	stroke: var(--calma-ink);
+	stroke-width: 3;
+	stroke-linecap: round;
+}
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-hero-fig__app {
+		animation: calma-encender 0.5s var(--calma-ease-mente) calc(0.3s + var(--i) * 0.1s) backwards;
+	}
+	html:not(.calma-quieto) .calma-hero-fig__nodo {
+		animation: calma-encender 0.6s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.2s) backwards;
+	}
+	html:not(.calma-quieto) .calma-hero-fig__halo {
+		animation: calma-pulso 1.6s var(--calma-ease-mente) 1.3s 2 backwards;
+	}
+	html:not(.calma-quieto) .calma-hero-fig__libro {
+		animation: calma-test-entra 0.8s var(--calma-ease-mente) calc(0.2s + var(--i) * 0.2s) backwards;
+	}
+	html:not(.calma-quieto) .calma-hero-fig__flecha {
+		animation: calma-conectar 0.9s var(--calma-ease-mente) 1s backwards;
+	}
+}
+
 /* ---- Movimiento ---- */
 @media (prefers-reduced-motion: no-preference) {
 	/* Scroll: las tarjetas suben al entrar (solo las que empiezan fuera de pantalla; las marca el JS) */

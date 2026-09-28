@@ -244,3 +244,9 @@ Reemplazar TODO el contenido de la página por un bloque **HTML personalizado** 
 - **Figura de Bienestar digital, ajuste:** los círculos se cruzan menos, así cada área tiene su parte propia con su ícono; la zona común de las tres se pinta de verde azulado (es el bienestar digital) y una línea fina la une con el nombre "Bienestar digital", afuera de los círculos. La figura es más grande (ocupa más de la mitad de la cabecera). Al cargar: aparecen las tres áreas una por una y al final se enciende la zona común, se dibuja la línea y aparece el nombre.
 - **Jerarquía de Bienestar digital:** en la cabecera, los rótulos de la figura son más chicos y en la misma letra que el texto (el título es lo que manda). "La intersección" pasa a dos columnas: el título a la izquierda; a la derecha, la definición como frase principal y el resumen como texto de apoyo con una línea fina al costado (sin recuadro ni rótulo en mayúsculas).
 
+## Patrón común de las páginas interiores (tomado del Test)
+Vale para Equipo, perfiles, Herramientas, Test, Descargas y Bienestar digital, y es el que se va a llevar al Inicio:
+- **Cabecera:** título grande alineado a la izquierda, bajada debajo y una figura propia a la derecha, que se arma una vez al cargar (Equipo: "tres miradas"; Herramientas: un teléfono con apps que se encienden y tres hábitos en órbita; Test: las 12 preguntas; Descargas: tres guías apiladas y la flecha de descarga; Bienestar: las tres áreas y su intersección).
+- **Secciones:** título alineado a la izquierda, siempre del mismo tamaño, sin línea decorativa ni centrado; la bajada debajo, también a la izquierda. Todo arranca del mismo borde izquierdo (en los perfiles, el texto ya no va en una columna angosta centrada).
+- **Tarjetas:** blancas con borde fino, figura animada arriba a la izquierda, etiqueta o número, título y texto; luz que sigue al puntero y animación al entrar y al pasar el puntero.
+

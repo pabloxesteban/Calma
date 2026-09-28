@@ -83,6 +83,31 @@ GUIAS = [
 ]
 
 
+def figura_herramientas():
+    """Cabecera de Herramientas: un teléfono con apps que se encienden y tres hábitos en su órbita."""
+    tonos = ['#e2c17e', '#bdb0ee', '#9cc3e3', '#9fd0c0', '#ebb79c', '#9cc3e3', '#bdb0ee', '#9fd0c0']
+    apps = ''.join(f'<rect class="calma-hero-fig__app" style="--i:{i};--acento:{tonos[i]}" x="{104 + (i % 2) * 30}" y="{66 + (i // 2) * 30}" width="22" height="22" rx="6"/>'
+                   for i in range(8))
+    orbita = ''.join(f'<circle class="calma-hero-fig__nodo" style="--i:{i};--acento:{a}" cx="{130 + 112 * __import__("math").cos(__import__("math").radians(g))}" cy="{130 + 112 * __import__("math").sin(__import__("math").radians(g))}" r="9"/>'
+                     for i, (g, a) in enumerate(((-150, '#e2c17e'), (-30, '#9fd0c0'), (90, '#9cc3e3'))))
+    return ('<div class="calma-hero__media calma-hero-fig" aria-hidden="true"><svg viewBox="0 0 260 260" width="260" height="260" focusable="false">'
+            '<circle class="calma-hero-fig__guia" cx="130" cy="130" r="112"/>' + orbita +
+            '<rect class="calma-hero-fig__marco" x="92" y="40" width="76" height="180" rx="16"/>' + apps +
+            '<circle class="calma-hero-fig__boton" cx="130" cy="202" r="4"/>'
+            '<circle class="calma-hero-fig__halo" style="--acento:#9fd0c0" cx="145" cy="137" r="20"/></svg></div>')
+
+
+def figura_descargas():
+    """Cabecera de Descargas: tres guías apiladas y la flecha que las baja."""
+    libros = ''.join(f'<g class="calma-hero-fig__libro" style="--i:{i};--acento:{a}"><rect x="{58 + i * 26}" y="{44 + (2 - i) * 14}" width="96" height="128" rx="8"/>'
+                     f'<path d="M{72 + i * 26} {44 + (2 - i) * 14}v128"/><path d="M{84 + i * 26} {76 + (2 - i) * 14}h52M{84 + i * 26} {90 + (2 - i) * 14}h36"/></g>'
+                     for i, a in enumerate(('#e2c17e', '#bdb0ee', '#9cc3e3')))
+    return ('<div class="calma-hero__media calma-hero-fig" aria-hidden="true"><svg viewBox="0 0 260 260" width="260" height="260" focusable="false">'
+            '<circle class="calma-hero-fig__guia" cx="130" cy="130" r="118"/>' + libros +
+            '<path class="calma-hero-fig__flecha" pathLength="1" d="M130 186v42M116 214l14 14 14-14"/>'
+            '<path class="calma-hero-fig__bandeja" d="M96 238h68"/></svg></div>')
+
+
 def e(t):
     return html.escape(t, quote=True)
 
@@ -106,11 +131,11 @@ def herramientas(cabecera):
                      'Reemplaza TODO el contenido de Herramientas (título, textos, "Pequeños hábitos" y las dos filas de apps). Un solo bloque "HTML personalizado".\n'
                      '     Mismo texto que hoy; cambia la forma. Estilos: plugin (calma-etapa7.css). Ancho completo, sin caja, sin título de Kadence.')
             + f'''<div class="calma-page calma-recursos">
-<section class="calma-hero" aria-labelledby="herramientas-h1"><div class="calma-hero__inner"><div>
+<section class="calma-hero" aria-labelledby="herramientas-h1"><div class="calma-hero__inner calma-hero__inner--media"><div>
 <h1 id="herramientas-h1">Aplicaciones de <em>productividad</em> y <em>calma</em></h1>
 <p class="calma-hero__lead">Aquí encontrarás recomendaciones de apps para salud mental y productividad.</p>
 <p>Las aplicaciones de salud mental utilizan principios de la psicología para ofrecer técnicas de meditación que pueden reducir el estrés y la ansiedad. Además, herramientas como los dispositivos de seguimiento del sueño y la actividad física ayudan a los usuarios a monitorear y mejorar su salud general. Si bien están pensadas como apoyo al bienestar diario, es importante recordar que no reemplazan el acompañamiento profesional.</p>
-</div></div></section>
+</div>{figura_herramientas()}</div></section>
 <section class="calma-section" aria-labelledby="habitos-h2"><div class="calma-container">
 <div class="calma-section__head"><h2 id="habitos-h2">Pequeños hábitos, <em>gran diferencia</em>.</h2>
 <p>Estas herramientas no reemplazan el acompañamiento profesional. Son puntos de partida que muchas personas encuentran útiles.</p></div>
@@ -140,9 +165,9 @@ def descargas(cabecera):
                      'Reemplaza TODO el contenido de Descargas (título y las dos filas de guías). Un solo bloque "HTML personalizado".\n'
                      '     Mismo texto que hoy; cambia la forma. Estilos: plugin (calma-etapa7.css). Ancho completo, sin caja, sin título de Kadence.')
             + f'''<div class="calma-page calma-recursos">
-<section class="calma-hero" aria-labelledby="descargas-h1"><div class="calma-hero__inner"><div>
+<section class="calma-hero" aria-labelledby="descargas-h1"><div class="calma-hero__inner calma-hero__inner--media"><div>
 <h1 id="descargas-h1">Libros de <em>descarga gratuita</em></h1>
-</div></div></section>
+</div>{figura_descargas()}</div></section>
 <section class="calma-section" aria-label="Guías para descargar"><div class="calma-container">
 <ul class="calma-descargas">{tarjetas}</ul>
 </div></section>
