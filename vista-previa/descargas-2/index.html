@@ -6118,6 +6118,413 @@ html.calma-quieto .calma-tiempo__anio {
 	}
 }
 
+/* ---- Página pilar: Ciberpsicología (mismo patrón que el Test) ---- */
+.calma-pilar .calma-hero__lead.calma-definicion {
+	max-width: 46ch;
+	margin-top: var(--calma-space-5) !important;
+	font-family: var(--calma-font-body);
+	font-size: var(--calma-fs-lg);
+	line-height: 1.5;
+	color: var(--calma-ink-soft);
+}
+.calma-pilar .calma-hero__lead.calma-definicion strong {
+	font-weight: 400;
+}
+.calma-pilar__firma p {
+	margin: var(--calma-space-5) 0 0 !important;
+	font-size: var(--calma-fs-sm);
+	color: var(--calma-ink-soft);
+}
+.calma-pilar__resumen {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+.calma-pilar > .calma-section {
+	padding-top: clamp(48px, 6vw, 80px) !important;
+	padding-bottom: 0 !important;
+}
+.calma-pilar > .calma-section:last-child {
+	padding-bottom: clamp(48px, 6vw, 80px) !important;
+}
+.calma-pilar .calma-mapa-envoltura {
+	margin-top: clamp(48px, 6vw, 80px);
+}
+.calma-pilar__resumen .calma-resumen {
+	max-width: 72ch;
+	margin: 0 !important;
+	padding: 0 0 0 var(--calma-space-5) !important;
+	background: none !important;
+	border: 0 !important;
+	border-left: 2px solid var(--calma-hairline-strong) !important;
+	border-radius: 0 !important;
+}
+.calma-pilar__resumen .calma-resumen p {
+	color: var(--calma-ink-soft);
+}
+.calma-pilar__resumen .calma-resumen p > strong:first-child {
+	display: inline;
+	margin: 0;
+	font-size: inherit;
+	letter-spacing: 0;
+	text-transform: none;
+	color: var(--calma-ink);
+}
+.calma-pilar .calma-section__head p + p {
+	margin-top: var(--calma-space-3) !important;
+}
+.calma-pilar__h3 {
+	margin: 0 !important;
+	font-size: var(--calma-fs-xl) !important;
+	line-height: 1.12 !important;
+	letter-spacing: -0.015em;
+}
+.calma-habitos--factores {
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)) !important;
+}
+.calma-habitos--factores h4 {
+	margin: 0 !important;
+	font-size: var(--calma-fs-lg);
+}
+.calma-habitos--2 {
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)) !important;
+}
+.calma-pilar__cierre,
+.calma-pilar__prosa {
+	max-width: 72ch;
+	margin-top: var(--calma-space-6) !important;
+	color: var(--calma-ink-soft);
+}
+.calma-pilar__prosa p + p {
+	margin-top: var(--calma-space-3) !important;
+}
+.calma-pilar__prosa strong {
+	color: var(--calma-ink);
+}
+/* Temas: tarjeta con los artículos como lista con flecha */
+.calma-temas {
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)) !important;
+}
+.calma-tema__articulos {
+	margin: var(--calma-space-2) 0 0 !important;
+	padding: 0 !important;
+	list-style: none !important;
+	border-top: 1px solid var(--calma-hairline);
+}
+.calma-tema__articulos li {
+	margin: 0 !important;
+	padding: 0 !important;
+	border-bottom: 1px solid var(--calma-hairline);
+}
+.calma-tema__articulos li::before {
+	content: none !important;
+}
+.calma-tema__articulos a {
+	position: relative;
+	z-index: 1;
+	display: block;
+	padding: 10px 26px 10px 0;
+	color: var(--calma-ink) !important;
+	font-size: 0.9375rem;
+	line-height: 1.4;
+	text-decoration: none !important;
+}
+.calma-tema__articulos a::after {
+	content: "→";
+	position: absolute;
+	right: 4px;
+	top: 10px;
+	color: var(--acento-texto);
+	transition: transform 0.3s var(--calma-ease-mente);
+}
+.calma-tema__articulos a:hover {
+	color: var(--acento-texto) !important;
+}
+.calma-tema__articulos a:hover::after {
+	transform: translateX(3px);
+}
+.calma-tema__enlaces {
+	position: relative;
+	z-index: 1;
+	margin-top: auto !important;
+	padding-top: var(--calma-space-3);
+	font-size: var(--calma-fs-sm);
+	font-weight: 600;
+}
+.calma-tema__enlaces a {
+	color: var(--acento-texto) !important;
+}
+/* Tabla de diferencias */
+.calma-tabla {
+	display: block;
+	width: 100%;
+	overflow-x: auto;
+	border-collapse: separate !important;
+	border-spacing: 0;
+	border: 1px solid rgb(27 34 51 / 0.09) !important;
+	border-radius: 16px;
+	background: #fff;
+}
+.calma-tabla th,
+.calma-tabla td {
+	padding: var(--calma-space-4) var(--calma-space-5) !important;
+	border: 0 !important;
+	border-bottom: 1px solid var(--calma-hairline) !important;
+	text-align: left;
+	vertical-align: top;
+	background: none !important;
+}
+.calma-tabla thead th {
+	font-size: var(--calma-fs-sm);
+	color: var(--calma-ink-soft);
+	font-weight: 600;
+}
+.calma-tabla tbody tr:last-child td {
+	border-bottom: 0 !important;
+}
+.calma-tabla tbody tr:first-child td {
+	background: color-mix(in srgb, #bdb0ee 14%, #fff) !important;
+}
+.calma-tabla td:first-child strong {
+	font-family: var(--calma-font-heading);
+	font-size: 1.0625rem;
+}
+@media (min-width: 700px) {
+	.calma-tabla {
+		display: table;
+	}
+}
+/* En pantallas angostas, cada fila es una tarjeta con sus etiquetas */
+@media (max-width: 699px) {
+	.calma-tabla,
+	.calma-tabla tbody,
+	.calma-tabla tr,
+	.calma-tabla td {
+		display: block;
+		width: 100%;
+	}
+	.calma-tabla {
+		overflow: visible;
+		border: 0 !important;
+		background: none;
+	}
+	.calma-tabla thead {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+	}
+	.calma-tabla tbody tr {
+		margin-bottom: var(--calma-space-3);
+		padding: var(--calma-space-2) 0;
+		border: 1px solid rgb(27 34 51 / 0.09);
+		border-radius: 14px;
+		background: #fff;
+	}
+	.calma-tabla td {
+		padding: var(--calma-space-2) var(--calma-space-5) !important;
+		border: 0 !important;
+		background: none !important;
+	}
+	.calma-tabla td[data-label]::before {
+		content: attr(data-label);
+		display: block;
+		margin-bottom: 2px;
+		font-size: 0.8125rem;
+		font-weight: 600;
+		color: var(--calma-ink-soft);
+	}
+	.calma-tabla tbody tr:first-child {
+		background: color-mix(in srgb, #bdb0ee 14%, #fff);
+	}
+}
+/* Mito: la curva y la barra del 0,4 % */
+.calma-mito__barra {
+	position: relative;
+	display: block;
+	height: 22px;
+	margin: var(--calma-space-3) 0 var(--calma-space-2);
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--acento) 30%, #fff);
+	overflow: hidden;
+}
+.calma-mito__parte {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 0.4%;
+	min-width: 3px;
+	background: var(--acento-texto);
+}
+.calma-mito__cifra {
+	margin: 0 0 var(--calma-space-2) !important;
+	color: var(--acento-texto) !important;
+	font-size: var(--calma-fs-sm);
+}
+.calma-mito__cifra strong {
+	font: 600 2rem/1 var(--calma-font-heading);
+	margin-right: 6px;
+}
+.calma-org .o-eje {
+	stroke-opacity: 0.3;
+}
+/* Recursos: directorio como las apps */
+.calma-pilar .calma-apps {
+	display: grid;
+}
+.calma-recurso {
+	margin: 0 !important;
+	padding: 0 !important;
+	border-bottom: 1px solid var(--calma-hairline-strong);
+}
+.calma-recurso::before {
+	content: none !important;
+}
+.calma-recurso .calma-test__icono {
+	grid-area: logo;
+	width: 48px;
+	height: 48px;
+}
+.calma-recurso .calma-test__icono svg {
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.6;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.calma-recurso .calma-app__nombre {
+	font-family: var(--calma-font-heading);
+	font-weight: 600;
+}
+.calma-app__ir--interno::before {
+	content: "→" !important;
+}
+/* Preguntas frecuentes y fuentes */
+.calma-pilar__faq .calma-faq {
+	max-width: 860px;
+}
+.calma-pilar .calma-faq summary h3 {
+	display: inline;
+	margin: 0 !important;
+	font-size: 1.125rem !important;
+	font-weight: 600;
+}
+.calma-pilar .calma-faq details > div p {
+	max-width: 72ch;
+	color: var(--calma-ink-soft);
+}
+.calma-pilar__fuentes ol {
+	columns: 2 360px;
+	column-gap: var(--calma-space-10);
+	margin: 0 !important;
+	padding-left: 1.2em !important;
+	font-size: var(--calma-fs-sm);
+	color: var(--calma-ink-soft);
+}
+.calma-pilar__fuentes li {
+	break-inside: avoid;
+	margin-bottom: var(--calma-space-3) !important;
+	overflow-wrap: anywhere;
+}
+.calma-pilar__autoria {
+	margin-top: var(--calma-space-8);
+	padding-top: var(--calma-space-5);
+	border-top: 1px solid var(--calma-hairline-strong);
+	font-size: var(--calma-fs-sm);
+}
+.calma-pilar__autoria p + p {
+	margin-top: var(--calma-space-2) !important;
+}
+.calma-pilar .calma-cta .calma-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--calma-space-5);
+	align-items: center;
+	justify-content: center;
+}
+/* Figura de cabecera: la persona y los entornos digitales */
+.calma-cp-fig {
+	display: flex;
+	justify-content: center;
+}
+.calma-cp-fig svg {
+	width: 100%;
+	max-width: 520px;
+	height: auto;
+	overflow: visible;
+	fill: none;
+}
+.calma-cp-fig svg * {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-cp-fig__guia {
+	stroke: var(--calma-hairline-strong);
+	stroke-dasharray: 2 7;
+}
+.calma-cp-fig__base {
+	stroke: var(--calma-hairline-strong);
+	stroke-width: 1.5;
+}
+.calma-cp-fig__senal {
+	stroke: var(--acento);
+	stroke-width: 4;
+	stroke-linecap: round;
+	stroke-dasharray: 0.08 0.92;
+	stroke-dashoffset: 1;
+	opacity: 0;
+}
+.calma-cp-fig__halo {
+	stroke: var(--calma-teal);
+	stroke-opacity: 0.18;
+}
+.calma-cp-fig__mente {
+	fill: #fff;
+	stroke: var(--calma-teal);
+	stroke-width: 2;
+}
+.calma-cp-fig__onda {
+	stroke: var(--calma-teal);
+	stroke-width: 2.4;
+	stroke-linecap: round;
+}
+.calma-cp-fig__nodo circle {
+	fill: color-mix(in srgb, var(--acento) 30%, #fff);
+	stroke: var(--acento);
+	stroke-width: 1.5;
+}
+.calma-cp-fig__icono {
+	stroke: var(--calma-ink);
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.calma-cp-fig__icono .o-lleno {
+	fill: var(--calma-ink);
+	stroke: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-cp-fig__nodo {
+		animation: calma-encender 0.7s var(--calma-ease-mente) calc(0.3s + var(--i) * 0.2s) backwards;
+	}
+	html:not(.calma-quieto) .calma-cp-fig__senal {
+		animation: calma-recorrido-senal 1.3s var(--calma-ease-mente) calc(1.2s + var(--i) * 0.25s) 2;
+	}
+	html:not(.calma-quieto) .calma-cp-fig__onda {
+		animation: calma-onda-viva 1.2s var(--calma-ease-mente) 2.6s 2;
+	}
+	html:not(.calma-quieto) .calma-cp-fig__halo {
+		animation: calma-pulso 1.6s var(--calma-ease-mente) 2.4s backwards;
+	}
+	html:not(.calma-quieto) .calma-habito.is-vivo .calma-mito__parte {
+		animation: calma-crecer-x 1.2s var(--calma-ease-mente) 0.4s backwards;
+	}
+}
+@keyframes calma-crecer-x {
+	from { transform: scaleX(0); transform-origin: 0 50%; }
+}
+
 /* ---- Movimiento ---- */
 @media (prefers-reduced-motion: no-preference) {
 	/* Scroll: las tarjetas suben al entrar (solo las que empiezan fuera de pantalla; las marca el JS) */

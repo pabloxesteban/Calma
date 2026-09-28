@@ -250,3 +250,15 @@ Vale para Equipo, perfiles, Herramientas, Test, Descargas y Bienestar digital, y
 - **Secciones:** título alineado a la izquierda, siempre del mismo tamaño, sin línea decorativa ni centrado; la bajada debajo, también a la izquierda. Todo arranca del mismo borde izquierdo (en los perfiles, el texto ya no va en una columna angosta centrada).
 - **Tarjetas:** blancas con borde fino, figura animada arriba a la izquierda, etiqueta o número, título y texto; luz que sigue al puntero y animación al entrar y al pasar el puntero.
 
+## Paso 3j · Página pilar Ciberpsicología (15 min)
+Reemplazar el bloque **HTML personalizado** de la Etapa 5 en /ciberpsicologia/ por `contenido/etapa-7/bloques/ciberpsicologia.html`. El bloque **Código corto** `[calma_mapa]` (Paso 3c) queda entre "Los temas de la ciberpsicología en Código Calma" y "¿Cómo se ve la ciberpsicología en tu día a día?".
+
+Mismo texto que la Etapa 5 (el generador lo toma de ese archivo); cambia la forma con el patrón del Test:
+- **Cabecera:** título a la izquierda con la definición como bajada y la firma; a la derecha, una figura propia: la persona (una onda en el centro) conectada con cuatro entornos digitales (teléfono, computadora, conversación, candado); al cargar, los entornos aparecen y una señal viaja por cada línea.
+- **"En resumen"** como texto de apoyo con una línea al costado.
+- **Tarjetas con figura animada** para: los tres pilares del campo (revistas, manuales, programas), lo que estudia (seis líneas), los seis factores de Suler ("Factor 1"… con una variación de persona ↔ pantalla cada uno), los seis temas del blog (con sus artículos como lista con flecha) y los cinco ejemplos del día a día.
+- **Diferencias:** la tabla se mantiene (buena para buscadores e IA), en una tarjeta limpia; en el celular cada fila pasa a ser una tarjeta con sus etiquetas.
+- **Mito:** dos tarjetas con dato visual: la curva de la hipótesis de Ricitos de Oro y una barra con el 0,4 % (ambos datos ya estaban citados en el texto).
+- **Recursos** como directorio (igual que las apps), **preguntas frecuentes** desplegables, **fuentes** en dos columnas y el cierre en la caja de consulta.
+- Se corrigieron dos cosas que se veían en la página publicada: la "Nota de implementación" interna (ahora es un comentario del bloque) y un comentario anidado que dejaba "-->" a la vista.
+

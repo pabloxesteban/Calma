@@ -237,7 +237,7 @@ def e5_h2(slug, s):
 
 def e5_pilar(s):
     a, b = entry_bounds(s)
-    s = s[:a] + '<div class="entry-content single-content">\n' + (cont(5) / 'bloques/ciberpsicologia.html').read_text(encoding='utf-8') + '\n' + s[b:]
+    s = s[:a] + '<div class="entry-content single-content">\n' + (cont(7 if HASTA >= 7 else 5) / 'bloques/ciberpsicologia.html').read_text(encoding='utf-8') + '\n' + s[b:]
     s = s.replace('content-width-normal content-style-boxed content-vertical-padding-show', 'content-width-fullwidth content-style-unboxed content-vertical-padding-hide', 1)
     log.append('ciberpsicologia: página pilar')
     return s
@@ -283,7 +283,7 @@ def e7_mapa_en(s, donde):
     # [calma_mapa] en la página pilar (antes de las preguntas frecuentes) y en el Blog (antes de las entradas).
     if donde == 'ciberpsicologia':
         # Al cierre de la sección "Los temas de la ciberpsicología en Código Calma".
-        i = s.index('<h2>¿Cómo se ve la ciberpsicología en tu día a día?')
+        i = s.index('<section class="calma-section" id="dia-a-dia"') if 'id="dia-a-dia"' in s else s.index('<h2>¿Cómo se ve la ciberpsicología en tu día a día?')
     else:
         i = s.index('<ul id="archive-container"')
     log.append(f'{donde}: mapa de temas')
