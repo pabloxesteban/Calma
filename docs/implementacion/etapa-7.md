@@ -274,3 +274,11 @@ Qué trae:
 - Cierre con la caja de consulta ("Consultar con Tatiana").
 - **Ajuste de Testimonios:** cada tarjeta se lee como una reseña de Google: arriba la inicial en un círculo de color lleno (texto blanco, contraste ≥ 4,5:1), el nombre y "Reseña publicada en Google"; debajo las cinco estrellas amarillas y el texto en tinta; al pie, "Ver reseña en Google". Borde de la tarjeta más marcado para dar más contraste, sin sombras.
 
+## Paso 3l · Inicio con el patrón común
+No hay que editar la página en WordPress: todo lo hace el plugin (CSS). Las animaciones del Inicio (la flor con la red, las cifras, la línea de tiempo, los seis momentos, el mapa y los personajes) no cambian.
+- **Un solo fondo:** papel con la cuadrícula tenue de la red en toda la página (se desplaza apenas con el scroll), sin bandas blancas ni beige entre secciones.
+- **Mismo borde izquierdo:** todos los títulos y contenidos arrancan donde arranca el título principal.
+- **Títulos de sección** del mismo tamaño que en las páginas interiores ("Te damos la bienvenida", "Lecturas recientes", "Línea de tiempo", "¿Cómo son tus momentos…?", "Explora por temas").
+- **Tarjetas blancas** con borde fino y esquinas suaves: cifras, lecturas, figura de la línea de tiempo, los seis momentos, el panel del mapa y los tres accesos.
+- **Lecturas recientes:** tarjeta blanca con la imagen; el tono del tema queda en la ficha de categoría (antes era un rótulo en mayúsculas de máquina de escribir) y en el número grande; al pasar el puntero, la tarjeta toma su tono.
+

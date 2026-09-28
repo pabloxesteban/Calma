@@ -6900,6 +6900,120 @@ html.calma-quieto :is(.calma-equipo .calma-person, .calma-habito, .calma-descarg
 }
 
 /* --------------------------------------------------------------------------
+   8j. Inicio con el patrón de las páginas interiores (el del Test): papel
+   con la cuadrícula de la red en toda la página, sin bandas de color;
+   títulos de sección a la izquierda y del mismo tamaño; tarjetas blancas
+   con borde fino y esquinas suaves; rótulos como fichas. Las animaciones
+   del Inicio (flor, red, cifras, línea de tiempo, momentos, mapa y
+   personajes) no cambian.
+   -------------------------------------------------------------------------- */
+.home #inner-wrap {
+	background:
+		linear-gradient(rgb(27 34 51 / 0.045) 1px, transparent 1px) 0 calc(var(--calma-red-y, 0) * 1px) / 56px 56px,
+		linear-gradient(90deg, rgb(27 34 51 / 0.045) 1px, transparent 1px) 0 0 / 56px 56px,
+		var(--calma-paper);
+}
+.home .content-bg,
+.home .site-main,
+.home .entry.single-entry,
+.home .kb-row-layout-wrap,
+.home .kb-row-layout-wrap > .kt-row-column-wrap {
+	background-color: transparent !important;
+	background-image: none !important;
+}
+.home .calma-hero {
+	background: transparent !important;
+	border-bottom: 0;
+}
+.home .calma-momentos {
+	background: none !important;
+	border-block: 0 !important;
+}
+.home .calma-momentos::after {
+	content: none !important;
+}
+/* Todo arranca del mismo borde que el título principal */
+.home :is(.calma-bienvenida, .calma-tiempo, .calma-mapa, .calma-lecturas__head, .calma-accesos, .kb-posts.kadence-posts-list) {
+	max-width: calc(var(--calma-container) + 2 * var(--calma-gutter)) !important;
+}
+/* Títulos de sección: a la izquierda y del mismo tamaño en todas */
+.home :is(.calma-bienvenida__texto h2, .calma-lecturas__head h2, .calma-tiempo__head h2, .calma-momentos__head h2, .calma-mapa__head h2) {
+	font-size: var(--calma-fs-xl) !important;
+	line-height: 1.12 !important;
+	letter-spacing: -0.015em;
+	text-align: left !important;
+	max-width: none !important;
+}
+.home .calma-lecturas__head {
+	border-top: 0 !important;
+}
+.home hr,
+.home .calma-lecturas__head::before {
+	display: none;
+}
+/* Tarjetas: blancas, borde fino, esquinas suaves */
+.home :is(.calma-estado__frente, .calma-estado__dorso, .calma-acceso__enlace, .calma-mapa__panel, .calma-tiempo__figura:not([hidden])) {
+	background: #fff !important;
+	border: 1px solid rgb(27 34 51 / 0.1) !important;
+	border-radius: 16px !important;
+}
+.home .calma-estado__dorso {
+	background: #f4f7fb !important;
+}
+.home .calma-mapa__panel {
+	border-top: 1px solid rgb(27 34 51 / 0.1) !important;
+}
+.home .calma-mapa__panel-cabeza {
+	border-radius: 15px 15px 0 0;
+}
+.home .calma-acceso__escena {
+	border-radius: 12px;
+	overflow: hidden;
+}
+.home .calma-cifras {
+	border-radius: 16px;
+	background: #fff;
+	border: 1px solid rgb(27 34 51 / 0.1) !important;
+	overflow: hidden;
+}
+/* Lecturas: tarjeta blanca con la imagen arriba; el tono queda en la ficha y el número */
+.home .kb-posts .loop-entry {
+	background: #fff !important;
+	border: 1px solid rgb(27 34 51 / 0.1) !important;
+	border-radius: 16px !important;
+}
+@media (hover: hover) and (pointer: fine) {
+	.home .kb-posts .loop-entry:hover,
+	.home .kb-posts .loop-entry:focus-within {
+		background: color-mix(in srgb, var(--tono) 55%, #fff) !important;
+	}
+	.home .kb-posts .loop-entry:hover::before {
+		color: var(--tono-fuerte);
+	}
+}
+.home .kb-posts .loop-entry .post-thumbnail {
+	border-radius: 0 !important;
+}
+.home .kb-posts .entry-taxonomies .category-links {
+	gap: 6px !important;
+}
+.home .kb-posts .loop-entry .entry-taxonomies .category-links a {
+	display: inline-block;
+	padding: 2px 10px !important;
+	min-height: 24px !important;
+	line-height: 20px !important;
+	border-radius: 999px;
+	background: var(--tono) !important;
+	color: var(--calma-ink) !important;
+	font-family: var(--calma-font-body) !important;
+	font-size: 0.8125rem !important;
+	font-weight: 600;
+	letter-spacing: 0 !important;
+	text-transform: none !important;
+	text-decoration: none !important;
+}
+
+/* --------------------------------------------------------------------------
    9. Aparición editorial (solo elementos fuera de la primera pantalla,
    la marca calma-organismo.js). Nunca se oculta texto: se revela la imagen
    como una lámina que se descubre, y las figuras "se encienden".
