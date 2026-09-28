@@ -12,7 +12,7 @@ Lo usa generar-bloques.py.
 import pathlib
 import re
 
-from ilustraciones import persona_con_tablet
+from ilustraciones import chica_con_telefono
 
 RAIZ = pathlib.Path(__file__).resolve().parents[2]
 E3 = RAIZ / 'contenido/etapa-3/bloques'
@@ -80,8 +80,8 @@ def contacto_proceso(cabecera):
     ]
     items = ''.join(f'<li><strong>{t}</strong> {d}</li>' for t, d in pasos)
     return (cabecera('Contacto · qué pasa después (columna derecha)',
-                     'Reemplaza la ilustración de la columna derecha de Contacto. Bloque "HTML personalizado": la misma ilustración, redibujada y animada, y debajo "Qué pasa después de enviar". Mismo texto que la Etapa 3.')
-            + f'''<figure class="calma-contacto-ilustracion">{persona_con_tablet()}</figure>
+                     'Reemplaza la ilustración de la columna derecha de Contacto. Bloque "HTML personalizado": la chica del Inicio (animada, con avisos de mensaje, sobre y enviado), y debajo "Qué pasa después de enviar". Mismo texto que la Etapa 3.')
+            + f'''<figure class="calma-contacto-ilustracion calma-ilustracion-chica">{chica_con_telefono('contacto')}</figure>
 <aside class="calma-proceso" aria-labelledby="proceso-titulo">
 <h2 id="proceso-titulo">Qué pasa después de enviar</h2>
 <ol class="calma-proceso__pasos">{items}</ol>

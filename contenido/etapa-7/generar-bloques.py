@@ -266,7 +266,7 @@ def bienvenida():
 <p class="calma-bienvenida__lead">Nuestras decisiones digitales importan. Desde la <strong>ciberpsicología</strong>, te acercamos investigaciones, artículos y herramientas explicadas de forma clara y simple para ayudarte a vivir entre dispositivos en una relación más consciente.</p>
 {cifras()}
 </div>
-<figure class="calma-bienvenida__ilustracion">{chica_con_telefono()}</figure>
+<figure class="calma-bienvenida__ilustracion calma-ilustracion-chica">{chica_con_telefono()}</figure>
 </section>
 ''')
 

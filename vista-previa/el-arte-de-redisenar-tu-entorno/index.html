@@ -7015,11 +7015,18 @@ html.calma-quieto :is(.calma-equipo .calma-person, .calma-habito, .calma-descarg
 	transform-origin: 50% 100% !important;
 }
 .calma-contacto-ilustracion {
-	margin: 0 0 var(--calma-space-6);
-	padding: var(--calma-space-4);
-	border-radius: 16px;
-	background: #f3f7fb;
+	width: min(100%, 300px);
+	aspect-ratio: 1;
+	margin: 0 auto var(--calma-space-6);
+	overflow: hidden;
+	border-radius: 50%;
+	background: #fff;
+	border: 1px solid var(--calma-hairline);
 }
+.calma-chica__aviso--azul circle { stroke: #1d5f94; }
+.calma-chica__aviso--azul path { stroke: #1d5f94; }
+.calma-chica__aviso--verde circle { stroke: #1f6b47; }
+.calma-chica__aviso--verde path { stroke: #1f6b47; stroke-width: 2.4; }
 .calma-tablet__onda {
 	opacity: 0;
 }
@@ -7032,19 +7039,19 @@ html.calma-quieto :is(.calma-equipo .calma-person, .calma-habito, .calma-descarg
 }
 @media (prefers-reduced-motion: no-preference) {
 	/* Chica: parpadea, inclina la cabeza, se enciende la pantalla y suben tres avisos */
-	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__ojos {
+	html:not(.calma-quieto) .calma-ilustracion-chica.is-vivo .calma-chica__ojos {
 		animation: calma-parpadeo 0.35s ease 0.4s 2;
 	}
-	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__cabeza {
+	html:not(.calma-quieto) .calma-ilustracion-chica.is-vivo .calma-chica__cabeza {
 		animation: calma-inclinar 2.4s var(--calma-ease-mente) 0.2s;
 	}
-	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__pantalla {
+	html:not(.calma-quieto) .calma-ilustracion-chica.is-vivo .calma-chica__pantalla {
 		animation: calma-pantalla 3.2s var(--calma-ease-mente) 0.5s;
 	}
-	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__aviso {
+	html:not(.calma-quieto) .calma-ilustracion-chica.is-vivo .calma-chica__aviso {
 		animation: calma-aviso 2.4s var(--calma-ease-mente) calc(0.9s + var(--i) * 0.45s);
 	}
-	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__cuerpo {
+	html:not(.calma-quieto) .calma-ilustracion-chica.is-vivo .calma-chica__cuerpo {
 		animation: calma-respirar 3.2s ease-in-out;
 	}
 	/* Tablet: aparecen las burbujas, el dedo toca, la red y el gráfico se encienden, el candado se cierra */
