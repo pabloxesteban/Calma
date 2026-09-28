@@ -262,3 +262,14 @@ Mismo texto que la Etapa 5 (el generador lo toma de ese archivo); cambia la form
 - **Recursos** como directorio (igual que las apps), **preguntas frecuentes** desplegables, **fuentes** en dos columnas y el cierre en la caja de consulta.
 - Se corrigieron dos cosas que se veían en la página publicada: la "Nota de implementación" interna (ahora es un comentario del bloque) y un comentario anidado que dejaba "-->" a la vista.
 
+## Paso 3k · Testimonios (10 min)
+1. Reemplazar TODO el contenido de /testimonios/ (el bloque de testimonios de Kadence con sus fotos) por un bloque **HTML personalizado** con `contenido/etapa-7/bloques/testimonios.html`. Ancho completo, sin caja.
+2. **Ocultar el título de Kadence** de esta página (Etapa 1 lo había activado como H1): ahora el H1 "Testimonios" está en el bloque.
+
+Qué trae:
+- Las mismas 14 reseñas publicadas, con el texto sin cambios (solo se corrigió la comilla de cierre de la primera), el nombre, las 5 estrellas y el enlace a cada reseña en Google. Los datos están en `contenido/etapa-7/testimonios.json`; para sumar una reseña nueva, se agrega ahí y se regenera.
+- Cabecera con título, bajada ("Lo que cuentan quienes trabajaron con Tatiana X. Stacul. Reseñas publicadas en Google.", la misma frase del perfil), el dato "14 reseñas · 5 de 5 estrellas en todas" (sale de las propias reseñas) y una figura: catorce puntos, uno por reseña, que se encienden alrededor de unas comillas.
+- Las reseñas en un muro de tarjetas de distinto alto, con la inicial de cada persona en su tono; las estrellas se encienden al aparecer y la tarjeta tiene la luz que sigue al puntero.
+- Se quitan las 14 fotos de ambiente (no eran de las personas y hacían ver la página como un blog). Las imágenes quedan en la biblioteca de medios.
+- Cierre con la caja de consulta ("Consultar con Tatiana").
+

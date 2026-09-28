@@ -415,6 +415,10 @@ for slug, s in fuentes():
             s = e7_test_dato(s)
         if HASTA >= 7 and slug == 'herramientas':
             s = e7_pagina_entera(s, 'herramientas.html', slug)
+        if HASTA >= 7 and slug == 'testimonios':
+            # El H1 pasa al bloque: se quita el título de Kadence que activó la Etapa 1.
+            s = s.replace('<header class="entry-header page-title"><h1 class="entry-title">Testimonios</h1></header>\n', '', 1)
+            s = e7_pagina_entera(s, 'testimonios.html', slug)
         if HASTA >= 7 and slug == 'bienestar-digital':
             s = e7_pagina_entera(s, 'bienestar-digital.html', slug)
         if HASTA >= 7 and slug == 'descargas-2':
