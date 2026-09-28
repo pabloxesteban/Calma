@@ -281,4 +281,9 @@ No hay que editar la página en WordPress: todo lo hace el plugin (CSS). Las ani
 - **Títulos de sección** del mismo tamaño que en las páginas interiores ("Te damos la bienvenida", "Lecturas recientes", "Línea de tiempo", "¿Cómo son tus momentos…?", "Explora por temas").
 - **Tarjetas blancas** con borde fino y esquinas suaves: cifras, lecturas, figura de la línea de tiempo, los seis momentos, el panel del mapa y los tres accesos.
 - **Lecturas recientes:** tarjeta blanca con la imagen; el tono del tema queda en la ficha de categoría (antes era un rótulo en mayúsculas de máquina de escribir) y en el número grande; al pasar el puntero, la tarjeta toma su tono.
+- **Ajustes del Inicio y de Contacto:**
+  - "Lecturas recientes" vuelve a su diseño anterior (tarjetas con el tono de cada tema y el rótulo de categoría); solo se mantiene la alineación con el título principal.
+  - La ilustración de "Te damos la bienvenida" (la chica con el teléfono) pasa a SVG dentro del bloque `inicio-bienvenida.html`, redibujada con el mismo estilo. Al aparecer y al pasar el puntero: parpadea, inclina apenas la cabeza, se enciende la pantalla y suben un corazón, un "me gusta" y un mensaje que se desvanecen.
+  - La ilustración que estaba junto al formulario de Contacto vuelve a la columna derecha, arriba de "Qué pasa después de enviar", redibujada en SVG y animada: aparecen las seis burbujas una por una, se dibuja la curva del gráfico, se encienden la red y el organigrama, el dedo toca la pantalla con una onda y el candado se cierra. Viene incluida en `contacto-proceso.html` (mismo bloque de siempre).
+  - Las dos son decorativas (como las imágenes originales, con texto alternativo vacío). Las animaciones pasan una vez (menos de 5 s) y se repiten al pasar el puntero; con movimiento reducido se ven quietas y completas. Las imágenes PNG originales quedan en la biblioteca de medios sin uso.
 

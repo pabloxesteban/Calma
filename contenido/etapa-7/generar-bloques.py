@@ -23,6 +23,7 @@ from escenas import accesos  # noqa: E402
 from mapa import mapa  # noqa: E402
 from paginas import servicios, contacto_intro, contacto_proceso  # noqa: E402
 from equipo import equipo, perfil, PERSONAS  # noqa: E402
+from ilustraciones import chica_con_telefono  # noqa: E402
 from recursos import herramientas, descargas  # noqa: E402
 from test import test, dato  # noqa: E402
 from bienestar import bienestar  # noqa: E402
@@ -265,7 +266,7 @@ def bienvenida():
 <p class="calma-bienvenida__lead">Nuestras decisiones digitales importan. Desde la <strong>ciberpsicología</strong>, te acercamos investigaciones, artículos y herramientas explicadas de forma clara y simple para ayudarte a vivir entre dispositivos en una relación más consciente.</p>
 {cifras()}
 </div>
-<figure class="calma-bienvenida__ilustracion"><img loading="lazy" decoding="async" width="864" height="1219" src="{ILUSTRACION}-726x1024.png" srcset="{ILUSTRACION}-213x300.png 213w, {ILUSTRACION}-726x1024.png 726w, {ILUSTRACION}.png 864w" sizes="(min-width: 900px) 380px, 70vw" alt=""></figure>
+<figure class="calma-bienvenida__ilustracion">{chica_con_telefono()}</figure>
 </section>
 ''')
 

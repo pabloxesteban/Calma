@@ -6963,41 +6963,132 @@ html.calma-quieto :is(.calma-equipo .calma-person, .calma-habito, .calma-descarg
 	border: 1px solid rgb(27 34 51 / 0.1) !important;
 	overflow: hidden;
 }
-/* Lecturas: tarjeta blanca con la imagen arriba; el tono queda en la ficha y el número */
-.home .kb-posts .loop-entry {
-	background: #fff !important;
-	border: 1px solid rgb(27 34 51 / 0.1) !important;
-	border-radius: 16px !important;
+/* Ilustraciones animadas (Inicio: la chica con el teléfono; Contacto: la persona con la tablet) */
+.calma-bienvenida__ilustracion svg,
+.calma-contacto-ilustracion svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	overflow: visible;
 }
-@media (hover: hover) and (pointer: fine) {
-	.home .kb-posts .loop-entry:hover,
-	.home .kb-posts .loop-entry:focus-within {
-		background: color-mix(in srgb, var(--tono) 55%, #fff) !important;
+.calma-bienvenida__ilustracion svg * ,
+.calma-contacto-ilustracion svg * {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-chica__fondo {
+	fill: #fff;
+	stroke: var(--calma-hairline);
+}
+.calma-chica__aviso {
+	opacity: 0;
+}
+.calma-chica__aviso circle {
+	fill: #fff;
+	stroke: #4b5fd1;
+	stroke-width: 1.5;
+}
+.calma-chica__aviso path {
+	fill: none;
+	stroke: #4b5fd1;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.calma-chica__aviso:first-child path {
+	fill: #f19ac1;
+	stroke: #c2507f;
+}
+.calma-chica__pantalla {
+	opacity: 0;
+}
+.calma-chica__cabeza {
+	transform-origin: 50% 100% !important;
+}
+.calma-contacto-ilustracion {
+	margin: 0 0 var(--calma-space-6);
+	padding: var(--calma-space-4);
+	border-radius: 16px;
+	background: #f3f7fb;
+}
+.calma-tablet__onda {
+	opacity: 0;
+}
+.calma-tablet__linea {
+	stroke-dasharray: 1;
+	stroke: #9cc3e3 !important;
+}
+.calma-tablet__arco {
+	transform-origin: 50% 100% !important;
+}
+@media (prefers-reduced-motion: no-preference) {
+	/* Chica: parpadea, inclina la cabeza, se enciende la pantalla y suben tres avisos */
+	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__ojos {
+		animation: calma-parpadeo 0.35s ease 0.4s 2;
 	}
-	.home .kb-posts .loop-entry:hover::before {
-		color: var(--tono-fuerte);
+	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__cabeza {
+		animation: calma-inclinar 2.4s var(--calma-ease-mente) 0.2s;
+	}
+	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__pantalla {
+		animation: calma-pantalla 3.2s var(--calma-ease-mente) 0.5s;
+	}
+	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__aviso {
+		animation: calma-aviso 2.4s var(--calma-ease-mente) calc(0.9s + var(--i) * 0.45s);
+	}
+	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__cuerpo {
+		animation: calma-respirar 3.2s ease-in-out;
+	}
+	/* Tablet: aparecen las burbujas, el dedo toca, la red y el gráfico se encienden, el candado se cierra */
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__burbuja {
+		animation: calma-burbuja 0.7s cubic-bezier(.34,1.56,.64,1) calc(0.2s + var(--i) * 0.25s) backwards;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__dedo {
+		animation: calma-tocar 0.9s var(--calma-ease-mente) 1.8s;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__onda {
+		animation: calma-onda-toque 1.2s var(--calma-ease-mente) 2.2s;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__linea {
+		animation: calma-conectar 1.4s var(--calma-ease-mente) 1s backwards;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__red circle {
+		animation: calma-latido 0.6s var(--calma-ease-mente) 0.8s 2;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__arco {
+		animation: calma-cerrar 0.7s var(--calma-ease-mente) 1.9s backwards;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__arbol circle {
+		animation: calma-encender 0.5s var(--calma-ease-mente) 1.6s backwards;
 	}
 }
-.home .kb-posts .loop-entry .post-thumbnail {
-	border-radius: 0 !important;
+@keyframes calma-parpadeo {
+	50% { transform: scaleY(0.1); }
 }
-.home .kb-posts .entry-taxonomies .category-links {
-	gap: 6px !important;
+@keyframes calma-inclinar {
+	40% { transform: rotate(-5deg); }
+	70% { transform: rotate(2deg); }
 }
-.home .kb-posts .loop-entry .entry-taxonomies .category-links a {
-	display: inline-block;
-	padding: 2px 10px !important;
-	min-height: 24px !important;
-	line-height: 20px !important;
-	border-radius: 999px;
-	background: var(--tono) !important;
-	color: var(--calma-ink) !important;
-	font-family: var(--calma-font-body) !important;
-	font-size: 0.8125rem !important;
-	font-weight: 600;
-	letter-spacing: 0 !important;
-	text-transform: none !important;
-	text-decoration: none !important;
+@keyframes calma-pantalla {
+	15%, 80% { opacity: 1; }
+}
+@keyframes calma-aviso {
+	0% { opacity: 0; transform: translateY(24px) scale(0.6); }
+	25% { opacity: 1; transform: translateY(0) scale(1); }
+	75% { opacity: 1; transform: translateY(-14px); }
+	100% { opacity: 0; transform: translateY(-26px); }
+}
+@keyframes calma-respirar {
+	50% { transform: scale(1.012); }
+}
+@keyframes calma-burbuja {
+	from { opacity: 0; transform: scale(0.6); }
+}
+@keyframes calma-tocar {
+	50% { transform: translate(-4px, -3px); }
+}
+@keyframes calma-onda-toque {
+	0% { opacity: 1; transform: scale(1); }
+	100% { opacity: 0; transform: scale(3.2); }
 }
 
 /* --------------------------------------------------------------------------

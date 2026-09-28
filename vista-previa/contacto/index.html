@@ -6981,41 +6981,132 @@ html.calma-quieto :is(.calma-equipo .calma-person, .calma-habito, .calma-descarg
 	border: 1px solid rgb(27 34 51 / 0.1) !important;
 	overflow: hidden;
 }
-/* Lecturas: tarjeta blanca con la imagen arriba; el tono queda en la ficha y el número */
-.home .kb-posts .loop-entry {
-	background: #fff !important;
-	border: 1px solid rgb(27 34 51 / 0.1) !important;
-	border-radius: 16px !important;
+/* Ilustraciones animadas (Inicio: la chica con el teléfono; Contacto: la persona con la tablet) */
+.calma-bienvenida__ilustracion svg,
+.calma-contacto-ilustracion svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	overflow: visible;
 }
-@media (hover: hover) and (pointer: fine) {
-	.home .kb-posts .loop-entry:hover,
-	.home .kb-posts .loop-entry:focus-within {
-		background: color-mix(in srgb, var(--tono) 55%, #fff) !important;
+.calma-bienvenida__ilustracion svg * ,
+.calma-contacto-ilustracion svg * {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+.calma-chica__fondo {
+	fill: #fff;
+	stroke: var(--calma-hairline);
+}
+.calma-chica__aviso {
+	opacity: 0;
+}
+.calma-chica__aviso circle {
+	fill: #fff;
+	stroke: #4b5fd1;
+	stroke-width: 1.5;
+}
+.calma-chica__aviso path {
+	fill: none;
+	stroke: #4b5fd1;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.calma-chica__aviso:first-child path {
+	fill: #f19ac1;
+	stroke: #c2507f;
+}
+.calma-chica__pantalla {
+	opacity: 0;
+}
+.calma-chica__cabeza {
+	transform-origin: 50% 100% !important;
+}
+.calma-contacto-ilustracion {
+	margin: 0 0 var(--calma-space-6);
+	padding: var(--calma-space-4);
+	border-radius: 16px;
+	background: #f3f7fb;
+}
+.calma-tablet__onda {
+	opacity: 0;
+}
+.calma-tablet__linea {
+	stroke-dasharray: 1;
+	stroke: #9cc3e3 !important;
+}
+.calma-tablet__arco {
+	transform-origin: 50% 100% !important;
+}
+@media (prefers-reduced-motion: no-preference) {
+	/* Chica: parpadea, inclina la cabeza, se enciende la pantalla y suben tres avisos */
+	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__ojos {
+		animation: calma-parpadeo 0.35s ease 0.4s 2;
 	}
-	.home .kb-posts .loop-entry:hover::before {
-		color: var(--tono-fuerte);
+	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__cabeza {
+		animation: calma-inclinar 2.4s var(--calma-ease-mente) 0.2s;
+	}
+	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__pantalla {
+		animation: calma-pantalla 3.2s var(--calma-ease-mente) 0.5s;
+	}
+	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__aviso {
+		animation: calma-aviso 2.4s var(--calma-ease-mente) calc(0.9s + var(--i) * 0.45s);
+	}
+	html:not(.calma-quieto) .calma-bienvenida__ilustracion.is-vivo .calma-chica__cuerpo {
+		animation: calma-respirar 3.2s ease-in-out;
+	}
+	/* Tablet: aparecen las burbujas, el dedo toca, la red y el gráfico se encienden, el candado se cierra */
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__burbuja {
+		animation: calma-burbuja 0.7s cubic-bezier(.34,1.56,.64,1) calc(0.2s + var(--i) * 0.25s) backwards;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__dedo {
+		animation: calma-tocar 0.9s var(--calma-ease-mente) 1.8s;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__onda {
+		animation: calma-onda-toque 1.2s var(--calma-ease-mente) 2.2s;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__linea {
+		animation: calma-conectar 1.4s var(--calma-ease-mente) 1s backwards;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__red circle {
+		animation: calma-latido 0.6s var(--calma-ease-mente) 0.8s 2;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__arco {
+		animation: calma-cerrar 0.7s var(--calma-ease-mente) 1.9s backwards;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-tablet__arbol circle {
+		animation: calma-encender 0.5s var(--calma-ease-mente) 1.6s backwards;
 	}
 }
-.home .kb-posts .loop-entry .post-thumbnail {
-	border-radius: 0 !important;
+@keyframes calma-parpadeo {
+	50% { transform: scaleY(0.1); }
 }
-.home .kb-posts .entry-taxonomies .category-links {
-	gap: 6px !important;
+@keyframes calma-inclinar {
+	40% { transform: rotate(-5deg); }
+	70% { transform: rotate(2deg); }
 }
-.home .kb-posts .loop-entry .entry-taxonomies .category-links a {
-	display: inline-block;
-	padding: 2px 10px !important;
-	min-height: 24px !important;
-	line-height: 20px !important;
-	border-radius: 999px;
-	background: var(--tono) !important;
-	color: var(--calma-ink) !important;
-	font-family: var(--calma-font-body) !important;
-	font-size: 0.8125rem !important;
-	font-weight: 600;
-	letter-spacing: 0 !important;
-	text-transform: none !important;
-	text-decoration: none !important;
+@keyframes calma-pantalla {
+	15%, 80% { opacity: 1; }
+}
+@keyframes calma-aviso {
+	0% { opacity: 0; transform: translateY(24px) scale(0.6); }
+	25% { opacity: 1; transform: translateY(0) scale(1); }
+	75% { opacity: 1; transform: translateY(-14px); }
+	100% { opacity: 0; transform: translateY(-26px); }
+}
+@keyframes calma-respirar {
+	50% { transform: scale(1.012); }
+}
+@keyframes calma-burbuja {
+	from { opacity: 0; transform: scale(0.6); }
+}
+@keyframes calma-tocar {
+	50% { transform: translate(-4px, -3px); }
+}
+@keyframes calma-onda-toque {
+	0% { opacity: 1; transform: scale(1); }
+	100% { opacity: 0; transform: scale(3.2); }
 }
 
 /* --------------------------------------------------------------------------
@@ -7339,8 +7430,72 @@ html.calma-quieto .kb-row-layout-id1204_6c7f8b-e0 .kb-img {
 
 
 <div class="wp-block-kadence-column kadence-column790_9c2ba2-0b calma-contacto-lateral"><div class="kt-inside-inner-col"><!-- Código Calma · Contacto · qué pasa después (columna derecha) (Etapa 7)
-     Reemplaza la ilustración de la columna derecha de Contacto. Bloque "HTML personalizado". Mismo texto que la Etapa 3.
+     Reemplaza la ilustración de la columna derecha de Contacto. Bloque "HTML personalizado": la misma ilustración, redibujada y animada, y debajo "Qué pasa después de enviar". Mismo texto que la Etapa 3.
      Generado por contenido/etapa-7/generar-bloques.py. Estilos: plugin codigo-calma. -->
+<figure class="calma-contacto-ilustracion"><svg class="calma-tablet" viewBox="0 0 460 520" width="460" height="520" aria-hidden="true" focusable="false">
+<circle cx="230" cy="280" r="205" fill="#fff"/>
+<g fill="none" stroke="#1f2a6b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<!-- Persona -->
+<g class="calma-tablet__persona">
+<path d="M190 300c-14-72 6-122 46-122s60 50 46 122" fill="#1f2a6b" stroke="none"/>
+<rect x="224" y="284" width="24" height="30" fill="#fff"/>
+<path d="M160 420c0-70 30-110 76-110s76 40 76 110Z" fill="#1f2a6b" stroke="none"/>
+<ellipse cx="236" cy="250" rx="34" ry="40" fill="#fff"/>
+<path d="M202 236c16-2 30-12 38-28 8 14 18 24 30 28" fill="#1f2a6b" stroke="none"/>
+<circle cx="224" cy="254" r="2.6" fill="#1f2a6b" stroke="none"/><circle cx="248" cy="254" r="2.6" fill="#1f2a6b" stroke="none"/>
+<path d="M230 272q6 5 12 0"/>
+</g>
+<!-- Pantalla flotante con el cerebro -->
+<g class="calma-tablet__panel">
+<rect x="188" y="296" width="178" height="112" rx="8" stroke="#fff" fill="rgb(255 255 255 / .06)"/>
+<path d="M200 312h34M200 322h22M322 312h32M330 322h24" stroke="#fff" stroke-width="2"/>
+<path d="M258 336c-14 0-24 10-22 22 2 10 12 14 20 12 2 8 12 12 20 8 10 2 18-6 16-16 6-8 0-20-10-20-4-8-16-10-24-6Z" stroke="#fff" stroke-width="2"/>
+<path d="M270 372v18M286 360h30M330 392h24" stroke="#fff" stroke-width="2"/>
+<circle class="calma-tablet__toque" cx="292" cy="348" r="7" stroke="#fff" stroke-width="2.4"/>
+<circle class="calma-tablet__onda" cx="292" cy="348" r="7" stroke="#fff" stroke-width="2"/>
+</g>
+<!-- Tablet y manos -->
+<g class="calma-tablet__tableta" transform="rotate(-12 196 380)">
+<rect x="150" y="322" width="84" height="110" rx="10" fill="#fff"/><circle cx="192" cy="377" r="7" fill="#1f2a6b" stroke="none"/>
+</g>
+<path d="M146 362c-8 4-10 16-4 22 6 6 14 4 16-2" fill="#fff"/>
+<path class="calma-tablet__dedo" d="M300 352c-6 4-8 10-2 14l22 14c8 4 16 0 18-8 2-10-4-18-12-20l-24-8" fill="#fff"/>
+<!-- Burbujas -->
+<g class="calma-tablet__burbuja" style="--i:0">
+<path d="M40 96h128a8 8 0 0 1 8 8v80a8 8 0 0 1-8 8h-14l8 16-24-16H40a8 8 0 0 1-8-8v-80a8 8 0 0 1 8-8Z" fill="#fff"/>
+<g class="calma-tablet__red" stroke-width="2"><path d="M70 140l30-18 30 10 20 26M70 140l30 24 24-8M100 122l0 42"/>
+<circle cx="70" cy="140" r="5" fill="#1f2a6b"/><circle cx="100" cy="122" r="5" fill="#1f2a6b"/><circle cx="130" cy="132" r="5" fill="#1f2a6b"/><circle cx="150" cy="158" r="5" fill="#1f2a6b"/><circle cx="100" cy="164" r="5" fill="#1f2a6b"/><circle cx="124" cy="156" r="5" fill="#1f2a6b"/></g>
+</g>
+<g class="calma-tablet__burbuja" style="--i:1">
+<circle cx="370" cy="130" r="50" fill="#fff"/><path d="M336 168l-10 16 22-8"/>
+<path d="M346 168c4-14 14-20 24-20s20 6 24 20" fill="#1f2a6b" stroke="none"/><circle cx="370" cy="128" r="16" fill="#fff"/>
+<rect x="350" y="114" width="40" height="16" rx="6" fill="#1f2a6b" stroke="none"/>
+</g>
+<g class="calma-tablet__burbuja" style="--i:2">
+<rect x="14" y="222" width="130" height="100" rx="6" fill="#fff"/><path d="M14 236h130" stroke-width="12"/>
+<path d="M30 250v58h100"/>
+<path class="calma-tablet__area" d="M32 306 60 272l26 8 20-6 24-24v56Z" fill="#1f2a6b" stroke="none"/>
+<path class="calma-tablet__linea" pathLength="1" d="M32 306 60 272l26 8 20-6 24-24" stroke-width="2.4"/>
+</g>
+<g class="calma-tablet__burbuja" style="--i:3">
+<rect x="344" y="228" width="104" height="92" rx="6" fill="#fff"/><path d="M344 242h104" stroke-width="12"/>
+<circle cx="396" cy="272" r="14" fill="#1f2a6b" stroke="none"/><rect x="362" y="296" width="68" height="12" rx="3" fill="#1f2a6b" stroke="none"/>
+</g>
+<g class="calma-tablet__burbuja" style="--i:4">
+<circle cx="76" cy="446" r="50" fill="#fff"/><path d="M116 418l12-14-18 6"/>
+<rect x="46" y="436" width="60" height="38" rx="5" fill="#fff"/>
+<circle cx="62" cy="452" r="5" fill="#1f2a6b" stroke="none"/><path d="M54 467c2-6 14-6 16 0" stroke-width="2.4"/><path d="M76 450h22M76 460h16" stroke-width="2.4"/>
+<path class="calma-tablet__arco" d="M70 436v-8a8 8 0 0 1 16 0v8"/><rect x="66" y="432" width="24" height="12" rx="3" fill="#1f2a6b" stroke="none"/>
+</g>
+<g class="calma-tablet__burbuja" style="--i:5">
+<path d="M346 424c-4-18 14-30 28-22 6-14 30-14 36 0 16-6 32 8 26 24 14 6 12 28-4 30-2 16-22 22-34 12-10 12-32 10-38-4-16 2-26-18-14-28Z" fill="#fff"/>
+<circle cx="340" cy="484" r="7" fill="#fff"/><circle cx="328" cy="500" r="4" fill="#fff"/>
+<g class="calma-tablet__arbol" stroke-width="2"><path d="M390 424v12M370 444h40M370 444v10M410 444v10M360 460h20M400 460h20"/>
+<circle cx="390" cy="420" r="6" fill="#1f2a6b"/><circle cx="370" cy="452" r="5" fill="#1f2a6b"/><circle cx="410" cy="452" r="5" fill="#1f2a6b"/>
+<circle cx="360" cy="466" r="4" fill="#1f2a6b"/><circle cx="380" cy="466" r="4" fill="#1f2a6b"/><circle cx="400" cy="466" r="4" fill="#1f2a6b"/><circle cx="420" cy="466" r="4" fill="#1f2a6b"/></g>
+</g>
+</g>
+</svg></figure>
 <aside class="calma-proceso" aria-labelledby="proceso-titulo">
 <h2 id="proceso-titulo">Qué pasa después de enviar</h2>
 <ol class="calma-proceso__pasos"><li><strong>Leemos tu mensaje.</strong> En 48 horas hábiles te respondemos desde hola@codigocalma.com con quién del equipo encaja mejor.</li><li><strong>Te proponemos un primer encuentro.</strong> Una hora, online, para entender tu contexto y salir con un objetivo por escrito.</li><li><strong>Decides si seguimos.</strong> Si seguimos, trabajamos de tres a seis sesiones. Si vemos que este no es el lugar, te lo decimos y te orientamos.</li></ol>

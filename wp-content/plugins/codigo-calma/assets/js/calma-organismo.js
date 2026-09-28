@@ -535,7 +535,7 @@
 	}
 
 	function prepararFiguras() {
-		var figuras = document.querySelectorAll( '.calma-cifra, .calma-estado, .calma-person, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta, .calma-dato__imagen, .calma-paso-calma' );
+		var figuras = document.querySelectorAll( '.calma-cifra, .calma-estado, .calma-person, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta, .calma-dato__imagen, .calma-paso-calma, .calma-bienvenida__ilustracion, .calma-contacto-ilustracion' );
 		if ( ! figuras.length ) {
 			return;
 		}
@@ -555,7 +555,7 @@
 				io.observe( f );
 			} );
 		}
-		document.querySelectorAll( '.calma-estado, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta, .calma-paso-calma, .calma-person' ).forEach( function ( f ) {
+		document.querySelectorAll( '.calma-estado, .calma-habito, .calma-test__paso, .calma-test__antes, .calma-test__mide, .calma-dato__tarjeta, .calma-paso-calma, .calma-person, .calma-bienvenida__ilustracion, .calma-contacto-ilustracion' ).forEach( function ( f ) {
 			var ultimo = 0;
 			function otraVez() {
 				var ahora = Date.now();
