@@ -88,9 +88,13 @@ PASOS = [
 ]
 
 
-# Posiciones de cada círculo: separadas mientras se presenta cada área y juntas en el último paso.
-SEPARADAS = {'ciberpsicologia': (150, 195), 'ciberseguridad': (330, 195), 'humano': (240, 350)}
-JUNTAS = {'ciberpsicologia': (197, 215), 'ciberseguridad': (283, 215), 'humano': (240, 290)}
+# Figura de la cabecera. Los círculos se cruzan lo justo para que cada área tenga su
+# parte propia (con su ícono) y la zona común de las tres quede a la vista: esa zona
+# se pinta de verde azulado y una línea fina la une con el nombre "Bienestar digital".
+R = 125
+CENTROS = {'ciberpsicologia': (190, 200), 'ciberseguridad': (345, 200), 'humano': (267, 335)}
+ICONO_EN = {'ciberpsicologia': (135, 180), 'ciberseguridad': (400, 180), 'humano': (267, 400)}
+NOMBRE_EN = {'ciberpsicologia': (160, 56), 'ciberseguridad': (380, 56), 'humano': (267, 492)}
 
 ICONOS_GRANDES = {
     # Una onda entre dos nodos (la persona y la tecnología): la onda se mueve.
@@ -106,29 +110,36 @@ ICONOS_GRANDES = {
 
 
 def venn():
-    circulos, iconos = '', ''
+    areas, clips = '', ''
     for i, (clave, tono, nombre, _, _, _) in enumerate(AREAS):
         t, a, x = TONOS[tono]
-        sx, sy = SEPARADAS[clave]
-        jx, jy = JUNTAS[clave]
-        circulos += (f'<g class="calma-venn__area calma-venn__area--{clave}" data-area="{clave}" '
-                     f'style="--acento:{a};--texto:{x};--sx:{sx}px;--sy:{sy}px;--jx:{jx}px;--jy:{jy}px;--i:{i}">'
-                     f'<circle class="calma-venn__circulo" r="112"/>'
-                     f'<g class="calma-venn__icono">{ICONOS_GRANDES[clave]}</g>'
-                     f'<text class="calma-venn__nombre" y="{-62 if clave != "humano" else 70}" text-anchor="middle">{nombre.replace("Bienestar Humano", "Bienestar humano")}</text></g>')
+        cx, cy = CENTROS[clave]
+        ix, iy = ICONO_EN[clave]
+        nx, ny = NOMBRE_EN[clave]
+        clips += f'<clipPath id="venn-{clave}"><circle cx="{cx}" cy="{cy}" r="{R}"/></clipPath>'
+        areas += (f'<g class="calma-venn__area calma-venn__area--{clave}" data-area="{clave}" style="--acento:{a};--texto:{x};--i:{i}">'
+                  f'<circle class="calma-venn__circulo" cx="{cx}" cy="{cy}" r="{R}"/>'
+                  f'<g class="calma-venn__icono" transform="translate({ix} {iy}) scale(1.2)">{ICONOS_GRANDES[clave]}</g>'
+                  f'<text class="calma-venn__nombre" x="{nx}" y="{ny}" text-anchor="middle">{nombre.replace("Bienestar Humano", "Bienestar humano")}</text></g>')
+    cx, cy = CENTROS['humano']
+    # Centro aproximado de la zona común (para la línea que va hacia el nombre).
+    zx, zy = 267, 246
     return ('<figure class="calma-venn" data-calma-venn data-paso="4">'
-            '<svg viewBox="0 0 480 480" width="480" height="480" role="img" aria-labelledby="venn-titulo venn-desc">'
+            '<svg viewBox="0 0 660 510" width="660" height="510" role="img" aria-labelledby="venn-titulo venn-desc">'
             '<title id="venn-titulo">Las tres áreas del bienestar digital</title>'
             '<desc id="venn-desc">Tres círculos que se cruzan: ciberpsicología (comportamiento, patrones digitales y relaciones), '
             'ciberseguridad (privacidad, protección de datos y autonomía) y bienestar humano (calidad de vida, salud mental y '
-            'presencia real). En la intersección de los tres está el bienestar digital.</desc>'
-            '<circle class="calma-venn__orbita" cx="240" cy="245" r="200"/><circle class="calma-venn__orbita" cx="240" cy="245" r="150"/>'
-            f'{circulos}'
-            '<g class="calma-venn__centro"><circle class="calma-venn__halo" cx="240" cy="240" r="34"/>'
-            '<circle class="calma-venn__nucleo" cx="240" cy="240" r="14"/>'
-            '<rect x="156" y="262" width="168" height="40" rx="20"/>'
-            '<text x="240" y="288" text-anchor="middle">Bienestar digital</text></g>'
-            '</svg></figure>')
+            'presencia real). La zona donde se cruzan los tres es el bienestar digital.</desc>'
+            f'<defs>{clips}</defs>'
+            f'{areas}'
+            '<g class="calma-venn__centro">'
+            '<g clip-path="url(#venn-ciberpsicologia)"><g clip-path="url(#venn-ciberseguridad)">'
+            f'<circle class="calma-venn__zona" cx="{cx}" cy="{cy}" r="{R}"/></g></g>'
+            f'<circle class="calma-venn__nucleo" cx="{zx}" cy="{zy}" r="5"/>'
+            f'<path class="calma-venn__linea" pathLength="1" d="M{zx + 8} {zy} H488"/>'
+            '<g class="calma-venn__etiqueta"><rect x="490" y="212" width="160" height="70" rx="16"/>'
+            '<text x="570" y="241" text-anchor="middle">Bienestar</text><text x="570" y="267" text-anchor="middle">digital</text></g>'
+            '</g></svg></figure>')
 
 
 def org_ciberpsicologia():
