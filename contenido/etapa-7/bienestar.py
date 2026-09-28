@@ -187,10 +187,12 @@ def bienestar(cabecera):
 <p class="calma-hero__lead">La intersección entre ciberpsicología, ciberseguridad y bienestar humano.</p>
 </div>{venn()}</div></section>
 <section class="calma-section" aria-labelledby="interseccion-h2"><div class="calma-container">
-<div class="calma-section__head"><h2 id="interseccion-h2">La <em>intersección</em></h2></div>
+<div class="calma-bienestar__intro">
+<h2 id="interseccion-h2">La <em>intersección</em></h2>
 <div class="calma-bienestar__interseccion">
 <p class="calma-definicion"><strong>El bienestar digital es usar la tecnología con intención: entender cómo funcionas con ella, proteger tu privacidad y decidir de forma consciente qué lugar quieres que ocupe en tu vida.</strong></p>
 <aside class="calma-resumen" aria-label="En resumen"><p><strong>En resumen:</strong> en la práctica, significa saber por qué estás en cada plataforma, reconocer su costo real y decidir si vale la pena. Se apoya en tres áreas: la <a href="https://codigocalma.com/ciberpsicologia/">ciberpsicología</a>, que estudia cómo la tecnología influye en tu comportamiento, tus emociones y tus vínculos; la ciberseguridad, que cuida tu privacidad y tus datos; y el bienestar humano, que es el objetivo final.</p></aside>
+</div>
 </div>
 <ul class="calma-habitos">{areas}</ul>
 </div></section>
