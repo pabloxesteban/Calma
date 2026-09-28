@@ -7036,10 +7036,92 @@ html.calma-quieto :is(.calma-equipo .calma-person, .calma-habito, .calma-descarg
 	background: #fff;
 	border: 1px solid var(--calma-hairline);
 }
-.calma-chica__aviso--azul circle { stroke: #1d5f94; }
-.calma-chica__aviso--azul path { stroke: #1d5f94; }
-.calma-chica__aviso--verde circle { stroke: #1f6b47; }
-.calma-chica__aviso--verde path { stroke: #1f6b47; stroke-width: 2.4; }
+.calma-contacto-ilustracion svg {
+	overflow: visible;
+}
+/* Contacto: escribe y envía un mensaje. Estado final (sin movimiento): el avión llegó y el tilde está visible. */
+.calma-chica__escribe path {
+	fill: #fff;
+	stroke: #4b5fd1;
+	stroke-width: 1.6;
+}
+.calma-chica__punto {
+	fill: #4b5fd1;
+}
+.calma-chica__escribe {
+	opacity: 0;
+}
+.calma-chica__estela {
+	fill: none;
+	stroke: #9cc3e3;
+	stroke-width: 2;
+	stroke-dasharray: 0.02 0.03;
+	stroke-linecap: round;
+}
+.calma-chica__avion {
+	offset-path: path("M240 226C272 222 300 210 312 180S320 130 332 118");
+	offset-distance: 100%;
+	offset-rotate: auto;
+	opacity: 0;
+}
+.calma-chica__avion path {
+	fill: #fff;
+	stroke: #1d5f94;
+	stroke-width: 1.8;
+	stroke-linejoin: round;
+}
+.calma-chica__enviado circle {
+	fill: #fff;
+	stroke: #1f6b47;
+	stroke-width: 1.6;
+}
+.calma-chica__enviado path {
+	fill: none;
+	stroke: #1f6b47;
+	stroke-width: 2.4;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-chica__escribe {
+		animation: calma-escribe 1.9s var(--calma-ease-mente) 0.4s;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-chica__punto {
+		animation: calma-tecleo 0.5s ease-in-out calc(0.5s + var(--i) * 0.12s) 3;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-chica__telefono {
+		animation: calma-tocar-tel 0.25s ease-in-out 0.5s 6;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-chica__estela {
+		animation: calma-estela 1.3s var(--calma-ease-mente) 2.2s backwards;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-chica__avion {
+		animation: calma-vuelo 1.4s var(--calma-ease-mente) 2.2s;
+	}
+	html:not(.calma-quieto) .calma-contacto-ilustracion.is-vivo .calma-chica__enviado {
+		animation: calma-burbuja 0.6s cubic-bezier(.34,1.56,.64,1) 3.4s backwards;
+	}
+}
+@keyframes calma-escribe {
+	0% { opacity: 0; transform: scale(0.7); }
+	15%, 80% { opacity: 1; transform: scale(1); }
+	100% { opacity: 0; transform: scale(0.9); }
+}
+@keyframes calma-tecleo {
+	50% { transform: translateY(-4px); }
+}
+@keyframes calma-tocar-tel {
+	50% { transform: translateY(1.5px); }
+}
+@keyframes calma-estela {
+	from { opacity: 0; clip-path: inset(100% 0 0 0); }
+	to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+@keyframes calma-vuelo {
+	0% { offset-distance: 0%; opacity: 1; }
+	85% { opacity: 1; }
+	100% { offset-distance: 100%; opacity: 0; }
+}
 .calma-tablet__onda {
 	opacity: 0;
 }

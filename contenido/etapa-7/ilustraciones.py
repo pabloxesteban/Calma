@@ -24,10 +24,14 @@ AVISOS = {
     'redes': ('<g class="calma-chica__aviso" style="--i:0"><circle cx="262" cy="196" r="15"/><path d="M262 203c-6-4-9-7-9-10a4 4 0 0 1 9-2 4 4 0 0 1 9 2c0 3-3 6-9 10Z"/></g>'
               '<g class="calma-chica__aviso" style="--i:1"><circle cx="292" cy="160" r="15"/><path d="M285 166v-8h4l4-7c2 0 3 1 3 3l-1 4h5c1 0 2 1 2 2l-2 6c0 1-1 2-2 2h-9"/></g>'
               '<g class="calma-chica__aviso" style="--i:2"><circle cx="252" cy="130" r="15"/><path d="M245 124h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8l-5 4v-4h-1a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Z"/></g>'),
-    # Contacto: escribe (un mensaje), lo envía (un sobre) y queda enviado (un tilde).
-    'contacto': ('<g class="calma-chica__aviso calma-chica__aviso--azul" style="--i:0"><circle cx="262" cy="196" r="15"/><path d="M255 190h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8l-5 4v-4h-1a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Z"/></g>'
-                 '<g class="calma-chica__aviso calma-chica__aviso--azul" style="--i:1"><circle cx="292" cy="160" r="15"/><path d="M283 154h18v12h-18ZM283 155l9 6 9-6"/></g>'
-                 '<g class="calma-chica__aviso calma-chica__aviso--verde" style="--i:2"><circle cx="252" cy="130" r="15"/><path d="M245 130l5 5 10-10"/></g>'),
+    # Contacto: escribe un mensaje (burbuja con puntos que saltan) y lo envía:
+    # un avión de papel sale del teléfono, vuela dejando una estela y llega el tilde de enviado.
+    'contacto': ('<g class="calma-chica__escribe"><path d="M252 170h48a8 8 0 0 1 8 8v14a8 8 0 0 1-8 8h-38l-10 8v-8a8 8 0 0 1-8-8v-14a8 8 0 0 1 8-8Z"/>'
+                 '<circle class="calma-chica__punto" style="--i:0" cx="266" cy="185" r="3.2"/><circle class="calma-chica__punto" style="--i:1" cx="278" cy="185" r="3.2"/>'
+                 '<circle class="calma-chica__punto" style="--i:2" cx="290" cy="185" r="3.2"/></g>'
+                 '<path class="calma-chica__estela" pathLength="1" d="M240 226C272 222 300 210 312 180S320 130 332 118"/>'
+                 '<g class="calma-chica__avion"><path d="M-14 2 16-10 4 14 0 4Z"/><path d="M0 4 16-10"/></g>'
+                 '<g class="calma-chica__enviado"><circle cx="332" cy="118" r="15"/><path d="M325 118l5 5 10-10"/></g>'),
 }
 
 
@@ -37,8 +41,6 @@ def chica_con_telefono(avisos='redes'):
         (104, 318), (110, 330), (98, 334), (116, 342), (106, 350), (122, 326), (100, 346), (114, 356),
         (296, 318), (290, 332), (302, 336), (284, 344), (294, 350), (280, 326), (300, 348), (288, 356)))
     return f'''<svg class="calma-chica" viewBox="-10 40 420 420" width="420" height="420" aria-hidden="true" focusable="false">
-<g class="calma-chica__avisos">
-{avisos}</g>
 <g class="calma-chica__cuerpo">
 <path d="M84 372c20-34 70-50 116-50s96 16 116 50c-10 30-60 44-116 44s-106-14-116-44Z" fill="#2f2b33"/>
 <path d="M150 360l100 40" stroke="#1b1920" stroke-width="2" fill="none"/>
@@ -64,6 +66,8 @@ def chica_con_telefono(avisos='redes'):
 <path d="M200 258c10-6 26-8 38-2 6 4 6 12 2 16l-8 12c-4 6-14 8-22 4l-10-6c-6-4-6-16 0-24Z" fill="{PIEL}"/>
 <path d="M214 260l18-4M216 270l18-4M218 280l14-3" stroke="{TINTA}" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 </g>
+<g class="calma-chica__avisos">
+{avisos}</g>
 </svg>'''
 
 
